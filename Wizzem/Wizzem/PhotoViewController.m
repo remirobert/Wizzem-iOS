@@ -7,6 +7,7 @@
 //
 
 #import "PhotoViewController.h"
+#import "CameraAVFoundation.h"
 
 @interface PhotoViewController ()
 
@@ -16,6 +17,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    [self.view.layer addSublayer:[CameraAVFoundation sharedInstace].captureVideoPreviewLayer];
 }
 
 - (void)didReceiveMemoryWarning {

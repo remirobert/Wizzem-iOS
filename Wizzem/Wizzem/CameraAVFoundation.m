@@ -70,8 +70,7 @@
     self.captureVideoPreviewLayer.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width,
                                                 [UIScreen mainScreen].bounds.size.height);
     
-    AVCaptureDevice *device = (self.currentDevicePosition == AVCaptureDevicePositionBack) ?
-    [self backCamera] : [self frontCamera];
+    AVCaptureDevice *device = [self backCamera];
     
     AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
     if (!input) {
