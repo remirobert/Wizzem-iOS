@@ -15,6 +15,7 @@
 		BB34A6411A9B989200AA2A86 /* WizzemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB34A6401A9B989200AA2A86 /* WizzemTests.m */; };
 		BB34A64D1A9B98EB00AA2A86 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB34A64C1A9B98EB00AA2A86 /* AVFoundation.framework */; };
 		BB34A6531A9B992500AA2A86 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB34A6521A9B992500AA2A86 /* PhotoViewController.m */; };
+		BB910B4D1A9BAE81008B10BC /* CameraAVFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = BB910B4C1A9BAE81008B10BC /* CameraAVFoundation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		BB34A64C1A9B98EB00AA2A86 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BB34A6511A9B992500AA2A86 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		BB34A6521A9B992500AA2A86 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		BB910B4B1A9BAE81008B10BC /* CameraAVFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraAVFoundation.h; sourceTree = "<group>"; };
+		BB910B4C1A9BAE81008B10BC /* CameraAVFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraAVFoundation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,7 @@
 		BB34A6231A9B989200AA2A86 /* Wizzem */ = {
 			isa = PBXGroup;
 			children = (
+				BB910B4A1A9BADA2008B10BC /* Utils */,
 				BB34A6501A9B990A00AA2A86 /* Models */,
 				BB34A64F1A9B990100AA2A86 /* Views */,
 				BB34A64E1A9B98FA00AA2A86 /* Controllers */,
@@ -161,6 +165,15 @@
 			children = (
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		BB910B4A1A9BADA2008B10BC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BB910B4B1A9BAE81008B10BC /* CameraAVFoundation.h */,
+				BB910B4C1A9BAE81008B10BC /* CameraAVFoundation.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +278,7 @@
 			files = (
 				BB34A6531A9B992500AA2A86 /* PhotoViewController.m in Sources */,
 				BB34A62A1A9B989200AA2A86 /* AppDelegate.m in Sources */,
+				BB910B4D1A9BAE81008B10BC /* CameraAVFoundation.m in Sources */,
 				BB34A6271A9B989200AA2A86 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,6 +470,7 @@
 				BB34A6461A9B989200AA2A86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BB34A6471A9B989200AA2A86 /* Build configuration list for PBXNativeTarget "WizzemTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +479,7 @@
 				BB34A6491A9B989200AA2A86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
