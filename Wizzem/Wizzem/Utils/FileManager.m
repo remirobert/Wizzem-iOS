@@ -42,4 +42,17 @@
     return false;
 }
 
++ (NSData *) getDataFromFile:(NSString *)file {
+    if ([self isFileExist:file] == false) {
+        return nil;
+    }
+
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *filePath = [documentsPath stringByAppendingPathComponent:file];
+
+    NSData *data = [fileManager contentsAtPath:filePath];
+    return data;
+}
+
 @end

@@ -6,10 +6,12 @@
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
+#import <FLAnimatedImage.h>
 #import "PhotoViewController.h"
 #import "CameraAVFoundation.h"
 #import "ActionCameraAVFoundation.h"
 #import "ActionGifCameraAVFoundation.h"
+#import "FileManager.h"
 
 @interface PhotoViewController ()
 @property (nonatomic, strong) UIScrollView *photoLib;
@@ -21,9 +23,20 @@
 - (void) takePhoto {
     self.clic += 1;
     
-    if (self.clic == 10) {
+    if (self.clic == 3) {
         [ActionGifCameraAVFoundation makeAnimatedGif];
         [ActionGifCameraAVFoundation releaseImages];
+        
+        NSData *gifData = [FileManager getDataFromFile:@"animated.gif"];
+
+        FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:gifData];
+        FLAnimatedImageView *imageView = [[FLAnimatedImageView alloc] init];
+        imageView.animatedImage = image;
+        imageView.frame = self.view.frame;
+        [self.view addSubview:imageView];
+        
+        [FileManager deleteFile:@"animated.gif"];
+        
         self.clic = 0;
         return;
     }

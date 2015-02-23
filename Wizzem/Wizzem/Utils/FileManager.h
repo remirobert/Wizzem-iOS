@@ -13,5 +13,6 @@
 + (BOOL) isFileExist:(NSString *)file;
 + (BOOL) deleteFile:(NSString *)file;
 + (BOOL) writeFile:(NSString *)file dataFile:(NSData *)data;
++ (NSData *) getDataFromFile:(NSString *)file;
 
 @end
