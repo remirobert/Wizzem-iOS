@@ -9,7 +9,7 @@
 #import "CameraAVFoundation.h"
 
 @interface CameraAVFoundation()
-@property (nonatomic, retain) AVCaptureStillImageOutput *stillImageOutput;
+@property (nonatomic, assign) AVCaptureDevicePosition currentDevicePosition;
 @property (nonatomic, strong) AVCaptureSession *session;
 @end
 
@@ -97,6 +97,21 @@
         [cameraFoundation initAvFoundation];
     });
     return cameraFoundation;
+}
+
+#pragma mark - helpers
+
++ (AVCaptureConnection *) getCaptureConnection {
+    AVCaptureConnection *videoConnection = nil;
+    for (AVCaptureConnection *connection in [self sharedInstace].stillImageOutput.connections) {
+        for (AVCaptureInputPort *port in [connection inputPorts]) {
+            if ([[port mediaType] isEqual:AVMediaTypeVideo] ) {
+                videoConnection = connection;
+                return videoConnection;
+            }
+        }
+    }
+    return nil;
 }
 
 @end

@@ -15,7 +15,9 @@
 + (CameraAVFoundation *) sharedInstace;
 - (void) switchDeviceCamera;
 
-@property (nonatomic, assign) AVCaptureDevicePosition currentDevicePosition;
++ (AVCaptureConnection *) getCaptureConnection;
+
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
+@property (nonatomic, retain) AVCaptureStillImageOutput *stillImageOutput;
 
 @end

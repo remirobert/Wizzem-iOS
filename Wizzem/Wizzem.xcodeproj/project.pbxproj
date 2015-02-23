@@ -16,6 +16,7 @@
 		BB34A64D1A9B98EB00AA2A86 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB34A64C1A9B98EB00AA2A86 /* AVFoundation.framework */; };
 		BB34A6531A9B992500AA2A86 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB34A6521A9B992500AA2A86 /* PhotoViewController.m */; };
 		BB910B4D1A9BAE81008B10BC /* CameraAVFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = BB910B4C1A9BAE81008B10BC /* CameraAVFoundation.m */; };
+		BB910B501A9BB659008B10BC /* ActionCameraAVFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = BB910B4F1A9BB659008B10BC /* ActionCameraAVFoundation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		BB34A6521A9B992500AA2A86 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		BB910B4B1A9BAE81008B10BC /* CameraAVFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraAVFoundation.h; sourceTree = "<group>"; };
 		BB910B4C1A9BAE81008B10BC /* CameraAVFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraAVFoundation.m; sourceTree = "<group>"; };
+		BB910B4E1A9BB659008B10BC /* ActionCameraAVFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionCameraAVFoundation.h; sourceTree = "<group>"; };
+		BB910B4F1A9BB659008B10BC /* ActionCameraAVFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionCameraAVFoundation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +175,8 @@
 			children = (
 				BB910B4B1A9BAE81008B10BC /* CameraAVFoundation.h */,
 				BB910B4C1A9BAE81008B10BC /* CameraAVFoundation.m */,
+				BB910B4E1A9BB659008B10BC /* ActionCameraAVFoundation.h */,
+				BB910B4F1A9BB659008B10BC /* ActionCameraAVFoundation.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -278,6 +283,7 @@
 			files = (
 				BB34A6531A9B992500AA2A86 /* PhotoViewController.m in Sources */,
 				BB34A62A1A9B989200AA2A86 /* AppDelegate.m in Sources */,
+				BB910B501A9BB659008B10BC /* ActionCameraAVFoundation.m in Sources */,
 				BB910B4D1A9BAE81008B10BC /* CameraAVFoundation.m in Sources */,
 				BB34A6271A9B989200AA2A86 /* main.m in Sources */,
 			);
