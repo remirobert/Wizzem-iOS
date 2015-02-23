@@ -1,0 +1,471 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BB34A6271A9B989200AA2A86 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB34A6261A9B989200AA2A86 /* main.m */; };
+		BB34A62A1A9B989200AA2A86 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB34A6291A9B989200AA2A86 /* AppDelegate.m */; };
+		BB34A6301A9B989200AA2A86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB34A62E1A9B989200AA2A86 /* Main.storyboard */; };
+		BB34A6321A9B989200AA2A86 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB34A6311A9B989200AA2A86 /* Images.xcassets */; };
+		BB34A6351A9B989200AA2A86 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB34A6331A9B989200AA2A86 /* LaunchScreen.xib */; };
+		BB34A6411A9B989200AA2A86 /* WizzemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB34A6401A9B989200AA2A86 /* WizzemTests.m */; };
+		BB34A64D1A9B98EB00AA2A86 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB34A64C1A9B98EB00AA2A86 /* AVFoundation.framework */; };
+		BB34A6531A9B992500AA2A86 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB34A6521A9B992500AA2A86 /* PhotoViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BB34A63B1A9B989200AA2A86 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BB34A6191A9B989200AA2A86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BB34A6201A9B989200AA2A86;
+			remoteInfo = Wizzem;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BB34A6211A9B989200AA2A86 /* Wizzem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wizzem.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB34A6251A9B989200AA2A86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB34A6261A9B989200AA2A86 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BB34A6281A9B989200AA2A86 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BB34A6291A9B989200AA2A86 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BB34A62F1A9B989200AA2A86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BB34A6311A9B989200AA2A86 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BB34A6341A9B989200AA2A86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		BB34A63A1A9B989200AA2A86 /* WizzemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WizzemTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB34A63F1A9B989200AA2A86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB34A6401A9B989200AA2A86 /* WizzemTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WizzemTests.m; sourceTree = "<group>"; };
+		BB34A64C1A9B98EB00AA2A86 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BB34A6511A9B992500AA2A86 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		BB34A6521A9B992500AA2A86 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BB34A61E1A9B989200AA2A86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB34A64D1A9B98EB00AA2A86 /* AVFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB34A6371A9B989200AA2A86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BB34A6181A9B989200AA2A86 = {
+			isa = PBXGroup;
+			children = (
+				BB34A64C1A9B98EB00AA2A86 /* AVFoundation.framework */,
+				BB34A6231A9B989200AA2A86 /* Wizzem */,
+				BB34A63D1A9B989200AA2A86 /* WizzemTests */,
+				BB34A6221A9B989200AA2A86 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BB34A6221A9B989200AA2A86 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BB34A6211A9B989200AA2A86 /* Wizzem.app */,
+				BB34A63A1A9B989200AA2A86 /* WizzemTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BB34A6231A9B989200AA2A86 /* Wizzem */ = {
+			isa = PBXGroup;
+			children = (
+				BB34A6501A9B990A00AA2A86 /* Models */,
+				BB34A64F1A9B990100AA2A86 /* Views */,
+				BB34A64E1A9B98FA00AA2A86 /* Controllers */,
+				BB34A64A1A9B98C100AA2A86 /* Application */,
+				BB34A64B1A9B98D400AA2A86 /* Ressources */,
+			);
+			path = Wizzem;
+			sourceTree = "<group>";
+		};
+		BB34A6241A9B989200AA2A86 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BB34A6251A9B989200AA2A86 /* Info.plist */,
+				BB34A6261A9B989200AA2A86 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BB34A63D1A9B989200AA2A86 /* WizzemTests */ = {
+			isa = PBXGroup;
+			children = (
+				BB34A6401A9B989200AA2A86 /* WizzemTests.m */,
+				BB34A63E1A9B989200AA2A86 /* Supporting Files */,
+			);
+			path = WizzemTests;
+			sourceTree = "<group>";
+		};
+		BB34A63E1A9B989200AA2A86 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BB34A63F1A9B989200AA2A86 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BB34A64A1A9B98C100AA2A86 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				BB34A6281A9B989200AA2A86 /* AppDelegate.h */,
+				BB34A6291A9B989200AA2A86 /* AppDelegate.m */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		BB34A64B1A9B98D400AA2A86 /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				BB34A6241A9B989200AA2A86 /* Supporting Files */,
+				BB34A62E1A9B989200AA2A86 /* Main.storyboard */,
+				BB34A6311A9B989200AA2A86 /* Images.xcassets */,
+				BB34A6331A9B989200AA2A86 /* LaunchScreen.xib */,
+			);
+			name = Ressources;
+			sourceTree = "<group>";
+		};
+		BB34A64E1A9B98FA00AA2A86 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BB34A6511A9B992500AA2A86 /* PhotoViewController.h */,
+				BB34A6521A9B992500AA2A86 /* PhotoViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		BB34A64F1A9B990100AA2A86 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		BB34A6501A9B990A00AA2A86 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BB34A6201A9B989200AA2A86 /* Wizzem */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB34A6441A9B989200AA2A86 /* Build configuration list for PBXNativeTarget "Wizzem" */;
+			buildPhases = (
+				BB34A61D1A9B989200AA2A86 /* Sources */,
+				BB34A61E1A9B989200AA2A86 /* Frameworks */,
+				BB34A61F1A9B989200AA2A86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Wizzem;
+			productName = Wizzem;
+			productReference = BB34A6211A9B989200AA2A86 /* Wizzem.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BB34A6391A9B989200AA2A86 /* WizzemTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB34A6471A9B989200AA2A86 /* Build configuration list for PBXNativeTarget "WizzemTests" */;
+			buildPhases = (
+				BB34A6361A9B989200AA2A86 /* Sources */,
+				BB34A6371A9B989200AA2A86 /* Frameworks */,
+				BB34A6381A9B989200AA2A86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BB34A63C1A9B989200AA2A86 /* PBXTargetDependency */,
+			);
+			name = WizzemTests;
+			productName = WizzemTests;
+			productReference = BB34A63A1A9B989200AA2A86 /* WizzemTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BB34A6191A9B989200AA2A86 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Remi Robert";
+				TargetAttributes = {
+					BB34A6201A9B989200AA2A86 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					BB34A6391A9B989200AA2A86 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = BB34A6201A9B989200AA2A86;
+					};
+				};
+			};
+			buildConfigurationList = BB34A61C1A9B989200AA2A86 /* Build configuration list for PBXProject "Wizzem" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BB34A6181A9B989200AA2A86;
+			productRefGroup = BB34A6221A9B989200AA2A86 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BB34A6201A9B989200AA2A86 /* Wizzem */,
+				BB34A6391A9B989200AA2A86 /* WizzemTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BB34A61F1A9B989200AA2A86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB34A6301A9B989200AA2A86 /* Main.storyboard in Resources */,
+				BB34A6351A9B989200AA2A86 /* LaunchScreen.xib in Resources */,
+				BB34A6321A9B989200AA2A86 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB34A6381A9B989200AA2A86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BB34A61D1A9B989200AA2A86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB34A6531A9B992500AA2A86 /* PhotoViewController.m in Sources */,
+				BB34A62A1A9B989200AA2A86 /* AppDelegate.m in Sources */,
+				BB34A6271A9B989200AA2A86 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB34A6361A9B989200AA2A86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB34A6411A9B989200AA2A86 /* WizzemTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BB34A63C1A9B989200AA2A86 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BB34A6201A9B989200AA2A86 /* Wizzem */;
+			targetProxy = BB34A63B1A9B989200AA2A86 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BB34A62E1A9B989200AA2A86 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB34A62F1A9B989200AA2A86 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BB34A6331A9B989200AA2A86 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB34A6341A9B989200AA2A86 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BB34A6421A9B989200AA2A86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BB34A6431A9B989200AA2A86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BB34A6451A9B989200AA2A86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Wizzem/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BB34A6461A9B989200AA2A86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Wizzem/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BB34A6481A9B989200AA2A86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WizzemTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wizzem.app/Wizzem";
+			};
+			name = Debug;
+		};
+		BB34A6491A9B989200AA2A86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WizzemTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wizzem.app/Wizzem";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BB34A61C1A9B989200AA2A86 /* Build configuration list for PBXProject "Wizzem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB34A6421A9B989200AA2A86 /* Debug */,
+				BB34A6431A9B989200AA2A86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB34A6441A9B989200AA2A86 /* Build configuration list for PBXNativeTarget "Wizzem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB34A6451A9B989200AA2A86 /* Debug */,
+				BB34A6461A9B989200AA2A86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BB34A6471A9B989200AA2A86 /* Build configuration list for PBXNativeTarget "WizzemTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB34A6481A9B989200AA2A86 /* Debug */,
+				BB34A6491A9B989200AA2A86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BB34A6191A9B989200AA2A86 /* Project object */;
+}
