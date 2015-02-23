@@ -9,30 +9,43 @@
 #import "PhotoViewController.h"
 #import "CameraAVFoundation.h"
 #import "ActionCameraAVFoundation.h"
+#import "ActionGifCameraAVFoundation.h"
 
 @interface PhotoViewController ()
 @property (nonatomic, strong) UIScrollView *photoLib;
+@property (nonatomic, assign) NSInteger clic;
 @end
 
 @implementation PhotoViewController
 
 - (void) takePhoto {
+    self.clic += 1;
+    
+    if (self.clic == 10) {
+        [ActionGifCameraAVFoundation makeAnimatedGif];
+        [ActionGifCameraAVFoundation releaseImages];
+        self.clic = 0;
+        return;
+    }
+    
     static NSInteger position = 0;
+
+    [ActionGifCameraAVFoundation addImage];
     
-    
-    [ActionCameraAVFoundation takePhoto:^(UIImage *image) {
-        
-        UIImageView *currentImage = [[UIImageView alloc] initWithFrame:CGRectMake(position, 0, 70, 70)];
-        currentImage.image = image;
-        [self.photoLib addSubview:currentImage];
-        position += 70;
-        
-        self.photoLib.contentSize = CGSizeMake(position, 70);
-    }];
+//    [ActionCameraAVFoundation takePhoto:^(UIImage *image) {
+//        
+//        UIImageView *currentImage = [[UIImageView alloc] initWithFrame:CGRectMake(position, 0, 70, 70)];
+//        currentImage.image = image;
+//        [self.photoLib addSubview:currentImage];
+//        position += 70;
+//        
+//        self.photoLib.contentSize = CGSizeMake(position, 70);
+//    }];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.clic = 0;
     
     [self.view.layer addSublayer:[CameraAVFoundation sharedInstace].captureVideoPreviewLayer];
 
