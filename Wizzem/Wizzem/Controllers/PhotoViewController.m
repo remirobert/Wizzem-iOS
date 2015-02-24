@@ -13,6 +13,7 @@
 #import "ActionGifCameraAVFoundation.h"
 #import "FileManager.h"
 #import "SliderButtonPhoto.h"
+#import "DetailCameraViewController.h"
 
 @interface PhotoViewController ()
 @property (nonatomic, strong) UIScrollView *photoLib;
@@ -62,6 +63,44 @@
 //    }];
 }
 
+- (void) changeActionCamera:(CAMERA_KIND)cameraKind {
+    static UILabel *label;
+    
+    if (label == nil) {
+        label = [[UILabel alloc] init];
+        label.font = [UIFont boldSystemFontOfSize:50];
+        label.textColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7];
+        label.textAlignment = NSTextAlignmentCenter;
+        [self.view addSubview:label];
+    }
+    
+    switch (cameraKind) {
+        case PHOTO_CAMERA:
+            label.text = @"Photo";
+            break;
+
+        case GIF_CAMERA:
+            label.text = @"GIF";
+            break;
+
+        default:
+            break;
+    }
+    
+    label.frame = CGRectMake(0, -100, self.view.frame.size.width, 100);
+    
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.4 options:UIViewAnimationOptionTransitionNone animations:^{
+        
+        label.alpha = 1.0;
+        label.frame = CGRectMake(0, 50, self.view.frame.size.width, 100);
+        
+    } completion:^(BOOL finished) {
+       [UIView animateWithDuration:0.5 animations:^{
+           label.alpha = 0.0;
+       }];
+    }];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.clic = 0;
@@ -81,7 +120,7 @@
 //    
 
     SliderButtonPhoto *slider = [[SliderButtonPhoto alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 50, self.view.frame.size.height - 120, 100, 100)];
-    
+    slider.delegateCamera = self;
     [self.view addSubview:slider];
     
     

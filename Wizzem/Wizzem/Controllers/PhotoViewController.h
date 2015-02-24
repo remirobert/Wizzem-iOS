@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SliderButtonPhoto.h"
 
-@interface PhotoViewController : UIViewController
+@interface PhotoViewController : UIViewController <SliderButtonPhotoDelegate>
 
 @end

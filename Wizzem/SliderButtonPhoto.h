@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    PHOTO_CAMERA,
+    GIF_CAMERA,
+} CAMERA_KIND;
+
 @protocol SliderButtonPhotoDelegate;
 
 @interface SliderButtonPhoto : UIScrollView <UIScrollViewDelegate>
@@ -20,6 +25,6 @@
 
 @protocol SliderButtonPhotoDelegate <NSObject>
 
-- (void) changeActionCamera;
+- (void) changeActionCamera:(CAMERA_KIND)cameraKind;
 
 @end

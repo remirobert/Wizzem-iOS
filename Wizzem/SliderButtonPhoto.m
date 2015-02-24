@@ -19,6 +19,7 @@
     [buttonPhoto setImage:[UIImage imageNamed:@"sliderPhoto"] forState:UIControlStateNormal];
     buttonPhoto.layer.masksToBounds = true;
     buttonPhoto.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    buttonPhoto.tag = 0;
     return buttonPhoto;
 }
 
@@ -27,6 +28,7 @@
     [buttonGif setImage:[UIImage imageNamed:@"sliderGif"] forState:UIControlStateNormal];
     buttonGif.layer.masksToBounds = true;
     buttonGif.imageView.contentMode = UIViewContentModeScaleToFill;
+    buttonGif.tag = 1;
     return buttonGif;
 }
 
@@ -69,7 +71,21 @@
     }
     else if (position == 0) {
         [scrollView setContentOffset:CGPointMake((self.sliderButtons.count - 2) * 100, 0) animated:false];
-    }    
+    }
+    if ([self.delegateCamera respondsToSelector:@selector(changeActionCamera:)]) {
+        [self.delegateCamera changeActionCamera:((UIButton *)[self.sliderButtons objectAtIndex:position]).tag];
+    }
+}
+
+#pragma mark - selector init
+
+- (UIButton *) buttonForKind:(CAMERA_KIND)cameraKind {
+    for (UIButton *currentButton in self.sliderButtons) {
+        if (currentButton.tag == cameraKind) {
+            return currentButton;
+        }
+    }
+    return nil;
 }
 
 @end
