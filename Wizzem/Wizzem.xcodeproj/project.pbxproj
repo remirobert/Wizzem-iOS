@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ACFED7F2462065225925B9DF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F14D01F10DF01B4B8D4D2B /* libPods.a */; };
+		BB311C8A1A9C7C3600C25668 /* SliderButtonPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = BB311C891A9C7C3600C25668 /* SliderButtonPhoto.m */; };
 		BB34A6271A9B989200AA2A86 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB34A6261A9B989200AA2A86 /* main.m */; };
 		BB34A62A1A9B989200AA2A86 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB34A6291A9B989200AA2A86 /* AppDelegate.m */; };
 		BB34A6301A9B989200AA2A86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB34A62E1A9B989200AA2A86 /* Main.storyboard */; };
@@ -34,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		99F14D01F10DF01B4B8D4D2B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB311C881A9C7C3600C25668 /* SliderButtonPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderButtonPhoto.h; sourceTree = SOURCE_ROOT; };
+		BB311C891A9C7C3600C25668 /* SliderButtonPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderButtonPhoto.m; sourceTree = SOURCE_ROOT; };
 		BB34A6211A9B989200AA2A86 /* Wizzem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wizzem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB34A6251A9B989200AA2A86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB34A6261A9B989200AA2A86 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 		BB34A64F1A9B990100AA2A86 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BB311C881A9C7C3600C25668 /* SliderButtonPhoto.h */,
+				BB311C891A9C7C3600C25668 /* SliderButtonPhoto.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 				BB910B4D1A9BAE81008B10BC /* CameraAVFoundation.m in Sources */,
 				BB910B591A9BE2FD008B10BC /* FileManager.m in Sources */,
 				BB34A6271A9B989200AA2A86 /* main.m in Sources */,
+				BB311C8A1A9C7C3600C25668 /* SliderButtonPhoto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

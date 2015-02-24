@@ -12,6 +12,7 @@
 #import "ActionCameraAVFoundation.h"
 #import "ActionGifCameraAVFoundation.h"
 #import "FileManager.h"
+#import "SliderButtonPhoto.h"
 
 @interface PhotoViewController ()
 @property (nonatomic, strong) UIScrollView *photoLib;
@@ -67,16 +68,21 @@
     
     [self.view.layer addSublayer:[CameraAVFoundation sharedInstace].captureVideoPreviewLayer];
 
-    UIButton *button = [[UIButton alloc] init];
-    button.frame = CGRectMake(0, 0, 100, 100);
-    button.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height - 120);
+//    UIButton *button = [[UIButton alloc] init];
+//    button.frame = CGRectMake(0, 0, 100, 100);
+//    button.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height - 120);
+//    
+//    button.layer.cornerRadius = 50;
+//    button.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7];
+//    
+//    [button addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    [self.view addSubview:button];
+//    
+
+    SliderButtonPhoto *slider = [[SliderButtonPhoto alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 50, self.view.frame.size.height - 120, 100, 100)];
     
-    button.layer.cornerRadius = 50;
-    button.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7];
-    
-    [button addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.view addSubview:button];
+    [self.view addSubview:slider];
     
     
     self.photoLib = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 70)];

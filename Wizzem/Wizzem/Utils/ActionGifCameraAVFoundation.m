@@ -52,10 +52,6 @@
     NSDictionary *frameProperties = @{(__bridge id)kCGImagePropertyGIFDictionary:
                                           @{(__bridge id)kCGImagePropertyGIFDelayTime: DEFAULT_SPEED_GIF,}};
     
-//    NSFileManager *fileManager = [NSFileManager defaultManager];
-//    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-//    NSString *filePath = [documentsPath stringByAppendingPathComponent:@"animated.gif"];
-    
     NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
     NSURL *fileURL = [documentsDirectoryURL URLByAppendingPathComponent:@"animated.gif"];
     
