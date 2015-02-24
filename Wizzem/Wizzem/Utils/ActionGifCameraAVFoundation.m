@@ -42,7 +42,8 @@
     }];
 }
 
-+ (void) makeAnimatedGif {
++ (void) makeAnimatedGif:(void(^)(NSURL *fileUrl))completionBlock {
+    [self sharedInstance].isWorking = true;
     NSUInteger kFrameCount = [self sharedInstance].images.count;
     
     NSDictionary *fileProperties = @{(__bridge id)kCGImagePropertyGIFDictionary:
@@ -73,6 +74,8 @@
     CFRelease(destination);
     
     NSLog(@"url=%@", fileURL);
+    [self sharedInstance].isWorking = false;
+    completionBlock(fileURL);
 }
 
 @end

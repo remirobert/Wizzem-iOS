@@ -10,8 +10,10 @@
 
 @interface ActionGifCameraAVFoundation : NSObject
 
+@property (nonatomic, assign) BOOL isWorking;
+
 + (ActionGifCameraAVFoundation *) sharedInstance;
-+ (void) makeAnimatedGif;
++ (void) makeAnimatedGif:(void(^)(NSURL *fileUrl))completionBlock;
 + (void) releaseImages;
 + (void) addImage;
 

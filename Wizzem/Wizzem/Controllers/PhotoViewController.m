@@ -24,24 +24,29 @@
     self.clic += 1;
     
     if (self.clic == 3) {
-        [ActionGifCameraAVFoundation makeAnimatedGif];
-        [ActionGifCameraAVFoundation releaseImages];
+        if ([ActionGifCameraAVFoundation sharedInstance].isWorking) {
+            return;
+        }
         
-        NSData *gifData = [FileManager getDataFromFile:@"animated.gif"];
-
-        FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:gifData];
-        FLAnimatedImageView *imageView = [[FLAnimatedImageView alloc] init];
-        imageView.animatedImage = image;
-        imageView.frame = self.view.frame;
-        [self.view addSubview:imageView];
-        
-        [FileManager deleteFile:@"animated.gif"];
-        
-        self.clic = 0;
+        [ActionGifCameraAVFoundation makeAnimatedGif:^(NSURL *fileUrl) {
+            [ActionGifCameraAVFoundation releaseImages];
+            
+            NSData *gifData = [FileManager getDataFromFile:@"animated.gif"];
+            
+            FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:gifData];
+            FLAnimatedImageView *imageView = [[FLAnimatedImageView alloc] init];
+            imageView.animatedImage = image;
+            imageView.frame = self.view.frame;
+            [self.view addSubview:imageView];
+            
+            [FileManager deleteFile:@"animated.gif"];
+            
+            self.clic = 0;
+        }];
         return;
     }
     
-    static NSInteger position = 0;
+    //tatic NSInteger position = 0;
 
     [ActionGifCameraAVFoundation addImage];
     
