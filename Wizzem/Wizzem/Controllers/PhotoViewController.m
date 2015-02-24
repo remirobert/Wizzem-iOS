@@ -22,10 +22,10 @@
 
 @implementation PhotoViewController
 
-- (void) takePhoto {
+- (void) takeGif {
     self.clic += 1;
     
-    if (self.clic == 3) {
+    if (self.clic > 5) {
         if ([ActionGifCameraAVFoundation sharedInstance].isWorking) {
             return;
         }
@@ -34,33 +34,33 @@
             [ActionGifCameraAVFoundation releaseImages];
             
             NSData *gifData = [FileManager getDataFromFile:@"animated.gif"];
-            
-            FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:gifData];
-            FLAnimatedImageView *imageView = [[FLAnimatedImageView alloc] init];
-            imageView.animatedImage = image;
-            imageView.frame = self.view.frame;
-            [self.view addSubview:imageView];
-            
             [FileManager deleteFile:@"animated.gif"];
             
             self.clic = 0;
+            
+            DetailCameraViewController *controllerDetail = [[DetailCameraViewController alloc] init];
+            
+            controllerDetail.cameraKind = GIF_CAMERA;
+            controllerDetail.gif = gifData;
+            
+            [self presentViewController:controllerDetail animated:false completion:nil];
+
+            
         }];
         return;
     }
-    
-    //tatic NSInteger position = 0;
-
     [ActionGifCameraAVFoundation addImage];
-    
-//    [ActionCameraAVFoundation takePhoto:^(UIImage *image) {
-//        
-//        UIImageView *currentImage = [[UIImageView alloc] initWithFrame:CGRectMake(position, 0, 70, 70)];
-//        currentImage.image = image;
-//        [self.photoLib addSubview:currentImage];
-//        position += 70;
-//        
-//        self.photoLib.contentSize = CGSizeMake(position, 70);
-//    }];
+}
+
+- (void) takePhoto {
+    [ActionCameraAVFoundation takePhoto:^(UIImage *image) {
+        DetailCameraViewController *controllerDetail = [[DetailCameraViewController alloc] init];
+        
+        controllerDetail.cameraKind = PHOTO_CAMERA;
+        controllerDetail.image = image;
+        
+        [self presentViewController:controllerDetail animated:false completion:nil];
+    }];
 }
 
 - (void) changeActionCamera:(CAMERA_KIND)cameraKind {
@@ -107,21 +107,18 @@
     
     [self.view.layer addSublayer:[CameraAVFoundation sharedInstace].captureVideoPreviewLayer];
 
-//    UIButton *button = [[UIButton alloc] init];
-//    button.frame = CGRectMake(0, 0, 100, 100);
-//    button.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height - 120);
-//    
-//    button.layer.cornerRadius = 50;
-//    button.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7];
-//    
-//    [button addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    [self.view addSubview:button];
-//    
-
     SliderButtonPhoto *slider = [[SliderButtonPhoto alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 50, self.view.frame.size.height - 120, 100, 100)];
     slider.delegateCamera = self;
     [self.view addSubview:slider];
+    
+    
+    for (UIButton *currentButtonPhoto in [slider buttonForKind:PHOTO_CAMERA]) {
+        [currentButtonPhoto addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    for (UIButton *currentButtonGif in [slider buttonForKind:GIF_CAMERA]) {
+        [currentButtonGif addTarget:self action:@selector(takeGif) forControlEvents:UIControlEventTouchUpInside];
+    }
     
     
     self.photoLib = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 70)];

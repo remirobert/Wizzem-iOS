@@ -79,13 +79,14 @@
 
 #pragma mark - selector init
 
-- (UIButton *) buttonForKind:(CAMERA_KIND)cameraKind {
+- (NSArray *) buttonForKind:(CAMERA_KIND)cameraKind {
+    NSMutableArray *buttons = [[NSMutableArray alloc] init];
     for (UIButton *currentButton in self.sliderButtons) {
         if (currentButton.tag == cameraKind) {
-            return currentButton;
+            [buttons addObject:currentButton];
         }
     }
-    return nil;
+    return (NSArray *)buttons;
 }
 
 @end

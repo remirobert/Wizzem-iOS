@@ -13,5 +13,5 @@
 
 @property (nonatomic, assign) CAMERA_KIND cameraKind;
 @property (nonatomic, strong) UIImage *image;
-
+@property (nonatomic, strong) NSData *gif;
 @end

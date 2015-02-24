@@ -18,6 +18,8 @@ typedef enum : NSUInteger {
 @interface SliderButtonPhoto : UIScrollView <UIScrollViewDelegate>
 
 - (instancetype) initWithFrame:(CGRect)frame;
+- (NSArray *) buttonForKind:(CAMERA_KIND)cameraKind;
+
 @property (nonatomic, assign) id<SliderButtonPhotoDelegate> delegateCamera;
 
 @end

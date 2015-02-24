@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
+#import <FLAnimatedImage.h>
 #import "DetailCameraViewController.h"
 
 @interface DetailCameraViewController ()
@@ -16,6 +17,14 @@
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self dismissViewControllerAnimated:false completion:nil];
+}
+
+- (void) initGifImageView {
+    FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:self.gif];
+    FLAnimatedImageView *imageView = [[FLAnimatedImageView alloc] init];
+    imageView.animatedImage = image;
+    imageView.frame = self.view.frame;
+    [self.view addSubview:imageView];
 }
 
 - (void) initImageView {
@@ -30,6 +39,9 @@
     
     if (self.cameraKind == PHOTO_CAMERA) {
         [self initImageView];
+    }
+    else if (self.cameraKind == GIF_CAMERA) {
+        [self initGifImageView];
     }
 }
 
