@@ -38,9 +38,18 @@
     self.showsHorizontalScrollIndicator = false;
     self.delegate = self;
     
-    [self addSubview:[self buttonPhoto:0]];
-    [self addSubview:[self buttonGif:100]];
-    self.contentSize = CGSizeMake(200, 0);
+    self.sliderButtons = [[NSMutableArray alloc] init];
+    [self.sliderButtons addObject:[self buttonGif:0]];
+    [self.sliderButtons addObject:[self buttonPhoto:100]];
+    [self.sliderButtons addObject:[self buttonGif:200]];
+    [self.sliderButtons addObject:[self buttonPhoto:300]];
+
+    for (UIButton *currentButton in self.sliderButtons) {
+        [self addSubview:currentButton];
+    }
+    
+    self.contentSize = CGSizeMake(100 * (self.sliderButtons.count), 0);
+    [self setContentOffset:CGPointMake(100, 0) animated:false];
 }
 
 - (instancetype) initWithFrame:(CGRect)frame {
@@ -52,8 +61,15 @@
 
 #pragma mark - scrollView delegate
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    NSInteger position = (int)scrollView.contentOffset.x / 100;
     
+    if (position == self.sliderButtons.count - 1) {
+        [scrollView setContentOffset:CGPointMake(100, 0) animated:false];
+    }
+    else if (position == 0) {
+        [scrollView setContentOffset:CGPointMake((self.sliderButtons.count - 2) * 100, 0) animated:false];
+    }    
 }
 
 @end
