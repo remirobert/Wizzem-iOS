@@ -21,22 +21,22 @@
 
 #pragma mark - Camera device management
 
-+ (AVCaptureDevice *)frontCamera {
+- (AVCaptureDevice *)frontCamera {
     NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
     for (AVCaptureDevice *device in devices) {
         if ([device position] == AVCaptureDevicePositionFront) {
-            [self sharedInstace].currentDevicePosition = AVCaptureDevicePositionFront;
+            self.currentDevicePosition = AVCaptureDevicePositionFront;
             return (device);
         }
     }
     return (nil);
 }
 
-+ (AVCaptureDevice *)backCamera {
+- (AVCaptureDevice *)backCamera {
     NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
     for (AVCaptureDevice *device in devices) {
         if ([device position] == AVCaptureDevicePositionBack) {
-            [self sharedInstace].currentDevicePosition = AVCaptureDevicePositionBack;
+            self.currentDevicePosition = AVCaptureDevicePositionBack;
             return (device);
         }
     }
@@ -47,7 +47,7 @@
     NSArray *inputs = [self sharedInstace].session.inputs;
     for (AVCaptureDeviceInput *currentInput in inputs ) {
         AVCaptureDevice *device = ([self sharedInstace].currentDevicePosition == AVCaptureDevicePositionBack) ?
-        [self frontCamera] : [self backCamera];
+        [[self sharedInstace] frontCamera] : [[self sharedInstace] backCamera];
         if ([device hasMediaType:AVMediaTypeVideo]) {
             AVCaptureDeviceInput *newInput = nil;
             
@@ -67,7 +67,6 @@
 + (void) focusAtPoint:(CGPoint)touchPoint {
     if (!FOCUS_TOUCH_ENABLE) return;
     AVCaptureDevice *device = [[self sharedInstace].session.inputs.lastObject device];
-
     if([device isFocusPointOfInterestSupported] &&
        [device isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
         
@@ -99,7 +98,7 @@
     self.captureVideoPreviewLayer.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width,
                                                 [UIScreen mainScreen].bounds.size.height);
     self.captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    AVCaptureDevice *device = [CameraAVFoundation backCamera];
+    AVCaptureDevice *device = [self backCamera];
     
     AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
     if (!input) {
