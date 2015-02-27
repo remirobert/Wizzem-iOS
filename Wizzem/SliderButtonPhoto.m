@@ -18,7 +18,9 @@
 #pragma mark - slider indicator functional
 
 - (void) displayIndicatorInView:(UIView *)parentView {
-    NSLog(@"display indicator");
+    if ([self.layerIndicator superview] != nil) {
+        return;
+    }
     self.layerIndicator.frame = CGRectZero;
     self.layerIndicator.center = CGPointMake(self.frame.origin.x + self.frame.size.width / 2,
                                              self.frame.origin.y + self.frame.size.height / 2);
@@ -42,7 +44,6 @@
 }
 
 - (void) hideIndicatorInView {
-    NSLog(@"hide indicator");
     [UIView animateWithDuration:0.7 delay:0.3 usingSpringWithDamping:0.4 initialSpringVelocity:0.4
                         options:UIViewAnimationOptionTransitionNone animations:^{
         self.layerIndicator.frame = CGRectZero;
