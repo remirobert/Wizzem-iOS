@@ -22,6 +22,12 @@
 
 @implementation PhotoViewController
 
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint touchPoint = [touch locationInView:touch.view];
+    [CameraAVFoundation focusAtPoint:touchPoint];
+}
+
 - (void) takeGif {
     self.clic += 1;
     
@@ -44,8 +50,6 @@
             controllerDetail.gif = gifData;
             
             [self presentViewController:controllerDetail animated:false completion:nil];
-
-            
         }];
         return;
     }

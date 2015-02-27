@@ -13,7 +13,9 @@
 @property (nonatomic, strong) AVCaptureSession *session;
 @end
 
-# define CAMERA_QUALITY            AVCaptureSessionPresetHigh
+# define CAMERA_QUALITY             AVCaptureSessionPresetHigh
+# define FOCUS_TOUCH_ENABLE         true
+# define DISPLAY_FOCUS_TOUCH_LAYER  true
 
 @implementation CameraAVFoundation
 
@@ -63,6 +65,7 @@
 #pragma mark - Focus handle
 
 + (void) focusAtPoint:(CGPoint)touchPoint {
+    if (!FOCUS_TOUCH_ENABLE) return;
     AVCaptureDevice *device = [[self sharedInstace].session.inputs.lastObject device];
 
     if([device isFocusPointOfInterestSupported] &&
