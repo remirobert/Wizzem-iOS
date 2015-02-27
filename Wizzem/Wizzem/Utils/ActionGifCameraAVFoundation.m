@@ -42,6 +42,8 @@
     }];
 }
 
+#pragma mark - create gif file from UIImages
+
 + (void) makeAnimatedGif:(void(^)(NSURL *fileUrl))completionBlock {
     [self sharedInstance].isWorking = true;
     NSUInteger kFrameCount = [self sharedInstance].images.count;

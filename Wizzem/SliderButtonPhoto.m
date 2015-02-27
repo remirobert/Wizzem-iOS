@@ -25,7 +25,6 @@
     self.layerIndicator.center = CGPointMake(self.frame.origin.x + self.frame.size.width / 2,
                                              self.frame.origin.y + self.frame.size.height / 2);
     [parentView addSubview:self.layerIndicator];
-    //[parentView bringSubviewToFront:self.layerIndicator];
     [parentView bringSubviewToFront:self];
     [UIView animateWithDuration:0.7 delay:0.3 usingSpringWithDamping:0.4 initialSpringVelocity:0.4
                         options:UIViewAnimationOptionTransitionNone animations:^{
