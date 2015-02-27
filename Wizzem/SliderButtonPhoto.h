@@ -20,6 +20,8 @@ typedef enum : NSUInteger {
 
 - (instancetype) initWithFrame:(CGRect)frame;
 - (NSArray *) buttonForKind:(CAMERA_KIND)cameraKind;
+- (void) displayIndicatorInView:(UIView *)parentView;
+- (void) hideIndicatorInView;
 
 @property (nonatomic, assign) id<SliderButtonPhotoDelegate> delegateCamera;
 

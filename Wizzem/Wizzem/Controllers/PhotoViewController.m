@@ -17,6 +17,7 @@
 
 @interface PhotoViewController ()
 @property (nonatomic, assign) NSInteger clic;
+@property (nonatomic, strong) SliderButtonPhoto *slider;
 @end
 
 @implementation PhotoViewController
@@ -80,14 +81,17 @@
     switch (cameraKind) {
         case PHOTO_CAMERA:
             label.text = @"Photo";
+            [self.slider hideIndicatorInView];
             break;
 
         case GIF_CAMERA:
             label.text = @"GIF";
+            [self.slider displayIndicatorInView:self.view];
             break;
 
         case VIDEO_CAMERA:
             label.text = @"Video";
+            [self.slider displayIndicatorInView:self.view];
             break;
             
         default:
@@ -96,7 +100,8 @@
     
     label.frame = CGRectMake(0, -100, self.view.frame.size.width, 100);
     
-    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.4 options:UIViewAnimationOptionTransitionNone animations:^{
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.4
+                        options:UIViewAnimationOptionTransitionNone animations:^{
         
         label.alpha = 1.0;
         label.frame = CGRectMake(0, 50, self.view.frame.size.width, 100);
@@ -115,19 +120,18 @@
     [CameraAVFoundation sharedInstace].captureVideoPreviewLayer.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view.layer addSublayer:[CameraAVFoundation sharedInstace].captureVideoPreviewLayer];
 
-    SliderButtonPhoto *slider = [[SliderButtonPhoto alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 50, self.view.frame.size.height - 130, 100, 100)];
-    slider.delegateCamera = self;
-    [self.view addSubview:slider];
+    self.slider = [[SliderButtonPhoto alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 50, self.view.frame.size.height - 130, 100, 100)];
+    self.slider.delegateCamera = self;
+    [self.view addSubview:self.slider];
     
     
-    for (UIButton *currentButtonPhoto in [slider buttonForKind:PHOTO_CAMERA]) {
+    for (UIButton *currentButtonPhoto in [self.slider buttonForKind:PHOTO_CAMERA]) {
         [currentButtonPhoto addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
     }
     
-    for (UIButton *currentButtonGif in [slider buttonForKind:GIF_CAMERA]) {
+    for (UIButton *currentButtonGif in [self.slider buttonForKind:GIF_CAMERA]) {
         [currentButtonGif addTarget:self action:@selector(takeGif) forControlEvents:UIControlEventTouchUpInside];
-    }
-    
+    } 
 }
 
 - (void)didReceiveMemoryWarning {

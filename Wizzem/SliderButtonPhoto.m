@@ -10,9 +10,50 @@
 
 @interface SliderButtonPhoto()
 @property (nonatomic, strong) NSMutableArray *sliderButtons;
+@property (nonatomic, strong) UIView *layerIndicator;
 @end
 
 @implementation SliderButtonPhoto
+
+#pragma mark - slider indicator functional
+
+- (void) displayIndicatorInView:(UIView *)parentView {
+    NSLog(@"display indicator");
+    self.layerIndicator.frame = CGRectZero;
+    self.layerIndicator.center = CGPointMake(self.frame.origin.x + self.frame.size.width / 2,
+                                             self.frame.origin.y + self.frame.size.height / 2);
+    [parentView addSubview:self.layerIndicator];
+    //[parentView bringSubviewToFront:self.layerIndicator];
+    [parentView bringSubviewToFront:self];
+    [UIView animateWithDuration:0.7 delay:0.3 usingSpringWithDamping:0.4 initialSpringVelocity:0.4
+                        options:UIViewAnimationOptionTransitionNone animations:^{
+        self.layerIndicator.frame = CGRectMake(0, 0,
+                                               self.frame.size.width + 40, self.frame.size.height + 40);
+        self.layerIndicator.center = CGPointMake(self.frame.origin.x + self.frame.size.width / 2,
+                                                 self.frame.origin.y + self.frame.size.height / 2);
+    } completion:^(BOOL finished) {
+    }];
+    
+    
+    
+    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    v.backgroundColor = [UIColor redColor];
+    [parentView addSubview:v];
+}
+
+- (void) hideIndicatorInView {
+    NSLog(@"hide indicator");
+    [UIView animateWithDuration:0.7 delay:0.3 usingSpringWithDamping:0.4 initialSpringVelocity:0.4
+                        options:UIViewAnimationOptionTransitionNone animations:^{
+        self.layerIndicator.frame = CGRectZero;
+        self.layerIndicator.center = CGPointMake(self.frame.origin.x + self.frame.size.width / 2,
+                                                 self.frame.origin.y + self.frame.size.height / 2);
+    } completion:^(BOOL finished) {
+        [self.layerIndicator removeFromSuperview];
+    }];
+}
+
+#pragma mark - button init
 
 - (UIButton *) buttonPhoto:(CGFloat)positionX {
     UIButton *buttonPhoto = [[UIButton alloc] initWithFrame:CGRectMake(positionX, 0, 100, 100)];
@@ -39,6 +80,15 @@
     buttonVideo.imageView.contentMode = UIViewContentModeScaleToFill;
     buttonVideo.tag = 2;
     return buttonVideo;
+}
+
+#pragma mark - initalisation
+
+- (void) initIndicatorSlider {
+    self.layerIndicator = [[UIView alloc] initWithFrame:CGRectMake(self.frame.origin.x - 20, self.frame.origin.y - 20,
+                                                                   self.frame.size.width + 40, self.frame.size.height + 40)];
+    self.layerIndicator.layer.cornerRadius = self.layerIndicator.frame.size.width / 2;
+    self.layerIndicator.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3];
 }
 
 - (void) initSliderUI {
@@ -68,6 +118,7 @@
     self = [super initWithFrame:frame];
     
     [self initSliderUI];
+    [self initIndicatorSlider];
     return self;
 }
 
