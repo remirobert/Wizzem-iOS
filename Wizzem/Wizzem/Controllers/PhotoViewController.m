@@ -86,6 +86,10 @@
             label.text = @"GIF";
             break;
 
+        case VIDEO_CAMERA:
+            label.text = @"Video";
+            break;
+            
         default:
             break;
     }
@@ -111,7 +115,7 @@
     [CameraAVFoundation sharedInstace].captureVideoPreviewLayer.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view.layer addSublayer:[CameraAVFoundation sharedInstace].captureVideoPreviewLayer];
 
-    SliderButtonPhoto *slider = [[SliderButtonPhoto alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 50, self.view.frame.size.height - 220, 100, 100)];
+    SliderButtonPhoto *slider = [[SliderButtonPhoto alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 50, self.view.frame.size.height - 130, 100, 100)];
     slider.delegateCamera = self;
     [self.view addSubview:slider];
     

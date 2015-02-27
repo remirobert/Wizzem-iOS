@@ -11,6 +11,7 @@
 typedef enum : NSUInteger {
     PHOTO_CAMERA,
     GIF_CAMERA,
+    VIDEO_CAMERA,
 } CAMERA_KIND;
 
 @protocol SliderButtonPhotoDelegate;

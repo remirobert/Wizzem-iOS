@@ -32,6 +32,15 @@
     return buttonGif;
 }
 
+- (UIButton *) buttonVideo:(CGFloat)positionX {
+    UIButton *buttonVideo = [[UIButton alloc] initWithFrame:CGRectMake(positionX, 0, 100, 100)];
+    [buttonVideo setImage:[UIImage imageNamed:@"sliderVideo"] forState:UIControlStateNormal];
+    buttonVideo.layer.masksToBounds = true;
+    buttonVideo.imageView.contentMode = UIViewContentModeScaleToFill;
+    buttonVideo.tag = 2;
+    return buttonVideo;
+}
+
 - (void) initSliderUI {
     self.layer.cornerRadius = self.frame.size.width / 2;
     self.pagingEnabled = true;
@@ -41,10 +50,11 @@
     self.delegate = self;
     
     self.sliderButtons = [[NSMutableArray alloc] init];
-    [self.sliderButtons addObject:[self buttonGif:0]];
+    [self.sliderButtons addObject:[self buttonVideo:0]];
     [self.sliderButtons addObject:[self buttonPhoto:100]];
     [self.sliderButtons addObject:[self buttonGif:200]];
-    [self.sliderButtons addObject:[self buttonPhoto:300]];
+    [self.sliderButtons addObject:[self buttonVideo:300]];
+    [self.sliderButtons addObject:[self buttonPhoto:400]];
 
     for (UIButton *currentButton in self.sliderButtons) {
         [self addSubview:currentButton];
