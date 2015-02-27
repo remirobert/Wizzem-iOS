@@ -13,8 +13,8 @@
 @interface CameraAVFoundation : NSObject
 
 + (CameraAVFoundation *) sharedInstace;
-- (void) switchDeviceCamera;
-
++ (void) switchDeviceCamera;
++ (void) focusAtPoint:(CGPoint)touchPoint;
 + (AVCaptureConnection *) getCaptureConnection;
 
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;

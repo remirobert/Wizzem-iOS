@@ -52,7 +52,9 @@
     NSDictionary *frameProperties = @{(__bridge id)kCGImagePropertyGIFDictionary:
                                           @{(__bridge id)kCGImagePropertyGIFDelayTime: DEFAULT_SPEED_GIF,}};
     
-    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
+    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory
+                                                                          inDomain:NSUserDomainMask
+                                                                 appropriateForURL:nil create:YES error:nil];
     NSURL *fileURL = [documentsDirectoryURL URLByAppendingPathComponent:@"animated.gif"];
     
     CGImageDestinationRef destination = CGImageDestinationCreateWithURL((__bridge CFURLRef)fileURL, kUTTypeGIF, kFrameCount, NULL);
@@ -68,8 +70,6 @@
         NSLog(@"failed to finalize image destination");
     }
     CFRelease(destination);
-    
-    NSLog(@"url=%@", fileURL);
     [self sharedInstance].isWorking = false;
     completionBlock(fileURL);
 }

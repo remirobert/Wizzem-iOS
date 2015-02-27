@@ -36,6 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor blackColor];
     
     if (self.cameraKind == PHOTO_CAMERA) {
         [self initImageView];

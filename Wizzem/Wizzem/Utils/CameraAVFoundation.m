@@ -19,43 +19,69 @@
 
 #pragma mark - Camera device management
 
-- (AVCaptureDevice *)frontCamera {
++ (AVCaptureDevice *)frontCamera {
     NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
     for (AVCaptureDevice *device in devices) {
         if ([device position] == AVCaptureDevicePositionFront) {
-            self.currentDevicePosition = AVCaptureDevicePositionFront;
+            [self sharedInstace].currentDevicePosition = AVCaptureDevicePositionFront;
             return (device);
         }
     }
     return (nil);
 }
 
-- (AVCaptureDevice *)backCamera {
++ (AVCaptureDevice *)backCamera {
     NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
     for (AVCaptureDevice *device in devices) {
         if ([device position] == AVCaptureDevicePositionBack) {
-            self.currentDevicePosition = AVCaptureDevicePositionBack;
+            [self sharedInstace].currentDevicePosition = AVCaptureDevicePositionBack;
             return (device);
         }
     }
     return (nil);
 }
 
-- (void) switchDeviceCamera {
-    NSArray *inputs = self.session.inputs;
++ (void) switchDeviceCamera {
+    NSArray *inputs = [self sharedInstace].session.inputs;
     for (AVCaptureDeviceInput *currentInput in inputs ) {
-        AVCaptureDevice *device = (_currentDevicePosition == AVCaptureDevicePositionBack) ?
+        AVCaptureDevice *device = ([self sharedInstace].currentDevicePosition == AVCaptureDevicePositionBack) ?
         [self frontCamera] : [self backCamera];
         if ([device hasMediaType:AVMediaTypeVideo]) {
             AVCaptureDeviceInput *newInput = nil;
             
             newInput =  [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
-            [self.session beginConfiguration];
-            [self.session removeInput:currentInput];
-            [self.session addInput:newInput];
-            [self.session commitConfiguration];
+            [[self sharedInstace].session beginConfiguration];
+            [[self sharedInstace].session removeInput:currentInput];
+            [[self sharedInstace].session addInput:newInput];
+            [[self sharedInstace].session commitConfiguration];
             
             break ;
+        }
+    }
+}
+
+#pragma mark - Focus handle
+
++ (void) focusAtPoint:(CGPoint)touchPoint {
+    AVCaptureDevice *device = [[self sharedInstace].session.inputs.lastObject device];
+
+    if([device isFocusPointOfInterestSupported] &&
+       [device isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
+        
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        double focus_x = touchPoint.x / screenRect.size.width;
+        double focus_y = touchPoint.y / screenRect.size.height;
+        if([device lockForConfiguration:nil]) {
+            [device setFocusPointOfInterest:CGPointMake(focus_x,focus_y)];
+
+            if ([device isFocusModeSupported:AVCaptureFocusModeContinuousAutoFocus]) {
+                [device setFocusMode:AVCaptureFocusModeAutoFocus];
+            }
+            if ([device isExposureModeSupported:AVCaptureExposureModeAutoExpose]){
+                [device setExposureMode:AVCaptureExposureModeAutoExpose];
+            }
+
+            [device unlockForConfiguration];
         }
     }
 }
@@ -69,8 +95,8 @@
     
     self.captureVideoPreviewLayer.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width,
                                                 [UIScreen mainScreen].bounds.size.height);
-    
-    AVCaptureDevice *device = [self backCamera];
+    self.captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    AVCaptureDevice *device = [CameraAVFoundation backCamera];
     
     AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
     if (!input) {
@@ -87,6 +113,7 @@
     [self.session startRunning];
 }
 
+#pragma mark - Shared Instance cameraFoundation
 
 + (CameraAVFoundation *) sharedInstace {
     static dispatch_once_t onceToken;

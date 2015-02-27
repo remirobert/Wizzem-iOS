@@ -105,9 +105,10 @@
     [super viewDidLoad];
     self.clic = 0;
     
+    [CameraAVFoundation sharedInstace].captureVideoPreviewLayer.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
     [self.view.layer addSublayer:[CameraAVFoundation sharedInstace].captureVideoPreviewLayer];
 
-    SliderButtonPhoto *slider = [[SliderButtonPhoto alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 50, self.view.frame.size.height - 120, 100, 100)];
+    SliderButtonPhoto *slider = [[SliderButtonPhoto alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 50, self.view.frame.size.height - 220, 100, 100)];
     slider.delegateCamera = self;
     [self.view addSubview:slider];
     
