@@ -16,17 +16,16 @@
 #import "DetailCameraViewController.h"
 
 @interface PhotoViewController ()
-@property (nonatomic, strong) UIScrollView *photoLib;
 @property (nonatomic, assign) NSInteger clic;
 @end
 
 @implementation PhotoViewController
 
-//- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//    UITouch *touch = [[event allTouches] anyObject];
-//    CGPoint touchPoint = [touch locationInView:touch.view];
-//    [CameraAVFoundation focusAtPoint:touchPoint];
-//}
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint touchPoint = [touch locationInView:touch.view];
+    [CameraAVFoundation focusAtPoint:touchPoint];
+}
 
 - (void) takeGif {
     self.clic += 1;
@@ -109,27 +108,21 @@
     [super viewDidLoad];
     self.clic = 0;
     
-//    [CameraAVFoundation sharedInstace].captureVideoPreviewLayer.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
-//    [self.view.layer addSublayer:[CameraAVFoundation sharedInstace].captureVideoPreviewLayer];
-//
-//    SliderButtonPhoto *slider = [[SliderButtonPhoto alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 50, self.view.frame.size.height - 220, 100, 100)];
-//    slider.delegateCamera = self;
-//    [self.view addSubview:slider];
+    [CameraAVFoundation sharedInstace].captureVideoPreviewLayer.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view.layer addSublayer:[CameraAVFoundation sharedInstace].captureVideoPreviewLayer];
+
+    SliderButtonPhoto *slider = [[SliderButtonPhoto alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 50, self.view.frame.size.height - 220, 100, 100)];
+    slider.delegateCamera = self;
+    [self.view addSubview:slider];
     
     
-//    for (UIButton *currentButtonPhoto in [slider buttonForKind:PHOTO_CAMERA]) {
-//        [currentButtonPhoto addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
-//    }
-//    
-//    for (UIButton *currentButtonGif in [slider buttonForKind:GIF_CAMERA]) {
-//        [currentButtonGif addTarget:self action:@selector(takeGif) forControlEvents:UIControlEventTouchUpInside];
-//    }
-//    
-//    
-//    self.photoLib = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 70)];
-//    self.photoLib.backgroundColor = [UIColor clearColor];
-//    
-//    [self.view addSubview:self.photoLib];
+    for (UIButton *currentButtonPhoto in [slider buttonForKind:PHOTO_CAMERA]) {
+        [currentButtonPhoto addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    for (UIButton *currentButtonGif in [slider buttonForKind:GIF_CAMERA]) {
+        [currentButtonGif addTarget:self action:@selector(takeGif) forControlEvents:UIControlEventTouchUpInside];
+    }
     
 }
 
