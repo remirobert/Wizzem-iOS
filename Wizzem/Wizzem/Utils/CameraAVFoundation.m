@@ -126,6 +126,9 @@
                                                 [UIScreen mainScreen].bounds.size.height);
     self.captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     AVCaptureDevice *device = [self backCamera];
+
+    self.currentDevicePosition = CameraDeviceRear;
+    self.currentCameraMode = CameraRecordModePhoto;
     
     self.inputDeice = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
     if (!self.inputDeice) {
