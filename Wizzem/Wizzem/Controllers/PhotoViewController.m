@@ -14,10 +14,12 @@
 #import "FileManager.h"
 #import "SliderButtonPhoto.h"
 #import "DetailCameraViewController.h"
+#import "TakeGifButton.h"
 
 @interface PhotoViewController ()
 @property (nonatomic, assign) NSInteger clic;
 @property (nonatomic, strong) SliderButtonPhoto *slider;
+@property (nonatomic, strong) TakeGifButton *buttonGif;
 @end
 
 @implementation PhotoViewController
@@ -28,30 +30,49 @@
     [CameraAVFoundation focusAtPoint:touchPoint];
 }
 
+- (void) createGif {
+    if ([ActionGifCameraAVFoundation sharedInstance].isWorking) {
+        return;
+    }
+    [ActionGifCameraAVFoundation makeAnimatedGif:^(NSURL *fileUrl) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.slider resetValueCircle];
+            [self.buttonGif hideButton];
+        });
+
+        [ActionGifCameraAVFoundation releaseImages];
+        
+        NSData *gifData = [FileManager getDataFromFile:@"animated.gif"];
+        [FileManager deleteFile:@"animated.gif"];
+        
+        self.clic = 0;
+        
+        DetailCameraViewController *controllerDetail = [[DetailCameraViewController alloc] init];
+        
+        controllerDetail.cameraKind = GIF_CAMERA;
+        controllerDetail.gif = gifData;
+        
+        [self presentViewController:controllerDetail animated:false completion:nil];
+    }];
+}
+
 - (void) takeGif {
+    if ([ActionGifCameraAVFoundation sharedInstance].isWorking) {
+        return;
+    }
     self.clic += 1;
     
+    if (self.clic == 2) {
+        [self.buttonGif displayButton];
+    }
+    
     if (self.clic == 10) {
-        [self.slider incrementValueCircle:self.clic];
-        if ([ActionGifCameraAVFoundation sharedInstance].isWorking) {
-            return;
-        }
+        [self.slider incrementValueCircle:10];
         
-        [ActionGifCameraAVFoundation makeAnimatedGif:^(NSURL *fileUrl) {
-            [ActionGifCameraAVFoundation releaseImages];
-            [self.slider resetValueCircle];
-            NSData *gifData = [FileManager getDataFromFile:@"animated.gif"];
-            [FileManager deleteFile:@"animated.gif"];
-            
-            self.clic = 0;
-            
-            DetailCameraViewController *controllerDetail = [[DetailCameraViewController alloc] init];
-            
-            controllerDetail.cameraKind = GIF_CAMERA;
-            controllerDetail.gif = gifData;
-            
-            [self presentViewController:controllerDetail animated:false completion:nil];
-        }];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            [self createGif];
+        });
         return;
     }
     else {
@@ -86,16 +107,20 @@
         case PHOTO_CAMERA:
             label.text = @"Photo";
             [self.slider resetValueCircle];
+            [self.buttonGif hideButton];
             break;
 
         case GIF_CAMERA:
             label.text = @"GIF";
+            self.clic = 0;
             [self.slider resetValueCircle];
+            [self.buttonGif hideButton];
             break;
 
         case VIDEO_CAMERA:
             label.text = @"Video";
             [self.slider resetValueCircle];
+            [self.buttonGif hideButton];
             break;
             
         default:
@@ -136,7 +161,11 @@
     
     for (UIButton *currentButtonGif in [self.slider buttonForKind:GIF_CAMERA]) {
         [currentButtonGif addTarget:self action:@selector(takeGif) forControlEvents:UIControlEventTouchUpInside];
-    } 
+    }
+    
+    self.buttonGif = [[TakeGifButton alloc] init];
+    [self.buttonGif addTarget:self action:@selector(createGif) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.buttonGif];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TakeGif : UIButton
+@interface TakeGifButton : UIButton
 
 - (void) displayButton;
 - (void) hideButton;
+
+- (instancetype) init;
 
 @end

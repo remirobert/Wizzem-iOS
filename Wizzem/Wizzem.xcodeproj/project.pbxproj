@@ -19,7 +19,7 @@
 		BB34A64D1A9B98EB00AA2A86 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB34A64C1A9B98EB00AA2A86 /* AVFoundation.framework */; };
 		BB34A6531A9B992500AA2A86 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB34A6521A9B992500AA2A86 /* PhotoViewController.m */; };
 		BB4E448A1AA1016900760A36 /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E44891AA1016900760A36 /* CircleView.m */; };
-		BB4E448D1AA1E2D100760A36 /* TakeGif.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E448C1AA1E2D100760A36 /* TakeGif.m */; };
+		BB4E448D1AA1E2D100760A36 /* TakeGifButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E448C1AA1E2D100760A36 /* TakeGifButton.m */; };
 		BB910B4D1A9BAE81008B10BC /* CameraAVFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = BB910B4C1A9BAE81008B10BC /* CameraAVFoundation.m */; };
 		BB910B501A9BB659008B10BC /* ActionCameraAVFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = BB910B4F1A9BB659008B10BC /* ActionCameraAVFoundation.m */; };
 		BB910B561A9BDAE9008B10BC /* ActionGifCameraAVFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = BB910B551A9BDAE9008B10BC /* ActionGifCameraAVFoundation.m */; };
@@ -58,8 +58,8 @@
 		BB34A6521A9B992500AA2A86 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		BB4E44881AA1016900760A36 /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = SOURCE_ROOT; };
 		BB4E44891AA1016900760A36 /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = SOURCE_ROOT; };
-		BB4E448B1AA1E2D100760A36 /* TakeGif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakeGif.h; sourceTree = SOURCE_ROOT; };
-		BB4E448C1AA1E2D100760A36 /* TakeGif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakeGif.m; sourceTree = SOURCE_ROOT; };
+		BB4E448B1AA1E2D100760A36 /* TakeGifButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakeGifButton.h; sourceTree = SOURCE_ROOT; };
+		BB4E448C1AA1E2D100760A36 /* TakeGifButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakeGifButton.m; sourceTree = SOURCE_ROOT; };
 		BB910B4B1A9BAE81008B10BC /* CameraAVFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraAVFoundation.h; sourceTree = "<group>"; };
 		BB910B4C1A9BAE81008B10BC /* CameraAVFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraAVFoundation.m; sourceTree = "<group>"; };
 		BB910B4E1A9BB659008B10BC /* ActionCameraAVFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionCameraAVFoundation.h; sourceTree = "<group>"; };
@@ -198,8 +198,8 @@
 				BB311C891A9C7C3600C25668 /* SliderButtonPhoto.m */,
 				BB4E44881AA1016900760A36 /* CircleView.h */,
 				BB4E44891AA1016900760A36 /* CircleView.m */,
-				BB4E448B1AA1E2D100760A36 /* TakeGif.h */,
-				BB4E448C1AA1E2D100760A36 /* TakeGif.m */,
+				BB4E448B1AA1E2D100760A36 /* TakeGifButton.h */,
+				BB4E448C1AA1E2D100760A36 /* TakeGifButton.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -372,7 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB34A6531A9B992500AA2A86 /* PhotoViewController.m in Sources */,
-				BB4E448D1AA1E2D100760A36 /* TakeGif.m in Sources */,
+				BB4E448D1AA1E2D100760A36 /* TakeGifButton.m in Sources */,
 				BB34A62A1A9B989200AA2A86 /* AppDelegate.m in Sources */,
 				BB910B501A9BB659008B10BC /* ActionCameraAVFoundation.m in Sources */,
 				BB910B561A9BDAE9008B10BC /* ActionGifCameraAVFoundation.m in Sources */,

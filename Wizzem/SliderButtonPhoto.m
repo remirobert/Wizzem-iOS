@@ -24,7 +24,7 @@
 }
 
 - (void) resetValueCircle {
-    [self.circleView setStrokeEnd:0.0 animated:false];
+    [self.circleView setStrokeEnd:0.0 animated:true];
 }
 
 - (void) displayIndicatorInView:(UIView *)parentView {

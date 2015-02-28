@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
-#import "TakeGif.h"
+#import "TakeGifButton.h"
 
-@implementation TakeGif
+@implementation TakeGifButton
 
 - (void) displayButton {
     [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.4
@@ -21,8 +21,8 @@
 - (void) hideButton {
     [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.4
                         options:UIViewAnimationOptionShowHideTransitionViews animations:^{
-                            self.frame = CGRectMake([UIScreen mainScreen].bounds.size.width + 50,
-                                                    [UIScreen mainScreen].bounds.size.height - 130 + 25, 50, 50);
+                            self.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 70,
+                                                    [UIScreen mainScreen].bounds.size.height + 50, 50, 50);
     } completion:nil];
 }
 
