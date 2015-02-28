@@ -7,15 +7,25 @@
 //
 
 #import "SliderButtonPhoto.h"
+#import "CircleView.h"
 
 @interface SliderButtonPhoto()
 @property (nonatomic, strong) NSMutableArray *sliderButtons;
 @property (nonatomic, strong) UIView *layerIndicator;
+@property (nonatomic, strong) CircleView *circleView;
 @end
 
 @implementation SliderButtonPhoto
 
 #pragma mark - slider indicator functional
+
+- (void) incrementValueCircle:(NSInteger)count {
+    [self.circleView setStrokeEnd:(CGFloat)(count / 10.0) animated:YES];
+}
+
+- (void) resetValueCircle {
+    [self.circleView setStrokeEnd:0.0 animated:false];
+}
 
 - (void) displayIndicatorInView:(UIView *)parentView {
     if ([self.layerIndicator superview] != nil) {
@@ -91,6 +101,15 @@
     self.layerIndicator.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3];
 }
 
+- (void) initCircleView:(UIView *)parentView {
+    self.circleView = [[CircleView alloc] initWithFrame:CGRectMake(0, 0, 140, 140)];
+    self.circleView.center = self.center;
+    self.circleView.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.8];
+    [parentView addSubview:self.circleView];
+    [parentView bringSubviewToFront:self];
+    [self.circleView setStrokeEnd:0.0 animated:false];
+}
+
 - (void) initSliderUI {
     self.layer.cornerRadius = self.frame.size.width / 2;
     self.pagingEnabled = true;
@@ -118,7 +137,6 @@
     self = [super initWithFrame:frame];
     
     [self initSliderUI];
-    [self initIndicatorSlider];
     return self;
 }
 

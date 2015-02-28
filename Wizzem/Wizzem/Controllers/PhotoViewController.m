@@ -31,14 +31,15 @@
 - (void) takeGif {
     self.clic += 1;
     
-    if (self.clic > 5) {
+    if (self.clic == 10) {
+        [self.slider incrementValueCircle:self.clic];
         if ([ActionGifCameraAVFoundation sharedInstance].isWorking) {
             return;
         }
         
         [ActionGifCameraAVFoundation makeAnimatedGif:^(NSURL *fileUrl) {
             [ActionGifCameraAVFoundation releaseImages];
-            
+            [self.slider resetValueCircle];
             NSData *gifData = [FileManager getDataFromFile:@"animated.gif"];
             [FileManager deleteFile:@"animated.gif"];
             
@@ -53,7 +54,10 @@
         }];
         return;
     }
-    [ActionGifCameraAVFoundation addImage];
+    else {
+        [self.slider incrementValueCircle:self.clic];
+        [ActionGifCameraAVFoundation addImage];
+    }
 }
 
 - (void) takePhoto {
@@ -81,17 +85,17 @@
     switch (cameraKind) {
         case PHOTO_CAMERA:
             label.text = @"Photo";
-            [self.slider hideIndicatorInView];
+            [self.slider resetValueCircle];
             break;
 
         case GIF_CAMERA:
             label.text = @"GIF";
-            [self.slider displayIndicatorInView:self.view];
+            [self.slider resetValueCircle];
             break;
 
         case VIDEO_CAMERA:
             label.text = @"Video";
-            [self.slider displayIndicatorInView:self.view];
+            [self.slider resetValueCircle];
             break;
             
         default:
@@ -122,6 +126,7 @@
 
     self.slider = [[SliderButtonPhoto alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 50, self.view.frame.size.height - 130, 100, 100)];
     self.slider.delegateCamera = self;
+    [self.slider initCircleView:self.view];
     [self.view addSubview:self.slider];
     
     

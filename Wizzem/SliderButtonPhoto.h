@@ -22,6 +22,9 @@ typedef enum : NSUInteger {
 - (NSArray *) buttonForKind:(CAMERA_KIND)cameraKind;
 - (void) displayIndicatorInView:(UIView *)parentView;
 - (void) hideIndicatorInView;
+- (void) initCircleView:(UIView *)parentView;
+- (void) incrementValueCircle:(NSInteger)count;
+- (void) resetValueCircle;
 
 @property (nonatomic, assign) id<SliderButtonPhotoDelegate> delegateCamera;
 
