@@ -9,15 +9,37 @@
 #import "CameraAVFoundation.h"
 
 @interface CameraAVFoundation()
-@property (nonatomic, assign) AVCaptureDevicePosition currentDevicePosition;
+@property (nonatomic, assign) CameraDevicePosition currentDevicePosition;
+@property (nonatomic, assign) CameraRecordMode currentCameraMode;
 @property (nonatomic, strong) AVCaptureSession *session;
+@property (nonatomic, strong) AVCaptureDeviceInput *inputDeice;
 @end
 
-# define CAMERA_QUALITY             AVCaptureSessionPresetHigh
-# define FOCUS_TOUCH_ENABLE         true
-# define DISPLAY_FOCUS_TOUCH_LAYER  true
+# define CAMERA_QUALITY                 AVCaptureSessionPresetHigh
+# define FOCUS_TOUCH_ENABLE             true
+# define DISPLAY_FOCUS_TOUCH_LAYER      true
+# define MAXDURATION_MOVIE_RECORD       10
+# define PREFERRED_TIME_SCALE_MOVIE     30 //FPS
+# define MIN_DISK_USE_MOVIE             1024 * 1024
 
 @implementation CameraAVFoundation
+
+#pragma mark - Camera output management
+
++ (void) changeCameraOutputMode:(CameraRecordMode)recordMode {
+    AVCaptureOutput *currentOutput = ([self sharedInstace].currentCameraMode == CameraRecordModePhoto) ?
+    [self sharedInstace].stillImageOutput : [self sharedInstace].movieFileOutput;
+    AVCaptureOutput *newOutput = ([self sharedInstace].currentCameraMode == CameraRecordModePhoto) ?
+    [self sharedInstace].movieFileOutput : [self sharedInstace].stillImageOutput;
+    
+    if ([[self sharedInstace].session canAddOutput:newOutput]) {
+        [[self sharedInstace].session beginConfiguration];
+        [[self sharedInstace].session removeOutput:currentOutput];
+        [[self sharedInstace].session addOutput:newOutput];
+        [[self sharedInstace].session commitConfiguration];
+        [self sharedInstace].currentCameraMode = recordMode;
+    }
+}
 
 #pragma mark - Camera device management
 
@@ -25,7 +47,7 @@
     NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
     for (AVCaptureDevice *device in devices) {
         if ([device position] == AVCaptureDevicePositionFront) {
-            self.currentDevicePosition = AVCaptureDevicePositionFront;
+            self.currentDevicePosition = CameraDeviceFront;
             return (device);
         }
     }
@@ -36,7 +58,7 @@
     NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
     for (AVCaptureDevice *device in devices) {
         if ([device position] == AVCaptureDevicePositionBack) {
-            self.currentDevicePosition = AVCaptureDevicePositionBack;
+            self.currentDevicePosition = CameraDeviceRear;
             return (device);
         }
     }
@@ -82,13 +104,18 @@
             if ([device isExposureModeSupported:AVCaptureExposureModeAutoExpose]){
                 [device setExposureMode:AVCaptureExposureModeAutoExpose];
             }
-
             [device unlockForConfiguration];
         }
     }
 }
 
 #pragma mark - Init AVFouncation
+
+- (void) initMovieOutput {
+    self.movieFileOutput = [[AVCaptureMovieFileOutput alloc] init];
+    self.movieFileOutput.maxRecordedDuration = CMTimeMakeWithSeconds(MAXDURATION_MOVIE_RECORD, PREFERRED_TIME_SCALE_MOVIE);
+    self.movieFileOutput.minFreeDiskSpaceLimit = MIN_DISK_USE_MOVIE;
+}
 
 - (void) initAvFoundation {
     self.session = [[AVCaptureSession alloc] init];
@@ -100,13 +127,16 @@
     self.captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     AVCaptureDevice *device = [self backCamera];
     
-    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
-    if (!input) {
+    self.inputDeice = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
+    if (!self.inputDeice) {
         NSLog(@"Error open input device");
         return ;
     }
-    [self.session addInput:input];
+    [self.session addInput:self.inputDeice];
+    
     self.stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
+    [self initMovieOutput];
+    
     NSDictionary *outputSettings = [[NSDictionary alloc] initWithObjectsAndKeys:
                                     AVVideoCodecJPEG, AVVideoCodecKey, nil];
     [self.stillImageOutput setOutputSettings:outputSettings];

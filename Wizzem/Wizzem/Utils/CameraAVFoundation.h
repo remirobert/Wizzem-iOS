@@ -10,6 +10,16 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
+typedef NS_ENUM(NSInteger, CameraDevicePosition) {
+    CameraDeviceFront,
+    CameraDeviceRear
+};
+
+typedef NS_ENUM(NSInteger, CameraRecordMode) {
+    CameraRecordModePhoto,
+    CameraRecordModeMovie
+};
+
 @interface CameraAVFoundation : NSObject
 
 + (CameraAVFoundation *) sharedInstace;
@@ -19,5 +29,6 @@
 
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
 @property (nonatomic, retain) AVCaptureStillImageOutput *stillImageOutput;
+@property (nonatomic, strong) AVCaptureMovieFileOutput *movieFileOutput;
 
 @end
