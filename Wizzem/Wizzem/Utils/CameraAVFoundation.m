@@ -27,6 +27,8 @@
 #pragma mark - Camera output management
 
 + (void) changeCameraOutputMode:(CameraRecordMode)recordMode {
+    if ([self sharedInstace].currentCameraMode == recordMode) return;
+    
     AVCaptureOutput *currentOutput = ([self sharedInstace].currentCameraMode == CameraRecordModePhoto) ?
     [self sharedInstace].stillImageOutput : [self sharedInstace].movieFileOutput;
     AVCaptureOutput *newOutput = ([self sharedInstace].currentCameraMode == CameraRecordModePhoto) ?

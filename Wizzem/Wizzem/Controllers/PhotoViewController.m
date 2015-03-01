@@ -108,6 +108,7 @@
             label.text = @"Photo";
             [self.slider resetValueCircle];
             [self.buttonGif hideButton];
+            [CameraAVFoundation changeCameraOutputMode:CameraRecordModePhoto];
             break;
 
         case GIF_CAMERA:
@@ -115,12 +116,14 @@
             self.clic = 0;
             [self.slider resetValueCircle];
             [self.buttonGif hideButton];
+            [CameraAVFoundation changeCameraOutputMode:CameraRecordModePhoto];
             break;
 
         case VIDEO_CAMERA:
             label.text = @"Video";
             [self.slider resetValueCircle];
             [self.buttonGif hideButton];
+            [CameraAVFoundation changeCameraOutputMode:CameraRecordModeMovie];
             break;
             
         default:

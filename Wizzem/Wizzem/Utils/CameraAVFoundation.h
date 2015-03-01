@@ -26,6 +26,7 @@ typedef NS_ENUM(NSInteger, CameraRecordMode) {
 + (void) switchDeviceCamera;
 + (void) focusAtPoint:(CGPoint)touchPoint;
 + (AVCaptureConnection *) getCaptureConnection;
++ (void) changeCameraOutputMode:(CameraRecordMode)recordMode;
 
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
 @property (nonatomic, retain) AVCaptureStillImageOutput *stillImageOutput;
