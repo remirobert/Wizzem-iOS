@@ -9,8 +9,8 @@
 #import "CameraAVFoundation.h"
 
 @interface CameraAVFoundation()
-@property (nonatomic, assign) CameraDevicePosition currentDevicePosition;
-@property (nonatomic, assign) CameraRecordMode currentCameraMode;
+@property (nonatomic, assign, readwrite) CameraDevicePosition currentDevicePosition;
+@property (nonatomic, assign, readwrite) CameraRecordMode currentCameraMode;
 @property (nonatomic, strong) AVCaptureSession *session;
 @property (nonatomic, strong) AVCaptureDeviceInput *inputDeice;
 @end
@@ -29,18 +29,20 @@
 + (void) changeCameraOutputMode:(CameraRecordMode)recordMode {
     if ([self sharedInstace].currentCameraMode == recordMode) return;
     
-    AVCaptureOutput *currentOutput = ([self sharedInstace].currentCameraMode == CameraRecordModePhoto) ?
-    [self sharedInstace].stillImageOutput : [self sharedInstace].movieFileOutput;
-    AVCaptureOutput *newOutput = ([self sharedInstace].currentCameraMode == CameraRecordModePhoto) ?
-    [self sharedInstace].movieFileOutput : [self sharedInstace].stillImageOutput;
-    
-    if ([[self sharedInstace].session canAddOutput:newOutput]) {
-        [[self sharedInstace].session beginConfiguration];
-        [[self sharedInstace].session removeOutput:currentOutput];
-        [[self sharedInstace].session addOutput:newOutput];
-        [[self sharedInstace].session commitConfiguration];
-        [self sharedInstace].currentCameraMode = recordMode;
-    }
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        AVCaptureOutput *currentOutput = ([self sharedInstace].currentCameraMode == CameraRecordModePhoto) ?
+        [self sharedInstace].stillImageOutput : [self sharedInstace].movieFileOutput;
+        AVCaptureOutput *newOutput = ([self sharedInstace].currentCameraMode == CameraRecordModePhoto) ?
+        [self sharedInstace].movieFileOutput : [self sharedInstace].stillImageOutput;
+        
+        if ([[self sharedInstace].session canAddOutput:newOutput]) {
+            [[self sharedInstace].session beginConfiguration];
+            [[self sharedInstace].session removeOutput:currentOutput];
+            [[self sharedInstace].session addOutput:newOutput];
+            [[self sharedInstace].session commitConfiguration];
+            [self sharedInstace].currentCameraMode = recordMode;
+        }
+    });
 }
 
 #pragma mark - Camera device management

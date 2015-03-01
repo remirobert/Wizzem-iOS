@@ -32,4 +32,7 @@ typedef NS_ENUM(NSInteger, CameraRecordMode) {
 @property (nonatomic, retain) AVCaptureStillImageOutput *stillImageOutput;
 @property (nonatomic, strong) AVCaptureMovieFileOutput *movieFileOutput;
 
+@property (nonatomic, assign, readonly) CameraDevicePosition currentDevicePosition;
+@property (nonatomic, assign, readonly) CameraRecordMode currentCameraMode;
+
 @end

@@ -10,8 +10,6 @@
 
 @implementation ActionCameraAVFoundation
 
-#pragma mark - take photo
-
 + (UIImage *) fixOrientationOfImage:(UIImage *)image {
     if (image.imageOrientation == UIImageOrientationUp) return image;
     
@@ -83,6 +81,8 @@
     CGImageRelease(cgimg);
     return img;
 }
+
+#pragma mark - take photo
 
 + (void) takePhoto:(void(^)(UIImage *))blockCompletion {
     AVCaptureConnection *videoConnection;

@@ -19,6 +19,8 @@
 
 @implementation ActionGifCameraAVFoundation
 
+#pragma mark - shared instance
+
 + (ActionGifCameraAVFoundation *) sharedInstance {
     static dispatch_once_t onceToken;
     static ActionGifCameraAVFoundation *actionGifAVFoundation;
@@ -29,6 +31,8 @@
     });
     return actionGifAVFoundation;
 }
+
+#pragma mark - images buffer management
 
 + (void) releaseImages {
     [[self sharedInstance].images removeAllObjects];
