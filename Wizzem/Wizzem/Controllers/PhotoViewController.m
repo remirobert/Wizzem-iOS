@@ -108,6 +108,7 @@
             label.text = @"Photo";
             [self.slider resetValueCircle];
             [self.buttonGif hideButton];
+            [CameraAVFoundation changeFlashMode:AVCaptureTorchModeOn];
             [CameraAVFoundation changeCameraOutputMode:CameraRecordModePhoto];
             break;
 

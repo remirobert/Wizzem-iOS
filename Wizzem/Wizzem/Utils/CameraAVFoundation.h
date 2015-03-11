@@ -24,6 +24,8 @@ typedef NS_ENUM(NSInteger, CameraRecordMode) {
 
 + (CameraAVFoundation *) sharedInstace;
 + (void) switchDeviceCamera;
++ (void) changeFlashMode:(AVCaptureTorchMode)mode;
++ (BOOL) isTorchActive;
 + (void) focusAtPoint:(CGPoint)touchPoint;
 + (AVCaptureConnection *) getCaptureConnection;
 + (void) changeCameraOutputMode:(CameraRecordMode)recordMode;

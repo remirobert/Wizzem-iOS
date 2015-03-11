@@ -88,6 +88,38 @@
     }
 }
 
+#pragma mark - Flash management
+
++ (AVCaptureDevice *) getCurrentVideoDevice {
+    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    for (AVCaptureDevice *device in devices) {
+        if ([device hasFlash]) {
+            return device;
+        }
+    }
+    return nil;
+}
+
+/*
+ AVCaptureTorchModeOff  = 0,
+ AVCaptureTorchModeOn   = 1,
+ AVCaptureTorchModeAuto = 2,
+*/
++ (void) changeFlashMode:(AVCaptureTorchMode)mode {
+    AVCaptureDevice *deviceCapture;
+    if ((deviceCapture = [self getCurrentVideoDevice])) {
+        deviceCapture.torchMode = mode;
+    }
+}
+
++ (BOOL) isTorchActive {
+    AVCaptureDevice *deviceCapture;
+    if ((deviceCapture = [self getCurrentVideoDevice])) {
+        return deviceCapture.torchActive;
+    }
+    return false;
+}
+
 #pragma mark - Focus handle
 
 + (void) focusAtPoint:(CGPoint)touchPoint {
