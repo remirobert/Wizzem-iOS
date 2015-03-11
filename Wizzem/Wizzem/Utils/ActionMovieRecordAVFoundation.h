@@ -14,4 +14,7 @@
 
 @property (nonatomic, assign, readonly) BOOL isRecording;
 
++ (void) startMovieRecording;
++ (void) stopMovieRecording;
+
 @end

@@ -15,6 +15,8 @@
 
 @implementation ActionMovieRecordAVFoundation
 
+# define MAX_DURATION_VIDEO     10
+
 #pragma mark - shared instance
 
 + (instancetype) sharedInstance {
@@ -47,6 +49,11 @@
             return;
         }
     }
+    Float64 TotalSeconds = MAX_DURATION_VIDEO;			//Total seconds
+    int32_t preferredTimeScale = 30;	//Frames per second
+    CMTime maxDuration = CMTimeMakeWithSeconds(TotalSeconds, preferredTimeScale);	//<<SET MAX DURATION
+    
+    [CameraAVFoundation sharedInstace].movieFileOutput.maxRecordedDuration = maxDuration;
     [[CameraAVFoundation sharedInstace].movieFileOutput startRecordingToOutputFileURL:outputURL recordingDelegate:self];
     self.isRecording = true;
 }
