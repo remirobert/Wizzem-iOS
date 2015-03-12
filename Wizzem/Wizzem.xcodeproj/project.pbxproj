@@ -12,6 +12,7 @@
 		BB311C8D1A9C963000C25668 /* DetailCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB311C8C1A9C963000C25668 /* DetailCameraViewController.m */; };
 		BB31B6C41AB21425001DBFF3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB31B6C31AB21425001DBFF3 /* CoreMedia.framework */; };
 		BB31B6C61AB21573001DBFF3 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB31B6C51AB21573001DBFF3 /* MediaPlayer.framework */; };
+		BB31B6C91AB23CA5001DBFF3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB31B6C81AB23CA5001DBFF3 /* Crashlytics.framework */; };
 		BB34A6271A9B989200AA2A86 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB34A6261A9B989200AA2A86 /* main.m */; };
 		BB34A62A1A9B989200AA2A86 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB34A6291A9B989200AA2A86 /* AppDelegate.m */; };
 		BB34A6301A9B989200AA2A86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB34A62E1A9B989200AA2A86 /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 		BB311C8C1A9C963000C25668 /* DetailCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCameraViewController.m; sourceTree = "<group>"; };
 		BB31B6C31AB21425001DBFF3 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		BB31B6C51AB21573001DBFF3 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		BB31B6C81AB23CA5001DBFF3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		BB34A6211A9B989200AA2A86 /* Wizzem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wizzem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB34A6251A9B989200AA2A86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB34A6261A9B989200AA2A86 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB31B6C61AB21573001DBFF3 /* MediaPlayer.framework in Frameworks */,
+				BB31B6C91AB23CA5001DBFF3 /* Crashlytics.framework in Frameworks */,
 				BB31B6C41AB21425001DBFF3 /* CoreMedia.framework in Frameworks */,
 				BB34A64D1A9B98EB00AA2A86 /* AVFoundation.framework in Frameworks */,
 				ACFED7F2462065225925B9DF /* libPods.a in Frameworks */,
@@ -104,6 +107,8 @@
 		8DB8AFC1963701722EBC773E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB34A64C1A9B98EB00AA2A86 /* AVFoundation.framework */,
+				BB31B6C81AB23CA5001DBFF3 /* Crashlytics.framework */,
 				BB31B6C51AB21573001DBFF3 /* MediaPlayer.framework */,
 				BB31B6C31AB21425001DBFF3 /* CoreMedia.framework */,
 				99F14D01F10DF01B4B8D4D2B /* libPods.a */,
@@ -114,7 +119,6 @@
 		BB34A6181A9B989200AA2A86 = {
 			isa = PBXGroup;
 			children = (
-				BB34A64C1A9B98EB00AA2A86 /* AVFoundation.framework */,
 				BB34A6231A9B989200AA2A86 /* Wizzem */,
 				BB34A63D1A9B989200AA2A86 /* WizzemTests */,
 				BB34A6221A9B989200AA2A86 /* Products */,
@@ -260,6 +264,7 @@
 				BB34A61E1A9B989200AA2A86 /* Frameworks */,
 				BB34A61F1A9B989200AA2A86 /* Resources */,
 				05B89398E20AF5415CDA40AE /* Copy Pods Resources */,
+				BB31B6C71AB23C8B001DBFF3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -361,6 +366,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		BB31B6C71AB23C8B001DBFF3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run d9291a9165795274a4a0ad9f612bfafae0b9685d 054127c9bafbcc58f894717f58d5d0544364c4499e266bb0bebef0905ebfb097";
 		};
 		DBA4F18DE16895D7EB7D989A /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -522,6 +540,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Wizzem/Ressources/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -537,6 +559,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Wizzem/Ressources/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
