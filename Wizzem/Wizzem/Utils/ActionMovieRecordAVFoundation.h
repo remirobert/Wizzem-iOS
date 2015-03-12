@@ -14,7 +14,8 @@
 
 @property (nonatomic, assign, readonly) BOOL isRecording;
 
++ (BOOL) isRecording;
 + (void) startMovieRecording;
-+ (void) stopMovieRecording;
++ (void) stopMovieRecording:(void (^)(NSURL *url))completion;
 
 @end

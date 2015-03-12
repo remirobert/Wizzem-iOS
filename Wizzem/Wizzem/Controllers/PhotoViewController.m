@@ -7,10 +7,12 @@
 //
 
 #import <FLAnimatedImage.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import "PhotoViewController.h"
 #import "CameraAVFoundation.h"
 #import "ActionCameraAVFoundation.h"
 #import "ActionGifCameraAVFoundation.h"
+#import "ActionMovieRecordAVFoundation.h"
 #import "FileManager.h"
 #import "SliderButtonPhoto.h"
 #import "DetailCameraViewController.h"
@@ -28,6 +30,37 @@
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint touchPoint = [touch locationInView:touch.view];
     [CameraAVFoundation focusAtPoint:touchPoint];
+}
+
+- (void) createVideo {
+    [ActionMovieRecordAVFoundation stopMovieRecording:^(NSURL *url) {
+        NSLog(@"url : %@", url);
+
+        DetailCameraViewController *controllerDetail = [[DetailCameraViewController alloc] init];
+        
+        controllerDetail.cameraKind = VIDEO_CAMERA;
+        controllerDetail.urlMovie = url;
+        [self presentViewController:controllerDetail animated:false completion:nil];
+        
+    }];
+//    NSString*thePath=[[NSBundle mainBundle] pathForResource:@"output" ofType:@"mov"];
+//    NSURL*theurl=[NSURL fileURLWithPath:thePath];
+//    
+//    MPMoviePlayerController *moviePlayer=[[MPMoviePlayerController alloc] initWithContentURL:theurl];
+//    [moviePlayer.view setFrame:CGRectMake(40, 197, 240, 160)];
+//    [moviePlayer prepareToPlay];
+//    [moviePlayer setShouldAutoplay:NO]; // And other options you can look through the documentation.
+//    [self.view addSubview:moviePlayer.view];
+}
+
+- (void) takeVideo {
+    if (![ActionMovieRecordAVFoundation isRecording]) {
+        [ActionMovieRecordAVFoundation startMovieRecording];
+    }
+    else {
+        [self createVideo];
+    }
+    //[self performSelector:@selector(createVideo) withObject:nil afterDelay:4];
 }
 
 - (void) createGif {
@@ -165,6 +198,10 @@
     
     for (UIButton *currentButtonGif in [self.slider buttonForKind:GIF_CAMERA]) {
         [currentButtonGif addTarget:self action:@selector(takeGif) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    for (UIButton *currentButtonGif in [self.slider buttonForKind:VIDEO_CAMERA]) {
+        [currentButtonGif addTarget:self action:@selector(takeVideo) forControlEvents:UIControlEventTouchUpInside];
     }
     
     self.buttonGif = [[TakeGifButton alloc] init];

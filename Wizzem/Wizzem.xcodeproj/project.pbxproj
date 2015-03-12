@@ -10,6 +10,8 @@
 		ACFED7F2462065225925B9DF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F14D01F10DF01B4B8D4D2B /* libPods.a */; };
 		BB311C8A1A9C7C3600C25668 /* SliderButtonPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = BB311C891A9C7C3600C25668 /* SliderButtonPhoto.m */; };
 		BB311C8D1A9C963000C25668 /* DetailCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB311C8C1A9C963000C25668 /* DetailCameraViewController.m */; };
+		BB31B6C41AB21425001DBFF3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB31B6C31AB21425001DBFF3 /* CoreMedia.framework */; };
+		BB31B6C61AB21573001DBFF3 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB31B6C51AB21573001DBFF3 /* MediaPlayer.framework */; };
 		BB34A6271A9B989200AA2A86 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB34A6261A9B989200AA2A86 /* main.m */; };
 		BB34A62A1A9B989200AA2A86 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB34A6291A9B989200AA2A86 /* AppDelegate.m */; };
 		BB34A6301A9B989200AA2A86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB34A62E1A9B989200AA2A86 /* Main.storyboard */; };
@@ -43,6 +45,8 @@
 		BB311C891A9C7C3600C25668 /* SliderButtonPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderButtonPhoto.m; sourceTree = "<group>"; };
 		BB311C8B1A9C963000C25668 /* DetailCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailCameraViewController.h; sourceTree = "<group>"; };
 		BB311C8C1A9C963000C25668 /* DetailCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCameraViewController.m; sourceTree = "<group>"; };
+		BB31B6C31AB21425001DBFF3 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		BB31B6C51AB21573001DBFF3 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		BB34A6211A9B989200AA2A86 /* Wizzem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wizzem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB34A6251A9B989200AA2A86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB34A6261A9B989200AA2A86 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -80,6 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB31B6C61AB21573001DBFF3 /* MediaPlayer.framework in Frameworks */,
+				BB31B6C41AB21425001DBFF3 /* CoreMedia.framework in Frameworks */,
 				BB34A64D1A9B98EB00AA2A86 /* AVFoundation.framework in Frameworks */,
 				ACFED7F2462065225925B9DF /* libPods.a in Frameworks */,
 			);
@@ -98,6 +104,8 @@
 		8DB8AFC1963701722EBC773E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB31B6C51AB21573001DBFF3 /* MediaPlayer.framework */,
+				BB31B6C31AB21425001DBFF3 /* CoreMedia.framework */,
 				99F14D01F10DF01B4B8D4D2B /* libPods.a */,
 			);
 			name = Frameworks;

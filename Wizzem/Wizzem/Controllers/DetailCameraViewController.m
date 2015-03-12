@@ -7,6 +7,7 @@
 //
 
 #import <FLAnimatedImage.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import "DetailCameraViewController.h"
 
 @interface DetailCameraViewController ()
@@ -32,6 +33,25 @@
     self.imageView.image = self.image;
     
     [self.view addSubview:self.imageView];
+}
+
+- (void) initMovieView:(NSURL *)url {
+    MPMoviePlayerViewController *moviePlayer=[[MPMoviePlayerViewController alloc] initWithContentURL:url];
+    
+    
+    [self presentMoviePlayerViewControllerAnimated:moviePlayer];
+    
+    
+    // Play the movie!
+    moviePlayer.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
+    [moviePlayer.moviePlayer play];
+    
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    if (self.cameraKind == VIDEO_CAMERA) {
+        [self initMovieView:self.urlMovie];
+    }
 }
 
 - (void)viewDidLoad {

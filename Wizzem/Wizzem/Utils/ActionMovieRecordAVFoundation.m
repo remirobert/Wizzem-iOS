@@ -11,11 +11,12 @@
 
 @interface ActionMovieRecordAVFoundation()
 @property (nonatomic, assign, readwrite) BOOL isRecording;
+@property (nonatomic, strong) void (^completion)(NSURL *url);
 @end
 
 @implementation ActionMovieRecordAVFoundation
 
-# define MAX_DURATION_VIDEO     10
+# define MAX_DURATION_VIDEO     4
 
 #pragma mark - shared instance
 
@@ -30,14 +31,20 @@
     return (movieAction);
 }
 
++ (BOOL) isRecording {
+    return [ActionMovieRecordAVFoundation sharedInstance].isRecording;
+}
+
 #pragma mark - delegate capture
 
 - (void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
       fromConnections:(NSArray *)connections error:(NSError *)error {
-    
+    NSLog(@"error recording : %@", error);
+    [ActionMovieRecordAVFoundation sharedInstance].completion(outputFileURL);
+    return;
 }
 
-#pragma mark - start / stop recording
+#pragma mark - start / stop recordings
 
 - (void) startMovieRecording {
     NSString *outputPath = [[NSString alloc] initWithFormat:@"%@%@", NSTemporaryDirectory(), @"output.mov"];
@@ -46,6 +53,7 @@
     if ([fileManager fileExistsAtPath:outputPath]) {
         NSError *error;
         if ([fileManager removeItemAtPath:outputPath error:&error] == NO) {
+            NSLog(@"error file %@", error);
             return;
         }
     }
@@ -73,11 +81,12 @@
     [[ActionMovieRecordAVFoundation sharedInstance] startMovieRecording];
 }
 
-+ (void) stopMovieRecording {
++ (void) stopMovieRecording:(void (^)(NSURL *url))completion {
     if ([CameraAVFoundation sharedInstace].currentCameraMode != CameraRecordModeMovie ||
         [ActionMovieRecordAVFoundation sharedInstance].isRecording == false) {
         return;
     }
+    [ActionMovieRecordAVFoundation sharedInstance].completion = [completion copy];
     [[ActionMovieRecordAVFoundation sharedInstance] stopMovieRecording];
 }
 

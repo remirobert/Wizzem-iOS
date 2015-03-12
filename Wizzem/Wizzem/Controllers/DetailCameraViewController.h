@@ -11,7 +11,10 @@
 
 @interface DetailCameraViewController : UIViewController
 
+- (void) initMovieView:(NSURL *)url;
+
 @property (nonatomic, assign) CAMERA_KIND cameraKind;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSData *gif;
+@property (nonatomic, strong) NSURL *urlMovie;
 @end
