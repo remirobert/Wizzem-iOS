@@ -169,7 +169,12 @@
 }
 
 - (void) flashCamera {
-    [CameraAVFoundation changeFlashMode:AVCaptureTorchModeOn];
+    if (![CameraAVFoundation isTorchActive]) {
+        [CameraAVFoundation changeFlashMode:AVCaptureTorchModeOn];
+    }
+    else {
+        [CameraAVFoundation changeFlashMode:AVCaptureTorchModeOff];
+    }
 }
 
 - (void)viewDidLoad {
