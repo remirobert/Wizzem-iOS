@@ -108,7 +108,11 @@
 + (void) changeFlashMode:(AVCaptureTorchMode)mode {
     AVCaptureDevice *deviceCapture;
     if ((deviceCapture = [self getCurrentVideoDevice])) {
-        deviceCapture.torchMode = mode;
+        [[self sharedInstace].session beginConfiguration];
+        [deviceCapture lockForConfiguration:nil];
+        [deviceCapture setTorchMode:mode];
+        [deviceCapture unlockForConfiguration];
+        [[self sharedInstace].session commitConfiguration];
     }
 }
 
