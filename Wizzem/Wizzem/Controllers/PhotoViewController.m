@@ -33,21 +33,17 @@
 }
 
 - (void) takeVideo {
-    NSLog(@"push movie recording button");
     if (![ActionMovieRecordAVFoundation isRecording]) {
-        NSLog(@"----------> Launch video recordking");
         [ActionMovieRecordAVFoundation startMovieRecording:^(NSURL *url) {
-            NSLog(@"url : %@", url);
-            
             DetailCameraViewController *controllerDetail = [[DetailCameraViewController alloc] init];
             
             controllerDetail.cameraKind = VIDEO_CAMERA;
             controllerDetail.urlMovie = url;
             [self presentViewController:controllerDetail animated:false completion:nil];
+            return;
         }];
     }
     else {
-        NSLog(@"----------> Stop video recordking");
         [ActionMovieRecordAVFoundation stopMovieRecording];
     }
     //[self performSelector:@selector(createVideo) withObject:nil afterDelay:4];
@@ -131,7 +127,7 @@
             label.text = @"Photo";
             [self.slider resetValueCircle];
             [self.buttonGif hideButton];
-            [CameraAVFoundation changeFlashMode:AVCaptureTorchModeOn];
+            //[CameraAVFoundation changeFlashMode:AVCaptureTorchModeOn];
             [CameraAVFoundation changeCameraOutputMode:CameraRecordModePhoto];
             break;
 
@@ -169,6 +165,10 @@
     }];
 }
 
+- (void) rotationCamera {
+    [CameraAVFoundation switchDeviceCamera];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.clic = 0;
@@ -197,6 +197,11 @@
     self.buttonGif = [[TakeGifButton alloc] init];
     [self.buttonGif addTarget:self action:@selector(createGif) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.buttonGif];
+    
+    UIButton *rotationButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 50, 0, 50, 50)];
+    rotationButton.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.6];
+    [rotationButton addTarget:self action:@selector(rotationCamera) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:rotationButton];
 }
 
 - (void)didReceiveMemoryWarning {
