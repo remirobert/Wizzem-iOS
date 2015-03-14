@@ -15,12 +15,12 @@
 @property (nonatomic, strong) AVCaptureDeviceInput *inputDeice;
 @end
 
-# define CAMERA_QUALITY                 AVCaptureSessionPresetHigh
+# define CAMERA_QUALITY                 AVCaptureSessionPresetHigh      //Best quality of available on the device
 # define FOCUS_TOUCH_ENABLE             true
 # define DISPLAY_FOCUS_TOUCH_LAYER      true
-# define MAXDURATION_MOVIE_RECORD       10
-# define PREFERRED_TIME_SCALE_MOVIE     30 //FPS
-# define MIN_DISK_USE_MOVIE             1024 * 1024
+# define MAXDURATION_MOVIE_RECORD       kCMTimeInvalid                  //illimited
+# define PREFERRED_TIME_SCALE_MOVIE     30                              //FPS
+# define MIN_DISK_USE_MOVIE             0                               //illimited
 
 @implementation CameraAVFoundation
 
@@ -149,8 +149,6 @@
 
 - (void) initMovieOutput {
     self.movieFileOutput = [[AVCaptureMovieFileOutput alloc] init];
-    //self.movieFileOutput.maxRecordedDuration = CMTimeMakeWithSeconds(MAXDURATION_MOVIE_RECORD, PREFERRED_TIME_SCALE_MOVIE);
-    //self.movieFileOutput.minFreeDiskSpaceLimit = MIN_DISK_USE_MOVIE;
 }
 
 - (void) initAvFoundation {
