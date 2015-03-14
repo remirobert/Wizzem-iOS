@@ -33,16 +33,7 @@
 }
 
 - (void) createVideo {
-    [ActionMovieRecordAVFoundation stopMovieRecording:^(NSURL *url) {
-        NSLog(@"url : %@", url);
-
-        DetailCameraViewController *controllerDetail = [[DetailCameraViewController alloc] init];
-        
-        controllerDetail.cameraKind = VIDEO_CAMERA;
-        controllerDetail.urlMovie = url;
-        [self presentViewController:controllerDetail animated:false completion:nil];
-        
-    }];
+    [ActionMovieRecordAVFoundation stopMovieRecording];
 //    NSString*thePath=[[NSBundle mainBundle] pathForResource:@"output" ofType:@"mov"];
 //    NSURL*theurl=[NSURL fileURLWithPath:thePath];
 //    
@@ -55,7 +46,15 @@
 
 - (void) takeVideo {
     if (![ActionMovieRecordAVFoundation isRecording]) {
-        [ActionMovieRecordAVFoundation startMovieRecording];
+        [ActionMovieRecordAVFoundation startMovieRecording:^(NSURL *url) {
+            NSLog(@"url : %@", url);
+            
+            DetailCameraViewController *controllerDetail = [[DetailCameraViewController alloc] init];
+            
+            controllerDetail.cameraKind = VIDEO_CAMERA;
+            controllerDetail.urlMovie = url;
+            [self presentViewController:controllerDetail animated:false completion:nil];
+        }];
     }
     else {
         [self createVideo];

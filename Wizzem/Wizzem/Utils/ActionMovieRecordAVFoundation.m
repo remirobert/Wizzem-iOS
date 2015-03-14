@@ -12,11 +12,12 @@
 @interface ActionMovieRecordAVFoundation()
 @property (nonatomic, assign, readwrite) BOOL isRecording;
 @property (nonatomic, strong) void (^completion)(NSURL *url);
+@property (nonatomic, strong) NSTimer *timerMovieRecord;
 @end
 
 @implementation ActionMovieRecordAVFoundation
 
-# define MAX_DURATION_VIDEO     4
+# define MAX_DURATION_VIDEO     10
 
 #pragma mark - shared instance
 
@@ -57,36 +58,44 @@
             return;
         }
     }
-    Float64 TotalSeconds = MAX_DURATION_VIDEO;			//Total seconds
+    Float64 TotalSeconds = MAX_DURATION_VIDEO + 1;			//Total seconds
     int32_t preferredTimeScale = 30;	//Frames per second
     CMTime maxDuration = CMTimeMakeWithSeconds(TotalSeconds, preferredTimeScale);	//<<SET MAX DURATION
     
     [CameraAVFoundation sharedInstace].movieFileOutput.maxRecordedDuration = maxDuration;
     [[CameraAVFoundation sharedInstace].movieFileOutput startRecordingToOutputFileURL:outputURL recordingDelegate:self];
+
+    [ActionMovieRecordAVFoundation sharedInstance].timerMovieRecord = [NSTimer timerWithTimeInterval:MAX_DURATION_VIDEO target:self
+                                                                                            selector:@selector(stopMovieRecording) userInfo:nil repeats:false];
+    
     self.isRecording = true;
 }
 
 - (void) stopMovieRecording {
+    if ([ActionMovieRecordAVFoundation sharedInstance].timerMovieRecord) {
+        [[ActionMovieRecordAVFoundation sharedInstance].timerMovieRecord invalidate];
+        [ActionMovieRecordAVFoundation sharedInstance].timerMovieRecord = nil;
+    }
     [[CameraAVFoundation sharedInstace].movieFileOutput stopRecording];
     self.isRecording = false;
 }
 
 #pragma mark - helpers camera video
 
-+ (void) startMovieRecording {
++ (void) startMovieRecording:(void (^)(NSURL *url))completion {
     if ([CameraAVFoundation sharedInstace].currentCameraMode != CameraRecordModeMovie ||
         [ActionMovieRecordAVFoundation sharedInstance].isRecording == true) {
         return;
     }
+    [ActionMovieRecordAVFoundation sharedInstance].completion = [completion copy];
     [[ActionMovieRecordAVFoundation sharedInstance] startMovieRecording];
 }
 
-+ (void) stopMovieRecording:(void (^)(NSURL *url))completion {
++ (void) stopMovieRecording {
     if ([CameraAVFoundation sharedInstace].currentCameraMode != CameraRecordModeMovie ||
         [ActionMovieRecordAVFoundation sharedInstance].isRecording == false) {
         return;
     }
-    [ActionMovieRecordAVFoundation sharedInstance].completion = [completion copy];
     [[ActionMovieRecordAVFoundation sharedInstance] stopMovieRecording];
 }
 
