@@ -127,7 +127,6 @@
             label.text = @"Photo";
             [self.slider resetValueCircle];
             [self.buttonGif hideButton];
-            //[CameraAVFoundation changeFlashMode:AVCaptureTorchModeOn];
             [CameraAVFoundation changeCameraOutputMode:CameraRecordModePhoto];
             break;
 
@@ -169,6 +168,10 @@
     [CameraAVFoundation switchDeviceCamera];
 }
 
+- (void) flashCamera {
+    [CameraAVFoundation changeFlashMode:AVCaptureTorchModeOn];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.clic = 0;
@@ -202,6 +205,12 @@
     rotationButton.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.6];
     [rotationButton addTarget:self action:@selector(rotationCamera) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rotationButton];
+    
+    UIButton *flashButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    flashButton.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:0.6];
+    [flashButton addTarget:self action:@selector(flashCamera) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:flashButton];
+    
 }
 
 - (void)didReceiveMemoryWarning {
