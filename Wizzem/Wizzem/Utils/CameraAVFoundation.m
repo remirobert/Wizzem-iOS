@@ -149,8 +149,8 @@
 
 - (void) initMovieOutput {
     self.movieFileOutput = [[AVCaptureMovieFileOutput alloc] init];
-    self.movieFileOutput.maxRecordedDuration = CMTimeMakeWithSeconds(MAXDURATION_MOVIE_RECORD, PREFERRED_TIME_SCALE_MOVIE);
-    self.movieFileOutput.minFreeDiskSpaceLimit = MIN_DISK_USE_MOVIE;
+    //self.movieFileOutput.maxRecordedDuration = CMTimeMakeWithSeconds(MAXDURATION_MOVIE_RECORD, PREFERRED_TIME_SCALE_MOVIE);
+    //self.movieFileOutput.minFreeDiskSpaceLimit = MIN_DISK_USE_MOVIE;
 }
 
 - (void) initAvFoundation {

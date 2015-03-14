@@ -17,7 +17,7 @@
 
 @implementation ActionMovieRecordAVFoundation
 
-# define MAX_DURATION_VIDEO     10
+# define MAX_DURATION_VIDEO     10.0f
 
 #pragma mark - shared instance
 
@@ -58,16 +58,11 @@
             return;
         }
     }
-    Float64 TotalSeconds = MAX_DURATION_VIDEO + 1;			//Total seconds
-    int32_t preferredTimeScale = 30;	//Frames per second
-    CMTime maxDuration = CMTimeMakeWithSeconds(TotalSeconds, preferredTimeScale);	//<<SET MAX DURATION
-    
-    [CameraAVFoundation sharedInstace].movieFileOutput.maxRecordedDuration = maxDuration;
-    [[CameraAVFoundation sharedInstace].movieFileOutput startRecordingToOutputFileURL:outputURL recordingDelegate:self];
 
-    [ActionMovieRecordAVFoundation sharedInstance].timerMovieRecord = [NSTimer timerWithTimeInterval:MAX_DURATION_VIDEO target:self
-                                                                                            selector:@selector(stopMovieRecording) userInfo:nil repeats:false];
+    [[CameraAVFoundation sharedInstace].movieFileOutput startRecordingToOutputFileURL:outputURL recordingDelegate:self];
+    [ActionMovieRecordAVFoundation sharedInstance].timerMovieRecord = [NSTimer scheduledTimerWithTimeInterval:MAX_DURATION_VIDEO target:self selector:@selector(stopMovieRecording) userInfo:nil repeats:false];
     
+    [[NSRunLoop mainRunLoop] addTimer:[ActionMovieRecordAVFoundation sharedInstance].timerMovieRecord forMode:NSRunLoopCommonModes];
     self.isRecording = true;
 }
 

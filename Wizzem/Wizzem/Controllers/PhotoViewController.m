@@ -32,20 +32,10 @@
     [CameraAVFoundation focusAtPoint:touchPoint];
 }
 
-- (void) createVideo {
-    [ActionMovieRecordAVFoundation stopMovieRecording];
-//    NSString*thePath=[[NSBundle mainBundle] pathForResource:@"output" ofType:@"mov"];
-//    NSURL*theurl=[NSURL fileURLWithPath:thePath];
-//    
-//    MPMoviePlayerController *moviePlayer=[[MPMoviePlayerController alloc] initWithContentURL:theurl];
-//    [moviePlayer.view setFrame:CGRectMake(40, 197, 240, 160)];
-//    [moviePlayer prepareToPlay];
-//    [moviePlayer setShouldAutoplay:NO]; // And other options you can look through the documentation.
-//    [self.view addSubview:moviePlayer.view];
-}
-
 - (void) takeVideo {
+    NSLog(@"push movie recording button");
     if (![ActionMovieRecordAVFoundation isRecording]) {
+        NSLog(@"----------> Launch video recordking");
         [ActionMovieRecordAVFoundation startMovieRecording:^(NSURL *url) {
             NSLog(@"url : %@", url);
             
@@ -57,7 +47,8 @@
         }];
     }
     else {
-        [self createVideo];
+        NSLog(@"----------> Stop video recordking");
+        [ActionMovieRecordAVFoundation stopMovieRecording];
     }
     //[self performSelector:@selector(createVideo) withObject:nil afterDelay:4];
 }
