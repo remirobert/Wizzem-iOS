@@ -179,10 +179,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor blackColor];
     self.clic = 0;
     
-    [CameraAVFoundation sharedInstace].captureVideoPreviewLayer.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view.layer addSublayer:[CameraAVFoundation sharedInstace].captureVideoPreviewLayer];
+//    [CameraAVFoundation sharedInstace].captureVideoPreviewLayer.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    
+    UIView *preview = [CameraAVFoundation previewCamera:CGSizeMake(self.view.frame.size.width, self.view.frame.size.width)];
+    preview.center = self.view.center;
+    
+    [self.view addSubview:preview];
+    
+    //[self.view.layer addSublayer:[CameraAVFoundation sharedInstace].captureVideoPreviewLayer];
 
     self.slider = [[SliderButtonPhoto alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 50, self.view.frame.size.height - 130, 100, 100)];
     self.slider.delegateCamera = self;

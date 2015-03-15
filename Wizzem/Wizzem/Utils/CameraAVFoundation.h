@@ -31,6 +31,9 @@ typedef NS_ENUM(NSInteger, CameraRecordMode) {
 + (AVCaptureConnection *) getCaptureConnection;
 + (void) changeCameraOutputMode:(CameraRecordMode)recordMode;
 
++ (UIView *) previewCamera:(CGSize)size;
++ (UIView *) previewCamera;
+
 @property (nonatomic, retain) AVCaptureStillImageOutput *stillImageOutput;
 @property (nonatomic, strong) AVCaptureMovieFileOutput *movieFileOutput;
 
