@@ -24,7 +24,8 @@
     FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:self.gif];
     FLAnimatedImageView *imageView = [[FLAnimatedImageView alloc] init];
     imageView.animatedImage = image;
-    imageView.frame = self.view.frame;
+    imageView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
+    imageView.center = self.view.center;
     [self.view addSubview:imageView];
 }
 
@@ -46,7 +47,6 @@
     // Play the movie!
     moviePlayer.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
     [moviePlayer.moviePlayer play];
-    
 }
 
 - (void) viewDidAppear:(BOOL)animated {
