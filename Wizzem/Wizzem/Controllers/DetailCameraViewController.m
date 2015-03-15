@@ -12,6 +12,7 @@
 
 @interface DetailCameraViewController ()
 @property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) MPMoviePlayerViewController *moviePlayer;
 @end
 
 @implementation DetailCameraViewController
@@ -37,16 +38,26 @@
     [self.view addSubview:self.imageView];
 }
 
+- (void) dismissMoviePlayer {
+    [self.moviePlayer dismissViewControllerAnimated:true completion:nil];
+    [self dismissViewControllerAnimated:true completion:nil];
+}
+
 - (void) initMovieView:(NSURL *)url {
-    MPMoviePlayerViewController *moviePlayer=[[MPMoviePlayerViewController alloc] initWithContentURL:url];
+    self.moviePlayer=[[MPMoviePlayerViewController alloc] initWithContentURL:url];
     
     
-    [self presentMoviePlayerViewControllerAnimated:moviePlayer];
+    [self presentMoviePlayerViewControllerAnimated:self.moviePlayer];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(dismissMoviePlayer)
+                                                 name:MPMoviePlayerPlaybackDidFinishNotification
+                                               object:nil];
     
-    // Play the movie!
-    moviePlayer.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
-    [moviePlayer.moviePlayer play];
+    self.moviePlayer.moviePlayer.shouldAutoplay = false;
+    self.moviePlayer.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
+    [self.moviePlayer.moviePlayer prepareToPlay];
+    [self.moviePlayer.moviePlayer play];
 }
 
 - (void) viewDidAppear:(BOOL)animated {

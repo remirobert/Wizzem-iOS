@@ -10,28 +10,42 @@
 
 @implementation ActionCameraAVFoundation
 
-+ (UIImage*)getSubImageFrom:(UIImage*) img WithRect: (CGRect) rect {
-    
+# pragma mark - resize and crop image
+
++ (UIImage*) getSubImageFrom:(UIImage*)img WithRect:(CGRect)rect {
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    // translated rectangle for drawing sub image
     CGRect drawRect = CGRectMake(-rect.origin.x, -rect.origin.y, img.size.width, img.size.height);
     
-    // clip to the bounds of the image context
-    // not strictly necessary as it will get clipped anyway?
     CGContextClipToRect(context, CGRectMake(0, 0, rect.size.width, rect.size.height));
-    
-    // draw image
     [img drawInRect:drawRect];
     
-    // grab image
     UIImage* subImage = UIGraphicsGetImageFromCurrentImageContext();
-    
     UIGraphicsEndImageContext();
-    
     return subImage;
 }
+
++ (UIImage *) resizeImage:(UIImage *)image {
+    
+    CGFloat width = CGImageGetWidth(image.CGImage) / 2.0;
+    CGFloat height = CGImageGetHeight(image.CGImage) / 2.0;
+    CGFloat bitsPerComponent = CGImageGetBitsPerComponent(image.CGImage);
+    CGFloat bytesPerRow = CGImageGetBytesPerRow(image.CGImage);
+    CGColorSpaceRef colorSpace = CGImageGetColorSpace(image.CGImage);
+    CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(image.CGImage);
+    
+    CGContextRef context = CGBitmapContextCreate(nil, width, height, bitsPerComponent, bytesPerRow, colorSpace, bitmapInfo);
+    
+    CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
+    
+    CGContextDrawImage(context, CGRectMake(0, 0, width, height), image.CGImage);
+    
+    UIImage *scaledImage = [UIImage imageWithCGImage:CGBitmapContextCreateImage(context)];
+    return scaledImage;
+}
+
+#pragma mark - fix orientation image
 
 + (UIImage *) fixOrientationOfImage:(UIImage *)image {
     if (image.imageOrientation == UIImageOrientationUp) return image;
@@ -120,6 +134,8 @@
         if (imageDataSampleBuffer) {
             NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
             UIImage *image = [[UIImage alloc] initWithData:imageData];
+            NSLog(@"res image : %f", image.size.width);
+            
             image = [self getSubImageFrom:image WithRect:CGRectMake(0, ((image.size.height - image.size.width) / 2), image.size.width, image.size.width)];
             blockCompletion([self fixOrientationOfImage:image]);
         }
