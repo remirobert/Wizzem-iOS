@@ -6,6 +6,9 @@
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
+#import <CoreMedia/CMTime.h>
 #import "ActionMovieRecordAVFoundation.h"
 #import "CameraAVFoundation.h"
 
@@ -13,6 +16,7 @@
 @property (nonatomic, assign, readwrite) BOOL isRecording;
 @property (nonatomic, strong) void (^completion)(NSURL *url);
 @property (nonatomic, strong) NSTimer *timerMovieRecord;
+@property (nonatomic, strong) NSURL *movieRecordUrl;
 @end
 
 @implementation ActionMovieRecordAVFoundation
@@ -41,8 +45,67 @@
 - (void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
       fromConnections:(NSArray *)connections error:(NSError *)error {
     NSLog(@"error recording : %@", error);
+    [ActionMovieRecordAVFoundation cropVideo:self.movieRecordUrl];
     [ActionMovieRecordAVFoundation sharedInstance].completion(outputFileURL);
     return;
+}
+
++ (void) cropVideo:(NSURL *)url {
+    
+    //load our movie Asset
+    AVAsset *asset = [AVAsset assetWithURL:url];
+    
+    NSLog(@"%@", [asset tracksWithMediaType:AVMediaTypeVideo]);
+    //create an avassetrack with our asset
+    AVAssetTrack *clipVideoTrack = [[asset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
+    
+    //create a video composition and preset some settings
+    AVMutableVideoComposition* videoComposition = [AVMutableVideoComposition videoComposition];
+    videoComposition.frameDuration = CMTimeMake(1, 30);
+    //here we are setting its render size to its height x height (Square)
+    NSLog(@"size natural size : %f %f", clipVideoTrack.naturalSize.width, clipVideoTrack.naturalSize.height);
+    videoComposition.renderSize = CGSizeMake(clipVideoTrack.naturalSize.height, clipVideoTrack.naturalSize.height);
+    
+    //create a video instruction
+    AVMutableVideoCompositionInstruction *instruction = [AVMutableVideoCompositionInstruction videoCompositionInstruction];
+    instruction.timeRange = CMTimeRangeMake(kCMTimeZero, CMTimeMakeWithSeconds(60, 30));
+    
+    AVMutableVideoCompositionLayerInstruction* transformer = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:clipVideoTrack];
+    
+    //Here we shift the viewing square up to the TOP of the video so we only see the top
+    //CGAffineTransform t1 = CGAffineTransformMakeTranslation(clipVideoTrack.naturalSize.height, 0 );
+    
+    //Use this code if you want the viewing square to be in the middle of the video
+    CGAffineTransform t1 = CGAffineTransformMakeTranslation(clipVideoTrack.naturalSize.height, -(clipVideoTrack.naturalSize.width - clipVideoTrack.naturalSize.height) /2 );    
+    //Make sure the square is portrait
+    CGAffineTransform t2 = CGAffineTransformRotate(t1, M_PI_2);
+    
+    CGAffineTransform finalTransform = t2;
+    [transformer setTransform:finalTransform atTime:kCMTimeZero];
+    
+    //add the transformer layer instructions, then add to video composition
+    instruction.layerInstructions = [NSArray arrayWithObject:transformer];
+    videoComposition.instructions = [NSArray arrayWithObject: instruction];
+    
+    //Create an Export Path to store the cropped video
+    //Remove any prevouis videos at that path
+    [[NSFileManager defaultManager]  removeItemAtURL:url error:nil];
+    
+    
+    AVAssetExportSession *exporter;
+    exporter = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPresetHighestQuality] ;
+    exporter.videoComposition = videoComposition;
+    exporter.outputURL = url;
+    exporter.outputFileType = AVFileTypeQuickTimeMovie;
+    
+    [exporter exportAsynchronouslyWithCompletionHandler:^
+     {
+         dispatch_async(dispatch_get_main_queue(), ^{
+             //Call when finished
+             NSLog(@"exporter url : %@", exporter.outputURL);
+            //[self exportDidFinish:exporter];
+         });
+     }];
 }
 
 #pragma mark - start / stop recordings
@@ -58,7 +121,7 @@
             return;
         }
     }
-
+    self.movieRecordUrl = outputURL;
     [[CameraAVFoundation sharedInstace].movieFileOutput startRecordingToOutputFileURL:outputURL recordingDelegate:self];
     [ActionMovieRecordAVFoundation sharedInstance].timerMovieRecord = [NSTimer scheduledTimerWithTimeInterval:MAX_DURATION_VIDEO target:self selector:@selector(stopMovieRecording) userInfo:nil repeats:false];
     

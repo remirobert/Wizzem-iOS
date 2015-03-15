@@ -28,6 +28,8 @@
 		BB910B501A9BB659008B10BC /* ActionCameraAVFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = BB910B4F1A9BB659008B10BC /* ActionCameraAVFoundation.m */; };
 		BB910B561A9BDAE9008B10BC /* ActionGifCameraAVFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = BB910B551A9BDAE9008B10BC /* ActionGifCameraAVFoundation.m */; };
 		BB910B591A9BE2FD008B10BC /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB910B581A9BE2FD008B10BC /* FileManager.m */; };
+		BB97E81F1AB616C4000214E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB97E81E1AB616C3000214E1 /* CoreGraphics.framework */; };
+		BB97E8211AB616DD000214E1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB97E8201AB616DD000214E1 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		BB910B551A9BDAE9008B10BC /* ActionGifCameraAVFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionGifCameraAVFoundation.m; sourceTree = "<group>"; };
 		BB910B571A9BE2FD008B10BC /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
 		BB910B581A9BE2FD008B10BC /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
+		BB97E81E1AB616C3000214E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BB97E8201AB616DD000214E1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F44EE1E1271F095C9620B60B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		FEA8B635285A35CE77C00BF3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,6 +90,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB97E8211AB616DD000214E1 /* QuartzCore.framework in Frameworks */,
+				BB97E81F1AB616C4000214E1 /* CoreGraphics.framework in Frameworks */,
 				BB31B6C61AB21573001DBFF3 /* MediaPlayer.framework in Frameworks */,
 				BB31B6C91AB23CA5001DBFF3 /* Crashlytics.framework in Frameworks */,
 				BB31B6C41AB21425001DBFF3 /* CoreMedia.framework in Frameworks */,
@@ -107,6 +113,8 @@
 		8DB8AFC1963701722EBC773E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB97E8201AB616DD000214E1 /* QuartzCore.framework */,
+				BB97E81E1AB616C3000214E1 /* CoreGraphics.framework */,
 				BB34A64C1A9B98EB00AA2A86 /* AVFoundation.framework */,
 				BB31B6C81AB23CA5001DBFF3 /* Crashlytics.framework */,
 				BB31B6C51AB21573001DBFF3 /* MediaPlayer.framework */,
