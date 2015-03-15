@@ -31,6 +31,7 @@
 - (void) initImageView {
     self.imageView = [[UIImageView alloc] initWithFrame:self.view.frame];
     self.imageView.image = self.image;
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     [self.view addSubview:self.imageView];
 }

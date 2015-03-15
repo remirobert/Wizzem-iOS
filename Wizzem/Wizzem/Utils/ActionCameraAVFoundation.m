@@ -10,6 +10,29 @@
 
 @implementation ActionCameraAVFoundation
 
++ (UIImage*)getSubImageFrom:(UIImage*) img WithRect: (CGRect) rect {
+    
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    // translated rectangle for drawing sub image
+    CGRect drawRect = CGRectMake(-rect.origin.x, -rect.origin.y, img.size.width, img.size.height);
+    
+    // clip to the bounds of the image context
+    // not strictly necessary as it will get clipped anyway?
+    CGContextClipToRect(context, CGRectMake(0, 0, rect.size.width, rect.size.height));
+    
+    // draw image
+    [img drawInRect:drawRect];
+    
+    // grab image
+    UIImage* subImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return subImage;
+}
+
 + (UIImage *) fixOrientationOfImage:(UIImage *)image {
     if (image.imageOrientation == UIImageOrientationUp) return image;
     
@@ -96,7 +119,8 @@
         
         if (imageDataSampleBuffer) {
             NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
-            UIImage *image = [[UIImage alloc] initWithData:imageData];            
+            UIImage *image = [[UIImage alloc] initWithData:imageData];
+            image = [self getSubImageFrom:image WithRect:CGRectMake(0, ((image.size.height - image.size.width) / 2), image.size.width, image.size.width)];
             blockCompletion([self fixOrientationOfImage:image]);
         }
         else {

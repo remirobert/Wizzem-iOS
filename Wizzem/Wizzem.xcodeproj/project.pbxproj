@@ -28,6 +28,7 @@
 		BB910B501A9BB659008B10BC /* ActionCameraAVFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = BB910B4F1A9BB659008B10BC /* ActionCameraAVFoundation.m */; };
 		BB910B561A9BDAE9008B10BC /* ActionGifCameraAVFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = BB910B551A9BDAE9008B10BC /* ActionGifCameraAVFoundation.m */; };
 		BB910B591A9BE2FD008B10BC /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB910B581A9BE2FD008B10BC /* FileManager.m */; };
+		BB97E81C1AB5B7A8000214E1 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = BB97E81B1AB5B7A7000214E1 /* UIImage+Resize.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,8 @@
 		BB910B551A9BDAE9008B10BC /* ActionGifCameraAVFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionGifCameraAVFoundation.m; sourceTree = "<group>"; };
 		BB910B571A9BE2FD008B10BC /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
 		BB910B581A9BE2FD008B10BC /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
+		BB97E81B1AB5B7A7000214E1 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		BB97E81D1AB5B7B4000214E1 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		F44EE1E1271F095C9620B60B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		FEA8B635285A35CE77C00BF3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -229,6 +232,8 @@
 		BB910B4A1A9BADA2008B10BC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BB97E81D1AB5B7B4000214E1 /* UIImage+Resize.h */,
+				BB97E81B1AB5B7A7000214E1 /* UIImage+Resize.m */,
 				BB910B4B1A9BAE81008B10BC /* CameraAVFoundation.h */,
 				BB910B4C1A9BAE81008B10BC /* CameraAVFoundation.m */,
 				BB8814FE1AA39B7F00EDFCC6 /* ActionMovieRecordAVFoundation.h */,
@@ -412,6 +417,7 @@
 				BB910B591A9BE2FD008B10BC /* FileManager.m in Sources */,
 				BB4E448A1AA1016900760A36 /* CircleView.m in Sources */,
 				BB34A6271A9B989200AA2A86 /* main.m in Sources */,
+				BB97E81C1AB5B7A8000214E1 /* UIImage+Resize.m in Sources */,
 				BB311C8D1A9C963000C25668 /* DetailCameraViewController.m in Sources */,
 				BB311C8A1A9C7C3600C25668 /* SliderButtonPhoto.m in Sources */,
 			);
