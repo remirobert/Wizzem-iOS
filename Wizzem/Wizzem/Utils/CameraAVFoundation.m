@@ -13,6 +13,8 @@
 @property (nonatomic, assign, readwrite) CameraRecordMode currentCameraMode;
 @property (nonatomic, strong) AVCaptureSession *session;
 @property (nonatomic, strong) AVCaptureDeviceInput *inputDeice;
+@property (nonatomic, strong) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
+@property (nonatomic, strong) UIView *previewCamera;
 @end
 
 # define CAMERA_QUALITY                 AVCaptureSessionPresetHigh      //Best quality of available on the device
@@ -184,6 +186,28 @@
     [self.session addOutput:self.stillImageOutput];
     
     [self.session startRunning];
+}
+
+#pragma mark - preview UIView camera
+
++ (UIView *) previewCamera:(CGSize)size {
+    if ([self sharedInstace].previewCamera && CGSizeEqualToSize(size, [self sharedInstace].previewCamera.frame.size)) {
+        return [self sharedInstace].previewCamera;
+    }
+    
+    [self sharedInstace].previewCamera = [[UIView alloc] init];
+    [self sharedInstace].previewCamera.clipsToBounds = true;
+    [self sharedInstace].previewCamera.layer.masksToBounds = true;
+    [self sharedInstace].previewCamera.frame = CGRectMake(0, 0, size.width, size.height);
+    [self sharedInstace].captureVideoPreviewLayer.frame = CGRectMake(0, -(([self sharedInstace].captureVideoPreviewLayer.frame.size.height - size.height) / 2),
+                                                                     [self sharedInstace].captureVideoPreviewLayer.frame.size.width,
+                                                                     [self sharedInstace].captureVideoPreviewLayer.frame.size.height);
+    [[self sharedInstace].previewCamera.layer addSublayer:[self sharedInstace].captureVideoPreviewLayer];
+    return [self sharedInstace].previewCamera;
+}
+
++ (UIView *) previeCamera {
+    return [self previewCamera:[UIScreen mainScreen].bounds.size];
 }
 
 #pragma mark - Shared Instance cameraFoundation
