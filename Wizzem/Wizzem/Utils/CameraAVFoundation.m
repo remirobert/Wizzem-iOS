@@ -23,10 +23,20 @@
 # define MAXDURATION_MOVIE_RECORD       kCMTimeInvalid                  //illimited
 # define PREFERRED_TIME_SCALE_MOVIE     30                              //FPS
 # define MIN_DISK_USE_MOVIE             0                               //illimited
+# define DEFAULT_AUDIO_RECORD_MOVIE     true
 
 @implementation CameraAVFoundation
 
 #pragma mark - Camera output management
+
++ (void) addAudioInputRecord {
+    AVCaptureDevice *audioCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
+    NSError *error = nil;
+    AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:&error];
+    if (audioInput && [[CameraAVFoundation sharedInstace].session canAddInput:audioInput]) {
+        [[CameraAVFoundation sharedInstace].session addInput:audioInput];
+    }
+}
 
 + (void) changeCameraOutputMode:(CameraRecordMode)recordMode {
     if ([self sharedInstace].currentCameraMode == recordMode) return;
@@ -41,6 +51,11 @@
             [[self sharedInstace].session beginConfiguration];
             [[self sharedInstace].session removeOutput:currentOutput];
             [[self sharedInstace].session addOutput:newOutput];
+            
+            if (recordMode == CameraRecordModeMovie && DEFAULT_AUDIO_RECORD_MOVIE) {
+                [self addAudioInputRecord];
+            }
+            
             [[self sharedInstace].session commitConfiguration];
             [self sharedInstace].currentCameraMode = recordMode;
         }
@@ -206,7 +221,7 @@
     return [self sharedInstace].previewCamera;
 }
 
-+ (UIView *) previeCamera {
++ (UIView *) previewCamera {
     return [self previewCamera:[UIScreen mainScreen].bounds.size];
 }
 
