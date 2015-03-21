@@ -1,5 +1,5 @@
 //
-//  Colors.h
+//  SliderCameraFunction.h
 //  Wizzem
 //
 //  Created by Remi Robert on 21/03/15.
@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Colors : NSObject
-
-+ (UIColor *) greenColor;
-+ (UIColor *) grayColor;
+@interface SliderCameraFunction : UIScrollView <UIScrollViewDelegate>
 
 @end

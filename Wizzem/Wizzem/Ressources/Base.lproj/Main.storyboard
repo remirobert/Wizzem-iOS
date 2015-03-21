@@ -29,7 +29,7 @@
                                             <constraint firstAttribute="width" constant="78" id="mbG-Eg-PaP"/>
                                             <constraint firstAttribute="width" secondItem="J2E-xt-pnE" secondAttribute="height" multiplier="13:5" id="qQP-hN-SNG"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <state key="normal" title="Moment">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -52,62 +52,36 @@
                                             <action selector="momentAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="05r-cd-ZvJ"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="UVg-61-hXJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="UVg-61-hXJ" secondAttribute="height" multiplier="1:1" id="yi7-oA-flq"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="yi7-oA-flq"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="yi7-oA-flq"/>
-                                            </mask>
-                                        </variation>
-                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.49538748399999999" green="0.85809264519999995" blue="0.41624528750000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="J2E-xt-pnE" firstAttribute="leading" secondItem="UVg-61-hXJ" secondAttribute="trailing" constant="8" id="121-4s-fhe">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="-16"/>
-                                    </constraint>
                                     <constraint firstAttribute="centerX" secondItem="J2E-xt-pnE" secondAttribute="centerX" id="DgJ-8p-GTf"/>
                                     <constraint firstAttribute="width" constant="400" id="JpD-Xu-2lu"/>
                                     <constraint firstAttribute="width" secondItem="rDr-vQ-DaF" secondAttribute="height" multiplier="10:1" id="RKp-FU-yOS">
                                         <variation key="heightClass=regular-widthClass=compact" constant="-100"/>
                                     </constraint>
-                                    <constraint firstItem="UVg-61-hXJ" firstAttribute="top" secondItem="rDr-vQ-DaF" secondAttribute="top" constant="5" id="cg2-yq-ksw"/>
                                     <constraint firstAttribute="centerY" secondItem="J2E-xt-pnE" secondAttribute="centerY" id="jTw-Hz-bUL"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="J2E-xt-pnE"/>
-                                        <exclude reference="UVg-61-hXJ"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="JpD-Xu-2lu"/>
                                         <exclude reference="RKp-FU-yOS"/>
-                                        <exclude reference="121-4s-fhe"/>
                                         <exclude reference="DgJ-8p-GTf"/>
                                         <exclude reference="jTw-Hz-bUL"/>
-                                        <exclude reference="cg2-yq-ksw"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="J2E-xt-pnE"/>
-                                        <include reference="UVg-61-hXJ"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="JpD-Xu-2lu"/>
                                         <include reference="RKp-FU-yOS"/>
-                                        <include reference="121-4s-fhe"/>
                                         <include reference="DgJ-8p-GTf"/>
                                         <include reference="jTw-Hz-bUL"/>
-                                        <include reference="cg2-yq-ksw"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -159,6 +133,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="3en-AV-U5V" secondAttribute="trailing" constant="8" id="5yx-kU-SbR"/>
                                     <constraint firstAttribute="bottom" secondItem="CVr-9n-T6U" secondAttribute="bottom" constant="8" id="L7y-p2-Lpd"/>
@@ -246,7 +221,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add" width="40" height="40"/>
         <image name="flash" width="40" height="40"/>
         <image name="rotation" width="40" height="40"/>
     </resources>

@@ -9,6 +9,8 @@
 #import "MediaViewController.h"
 #import "WizzMedia.h"
 #import "DropDown.h"
+#import "Colors.h"
+#import "SliderCameraFunction.h"
 
 @interface MediaViewController ()
 @property (strong, nonatomic) IBOutlet DropDown *dropDownCameraOptions;
@@ -36,17 +38,21 @@
 #pragma mark UIView cycle
 
 - (void)viewDidAppear:(BOOL)animated {
-    CGFloat sizeButton = self.sizeBotton - self.sizeBotton / 3;
-    CGRect frameButton = CGRectMake(self.view.center.x - sizeButton / 2, self.view.frame.size.height - sizeButton - sizeButton / 2, sizeButton, sizeButton);
     
-    frameButton.origin.y = self.view.frame.size.height - self.sizeBotton + (self.sizeBotton - sizeButton) / 2;
-
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = frameButton;
-    [button setImage:[UIImage imageNamed:@"captureButton"] forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor clearColor];
-    
-    [self.view addSubview:button];
+    SliderCameraFunction *slider = [[SliderCameraFunction alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - self.sizeBotton, self.view.frame.size.height, self.sizeBotton)];
+    [self.view addSubview:slider];
+//    CGFloat sizeButton = self.sizeBotton - self.sizeBotton / 3;
+//    CGRect frameButton = CGRectMake(self.view.center.x - sizeButton / 2, self.view.frame.size.height - sizeButton - sizeButton / 2, sizeButton, sizeButton);
+//    
+//    frameButton.origin.y = self.view.frame.size.height - self.sizeBotton + (self.sizeBotton - sizeButton) / 2;
+//
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    button.frame = frameButton;
+//    [button setImage:[[UIImage imageNamed:@"captureButton"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+//    button.backgroundColor = [UIColor clearColor];
+//    button.tintColor = [Colors greenColor];
+//    
+//    [self.view addSubview:button];
     
     CGRect frameDropDown = CGRectMake(0, self.view.frame.size.height - self.sizeBotton - 50, self.view.frame.size.width, 50);
     
@@ -68,8 +74,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithRed:0.74 green:0.75 blue:0.76 alpha:1];
-    self.cameraOptionToolBar.backgroundColor = [UIColor colorWithRed:0.33 green:0.84 blue:0.41 alpha:1];
+    self.view.backgroundColor = [Colors grayColor];
+    self.cameraOptionToolBar.backgroundColor = [Colors greenColor];
 }
 
 - (void)didReceiveMemoryWarning {

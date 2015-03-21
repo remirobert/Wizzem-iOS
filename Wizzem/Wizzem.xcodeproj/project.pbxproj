@@ -23,6 +23,7 @@
 		BB4E448D1AA1E2D100760A36 /* TakeGifButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E448C1AA1E2D100760A36 /* TakeGifButton.m */; };
 		BB8748631ABDE72500957909 /* DropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8748621ABDE72500957909 /* DropDown.m */; };
 		BB8748661ABE28EE00957909 /* Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8748651ABE28EE00957909 /* Colors.m */; };
+		BB8748691ABE2DC600957909 /* SliderCameraFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8748681ABE2DC600957909 /* SliderCameraFunction.m */; };
 		BB97E81F1AB616C4000214E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB97E81E1AB616C3000214E1 /* CoreGraphics.framework */; };
 		BB97E8211AB616DD000214E1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB97E8201AB616DD000214E1 /* QuartzCore.framework */; };
 		BBBD943A1ABD6B19002F8655 /* MediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBD94391ABD6B19002F8655 /* MediaViewController.m */; };
@@ -75,6 +76,8 @@
 		BB8748621ABDE72500957909 /* DropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDown.m; sourceTree = "<group>"; };
 		BB8748641ABE28EE00957909 /* Colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colors.h; sourceTree = "<group>"; };
 		BB8748651ABE28EE00957909 /* Colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Colors.m; sourceTree = "<group>"; };
+		BB8748671ABE2DC600957909 /* SliderCameraFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderCameraFunction.h; sourceTree = "<group>"; };
+		BB8748681ABE2DC600957909 /* SliderCameraFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderCameraFunction.m; sourceTree = "<group>"; };
 		BB97E81E1AB616C3000214E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		BB97E8201AB616DD000214E1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BBBD94381ABD6B19002F8655 /* MediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaViewController.h; sourceTree = "<group>"; };
@@ -237,6 +240,8 @@
 				BB4E44891AA1016900760A36 /* CircleView.m */,
 				BB4E448B1AA1E2D100760A36 /* TakeGifButton.h */,
 				BB4E448C1AA1E2D100760A36 /* TakeGifButton.m */,
+				BB8748671ABE2DC600957909 /* SliderCameraFunction.h */,
+				BB8748681ABE2DC600957909 /* SliderCameraFunction.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -447,6 +452,7 @@
 				BBBD944B1ABD72DC002F8655 /* WizzMedia+CameraVideo.m in Sources */,
 				BB8748661ABE28EE00957909 /* Colors.m in Sources */,
 				BB4E448A1AA1016900760A36 /* CircleView.m in Sources */,
+				BB8748691ABE2DC600957909 /* SliderCameraFunction.m in Sources */,
 				BB34A6271A9B989200AA2A86 /* main.m in Sources */,
 				BBBD94491ABD72DC002F8655 /* WizzMedia+CameraGif.m in Sources */,
 				BB311C8A1A9C7C3600C25668 /* SliderButtonPhoto.m in Sources */,

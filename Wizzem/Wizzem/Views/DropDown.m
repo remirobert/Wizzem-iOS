@@ -7,6 +7,7 @@
 //
 
 #import "DropDown.h"
+#import "Colors.h"
 
 @interface DropDown()
 @property (nonatomic, strong) UIButton *dropDownButton;
@@ -91,17 +92,19 @@
         [currentSubView removeFromSuperview];
     }
     CGFloat indexPositionY = 0;
-    CGFloat colorGradient = 0.02;
+    CGFloat colorGradient = 0.90;
     NSInteger currentIndex = 0;
     for (NSString *currentElement in self.elements) {
         if (currentIndex != self.currentSelectedElement) {
             UIButton *newButton = [[UIButton alloc] initWithFrame:CGRectMake(0, indexPositionY, self.frame.size.width, 70)];
             [newButton setTitle:currentElement forState:UIControlStateNormal];
             [_contentScrollView addSubview:newButton];
+            [newButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+            newButton.titleLabel.font = [UIFont boldSystemFontOfSize:17];
             newButton.tag = currentIndex;
             [newButton addTarget:self action:@selector(clickButtonDropDownMenu:) forControlEvents:UIControlEventTouchUpInside];
             newButton.backgroundColor = [UIColor colorWithRed:colorGradient green:colorGradient blue:colorGradient alpha:1];
-            colorGradient += 0.01;
+            colorGradient -= 0.04;
             indexPositionY += 70;
         }
         currentIndex += 1;
@@ -126,6 +129,7 @@
     if (!_dropDownButton) {
         _dropDownButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.initialFrame.size.width, self.initialFrame.size.height)];
         [_dropDownButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        _dropDownButton.titleLabel.font = [UIFont boldSystemFontOfSize:17];
         [_dropDownButton addTarget:self action:@selector(moveDropDown) forControlEvents:UIControlEventTouchUpInside];
     }
     return _dropDownButton;
@@ -145,7 +149,7 @@
         [self.dropDownButton setTitle:[content firstObject] forState:UIControlStateNormal];
         [self addSubview:self.dropDownButton];
         [self addSubview:self.contentScrollView];
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [Colors grayColor];
     }
     return self;
 }
