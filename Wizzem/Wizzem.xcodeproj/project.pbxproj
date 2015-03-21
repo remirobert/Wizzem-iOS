@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		ACFED7F2462065225925B9DF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F14D01F10DF01B4B8D4D2B /* libPods.a */; };
 		BB311C8A1A9C7C3600C25668 /* SliderButtonPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = BB311C891A9C7C3600C25668 /* SliderButtonPhoto.m */; };
-		BB311C8D1A9C963000C25668 /* DetailCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB311C8C1A9C963000C25668 /* DetailCameraViewController.m */; };
 		BB31B6C41AB21425001DBFF3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB31B6C31AB21425001DBFF3 /* CoreMedia.framework */; };
 		BB31B6C61AB21573001DBFF3 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB31B6C51AB21573001DBFF3 /* MediaPlayer.framework */; };
 		BB31B6C91AB23CA5001DBFF3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB31B6C81AB23CA5001DBFF3 /* Crashlytics.framework */; };
@@ -20,16 +19,19 @@
 		BB34A6351A9B989200AA2A86 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB34A6331A9B989200AA2A86 /* LaunchScreen.xib */; };
 		BB34A6411A9B989200AA2A86 /* WizzemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB34A6401A9B989200AA2A86 /* WizzemTests.m */; };
 		BB34A64D1A9B98EB00AA2A86 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB34A64C1A9B98EB00AA2A86 /* AVFoundation.framework */; };
-		BB34A6531A9B992500AA2A86 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB34A6521A9B992500AA2A86 /* PhotoViewController.m */; };
 		BB4E448A1AA1016900760A36 /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E44891AA1016900760A36 /* CircleView.m */; };
 		BB4E448D1AA1E2D100760A36 /* TakeGifButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E448C1AA1E2D100760A36 /* TakeGifButton.m */; };
-		BB8815001AA39B7F00EDFCC6 /* ActionMovieRecordAVFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8814FF1AA39B7F00EDFCC6 /* ActionMovieRecordAVFoundation.m */; };
-		BB910B4D1A9BAE81008B10BC /* CameraAVFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = BB910B4C1A9BAE81008B10BC /* CameraAVFoundation.m */; };
-		BB910B501A9BB659008B10BC /* ActionCameraAVFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = BB910B4F1A9BB659008B10BC /* ActionCameraAVFoundation.m */; };
-		BB910B561A9BDAE9008B10BC /* ActionGifCameraAVFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = BB910B551A9BDAE9008B10BC /* ActionGifCameraAVFoundation.m */; };
-		BB910B591A9BE2FD008B10BC /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB910B581A9BE2FD008B10BC /* FileManager.m */; };
+		BB8748631ABDE72500957909 /* DropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8748621ABDE72500957909 /* DropDown.m */; };
+		BB8748661ABE28EE00957909 /* Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8748651ABE28EE00957909 /* Colors.m */; };
 		BB97E81F1AB616C4000214E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB97E81E1AB616C3000214E1 /* CoreGraphics.framework */; };
 		BB97E8211AB616DD000214E1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB97E8201AB616DD000214E1 /* QuartzCore.framework */; };
+		BBBD943A1ABD6B19002F8655 /* MediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBD94391ABD6B19002F8655 /* MediaViewController.m */; };
+		BBBD94481ABD72DC002F8655 /* WizzMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBD943D1ABD72DC002F8655 /* WizzMedia.m */; };
+		BBBD94491ABD72DC002F8655 /* WizzMedia+CameraGif.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBD943F1ABD72DC002F8655 /* WizzMedia+CameraGif.m */; };
+		BBBD944A1ABD72DC002F8655 /* WizzMedia+CameraPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBD94411ABD72DC002F8655 /* WizzMedia+CameraPhoto.m */; };
+		BBBD944B1ABD72DC002F8655 /* WizzMedia+CameraVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBD94431ABD72DC002F8655 /* WizzMedia+CameraVideo.m */; };
+		BBBD944C1ABD72DC002F8655 /* WizzMedia+FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBD94451ABD72DC002F8655 /* WizzMedia+FileManager.m */; };
+		BBBD944D1ABD72DC002F8655 /* WizzMedia+RecordSong.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBD94471ABD72DC002F8655 /* WizzMedia+RecordSong.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,18 +71,26 @@
 		BB4E44891AA1016900760A36 /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
 		BB4E448B1AA1E2D100760A36 /* TakeGifButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakeGifButton.h; sourceTree = "<group>"; };
 		BB4E448C1AA1E2D100760A36 /* TakeGifButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakeGifButton.m; sourceTree = "<group>"; };
-		BB8814FE1AA39B7F00EDFCC6 /* ActionMovieRecordAVFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionMovieRecordAVFoundation.h; sourceTree = "<group>"; };
-		BB8814FF1AA39B7F00EDFCC6 /* ActionMovieRecordAVFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionMovieRecordAVFoundation.m; sourceTree = "<group>"; };
-		BB910B4B1A9BAE81008B10BC /* CameraAVFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraAVFoundation.h; sourceTree = "<group>"; };
-		BB910B4C1A9BAE81008B10BC /* CameraAVFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraAVFoundation.m; sourceTree = "<group>"; };
-		BB910B4E1A9BB659008B10BC /* ActionCameraAVFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionCameraAVFoundation.h; sourceTree = "<group>"; };
-		BB910B4F1A9BB659008B10BC /* ActionCameraAVFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionCameraAVFoundation.m; sourceTree = "<group>"; };
-		BB910B541A9BDAE9008B10BC /* ActionGifCameraAVFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionGifCameraAVFoundation.h; sourceTree = "<group>"; };
-		BB910B551A9BDAE9008B10BC /* ActionGifCameraAVFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionGifCameraAVFoundation.m; sourceTree = "<group>"; };
-		BB910B571A9BE2FD008B10BC /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
-		BB910B581A9BE2FD008B10BC /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
+		BB8748611ABDE72500957909 /* DropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
+		BB8748621ABDE72500957909 /* DropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDown.m; sourceTree = "<group>"; };
+		BB8748641ABE28EE00957909 /* Colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colors.h; sourceTree = "<group>"; };
+		BB8748651ABE28EE00957909 /* Colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Colors.m; sourceTree = "<group>"; };
 		BB97E81E1AB616C3000214E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		BB97E8201AB616DD000214E1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BBBD94381ABD6B19002F8655 /* MediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaViewController.h; sourceTree = "<group>"; };
+		BBBD94391ABD6B19002F8655 /* MediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaViewController.m; sourceTree = "<group>"; };
+		BBBD943C1ABD72DC002F8655 /* WizzMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WizzMedia.h; sourceTree = "<group>"; };
+		BBBD943D1ABD72DC002F8655 /* WizzMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WizzMedia.m; sourceTree = "<group>"; };
+		BBBD943E1ABD72DC002F8655 /* WizzMedia+CameraGif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WizzMedia+CameraGif.h"; sourceTree = "<group>"; };
+		BBBD943F1ABD72DC002F8655 /* WizzMedia+CameraGif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WizzMedia+CameraGif.m"; sourceTree = "<group>"; };
+		BBBD94401ABD72DC002F8655 /* WizzMedia+CameraPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WizzMedia+CameraPhoto.h"; sourceTree = "<group>"; };
+		BBBD94411ABD72DC002F8655 /* WizzMedia+CameraPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WizzMedia+CameraPhoto.m"; sourceTree = "<group>"; };
+		BBBD94421ABD72DC002F8655 /* WizzMedia+CameraVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WizzMedia+CameraVideo.h"; sourceTree = "<group>"; };
+		BBBD94431ABD72DC002F8655 /* WizzMedia+CameraVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WizzMedia+CameraVideo.m"; sourceTree = "<group>"; };
+		BBBD94441ABD72DC002F8655 /* WizzMedia+FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WizzMedia+FileManager.h"; sourceTree = "<group>"; };
+		BBBD94451ABD72DC002F8655 /* WizzMedia+FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WizzMedia+FileManager.m"; sourceTree = "<group>"; };
+		BBBD94461ABD72DC002F8655 /* WizzMedia+RecordSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WizzMedia+RecordSong.h"; sourceTree = "<group>"; };
+		BBBD94471ABD72DC002F8655 /* WizzMedia+RecordSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WizzMedia+RecordSong.m"; sourceTree = "<group>"; };
 		F44EE1E1271F095C9620B60B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		FEA8B635285A35CE77C00BF3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -210,6 +220,8 @@
 				BB34A6521A9B992500AA2A86 /* PhotoViewController.m */,
 				BB311C8B1A9C963000C25668 /* DetailCameraViewController.h */,
 				BB311C8C1A9C963000C25668 /* DetailCameraViewController.m */,
+				BBBD94381ABD6B19002F8655 /* MediaViewController.h */,
+				BBBD94391ABD6B19002F8655 /* MediaViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -217,6 +229,8 @@
 		BB34A64F1A9B990100AA2A86 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BB8748611ABDE72500957909 /* DropDown.h */,
+				BB8748621ABDE72500957909 /* DropDown.m */,
 				BB311C881A9C7C3600C25668 /* SliderButtonPhoto.h */,
 				BB311C891A9C7C3600C25668 /* SliderButtonPhoto.m */,
 				BB4E44881AA1016900760A36 /* CircleView.h */,
@@ -237,18 +251,30 @@
 		BB910B4A1A9BADA2008B10BC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				BB910B4B1A9BAE81008B10BC /* CameraAVFoundation.h */,
-				BB910B4C1A9BAE81008B10BC /* CameraAVFoundation.m */,
-				BB8814FE1AA39B7F00EDFCC6 /* ActionMovieRecordAVFoundation.h */,
-				BB8814FF1AA39B7F00EDFCC6 /* ActionMovieRecordAVFoundation.m */,
-				BB910B4E1A9BB659008B10BC /* ActionCameraAVFoundation.h */,
-				BB910B4F1A9BB659008B10BC /* ActionCameraAVFoundation.m */,
-				BB910B541A9BDAE9008B10BC /* ActionGifCameraAVFoundation.h */,
-				BB910B551A9BDAE9008B10BC /* ActionGifCameraAVFoundation.m */,
-				BB910B571A9BE2FD008B10BC /* FileManager.h */,
-				BB910B581A9BE2FD008B10BC /* FileManager.m */,
+				BBBD943B1ABD72BF002F8655 /* WizzMedia */,
+				BB8748641ABE28EE00957909 /* Colors.h */,
+				BB8748651ABE28EE00957909 /* Colors.m */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		BBBD943B1ABD72BF002F8655 /* WizzMedia */ = {
+			isa = PBXGroup;
+			children = (
+				BBBD943C1ABD72DC002F8655 /* WizzMedia.h */,
+				BBBD943D1ABD72DC002F8655 /* WizzMedia.m */,
+				BBBD943E1ABD72DC002F8655 /* WizzMedia+CameraGif.h */,
+				BBBD943F1ABD72DC002F8655 /* WizzMedia+CameraGif.m */,
+				BBBD94401ABD72DC002F8655 /* WizzMedia+CameraPhoto.h */,
+				BBBD94411ABD72DC002F8655 /* WizzMedia+CameraPhoto.m */,
+				BBBD94421ABD72DC002F8655 /* WizzMedia+CameraVideo.h */,
+				BBBD94431ABD72DC002F8655 /* WizzMedia+CameraVideo.m */,
+				BBBD94441ABD72DC002F8655 /* WizzMedia+FileManager.h */,
+				BBBD94451ABD72DC002F8655 /* WizzMedia+FileManager.m */,
+				BBBD94461ABD72DC002F8655 /* WizzMedia+RecordSong.h */,
+				BBBD94471ABD72DC002F8655 /* WizzMedia+RecordSong.m */,
+			);
+			name = WizzMedia;
 			sourceTree = "<group>";
 		};
 		E4BF479B5A2E9DDD09E972B8 /* Pods */ = {
@@ -410,17 +436,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB34A6531A9B992500AA2A86 /* PhotoViewController.m in Sources */,
-				BB8815001AA39B7F00EDFCC6 /* ActionMovieRecordAVFoundation.m in Sources */,
 				BB4E448D1AA1E2D100760A36 /* TakeGifButton.m in Sources */,
+				BBBD943A1ABD6B19002F8655 /* MediaViewController.m in Sources */,
+				BBBD944D1ABD72DC002F8655 /* WizzMedia+RecordSong.m in Sources */,
+				BBBD944C1ABD72DC002F8655 /* WizzMedia+FileManager.m in Sources */,
 				BB34A62A1A9B989200AA2A86 /* AppDelegate.m in Sources */,
-				BB910B501A9BB659008B10BC /* ActionCameraAVFoundation.m in Sources */,
-				BB910B561A9BDAE9008B10BC /* ActionGifCameraAVFoundation.m in Sources */,
-				BB910B4D1A9BAE81008B10BC /* CameraAVFoundation.m in Sources */,
-				BB910B591A9BE2FD008B10BC /* FileManager.m in Sources */,
+				BB8748631ABDE72500957909 /* DropDown.m in Sources */,
+				BBBD944A1ABD72DC002F8655 /* WizzMedia+CameraPhoto.m in Sources */,
+				BBBD94481ABD72DC002F8655 /* WizzMedia.m in Sources */,
+				BBBD944B1ABD72DC002F8655 /* WizzMedia+CameraVideo.m in Sources */,
+				BB8748661ABE28EE00957909 /* Colors.m in Sources */,
 				BB4E448A1AA1016900760A36 /* CircleView.m in Sources */,
 				BB34A6271A9B989200AA2A86 /* main.m in Sources */,
-				BB311C8D1A9C963000C25668 /* DetailCameraViewController.m in Sources */,
+				BBBD94491ABD72DC002F8655 /* WizzMedia+CameraGif.m in Sources */,
 				BB311C8A1A9C7C3600C25668 /* SliderButtonPhoto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

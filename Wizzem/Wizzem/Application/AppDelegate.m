@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "CameraAVFoundation.h"
+
 #import <Crashlytics/Crashlytics.h>
 
 @interface AppDelegate ()
@@ -20,7 +20,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [CameraAVFoundation sharedInstace];
     [Crashlytics startWithAPIKey:@"d9291a9165795274a4a0ad9f612bfafae0b9685d"];
     return YES;
 }
