@@ -24,6 +24,8 @@
 		BB8748631ABDE72500957909 /* DropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8748621ABDE72500957909 /* DropDown.m */; };
 		BB8748661ABE28EE00957909 /* Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8748651ABE28EE00957909 /* Colors.m */; };
 		BB8748691ABE2DC600957909 /* SliderCameraFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8748681ABE2DC600957909 /* SliderCameraFunction.m */; };
+		BB87486C1ABEB73D00957909 /* DetailMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB87486B1ABEB73D00957909 /* DetailMediaViewController.m */; };
+		BB8748701ABEB88000957909 /* TransitionDetailMediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB87486F1ABEB88000957909 /* TransitionDetailMediaManager.swift */; };
 		BB97E81F1AB616C4000214E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB97E81E1AB616C3000214E1 /* CoreGraphics.framework */; };
 		BB97E8211AB616DD000214E1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB97E8201AB616DD000214E1 /* QuartzCore.framework */; };
 		BBBD943A1ABD6B19002F8655 /* MediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBD94391ABD6B19002F8655 /* MediaViewController.m */; };
@@ -78,6 +80,10 @@
 		BB8748651ABE28EE00957909 /* Colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Colors.m; sourceTree = "<group>"; };
 		BB8748671ABE2DC600957909 /* SliderCameraFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderCameraFunction.h; sourceTree = "<group>"; };
 		BB8748681ABE2DC600957909 /* SliderCameraFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderCameraFunction.m; sourceTree = "<group>"; };
+		BB87486A1ABEB73D00957909 /* DetailMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailMediaViewController.h; sourceTree = "<group>"; };
+		BB87486B1ABEB73D00957909 /* DetailMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailMediaViewController.m; sourceTree = "<group>"; };
+		BB87486E1ABEB87F00957909 /* Wizzem-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Wizzem-Bridging-Header.h"; path = "../Wizzem-Bridging-Header.h"; sourceTree = "<group>"; };
+		BB87486F1ABEB88000957909 /* TransitionDetailMediaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionDetailMediaManager.swift; sourceTree = "<group>"; };
 		BB97E81E1AB616C3000214E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		BB97E8201AB616DD000214E1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BBBD94381ABD6B19002F8655 /* MediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaViewController.h; sourceTree = "<group>"; };
@@ -160,6 +166,7 @@
 		BB34A6231A9B989200AA2A86 /* Wizzem */ = {
 			isa = PBXGroup;
 			children = (
+				BB87486D1ABEB86D00957909 /* Transition controller */,
 				BB910B4A1A9BADA2008B10BC /* Utils */,
 				BB34A6501A9B990A00AA2A86 /* Models */,
 				BB34A64F1A9B990100AA2A86 /* Views */,
@@ -199,6 +206,7 @@
 		BB34A64A1A9B98C100AA2A86 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				BB87486E1ABEB87F00957909 /* Wizzem-Bridging-Header.h */,
 				BB34A6281A9B989200AA2A86 /* AppDelegate.h */,
 				BB34A6291A9B989200AA2A86 /* AppDelegate.m */,
 			);
@@ -225,6 +233,8 @@
 				BB311C8C1A9C963000C25668 /* DetailCameraViewController.m */,
 				BBBD94381ABD6B19002F8655 /* MediaViewController.h */,
 				BBBD94391ABD6B19002F8655 /* MediaViewController.m */,
+				BB87486A1ABEB73D00957909 /* DetailMediaViewController.h */,
+				BB87486B1ABEB73D00957909 /* DetailMediaViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -251,6 +261,14 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		BB87486D1ABEB86D00957909 /* Transition controller */ = {
+			isa = PBXGroup;
+			children = (
+				BB87486F1ABEB88000957909 /* TransitionDetailMediaManager.swift */,
+			);
+			name = "Transition controller";
 			sourceTree = "<group>";
 		};
 		BB910B4A1A9BADA2008B10BC /* Utils */ = {
@@ -448,7 +466,9 @@
 				BB34A62A1A9B989200AA2A86 /* AppDelegate.m in Sources */,
 				BB8748631ABDE72500957909 /* DropDown.m in Sources */,
 				BBBD944A1ABD72DC002F8655 /* WizzMedia+CameraPhoto.m in Sources */,
+				BB8748701ABEB88000957909 /* TransitionDetailMediaManager.swift in Sources */,
 				BBBD94481ABD72DC002F8655 /* WizzMedia.m in Sources */,
+				BB87486C1ABEB73D00957909 /* DetailMediaViewController.m in Sources */,
 				BBBD944B1ABD72DC002F8655 /* WizzMedia+CameraVideo.m in Sources */,
 				BB8748661ABE28EE00957909 /* Colors.m in Sources */,
 				BB4E448A1AA1016900760A36 /* CircleView.m in Sources */,
@@ -580,6 +600,7 @@
 			baseConfigurationReference = F44EE1E1271F095C9620B60B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -591,6 +612,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Wizzem/Wizzem-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -599,6 +622,7 @@
 			baseConfigurationReference = FEA8B635285A35CE77C00BF3 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -610,6 +634,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Wizzem/Wizzem-Bridging-Header.h";
 			};
 			name = Release;
 		};

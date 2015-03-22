@@ -11,12 +11,15 @@
 #import "DropDown.h"
 #import "Colors.h"
 #import "SliderCameraFunction.h"
+#import "DetailMediaViewController.h"
+#import "Wizzem-Swift.h"
 
 @interface MediaViewController ()
 @property (strong, nonatomic) IBOutlet DropDown *dropDownCameraOptions;
 @property (strong, nonatomic) IBOutlet UIView *cameraOptionToolBar;
 @property (strong, nonatomic) IBOutlet UIView *cameraPreview;
 @property (nonatomic, assign) CGFloat sizeBotton;
+@property (nonatomic, strong) TransitionDetailMediaManager *transitionManager;
 @end
 
 @implementation MediaViewController
@@ -34,25 +37,34 @@
 - (IBAction)flashCamera:(id)sender {
 }
 
+- (void)takeMedia {
+    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    DetailMediaViewController *detailController;
+    if (mainStoryBoard && (detailController = [mainStoryBoard instantiateViewControllerWithIdentifier:@""])) {
+        detailController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        [self presentViewController:detailController animated:true completion:nil];
+    }
+}
+
 #pragma mark -
 #pragma mark UIView cycle
 
 - (void)viewDidAppear:(BOOL)animated {
     
-    SliderCameraFunction *slider = [[SliderCameraFunction alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - self.sizeBotton, self.view.frame.size.height, self.sizeBotton)];
-    [self.view addSubview:slider];
-//    CGFloat sizeButton = self.sizeBotton - self.sizeBotton / 3;
-//    CGRect frameButton = CGRectMake(self.view.center.x - sizeButton / 2, self.view.frame.size.height - sizeButton - sizeButton / 2, sizeButton, sizeButton);
-//    
-//    frameButton.origin.y = self.view.frame.size.height - self.sizeBotton + (self.sizeBotton - sizeButton) / 2;
-//
-//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//    button.frame = frameButton;
-//    [button setImage:[[UIImage imageNamed:@"captureButton"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-//    button.backgroundColor = [UIColor clearColor];
-//    button.tintColor = [Colors greenColor];
-//    
-//    [self.view addSubview:button];
+//    SliderCameraFunction *slider = [[SliderCameraFunction alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - self.sizeBotton, self.view.frame.size.height, self.sizeBotton)];
+//    [self.view addSubview:slider];
+    CGFloat sizeButton = self.sizeBotton - self.sizeBotton / 3;
+    CGRect frameButton = CGRectMake(self.view.center.x - sizeButton / 2, self.view.frame.size.height - sizeButton - sizeButton / 2, sizeButton, sizeButton);
+    
+    frameButton.origin.y = self.view.frame.size.height - self.sizeBotton + (self.sizeBotton - sizeButton) / 2;
+
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = frameButton;
+    [button setImage:[[UIImage imageNamed:@"captureButton"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor clearColor];
+    button.tintColor = [Colors greenColor];
+    [button addTarget:self action:@selector(takeMedia) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
     
     CGRect frameDropDown = CGRectMake(0, self.view.frame.size.height - self.sizeBotton - 50, self.view.frame.size.width, 50);
     
@@ -74,6 +86,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.transitionManager = [[TransitionDetailMediaManager alloc] init];
+    self.transitioningDelegate = self.transitionManager;
     self.view.backgroundColor = [Colors grayColor];
     self.cameraOptionToolBar.backgroundColor = [Colors greenColor];
 }
