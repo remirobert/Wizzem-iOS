@@ -82,6 +82,17 @@
     }];
 }
 
+- (void)setIndexDropDownMenu:(NSInteger)index {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.dropDownButton.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self.dropDownButton setTitle:[self.elements objectAtIndex:index] forState:UIControlStateNormal];
+        [UIView animateWithDuration:0.3 animations:^{
+            self.dropDownButton.alpha = 1;
+        }];
+    }];
+}
+
 #pragma mark -
 #pragma mark init
 
@@ -141,11 +152,6 @@
     self = [super initWithFrame:frame];
     
     if (self) {
-//        UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-//        UIVisualEffectView *visualEffect = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-//        visualEffect.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
-//        [self addSubview:visualEffect];
-
         self.initialFrame = frame;
         self.isDisplayed = false;
         self.blockClickbutton = block;

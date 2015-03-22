@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
+#import <AYVibrantButton.h>
+#import "Header.h"
 #import "MediaViewController.h"
 #import "WizzMedia.h"
 #import "DropDown.h"
@@ -13,7 +15,6 @@
 #import "SliderCameraFunction.h"
 #import "DetailMediaViewController.h"
 #import "Wizzem-Swift.h"
-#import <AYVibrantButton.h>
 
 @interface MediaViewController ()
 @property (nonatomic, strong) UIView *previewCamera;
@@ -24,6 +25,7 @@
 @property (nonatomic, strong) TransitionDetailMediaManager *transitionManager;
 @property (nonatomic, strong) UIView *panelView;
 @property (nonatomic, strong) SliderCameraFunction *slider;
+@property (nonatomic, assign) MediaType currentMediaType;
 @end
 
 @implementation MediaViewController
@@ -39,17 +41,18 @@
 }
 
 - (void)takeMedia {
-    
-    [WizzMedia capturePhoto:^(UIImage *image) {
-        UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        DetailMediaViewController *detailController;
-        if (mainStoryBoard && (detailController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"detailMediaController"])) {
-            [detailController addMedia:image];
-            detailController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-            //[self.navigationController pushViewController:detailController animated:true];
-            [self presentViewController:detailController animated:true completion:nil];
-        }
-    }];
+   
+    NSLog(@"take media");
+//    [WizzMedia capturePhoto:^(UIImage *image) {
+//        UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        DetailMediaViewController *detailController;
+//        if (mainStoryBoard && (detailController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"detailMediaController"])) {
+//            [detailController addMedia:image];
+//            detailController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+//            //[self.navigationController pushViewController:detailController animated:true];
+//            [self presentViewController:detailController animated:true completion:nil];
+//        }
+//    }];
 }
 
 #pragma mark -
@@ -65,13 +68,13 @@
         
         [_panelView addSubview:visualEffect];
         
-        UIBlurEffect *Lightblur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-        UIVisualEffectView *visualEffectToolBar = [[UIVisualEffectView alloc] initWithEffect:Lightblur];
-        
-        
-        visualEffectToolBar.frame = CGRectMake(0, 0, self.cameraOptionToolBar.frame.size.width, self.cameraOptionToolBar.frame.size.height);
-        
-        [self.cameraOptionToolBar addSubview:visualEffectToolBar];
+//        UIBlurEffect *Lightblur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+//        UIVisualEffectView *visualEffectToolBar = [[UIVisualEffectView alloc] initWithEffect:Lightblur];
+//        
+//        
+//        visualEffectToolBar.frame = CGRectMake(0, 0, self.cameraOptionToolBar.frame.size.width, self.cameraOptionToolBar.frame.size.height);
+        self.cameraOptionToolBar.backgroundColor = [UIColor whiteColor];
+//        [self.cameraOptionToolBar addSubview:visualEffectToolBar];
 
         
         [self.panelView addSubview:self.slider];
@@ -93,17 +96,19 @@
 
 - (SliderCameraFunction *)slider {
     if (!_slider) {
-        _slider = [[SliderCameraFunction alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.height, self.sizeBotton - 50)];
+        _slider = [[SliderCameraFunction alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.height, self.sizeBotton - 50)
+                                         blockSelectionButton:^(NSInteger index) {
+                                             self.currentMediaType = index;
+        }];
+        for (UIButton *currentButton in _slider.buttons) {
+            [currentButton addTarget:self action:@selector(takeMedia) forControlEvents:UIControlEventTouchUpInside];
+        }
     }
     return _slider;
 }
 
 #pragma mark -
 #pragma mark UIView cycle
-
-- (void)viewDidAppear:(BOOL)animated {
-    
-}
 
 - (void)viewDidLayoutSubviews {
     self.sizeBotton = self.view.frame.size.height - (self.cameraPreview.frame.origin.y + self.cameraPreview.frame.size.height);

@@ -12,5 +12,6 @@
 
 - (instancetype)initWithFrame:(CGRect)frame contentMenu:(NSArray *)content blockClickButton:(void (^)(NSInteger index))block;
 - (void)setContentDropDown:(NSArray *)content;
+- (void)setIndexDropDownMenu:(NSInteger)index;
 
 @end

@@ -10,4 +10,8 @@
 
 @interface SliderCameraFunction : UIScrollView <UIScrollViewDelegate>
 
+@property (nonatomic, strong) NSMutableArray *buttons;
+
+- (instancetype)initWithFrame:(CGRect)frame blockSelectionButton:(void(^)(NSInteger index))block;
+
 @end
