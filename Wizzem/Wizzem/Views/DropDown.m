@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSArray *elements;
 @property (nonatomic, assign) BOOL isDisplayed;
 @property (nonatomic, assign) CGRect initialFrame;
-@property (nonatomic, assign) void(^blockClickbutton)(NSInteger index);
+@property (nonatomic, strong) void(^blockClickbutton)(NSInteger index);
 @property (nonatomic, assign) NSInteger currentSelectedElement;
 @end
 

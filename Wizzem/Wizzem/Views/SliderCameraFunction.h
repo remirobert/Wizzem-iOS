@@ -12,6 +12,6 @@
 
 @property (nonatomic, strong) NSMutableArray *buttons;
 
-- (instancetype)initWithFrame:(CGRect)frame blockSelectionButton:(void(^)(NSInteger index))block;
+- (instancetype)initWithFrame:(CGRect)frame blockSelectionButton:(void(^)(NSInteger))block;
 
 @end

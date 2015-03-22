@@ -10,7 +10,7 @@
 #import "Colors.h"
 
 @interface SliderCameraFunction()
-@property (nonatomic, assign) void (^blockSelection)(NSInteger index);
+@property (nonatomic, strong) void (^blockSelection)(NSInteger index);
 @end
 
 @implementation SliderCameraFunction
