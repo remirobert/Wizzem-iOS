@@ -175,8 +175,8 @@
             NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
             UIImage *image = [[UIImage alloc] initWithData:imageData];
             
-            image = [WizzMedia cropImage:image WithRect:CGRectMake(((image.size.width - size.width) / 2),
-                                                                   ((image.size.height - size.height) / 2), size.width, size.height)];
+            image = [WizzMedia cropImage:image WithRect:CGRectMake(((image.size.width - image.size.width) / 2),
+                                                                   ((image.size.height - image.size.width) / 2), image.size.width, image.size.width)];
             blockCompletion([self fixOrientationOfImage:image]);
         }
         else {

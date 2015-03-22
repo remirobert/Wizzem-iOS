@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailMediaViewController : UIViewController
+@interface DetailMediaViewController : UIViewController <UINavigationControllerDelegate>
+
+- (void)addMedia:(UIImage *)photo;
 
 @end

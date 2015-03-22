@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MediaViewController : UIViewController
+@interface MediaViewController : UIViewController <UINavigationControllerDelegate>
 
 @end

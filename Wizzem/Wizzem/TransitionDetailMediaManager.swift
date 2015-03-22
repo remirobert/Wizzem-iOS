@@ -16,24 +16,27 @@ class TransitionDetailMediaManager: NSObject, UIViewControllerAnimatedTransition
         let container = transitionContext.containerView()
         let screens : (from:UIViewController, to:UIViewController) = (transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!, transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!)
         
-        
+        println("passed here")
         container.addSubview(screens.from.view)
         container.addSubview(screens.to.view)
         
-        var offScreenRight = CGAffineTransformMakeTranslation(-container.frame.width, 0)
-        var offScreenLeft = CGAffineTransformMakeTranslation(container.frame.width, 0)
+        var offScreenRight = CGAffineTransformMakeTranslation(container.frame.width, 0)
+        var offScreenLeft = CGAffineTransformMakeTranslation(-container.frame.width, 0)
         if (self.presenting == false) {
-            offScreenRight = CGAffineTransformMakeTranslation(container.frame.width, 0)
-            offScreenLeft = CGAffineTransformMakeTranslation(-container.frame.width, 0)
+            offScreenRight = CGAffineTransformMakeTranslation(-container.frame.width, 0)
+            offScreenLeft = CGAffineTransformMakeTranslation(container.frame.width, 0)
         }
         screens.to.view.transform = offScreenRight
         let duration = self.transitionDuration(transitionContext)
 
+        screens.to.view.alpha = 1
+        screens.from.view.alpha = 1
         
         UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.8, options: nil, animations: {
             
             screens.from.view.transform = offScreenLeft
             screens.to.view.transform = CGAffineTransformIdentity
+            screens.from.view.alpha = 0.3
             
             }, completion: { finished in
                 

@@ -20,7 +20,7 @@
 # define PREFERRED_TIME_SCALE_MOVIE     30                              //FPS
 # define MIN_DISK_USE_MOVIE             0                               //illimited
 # define DEFAULT_AUDIO_RECORD_MOVIE     true
-# define DEFAULT_SIZE_MEDIA             [UIScreen mainScreen].bounds.size
+# define DEFAULT_SIZE_MEDIA             CGSizeMake(1080, 1080)
 # define DEFAULT_SPEED_GIF              @0.5f
 # define DEFAULT_MAX_DURATION_VIDEO     10.0f
 # define DEFAULT_RECORD_ENCODING        ENC_IMA4

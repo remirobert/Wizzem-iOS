@@ -84,6 +84,7 @@
 		BB87486B1ABEB73D00957909 /* DetailMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailMediaViewController.m; sourceTree = "<group>"; };
 		BB87486E1ABEB87F00957909 /* Wizzem-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Wizzem-Bridging-Header.h"; path = "../Wizzem-Bridging-Header.h"; sourceTree = "<group>"; };
 		BB87486F1ABEB88000957909 /* TransitionDetailMediaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionDetailMediaManager.swift; sourceTree = "<group>"; };
+		BB8748711ABEC21900957909 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		BB97E81E1AB616C3000214E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		BB97E8201AB616DD000214E1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BBBD94381ABD6B19002F8655 /* MediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaViewController.h; sourceTree = "<group>"; };
@@ -209,6 +210,7 @@
 				BB87486E1ABEB87F00957909 /* Wizzem-Bridging-Header.h */,
 				BB34A6281A9B989200AA2A86 /* AppDelegate.h */,
 				BB34A6291A9B989200AA2A86 /* AppDelegate.m */,
+				BB8748711ABEC21900957909 /* Header.h */,
 			);
 			path = Application;
 			sourceTree = "<group>";

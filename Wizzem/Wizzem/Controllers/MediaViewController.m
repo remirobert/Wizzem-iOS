@@ -38,12 +38,16 @@
 }
 
 - (void)takeMedia {
-    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    DetailMediaViewController *detailController;
-    if (mainStoryBoard && (detailController = [mainStoryBoard instantiateViewControllerWithIdentifier:@""])) {
-        detailController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-        [self presentViewController:detailController animated:true completion:nil];
-    }
+    
+    [WizzMedia capturePhoto:^(UIImage *image) {
+        UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        DetailMediaViewController *detailController;
+        if (mainStoryBoard && (detailController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"detailMediaController"])) {
+            [detailController addMedia:image];
+            detailController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+            [self presentViewController:detailController animated:true completion:nil];
+        }
+    }];
 }
 
 #pragma mark -
@@ -86,8 +90,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.transitionManager = [[TransitionDetailMediaManager alloc] init];
-    self.transitioningDelegate = self.transitionManager;
+//    self.transitionManager = [[TransitionDetailMediaManager alloc] init];
+//    self.transitioningDelegate = self.transitionManager;
     self.view.backgroundColor = [Colors grayColor];
     self.cameraOptionToolBar.backgroundColor = [Colors greenColor];
 }

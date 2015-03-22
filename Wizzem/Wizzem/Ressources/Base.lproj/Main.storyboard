@@ -219,10 +219,10 @@
             </objects>
             <point key="canvasLocation" x="267" y="450.75"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail Media View Controller-->
         <scene sceneID="2sw-It-PQv">
             <objects>
-                <viewController id="y3X-Qr-S4L" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailMediaController" id="y3X-Qr-S4L" customClass="DetailMediaViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="915-QP-Bx6"/>
                         <viewControllerLayoutGuide type="bottom" id="X2v-C4-3jV"/>
@@ -281,6 +281,9 @@
                                                 <include reference="zUo-9z-2CO"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="dismissController:" destination="y3X-Qr-S4L" eventType="touchUpInside" id="Gcv-Rd-wMJ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.49538748399999999" green="0.85809264519999995" blue="0.41624528750000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -388,6 +391,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="previewView" destination="1S0-ns-NfA" id="gkh-90-xS6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6IB-mA-JPt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
