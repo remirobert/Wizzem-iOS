@@ -13,13 +13,17 @@
 #import "SliderCameraFunction.h"
 #import "DetailMediaViewController.h"
 #import "Wizzem-Swift.h"
+#import <AYVibrantButton.h>
 
 @interface MediaViewController ()
+@property (nonatomic, strong) UIView *previewCamera;
 @property (strong, nonatomic) IBOutlet DropDown *dropDownCameraOptions;
 @property (strong, nonatomic) IBOutlet UIView *cameraOptionToolBar;
 @property (strong, nonatomic) IBOutlet UIView *cameraPreview;
 @property (nonatomic, assign) CGFloat sizeBotton;
 @property (nonatomic, strong) TransitionDetailMediaManager *transitionManager;
+@property (nonatomic, strong) UIView *panelView;
+@property (nonatomic, strong) SliderCameraFunction *slider;
 @end
 
 @implementation MediaViewController
@@ -34,9 +38,6 @@
 - (IBAction)momentAction:(id)sender {
 }
 
-- (IBAction)flashCamera:(id)sender {
-}
-
 - (void)takeMedia {
     
     [WizzMedia capturePhoto:^(UIImage *image) {
@@ -45,9 +46,56 @@
         if (mainStoryBoard && (detailController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"detailMediaController"])) {
             [detailController addMedia:image];
             detailController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+            //[self.navigationController pushViewController:detailController animated:true];
             [self presentViewController:detailController animated:true completion:nil];
         }
     }];
+}
+
+#pragma mark -
+#pragma mark lazy init
+
+- (UIView *)panelView {
+    if (!_panelView) {
+        _panelView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - self.sizeBotton, self.view.frame.size.width, self.sizeBotton)];
+        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+        UIVisualEffectView *visualEffect = [[UIVisualEffectView alloc] initWithEffect:blur];
+        
+        visualEffect.frame = CGRectMake(0, 0, self.panelView.frame.size.width, self.panelView.frame.size.height);
+        
+        [_panelView addSubview:visualEffect];
+        
+        UIBlurEffect *Lightblur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+        UIVisualEffectView *visualEffectToolBar = [[UIVisualEffectView alloc] initWithEffect:Lightblur];
+        
+        
+        visualEffectToolBar.frame = CGRectMake(0, 0, self.cameraOptionToolBar.frame.size.width, self.cameraOptionToolBar.frame.size.height);
+        
+        [self.cameraOptionToolBar addSubview:visualEffectToolBar];
+
+        
+        [self.panelView addSubview:self.slider];
+        [self.panelView addSubview:self.dropDownCameraOptions];
+    }
+    return _panelView;
+}
+
+- (DropDown *)dropDownCameraOptions {
+    if (!_dropDownCameraOptions) {
+        CGRect frameDropDown = CGRectMake(0, 0, self.view.frame.size.width, 50);
+        self.dropDownCameraOptions = [[DropDown alloc] initWithFrame:frameDropDown
+                                                         contentMenu:@[@"Photo", @"Video", @"Gif", @"Son", @"Text"]
+                                                    blockClickButton:^(NSInteger index) {
+        }];
+    }
+    return _dropDownCameraOptions;
+}
+
+- (SliderCameraFunction *)slider {
+    if (!_slider) {
+        _slider = [[SliderCameraFunction alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.height, self.sizeBotton - 50)];
+    }
+    return _slider;
 }
 
 #pragma mark -
@@ -55,45 +103,29 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     
-//    SliderCameraFunction *slider = [[SliderCameraFunction alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - self.sizeBotton, self.view.frame.size.height, self.sizeBotton)];
-//    [self.view addSubview:slider];
-    CGFloat sizeButton = self.sizeBotton - self.sizeBotton / 3;
-    CGRect frameButton = CGRectMake(self.view.center.x - sizeButton / 2, self.view.frame.size.height - sizeButton - sizeButton / 2, sizeButton, sizeButton);
-    
-    frameButton.origin.y = self.view.frame.size.height - self.sizeBotton + (self.sizeBotton - sizeButton) / 2;
-
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = frameButton;
-    [button setImage:[[UIImage imageNamed:@"captureButton"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor clearColor];
-    button.tintColor = [Colors greenColor];
-    [button addTarget:self action:@selector(takeMedia) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
-    
-    CGRect frameDropDown = CGRectMake(0, self.view.frame.size.height - self.sizeBotton - 50, self.view.frame.size.width, 50);
-    
-    self.dropDownCameraOptions = [[DropDown alloc] initWithFrame:frameDropDown contentMenu:@[@"Photo", @"Video", @"Gif", @"Son", @"Text"] blockClickButton:^(NSInteger index) {
-        
-    }];
-    [self.view addSubview:self.dropDownCameraOptions];
 }
 
 - (void)viewDidLayoutSubviews {
-    self.sizeBotton = self.view.frame.size.height - (self.cameraPreview.frame.origin.y + self.cameraPreview.frame.size.height + 50);
-    UIView *preview = [WizzMedia previewCamera:self.cameraPreview.frame.size];
-    preview.tag = 5;
+    self.sizeBotton = self.view.frame.size.height - (self.cameraPreview.frame.origin.y + self.cameraPreview.frame.size.height);
     self.cameraOptionToolBar.tag = 6;
-    [self.cameraPreview addSubview:preview];
-    [preview addSubview:[self.cameraPreview viewWithTag:1]];
-    [preview addSubview:[self.cameraPreview viewWithTag:2]];
+    
+    
+    if (self.panelView.superview == nil) {
+        [self.view addSubview:self.panelView];
+    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.previewCamera = [WizzMedia previewCamera:[UIScreen mainScreen].bounds.size];
+    [self.view addSubview:self.previewCamera];
+    
+    
+    
+    //preview.tag = 5;
 //    self.transitionManager = [[TransitionDetailMediaManager alloc] init];
 //    self.transitioningDelegate = self.transitionManager;
     self.view.backgroundColor = [Colors grayColor];
-    self.cameraOptionToolBar.backgroundColor = [Colors greenColor];
 }
 
 - (void)didReceiveMemoryWarning {

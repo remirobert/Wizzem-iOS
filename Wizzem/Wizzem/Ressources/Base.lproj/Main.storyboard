@@ -22,7 +22,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDr-vQ-DaF">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J2E-xt-pnE">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J2E-xt-pnE">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="kMQ-cJ-RPT"/>
@@ -53,7 +53,6 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.49538748399999999" green="0.85809264519999995" blue="0.41624528750000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="J2E-xt-pnE" secondAttribute="centerX" id="DgJ-8p-GTf"/>
                                     <constraint firstAttribute="width" constant="400" id="JpD-Xu-2lu"/>
@@ -110,46 +109,18 @@
                                             <action selector="rotateCamera:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Hpi-Nq-CpJ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CVr-9n-T6U">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="CVr-9n-T6U" secondAttribute="height" multiplier="1:1" id="Khh-JA-Zph"/>
-                                        </constraints>
-                                        <state key="normal" image="flash">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="Khh-JA-Zph"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="Khh-JA-Zph"/>
-                                            </mask>
-                                        </variation>
-                                        <connections>
-                                            <action selector="flashCamera:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Nq0-HB-NWL"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="3en-AV-U5V" secondAttribute="trailing" constant="8" id="5yx-kU-SbR"/>
-                                    <constraint firstAttribute="bottom" secondItem="CVr-9n-T6U" secondAttribute="bottom" constant="8" id="L7y-p2-Lpd"/>
                                     <constraint firstAttribute="width" secondItem="WPK-XB-vfG" secondAttribute="height" multiplier="1:1" id="Rh5-RQ-gsS"/>
-                                    <constraint firstItem="CVr-9n-T6U" firstAttribute="leading" secondItem="WPK-XB-vfG" secondAttribute="leading" constant="8" id="khI-fz-Ukm"/>
                                     <constraint firstAttribute="bottom" secondItem="3en-AV-U5V" secondAttribute="bottom" constant="8" id="mbM-P3-9h8"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="3en-AV-U5V"/>
-                                        <exclude reference="CVr-9n-T6U"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="Rh5-RQ-gsS"/>
-                                        <exclude reference="L7y-p2-Lpd"/>
-                                        <exclude reference="khI-fz-Ukm"/>
                                         <exclude reference="5yx-kU-SbR"/>
                                         <exclude reference="mbM-P3-9h8"/>
                                     </mask>
@@ -157,12 +128,9 @@
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="3en-AV-U5V"/>
-                                        <include reference="CVr-9n-T6U"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="Rh5-RQ-gsS"/>
-                                        <include reference="L7y-p2-Lpd"/>
-                                        <include reference="khI-fz-Ukm"/>
                                         <include reference="5yx-kU-SbR"/>
                                         <include reference="mbM-P3-9h8"/>
                                     </mask>
@@ -210,6 +178,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="lA0-jg-pr8"/>
                     <connections>
                         <outlet property="cameraOptionToolBar" destination="rDr-vQ-DaF" id="H7F-UM-no9"/>
                         <outlet property="cameraPreview" destination="WPK-XB-vfG" id="7gF-xq-tcZ"/>
@@ -217,7 +186,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="267" y="450.75"/>
+            <point key="canvasLocation" x="2103" y="450.75"/>
         </scene>
         <!--Detail Media View Controller-->
         <scene sceneID="2sw-It-PQv">
@@ -228,6 +197,7 @@
                         <viewControllerLayoutGuide type="bottom" id="X2v-C4-3jV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aQf-Xy-zCb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUQ-a6-Pu4">
@@ -364,14 +334,14 @@
                                 <exclude reference="1S0-ns-NfA"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="BwR-nI-2IO"/>
+                                <exclude reference="afb-DY-RTi"/>
                                 <exclude reference="0Cb-Nb-P6Q"/>
                                 <exclude reference="CGj-bA-JLy"/>
                                 <exclude reference="PMR-Jd-c9b"/>
                                 <exclude reference="fJb-gO-ZNO"/>
                                 <exclude reference="n0L-vQ-Urh"/>
                                 <exclude reference="tqz-pY-Ba4"/>
-                                <exclude reference="BwR-nI-2IO"/>
-                                <exclude reference="afb-DY-RTi"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -380,14 +350,14 @@
                                 <include reference="1S0-ns-NfA"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="BwR-nI-2IO"/>
+                                <include reference="afb-DY-RTi"/>
                                 <include reference="0Cb-Nb-P6Q"/>
                                 <include reference="CGj-bA-JLy"/>
                                 <include reference="PMR-Jd-c9b"/>
                                 <include reference="fJb-gO-ZNO"/>
                                 <include reference="n0L-vQ-Urh"/>
                                 <include reference="tqz-pY-Ba4"/>
-                                <include reference="BwR-nI-2IO"/>
-                                <include reference="afb-DY-RTi"/>
                             </mask>
                         </variation>
                     </view>
@@ -397,11 +367,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6IB-mA-JPt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1128" y="450.75"/>
+            <point key="canvasLocation" x="2964" y="450.75"/>
         </scene>
     </scenes>
     <resources>
-        <image name="flash" width="40" height="40"/>
         <image name="rotation" width="40" height="40"/>
     </resources>
 </document>

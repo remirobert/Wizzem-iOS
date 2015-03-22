@@ -141,6 +141,11 @@
     self = [super initWithFrame:frame];
     
     if (self) {
+//        UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+//        UIVisualEffectView *visualEffect = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+//        visualEffect.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+//        [self addSubview:visualEffect];
+
         self.initialFrame = frame;
         self.isDisplayed = false;
         self.blockClickbutton = block;
@@ -149,7 +154,7 @@
         [self.dropDownButton setTitle:[content firstObject] forState:UIControlStateNormal];
         [self addSubview:self.dropDownButton];
         [self addSubview:self.contentScrollView];
-        self.backgroundColor = [Colors grayColor];
+        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
