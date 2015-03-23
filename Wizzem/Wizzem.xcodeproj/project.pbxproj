@@ -22,6 +22,7 @@
 		BB4E448A1AA1016900760A36 /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E44891AA1016900760A36 /* CircleView.m */; };
 		BB4E448D1AA1E2D100760A36 /* TakeGifButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E448C1AA1E2D100760A36 /* TakeGifButton.m */; };
 		BB7BE9611AC0A21D008040C7 /* WizzMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7BE9601AC0A21D008040C7 /* WizzMediaModel.m */; };
+		BB7BE9641AC0A79D008040C7 /* ProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7BE9631AC0A79D008040C7 /* ProgressBar.m */; };
 		BB8748631ABDE72500957909 /* DropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8748621ABDE72500957909 /* DropDown.m */; };
 		BB8748661ABE28EE00957909 /* Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8748651ABE28EE00957909 /* Colors.m */; };
 		BB8748691ABE2DC600957909 /* SliderCameraFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8748681ABE2DC600957909 /* SliderCameraFunction.m */; };
@@ -77,6 +78,8 @@
 		BB4E448C1AA1E2D100760A36 /* TakeGifButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakeGifButton.m; sourceTree = "<group>"; };
 		BB7BE95F1AC0A21D008040C7 /* WizzMediaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WizzMediaModel.h; sourceTree = "<group>"; };
 		BB7BE9601AC0A21D008040C7 /* WizzMediaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WizzMediaModel.m; sourceTree = "<group>"; };
+		BB7BE9621AC0A79D008040C7 /* ProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressBar.h; sourceTree = "<group>"; };
+		BB7BE9631AC0A79D008040C7 /* ProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressBar.m; sourceTree = "<group>"; };
 		BB8748611ABDE72500957909 /* DropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
 		BB8748621ABDE72500957909 /* DropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDown.m; sourceTree = "<group>"; };
 		BB8748641ABE28EE00957909 /* Colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colors.h; sourceTree = "<group>"; };
@@ -257,6 +260,8 @@
 				BB4E448C1AA1E2D100760A36 /* TakeGifButton.m */,
 				BB8748671ABE2DC600957909 /* SliderCameraFunction.h */,
 				BB8748681ABE2DC600957909 /* SliderCameraFunction.m */,
+				BB7BE9621AC0A79D008040C7 /* ProgressBar.h */,
+				BB7BE9631AC0A79D008040C7 /* ProgressBar.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -479,6 +484,7 @@
 				BB87486C1ABEB73D00957909 /* DetailMediaViewController.m in Sources */,
 				BBBD944B1ABD72DC002F8655 /* WizzMedia+CameraVideo.m in Sources */,
 				BB8748661ABE28EE00957909 /* Colors.m in Sources */,
+				BB7BE9641AC0A79D008040C7 /* ProgressBar.m in Sources */,
 				BB4E448A1AA1016900760A36 /* CircleView.m in Sources */,
 				BB8748691ABE2DC600957909 /* SliderCameraFunction.m in Sources */,
 				BB34A6271A9B989200AA2A86 /* main.m in Sources */,

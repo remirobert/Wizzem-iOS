@@ -15,6 +15,7 @@
 #import "SliderCameraFunction.h"
 #import "DetailMediaViewController.h"
 #import "Wizzem-Swift.h"
+#import "WizzMediaModel.h"
 
 @interface MediaViewController ()
 @property (nonatomic, strong) UIView *previewCamera;
@@ -26,6 +27,7 @@
 @property (nonatomic, strong) UIView *panelView;
 @property (nonatomic, strong) SliderCameraFunction *slider;
 @property (nonatomic, assign) WizzMediaType currentMediaType;
+@property (nonatomic, strong) WizzMediaModel *currentModel;
 @end
 
 @implementation MediaViewController
@@ -44,6 +46,7 @@
     switch (self.currentMediaType) {
         case WizzMediaPhoto: {
             [WizzMedia capturePhoto:^(UIImage *image) {
+                self.currentModel = [[WizzMediaModel alloc] init:WizzMediaPhoto genericObjectMedia:image];
                 [self performSegueWithIdentifier:@"detailTransitionController" sender:self];
             }];
             break;
@@ -103,7 +106,7 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"detailTransitionController"]) {
-        
+        ((DetailMediaViewController *)segue.destinationViewController).mediaModel = self.currentModel;
     }
 }
 

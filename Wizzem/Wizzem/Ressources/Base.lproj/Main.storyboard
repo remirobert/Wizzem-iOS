@@ -180,9 +180,6 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="Y5t-qp-x4K"/>
-                    <connections>
-                        <outlet property="previewView" destination="1S0-ns-NfA" id="gkh-90-xS6"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6IB-mA-JPt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

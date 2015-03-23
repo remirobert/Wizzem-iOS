@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WizzMedia.h"
+#import "WizzMediaModel.h"
 
 @interface DetailMediaViewController : UIViewController <UINavigationControllerDelegate>
 
-- (void)addMedia:(UIImage *)photo;
+@property (nonatomic, strong) WizzMediaModel *mediaModel;
 
 @end
