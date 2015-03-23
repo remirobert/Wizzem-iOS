@@ -9,12 +9,4 @@
 #ifndef Wizzem_Header_h
 #define Wizzem_Header_h
 
-typedef NS_ENUM(NSInteger, MediaType) {
-    MediaImage,
-    MediaVideo,
-    MediaGif,
-    MediaSong,
-    MediaText
-};
-
 #endif

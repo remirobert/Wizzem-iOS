@@ -10,7 +10,7 @@
 #import "Colors.h"
 
 @interface SliderCameraFunction()
-@property (nonatomic, strong) void (^blockSelection)(NSInteger index);
+@property (nonatomic, strong) void (^blockSelection)(WizzMediaType index);
 @end
 
 @implementation SliderCameraFunction
@@ -60,7 +60,7 @@
     self.contentSize = CGSizeMake(indexPositionX, self.frame.size.height);
 }
 
-- (instancetype)initWithFrame:(CGRect)frame blockSelectionButton:(void(^)(NSInteger))block {
+- (instancetype)initWithFrame:(CGRect)frame blockSelectionButton:(void(^)(WizzMediaType mediaType))block {
     self = [super initWithFrame:frame];
     
     if (self) {

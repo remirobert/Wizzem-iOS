@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WizzMedia.h"
 
 @interface SliderCameraFunction : UIScrollView <UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *buttons;
 
-- (instancetype)initWithFrame:(CGRect)frame blockSelectionButton:(void(^)(NSInteger))block;
+- (instancetype)initWithFrame:(CGRect)frame blockSelectionButton:(void(^)(WizzMediaType mediaType))block;
 
 @end

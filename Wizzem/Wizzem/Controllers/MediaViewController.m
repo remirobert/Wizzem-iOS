@@ -25,7 +25,7 @@
 @property (nonatomic, strong) TransitionDetailMediaManager *transitionManager;
 @property (nonatomic, strong) UIView *panelView;
 @property (nonatomic, strong) SliderCameraFunction *slider;
-@property (nonatomic, assign) MediaType currentMediaType;
+@property (nonatomic, assign) WizzMediaType currentMediaType;
 @end
 
 @implementation MediaViewController
@@ -41,18 +41,17 @@
 }
 
 - (void)takeMedia {
-   
-    NSLog(@"take media");
-//    [WizzMedia capturePhoto:^(UIImage *image) {
-//        UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//        DetailMediaViewController *detailController;
-//        if (mainStoryBoard && (detailController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"detailMediaController"])) {
-//            [detailController addMedia:image];
-//            detailController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-//            //[self.navigationController pushViewController:detailController animated:true];
-//            [self presentViewController:detailController animated:true completion:nil];
-//        }
-//    }];
+    switch (self.currentMediaType) {
+        case WizzMediaPhoto: {
+            [WizzMedia capturePhoto:^(UIImage *image) {
+                [self performSegueWithIdentifier:@"detailTransitionController" sender:self];
+            }];
+            break;
+        }
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark -
@@ -68,15 +67,7 @@
         
         [_panelView addSubview:visualEffect];
         
-//        UIBlurEffect *Lightblur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-//        UIVisualEffectView *visualEffectToolBar = [[UIVisualEffectView alloc] initWithEffect:Lightblur];
-//        
-//        
-//        visualEffectToolBar.frame = CGRectMake(0, 0, self.cameraOptionToolBar.frame.size.width, self.cameraOptionToolBar.frame.size.height);
-        self.cameraOptionToolBar.backgroundColor = [UIColor whiteColor];
-//        [self.cameraOptionToolBar addSubview:visualEffectToolBar];
-
-        
+        self.cameraOptionToolBar.backgroundColor = [UIColor whiteColor];        
         [self.panelView addSubview:self.slider];
         [self.panelView addSubview:self.dropDownCameraOptions];
     }
@@ -97,8 +88,8 @@
 - (SliderCameraFunction *)slider {
     if (!_slider) {
         _slider = [[SliderCameraFunction alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.height, self.sizeBotton - 50)
-                                         blockSelectionButton:^(NSInteger index) {
-                                             self.currentMediaType = index;
+                                         blockSelectionButton:^(WizzMediaType mediaType) {
+                                             self.currentMediaType = mediaType;
         }];
         for (UIButton *currentButton in _slider.buttons) {
             [currentButton addTarget:self action:@selector(takeMedia) forControlEvents:UIControlEventTouchUpInside];
@@ -109,6 +100,12 @@
 
 #pragma mark -
 #pragma mark UIView cycle
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"detailTransitionController"]) {
+        
+    }
+}
 
 - (void)viewDidLayoutSubviews {
     self.sizeBotton = self.view.frame.size.height - (self.cameraPreview.frame.origin.y + self.cameraPreview.frame.size.height);
@@ -124,12 +121,6 @@
     [super viewDidLoad];
     self.previewCamera = [WizzMedia previewCamera:[UIScreen mainScreen].bounds.size];
     [self.view addSubview:self.previewCamera];
-    
-    
-    
-    //preview.tag = 5;
-//    self.transitionManager = [[TransitionDetailMediaManager alloc] init];
-//    self.transitioningDelegate = self.transitionManager;
     self.view.backgroundColor = [Colors grayColor];
 }
 

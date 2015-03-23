@@ -25,6 +25,14 @@
 # define DEFAULT_MAX_DURATION_VIDEO     10.0f
 # define DEFAULT_RECORD_ENCODING        ENC_IMA4
 
+typedef NS_ENUM(NSInteger, WizzMediaType) {
+    WizzMediaPhoto,
+    WizzMediaVideo,
+    WizzMediaGif,
+    WizzMediaSong,
+    WizzMediaText
+};
+
 typedef NS_ENUM(NSInteger, CameraDevicePosition) {
     CameraDeviceFront,
     CameraDeviceRear
