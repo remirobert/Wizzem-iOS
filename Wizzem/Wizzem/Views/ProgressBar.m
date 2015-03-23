@@ -17,7 +17,7 @@
 - (UIView *)cursor {
     if (!_cursor) {
         _cursor = [[UIView alloc] initWithFrame:CGRectZero];
-        _cursor.backgroundColor = [UIColor grayColor];
+        _cursor.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.6];
         CGRect frame = _cursor.frame;
         frame.size.height = self.frame.size.height;
     }
@@ -25,13 +25,11 @@
 }
 
 - (void)setProgress:(CGFloat)value {
-    CGFloat newValue = self.maxValue * value / 100;
+    CGFloat minValue = self.frame.size.width / self.maxValue;
+    CGFloat newValue = value * minValue;
     
-    [UIView animateWithDuration:1 delay:0.5 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionTransitionNone animations:^{
-        CGRect frame = self.cursor.frame;
-        frame.size.width = newValue;
-        self.cursor.frame = frame;
-
+    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionTransitionNone animations:^{
+        self.cursor.frame = CGRectMake(0, 0, newValue, self.frame.size.height);
     } completion:nil];
 }
 
@@ -40,6 +38,7 @@
     
     if (self) {
         self.backgroundColor = [UIColor clearColor];
+        [self addSubview:self.cursor];
     }
     return self;
 }

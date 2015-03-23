@@ -47,6 +47,7 @@
     self = [super init];
     
     if (self) {
+        self.mediaType = type;
         self.mediaData = media;
     }
     return self;

@@ -51,8 +51,11 @@
     self.buttons = [[NSMutableArray alloc] init];
     
     CGFloat indexPositionX = 0;
+    NSInteger index = 0;
     for (int indexButton = 0; indexButton < 5; indexButton++) {
         UIButton *newButton = [self createButton:indexPositionX];
+        newButton.tag = index;
+        index += 1;
         [self.buttons addObject:newButton];
         [self addSubview:newButton];
         indexPositionX += self.frame.size.width;
