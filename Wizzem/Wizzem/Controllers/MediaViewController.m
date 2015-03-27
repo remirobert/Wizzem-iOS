@@ -83,8 +83,6 @@
     if (![WizzMedia isRecordingMovie]) {
         [self.progressBar setProgress:0];
         
-        [[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(addMovie) userInfo:nil repeats:false] fire];
-        
         self.timerProgress = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(progressTime) userInfo:nil repeats:true];
         [self.timerProgress fire];
         
@@ -124,6 +122,8 @@
         }
             
         case WizzMediaVideo: {
+           // NSTimer *stopTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(addMovie) userInfo:nil repeats:false];
+           // [stopTimer fire];
             [self addMovie];
         }
             
