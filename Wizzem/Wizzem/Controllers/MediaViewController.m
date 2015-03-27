@@ -33,6 +33,8 @@
 
 @property (nonatomic, strong) NSMutableArray *photos;
 @property (nonatomic, strong) ProgressBar *progressBar;
+
+@property (nonatomic, strong) NSTimer *timerProgress;
 @end
 
 @implementation MediaViewController
@@ -69,6 +71,37 @@
     }];
 }
 
+- (void)progressTime {
+    NSLog(@"called %d", self.timerProgress.isValid);
+    
+
+    [self.progressBar setProgress:self.progressBar.currentValue + 1];
+//        [self performSelector:@selector(progressTime) withObject:nil afterDelay:1 inModes:nil];
+}
+
+- (void)addMovie {
+    if (![WizzMedia isRecordingMovie]) {
+        [self.progressBar setProgress:0];
+        
+        [[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(addMovie) userInfo:nil repeats:false] fire];
+        
+        self.timerProgress = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(progressTime) userInfo:nil repeats:true];
+        [self.timerProgress fire];
+        
+        //[self performSelector:@selector(progressTime) withObject:nil afterDelay:1 inModes:nil];
+
+        [WizzMedia startRecordMovie:^(NSURL *movie) {
+            self.currentModel = [[WizzMediaModel alloc] init:WizzMediaVideo genericObjectMedia:movie];
+            [self performSegueWithIdentifier:@"detailTransitionController" sender:self];
+        }];
+    }
+    else {
+        [self.timerProgress invalidate];
+        self.timerProgress = nil;
+        [WizzMedia stopRecordingMovie];
+    }
+}
+
 - (void)takeMedia {
     NSLog(@"take media");
     switch (self.currentMediaType) {
@@ -88,6 +121,10 @@
                 [self performSegueWithIdentifier:@"detailTransitionController" sender:self];
             }];
             break;
+        }
+            
+        case WizzMediaVideo: {
+            [self addMovie];
         }
             
         default:
@@ -178,6 +215,8 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [self.progressBar setProgress:0];
+    [self.photos removeAllObjects];
 }
 
 - (void)viewDidLayoutSubviews {

@@ -11,6 +11,7 @@
 @interface ProgressBar : UIView
 
 @property (nonatomic, assign) NSInteger maxValue;
+@property (nonatomic, assign) NSInteger currentValue;
 
 - (void)setProgress:(CGFloat)value;
 - (instancetype)initWithFrame:(CGRect)frame;

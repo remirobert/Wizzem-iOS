@@ -25,6 +25,7 @@
 }
 
 - (void)setProgress:(CGFloat)value {
+    self.currentValue = value;
     CGFloat minValue = self.frame.size.width / self.maxValue;
     CGFloat newValue = value * minValue;
     
