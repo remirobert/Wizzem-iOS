@@ -76,7 +76,6 @@
     
 
     [self.progressBar setProgress:self.progressBar.currentValue + 1];
-//        [self performSelector:@selector(progressTime) withObject:nil afterDelay:1 inModes:nil];
 }
 
 - (void)addMovie {
@@ -86,8 +85,6 @@
         self.timerProgress = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(progressTime) userInfo:nil repeats:true];
         [self.timerProgress fire];
         
-        //[self performSelector:@selector(progressTime) withObject:nil afterDelay:1 inModes:nil];
-
         [WizzMedia startRecordMovie:^(NSURL *movie) {
             self.currentModel = [[WizzMediaModel alloc] init:WizzMediaVideo genericObjectMedia:movie];
             [self performSegueWithIdentifier:@"detailTransitionController" sender:self];
@@ -122,8 +119,6 @@
         }
             
         case WizzMediaVideo: {
-           // NSTimer *stopTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(addMovie) userInfo:nil repeats:false];
-           // [stopTimer fire];
             [self addMovie];
         }
             
@@ -179,6 +174,7 @@
                                                  self.actionButton.frame = CGRectMake(self.actionButton.frame.origin.x, self.view.frame.size.height, self.actionButton.frame.size.width, self.actionButton.frame.size.height);
                                              }];
                                              [self.progressBar setProgress:0];
+                                             [self.dropDownCameraOptions setIndexDropDownMenu:mediaType];
         }];
         for (UIButton *currentButton in _slider.buttons) {
             if (currentButton.tag == WizzMediaGif) {
