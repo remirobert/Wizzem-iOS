@@ -17,10 +17,12 @@
 @interface DetailMediaViewController ()
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) FLAnimatedImageView *gifView;
-@property (nonatomic, strong) MPMoviePlayerController *moviePlayer;
+@property (nonatomic, strong) AVPlayer *player;
 @end
 
-@implementation DetailMediaViewController
+@implementation DetailMediaViewController {
+    dispatch_once_t token;
+}
 
 #pragma mark -
 #pragma mark lazy init Preview media
@@ -45,42 +47,47 @@
     return _imageView;
 }
 
-- (MPMoviePlayerController *)moviePlayer {
-    if (!_moviePlayer) {
-        _moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[self.mediaModel video]];
-        _moviePlayer.fullscreen = YES;
-        _moviePlayer.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
-        [_moviePlayer prepareToPlay];
+- (AVPlayer *)player {
+    if (!_player) {
+        AVURLAsset* asset = [AVURLAsset URLAssetWithURL:[self.mediaModel video] options:nil];
+        AVPlayerItem* item = [AVPlayerItem playerItemWithAsset:asset];
+        _player = [AVPlayer playerWithPlayerItem:item];
+        AVPlayerLayer* lay = [AVPlayerLayer playerLayerWithPlayer:_player];
+        lay.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
+        [self.view.layer addSublayer:lay];
     }
-    return _moviePlayer;
+    return _player;
 }
 
 #pragma mark -
 #pragma mark view cycle
 
 - (void)viewDidLayoutSubviews {
-    switch (self.mediaModel.mediaType) {
-        case WizzMediaPhoto:
-            [self.view addSubview:self.imageView];
-            break;
-            
-        case WizzMediaGif: {
-            [self.view addSubview:self.gifView];
+    dispatch_once(&token, ^{
+        switch (self.mediaModel.mediaType) {
+            case WizzMediaPhoto:
+                [self.view addSubview:self.imageView];
+                break;
+                
+            case WizzMediaGif: {
+                [self.view addSubview:self.gifView];
+                break;
+            }
+                
+            case WizzMediaVideo: {
+                [_player play];
+                break;
+            }
+                
+            default:
+                break;
         }
-            
-        case WizzMediaVideo: {
-             [self.moviePlayer setFullscreen:false animated:YES];
-            [self.view addSubview:_moviePlayer.view];
-            [_moviePlayer play];
-        }
-        
-        default:
-            break;
-    }
+    });
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    token = false;
 }
 
 - (void)didReceiveMemoryWarning {

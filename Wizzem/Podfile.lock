@@ -1,16 +1,19 @@
 PODS:
   - AYVibrantButton (1.0.3)
   - FLAnimatedImage (1.0.8)
+  - PBJVideoPlayer (0.2.0)
   - pop (1.0.7)
 
 DEPENDENCIES:
   - AYVibrantButton
   - FLAnimatedImage (~> 1.0)
+  - PBJVideoPlayer
   - Pop
 
 SPEC CHECKSUMS:
   AYVibrantButton: 6ef08db44395e9b819560191a048297be2e8b727
   FLAnimatedImage: 8669ace2a531fc0bb7344a6326f48c3a4c3de84b
+  PBJVideoPlayer: dd9716321afe94355c9d7f1ac342db2e73a431c6
   pop: 2f14a1ea61339767af9e66741b418c831b3844df
 
 COCOAPODS: 0.35.0
