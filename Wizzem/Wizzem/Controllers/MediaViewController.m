@@ -42,12 +42,16 @@
 #pragma mark -
 #pragma mark Action
 
+#pragma mark Camera handler
+
 - (IBAction)rotateCamera:(id)sender {
     [WizzMedia switchDeviceCamera];
 }
 
 - (IBAction)momentAction:(id)sender {
 }
+
+#pragma mark media capture
 
 - (void)addPhoto {
     if (self.photos.count == 15) {
@@ -97,6 +101,20 @@
     }
 }
 
+- (void)addSong {
+    if (![WizzMedia isRecordingSong]) {
+        [WizzMedia startRecordSong:^(NSURL *song) {
+            self.currentModel = [[WizzMediaModel alloc] init:WizzMediaSong genericObjectMedia:song];
+            [self performSegueWithIdentifier:@"detailTransitionController" sender:self];
+        }];
+    }
+    else {
+        [WizzMedia stopRecordSong];
+    }
+}
+
+#pragma take button Action
+
 - (void)takeMedia {
     NSLog(@"take media");
     switch (self.currentMediaType) {
@@ -120,6 +138,12 @@
             
         case WizzMediaVideo: {
             [self addMovie];
+            break;
+        }
+            
+        case WizzMediaSong: {
+            [self addSong];
+            break;
         }
             
         default:

@@ -18,6 +18,7 @@
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) FLAnimatedImageView *gifView;
 @property (nonatomic, strong) AVPlayer *player;
+@property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @end
 
 @implementation DetailMediaViewController {
@@ -59,6 +60,19 @@
     return _player;
 }
 
+- (AVAudioPlayer *)audioPlayer {
+    if (_audioPlayer) {
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+        [session setCategory:AVAudioSessionCategoryPlayback error:NULL];
+        [session setActive:true error:nil];
+        self.audioPlayer = [[AVAudioPlayer alloc]
+                            initWithContentsOfURL:[self.mediaModel audio]
+                            error:nil];
+        [self.audioPlayer prepareToPlay];
+    }
+    return _audioPlayer;
+}
+
 #pragma mark -
 #pragma mark view cycle
 
@@ -79,6 +93,11 @@
                 break;
             }
                 
+            case WizzMediaSong: {
+                [self.audioPlayer play];
+                break;
+            }
+            
             default:
                 break;
         }
