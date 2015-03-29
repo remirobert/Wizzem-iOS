@@ -27,10 +27,11 @@
 		BB8748661ABE28EE00957909 /* Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8748651ABE28EE00957909 /* Colors.m */; };
 		BB8748691ABE2DC600957909 /* SliderCameraFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8748681ABE2DC600957909 /* SliderCameraFunction.m */; };
 		BB87486C1ABEB73D00957909 /* DetailMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB87486B1ABEB73D00957909 /* DetailMediaViewController.m */; };
-		BB8748701ABEB88000957909 /* TransitionDetailMediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB87486F1ABEB88000957909 /* TransitionDetailMediaManager.swift */; };
+		BB8748701ABEB88000957909 /* TransitionMenuMediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB87486F1ABEB88000957909 /* TransitionMenuMediaManager.swift */; };
 		BB97E81F1AB616C4000214E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB97E81E1AB616C3000214E1 /* CoreGraphics.framework */; };
 		BB97E8211AB616DD000214E1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB97E8201AB616DD000214E1 /* QuartzCore.framework */; };
 		BB9CDEB91AC88E6D0000964E /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9CDEB81AC88E6D0000964E /* TabBarViewController.m */; };
+		BB9CDEBC1AC896230000964E /* MenuMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9CDEBB1AC896230000964E /* MenuMediaViewController.m */; };
 		BBBD943A1ABD6B19002F8655 /* MediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBD94391ABD6B19002F8655 /* MediaViewController.m */; };
 		BBBD94481ABD72DC002F8655 /* WizzMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBD943D1ABD72DC002F8655 /* WizzMedia.m */; };
 		BBBD94491ABD72DC002F8655 /* WizzMedia+CameraGif.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBD943F1ABD72DC002F8655 /* WizzMedia+CameraGif.m */; };
@@ -90,12 +91,14 @@
 		BB87486A1ABEB73D00957909 /* DetailMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailMediaViewController.h; sourceTree = "<group>"; };
 		BB87486B1ABEB73D00957909 /* DetailMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailMediaViewController.m; sourceTree = "<group>"; };
 		BB87486E1ABEB87F00957909 /* Wizzem-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Wizzem-Bridging-Header.h"; path = "../Wizzem-Bridging-Header.h"; sourceTree = "<group>"; };
-		BB87486F1ABEB88000957909 /* TransitionDetailMediaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionDetailMediaManager.swift; sourceTree = "<group>"; };
+		BB87486F1ABEB88000957909 /* TransitionMenuMediaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionMenuMediaManager.swift; sourceTree = "<group>"; };
 		BB8748711ABEC21900957909 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		BB97E81E1AB616C3000214E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		BB97E8201AB616DD000214E1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BB9CDEB71AC88E6D0000964E /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		BB9CDEB81AC88E6D0000964E /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		BB9CDEBA1AC896230000964E /* MenuMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuMediaViewController.h; sourceTree = "<group>"; };
+		BB9CDEBB1AC896230000964E /* MenuMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuMediaViewController.m; sourceTree = "<group>"; };
 		BBBD94381ABD6B19002F8655 /* MediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaViewController.h; sourceTree = "<group>"; };
 		BBBD94391ABD6B19002F8655 /* MediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaViewController.m; sourceTree = "<group>"; };
 		BBBD943C1ABD72DC002F8655 /* WizzMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WizzMedia.h; sourceTree = "<group>"; };
@@ -248,6 +251,8 @@
 				BBBD94391ABD6B19002F8655 /* MediaViewController.m */,
 				BB87486A1ABEB73D00957909 /* DetailMediaViewController.h */,
 				BB87486B1ABEB73D00957909 /* DetailMediaViewController.m */,
+				BB9CDEBA1AC896230000964E /* MenuMediaViewController.h */,
+				BB9CDEBB1AC896230000964E /* MenuMediaViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -281,7 +286,7 @@
 		BB87486D1ABEB86D00957909 /* Transition controller */ = {
 			isa = PBXGroup;
 			children = (
-				BB87486F1ABEB88000957909 /* TransitionDetailMediaManager.swift */,
+				BB87486F1ABEB88000957909 /* TransitionMenuMediaManager.swift */,
 			);
 			name = "Transition controller";
 			sourceTree = "<group>";
@@ -481,11 +486,12 @@
 				BBBD943A1ABD6B19002F8655 /* MediaViewController.m in Sources */,
 				BBBD944D1ABD72DC002F8655 /* WizzMedia+RecordSong.m in Sources */,
 				BBBD944C1ABD72DC002F8655 /* WizzMedia+FileManager.m in Sources */,
+				BB9CDEBC1AC896230000964E /* MenuMediaViewController.m in Sources */,
 				BB7BE9611AC0A21D008040C7 /* WizzMediaModel.m in Sources */,
 				BB34A62A1A9B989200AA2A86 /* AppDelegate.m in Sources */,
 				BB8748631ABDE72500957909 /* DropDown.m in Sources */,
 				BBBD944A1ABD72DC002F8655 /* WizzMedia+CameraPhoto.m in Sources */,
-				BB8748701ABEB88000957909 /* TransitionDetailMediaManager.swift in Sources */,
+				BB8748701ABEB88000957909 /* TransitionMenuMediaManager.swift in Sources */,
 				BBBD94481ABD72DC002F8655 /* WizzMedia.m in Sources */,
 				BB87486C1ABEB73D00957909 /* DetailMediaViewController.m in Sources */,
 				BBBD944B1ABD72DC002F8655 /* WizzMedia+CameraVideo.m in Sources */,

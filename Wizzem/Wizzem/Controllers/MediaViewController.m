@@ -24,7 +24,6 @@
 @property (strong, nonatomic) IBOutlet UIView *cameraOptionToolBar;
 @property (strong, nonatomic) IBOutlet UIView *cameraPreview;
 @property (nonatomic, assign) CGFloat sizeBotton;
-@property (nonatomic, strong) TransitionDetailMediaManager *transitionManager;
 @property (nonatomic, strong) UIView *panelView;
 @property (nonatomic, strong) SliderCameraFunction *slider;
 @property (nonatomic, assign) WizzMediaType currentMediaType;

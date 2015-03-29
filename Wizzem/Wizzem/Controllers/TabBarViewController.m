@@ -7,12 +7,22 @@
 //
 
 #import "TabBarViewController.h"
+#import "MenuMediaViewController.h"
 
 @interface TabBarViewController ()
-
 @end
 
 @implementation TabBarViewController
+
+- (void)displayMenuController {
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MenuMediaViewController *menuController;
+    if (mainStoryboard && (menuController = [mainStoryboard instantiateViewControllerWithIdentifier:@"menuController"])) {
+        menuController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        
+        [self presentViewController:menuController animated:true completion:nil];
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,7 +33,7 @@
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
     button.frame = CGRectMake(0.0, 0.0, 40, 40);
     button.backgroundColor = [UIColor redColor];
-    
+    [button addTarget:self action:@selector(displayMenuController) forControlEvents:UIControlEventTouchUpInside];
     
     CGFloat heightDifference = 40 - self.tabBar.frame.size.height;
     if (heightDifference < 0)
