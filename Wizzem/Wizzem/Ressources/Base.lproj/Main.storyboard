@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jXy-Hk-i2l">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jXy-Hk-i2l">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -222,7 +222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N0m-EE-UO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3993" y="1917.75"/>
+            <point key="canvasLocation" x="69" y="1851.75"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Wei-7t-DOF">
@@ -241,7 +241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ipa-xQ-DQF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3993" y="1270.5"/>
+            <point key="canvasLocation" x="69" y="1204.5"/>
         </scene>
         <!--Menu Media View Controller-->
         <scene sceneID="Sa9-Oo-gZ3">
@@ -300,7 +300,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="tn6-IV-mDF" kind="presentation" id="IaJ-M7-8hQ"/>
+                                    <segue destination="Gto-iB-dRu" kind="presentation" id="IaJ-M7-8hQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IY4-dO-AAd">
@@ -344,6 +344,9 @@
                                         <include reference="0PK-Ic-Xvz"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <segue destination="h9U-dK-nsN" kind="presentation" id="DRi-z6-Ns9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzG-0H-4Xg">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -448,7 +451,113 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8FM-IB-dax" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3075" y="490.5"/>
+            <point key="canvasLocation" x="-849" y="424.5"/>
+        </scene>
+        <!--Gif Capture View Controller-->
+        <scene sceneID="D9x-Ha-LGm">
+            <objects>
+                <viewController id="vj6-0a-WTU" customClass="GifCaptureViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7kM-m4-ZlO"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mie-gL-O19"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="06U-cy-Z3p">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jI-e1-Oo6">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.42745098040000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="skt-dr-qDq"/>
+                                </constraints>
+                                <state key="normal" title="Click et prends ton GIF">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="skt-dr-qDq"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="skt-dr-qDq"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="takePhoto:" destination="vj6-0a-WTU" eventType="touchUpInside" id="ECV-YE-GTB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTj-Th-tHH">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.49538748399999999" green="0.85809264519999995" blue="0.41624528750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="PCo-ek-e3x"/>
+                                </constraints>
+                                <state key="normal" title="Génère ton GIF">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="PCo-ek-e3x"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="PCo-ek-e3x"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="generateGif:" destination="vj6-0a-WTU" eventType="touchUpInside" id="9uL-Mg-4x7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4jI-e1-Oo6" firstAttribute="leading" secondItem="06U-cy-Z3p" secondAttribute="leadingMargin" id="0go-dt-Zgh"/>
+                            <constraint firstItem="OTj-Th-tHH" firstAttribute="leading" secondItem="06U-cy-Z3p" secondAttribute="leadingMargin" id="7jG-sJ-haQ"/>
+                            <constraint firstItem="OTj-Th-tHH" firstAttribute="trailing" secondItem="06U-cy-Z3p" secondAttribute="trailingMargin" id="Hqj-7V-xme"/>
+                            <constraint firstItem="4jI-e1-Oo6" firstAttribute="trailing" secondItem="06U-cy-Z3p" secondAttribute="trailingMargin" id="R74-Ip-v2T"/>
+                            <constraint firstItem="4jI-e1-Oo6" firstAttribute="top" secondItem="OTj-Th-tHH" secondAttribute="bottom" constant="8" id="RS5-Cy-tb0"/>
+                            <constraint firstItem="Mie-gL-O19" firstAttribute="top" secondItem="4jI-e1-Oo6" secondAttribute="bottom" constant="20" id="ZNb-ve-7fA"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="4jI-e1-Oo6"/>
+                                <exclude reference="OTj-Th-tHH"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="7jG-sJ-haQ"/>
+                                <exclude reference="Hqj-7V-xme"/>
+                                <exclude reference="0go-dt-Zgh"/>
+                                <exclude reference="R74-Ip-v2T"/>
+                                <exclude reference="RS5-Cy-tb0"/>
+                                <exclude reference="ZNb-ve-7fA"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="4jI-e1-Oo6"/>
+                                <include reference="OTj-Th-tHH"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="7jG-sJ-haQ"/>
+                                <include reference="Hqj-7V-xme"/>
+                                <include reference="0go-dt-Zgh"/>
+                                <include reference="R74-Ip-v2T"/>
+                                <include reference="RS5-Cy-tb0"/>
+                                <include reference="ZNb-ve-7fA"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="39p-j4-zR2"/>
+                    <connections>
+                        <outlet property="generateButton" destination="OTj-Th-tHH" id="Jha-Jz-GYE"/>
+                        <segue destination="I3v-0O-iT3" kind="show" identifier="detailController" id="yga-Pl-Qiw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vh9-gd-EuS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="973.5" y="-256.5"/>
         </scene>
         <!--Photo Capture View Controller-->
         <scene sceneID="xbt-p6-CWJ">
@@ -459,6 +568,7 @@
                         <viewControllerLayoutGuide type="bottom" id="fP3-1y-od3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2fH-an-cdj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Pw-dB-aeg">
@@ -487,38 +597,94 @@
                                     <action selector="dismissController:" destination="tn6-IV-mDF" eventType="touchUpInside" id="22w-3v-E4G"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pYc-d7-78Y">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.42745098040000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7Ti-pr-fjn"/>
+                                </constraints>
+                                <state key="normal" title="Click et prends ton GIF">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="7Ti-pr-fjn"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="7Ti-pr-fjn"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="takePhoto:" destination="tn6-IV-mDF" eventType="touchUpInside" id="9eg-y3-qzH"/>
+                                    <action selector="takePhoto:" destination="vj6-0a-WTU" eventType="touchUpInside" id="IlR-9K-pY3"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.16470588235294117" green="0.16078431372549018" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Pw-dB-aeg" firstAttribute="top" secondItem="k0p-to-BVb" secondAttribute="bottom" constant="-10" id="Tfq-du-zxN"/>
+                            <constraint firstItem="fP3-1y-od3" firstAttribute="top" secondItem="pYc-d7-78Y" secondAttribute="bottom" constant="20" id="2St-M3-djY"/>
+                            <constraint firstItem="pYc-d7-78Y" firstAttribute="trailing" secondItem="2fH-an-cdj" secondAttribute="trailingMargin" id="OMc-bY-Azn"/>
+                            <constraint firstItem="6Pw-dB-aeg" firstAttribute="top" secondItem="k0p-to-BVb" secondAttribute="bottom" constant="-10" id="Tfq-du-zxN">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-54"/>
+                            </constraint>
+                            <constraint firstItem="pYc-d7-78Y" firstAttribute="leading" secondItem="2fH-an-cdj" secondAttribute="leadingMargin" id="d8g-zb-zmN"/>
                             <constraint firstItem="6Pw-dB-aeg" firstAttribute="leading" secondItem="2fH-an-cdj" secondAttribute="leadingMargin" constant="-6" id="uwd-Z0-w1A"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="6Pw-dB-aeg"/>
+                                <exclude reference="pYc-d7-78Y"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Tfq-du-zxN"/>
                                 <exclude reference="uwd-Z0-w1A"/>
+                                <exclude reference="OMc-bY-Azn"/>
+                                <exclude reference="d8g-zb-zmN"/>
+                                <exclude reference="2St-M3-djY"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="6Pw-dB-aeg"/>
+                                <include reference="pYc-d7-78Y"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="Tfq-du-zxN"/>
                                 <include reference="uwd-Z0-w1A"/>
+                                <include reference="OMc-bY-Azn"/>
+                                <include reference="d8g-zb-zmN"/>
+                                <include reference="2St-M3-djY"/>
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="rca-C1-187"/>
                     <connections>
                         <outlet property="crossButton" destination="6Pw-dB-aeg" id="BBX-3l-lcy"/>
+                        <segue destination="I3v-0O-iT3" kind="show" identifier="detailController" id="wyb-by-q6e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pTc-qn-IQu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3847.5" y="159"/>
+            <point key="canvasLocation" x="973.5" y="424.5"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="XdL-cc-5kN">
+            <objects>
+                <viewController id="I3v-0O-iT3" customClass="DetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zNH-Zk-jpe"/>
+                        <viewControllerLayoutGuide type="bottom" id="b1j-ws-bKk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="o8q-uH-gUb">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W7f-2V-EJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1828.5" y="424.5"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="ksZ-as-9zM">
@@ -537,7 +703,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zmk-px-ocw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2145" y="1593"/>
+            <point key="canvasLocation" x="-1779" y="1527"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="eQa-x0-ybz">
@@ -556,7 +722,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9PS-7g-vzg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3075" y="1270.5"/>
+            <point key="canvasLocation" x="-849" y="1204.5"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="CE8-Qy-wU5">
@@ -575,11 +741,50 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QMN-Ka-L5i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3075" y="1917.75"/>
+            <point key="canvasLocation" x="-849" y="1851.75"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2uf-98-t2l">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gto-iB-dRu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ubw-rR-0kQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="tn6-IV-mDF" kind="relationship" relationship="rootViewController" id="2a3-5m-JiP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aT4-56-Dof" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="55.5" y="424.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RgY-Sb-Lam">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h9U-dK-nsN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tmf-ZM-aLE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vj6-0a-WTU" kind="relationship" relationship="rootViewController" id="9r4-ge-h5X"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kTd-ee-VdW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="55.5" y="-256.5"/>
         </scene>
     </scenes>
     <resources>
         <image name="cross" width="100" height="100"/>
         <image name="rotation" width="40" height="40"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="yga-Pl-Qiw"/>
+    </inferredMetricsTieBreakers>
 </document>

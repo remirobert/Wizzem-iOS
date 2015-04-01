@@ -1,67 +1,56 @@
 //
-//  PhotoCaptureViewController.m
+//  GifCaptureViewController.m
 //  Wizzem
 //
-//  Created by Remi Robert on 30/03/15.
+//  Created by Remi Robert on 01/04/15.
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
-#import "PhotoCaptureViewController.h"
+#import "GifCaptureViewController.h"
 #import <PBJVision/PBJGLProgram.h>
 #import <PBJGLProgram.h>
 #import <PBJVision.h>
-#import <PBJVision/PBJVision.h>
 #import "PBJStrobeView.h"
+#import <PBJVision/PBJVision.h>
+#import "MakeAnimatedImage.h"
 
-@interface PhotoCaptureViewController () <PBJVisionDelegate>
+@interface GifCaptureViewController () <PBJVisionDelegate>
 @property (nonatomic, strong) PBJStrobeView *cameraPreview;
 @property (nonatomic, strong) UIView *previewView;
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *previewLayer;
-@property (strong, nonatomic) IBOutlet UIButton *crossButton;
+@property (strong, nonatomic) IBOutlet UIButton *generateButton;
+@property (nonatomic, strong) NSMutableArray *photos;
 @end
 
-@implementation PhotoCaptureViewController
+@implementation GifCaptureViewController
 
 #pragma mark -
 #pragma mark PBJVisionDelegate
 
+- (IBAction)generateGif:(id)sender {
+    [MakeAnimatedImage makeAnimatedGif:self.photos blockCompletion:^(NSData *gif) {
+        self.currentMedia = [[WizzMediaModel alloc] init:WizzMediaGif genericObjectMedia:gif];
+        [self displayMedia];
+    }];
+}
+
 - (void)vision:(PBJVision *)vision capturedPhoto:(NSDictionary *)photoDict error:(NSError *)error {
     UIImage *img = [photoDict objectForKey:PBJVisionPhotoImageKey];
-    self.currentMedia = [[WizzMediaModel alloc] init:WizzMediaPhoto genericObjectMedia:img];
-    [self displayMedia];
+    [self.photos addObject:img];
 }
 
-#pragma mark -
-#pragma mark - IBaction
 
-- (IBAction)dismissController:(id)sender {
+- (IBAction)takePhoto:(id)sender {    
 }
-
-- (IBAction)takePhoto:(id)sender {
-    [[PBJVision sharedInstance] capturePhoto];
-}
-
-#pragma mark -
-#pragma mark UIView cycle
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[PBJVision sharedInstance] startPreview];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [[PBJVision sharedInstance] stopPreview];
-}
-
-- (void)viewDidLayoutSubviews {
-    [self.crossButton setImage:[[UIImage imageNamed:@"cross"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    self.crossButton.tintColor = [UIColor colorWithRed:0.41 green:0.4 blue:0.52 alpha:1];
-    self.crossButton.frame = CGRectMake(10, 10, 40, 40);
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.photos = [[NSMutableArray alloc] init];
     
     [PBJVision sharedInstance].delegate = self;
     [PBJVision sharedInstance].cameraMode = PBJCameraModePhoto;
@@ -76,7 +65,6 @@
     self.previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [self.previewView.layer addSublayer:self.previewLayer];
     [self.view addSubview:self.previewView];
-    
 }
 
 @end

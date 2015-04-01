@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WizzMediaModel.h"
 
 @interface MediaCaptureViewController : UIViewController
 
-- (void)displayPhoto:(UIImage *)photo;
+@property (nonatomic, strong) WizzMediaModel *currentMedia;
+
+- (void)displayMedia;
 
 @end

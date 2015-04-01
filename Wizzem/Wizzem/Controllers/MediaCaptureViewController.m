@@ -8,6 +8,7 @@
 
 #import <NYTPhotoViewer/NYTPhotosViewController.h>
 #import "MediaCaptureViewController.h"
+#import "DetailViewController.h"
 
 @interface MediaCaptureViewController () <NYTPhotosViewControllerDelegate>
 
@@ -15,14 +16,25 @@
 
 @implementation MediaCaptureViewController
 
-- (void)displayPhoto:(UIImage *)photo {
-    NYTPhotosViewController *photosViewController = [[NYTPhotosViewController alloc] initWithPhotos:@[photo]];
-    photosViewController.delegate = self;
-    [self presentViewController:photosViewController animated:YES completion:nil];
+#pragma mark -
+#pragma mark Media event management
+
+- (void)displayMedia {
+    [self performSegueWithIdentifier:@"detailController" sender:nil];
+}
+
+#pragma mark -
+#pragma mark segue management
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"detailController"]) {
+        ((DetailViewController *)segue.destinationViewController).media = self.currentMedia;
+    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor colorWithRed:0.16 green:0.16 blue:0.2 alpha:1];
 }
 
 @end

@@ -23,7 +23,6 @@
 		BB4E448D1AA1E2D100760A36 /* TakeGifButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E448C1AA1E2D100760A36 /* TakeGifButton.m */; };
 		BB6991681AC9C1D500AC5776 /* PhotoCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6991671AC9C1D500AC5776 /* PhotoCaptureViewController.m */; };
 		BB69916B1AC9DD4300AC5776 /* PBJStrobeView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB69916A1AC9DD4300AC5776 /* PBJStrobeView.m */; };
-		BB69916E1AC9E64300AC5776 /* MediaCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB69916D1AC9E64300AC5776 /* MediaCaptureViewController.m */; };
 		BB7BE9611AC0A21D008040C7 /* WizzMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7BE9601AC0A21D008040C7 /* WizzMediaModel.m */; };
 		BB7BE9641AC0A79D008040C7 /* ProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7BE9631AC0A79D008040C7 /* ProgressBar.m */; };
 		BB8748631ABDE72500957909 /* DropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8748621ABDE72500957909 /* DropDown.m */; };
@@ -42,6 +41,10 @@
 		BBBD944B1ABD72DC002F8655 /* WizzMedia+CameraVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBD94431ABD72DC002F8655 /* WizzMedia+CameraVideo.m */; };
 		BBBD944C1ABD72DC002F8655 /* WizzMedia+FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBD94451ABD72DC002F8655 /* WizzMedia+FileManager.m */; };
 		BBBD944D1ABD72DC002F8655 /* WizzMedia+RecordSong.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBD94471ABD72DC002F8655 /* WizzMedia+RecordSong.m */; };
+		BBC1DF861ACC95E400D9D8FC /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC1DF851ACC95E400D9D8FC /* DetailViewController.m */; };
+		BBC1DF891ACC986400D9D8FC /* MediaCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC1DF881ACC986400D9D8FC /* MediaCaptureViewController.m */; };
+		BBC1DF8C1ACC9AC700D9D8FC /* GifCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC1DF8B1ACC9AC700D9D8FC /* GifCaptureViewController.m */; };
+		BBC1DF8F1ACC9FA400D9D8FC /* MakeAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC1DF8E1ACC9FA400D9D8FC /* MakeAnimatedImage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,8 +88,6 @@
 		BB6991671AC9C1D500AC5776 /* PhotoCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCaptureViewController.m; sourceTree = "<group>"; };
 		BB6991691AC9DD4300AC5776 /* PBJStrobeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBJStrobeView.h; sourceTree = "<group>"; };
 		BB69916A1AC9DD4300AC5776 /* PBJStrobeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBJStrobeView.m; sourceTree = "<group>"; };
-		BB69916C1AC9E64300AC5776 /* MediaCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaCaptureViewController.h; sourceTree = "<group>"; };
-		BB69916D1AC9E64300AC5776 /* MediaCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaCaptureViewController.m; sourceTree = "<group>"; };
 		BB7BE95F1AC0A21D008040C7 /* WizzMediaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WizzMediaModel.h; sourceTree = "<group>"; };
 		BB7BE9601AC0A21D008040C7 /* WizzMediaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WizzMediaModel.m; sourceTree = "<group>"; };
 		BB7BE9621AC0A79D008040C7 /* ProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressBar.h; sourceTree = "<group>"; };
@@ -122,6 +123,14 @@
 		BBBD94451ABD72DC002F8655 /* WizzMedia+FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WizzMedia+FileManager.m"; sourceTree = "<group>"; };
 		BBBD94461ABD72DC002F8655 /* WizzMedia+RecordSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WizzMedia+RecordSong.h"; sourceTree = "<group>"; };
 		BBBD94471ABD72DC002F8655 /* WizzMedia+RecordSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WizzMedia+RecordSong.m"; sourceTree = "<group>"; };
+		BBC1DF841ACC95E400D9D8FC /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		BBC1DF851ACC95E400D9D8FC /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		BBC1DF871ACC986400D9D8FC /* MediaCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaCaptureViewController.h; sourceTree = "<group>"; };
+		BBC1DF881ACC986400D9D8FC /* MediaCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaCaptureViewController.m; sourceTree = "<group>"; };
+		BBC1DF8A1ACC9AC700D9D8FC /* GifCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifCaptureViewController.h; sourceTree = "<group>"; };
+		BBC1DF8B1ACC9AC700D9D8FC /* GifCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifCaptureViewController.m; sourceTree = "<group>"; };
+		BBC1DF8D1ACC9FA400D9D8FC /* MakeAnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeAnimatedImage.h; sourceTree = "<group>"; };
+		BBC1DF8E1ACC9FA400D9D8FC /* MakeAnimatedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeAnimatedImage.m; sourceTree = "<group>"; };
 		F44EE1E1271F095C9620B60B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		FEA8B635285A35CE77C00BF3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -300,8 +309,12 @@
 			children = (
 				BB6991661AC9C1D500AC5776 /* PhotoCaptureViewController.h */,
 				BB6991671AC9C1D500AC5776 /* PhotoCaptureViewController.m */,
-				BB69916C1AC9E64300AC5776 /* MediaCaptureViewController.h */,
-				BB69916D1AC9E64300AC5776 /* MediaCaptureViewController.m */,
+				BBC1DF8A1ACC9AC700D9D8FC /* GifCaptureViewController.h */,
+				BBC1DF8B1ACC9AC700D9D8FC /* GifCaptureViewController.m */,
+				BBC1DF841ACC95E400D9D8FC /* DetailViewController.h */,
+				BBC1DF851ACC95E400D9D8FC /* DetailViewController.m */,
+				BBC1DF871ACC986400D9D8FC /* MediaCaptureViewController.h */,
+				BBC1DF881ACC986400D9D8FC /* MediaCaptureViewController.m */,
 			);
 			name = MediaCaptureController;
 			sourceTree = "<group>";
@@ -341,6 +354,8 @@
 				BBBD94451ABD72DC002F8655 /* WizzMedia+FileManager.m */,
 				BBBD94461ABD72DC002F8655 /* WizzMedia+RecordSong.h */,
 				BBBD94471ABD72DC002F8655 /* WizzMedia+RecordSong.m */,
+				BBC1DF8D1ACC9FA400D9D8FC /* MakeAnimatedImage.h */,
+				BBC1DF8E1ACC9FA400D9D8FC /* MakeAnimatedImage.m */,
 			);
 			name = WizzMedia;
 			sourceTree = "<group>";
@@ -514,16 +529,19 @@
 				BB34A62A1A9B989200AA2A86 /* AppDelegate.m in Sources */,
 				BB8748631ABDE72500957909 /* DropDown.m in Sources */,
 				BBBD944A1ABD72DC002F8655 /* WizzMedia+CameraPhoto.m in Sources */,
-				BB69916E1AC9E64300AC5776 /* MediaCaptureViewController.m in Sources */,
 				BB8748701ABEB88000957909 /* TransitionMenuMediaManager.swift in Sources */,
 				BBBD94481ABD72DC002F8655 /* WizzMedia.m in Sources */,
+				BBC1DF8F1ACC9FA400D9D8FC /* MakeAnimatedImage.m in Sources */,
 				BB6991681AC9C1D500AC5776 /* PhotoCaptureViewController.m in Sources */,
 				BB87486C1ABEB73D00957909 /* DetailMediaViewController.m in Sources */,
 				BBBD944B1ABD72DC002F8655 /* WizzMedia+CameraVideo.m in Sources */,
 				BB69916B1AC9DD4300AC5776 /* PBJStrobeView.m in Sources */,
+				BBC1DF891ACC986400D9D8FC /* MediaCaptureViewController.m in Sources */,
 				BB8748661ABE28EE00957909 /* Colors.m in Sources */,
 				BB7BE9641AC0A79D008040C7 /* ProgressBar.m in Sources */,
 				BB4E448A1AA1016900760A36 /* CircleView.m in Sources */,
+				BBC1DF8C1ACC9AC700D9D8FC /* GifCaptureViewController.m in Sources */,
+				BBC1DF861ACC95E400D9D8FC /* DetailViewController.m in Sources */,
 				BB8748691ABE2DC600957909 /* SliderCameraFunction.m in Sources */,
 				BB34A6271A9B989200AA2A86 /* main.m in Sources */,
 				BBBD94491ABD72DC002F8655 /* WizzMedia+CameraGif.m in Sources */,
