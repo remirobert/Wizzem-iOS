@@ -10,7 +10,9 @@
 
 @interface Colors : NSObject
 
-+ (UIColor *) greenColor;
-+ (UIColor *) grayColor;
++ (UIColor *)greenColor;
++ (UIColor *)grayColor;
++ (UIColor *)backgroundMedia;
++ (UIColor *)tintMedia;
 
 @end

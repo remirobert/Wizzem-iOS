@@ -4,3 +4,5 @@ inhibit_all_warnings!
 pod 'FLAnimatedImage', '~> 1.0'
 pod 'Pop'
 pod 'AYVibrantButton'
+pod 'PBJVision'
+pod 'NYTPhotoViewer'
