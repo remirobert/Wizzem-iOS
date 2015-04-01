@@ -37,10 +37,12 @@
 - (void)vision:(PBJVision *)vision capturedPhoto:(NSDictionary *)photoDict error:(NSError *)error {
     UIImage *img = [photoDict objectForKey:PBJVisionPhotoImageKey];
     [self.photos addObject:img];
+    [[PBJVision sharedInstance] startPreview];
 }
 
 
-- (IBAction)takePhoto:(id)sender {    
+- (IBAction)takePhoto:(id)sender {
+    [[PBJVision sharedInstance] capturePhoto];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

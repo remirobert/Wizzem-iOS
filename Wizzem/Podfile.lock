@@ -2,6 +2,7 @@ PODS:
   - AYVibrantButton (1.0.3)
   - FLAnimatedImage (1.0.8)
   - NYTPhotoViewer (0.1.2)
+  - PBJVideoPlayer (0.2.0)
   - PBJVision (0.4.0)
   - pop (1.0.7)
 
@@ -9,6 +10,7 @@ DEPENDENCIES:
   - AYVibrantButton
   - FLAnimatedImage (~> 1.0)
   - NYTPhotoViewer
+  - PBJVideoPlayer
   - PBJVision
   - Pop
 
@@ -16,6 +18,7 @@ SPEC CHECKSUMS:
   AYVibrantButton: 7cc5b2c74f6f6a0a52d5b0db361a9d3b755bc448
   FLAnimatedImage: f9422f796135aff80d8c00b2afc48015bb746e24
   NYTPhotoViewer: 874a57dd833238b52ab2e8d1c827356c763626c3
+  PBJVideoPlayer: 60e8601398ba0fc1e38c431863c9222b4f4b7153
   PBJVision: aa3d9f584324e099898fb83977a815f0ecb7ba5a
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
 
