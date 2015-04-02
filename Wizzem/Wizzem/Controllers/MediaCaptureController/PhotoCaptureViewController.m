@@ -15,9 +15,6 @@
 #import "PreviewLayerMediaCaptureView.h"
 
 @interface PhotoCaptureViewController () <PBJVisionDelegate>
-@property (nonatomic, strong) PBJStrobeView *cameraPreview;
-@property (nonatomic, strong) UIView *previewView;
-@property (nonatomic, strong) AVCaptureVideoPreviewLayer *previewLayer;
 @property (nonatomic, strong) PreviewLayerMediaCaptureView *previewCamera;
 @property (strong, nonatomic) IBOutlet UIButton *crossButton;
 @end
@@ -71,16 +68,9 @@
 
     self.previewCamera = [PreviewLayerMediaCaptureView preview];
     
-//    self.previewView = [[UIView alloc] initWithFrame:CGRectZero];
-//    self.previewView.backgroundColor = [UIColor blackColor];
     CGRect previewFrame = CGRectMake(0, 60.0f, 200, 200);
-//    self.previewView.frame = previewFrame;
-//    self.previewLayer = [[PBJVision sharedInstance] previewLayer];
-//    self.previewLayer.frame = self.previewView.bounds;
-//    self.previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-//    [self.previewView.layer addSublayer:self.previewLayer];
-    [self.view addSubview:self.previewView];
-    
+    self.previewCamera.frame = previewFrame;
+    [self.view addSubview:self.previewCamera];
 }
 
 @end

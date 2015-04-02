@@ -12,12 +12,11 @@
 #import <PBJVision.h>
 #import "PBJStrobeView.h"
 #import <PBJVision/PBJVision.h>
+#import "PreviewLayerMediaCaptureView.h"
 #import "MakeAnimatedImage.h"
 
 @interface GifCaptureViewController () <PBJVisionDelegate>
-@property (nonatomic, strong) PBJStrobeView *cameraPreview;
-@property (nonatomic, strong) UIView *previewView;
-@property (nonatomic, strong) AVCaptureVideoPreviewLayer *previewLayer;
+@property (nonatomic, strong) PreviewLayerMediaCaptureView *previewCamera;
 @property (strong, nonatomic) IBOutlet UIButton *generateButton;
 @property (nonatomic, strong) NSMutableArray *photos;
 @end
@@ -61,15 +60,11 @@
     [PBJVision sharedInstance].cameraMode = PBJCameraModePhoto;
     [PBJVision sharedInstance].outputFormat = PBJOutputFormatSquare;
     
-    self.previewView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.previewView.backgroundColor = [UIColor blackColor];
+    self.previewCamera = [PreviewLayerMediaCaptureView preview];
+    
     CGRect previewFrame = CGRectMake(0, 60.0f, 200, 200);
-    self.previewView.frame = previewFrame;
-    self.previewLayer = [[PBJVision sharedInstance] previewLayer];
-    self.previewLayer.frame = self.previewView.bounds;
-    self.previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    [self.previewView.layer addSublayer:self.previewLayer];
-    [self.view addSubview:self.previewView];
+    self.previewCamera.frame = previewFrame;
+    [self.view addSubview:self.previewCamera];
 }
 
 @end
