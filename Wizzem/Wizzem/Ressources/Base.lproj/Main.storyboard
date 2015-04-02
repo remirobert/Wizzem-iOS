@@ -118,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3075" y="-1189.5"/>
+            <point key="canvasLocation" x="3993" y="-1189.5"/>
         </scene>
         <!--Detail Media View Controller-->
         <scene sceneID="2sw-It-PQv">
@@ -185,7 +185,79 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6IB-mA-JPt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3964.5" y="-1189.5"/>
+            <point key="canvasLocation" x="4882.5" y="-1189.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XPP-Z0-U8V">
+            <objects>
+                <viewController id="kTm-dP-Mc5" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vE0-MT-CNX"/>
+                        <viewControllerLayoutGuide type="bottom" id="cjX-vD-aPk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1T5-HY-CDS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gW9-iW-c71">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.49538748399999999" green="0.85809264519999995" blue="0.41624528750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="khb-jv-LBC"/>
+                                </constraints>
+                                <state key="normal" title="Génère ton GIF">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="khb-jv-LBC"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="khb-jv-LBC"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="generateGif:" destination="vj6-0a-WTU" eventType="touchUpInside" id="Poj-A8-hnS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gW9-iW-c71" firstAttribute="trailing" secondItem="1T5-HY-CDS" secondAttribute="trailingMargin" id="G8c-Dw-d4r"/>
+                            <constraint firstItem="gW9-iW-c71" firstAttribute="leading" secondItem="1T5-HY-CDS" secondAttribute="leadingMargin" id="Z7M-dM-GFy"/>
+                            <constraint firstItem="cjX-vD-aPk" firstAttribute="top" secondItem="gW9-iW-c71" secondAttribute="bottom" constant="20" id="aOK-Sh-DKb"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="gW9-iW-c71"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="aOK-Sh-DKb"/>
+                                <exclude reference="G8c-Dw-d4r"/>
+                                <exclude reference="Z7M-dM-GFy"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="gW9-iW-c71"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="aOK-Sh-DKb"/>
+                                <include reference="G8c-Dw-d4r"/>
+                                <include reference="Z7M-dM-GFy"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="jUp-No-20E"/>
+                    <connections>
+                        <segue destination="I3v-0O-iT3" kind="show" id="YPE-Ed-gCW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="br4-5X-5k6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="973.5" y="-945"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CnO-Vx-uo1">
@@ -203,7 +275,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvQ-A0-Lil" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2185.5" y="-1189.5"/>
+            <point key="canvasLocation" x="3103.5" y="-1189.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="osG-Ka-r4P">
@@ -323,6 +395,9 @@
                                         <include reference="Zqi-jw-cdR"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <segue destination="oGk-4t-vkN" kind="presentation" id="Ac4-Ev-7kV"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJR-Dk-ibl">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -451,7 +526,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8FM-IB-dax" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-849" y="424.5"/>
+            <point key="canvasLocation" x="-1137" y="-256.5"/>
         </scene>
         <!--Gif Capture View Controller-->
         <scene sceneID="D9x-Ha-LGm">
@@ -462,6 +537,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Mie-gL-O19"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="06U-cy-Z3p">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jI-e1-Oo6">
@@ -526,12 +602,12 @@
                                 <exclude reference="OTj-Th-tHH"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="7jG-sJ-haQ"/>
-                                <exclude reference="Hqj-7V-xme"/>
+                                <exclude reference="ZNb-ve-7fA"/>
                                 <exclude reference="0go-dt-Zgh"/>
                                 <exclude reference="R74-Ip-v2T"/>
                                 <exclude reference="RS5-Cy-tb0"/>
-                                <exclude reference="ZNb-ve-7fA"/>
+                                <exclude reference="7jG-sJ-haQ"/>
+                                <exclude reference="Hqj-7V-xme"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -540,12 +616,12 @@
                                 <include reference="OTj-Th-tHH"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="7jG-sJ-haQ"/>
-                                <include reference="Hqj-7V-xme"/>
+                                <include reference="ZNb-ve-7fA"/>
                                 <include reference="0go-dt-Zgh"/>
                                 <include reference="R74-Ip-v2T"/>
                                 <include reference="RS5-Cy-tb0"/>
-                                <include reference="ZNb-ve-7fA"/>
+                                <include reference="7jG-sJ-haQ"/>
+                                <include reference="Hqj-7V-xme"/>
                             </mask>
                         </variation>
                     </view>
@@ -637,11 +713,11 @@
                                 <exclude reference="pYc-d7-78Y"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="2St-M3-djY"/>
                                 <exclude reference="Tfq-du-zxN"/>
                                 <exclude reference="uwd-Z0-w1A"/>
                                 <exclude reference="OMc-bY-Azn"/>
                                 <exclude reference="d8g-zb-zmN"/>
-                                <exclude reference="2St-M3-djY"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -650,11 +726,11 @@
                                 <include reference="pYc-d7-78Y"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="2St-M3-djY"/>
                                 <include reference="Tfq-du-zxN"/>
                                 <include reference="uwd-Z0-w1A"/>
                                 <include reference="OMc-bY-Azn"/>
                                 <include reference="d8g-zb-zmN"/>
-                                <include reference="2St-M3-djY"/>
                             </mask>
                         </variation>
                     </view>
@@ -677,6 +753,7 @@
                         <viewControllerLayoutGuide type="bottom" id="b1j-ws-bKk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="o8q-uH-gUb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -684,7 +761,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W7f-2V-EJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1828.5" y="424.5"/>
+            <point key="canvasLocation" x="1990.5" y="-256.5"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="ksZ-as-9zM">
@@ -779,12 +856,30 @@
             </objects>
             <point key="canvasLocation" x="55.5" y="-256.5"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Fmp-EA-yOv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oGk-4t-vkN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NIi-6N-Nvg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kTm-dP-Mc5" kind="relationship" relationship="rootViewController" id="byT-vX-ihz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ITN-VZ-hLD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="55.5" y="-945"/>
+        </scene>
     </scenes>
     <resources>
         <image name="cross" width="100" height="100"/>
         <image name="rotation" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yga-Pl-Qiw"/>
+        <segue reference="YPE-Ed-gCW"/>
     </inferredMetricsTieBreakers>
 </document>

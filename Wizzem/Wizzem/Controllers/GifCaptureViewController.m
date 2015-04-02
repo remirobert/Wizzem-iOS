@@ -45,6 +45,9 @@
     [[PBJVision sharedInstance] capturePhoto];
 }
 
+#pragma mark -
+#pragma mark UIView cycle
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[PBJVision sharedInstance] startPreview];
