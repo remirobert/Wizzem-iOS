@@ -46,6 +46,7 @@
 		BBC1DF8C1ACC9AC700D9D8FC /* GifCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC1DF8B1ACC9AC700D9D8FC /* GifCaptureViewController.m */; };
 		BBC1DF8F1ACC9FA400D9D8FC /* MakeAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC1DF8E1ACC9FA400D9D8FC /* MakeAnimatedImage.m */; };
 		BBD794C81ACDBAF50046C1C1 /* PreviewLayerMediaCaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD794C71ACDBAF50046C1C1 /* PreviewLayerMediaCaptureView.m */; };
+		BBD794CB1ACDDC470046C1C1 /* VideoCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD794CA1ACDDC470046C1C1 /* VideoCaptureViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,8 @@
 		BBC1DF8E1ACC9FA400D9D8FC /* MakeAnimatedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeAnimatedImage.m; sourceTree = "<group>"; };
 		BBD794C61ACDBAF50046C1C1 /* PreviewLayerMediaCaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewLayerMediaCaptureView.h; sourceTree = "<group>"; };
 		BBD794C71ACDBAF50046C1C1 /* PreviewLayerMediaCaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewLayerMediaCaptureView.m; sourceTree = "<group>"; };
+		BBD794C91ACDDC470046C1C1 /* VideoCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCaptureViewController.h; sourceTree = "<group>"; };
+		BBD794CA1ACDDC470046C1C1 /* VideoCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCaptureViewController.m; sourceTree = "<group>"; };
 		F44EE1E1271F095C9620B60B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		FEA8B635285A35CE77C00BF3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -320,6 +323,8 @@
 				BBC1DF851ACC95E400D9D8FC /* DetailViewController.m */,
 				BBC1DF871ACC986400D9D8FC /* MediaCaptureViewController.h */,
 				BBC1DF881ACC986400D9D8FC /* MediaCaptureViewController.m */,
+				BBD794C91ACDDC470046C1C1 /* VideoCaptureViewController.h */,
+				BBD794CA1ACDDC470046C1C1 /* VideoCaptureViewController.m */,
 			);
 			path = MediaCaptureController;
 			sourceTree = "<group>";
@@ -536,6 +541,7 @@
 				BBBD944A1ABD72DC002F8655 /* WizzMedia+CameraPhoto.m in Sources */,
 				BB8748701ABEB88000957909 /* TransitionMenuMediaManager.swift in Sources */,
 				BBBD94481ABD72DC002F8655 /* WizzMedia.m in Sources */,
+				BBD794CB1ACDDC470046C1C1 /* VideoCaptureViewController.m in Sources */,
 				BBC1DF8F1ACC9FA400D9D8FC /* MakeAnimatedImage.m in Sources */,
 				BB6991681AC9C1D500AC5776 /* PhotoCaptureViewController.m in Sources */,
 				BB87486C1ABEB73D00957909 /* DetailMediaViewController.m in Sources */,

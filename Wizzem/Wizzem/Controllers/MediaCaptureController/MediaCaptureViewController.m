@@ -6,11 +6,10 @@
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
-#import <NYTPhotoViewer/NYTPhotosViewController.h>
 #import "MediaCaptureViewController.h"
 #import "DetailViewController.h"
 
-@interface MediaCaptureViewController () <NYTPhotosViewControllerDelegate>
+@interface MediaCaptureViewController ()
 
 @end
 

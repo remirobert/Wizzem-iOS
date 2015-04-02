@@ -187,10 +187,10 @@
             </objects>
             <point key="canvasLocation" x="4882.5" y="-1189.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Video Capture View Controller-->
         <scene sceneID="XPP-Z0-U8V">
             <objects>
-                <viewController id="kTm-dP-Mc5" sceneMemberID="viewController">
+                <viewController id="kTm-dP-Mc5" customClass="VideoCaptureViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vE0-MT-CNX"/>
                         <viewControllerLayoutGuide type="bottom" id="cjX-vD-aPk"/>
@@ -205,7 +205,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="khb-jv-LBC"/>
                                 </constraints>
-                                <state key="normal" title="Génère ton GIF">
+                                <state key="normal" title="Génère ta video">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
@@ -219,6 +219,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
+                                    <action selector="endRecording:" destination="kTm-dP-Mc5" eventType="touchUpInside" id="gUO-Yn-yYi"/>
                                     <action selector="generateGif:" destination="vj6-0a-WTU" eventType="touchUpInside" id="Poj-A8-hnS"/>
                                 </connections>
                             </button>
