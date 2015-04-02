@@ -45,6 +45,7 @@
 		BBC1DF891ACC986400D9D8FC /* MediaCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC1DF881ACC986400D9D8FC /* MediaCaptureViewController.m */; };
 		BBC1DF8C1ACC9AC700D9D8FC /* GifCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC1DF8B1ACC9AC700D9D8FC /* GifCaptureViewController.m */; };
 		BBC1DF8F1ACC9FA400D9D8FC /* MakeAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC1DF8E1ACC9FA400D9D8FC /* MakeAnimatedImage.m */; };
+		BBD794C81ACDBAF50046C1C1 /* PreviewLayerMediaCaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD794C71ACDBAF50046C1C1 /* PreviewLayerMediaCaptureView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,8 @@
 		BBC1DF8B1ACC9AC700D9D8FC /* GifCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifCaptureViewController.m; sourceTree = "<group>"; };
 		BBC1DF8D1ACC9FA400D9D8FC /* MakeAnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeAnimatedImage.h; sourceTree = "<group>"; };
 		BBC1DF8E1ACC9FA400D9D8FC /* MakeAnimatedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeAnimatedImage.m; sourceTree = "<group>"; };
+		BBD794C61ACDBAF50046C1C1 /* PreviewLayerMediaCaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewLayerMediaCaptureView.h; sourceTree = "<group>"; };
+		BBD794C71ACDBAF50046C1C1 /* PreviewLayerMediaCaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewLayerMediaCaptureView.m; sourceTree = "<group>"; };
 		F44EE1E1271F095C9620B60B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		FEA8B635285A35CE77C00BF3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -293,6 +296,8 @@
 				BB8748681ABE2DC600957909 /* SliderCameraFunction.m */,
 				BB7BE9621AC0A79D008040C7 /* ProgressBar.h */,
 				BB7BE9631AC0A79D008040C7 /* ProgressBar.m */,
+				BBD794C61ACDBAF50046C1C1 /* PreviewLayerMediaCaptureView.h */,
+				BBD794C71ACDBAF50046C1C1 /* PreviewLayerMediaCaptureView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -538,6 +543,7 @@
 				BB69916B1AC9DD4300AC5776 /* PBJStrobeView.m in Sources */,
 				BBC1DF891ACC986400D9D8FC /* MediaCaptureViewController.m in Sources */,
 				BB8748661ABE28EE00957909 /* Colors.m in Sources */,
+				BBD794C81ACDBAF50046C1C1 /* PreviewLayerMediaCaptureView.m in Sources */,
 				BB7BE9641AC0A79D008040C7 /* ProgressBar.m in Sources */,
 				BB4E448A1AA1016900760A36 /* CircleView.m in Sources */,
 				BBC1DF8C1ACC9AC700D9D8FC /* GifCaptureViewController.m in Sources */,
