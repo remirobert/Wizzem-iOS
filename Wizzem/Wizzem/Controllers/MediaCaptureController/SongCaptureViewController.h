@@ -1,5 +1,5 @@
 //
-//  VideoCaptureViewController.h
+//  SongCaptureViewController.h
 //  Wizzem
 //
 //  Created by Remi Robert on 02/04/15.
@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MediaCaptureViewController.m"
 
-@interface VideoCaptureViewController : MediaCaptureViewController
+@interface SongCaptureViewController : UIViewController
 
 @end

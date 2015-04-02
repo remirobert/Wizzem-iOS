@@ -29,11 +29,11 @@
     return (NSData *)self.mediaData;
 }
 
-- (NSURL *)video {
+- (NSString *)video {
     if (self.mediaType != WizzMediaVideo) {
         return nil;
     }
-    return (NSURL *)self.mediaData;
+    return (NSString *)self.mediaData;
 }
 
 - (NSURL *)audio {

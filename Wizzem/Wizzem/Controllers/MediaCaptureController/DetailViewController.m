@@ -7,14 +7,34 @@
 //
 
 #import "DetailViewController.h"
+#import <PBJVideoPlayerController.h>
 #import <FLAnimatedImage/FLAnimatedImageView.h>
 #import <FLAnimatedImage/FLAnimatedImage.h>
 
-@interface DetailViewController ()
+@interface DetailViewController () <PBJVideoPlayerControllerDelegate>
 @property (nonatomic, strong) FLAnimatedImageView *imageView;
+@property (nonatomic, strong) PBJVideoPlayerController *videoPlayerController;
 @end
 
 @implementation DetailViewController
+
+#pragma mark -
+#pragma mark PBJVideoPlayerControllerDelegate
+
+- (void)videoPlayerReady:(PBJVideoPlayerController *)videoPlayer {
+}
+
+- (void)videoPlayerPlaybackStateDidChange:(PBJVideoPlayerController *)videoPlayer {
+}
+
+- (void)videoPlayerBufferringStateDidChange:(PBJVideoPlayerController *)videoPlayer {
+}
+
+- (void)videoPlayerPlaybackDidEnd:(PBJVideoPlayerController *)videoPlayer {
+}
+
+- (void)videoPlayerPlaybackWillStartFromBeginning:(PBJVideoPlayerController *)videoPlayer{
+}
 
 #pragma mark -
 #pragma mark setter getter
@@ -28,6 +48,21 @@
     return _imageView;
 }
 
+- (PBJVideoPlayerController *)videoPlayerController {
+    if (!_videoPlayerController) {
+        _videoPlayerController = [[PBJVideoPlayerController alloc] init];
+        _videoPlayerController.delegate = self;
+        _videoPlayerController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
+        [self addChildViewController:_videoPlayerController];
+        [self.view addSubview:_videoPlayerController.view];
+        [_videoPlayerController didMoveToParentViewController:self];
+    }
+    return _videoPlayerController;
+}
+
+#pragma mark -
+#pragma mark visualisation media
+
 - (void)displayPhoto {
     self.imageView.image = [self.media photo];
     [self.view addSubview:self.imageView];
@@ -37,6 +72,10 @@
     FLAnimatedImage *img = [[FLAnimatedImage alloc] initWithAnimatedGIFData:[self.media gif]];
     self.imageView.animatedImage = img;
     [self.view addSubview:self.imageView];
+}
+
+- (void)displayVideo {
+    self.videoPlayerController.videoPath = [self.media video];
 }
 
 - (void) viewDidLayoutSubviews {
@@ -49,18 +88,13 @@
             [self displayGif];
             break;
             
+        case WizzMediaVideo:
+            [self displayVideo];
+            break;
             
         default:
             break;
     }
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 @end

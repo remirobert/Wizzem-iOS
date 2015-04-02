@@ -7,7 +7,7 @@
 //
 
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "VideoCaptureViewController.h"
+#import "MovieCaptureViewController.h"
 #import <PBJVision/PBJGLProgram.h>
 #import <PBJGLProgram.h>
 #import <PBJVision.h>
@@ -16,7 +16,7 @@
 #import "PreviewLayerMediaCaptureView.h"
 #import "MakeAnimatedImage.h"
 
-@interface VideoCaptureViewController () <PBJVisionDelegate, UIGestureRecognizerDelegate>
+@interface MovieCaptureViewController () <PBJVisionDelegate, UIGestureRecognizerDelegate>
 @property (nonatomic, assign) BOOL isRecording;
 @property (nonatomic, strong) PreviewLayerMediaCaptureView *previewCamera;
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
@@ -24,7 +24,7 @@
 @property (nonatomic, strong) NSMutableArray *photos;
 @end
 
-@implementation VideoCaptureViewController
+@implementation MovieCaptureViewController
 
 #pragma mark -
 #pragma mark capture delegate
@@ -37,21 +37,16 @@
         NSLog(@"encounted an error in video capture (%@)", error);
         return;
     }
-    ALAssetsLibrary *assetLibrary = [[ALAssetsLibrary alloc] init];
     NSString *videoPath = [videoDict  objectForKey:PBJVisionVideoPathKey];
-    [assetLibrary writeVideoAtPathToSavedPhotosAlbum:[NSURL URLWithString:videoPath] completionBlock:^(NSURL *assetURL, NSError *error1) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Video Saved!" message: @"Saved to the camera roll."
-                                                       delegate:self
-                                              cancelButtonTitle:nil
-                                              otherButtonTitles:@"OK", nil];
-        [alert show];
-    }];
+    self.currentMedia = [[WizzMediaModel alloc] init:WizzMediaVideo genericObjectMedia:videoPath];
+    [self displayMedia];
 }
 
 #pragma mark -
 #pragma mark capture management
 
 - (void)startRecording {
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
     self.isRecording = true;
     [[PBJVision sharedInstance] startVideoCapture];
 }
@@ -69,6 +64,8 @@
 }
 
 - (IBAction)endRecording:(id)sender {
+    NSLog(@"end recording");
+    [UIApplication sharedApplication].idleTimerDisabled = NO;
     self.isRecording = false;
     [[PBJVision sharedInstance] endVideoCapture];
 }
@@ -138,7 +135,7 @@
     self.previewCamera.frame = previewFrame;
     [self.view addSubview:self.previewCamera];
     
-    [self.view addGestureRecognizer:self.longPressGestureRecognizer];
+    [self.previewCamera addGestureRecognizer:self.longPressGestureRecognizer];
 }
 
 @end
