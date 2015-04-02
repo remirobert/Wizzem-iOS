@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MediaCaptureViewController.h"
 
-@interface SongCaptureViewController : UIViewController
+@interface SongCaptureViewController : MediaCaptureViewController
 
 @end
