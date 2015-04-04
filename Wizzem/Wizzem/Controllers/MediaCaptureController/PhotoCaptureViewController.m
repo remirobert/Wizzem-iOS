@@ -13,10 +13,11 @@
 #import <PBJVision/PBJVision.h>
 #import "PBJStrobeView.h"
 #import "PreviewLayerMediaCaptureView.h"
+#import "DismissButton.h"
 
 @interface PhotoCaptureViewController () <PBJVisionDelegate>
 @property (nonatomic, strong) PreviewLayerMediaCaptureView *previewCamera;
-@property (strong, nonatomic) IBOutlet UIButton *crossButton;
+@property (nonatomic, strong) DismissButton *crossButton;
 @end
 
 @implementation PhotoCaptureViewController
@@ -32,9 +33,6 @@
 
 #pragma mark -
 #pragma mark - IBaction
-
-- (IBAction)dismissController:(id)sender {
-}
 
 - (IBAction)takePhoto:(id)sender {
     [[PBJVision sharedInstance] capturePhoto];
@@ -53,12 +51,6 @@
     [[PBJVision sharedInstance] stopPreview];
 }
 
-- (void)viewDidLayoutSubviews {
-    [self.crossButton setImage:[[UIImage imageNamed:@"cross"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    self.crossButton.tintColor = [UIColor colorWithRed:0.41 green:0.4 blue:0.52 alpha:1];
-    self.crossButton.frame = CGRectMake(10, 10, 40, 40);
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -71,6 +63,10 @@
     CGRect previewFrame = CGRectMake(0, 60.0f, 200, 200);
     self.previewCamera.frame = previewFrame;
     [self.view addSubview:self.previewCamera];
+    
+    self.crossButton = [[DismissButton alloc] initWithFrame:CGRectMake(10, 300, 40, 40)];
+    [self.crossButton addTarget:self action:@selector(dismissMediaController) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.crossButton];
 }
 
 @end

@@ -14,5 +14,6 @@
 @property (nonatomic, strong) WizzMediaModel *currentMedia;
 
 - (void)displayMedia;
+- (void)dismissMediaController;
 
 @end

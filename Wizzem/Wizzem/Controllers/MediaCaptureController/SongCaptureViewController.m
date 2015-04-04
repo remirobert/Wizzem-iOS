@@ -8,31 +8,44 @@
 
 #import "SongCaptureViewController.h"
 #import "WizzMedia.h"
+#import "DismissButton.h"
 
 @interface SongCaptureViewController () <UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *viewRecord;
 @property (nonatomic, assign) BOOL isRecording;
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
+@property (nonatomic, strong) DismissButton *crossButton;
 @end
 
 @implementation SongCaptureViewController
 
 - (void)startRecording {
+    self.isRecording = true;
+    NSLog(@"start recording");
     [WizzMedia startRecordSong:^(NSURL *song) {
+        NSLog(@"record get song : %@", song);
         self.currentMedia = [[WizzMediaModel alloc] init:WizzMediaSong genericObjectMedia:song];
         [self displayMedia];
     }];
 }
 
 - (void)pauseRecording {
-    [WizzMedia pauseRecordSong];
+    NSLog(@"pause recording");
+    if (self.isRecording) {
+        [WizzMedia pauseRecordSong];
+    }
 }
 
 - (void)resumeRecording {
-    [WizzMedia resumeRecordSong];
+    NSLog(@"resume recording");
+    if (self.isRecording) {
+        [WizzMedia resumeRecordSong];
+    }
 }
 
 - (IBAction)stopRecording:(id)sender {
+    NSLog(@"stop recording");
+    self.isRecording = false;
     [WizzMedia stopRecordSong];
 }
 
@@ -82,6 +95,10 @@
     
     [self.viewRecord addGestureRecognizer:self.longPressGestureRecognizer];
     self.isRecording = false;
+    
+    self.crossButton = [[DismissButton alloc] initWithFrame:CGRectMake(10, 300, 40, 40)];
+    [self.crossButton addTarget:self action:@selector(dismissMediaController) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.crossButton];
 }
 
 @end

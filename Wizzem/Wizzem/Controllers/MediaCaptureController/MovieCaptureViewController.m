@@ -15,6 +15,7 @@
 #import <PBJVision/PBJVision.h>
 #import "PreviewLayerMediaCaptureView.h"
 #import "MakeAnimatedImage.h"
+#import "DismissButton.h"
 
 @interface MovieCaptureViewController () <PBJVisionDelegate, UIGestureRecognizerDelegate>
 @property (nonatomic, assign) BOOL isRecording;
@@ -22,6 +23,7 @@
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
 @property (strong, nonatomic) IBOutlet UIButton *generateButton;
 @property (nonatomic, strong) NSMutableArray *photos;
+@property (nonatomic, strong) DismissButton *crossButton;
 @end
 
 @implementation MovieCaptureViewController
@@ -136,6 +138,10 @@
     [self.view addSubview:self.previewCamera];
     
     [self.previewCamera addGestureRecognizer:self.longPressGestureRecognizer];
+    
+    self.crossButton = [[DismissButton alloc] initWithFrame:CGRectMake(10, 300, 40, 40)];
+    [self.crossButton addTarget:self action:@selector(dismissMediaController) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.crossButton];
 }
 
 @end

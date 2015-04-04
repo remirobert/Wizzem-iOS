@@ -10,7 +10,6 @@
 #import "DetailViewController.h"
 
 @interface MediaCaptureViewController ()
-
 @end
 
 @implementation MediaCaptureViewController
@@ -20,6 +19,10 @@
 
 - (void)displayMedia {
     [self performSegueWithIdentifier:@"detailController" sender:nil];
+}
+
+- (void)dismissMediaController {
+    [self.navigationController dismissViewControllerAnimated:false completion:nil];
 }
 
 #pragma mark -
@@ -33,6 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"called viewdidload");
     self.view.backgroundColor = [UIColor colorWithRed:0.16 green:0.16 blue:0.2 alpha:1];
 }
 
