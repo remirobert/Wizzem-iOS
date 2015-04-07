@@ -19,6 +19,9 @@
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+   // [self dismissMenuController:nil];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

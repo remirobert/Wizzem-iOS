@@ -10,10 +10,16 @@
 #import <PBJVideoPlayerController.h>
 #import <FLAnimatedImage/FLAnimatedImageView.h>
 #import <FLAnimatedImage/FLAnimatedImage.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import "ALAssetsLibrary+CustomPhotoAlbum.h"
+#import <MobileCoreServices/MobileCoreServices.h>
+#import "Header.h"
 
 @interface DetailViewController () <PBJVideoPlayerControllerDelegate>
 @property (nonatomic, strong) FLAnimatedImageView *imageView;
 @property (nonatomic, strong) PBJVideoPlayerController *videoPlayerController;
+@property (nonatomic, strong) AVAudioPlayer *audioPlayer;
+@property (nonatomic, strong) ALAssetsLibrary *assetsLibrary;
 @end
 
 @implementation DetailViewController
@@ -38,6 +44,13 @@
 
 #pragma mark -
 #pragma mark setter getter
+
+- (ALAssetsLibrary *)assetsLibrary {
+    if (!_assetsLibrary) {
+        _assetsLibrary = [[ALAssetsLibrary alloc] init];
+    }
+    return _assetsLibrary;
+}
 
 - (FLAnimatedImageView *)imageView {
     if (!_imageView) {
@@ -78,9 +91,37 @@
     self.videoPlayerController.videoPath = [self.media video];
 }
 
+- (void)playSong {
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryPlayback error:NULL];
+    [session setActive:true error:nil];
+    NSError *error;
+    self.audioPlayer = [[AVAudioPlayer alloc]
+                        initWithContentsOfURL:[self.media audio]
+                        error:&error];
+    
+    NSLog(@"error : %@", error);
+    if (![self.audioPlayer prepareToPlay]) {
+        NSLog(@"error prepare to play");
+    }
+    else {
+        NSLog(@"ok prepare to play");
+    }
+    if (![self.audioPlayer play]) {
+        NSLog(@"error to play");
+    }
+    else {
+        NSLog(@"ok to play");
+    }
+}
+
+#pragma mark -
+#pragma mark media model handler
+
 - (void) viewDidLayoutSubviews {
     switch (self.media.mediaType) {
         case WizzMediaPhoto:
+            [self.assetsLibrary saveImage:[self.media photo] toAlbum:ALBUM_MEDIA completion:nil failure:nil];
             [self displayPhoto];
             break;
             
@@ -89,7 +130,12 @@
             break;
             
         case WizzMediaVideo:
+            [self.assetsLibrary saveVideo:[NSURL URLWithString:[self.media video]] toAlbum:ALBUM_MEDIA completion:nil failure:nil];
             [self displayVideo];
+            break;
+            
+        case WizzMediaSong:
+            [self playSong];
             break;
             
         default:

@@ -433,7 +433,8 @@
 }
 
 + (void) stopRecordSong {
-    if ([self sharedInstace].audioRecorder && [[self sharedInstace].audioRecorder isRecording]) {
+    if ([self sharedInstace].audioRecorder) {
+        NSLog(@"stop ok");
         [[self sharedInstace].audioRecorder stop];
         [[self sharedInstace].audioSession setActive:false error:nil];
     }

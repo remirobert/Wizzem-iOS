@@ -25,6 +25,9 @@
 		BB69916B1AC9DD4300AC5776 /* PBJStrobeView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB69916A1AC9DD4300AC5776 /* PBJStrobeView.m */; };
 		BB7BE9611AC0A21D008040C7 /* WizzMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7BE9601AC0A21D008040C7 /* WizzMediaModel.m */; };
 		BB7BE9641AC0A79D008040C7 /* ProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7BE9631AC0A79D008040C7 /* ProgressBar.m */; };
+		BB8612AC1AD463E4000A257C /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8612AB1AD463E4000A257C /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
+		BB8612AE1AD4640E000A257C /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB8612AD1AD4640E000A257C /* AssetsLibrary.framework */; };
+		BB8612B01AD46416000A257C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB8612AF1AD46416000A257C /* MobileCoreServices.framework */; };
 		BB8748631ABDE72500957909 /* DropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8748621ABDE72500957909 /* DropDown.m */; };
 		BB8748661ABE28EE00957909 /* Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8748651ABE28EE00957909 /* Colors.m */; };
 		BB8748691ABE2DC600957909 /* SliderCameraFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8748681ABE2DC600957909 /* SliderCameraFunction.m */; };
@@ -90,6 +93,10 @@
 		BB7BE9601AC0A21D008040C7 /* WizzMediaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WizzMediaModel.m; sourceTree = "<group>"; };
 		BB7BE9621AC0A79D008040C7 /* ProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressBar.h; sourceTree = "<group>"; };
 		BB7BE9631AC0A79D008040C7 /* ProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressBar.m; sourceTree = "<group>"; };
+		BB8612AA1AD463E4000A257C /* ALAssetsLibrary+CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+CustomPhotoAlbum.h"; sourceTree = "<group>"; };
+		BB8612AB1AD463E4000A257C /* ALAssetsLibrary+CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+CustomPhotoAlbum.m"; sourceTree = "<group>"; };
+		BB8612AD1AD4640E000A257C /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		BB8612AF1AD46416000A257C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		BB8748611ABDE72500957909 /* DropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
 		BB8748621ABDE72500957909 /* DropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDown.m; sourceTree = "<group>"; };
 		BB8748641ABE28EE00957909 /* Colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colors.h; sourceTree = "<group>"; };
@@ -142,6 +149,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB8612B01AD46416000A257C /* MobileCoreServices.framework in Frameworks */,
+				BB8612AE1AD4640E000A257C /* AssetsLibrary.framework in Frameworks */,
 				BB97E8211AB616DD000214E1 /* QuartzCore.framework in Frameworks */,
 				BB97E81F1AB616C4000214E1 /* CoreGraphics.framework in Frameworks */,
 				BB31B6C61AB21573001DBFF3 /* MediaPlayer.framework in Frameworks */,
@@ -165,6 +174,8 @@
 		8DB8AFC1963701722EBC773E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB8612AF1AD46416000A257C /* MobileCoreServices.framework */,
+				BB8612AD1AD4640E000A257C /* AssetsLibrary.framework */,
 				BB97E8201AB616DD000214E1 /* QuartzCore.framework */,
 				BB97E81E1AB616C3000214E1 /* CoreGraphics.framework */,
 				BB34A64C1A9B98EB00AA2A86 /* AVFoundation.framework */,
@@ -335,6 +346,8 @@
 				BBBD943B1ABD72BF002F8655 /* WizzMedia */,
 				BB8748641ABE28EE00957909 /* Colors.h */,
 				BB8748651ABE28EE00957909 /* Colors.m */,
+				BB8612AA1AD463E4000A257C /* ALAssetsLibrary+CustomPhotoAlbum.h */,
+				BB8612AB1AD463E4000A257C /* ALAssetsLibrary+CustomPhotoAlbum.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -526,6 +539,7 @@
 				BB4E448D1AA1E2D100760A36 /* TakeGifButton.m in Sources */,
 				BBBD944D1ABD72DC002F8655 /* WizzMedia+RecordSong.m in Sources */,
 				BBBD944C1ABD72DC002F8655 /* WizzMedia+FileManager.m in Sources */,
+				BB8612AC1AD463E4000A257C /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				BB9CDEBC1AC896230000964E /* MenuMediaViewController.m in Sources */,
 				BB7BE9611AC0A21D008040C7 /* WizzMediaModel.m in Sources */,
 				BB34A62A1A9B989200AA2A86 /* AppDelegate.m in Sources */,
