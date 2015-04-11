@@ -25,6 +25,7 @@
 		BB69916B1AC9DD4300AC5776 /* PBJStrobeView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB69916A1AC9DD4300AC5776 /* PBJStrobeView.m */; };
 		BB7BE9611AC0A21D008040C7 /* WizzMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7BE9601AC0A21D008040C7 /* WizzMediaModel.m */; };
 		BB7BE9641AC0A79D008040C7 /* ProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7BE9631AC0A79D008040C7 /* ProgressBar.m */; };
+		BB7C37A91AD99D690080BE15 /* ShimmerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7C37A81AD99D690080BE15 /* ShimmerView.m */; };
 		BB8612AC1AD463E4000A257C /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8612AB1AD463E4000A257C /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
 		BB8612AE1AD4640E000A257C /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB8612AD1AD4640E000A257C /* AssetsLibrary.framework */; };
 		BB8612B01AD46416000A257C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB8612AF1AD46416000A257C /* MobileCoreServices.framework */; };
@@ -93,6 +94,8 @@
 		BB7BE9601AC0A21D008040C7 /* WizzMediaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WizzMediaModel.m; sourceTree = "<group>"; };
 		BB7BE9621AC0A79D008040C7 /* ProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressBar.h; sourceTree = "<group>"; };
 		BB7BE9631AC0A79D008040C7 /* ProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressBar.m; sourceTree = "<group>"; };
+		BB7C37A71AD99D690080BE15 /* ShimmerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShimmerView.h; sourceTree = "<group>"; };
+		BB7C37A81AD99D690080BE15 /* ShimmerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShimmerView.m; sourceTree = "<group>"; };
 		BB8612AA1AD463E4000A257C /* ALAssetsLibrary+CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+CustomPhotoAlbum.h"; sourceTree = "<group>"; };
 		BB8612AB1AD463E4000A257C /* ALAssetsLibrary+CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+CustomPhotoAlbum.m"; sourceTree = "<group>"; };
 		BB8612AD1AD4640E000A257C /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -302,6 +305,8 @@
 				BBD794C71ACDBAF50046C1C1 /* PreviewLayerMediaCaptureView.m */,
 				BBCFC48B1AD0785400BD5BF6 /* DismissButton.h */,
 				BBCFC48C1AD0785400BD5BF6 /* DismissButton.m */,
+				BB7C37A71AD99D690080BE15 /* ShimmerView.h */,
+				BB7C37A81AD99D690080BE15 /* ShimmerView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -560,6 +565,7 @@
 				BBC1DF861ACC95E400D9D8FC /* DetailViewController.m in Sources */,
 				BB8748691ABE2DC600957909 /* SliderCameraFunction.m in Sources */,
 				BBD794D11ACDE3660046C1C1 /* SongCaptureViewController.m in Sources */,
+				BB7C37A91AD99D690080BE15 /* ShimmerView.m in Sources */,
 				BB34A6271A9B989200AA2A86 /* main.m in Sources */,
 				BBCFC48D1AD0785400BD5BF6 /* DismissButton.m in Sources */,
 				BBBD94491ABD72DC002F8655 /* WizzMedia+CameraGif.m in Sources */,

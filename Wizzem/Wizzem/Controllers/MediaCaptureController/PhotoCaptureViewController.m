@@ -10,24 +10,24 @@
 #import <PBJVision/PBJGLProgram.h>
 #import <PBJGLProgram.h>
 #import <PBJVision.h>
-#import <PBJVision/PBJVision.h>
 #import "PBJStrobeView.h"
 #import "PreviewLayerMediaCaptureView.h"
 #import "DismissButton.h"
+#import <FastttCamera/FastttCamera.h>
 
-@interface PhotoCaptureViewController () <PBJVisionDelegate>
+@interface PhotoCaptureViewController () <FastttCameraDelegate>
 @property (nonatomic, strong) PreviewLayerMediaCaptureView *previewCamera;
 @property (nonatomic, strong) DismissButton *crossButton;
+@property (nonatomic, strong) FastttCamera *fastCamera;
 @end
 
 @implementation PhotoCaptureViewController
 
 #pragma mark -
-#pragma mark PBJVisionDelegate
+#pragma mark FAsstCamera
 
-- (void)vision:(PBJVision *)vision capturedPhoto:(NSDictionary *)photoDict error:(NSError *)error {
-    UIImage *img = [photoDict objectForKey:PBJVisionPhotoImageKey];
-    self.currentMedia = [[WizzMediaModel alloc] init:WizzMediaPhoto genericObjectMedia:img];
+- (void)cameraController:(id<FastttCameraInterface>)cameraController didFinishCapturingImage:(FastttCapturedImage *)capturedImage {
+    self.currentMedia = [[WizzMediaModel alloc] init:WizzMediaPhoto genericObjectMedia:capturedImage.fullImage];
     [self displayMedia];
 }
 
@@ -35,34 +35,31 @@
 #pragma mark - IBaction
 
 - (IBAction)takePhoto:(id)sender {
-    [[PBJVision sharedInstance] capturePhoto];
+    [self.fastCamera takePicture];
 }
 
 #pragma mark -
 #pragma mark UIView cycle
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [[PBJVision sharedInstance] startPreview];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [[PBJVision sharedInstance] stopPreview];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [PBJVision sharedInstance].delegate = self;
-    [PBJVision sharedInstance].cameraMode = PBJCameraModePhoto;
-    [PBJVision sharedInstance].outputFormat = PBJOutputFormatSquare;
-
-    self.previewCamera = [PreviewLayerMediaCaptureView preview];
+    self.fastCamera = [FastttCamera new];
+    self.fastCamera.delegate = self;
     
-    CGRect previewFrame = CGRectMake(0, 60.0f, 200, 200);
-    self.previewCamera.frame = previewFrame;
-    [self.view addSubview:self.previewCamera];
+    [self fastttAddChildViewController:self.fastCamera];
+    self.fastCamera.view.frame = CGRectMake(0, 60.0f, self.view.frame.size.width, self.view.frame.size.width);
+    
+    
+//    [PBJVision sharedInstance].delegate = self;
+//    [PBJVision sharedInstance].cameraMode = PBJCameraModePhoto;
+//    
+//
+//    self.previewCamera = [PreviewLayerMediaCaptureView preview];
+//    
+//    CGRect previewFrame = CGRectMake(0, 60.0f, 200, 200);
+//    self.previewCamera.frame = previewFrame;
+//    [self.view addSubview:self.previewCamera];
     
     self.crossButton = [[DismissButton alloc] initWithFrame:CGRectMake(10, 300, 40, 40)];
     [self.crossButton addTarget:self action:@selector(dismissMediaController) forControlEvents:UIControlEventTouchUpInside];

@@ -118,10 +118,16 @@
 #pragma mark -
 #pragma mark media model handler
 
-- (void) viewDidLayoutSubviews {
+- (void) viewDidAppear:(BOOL)animated {
     switch (self.media.mediaType) {
         case WizzMediaPhoto:
-            [self.assetsLibrary saveImage:[self.media photo] toAlbum:ALBUM_MEDIA completion:nil failure:nil];
+
+            
+            [self.assetsLibrary saveImage:[self.media photo] toAlbum:ALBUM_MEDIA completion:^(NSURL *assetURL, NSError *error) {
+                
+            } failure:^(NSError *error) {
+                
+            }];
             [self displayPhoto];
             break;
             
@@ -130,7 +136,11 @@
             break;
             
         case WizzMediaVideo:
-            [self.assetsLibrary saveVideo:[NSURL URLWithString:[self.media video]] toAlbum:ALBUM_MEDIA completion:nil failure:nil];
+            [self.assetsLibrary saveVideo:[NSURL URLWithString:[self.media video]] toAlbum:ALBUM_MEDIA completion:^(NSURL *assetURL, NSError *error) {
+                
+            } failure:^(NSError *error) {
+                
+            }];
             [self displayVideo];
             break;
             

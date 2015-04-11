@@ -35,7 +35,7 @@ class TransitionMenuMediaManager: NSObject, UIViewControllerAnimatedTransitionin
         
         
         if (self.presenting == true) {
-            (screens.to as MenuMediaViewController).cancelButton.frame.origin.y = UIScreen.mainScreen().bounds.size.height
+            (screens.to as! MenuMediaViewController).cancelButton.frame.origin.y = UIScreen.mainScreen().bounds.size.height
             screens.to.view.alpha = 0
             container.addSubview(screens.from.view)
             container.addSubview(screens.to.view)
@@ -55,14 +55,14 @@ class TransitionMenuMediaManager: NSObject, UIViewControllerAnimatedTransitionin
 
             if (self.presenting == true) {
                 screens.to.view.alpha = 1
-                (screens.to as MenuMediaViewController).cancelButton.frame.origin.y = UIScreen.mainScreen().bounds.size.height - 50
+                (screens.to as! MenuMediaViewController).cancelButton.frame.origin.y = UIScreen.mainScreen().bounds.size.height - 50
 //                screens.to.view.alpha = 1
 //                screens.from.view.alpha = 1
                 //self.offScreenAnimation(screens.to)
             }
             else {
                 screens.from.view.alpha = 0
-                (screens.from as MenuMediaViewController).cancelButton.frame.origin.y = UIScreen.mainScreen().bounds.size.height
+                (screens.from as! MenuMediaViewController).cancelButton.frame.origin.y = UIScreen.mainScreen().bounds.size.height
 //                screens.from.view.alpha = 0
 //                screens.to.view.alpha = 1
                 //self.onScreenAnimation(screens.from)

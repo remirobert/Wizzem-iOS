@@ -11,5 +11,6 @@
 @interface MakeAnimatedImage : NSObject
 
 + (void) makeAnimatedGif:(NSArray *)images blockCompletion:(void(^)(NSData *gif))completionBlock;
++(void)saveGIFToPhotoAlbumFromImages:(NSArray*)images WithCallbackBlock:(void (^)(void))callbackBlock;
 
 @end
