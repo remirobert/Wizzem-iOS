@@ -8,11 +8,30 @@
 
 #import "MediaCaptureViewController.h"
 #import "DetailViewController.h"
+#import "Colors.h"
 
 @interface MediaCaptureViewController ()
+@property (nonatomic, strong) UIView *navigationBar;
 @end
 
 @implementation MediaCaptureViewController
+
+#pragma mark -
+#pragma mark setter getter
+
+- (UIView *)navigationBar {
+    if (!_navigationBar) {
+        _navigationBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
+        _navigationBar.backgroundColor = [Colors greenColor];
+        UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        closeButton.frame = CGRectMake(10, 10, 40, 40);
+        [closeButton setImage:[[UIImage imageNamed:@"cross"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        closeButton.tintColor = [Colors grayColor];
+        [closeButton addTarget:self action:@selector(dismissMediaController) forControlEvents:UIControlEventTouchUpInside];
+        [_navigationBar addSubview:closeButton];
+    }
+    return _navigationBar;
+}
 
 #pragma mark -
 #pragma mark Media event management
@@ -34,9 +53,17 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [[self navigationController] setNavigationBarHidden:YES animated:false];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithRed:0.16 green:0.16 blue:0.2 alpha:1];
+    self.view.backgroundColor = [Colors grayColor];
+    
+    [[self navigationController] setNavigationBarHidden:YES animated:false];
+    
+    [self.view addSubview:self.navigationBar];
 }
 
 @end

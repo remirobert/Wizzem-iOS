@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ShimmerView : NSObject
+@interface ShimmerView : UIView
 
-+ (UIView *)instance:(NSString *)text;
+@property (nonatomic, strong, setter=setText:) NSString *text;
+@property (nonatomic, strong, setter=setTextColor:) UIColor *textColor;
 
 @end

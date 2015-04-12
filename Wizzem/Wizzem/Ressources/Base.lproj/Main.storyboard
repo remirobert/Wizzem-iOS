@@ -423,63 +423,29 @@
                                     <action selector="dismissController:" destination="tn6-IV-mDF" eventType="touchUpInside" id="22w-3v-E4G"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pYc-d7-78Y">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.95686274510000002" green="0.42745098040000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="7Ti-pr-fjn"/>
-                                </constraints>
-                                <state key="normal" title="click et prends ta photo">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="7Ti-pr-fjn"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="7Ti-pr-fjn"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="takePhoto:" destination="tn6-IV-mDF" eventType="touchUpInside" id="9eg-y3-qzH"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="fP3-1y-od3" firstAttribute="top" secondItem="pYc-d7-78Y" secondAttribute="bottom" constant="20" id="2St-M3-djY"/>
-                            <constraint firstItem="pYc-d7-78Y" firstAttribute="trailing" secondItem="2fH-an-cdj" secondAttribute="trailingMargin" id="OMc-bY-Azn"/>
                             <constraint firstItem="6Pw-dB-aeg" firstAttribute="top" secondItem="k0p-to-BVb" secondAttribute="bottom" constant="-10" id="Tfq-du-zxN">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-54"/>
                             </constraint>
-                            <constraint firstItem="pYc-d7-78Y" firstAttribute="leading" secondItem="2fH-an-cdj" secondAttribute="leadingMargin" id="d8g-zb-zmN"/>
                             <constraint firstItem="6Pw-dB-aeg" firstAttribute="leading" secondItem="2fH-an-cdj" secondAttribute="leadingMargin" constant="-6" id="uwd-Z0-w1A"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="6Pw-dB-aeg"/>
-                                <exclude reference="pYc-d7-78Y"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="2St-M3-djY"/>
                                 <exclude reference="Tfq-du-zxN"/>
                                 <exclude reference="uwd-Z0-w1A"/>
-                                <exclude reference="OMc-bY-Azn"/>
-                                <exclude reference="d8g-zb-zmN"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="6Pw-dB-aeg"/>
-                                <include reference="pYc-d7-78Y"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="2St-M3-djY"/>
                                 <include reference="Tfq-du-zxN"/>
                                 <include reference="uwd-Z0-w1A"/>
-                                <include reference="OMc-bY-Azn"/>
-                                <include reference="d8g-zb-zmN"/>
                             </mask>
                         </variation>
                     </view>

@@ -14,9 +14,11 @@
 #import "PreviewLayerMediaCaptureView.h"
 #import "DismissButton.h"
 #import <FastttCamera/FastttCamera.h>
-#import "ShimmerView.h"
 #import <FBShimmeringView.h>
 #import <FBShimmering.h>
+#import "Colors.h"
+#import "ShimmerView.h"
+#import "MenuMediaViewController.h"
 
 @interface PhotoCaptureViewController () <FastttCameraDelegate>
 @property (nonatomic, strong) PreviewLayerMediaCaptureView *previewCamera;
@@ -37,8 +39,31 @@
 #pragma mark -
 #pragma mark - IBaction
 
-- (IBAction)takePhoto:(id)sender {
+- (IBAction)takePhoto {
     [self.fastCamera takePicture];
+}
+
+- (void)changeRotationCamera {
+    if (self.fastCamera.cameraDevice == FastttCameraDeviceRear) {
+        if ([FastttCamera isCameraDeviceAvailable:FastttCameraDeviceFront]) {
+            [self.fastCamera setCameraDevice:FastttCameraDeviceFront];
+        }
+    }
+    else {
+        if ([FastttCamera isCameraDeviceAvailable:FastttCameraDeviceRear]) {
+            [self.fastCamera setCameraDevice:FastttCameraDeviceRear];
+        }
+    }
+}
+
+- (void)selectMedia {
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MenuMediaViewController *menuController;
+    if (mainStoryboard && (menuController = [mainStoryboard instantiateViewControllerWithIdentifier:@"menuController"])) {
+        menuController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        
+        [self presentViewController:menuController animated:true completion:nil];
+    }
 }
 
 #pragma mark -
@@ -51,36 +76,46 @@
     self.fastCamera.delegate = self;
     
     [self fastttAddChildViewController:self.fastCamera];
-    self.fastCamera.view.frame = CGRectMake(0, 60.0f, self.view.frame.size.width, self.view.frame.size.width);
+    self.fastCamera.view.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.width);
     
+    UIButton *rotationButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    rotationButton.frame = CGRectMake(self.view.frame.size.width - 50, self.view.frame.size.height / 2 - 50 + 64, 40, 40);
+    [rotationButton setImage:[UIImage imageNamed:@"rotation"] forState:UIControlStateNormal];
+    [rotationButton addTarget:self action:@selector(changeRotationCamera) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:rotationButton];
     
-    FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.view.bounds];
+    ShimmerView *shimmeringView = [[ShimmerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.width + 64, self.view.frame.size.width, self.view.frame.size.height - (self.view.frame.size.width + 64))];
+    shimmeringView.text = @"Tap to take a picture";
+    shimmeringView.textColor = [Colors greenColor];
     [self.view addSubview:shimmeringView];
     
-    UILabel *loadingLabel = [[UILabel alloc] initWithFrame:shimmeringView.bounds];
-    loadingLabel.textAlignment = NSTextAlignmentCenter;
-    loadingLabel.textColor = [UIColor whiteColor];
-    loadingLabel.font = [UIFont boldSystemFontOfSize:20];
-    loadingLabel.text = @"Tap to shoot";
-    shimmeringView.contentView = loadingLabel;
-    shimmeringView.shimmeringAnimationOpacity = 0.1;
-    shimmeringView.shimmeringSpeed = 300;
-    
-    // Start shimmering.
-    shimmeringView.shimmering = YES;
-//    [PBJVision sharedInstance].delegate = self;
-//    [PBJVision sharedInstance].cameraMode = PBJCameraModePhoto;
+//    FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.width + 64, self.view.frame.size.width, self.view.frame.size.height - (self.view.frame.size.width + 64))];
+//    [self.view addSubview:shimmeringView];
 //    
-//
-//    self.previewCamera = [PreviewLayerMediaCaptureView preview];
-//    
-//    CGRect previewFrame = CGRectMake(0, 60.0f, 200, 200);
-//    self.previewCamera.frame = previewFrame;
-//    [self.view addSubview:self.previewCamera];
+//    UILabel *loadingLabel = [[UILabel alloc] initWithFrame:shimmeringView.bounds];
+//    loadingLabel.textAlignment = NSTextAlignmentCenter;
+//    loadingLabel.textColor = [Colors greenColor];
+//    loadingLabel.font = [UIFont boldSystemFontOfSize:20];
+//    loadingLabel.text = @"Tap to take a picture";
+//    shimmeringView.contentView = loadingLabel;
+//    shimmeringView.shimmeringAnimationOpacity = 0.1;
+//    shimmeringView.shimmeringSpeed = 300;
+//    shimmeringView.shimmering = YES;
     
-    self.crossButton = [[DismissButton alloc] initWithFrame:CGRectMake(10, 300, 40, 40)];
-    [self.crossButton addTarget:self action:@selector(dismissMediaController) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.crossButton];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(takePhoto)];
+    tapGesture.numberOfTapsRequired = 1;
+    [shimmeringView addGestureRecognizer:tapGesture];
+    
+    
+    UIButton *mediaButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    mediaButton.frame = CGRectMake(self.view.frame.size.width / 2 - 15, self.view.frame.size.height - 40, 30, 30);
+    mediaButton.backgroundColor = [UIColor redColor];
+    [mediaButton addTarget:self action:@selector(selectMedia) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:mediaButton];
+
+//    self.crossButton = [[DismissButton alloc] initWithFrame:CGRectMake(10, 300, 40, 40)];
+//    [self.crossButton addTarget:self action:@selector(dismissMediaController) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:self.crossButton];    
 }
 
 @end

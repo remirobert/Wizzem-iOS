@@ -14,15 +14,21 @@
 #import "ALAssetsLibrary+CustomPhotoAlbum.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "Header.h"
+#import "Colors.h"
 
 @interface DetailViewController () <PBJVideoPlayerControllerDelegate>
 @property (nonatomic, strong) FLAnimatedImageView *imageView;
 @property (nonatomic, strong) PBJVideoPlayerController *videoPlayerController;
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @property (nonatomic, strong) ALAssetsLibrary *assetsLibrary;
+@property (nonatomic, strong) UIView *navigationBar;
 @end
 
 @implementation DetailViewController
+
+- (void)dismissController {
+    [self.navigationController popToRootViewControllerAnimated:true];
+}
 
 #pragma mark -
 #pragma mark PBJVideoPlayerControllerDelegate
@@ -45,6 +51,23 @@
 #pragma mark -
 #pragma mark setter getter
 
+- (UIView *)navigationBar {
+    if (!_navigationBar) {
+        _navigationBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
+        _navigationBar.backgroundColor = [Colors greenColor];
+        
+        UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
+        [back setImage:[[UIImage imageNamed:@"back"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        [back addTarget:self action:@selector(dismissController) forControlEvents:UIControlEventTouchUpInside];
+        back.frame = CGRectMake(10, 10, 40, 40);
+        back.tintColor = [Colors grayColor];
+        [_navigationBar addSubview:back];
+    }
+    return _navigationBar;
+}
+
+#pragma mark media
+
 - (ALAssetsLibrary *)assetsLibrary {
     if (!_assetsLibrary) {
         _assetsLibrary = [[ALAssetsLibrary alloc] init];
@@ -54,7 +77,7 @@
 
 - (FLAnimatedImageView *)imageView {
     if (!_imageView) {
-        _imageView = [[FLAnimatedImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width,
+        _imageView = [[FLAnimatedImageView alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width,
                                                                            [UIScreen mainScreen].bounds.size.width)];
         _imageView.backgroundColor = [UIColor whiteColor];
     }
@@ -65,7 +88,7 @@
     if (!_videoPlayerController) {
         _videoPlayerController = [[PBJVideoPlayerController alloc] init];
         _videoPlayerController.delegate = self;
-        _videoPlayerController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
+        _videoPlayerController.view.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.width);
         [self addChildViewController:_videoPlayerController];
         [self.view addSubview:_videoPlayerController.view];
         [_videoPlayerController didMoveToParentViewController:self];
@@ -151,6 +174,14 @@
         default:
             break;
     }
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.navigationController.interactivePopGestureRecognizer setDelegate:nil];
+    [[self navigationController] setNavigationBarHidden:YES animated:false];
+    self.view.backgroundColor = [Colors grayColor];
+    [self.view addSubview:self.navigationBar];
 }
 
 @end
