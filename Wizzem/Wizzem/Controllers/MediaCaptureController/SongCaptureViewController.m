@@ -9,12 +9,15 @@
 #import "SongCaptureViewController.h"
 #import "WizzMedia.h"
 #import "DismissButton.h"
+#import "ShimmerView.h"
+#import "Colors.h"
 
 @interface SongCaptureViewController () <UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *viewRecord;
 @property (nonatomic, assign) BOOL isRecording;
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
 @property (nonatomic, strong) DismissButton *crossButton;
+@property (nonatomic, strong) ShimmerView *shimmerLabel;
 @end
 
 @implementation SongCaptureViewController
@@ -22,6 +25,7 @@
 - (void)startRecording {
     self.isRecording = true;
     NSLog(@"start recording");
+    self.shimmerLabel.text = @"Recording...";
     [WizzMedia startRecordSong:^(NSURL *song) {
         NSLog(@"record get song : %@", song);
         self.currentMedia = [[WizzMediaModel alloc] init:WizzMediaSong genericObjectMedia:song];
@@ -31,6 +35,7 @@
 
 - (void)pauseRecording {
     NSLog(@"pause recording");
+    self.shimmerLabel.text = @"Press to record";
     if (self.isRecording) {
         [WizzMedia pauseRecordSong];
     }
@@ -38,6 +43,7 @@
 
 - (void)resumeRecording {
     NSLog(@"resume recording");
+    self.shimmerLabel.text = @"Recording...";
     if (self.isRecording) {
         [WizzMedia resumeRecordSong];
     }
@@ -45,6 +51,7 @@
 
 - (IBAction)stopRecording:(id)sender {
     NSLog(@"stop recording");
+    self.shimmerLabel.text = @"Press to record";
     self.isRecording = false;
     [WizzMedia stopRecordSong];
 }
@@ -87,18 +94,24 @@
     return _longPressGestureRecognizer;
 }
 
+- (ShimmerView *)shimmerLabel {
+    if (!_shimmerLabel) {
+        _shimmerLabel = [[ShimmerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.width + 64,
+                                                                      self.view.frame.size.width,
+                                                                      self.view.frame.size.height - (self.view.frame.size.width + 64))];
+        _shimmerLabel.text = @"Press to record";
+        _shimmerLabel.textColor = [Colors greenColor];
+    }
+    return _shimmerLabel;
+}
+
 #pragma mark -
 #pragma UIView cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.viewRecord addGestureRecognizer:self.longPressGestureRecognizer];
-    self.isRecording = false;
-    
-    self.crossButton = [[DismissButton alloc] initWithFrame:CGRectMake(10, 300, 40, 40)];
-    [self.crossButton addTarget:self action:@selector(dismissMediaController) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.crossButton];
+    [self.view addSubview:self.shimmerLabel];
+    [self.shimmerLabel addGestureRecognizer:self.longPressGestureRecognizer];
 }
 
 @end

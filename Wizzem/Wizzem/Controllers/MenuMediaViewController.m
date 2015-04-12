@@ -28,6 +28,9 @@
     else if (sender.tag == 2) {
         controller = [storyboard instantiateViewControllerWithIdentifier:@"videoController"];
     }
+    else if (sender.tag == 3) {
+        controller = [storyboard instantiateViewControllerWithIdentifier:@"songController"];
+    }
     if (controller) {
         [self dismissViewControllerAnimated:true completion:^{
             [[NSNotificationCenter defaultCenter] postNotificationName:PRESENT_CONTROLLER_NOTIFICATION object:nil userInfo:@{@"controller":controller}];
