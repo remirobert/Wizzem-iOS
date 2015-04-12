@@ -8,6 +8,8 @@
 
 #import "MenuMediaViewController.h"
 #import "Wizzem-Swift.h"
+#import <FBShimmeringView.h>
+#import "Colors.h"
 
 @interface MenuMediaViewController ()
 @property (nonatomic, strong) TransitionMenuMediaManager *transitionManager;
@@ -20,14 +22,21 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-   // [self dismissMenuController:nil];
+    [self dismissMenuController:nil];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
+    self.view.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1];
     self.transitionManager = [[TransitionMenuMediaManager alloc] init];
-    self.transitioningDelegate = self.transitionManager;    
+    self.transitioningDelegate = self.transitionManager;
+    
+//    UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    closeButton.frame = CGRectMake(self.view.frame.size.width / 2 - 20, self.view.frame.size.height / 2 - 50, 40, 40);
+//    [closeButton setImage:[[UIImage imageNamed:@"cross"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+//    [closeButton addTarget:self action:@selector(dismissMenuController:) forControlEvents:UIControlEventTouchUpInside];
+//    closeButton.tintColor = [UIColor grayColor];
+//    [self.view addSubview:closeButton];
 }
 
 @end

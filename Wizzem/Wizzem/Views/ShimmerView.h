@@ -10,4 +10,6 @@
 
 @interface ShimmerView : NSObject
 
++ (UIView *)instance:(NSString *)text;
+
 @end

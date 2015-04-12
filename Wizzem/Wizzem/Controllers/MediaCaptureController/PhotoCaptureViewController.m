@@ -14,6 +14,9 @@
 #import "PreviewLayerMediaCaptureView.h"
 #import "DismissButton.h"
 #import <FastttCamera/FastttCamera.h>
+#import "ShimmerView.h"
+#import <FBShimmeringView.h>
+#import <FBShimmering.h>
 
 @interface PhotoCaptureViewController () <FastttCameraDelegate>
 @property (nonatomic, strong) PreviewLayerMediaCaptureView *previewCamera;
@@ -51,6 +54,20 @@
     self.fastCamera.view.frame = CGRectMake(0, 60.0f, self.view.frame.size.width, self.view.frame.size.width);
     
     
+    FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:shimmeringView];
+    
+    UILabel *loadingLabel = [[UILabel alloc] initWithFrame:shimmeringView.bounds];
+    loadingLabel.textAlignment = NSTextAlignmentCenter;
+    loadingLabel.textColor = [UIColor whiteColor];
+    loadingLabel.font = [UIFont boldSystemFontOfSize:20];
+    loadingLabel.text = @"Tap to shoot";
+    shimmeringView.contentView = loadingLabel;
+    shimmeringView.shimmeringAnimationOpacity = 0.1;
+    shimmeringView.shimmeringSpeed = 300;
+    
+    // Start shimmering.
+    shimmeringView.shimmering = YES;
 //    [PBJVision sharedInstance].delegate = self;
 //    [PBJVision sharedInstance].cameraMode = PBJCameraModePhoto;
 //    
