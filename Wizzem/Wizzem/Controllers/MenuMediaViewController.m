@@ -18,10 +18,16 @@
 
 @implementation MenuMediaViewController
 
-- (IBAction)actionMenu:(id)sender {
+- (IBAction)actionMenu:(UIButton *)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    UIViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"photoController"];
+    UIViewController *controller;
+    if (sender.tag == 1) {
+        controller = [storyboard instantiateViewControllerWithIdentifier:@"photoController"];
+    }
+    else if (sender.tag == 2) {
+        controller = [storyboard instantiateViewControllerWithIdentifier:@"videoController"];
+    }
     if (controller) {
         [self dismissViewControllerAnimated:true completion:^{
             [[NSNotificationCenter defaultCenter] postNotificationName:PRESENT_CONTROLLER_NOTIFICATION object:nil userInfo:@{@"controller":controller}];

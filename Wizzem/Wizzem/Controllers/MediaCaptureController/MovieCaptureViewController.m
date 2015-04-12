@@ -16,14 +16,15 @@
 #import "PreviewLayerMediaCaptureView.h"
 #import "MakeAnimatedImage.h"
 #import "DismissButton.h"
+#import "ShimmerView.h"
+#import "Colors.h"
 
 @interface MovieCaptureViewController () <PBJVisionDelegate, UIGestureRecognizerDelegate>
 @property (nonatomic, assign) BOOL isRecording;
 @property (nonatomic, strong) PreviewLayerMediaCaptureView *previewCamera;
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
-@property (strong, nonatomic) IBOutlet UIButton *generateButton;
 @property (nonatomic, strong) NSMutableArray *photos;
-@property (nonatomic, strong) DismissButton *crossButton;
+@property (nonatomic, strong) ShimmerView *shimmerLabel;
 @end
 
 @implementation MovieCaptureViewController
@@ -51,18 +52,21 @@
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     self.isRecording = true;
     [[PBJVision sharedInstance] startVideoCapture];
+    self.shimmerLabel.text = @"Recording ...";
 }
 
 - (void)pauseRecording {
     if (self.isRecording) {
         [[PBJVision sharedInstance] pauseVideoCapture];
     }
+    self.shimmerLabel.text = @"Press to record";
 }
 
 - (void)resumeRecording {
     if (self.isRecording) {
         [[PBJVision sharedInstance] resumeVideoCapture];
     }
+    self.shimmerLabel.text = @"Recording ...";
 }
 
 - (IBAction)endRecording:(id)sender {
@@ -70,6 +74,15 @@
     [UIApplication sharedApplication].idleTimerDisabled = NO;
     self.isRecording = false;
     [[PBJVision sharedInstance] endVideoCapture];
+}
+
+- (void)changeRotationCamera {
+    if ([PBJVision sharedInstance].cameraDevice == PBJCameraDeviceFront) {
+        [[PBJVision sharedInstance] setCameraDevice:PBJCameraDeviceBack];
+    }
+    else {
+        [[PBJVision sharedInstance] setCameraDevice:PBJCameraDeviceFront];
+    }
 }
 
 #pragma mark -
@@ -110,6 +123,17 @@
     return _longPressGestureRecognizer;
 }
 
+- (ShimmerView *)shimmerLabel {
+    if (!_shimmerLabel) {
+        _shimmerLabel = [[ShimmerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.width + 64,
+                                                                      self.view.frame.size.width,
+                                                                      self.view.frame.size.height - (self.view.frame.size.width + 64))];
+        _shimmerLabel.text = @"Press to record";
+        _shimmerLabel.textColor = [Colors greenColor];
+    }
+    return _shimmerLabel;
+}
+
 #pragma mark -
 #pragma mark UIView cycle
 
@@ -130,18 +154,25 @@
     [PBJVision sharedInstance].delegate = self;
     [PBJVision sharedInstance].cameraMode = PBJCameraModeVideo;
     [PBJVision sharedInstance].outputFormat = PBJOutputFormatSquare;
+    [PBJVision sharedInstance].cameraOrientation = PBJCameraOrientationPortrait;
+    
+    [[PBJVision sharedInstance] setMaximumCaptureDuration:CMTimeMakeWithSeconds(15, 600)];
     
     self.previewCamera = [PreviewLayerMediaCaptureView preview];
     
-    CGRect previewFrame = CGRectMake(0, 60.0f, 200, 200);
-    self.previewCamera.frame = previewFrame;
+    self.previewCamera.frame = CGRectMake(0, 64, 10, 10);
     [self.view addSubview:self.previewCamera];
     
-    [self.previewCamera addGestureRecognizer:self.longPressGestureRecognizer];
     
-    self.crossButton = [[DismissButton alloc] initWithFrame:CGRectMake(10, 300, 40, 40)];
-    [self.crossButton addTarget:self action:@selector(dismissMediaController) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.crossButton];
+    UIButton *rotationButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    rotationButton.frame = CGRectMake(self.view.frame.size.width - 50, 64 + self.view.frame.size.width - 50, 40, 40);
+    [rotationButton setImage:[UIImage imageNamed:@"rotation"] forState:UIControlStateNormal];
+    [rotationButton addTarget:self action:@selector(changeRotationCamera) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:rotationButton];
+
+    
+    [self.view addSubview:self.shimmerLabel];
+    [self.shimmerLabel addGestureRecognizer:self.longPressGestureRecognizer];
 }
 
 @end

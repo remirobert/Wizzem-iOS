@@ -79,7 +79,7 @@
     self.fastCamera.view.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.width);
     
     UIButton *rotationButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    rotationButton.frame = CGRectMake(self.view.frame.size.width - 50, self.view.frame.size.height / 2 - 50 + 64, 40, 40);
+    rotationButton.frame = CGRectMake(self.view.frame.size.width - 50, 64 + self.view.frame.size.width - 50, 40, 40);
     [rotationButton setImage:[UIImage imageNamed:@"rotation"] forState:UIControlStateNormal];
     [rotationButton addTarget:self action:@selector(changeRotationCamera) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rotationButton];

@@ -27,7 +27,7 @@
 
 - (void)drawRect:(CGRect)rect {
     self.backgroundColor = [UIColor blackColor];
-    CGRect previewFrame = CGRectMake(0, 60.0f, 200, 200);
+    CGRect previewFrame = CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width);
     self.frame = previewFrame;
     [self.layer addSublayer:self.previewLayer];
 }

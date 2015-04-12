@@ -17,57 +17,7 @@
                     <view key="view" contentMode="scaleToFill" id="1T5-HY-CDS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gW9-iW-c71">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.49538748399999999" green="0.85809264519999995" blue="0.41624528750000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="khb-jv-LBC"/>
-                                </constraints>
-                                <state key="normal" title="Génère ta video">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="khb-jv-LBC"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="khb-jv-LBC"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="endRecording:" destination="kTm-dP-Mc5" eventType="touchUpInside" id="gUO-Yn-yYi"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="gW9-iW-c71" firstAttribute="trailing" secondItem="1T5-HY-CDS" secondAttribute="trailingMargin" id="G8c-Dw-d4r"/>
-                            <constraint firstItem="gW9-iW-c71" firstAttribute="leading" secondItem="1T5-HY-CDS" secondAttribute="leadingMargin" id="Z7M-dM-GFy"/>
-                            <constraint firstItem="cjX-vD-aPk" firstAttribute="top" secondItem="gW9-iW-c71" secondAttribute="bottom" constant="20" id="aOK-Sh-DKb"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="gW9-iW-c71"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="aOK-Sh-DKb"/>
-                                <exclude reference="G8c-Dw-d4r"/>
-                                <exclude reference="Z7M-dM-GFy"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="gW9-iW-c71"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="aOK-Sh-DKb"/>
-                                <include reference="G8c-Dw-d4r"/>
-                                <include reference="Z7M-dM-GFy"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="jUp-No-20E"/>
                     <connections>
@@ -128,7 +78,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5k-1k-C2d">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5k-1k-C2d">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.49538748399999999" green="0.85809264519999995" blue="0.41624528750000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -212,7 +162,7 @@
                                     </mask>
                                 </variation>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTV-4Q-yQs">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTV-4Q-yQs">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.49538748399999999" green="0.85809264519999995" blue="0.41624528750000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -240,6 +190,9 @@
                                         <exclude reference="tXa-3s-s0M"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="actionMenu:" destination="QVv-Mv-WMY" eventType="touchUpInside" id="GG2-NR-Jr8"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyw-ya-J3Z">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -688,7 +641,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Fmp-EA-yOv">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oGk-4t-vkN" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="videoController" automaticallyAdjustsScrollViewInsets="NO" id="oGk-4t-vkN" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NIi-6N-Nvg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -726,6 +679,6 @@
         <image name="cross" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wyb-by-q6e"/>
+        <segue reference="YPE-Ed-gCW"/>
     </inferredMetricsTieBreakers>
 </document>
