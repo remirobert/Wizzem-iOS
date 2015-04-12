@@ -25,12 +25,25 @@
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
 @property (nonatomic, strong) NSMutableArray *photos;
 @property (nonatomic, strong) ShimmerView *shimmerLabel;
+@property (nonatomic, strong) UILabel *timeLabel;
+@property (nonatomic, strong) UIButton *captureButton;
 @end
 
 @implementation MovieCaptureViewController
 
 #pragma mark -
 #pragma mark capture delegate
+
+- (void)vision:(PBJVision *)vision didCaptureAudioSample:(CMSampleBufferRef)sampleBuffer {
+    NSLog(@"capture : %f", [PBJVision sharedInstance].capturedVideoSeconds);
+    self.timeLabel.text = [NSString stringWithFormat:@"%.1f", [PBJVision sharedInstance].capturedVideoSeconds];
+    
+    if ([PBJVision sharedInstance].capturedVideoSeconds >= 2.5) {
+        [UIView animateKeyframesWithDuration:0.5 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
+            self.captureButton.alpha = 1;
+        } completion:nil];
+    }
+}
 
 - (void)vision:(PBJVision *)vision capturedVideo:(NSDictionary *)videoDict error:(NSError *)error {
     if (error && [error.domain isEqual:PBJVisionErrorDomain] && error.code == PBJVisionErrorCancelled) {
@@ -134,12 +147,35 @@
     return _shimmerLabel;
 }
 
+- (UILabel *)timeLabel {
+    if (!_timeLabel) {
+        _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 64 + self.view.frame.size.width + 10, self.view.frame.size.width, 20)];
+        _timeLabel.textAlignment = NSTextAlignmentCenter;
+        _timeLabel.textColor = [UIColor grayColor];
+        _timeLabel.font = [UIFont boldSystemFontOfSize:15];
+        _timeLabel.text = @"";
+    }
+    return _timeLabel;
+}
+
+- (UIButton *)captureButton {
+    if (!_captureButton) {
+        _captureButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 50, 10, 40, 40)];
+        _captureButton.backgroundColor = [UIColor grayColor];
+        _captureButton.alpha = 0;
+        [_captureButton addTarget:self action:@selector(endRecording:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _captureButton;
+}
+
 #pragma mark -
 #pragma mark UIView cycle
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[PBJVision sharedInstance] startPreview];
+    self.timeLabel.text = @"";
+    self.captureButton.alpha = 0;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -156,6 +192,7 @@
     [PBJVision sharedInstance].outputFormat = PBJOutputFormatSquare;
     [PBJVision sharedInstance].cameraOrientation = PBJCameraOrientationPortrait;
     
+    
     [[PBJVision sharedInstance] setMaximumCaptureDuration:CMTimeMakeWithSeconds(15, 600)];
     
     self.previewCamera = [PreviewLayerMediaCaptureView preview];
@@ -164,12 +201,15 @@
     [self.view addSubview:self.previewCamera];
     
     
+    [self.view addSubview:self.captureButton];
+    
     UIButton *rotationButton = [UIButton buttonWithType:UIButtonTypeCustom];
     rotationButton.frame = CGRectMake(self.view.frame.size.width - 50, 64 + self.view.frame.size.width - 50, 40, 40);
     [rotationButton setImage:[UIImage imageNamed:@"rotation"] forState:UIControlStateNormal];
     [rotationButton addTarget:self action:@selector(changeRotationCamera) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rotationButton];
 
+    [self.view addSubview:self.timeLabel];
     
     [self.view addSubview:self.shimmerLabel];
     [self.shimmerLabel addGestureRecognizer:self.longPressGestureRecognizer];
