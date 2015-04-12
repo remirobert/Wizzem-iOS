@@ -11,4 +11,10 @@
 
 #define ALBUM_MEDIA             @"Wizzem"
 
+//Notification center
+#pragma mark -
+#pragma mark Notification center
+
+#define PRESENT_CONTROLLER_NOTIFICATION     @"presentControllerNotification"
+
 #endif

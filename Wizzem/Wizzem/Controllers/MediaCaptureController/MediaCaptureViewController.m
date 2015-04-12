@@ -22,7 +22,7 @@
 }
 
 - (void)dismissMediaController {
-    [self.navigationController dismissViewControllerAnimated:false completion:nil];
+    [self.navigationController dismissViewControllerAnimated:true completion:nil];
 }
 
 #pragma mark -

@@ -10,12 +10,24 @@
 #import "Wizzem-Swift.h"
 #import <FBShimmeringView.h>
 #import "Colors.h"
+#import "Header.h"
 
 @interface MenuMediaViewController ()
 @property (nonatomic, strong) TransitionMenuMediaManager *transitionManager;
 @end
 
 @implementation MenuMediaViewController
+
+- (IBAction)actionMenu:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    UIViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"photoController"];
+    if (controller) {
+        [self dismissViewControllerAnimated:true completion:^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:PRESENT_CONTROLLER_NOTIFICATION object:nil userInfo:@{@"controller":controller}];
+        }];
+    }
+}
 
 - (IBAction)dismissMenuController:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];

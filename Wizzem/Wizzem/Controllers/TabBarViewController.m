@@ -8,6 +8,7 @@
 
 #import "TabBarViewController.h"
 #import "MenuMediaViewController.h"
+#import "Header.h"
 
 @interface TabBarViewController ()
 @end
@@ -24,10 +25,19 @@
     }
 }
 
+- (void)presentController:(NSNotification *)notification {
+    UIViewController *controller = [notification.userInfo objectForKey:@"controller"];
+    if (controller) {
+        [self presentViewController:controller animated:true completion:nil];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.tabBar.tintColor = [UIColor redColor];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentController:) name:PRESENT_CONTROLLER_NOTIFICATION object:nil];
     
     UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
@@ -47,15 +57,5 @@
     
     [self.view addSubview:button];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
