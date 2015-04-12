@@ -11,6 +11,7 @@
 #import "DismissButton.h"
 #import "ShimmerView.h"
 #import "Colors.h"
+#import "MultiplePulsingHaloLayer.h"
 
 @interface SongCaptureViewController () <UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *viewRecord;
@@ -18,6 +19,8 @@
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
 @property (nonatomic, strong) DismissButton *crossButton;
 @property (nonatomic, strong) ShimmerView *shimmerLabel;
+@property (nonatomic, strong) UIImageView *recordImage;
+@property (nonatomic, strong) MultiplePulsingHaloLayer *mutiHal;
 @end
 
 @implementation SongCaptureViewController
@@ -25,6 +28,7 @@
 - (void)startRecording {
     self.isRecording = true;
     NSLog(@"start recording");
+    self.mutiHal.radius = self.view.frame.size.width / 2;
     self.shimmerLabel.text = @"Recording...";
     [WizzMedia startRecordSong:^(NSURL *song) {
         NSLog(@"record get song : %@", song);
@@ -35,6 +39,7 @@
 
 - (void)pauseRecording {
     NSLog(@"pause recording");
+    self.mutiHal.radius = 0;
     self.shimmerLabel.text = @"Press to record";
     if (self.isRecording) {
         [WizzMedia pauseRecordSong];
@@ -43,6 +48,7 @@
 
 - (void)resumeRecording {
     NSLog(@"resume recording");
+    self.mutiHal.radius = self.view.frame.size.width / 2;
     self.shimmerLabel.text = @"Recording...";
     if (self.isRecording) {
         [WizzMedia resumeRecordSong];
@@ -51,6 +57,7 @@
 
 - (IBAction)stopRecording:(id)sender {
     NSLog(@"stop recording");
+    self.mutiHal.radius = 0;
     self.shimmerLabel.text = @"Press to record";
     self.isRecording = false;
     [WizzMedia stopRecordSong];
@@ -105,13 +112,45 @@
     return _shimmerLabel;
 }
 
+- (UIImageView *)recordImage {
+    if (!_recordImage) {
+        _recordImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.width)];
+        _recordImage.image = [[UIImage imageNamed:@"record"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        _recordImage.tintColor = [UIColor grayColor];
+        _recordImage.backgroundColor = [UIColor clearColor];
+        _recordImage.contentMode = UIViewContentModeScaleAspectFit;
+    }
+    return _recordImage;
+}
+
+- (MultiplePulsingHaloLayer *)mutiHal {
+    if (!_mutiHal) {
+        _mutiHal = [[MultiplePulsingHaloLayer alloc] initWithHaloLayerNum:3 andStartInterval:1];
+        _mutiHal.position = self.recordImage.center;
+        _mutiHal.useTimingFunction = NO;
+        [_mutiHal buildSublayers];
+        _mutiHal.radius = 0;
+        //_mutiHal.backgroundColor = [UIColor grayColor].CGColor;
+        [_mutiHal setHaloLayerColor:[Colors greenColor].CGColor];
+        
+    }
+    return _mutiHal;
+}
+
 #pragma mark -
 #pragma UIView cycle
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self.view bringSubviewToFront:self.navigationBar];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.shimmerLabel];
     [self.shimmerLabel addGestureRecognizer:self.longPressGestureRecognizer];
+    
+    [self.view addSubview:self.recordImage];
+    [self.view.layer insertSublayer:self.mutiHal below:self.recordImage.layer];
 }
 
 @end

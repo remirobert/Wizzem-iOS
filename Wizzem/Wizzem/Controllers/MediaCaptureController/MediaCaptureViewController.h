@@ -11,6 +11,7 @@
 
 @interface MediaCaptureViewController : UIViewController
 
+@property (nonatomic, strong) UIView *navigationBar;
 @property (nonatomic, strong) WizzMediaModel *currentMedia;
 
 - (void)displayMedia;

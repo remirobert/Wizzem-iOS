@@ -11,7 +11,6 @@
 #import "Colors.h"
 
 @interface MediaCaptureViewController ()
-@property (nonatomic, strong) UIView *navigationBar;
 @end
 
 @implementation MediaCaptureViewController
