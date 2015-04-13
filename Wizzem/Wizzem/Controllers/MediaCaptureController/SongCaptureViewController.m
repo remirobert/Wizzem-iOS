@@ -21,6 +21,7 @@
 @property (nonatomic, strong) ShimmerView *shimmerLabel;
 @property (nonatomic, strong) UIImageView *recordImage;
 @property (nonatomic, strong) MultiplePulsingHaloLayer *mutiHal;
+@property (nonatomic, strong) UIButton *captureButton;
 @end
 
 @implementation SongCaptureViewController
@@ -28,6 +29,11 @@
 - (void)startRecording {
     self.isRecording = true;
     NSLog(@"start recording");
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        [_mutiHal setHaloLayerColor:[Colors greenColor].CGColor];
+    }];
+    
     self.mutiHal.radius = self.view.frame.size.width / 2;
     self.shimmerLabel.text = @"Recording...";
     [WizzMedia startRecordSong:^(NSURL *song) {
@@ -39,7 +45,11 @@
 
 - (void)pauseRecording {
     NSLog(@"pause recording");
-    self.mutiHal.radius = 0;
+
+    [UIView animateWithDuration:0.5 animations:^{
+        [_mutiHal setHaloLayerColor:[UIColor clearColor].CGColor];
+    }];
+
     self.shimmerLabel.text = @"Press to record";
     if (self.isRecording) {
         [WizzMedia pauseRecordSong];
@@ -48,7 +58,10 @@
 
 - (void)resumeRecording {
     NSLog(@"resume recording");
-    self.mutiHal.radius = self.view.frame.size.width / 2;
+    [UIView animateWithDuration:0.5 animations:^{
+        [_mutiHal setHaloLayerColor:[Colors greenColor].CGColor];
+    }];
+
     self.shimmerLabel.text = @"Recording...";
     if (self.isRecording) {
         [WizzMedia resumeRecordSong];
@@ -57,7 +70,11 @@
 
 - (IBAction)stopRecording:(id)sender {
     NSLog(@"stop recording");
-    self.mutiHal.radius = 0;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        [_mutiHal setHaloLayerColor:[UIColor clearColor].CGColor];
+    }];
+    
     self.shimmerLabel.text = @"Press to record";
     self.isRecording = false;
     [WizzMedia stopRecordSong];
@@ -129,12 +146,21 @@
         _mutiHal.position = self.recordImage.center;
         _mutiHal.useTimingFunction = NO;
         [_mutiHal buildSublayers];
-        _mutiHal.radius = 0;
+        _mutiHal.radius = self.view.frame.size.width / 2;
         //_mutiHal.backgroundColor = [UIColor grayColor].CGColor;
         [_mutiHal setHaloLayerColor:[Colors greenColor].CGColor];
-        
     }
     return _mutiHal;
+}
+
+- (UIButton *)captureButton {
+    if (!_captureButton) {
+        _captureButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 50, 10, 40, 40)];
+        _captureButton.backgroundColor = [UIColor grayColor];
+        _captureButton.alpha = 1;
+        [_captureButton addTarget:self action:@selector(stopRecording:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _captureButton;
 }
 
 #pragma mark -
