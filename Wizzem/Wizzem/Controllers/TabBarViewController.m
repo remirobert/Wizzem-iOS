@@ -28,7 +28,7 @@
 - (void)presentController:(NSNotification *)notification {
     UIViewController *controller = [notification.userInfo objectForKey:@"controller"];
     if (controller) {
-        [self presentViewController:controller animated:true completion:nil];
+        [self presentViewController:controller animated:false completion:nil];
     }
 }
 

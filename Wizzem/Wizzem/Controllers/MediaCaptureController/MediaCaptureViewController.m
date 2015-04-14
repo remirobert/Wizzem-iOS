@@ -21,11 +21,11 @@
 - (UIView *)navigationBar {
     if (!_navigationBar) {
         _navigationBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
-        _navigationBar.backgroundColor = [Colors greenColor];
+        _navigationBar.backgroundColor = [UIColor colorWithRed:0.12 green:0.12 blue:0.15 alpha:1];
         UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         closeButton.frame = CGRectMake(10, 10, 40, 40);
         [closeButton setImage:[[UIImage imageNamed:@"cross"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-        closeButton.tintColor = [Colors grayColor];
+        closeButton.tintColor = [UIColor colorWithRed:0.25 green:0.24 blue:0.3 alpha:1];
         [closeButton addTarget:self action:@selector(dismissMediaController) forControlEvents:UIControlEventTouchUpInside];
         [_navigationBar addSubview:closeButton];
     }
@@ -58,7 +58,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [Colors grayColor];
+    self.view.backgroundColor = [UIColor colorWithRed:0.12 green:0.12 blue:0.15 alpha:1];
     
     [[self navigationController] setNavigationBarHidden:YES animated:false];
     

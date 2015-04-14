@@ -22,7 +22,6 @@
         textView.text = @"";
         textView.textColor = [UIColor blackColor]; //optional
     }
-    [textView becomeFirstResponder];
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
@@ -30,19 +29,19 @@
         textView.text = @"placeholder text here...";
         textView.textColor = [UIColor lightGrayColor]; //optional
     }
-    [textView resignFirstResponder];
 }
 
 
 #pragma mark -
 #pragma mark UiView cycle
 
-- (void)viewdidload {
-    [super viewDidLoad];
-
+- (void)viewDidAppear:(BOOL)animated {
     self.textView.delegate = self;
     self.textView.text = @"Write something amazing here";
     self.textView.textColor = [UIColor lightGrayColor];
+    [self.textView becomeFirstResponder];
+    self.textView.frame = CGRectMake(0, 64, self.textView.frame.size.width, self.textView.frame.size.height);
+    NSLog(@"did appear");
 }
 
 @end
