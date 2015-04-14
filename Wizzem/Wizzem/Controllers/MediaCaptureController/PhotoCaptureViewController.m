@@ -28,6 +28,8 @@
 @property (nonatomic, strong) SCRecorder *recorder;
 @property (nonatomic, strong) SCRecordSession *recordSession;
 @property (nonatomic, strong) UIImagePickerController *pickerController;
+
+@property (nonatomic, strong) UIButton *flashButton;
 @end
 
 @implementation PhotoCaptureViewController
@@ -42,7 +44,7 @@
     //Or you can get the image url from AssetsLibrary
     NSURL *path = [info valueForKey:UIImagePickerControllerReferenceURL];
     
-    [picker dismissViewControllerAnimated:YES completion:nil];
+    [picker dismissViewControllerAnimated:false completion:nil];
 }
 
 #pragma mark -
@@ -58,6 +60,19 @@
 
 - (IBAction)takePhoto {
     [self.fastCamera takePicture];
+}
+
+- (void)changeFlashMode {
+    if ([FastttCamera isTorchAvailableForCameraDevice:self.fastCamera.cameraDevice]) {
+        if (self.fastCamera.cameraTorchMode == FastttCameraTorchModeOff) {
+            [self.fastCamera setCameraTorchMode:FastttCameraTorchModeOn];
+            self.flashButton.tintColor = [UIColor yellowColor];
+        }
+        else {
+            [self.fastCamera setCameraTorchMode:FastttCameraTorchModeOff];
+            self.flashButton.tintColor = [UIColor colorWithRed:0.25 green:0.24 blue:0.3 alpha:1];
+        }
+    }
 }
 
 - (void)changeRotationCamera {
@@ -134,12 +149,13 @@
     [self.view addSubview:buttonRecord];
     
     
-    UIButton *flashButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [flashButton setImage:[[UIImage imageNamed:@"flash"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    flashButton.frame = CGRectMake(10, 0, 40, 40);
-    flashButton.center = CGPointMake(35, shimmeringView.center.y + 5);
-    flashButton.tintColor = [UIColor colorWithRed:0.25 green:0.24 blue:0.3 alpha:1];
-    [self.view addSubview:flashButton];
+    self.flashButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.flashButton setImage:[[UIImage imageNamed:@"flash"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    self.flashButton.frame = CGRectMake(10, 0, 40, 40);
+    self.flashButton.center = CGPointMake(35, shimmeringView.center.y + 5);
+    self.flashButton.tintColor = [UIColor colorWithRed:0.25 green:0.24 blue:0.3 alpha:1];
+    [self.flashButton addTarget:self action:@selector(changeFlashMode) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.flashButton];
     
     
     UIButton *rotationButton = [UIButton buttonWithType:UIButtonTypeCustom];

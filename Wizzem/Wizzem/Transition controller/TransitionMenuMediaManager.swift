@@ -46,11 +46,14 @@ class TransitionMenuMediaManager: NSObject, UIViewControllerAnimatedTransitionin
             //screens.from.view.alpha = 1
         }
         
-        let duration = self.transitionDuration(transitionContext)
+        var duration = self.transitionDuration(transitionContext)
+        if (self.presenting == false) {
+            duration = 0
+        }
 
         println("to : \(screens.to) from : \(screens.from) => presenting result : \(self.presenting)")
         
-        UIView.animateWithDuration(1.0, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.AllowUserInteraction, animations: {
+        UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: UIViewAnimationOptions.AllowUserInteraction, animations: {
 
             if (self.presenting == true) {
                 screens.to.view.alpha = 1
