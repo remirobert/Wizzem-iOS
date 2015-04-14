@@ -8,6 +8,7 @@ PODS:
   - PBJVideoPlayer (0.2.0)
   - PBJVision (0.4.0)
   - pop (1.0.7)
+  - SCRecorder (2.3.1)
   - Shimmer (1.0.2)
 
 DEPENDENCIES:
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - PBJVideoPlayer
   - PBJVision
   - Pop
+  - SCRecorder
   - Shimmer
 
 SPEC CHECKSUMS:
@@ -28,6 +30,7 @@ SPEC CHECKSUMS:
   PBJVideoPlayer: 60e8601398ba0fc1e38c431863c9222b4f4b7153
   PBJVision: aa3d9f584324e099898fb83977a815f0ecb7ba5a
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
+  SCRecorder: 8ed33007a1dca0392d1d33b4cf76aceb09724de4
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
 
 COCOAPODS: 0.35.0

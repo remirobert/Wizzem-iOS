@@ -16,14 +16,17 @@
 #import <FastttCamera/FastttCamera.h>
 #import <FBShimmeringView.h>
 #import <FBShimmering.h>
+#import <SCRecorder/SCRecorder.h>
 #import "Colors.h"
 #import "ShimmerView.h"
 #import "MenuMediaViewController.h"
 
-@interface PhotoCaptureViewController () <FastttCameraDelegate>
+@interface PhotoCaptureViewController () <FastttCameraDelegate, SCRecorderDelegate>
 @property (nonatomic, strong) PreviewLayerMediaCaptureView *previewCamera;
 @property (nonatomic, strong) DismissButton *crossButton;
 @property (nonatomic, strong) FastttCamera *fastCamera;
+@property (nonatomic, strong) SCRecorder *recorder;
+@property (nonatomic, strong) SCRecordSession *recordSession;
 @end
 
 @implementation PhotoCaptureViewController
@@ -77,17 +80,32 @@
     
     [self fastttAddChildViewController:self.fastCamera];
     self.fastCamera.view.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.width);
+
     
-    UIButton *rotationButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    rotationButton.frame = CGRectMake(self.view.frame.size.width - 50, 64 + self.view.frame.size.width - 50, 40, 40);
-    [rotationButton setImage:[UIImage imageNamed:@"rotation"] forState:UIControlStateNormal];
-    [rotationButton addTarget:self action:@selector(changeRotationCamera) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:rotationButton];
+    
+//    UIButton *rotationButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    rotationButton.frame = CGRectMake(self.view.frame.size.width - 50, 64 + self.view.frame.size.width - 50, 40, 40);
+//    [rotationButton setImage:[UIImage imageNamed:@"rotation"] forState:UIControlStateNormal];
+//    [rotationButton addTarget:self action:@selector(changeRotationCamera) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:rotationButton];
     
     ShimmerView *shimmeringView = [[ShimmerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.width + 64, self.view.frame.size.width, self.view.frame.size.height - (self.view.frame.size.width + 64))];
     shimmeringView.text = @"Tap to take a picture";
     shimmeringView.textColor = [Colors greenColor];
     [self.view addSubview:shimmeringView];
+    
+    
+//    UIButton *buttonRecord = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [buttonRecord setImage:[[UIImage imageNamed:@"photo"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+//    buttonRecord.backgroundColor = [UIColor clearColor];
+//    
+//    buttonRecord.frame = CGRectMake(0, self.view.frame.size.width + 64, 200, 200);
+//    buttonRecord.layer.cornerRadius = buttonRecord.frame.size.width / 2;
+//    buttonRecord.layer.borderWidth = 5;
+//    buttonRecord.layer.borderColor = [UIColor grayColor].CGColor;
+//    buttonRecord.tintColor = [UIColor grayColor];
+//    
+//    [self.view addSubview:buttonRecord];
     
 //    FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.width + 64, self.view.frame.size.width, self.view.frame.size.height - (self.view.frame.size.width + 64))];
 //    [self.view addSubview:shimmeringView];
@@ -107,11 +125,11 @@
     [shimmeringView addGestureRecognizer:tapGesture];
     
     
-    UIButton *mediaButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    mediaButton.frame = CGRectMake(self.view.frame.size.width / 2 - 15, self.view.frame.size.height - 40, 30, 30);
-    mediaButton.backgroundColor = [UIColor redColor];
-    [mediaButton addTarget:self action:@selector(selectMedia) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:mediaButton];
+//    UIButton *mediaButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    mediaButton.frame = CGRectMake(self.view.frame.size.width / 2 - 15, self.view.frame.size.height - 40, 30, 30);
+//    mediaButton.backgroundColor = [UIColor redColor];
+//    [mediaButton addTarget:self action:@selector(selectMedia) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:mediaButton];
 
 //    self.crossButton = [[DismissButton alloc] initWithFrame:CGRectMake(10, 300, 40, 40)];
 //    [self.crossButton addTarget:self action:@selector(dismissMediaController) forControlEvents:UIControlEventTouchUpInside];

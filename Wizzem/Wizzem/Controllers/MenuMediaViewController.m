@@ -31,6 +31,10 @@
     else if (sender.tag == 3) {
         controller = [storyboard instantiateViewControllerWithIdentifier:@"songController"];
     }
+    else if (sender.tag == 4) {
+        controller = [storyboard instantiateViewControllerWithIdentifier:@"textController"];
+    }
+    
     if (controller) {
         [self dismissViewControllerAnimated:true completion:^{
             [[NSNotificationCenter defaultCenter] postNotificationName:PRESENT_CONTROLLER_NOTIFICATION object:nil userInfo:@{@"controller":controller}];
