@@ -13,6 +13,13 @@
 #import "WizzMedia+RecordSong.h"
 #import "WizzMedia+FileManager.h"
 
+@interface ListenTime : NSObject
+@property (nonatomic, assign) NSTimeInterval *time;
+@end
+
+@implementation ListenTime
+@end
+
 @interface WizzMedia()
 @property (nonatomic, assign, readwrite) CameraDevicePosition currentDevicePosition;
 @property (nonatomic, assign, readwrite) CameraRecordMode currentCameraMode;
@@ -410,6 +417,13 @@
 
 }
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"audio"]) {
+        NSTimeInterval currentTime = ((AVAudioRecorder *)object).currentTime;
+        NSLog(@"current time : %f", currentTime);
+    }
+}
+
 + (void) startRecordSong:(void(^)(NSURL *))blockCompletion {
     if (![self sharedInstace].audioRecorder) {
         
@@ -429,6 +443,9 @@
         [self sharedInstace].audioRecorder.delegate = [self sharedInstace];
     }
     [self sharedInstace].completionRecordSong = blockCompletion;
+    
+    [[self sharedInstace].audioRecorder addObserver:nil forKeyPath:@"audio" options:NSKeyValueObservingOptionPrior context:nil];
+    
     [[self sharedInstace] launchSongRecording];
 }
 
@@ -457,6 +474,10 @@
         return false;
     }
     return [[self sharedInstace].audioRecorder isRecording];
+}
+
++ (NSTimeInterval)currentTime {
+    return [self sharedInstace].audioRecorder.currentTime;
 }
 
 @end

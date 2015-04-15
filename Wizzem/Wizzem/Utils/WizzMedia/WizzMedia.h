@@ -90,6 +90,6 @@ typedef NS_ENUM(NSInteger, SongEncodingTypes) {
 + (void) pauseRecordSong;
 + (void) resumeRecordSong;
 + (BOOL) isRecordingSong;
-
++ (NSTimeInterval)currentTime;
 
 @end
