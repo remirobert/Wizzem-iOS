@@ -152,8 +152,8 @@
     self.flashButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.flashButton setImage:[[UIImage imageNamed:@"flash"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     self.flashButton.frame = CGRectMake(10, 0, 40, 40);
-    self.flashButton.center = CGPointMake(35, shimmeringView.center.y + 5);
-    self.flashButton.tintColor = [UIColor colorWithRed:0.25 green:0.24 blue:0.3 alpha:1];
+    self.flashButton.center = CGPointMake(35, self.view.frame.size.width + 64 - 20);
+    self.flashButton.tintColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
     [self.flashButton addTarget:self action:@selector(changeFlashMode) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.flashButton];
     
@@ -161,8 +161,8 @@
     UIButton *rotationButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [rotationButton setImage:[[UIImage imageNamed:@"rotation"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     rotationButton.frame = CGRectMake(10, 0, 40, 40);
-    rotationButton.center = CGPointMake(self.view.frame.size.width - 10 - 25, shimmeringView.center.y + 5);
-    rotationButton.tintColor = [UIColor colorWithRed:0.25 green:0.24 blue:0.3 alpha:1];
+    rotationButton.center = CGPointMake(self.view.frame.size.width - 10 - 25, self.view.frame.size.width + 64 - 20);
+    rotationButton.tintColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
     [rotationButton addTarget:self action:@selector(changeRotationCamera) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rotationButton];
 

@@ -29,6 +29,7 @@
 @property (nonatomic, strong) UIButton *captureButton;
 @property (nonatomic, strong) UIButton *flashButton;
 @property (nonatomic, strong) UIImagePickerController *pickerController;
+@property (nonatomic, strong) UIButton *recordingButton;
 @end
 
 @implementation MovieCaptureViewController
@@ -53,10 +54,12 @@
     NSLog(@"capture : %f", [PBJVision sharedInstance].capturedVideoSeconds);
     self.timeLabel.text = [NSString stringWithFormat:@"%.1f", [PBJVision sharedInstance].capturedVideoSeconds];
     
-    if ([PBJVision sharedInstance].capturedVideoSeconds >= 2.5) {
-        [UIView animateKeyframesWithDuration:0.5 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
-            self.captureButton.alpha = 1;
-        } completion:nil];
+    if ([PBJVision sharedInstance].capturedVideoSeconds >= 3) {
+        
+            [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveLinear animations:^{
+                self.captureButton.center = CGPointMake(self.view.frame.size.width - 50, self.recordingButton.center.y);
+            } completion:nil];
+        
     }
 }
 
@@ -188,10 +191,12 @@
 
 - (UIButton *)captureButton {
     if (!_captureButton) {
-        _captureButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 50, 10, 40, 40)];
-        _captureButton.backgroundColor = [UIColor grayColor];
-        _captureButton.alpha = 0;
+        _captureButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _captureButton.frame = CGRectMake(0, 0, 50, 50);
+        [_captureButton setImage:[[UIImage imageNamed:@"check"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        _captureButton.tintColor = [UIColor colorWithRed:0.25 green:0.24 blue:0.3 alpha:1];
         [_captureButton addTarget:self action:@selector(endRecording:) forControlEvents:UIControlEventTouchUpInside];
+        _captureButton.center = CGPointMake(self.view.frame.size.width + 25, self.recordingButton.center.y);
     }
     return _captureButton;
 }
@@ -212,7 +217,7 @@
     [super viewWillAppear:animated];
     [[PBJVision sharedInstance] startPreview];
     self.timeLabel.text = @"";
-    self.captureButton.alpha = 0;
+    _captureButton.center = CGPointMake(self.view.frame.size.width + 25, self.recordingButton.center.y);
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -237,8 +242,6 @@
     self.previewCamera.frame = CGRectMake(0, 64, 10, 10);
     [self.view addSubview:self.previewCamera];
     
-    
-    [self.view addSubview:self.captureButton];
     
 //    UIButton *rotationButton = [UIButton buttonWithType:UIButtonTypeCustom];
 //    rotationButton.frame = CGRectMake(self.view.frame.size.width - 50, 64 + self.view.frame.size.width - 50, 40, 40);
@@ -268,8 +271,8 @@
     UIButton *rotationButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [rotationButton setImage:[[UIImage imageNamed:@"rotation"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     rotationButton.frame = CGRectMake(10, 0, 40, 40);
-    rotationButton.center = CGPointMake(self.view.frame.size.width - 10 - 25, self.shimmerLabel.center.y + 5);
-    rotationButton.tintColor = [UIColor colorWithRed:0.25 green:0.24 blue:0.3 alpha:1];
+    rotationButton.center = CGPointMake(self.view.frame.size.width - 10 - 25, self.view.frame.size.width + 64 - 20);
+    rotationButton.tintColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
     [rotationButton addTarget:self action:@selector(changeRotationCamera) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rotationButton];
     
@@ -286,10 +289,15 @@
     self.flashButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.flashButton setImage:[[UIImage imageNamed:@"flash"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     self.flashButton.frame = CGRectMake(10, 0, 40, 40);
-    self.flashButton.center = CGPointMake(35, self.shimmerLabel.center.y + 5);
-    self.flashButton.tintColor = [UIColor colorWithRed:0.25 green:0.24 blue:0.3 alpha:1];
+    self.flashButton.center = CGPointMake(35, self.view.frame.size.width + 64 - 20);
+    self.flashButton.tintColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
     [self.flashButton addTarget:self action:@selector(changeFlashMode) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.flashButton];
+    
+    [buttonRecord addGestureRecognizer:self.longPressGestureRecognizer];
+    
+    self.recordingButton = buttonRecord;
+    [self.view addSubview:self.captureButton];
 }
 
 @end

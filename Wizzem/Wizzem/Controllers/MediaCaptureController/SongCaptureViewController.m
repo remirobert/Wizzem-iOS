@@ -22,6 +22,7 @@
 @property (nonatomic, strong) MultiplePulsingHaloLayer *mutiHal;
 @property (nonatomic, strong) UIButton *captureButton;
 @property (nonatomic, strong) UILabel *currentTimeRecorded;
+@property (nonatomic, strong) UIButton *validateButton;
 @end
 
 @implementation SongCaptureViewController
@@ -165,8 +166,28 @@
     return _currentTimeRecorded;
 }
 
+- (UIButton *)validateButton {
+    if (!_validateButton) {
+        _validateButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+        [_validateButton setImage:[[UIImage imageNamed:@"check"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        _validateButton.tintColor = [UIColor colorWithRed:0.22 green:0.21 blue:0.27 alpha:1];
+        [_validateButton addTarget:self action:@selector(stopRecording:) forControlEvents:UIControlEventTouchUpInside];
+        _validateButton.center = CGPointMake(self.view.frame.size.width + 25, self.view.center.y);
+    }
+    return _validateButton;
+}
+
 #pragma mark -
 #pragma UIView cycle
+
+- (void)updateTimer {
+    self.currentTimeRecorded.text = [NSString stringWithFormat:@"%.0f sec", [WizzMedia currentTime]];
+    if ([WizzMedia currentTime] >= 3) {
+        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveLinear animations:^{
+            self.validateButton.center = CGPointMake(self.view.frame.size.width - 50, self.view.center.y);
+        } completion:nil];
+    }
+}
 
 - (void)viewDidAppear:(BOOL)animated {
     [self.view bringSubviewToFront:self.navigationBar];
@@ -176,9 +197,12 @@
     [super viewDidLoad];
     [self.view addSubview:self.shimmerLabel];
     
+    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateTimer) userInfo:nil repeats:true];
     
     [self.view addSubview:self.currentTimeRecorded];
     self.currentTimeRecorded.text = @"0 sec";
+    
+    [self.view addSubview:self.validateButton];
     
     UIButton *buttonRecord = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonRecord.backgroundColor = [UIColor colorWithRed:1 green:0.77 blue:0.01 alpha:1];
