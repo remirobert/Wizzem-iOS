@@ -150,7 +150,7 @@
         _mutiHal.useTimingFunction = NO;
         [_mutiHal buildSublayers];
         _mutiHal.radius = self.view.frame.size.width / 2;
-        [_mutiHal setHaloLayerColor:[UIColor grayColor].CGColor];
+        [_mutiHal setHaloLayerColor:[UIColor clearColor].CGColor];
     }
     return _mutiHal;
 }

@@ -469,58 +469,12 @@
                         <viewControllerLayoutGuide type="bottom" id="mpU-bx-7ry"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eHS-Mg-uFD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CZY-ay-GDA">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" red="0.95686274510000002" green="0.42745098040000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="400" id="bcK-OE-E21"/>
-                                    <constraint firstAttribute="height" constant="337" id="fiy-uT-p2L"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="bcK-OE-E21"/>
-                                        <exclude reference="fiy-uT-p2L"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="bcK-OE-E21"/>
-                                        <include reference="fiy-uT-p2L"/>
-                                    </mask>
-                                </variation>
-                            </textView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="CZY-ay-GDA" secondAttribute="centerX" id="yOA-zd-DR2"/>
-                            <constraint firstItem="CZY-ay-GDA" firstAttribute="top" secondItem="Evw-nC-uNc" secondAttribute="bottom" id="yvm-mM-ALJ"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="CZY-ay-GDA"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="yOA-zd-DR2"/>
-                                <exclude reference="yvm-mM-ALJ"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="CZY-ay-GDA"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="yOA-zd-DR2"/>
-                                <include reference="yvm-mM-ALJ"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="2oT-8G-PVE"/>
                     <connections>
-                        <outlet property="textView" destination="CZY-ay-GDA" id="58r-QX-cAh"/>
                         <segue destination="I3v-0O-iT3" kind="push" id="G91-RG-hf7"/>
                     </connections>
                 </viewController>
