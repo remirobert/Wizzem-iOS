@@ -19,7 +19,7 @@
 #import "ShimmerView.h"
 #import "Colors.h"
 
-@interface MovieCaptureViewController () <PBJVisionDelegate, UIGestureRecognizerDelegate>
+@interface MovieCaptureViewController () <PBJVisionDelegate, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (nonatomic, assign) BOOL isRecording;
 @property (nonatomic, strong) PreviewLayerMediaCaptureView *previewCamera;
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
@@ -27,9 +27,24 @@
 @property (nonatomic, strong) ShimmerView *shimmerLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) UIButton *captureButton;
+@property (nonatomic, strong) UIButton *flashButton;
+@property (nonatomic, strong) UIImagePickerController *pickerController;
 @end
 
 @implementation MovieCaptureViewController
+
+#pragma mark -
+#pragma mark UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    //You can retrieve the actual UIImage
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    //Or you can get the image url from AssetsLibrary
+    NSURL *path = [info valueForKey:UIImagePickerControllerReferenceURL];
+    
+    [picker dismissViewControllerAnimated:false completion:nil];
+}
 
 #pragma mark -
 #pragma mark capture delegate
@@ -98,6 +113,21 @@
     }
 }
 
+- (void)changeFlashMode {
+    if ([PBJVision sharedInstance].flashMode == PBJFlashModeOff) {
+        [[PBJVision sharedInstance] setFlashMode:PBJFlashModeOn];
+        self.flashButton.tintColor = [UIColor yellowColor];
+    }
+    else {
+        [[PBJVision sharedInstance] setFlashMode:PBJFlashModeOff];
+        self.flashButton.tintColor = [UIColor colorWithRed:0.25 green:0.24 blue:0.3 alpha:1];
+    }
+}
+
+- (void)takePictureGallery {
+    [self presentViewController:self.pickerController animated:false completion:nil];
+}
+
 #pragma mark -
 #pragma mark handle gesture capture
 
@@ -138,11 +168,9 @@
 
 - (ShimmerView *)shimmerLabel {
     if (!_shimmerLabel) {
-        _shimmerLabel = [[ShimmerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.width + 64,
-                                                                      self.view.frame.size.width,
-                                                                      self.view.frame.size.height - (self.view.frame.size.width + 64))];
+        _shimmerLabel = [[ShimmerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.width + 69, self.view.frame.size.width, 20)];
         _shimmerLabel.text = @"Press to record";
-        _shimmerLabel.textColor = [Colors greenColor];
+        _shimmerLabel.textColor = [UIColor colorWithRed:0.99 green:0.24 blue:0.22 alpha:1];
     }
     return _shimmerLabel;
 }
@@ -166,6 +194,15 @@
         [_captureButton addTarget:self action:@selector(endRecording:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _captureButton;
+}
+
+- (UIImagePickerController *)pickerController {
+    if (!_pickerController) {
+        _pickerController = [[UIImagePickerController alloc] init];
+        _pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        _pickerController.delegate = self;
+    }
+    return _pickerController;
 }
 
 #pragma mark -
@@ -203,16 +240,56 @@
     
     [self.view addSubview:self.captureButton];
     
+//    UIButton *rotationButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    rotationButton.frame = CGRectMake(self.view.frame.size.width - 50, 64 + self.view.frame.size.width - 50, 40, 40);
+//    [rotationButton setImage:[UIImage imageNamed:@"rotation"] forState:UIControlStateNormal];
+//    [rotationButton addTarget:self action:@selector(changeRotationCamera) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:rotationButton];
+//
+//    [self.view addSubview:self.timeLabel];
+//    
+    [self.view addSubview:self.shimmerLabel];
+//    [self.shimmerLabel addGestureRecognizer:self.longPressGestureRecognizer];
+    
+    
+    
+    UIButton *buttonRecord = [UIButton buttonWithType:UIButtonTypeCustom];
+    buttonRecord.backgroundColor = [UIColor colorWithRed:0.99 green:0.24 blue:0.22 alpha:1];
+    
+    buttonRecord.frame = CGRectMake(self.view.frame.size.width / 2 - self.view.frame.size.width / 3 / 2,
+                                    self.view.frame.size.width + 64 + ((self.view.frame.size.height - self.view.frame.size.width - 64) / 2 - self.view.frame.size.width / 3 / 2),
+                                    self.view.frame.size.width / 3,
+                                    self.view.frame.size.width / 3);
+    buttonRecord.layer.cornerRadius = buttonRecord.frame.size.width / 2;
+    
+    [self.view addSubview:buttonRecord];
+    
+    
     UIButton *rotationButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    rotationButton.frame = CGRectMake(self.view.frame.size.width - 50, 64 + self.view.frame.size.width - 50, 40, 40);
-    [rotationButton setImage:[UIImage imageNamed:@"rotation"] forState:UIControlStateNormal];
+    [rotationButton setImage:[[UIImage imageNamed:@"rotation"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    rotationButton.frame = CGRectMake(10, 0, 40, 40);
+    rotationButton.center = CGPointMake(self.view.frame.size.width - 10 - 25, self.shimmerLabel.center.y + 5);
+    rotationButton.tintColor = [UIColor colorWithRed:0.25 green:0.24 blue:0.3 alpha:1];
     [rotationButton addTarget:self action:@selector(changeRotationCamera) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rotationButton];
-
-    [self.view addSubview:self.timeLabel];
     
-    [self.view addSubview:self.shimmerLabel];
-    [self.shimmerLabel addGestureRecognizer:self.longPressGestureRecognizer];
+    
+    UIButton *galleryButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [galleryButton setImage:[[UIImage imageNamed:@"gallery"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    galleryButton.frame = CGRectMake(10, 0, 50, 50);
+    galleryButton.center = CGPointMake(35, buttonRecord.center.y + 5);
+    galleryButton.tintColor = [UIColor colorWithRed:0.25 green:0.24 blue:0.3 alpha:1];
+    [galleryButton addTarget:self action:@selector(takePictureGallery) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:galleryButton];
+    
+    
+    self.flashButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.flashButton setImage:[[UIImage imageNamed:@"flash"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    self.flashButton.frame = CGRectMake(10, 0, 40, 40);
+    self.flashButton.center = CGPointMake(35, self.shimmerLabel.center.y + 5);
+    self.flashButton.tintColor = [UIColor colorWithRed:0.25 green:0.24 blue:0.3 alpha:1];
+    [self.flashButton addTarget:self action:@selector(changeFlashMode) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.flashButton];
 }
 
 @end

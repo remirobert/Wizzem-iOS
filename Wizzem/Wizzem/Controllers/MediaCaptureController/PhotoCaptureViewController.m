@@ -21,7 +21,7 @@
 #import "ShimmerView.h"
 #import "MenuMediaViewController.h"
 
-@interface PhotoCaptureViewController () <FastttCameraDelegate, SCRecorderDelegate, UIImagePickerControllerDelegate>
+@interface PhotoCaptureViewController () <FastttCameraDelegate, SCRecorderDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, strong) PreviewLayerMediaCaptureView *previewCamera;
 @property (nonatomic, strong) DismissButton *crossButton;
 @property (nonatomic, strong) FastttCamera *fastCamera;
@@ -133,7 +133,7 @@
     
     ShimmerView *shimmeringView = [[ShimmerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.width + 69, self.view.frame.size.width, 20)];
     shimmeringView.text = @"Tap to take a picture";
-    shimmeringView.textColor = [UIColor colorWithRed:0.25 green:0.24 blue:0.3 alpha:1];
+    shimmeringView.textColor = [Colors greenColor];
     [self.view addSubview:shimmeringView];
     
     
