@@ -21,7 +21,7 @@
     if (mainStoryboard && (menuController = [mainStoryboard instantiateViewControllerWithIdentifier:@"menuController"])) {
         menuController.modalPresentationStyle = UIModalPresentationOverFullScreen;
         
-        [self presentViewController:menuController animated:true completion:nil];
+        [self presentViewController:menuController animated:false completion:nil];
     }
 }
 
