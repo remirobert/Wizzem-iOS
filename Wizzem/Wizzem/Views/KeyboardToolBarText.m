@@ -89,7 +89,7 @@
         _backgroundColorButton.selected = false;
         _backgroundColorButton.frame = frameButton;
     }
-    return  _backgroundColorButton;
+    return _backgroundColorButton;
 }
 
 #pragma mark -

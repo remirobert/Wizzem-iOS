@@ -9,12 +9,14 @@
 #import "TextCaptureController.h"
 #import "KeyboardToolBarText.h"
 #import "ColorPicker.h"
+#import "KeyboardValidationToolBar.h"
 
 @interface TextCaptureController() <UITextViewDelegate>
 @property (strong, nonatomic) UITextView *textView;
 @property (nonatomic, strong) KeyboardToolBarText *toolBar;
 @property (nonatomic, strong) ColorPicker *colorPickerText;
 @property (nonatomic, strong) ColorPicker *colorPickerBackground;
+@property (nonatomic, strong) KeyboardValidationToolBar *keyboardValidation;
 @property (nonatomic, strong) UIButton *captureButton;
 @end
 
@@ -24,17 +26,42 @@
 #pragma mark ToolBar event
 
 - (void)addLink {
+    if (!self.toolBar.linkButton.selected) {
+        [self cleanToolBar];
+        self.toolBar.linkButton.selected = true;
+        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.4 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+            CGRect frameColorPicker = self.keyboardValidation.frame;
+            frameColorPicker.origin.y = self.toolBar.frame.origin.y - self.keyboardValidation.frame.size.height;
+            self.keyboardValidation.frame = frameColorPicker;
+            self.textView.alpha = 0.7;
+        } completion:nil];
+    }
+    else {
+        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.4 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+            CGRect frameColorPicker = self.keyboardValidation.frame;
+            frameColorPicker.origin.y = self.view.frame.size.height;
+            self.keyboardValidation.frame = frameColorPicker;
+            self.textView.alpha = 0.7;
+        } completion:nil];
+    }
 }
 
 - (void)endEditing {
 }
 
-- (void)displayColorPickerText {
-    if (!self.toolBar.textColor.selected &&self.toolBar.backgroundColorButton.selected) {
-        [self displayColorBackgroundPicker];
-    }
+- (void)cleanToolBar {
+    self.colorPickerBackground.frame = CGRectMake(0, self.view.frame.size.height, self.colorPickerBackground.frame.size.width, self.colorPickerBackground.frame.size.height);
+    self.colorPickerText.frame = CGRectMake(0, self.view.frame.size.height, self.colorPickerText.frame.size.width, self.colorPickerText.frame.size.height);
+    self.keyboardValidation.frame = CGRectMake(0, self.view.frame.size.height, self.keyboardValidation.frame.size.width, self.keyboardValidation
+                                               .frame.size.height);
+    self.toolBar.linkButton.selected = false;
+    self.toolBar.textColor.selected = false;
+    self.toolBar.backgroundColorButton.selected = false;
+}
 
+- (void)displayColorPickerText {
     if (!self.toolBar.textColor.selected) {
+        [self cleanToolBar];
         self.toolBar.textColor.selected = true;
         [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.4 options:UIViewAnimationOptionAllowUserInteraction animations:^{
             CGRect frameColorPicker = self.colorPickerText.frame;
@@ -55,11 +82,8 @@
 }
 
 - (void)displayColorBackgroundPicker {
-    if (!self.toolBar.backgroundColorButton.selected && self.toolBar.textColor.selected) {
-        [self displayColorPickerText];
-    }
-    
     if (!self.toolBar.backgroundColorButton.selected) {
+        [self cleanToolBar];
         self.toolBar.backgroundColorButton.selected = true;
         [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.4 options:UIViewAnimationOptionAllowUserInteraction animations:^{
             CGRect frameColorPicker = self.colorPickerBackground.frame;
@@ -107,6 +131,14 @@
         _textView.textAlignment = NSTextAlignmentCenter;
     }
     return _textView;
+}
+
+- (KeyboardValidationToolBar *)keyboardValidation {
+    if (!_keyboardValidation) {
+        _keyboardValidation = [[KeyboardValidationToolBar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 50)];
+        _keyboardValidation.backgroundColor = [UIColor colorWithRed:0.12 green:0.12 blue:0.15 alpha:1];
+    }
+    return _keyboardValidation;
 }
 
 - (ColorPicker *)colorPickerBackground {
@@ -194,7 +226,7 @@
     self.colorPickerBackground.blockSelection = ^(UIColor *colorSelected) {
         toolBar.backgroundColorButton.tintColor = colorSelected;
         weakSelf.textView.backgroundColor = colorSelected;
-        [weakSelf displayColorPickerText];
+        [weakSelf displayColorBackgroundPicker];
         NSLog(@"color : %@", colorSelected);
     };
 }
