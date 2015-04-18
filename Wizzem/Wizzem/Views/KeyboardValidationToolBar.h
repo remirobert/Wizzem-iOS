@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) UIButton *validateButton;
 @property (nonatomic, strong) UIButton *cancelButton;
+@property (nonatomic, strong) UITextField *textField;
 
 @property (nonatomic, strong) void (^blockSelection)(NSInteger tag);
 

@@ -121,6 +121,7 @@
     self.fastCamera.delegate = self;
     
     [self fastttAddChildViewController:self.fastCamera];
+    self.fastCamera.view.backgroundColor = [UIColor blackColor];
     self.fastCamera.view.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.width);
 
     
@@ -145,7 +146,7 @@
                                     self.view.frame.size.width / 3,
                                     self.view.frame.size.width / 3);
     buttonRecord.layer.cornerRadius = buttonRecord.frame.size.width / 2;
-
+    [buttonRecord addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:buttonRecord];
     
     

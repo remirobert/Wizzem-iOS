@@ -17,6 +17,7 @@
 - (NSData *)gif;
 - (NSString *)video;
 - (NSURL *)audio;
+- (NSDictionary *)text;
 - (instancetype)init:(WizzMediaType)type genericObjectMedia:(id)media;
 
 @end

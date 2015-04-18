@@ -180,10 +180,10 @@
 
 - (UILabel *)timeLabel {
     if (!_timeLabel) {
-        _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 64 + self.view.frame.size.width + 10, self.view.frame.size.width, 20)];
+        _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 64 + 10, self.view.frame.size.width, 20)];
         _timeLabel.textAlignment = NSTextAlignmentCenter;
-        _timeLabel.textColor = [UIColor grayColor];
-        _timeLabel.font = [UIFont boldSystemFontOfSize:15];
+        _timeLabel.textColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
+        _timeLabel.font = [UIFont boldSystemFontOfSize:20];
         _timeLabel.text = @"";
     }
     return _timeLabel;
@@ -298,6 +298,7 @@
     
     self.recordingButton = buttonRecord;
     [self.view addSubview:self.captureButton];
+    [self.view addSubview:self.timeLabel];
 }
 
 @end

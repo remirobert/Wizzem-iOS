@@ -15,6 +15,13 @@
 
 @implementation WizzMediaModel
 
+- (NSDictionary *)text {
+    if (self.mediaType != WizzMediaText) {
+        return nil;
+    }
+    return (NSDictionary *)self.mediaData;
+}
+
 - (UIImage *)photo {
     if (self.mediaType != WizzMediaPhoto) {
         return nil;

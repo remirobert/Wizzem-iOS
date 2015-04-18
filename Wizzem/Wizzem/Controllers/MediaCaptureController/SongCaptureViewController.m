@@ -191,6 +191,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [self.view bringSubviewToFront:self.navigationBar];
+    self.validateButton.center = CGPointMake(self.view.frame.size.width + 25, self.view.center.y);
 }
 
 - (void)viewDidLoad {

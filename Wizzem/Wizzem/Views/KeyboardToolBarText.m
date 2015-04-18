@@ -19,14 +19,7 @@
     UIButton *newButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [newButton setImage:[[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     newButton.backgroundColor = [UIColor clearColor];
-    return newButton;
-}
-
-- (UIButton *)makeButtonWithSting:(NSString *)title {
-    UIButton *newButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [newButton setTitle:title forState:UIControlStateNormal];
-    newButton.backgroundColor = [UIColor clearColor];
-    newButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    newButton.selected = false;
     return newButton;
 }
 
@@ -38,7 +31,6 @@
         CGRect frameButton;
         frameButton.size = CGSizeMake(30, 30);
         frameButton.origin = CGPointMake(self.validateButton.frame.origin.x - 37.5, 7.5);
-        _textColor.selected = false;
         _textColor.frame = frameButton;
     }
     return _textColor;
@@ -86,7 +78,6 @@
         CGRect frameButton;
         frameButton.size = CGSizeMake(30, 30);
         frameButton.origin = CGPointMake(self.textColor.frame.origin.x - 37.5, 7.5);
-        _backgroundColorButton.selected = false;
         _backgroundColorButton.frame = frameButton;
     }
     return _backgroundColorButton;

@@ -18,6 +18,8 @@
 @property (nonatomic, strong) ColorPicker *colorPickerBackground;
 @property (nonatomic, strong) KeyboardValidationToolBar *keyboardValidation;
 @property (nonatomic, strong) UIButton *captureButton;
+
+@property (nonatomic, assign) NSInteger currentKaybord;
 @end
 
 @implementation TextCaptureController
@@ -25,28 +27,86 @@
 #pragma mark -
 #pragma mark ToolBar event
 
+- (void)endEditing {
+    NSDictionary *contentText = @{@"text":self.textView.text, @"textColor":self.textView.textColor, @"backgroundColor":self.textView.backgroundColor};
+    
+    self.currentMedia = [[WizzMediaModel alloc] init:WizzMediaText genericObjectMedia:contentText];
+    [self displayMedia];
+}
+
 - (void)addLink {
     if (!self.toolBar.linkButton.selected) {
+        self.currentKaybord = 0;
         [self cleanToolBar];
         self.toolBar.linkButton.selected = true;
+        self.keyboardValidation.textField.text = @"http://";
+        [self.keyboardValidation.textField becomeFirstResponder];
         [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.4 options:UIViewAnimationOptionAllowUserInteraction animations:^{
             CGRect frameColorPicker = self.keyboardValidation.frame;
-            frameColorPicker.origin.y = self.toolBar.frame.origin.y - self.keyboardValidation.frame.size.height;
+            frameColorPicker.origin.y = self.toolBar.frame.origin.y - 50;
             self.keyboardValidation.frame = frameColorPicker;
-            self.textView.alpha = 0.7;
+            self.textView.alpha = 0.5;
+            
+            CGRect frameToolBar = self.toolBar.frame;
+            frameToolBar.origin.y += frameToolBar.size.height;
+            self.toolBar.frame = frameToolBar;
+            
         } completion:nil];
     }
     else {
+        self.toolBar.linkButton.selected = false;
+        [self.textView becomeFirstResponder];
         [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.4 options:UIViewAnimationOptionAllowUserInteraction animations:^{
             CGRect frameColorPicker = self.keyboardValidation.frame;
             frameColorPicker.origin.y = self.view.frame.size.height;
             self.keyboardValidation.frame = frameColorPicker;
-            self.textView.alpha = 0.7;
+            self.textView.alpha = 1;
+            
+            CGRect frameToolBar = self.toolBar.frame;
+            frameToolBar.origin.y -= frameToolBar.size.height;
+            self.toolBar.frame = frameToolBar;
+
+            
         } completion:nil];
     }
 }
 
-- (void)endEditing {
+- (void)addQuote {
+    if (!self.toolBar.quoteButton.selected) {
+        [self cleanToolBar];
+        self.currentKaybord = 1;
+        self.toolBar.quoteButton.selected = true;
+        self.keyboardValidation.textField.placeholder = @"Ecrivez votre citation";
+        self.keyboardValidation.textField.text = @"";
+        [self.keyboardValidation.textField becomeFirstResponder];
+        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.4 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+            CGRect frameColorPicker = self.keyboardValidation.frame;
+            frameColorPicker.origin.y = self.toolBar.frame.origin.y - 50;
+            self.keyboardValidation.frame = frameColorPicker;
+            self.textView.alpha = 0.5;
+            
+            CGRect frameToolBar = self.toolBar.frame;
+            frameToolBar.origin.y += frameToolBar.size.height;
+            self.toolBar.frame = frameToolBar;
+            
+        } completion:nil];
+    }
+    else {
+        self.toolBar.quoteButton.selected = false;
+        [self.textView becomeFirstResponder];
+        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.4 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+            CGRect frameColorPicker = self.keyboardValidation.frame;
+            frameColorPicker.origin.y = self.view.frame.size.height;
+            self.keyboardValidation.frame = frameColorPicker;
+            self.textView.alpha = 1;
+            
+            CGRect frameToolBar = self.toolBar.frame;
+            frameToolBar.origin.y -= frameToolBar.size.height;
+            self.toolBar.frame = frameToolBar;
+            
+            
+        } completion:nil];
+    }
 }
 
 - (void)cleanToolBar {
@@ -57,6 +117,7 @@
     self.toolBar.linkButton.selected = false;
     self.toolBar.textColor.selected = false;
     self.toolBar.backgroundColorButton.selected = false;
+    self.textView.alpha = 1;
 }
 
 - (void)displayColorPickerText {
@@ -106,6 +167,11 @@
 #pragma mark -
 #pragma mark UItextView delegate
 
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
+    NSLog(@"link clicked");
+    return true;
+}
+
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     if ([textView.text isEqualToString:@"placeholder text here..."]) {
         textView.text = @"";
@@ -129,13 +195,14 @@
         _textView.backgroundColor = [UIColor blackColor];
         _textView.font = [UIFont boldSystemFontOfSize:22];
         _textView.textAlignment = NSTextAlignmentCenter;
+        _textView.dataDetectorTypes = UIDataDetectorTypeLink;
     }
     return _textView;
 }
 
 - (KeyboardValidationToolBar *)keyboardValidation {
     if (!_keyboardValidation) {
-        _keyboardValidation = [[KeyboardValidationToolBar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 50)];
+        _keyboardValidation = [[KeyboardValidationToolBar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 100)];
         _keyboardValidation.backgroundColor = [UIColor colorWithRed:0.12 green:0.12 blue:0.15 alpha:1];
     }
     return _keyboardValidation;
@@ -164,6 +231,9 @@
         
         [_toolBar.textColor addTarget:self action:@selector(displayColorPickerText) forControlEvents:UIControlEventTouchUpInside];
         [_toolBar.backgroundColorButton addTarget:self action:@selector(displayColorBackgroundPicker) forControlEvents:UIControlEventTouchUpInside];
+        [_toolBar.linkButton addTarget:self action:@selector(addLink) forControlEvents:UIControlEventTouchUpInside];
+        [_toolBar.quoteButton addTarget:self action:@selector(addQuote) forControlEvents:UIControlEventTouchUpInside];
+        [_toolBar.validateButton addTarget:self action:@selector(endEditing) forControlEvents:UIControlEventTouchUpInside];
     }
     return  _toolBar;
 }
@@ -229,6 +299,23 @@
         [weakSelf displayColorBackgroundPicker];
         NSLog(@"color : %@", colorSelected);
     };
+    
+    self.keyboardValidation.blockSelection = ^(NSInteger tag) {
+        
+        if (self.currentKaybord == 0 && tag == 1 && ![self.keyboardValidation.textField.text isEqualToString:@"http://"]) {
+            weakSelf.textView.text = [NSString stringWithFormat:@"%@ %@", weakSelf.textView.text, weakSelf.keyboardValidation.textField.text];
+        }
+        else if (self.currentKaybord == 1 && self.keyboardValidation.textField.text.length > 0) {
+            weakSelf.textView.text = [NSString stringWithFormat:@"%@\n\"%@\"\n", weakSelf.textView.text, weakSelf.keyboardValidation.textField.text];
+        }
+        NSLog(@"detect event");
+        if (self.currentKaybord == 0) {
+            [weakSelf addLink];
+        }
+        else {
+            [weakSelf addQuote];
+        }
+    };
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -246,6 +333,8 @@
 
     [self.view addSubview:self.colorPickerText];
     [self.view addSubview:self.colorPickerBackground];
+    [self.view bringSubviewToFront:self.keyboardValidation];
+    [self.view addSubview:self.keyboardValidation];
     
     [self blockCompletionView];
 }

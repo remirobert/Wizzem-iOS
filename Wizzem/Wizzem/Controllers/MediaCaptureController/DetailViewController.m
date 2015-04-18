@@ -22,6 +22,7 @@
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @property (nonatomic, strong) ALAssetsLibrary *assetsLibrary;
 @property (nonatomic, strong) UIView *navigationBar;
+@property (nonatomic, strong) UITextView *textView;
 @end
 
 @implementation DetailViewController
@@ -96,6 +97,17 @@
     return _videoPlayerController;
 }
 
+- (UITextView *)textView {
+    if (!_textView) {
+        _textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.width)];
+        _textView.editable = false;
+        _textView.dataDetectorTypes = UIDataDetectorTypeLink;
+        _textView.font = [UIFont boldSystemFontOfSize:22];
+        _textView.textAlignment = NSTextAlignmentCenter;
+    }
+    return _textView;
+}
+
 #pragma mark -
 #pragma mark visualisation media
 
@@ -138,6 +150,14 @@
     }
 }
 
+- (void)displayText {
+    NSDictionary *contentText = [self.media text];
+    self.textView.text = [contentText objectForKey:@"text"];
+    self.textView.textColor = [contentText objectForKey:@"textColor"];
+    self.textView.backgroundColor = [contentText objectForKey:@"backgroundColor"];
+    [self.view addSubview:self.textView];
+}
+
 #pragma mark -
 #pragma mark media model handler
 
@@ -169,6 +189,10 @@
             
         case WizzMediaSong:
             [self playSong];
+            break;
+            
+        case WizzMediaText:
+            [self displayText];
             break;
             
         default:
