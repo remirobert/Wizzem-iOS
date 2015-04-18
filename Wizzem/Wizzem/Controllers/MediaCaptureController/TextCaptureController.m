@@ -27,10 +27,13 @@
 }
 
 - (void)endEditing {
-    
 }
 
 - (void)displayColorPickerText {
+    if (!self.toolBar.textColor.selected &&self.toolBar.backgroundColorButton.selected) {
+        [self displayColorBackgroundPicker];
+    }
+
     if (!self.toolBar.textColor.selected) {
         self.toolBar.textColor.selected = true;
         [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.4 options:UIViewAnimationOptionAllowUserInteraction animations:^{
@@ -46,6 +49,31 @@
             CGRect frameColorPicker = self.colorPickerText.frame;
             frameColorPicker.origin.y = self.view.frame.size.height;
             self.colorPickerText.frame = frameColorPicker;
+            self.textView.alpha = 1;
+        } completion:nil];
+    }
+}
+
+- (void)displayColorBackgroundPicker {
+    if (!self.toolBar.backgroundColorButton.selected && self.toolBar.textColor.selected) {
+        [self displayColorPickerText];
+    }
+    
+    if (!self.toolBar.backgroundColorButton.selected) {
+        self.toolBar.backgroundColorButton.selected = true;
+        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.4 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+            CGRect frameColorPicker = self.colorPickerBackground.frame;
+            frameColorPicker.origin.y = self.toolBar.frame.origin.y - self.colorPickerBackground.frame.size.height;
+            self.colorPickerBackground.frame = frameColorPicker;
+            self.textView.alpha = 0.7;
+        } completion:nil];
+    }
+    else {
+        self.toolBar.backgroundColorButton.selected = false;
+        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.4 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+            CGRect frameColorPicker = self.colorPickerBackground.frame;
+            frameColorPicker.origin.y = self.view.frame.size.height;
+            self.colorPickerBackground.frame = frameColorPicker;
             self.textView.alpha = 1;
         } completion:nil];
     }
@@ -81,7 +109,7 @@
     return _textView;
 }
 
-- (ColorPicker *)colorPickerText {
+- (ColorPicker *)colorPickerBackground {
     if (!_colorPickerBackground) {
         _colorPickerBackground = [[ColorPicker alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 50)];
         _colorPickerBackground.backgroundColor = [UIColor colorWithRed:0.12 green:0.12 blue:0.15 alpha:1];
@@ -89,11 +117,21 @@
     return _colorPickerBackground;
 }
 
+- (ColorPicker *)colorPickerText {
+    if (!_colorPickerText) {
+        _colorPickerText = [[ColorPicker alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 50)];
+        _colorPickerText.backgroundColor = [UIColor colorWithRed:0.12 green:0.12 blue:0.15 alpha:1];
+    }
+    return _colorPickerText;
+}
+
 - (KeyboardToolBarText *)toolBar {
     if (!_toolBar) {
         _toolBar = [[KeyboardToolBarText alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44)];
         _toolBar.backgroundColor = [UIColor colorWithRed:0.12 green:0.12 blue:0.15 alpha:1];
+        
         [_toolBar.textColor addTarget:self action:@selector(displayColorPickerText) forControlEvents:UIControlEventTouchUpInside];
+        [_toolBar.backgroundColorButton addTarget:self action:@selector(displayColorBackgroundPicker) forControlEvents:UIControlEventTouchUpInside];
     }
     return  _toolBar;
 }
@@ -143,6 +181,22 @@
 
 - (void)blockCompletionView {
     
+    __block KeyboardToolBarText *toolBar = self.toolBar;
+    __weak typeof(self) weakSelf = self;
+    
+    self.colorPickerText.blockSelection = ^(UIColor *colorSelected) {
+        toolBar.textColor.tintColor = colorSelected;
+        weakSelf.textView.textColor = colorSelected;
+        [weakSelf displayColorPickerText];
+        NSLog(@"color : %@", colorSelected);
+    };
+    
+    self.colorPickerBackground.blockSelection = ^(UIColor *colorSelected) {
+        toolBar.backgroundColorButton.tintColor = colorSelected;
+        weakSelf.textView.backgroundColor = colorSelected;
+        [weakSelf displayColorPickerText];
+        NSLog(@"color : %@", colorSelected);
+    };
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -157,7 +211,11 @@
     self.textView.textColor = [UIColor colorWithRed:0.35 green:0.35 blue:0.83 alpha:1];
     [self.textView becomeFirstResponder];
     self.textView.frame = CGRectMake(0, 64, self.textView.frame.size.width, self.textView.frame.size.width);
+
     [self.view addSubview:self.colorPickerText];
+    [self.view addSubview:self.colorPickerBackground];
+    
+    [self blockCompletionView];
 }
 
 @end

@@ -16,7 +16,9 @@
 @implementation ColorPicker
 
 - (void)selectColor:(UIButton *)button {
-    
+    if (self.blockSelection) {
+        self.blockSelection(button.backgroundColor);
+    }
 }
 
 - (UIScrollView *)scrollColors {

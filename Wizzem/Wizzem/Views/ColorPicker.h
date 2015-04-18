@@ -10,4 +10,6 @@
 
 @interface ColorPicker : UIView
 
+@property (nonatomic, strong) void (^blockSelection)(UIColor *colorSelected);
+
 @end

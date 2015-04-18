@@ -38,6 +38,7 @@
         CGRect frameButton;
         frameButton.size = CGSizeMake(30, 30);
         frameButton.origin = CGPointMake(self.validateButton.frame.origin.x - 37.5, 7.5);
+        _textColor.selected = false;
         _textColor.frame = frameButton;
     }
     return _textColor;
@@ -85,6 +86,7 @@
         CGRect frameButton;
         frameButton.size = CGSizeMake(30, 30);
         frameButton.origin = CGPointMake(self.textColor.frame.origin.x - 37.5, 7.5);
+        _backgroundColorButton.selected = false;
         _backgroundColorButton.frame = frameButton;
     }
     return  _backgroundColorButton;
