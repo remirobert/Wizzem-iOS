@@ -7,10 +7,14 @@
 //
 
 #import "TextCaptureController.h"
+#import "KeyboardToolBarText.h"
+#import "ColorPicker.h"
 
 @interface TextCaptureController() <UITextViewDelegate>
 @property (strong, nonatomic) UITextView *textView;
-@property (nonatomic, strong) UIView *toolBar;
+@property (nonatomic, strong) KeyboardToolBarText *toolBar;
+@property (nonatomic, strong) ColorPicker *colorPickerText;
+@property (nonatomic, strong) ColorPicker *colorPickerBackground;
 @property (nonatomic, strong) UIButton *captureButton;
 @end
 
@@ -24,6 +28,27 @@
 
 - (void)endEditing {
     
+}
+
+- (void)displayColorPickerText {
+    if (!self.toolBar.textColor.selected) {
+        self.toolBar.textColor.selected = true;
+        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.4 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+            CGRect frameColorPicker = self.colorPickerText.frame;
+            frameColorPicker.origin.y = self.toolBar.frame.origin.y - self.colorPickerText.frame.size.height;
+            self.colorPickerText.frame = frameColorPicker;
+            self.textView.alpha = 0.7;
+        } completion:nil];
+    }
+    else {
+        self.toolBar.textColor.selected = false;
+        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.4 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+            CGRect frameColorPicker = self.colorPickerText.frame;
+            frameColorPicker.origin.y = self.view.frame.size.height;
+            self.colorPickerText.frame = frameColorPicker;
+            self.textView.alpha = 1;
+        } completion:nil];
+    }
 }
 
 #pragma mark -
@@ -56,20 +81,19 @@
     return _textView;
 }
 
-- (UIView *)toolBar {
-    if (!_toolBar) {
-        _toolBar = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44)];
-        _toolBar.backgroundColor = [UIColor colorWithRed:0.12 green:0.12 blue:0.15 alpha:1];
-        
-        UIButton *link = [[UIButton alloc] initWithFrame:CGRectMake(5, 10, 50, 24)];
-        [link setTitle:@"Link" forState:UIControlStateNormal];
-        link.backgroundColor = [UIColor clearColor];
-        link.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [link setTitleColor:[UIColor colorWithRed:0.56 green:0.56 blue:0.58 alpha:1] forState:UIControlStateNormal];
+- (ColorPicker *)colorPickerText {
+    if (!_colorPickerBackground) {
+        _colorPickerBackground = [[ColorPicker alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 50)];
+        _colorPickerBackground.backgroundColor = [UIColor colorWithRed:0.12 green:0.12 blue:0.15 alpha:1];
+    }
+    return _colorPickerBackground;
+}
 
-        [_toolBar addSubview:self.captureButton];
-        
-        [_toolBar addSubview:link];
+- (KeyboardToolBarText *)toolBar {
+    if (!_toolBar) {
+        _toolBar = [[KeyboardToolBarText alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44)];
+        _toolBar.backgroundColor = [UIColor colorWithRed:0.12 green:0.12 blue:0.15 alpha:1];
+        [_toolBar.textColor addTarget:self action:@selector(displayColorPickerText) forControlEvents:UIControlEventTouchUpInside];
     }
     return  _toolBar;
 }
@@ -117,6 +141,10 @@
 #pragma mark -
 #pragma mark UiView cycle
 
+- (void)blockCompletionView {
+    
+}
+
 - (void)viewDidDisappear:(BOOL)animated {
     [self unregisterForKeyboardNotifications];
 }
@@ -129,6 +157,7 @@
     self.textView.textColor = [UIColor colorWithRed:0.35 green:0.35 blue:0.83 alpha:1];
     [self.textView becomeFirstResponder];
     self.textView.frame = CGRectMake(0, 64, self.textView.frame.size.width, self.textView.frame.size.width);
+    [self.view addSubview:self.colorPickerText];
 }
 
 @end
