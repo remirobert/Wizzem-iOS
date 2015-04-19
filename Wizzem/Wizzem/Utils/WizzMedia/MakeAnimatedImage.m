@@ -59,7 +59,7 @@
 }
 
 
-+ (void) makeAnimatedGif:(NSArray *)images speedGifFrame:(GifSpeed)speed blockCompletion:(void(^)(NSData *gif))completionBlock {
++ (void) makeAnimatedGif:(NSArray *)images speedGifFrame:(float)speed blockCompletion:(void(^)(NSData *gif))completionBlock {
     NSUInteger kFrameCount = images.count;
     
     NSDictionary *fileProperties = @{(__bridge id)kCGImagePropertyGIFDictionary:

@@ -15,6 +15,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "Header.h"
 #import "Colors.h"
+#import "MakeAnimatedImage.h"
 
 @interface DetailViewController () <PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
 @property (nonatomic, strong) FLAnimatedImageView *imageView;
@@ -129,21 +130,69 @@
 #pragma mark -
 #pragma mark visualisation media
 
+#pragma mark photo
+
 - (void)displayPhoto {
     self.imageView.image = [self.media photo];
     [self.view addSubview:self.imageView];
 }
 
+#pragma mark gif
+
+- (void)changeSpeed:(UIButton *)sender {
+    float speed;
+    if (sender.tag == 0) {
+        speed = GIF_SPEED_SLOW;
+    }
+    else if (sender.tag == 1) {
+        speed = GIF_SPEED_NORMAL;
+    }
+    else {
+        speed = GIF_SPEED_FAST;
+    }
+    [MakeAnimatedImage makeAnimatedGif:[[self.media gif] objectForKey:@"photos"] speedGifFrame:speed blockCompletion:^(NSData *gif) {
+        FLAnimatedImage *img = [[FLAnimatedImage alloc] initWithAnimatedGIFData:gif];
+        self.imageView.animatedImage = img;
+    }];
+}
+
 - (void)displayGif {
+    
+    UIButton *speed = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.width + 64, self.view.frame.size.width / 3, 30)];
+    [speed setTitle:@"slow" forState:UIControlStateNormal];
+    speed.tag = 0;
+    [speed addTarget:self action:@selector(changeSpeed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:speed];
+    
+    UIButton *normal = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 3, self.view.frame.size.width + 64, self.view.frame.size.width / 3, 30)];
+    [normal setTitle:@"normal" forState:UIControlStateNormal];
+    normal.tag = 1;
+    [normal addTarget:self action:@selector(changeSpeed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:normal];
+    
+    UIButton *fast = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 3 * 2, self.view.frame.size.width + 64, self.view.frame.size.width / 3, 30)];
+    [fast setTitle:@"fast" forState:UIControlStateNormal];
+    fast.tag = 2;
+    [fast addTarget:self action:@selector(changeSpeed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:fast];
+
+    [self.view addSubview:speed];
+    [self.view addSubview:normal];
+    [self.view addSubview:fast];
+    
     NSDictionary *gifContent = [self.media gif];
     FLAnimatedImage *img = [[FLAnimatedImage alloc] initWithAnimatedGIFData:[gifContent objectForKey:@"data"]];
     self.imageView.animatedImage = img;
     [self.view addSubview:self.imageView];
 }
 
+#pragma mark video
+
 - (void)displayVideo {
     self.videoPlayerController.videoPath = [self.media video];
 }
+
+#pragma mark song
 
 - (void)playSong {
     AVAudioSession *session = [AVAudioSession sharedInstance];
@@ -168,6 +217,8 @@
         NSLog(@"ok to play");
     }
 }
+
+#pragma mark text
 
 - (void)displayText {
     NSDictionary *contentText = [self.media text];

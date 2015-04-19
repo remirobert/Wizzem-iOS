@@ -23,7 +23,7 @@
 @implementation GitCaptureViewController
 
 - (void)endGifCapture {
-    [MakeAnimatedImage makeAnimatedGif:self.photos speedGifFrame:GifSpeedNormal blockCompletion:^(NSData *gif) {
+    [MakeAnimatedImage makeAnimatedGif:self.photos speedGifFrame:GIF_SPEED_NORMAL blockCompletion:^(NSData *gif) {
         NSDictionary *gifContent = @{@"photos":self.photos, @"data":gif};
         
         self.currentMedia = [[WizzMediaModel alloc] init:WizzMediaGif genericObjectMedia:gifContent];

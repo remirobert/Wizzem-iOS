@@ -8,15 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum : NSUInteger {
-    GifSpeedSlow = 1.5,
-    GifSpeedNormal = 1,
-    GifSpeedFast = 0.5,
-} GifSpeed;
+#define GIF_SPEED_SLOW      1.5
+#define GIF_SPEED_NORMAL    1.0
+#define GIF_SPEED_FAST      0.5
 
 @interface MakeAnimatedImage : NSObject
 
-+ (void)makeAnimatedGif:(NSArray *)images speedGifFrame:(GifSpeed)speed blockCompletion:(void(^)(NSData *gif))completionBlock;
++ (void)makeAnimatedGif:(NSArray *)images speedGifFrame:(float)speed blockCompletion:(void(^)(NSData *gif))completionBlock;
 + (void)saveGIFToPhotoAlbumFromImages:(NSArray*)images WithCallbackBlock:(void (^)(void))callbackBlock;
 
 @end
