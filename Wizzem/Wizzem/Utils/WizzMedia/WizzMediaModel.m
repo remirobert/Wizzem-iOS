@@ -29,11 +29,11 @@
     return (UIImage *)self.mediaData;
 }
 
-- (NSData *)gif {
+- (NSDictionary *)gif {
     if (self.mediaType != WizzMediaGif) {
         return nil;
     }
-    return (NSData *)self.mediaData;
+    return (NSDictionary *)self.mediaData;
 }
 
 - (NSString *)video {

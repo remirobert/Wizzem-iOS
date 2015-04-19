@@ -59,14 +59,14 @@
 }
 
 
-+ (void) makeAnimatedGif:(NSArray *)images blockCompletion:(void(^)(NSData *gif))completionBlock {
++ (void) makeAnimatedGif:(NSArray *)images speedGifFrame:(GifSpeed)speed blockCompletion:(void(^)(NSData *gif))completionBlock {
     NSUInteger kFrameCount = images.count;
     
     NSDictionary *fileProperties = @{(__bridge id)kCGImagePropertyGIFDictionary:
                                          @{(__bridge id)kCGImagePropertyGIFLoopCount: @0}};
     
     NSDictionary *frameProperties = @{(__bridge id)kCGImagePropertyGIFDictionary:
-                                          @{(__bridge id)kCGImagePropertyGIFDelayTime: @1,}};
+                                          @{(__bridge id)kCGImagePropertyGIFDelayTime: [NSNumber numberWithFloat:speed],}};
     
         NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory
                                                                               inDomain:NSUserDomainMask

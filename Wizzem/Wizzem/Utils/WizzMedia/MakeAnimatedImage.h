@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    GifSpeedSlow = 1.5,
+    GifSpeedNormal = 1,
+    GifSpeedFast = 0.5,
+} GifSpeed;
+
 @interface MakeAnimatedImage : NSObject
 
-+ (void) makeAnimatedGif:(NSArray *)images blockCompletion:(void(^)(NSData *gif))completionBlock;
-+(void)saveGIFToPhotoAlbumFromImages:(NSArray*)images WithCallbackBlock:(void (^)(void))callbackBlock;
++ (void)makeAnimatedGif:(NSArray *)images speedGifFrame:(GifSpeed)speed blockCompletion:(void(^)(NSData *gif))completionBlock;
++ (void)saveGIFToPhotoAlbumFromImages:(NSArray*)images WithCallbackBlock:(void (^)(void))callbackBlock;
 
 @end

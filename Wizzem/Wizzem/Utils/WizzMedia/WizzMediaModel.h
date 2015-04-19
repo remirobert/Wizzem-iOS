@@ -14,7 +14,7 @@
 @property (nonatomic, assign, readonly) WizzMediaType mediaType;
 
 - (UIImage *)photo;
-- (NSData *)gif;
+- (NSDictionary *)gif;
 - (NSString *)video;
 - (NSURL *)audio;
 - (NSDictionary *)text;

@@ -23,14 +23,16 @@
 @implementation GitCaptureViewController
 
 - (void)endGifCapture {
-    [MakeAnimatedImage makeAnimatedGif:self.photos blockCompletion:^(NSData *gif) {
-        self.currentMedia = [[WizzMediaModel alloc] init:WizzMediaGif genericObjectMedia:gif];
+    [MakeAnimatedImage makeAnimatedGif:self.photos speedGifFrame:GifSpeedNormal blockCompletion:^(NSData *gif) {
+        NSDictionary *gifContent = @{@"photos":self.photos, @"data":gif};
+        
+        self.currentMedia = [[WizzMediaModel alloc] init:WizzMediaGif genericObjectMedia:gifContent];
         [self displayMedia];
     }];
 }
 
 - (void)takePicture {
-    if (self.photos.count == 2) {
+    if (self.photos.count == 1) {
         [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveLinear animations:^{
             self.captureButton.center = CGPointMake(self.view.frame.size.width - 50, self.recordingButton.center.y);
         } completion:nil];
@@ -76,6 +78,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [WizzMedia startSession];
     self.captureButton.center = CGPointMake(self.view.frame.size.width + 25, self.recordingButton.center.y);
     [self.photos removeAllObjects];
 }
@@ -83,7 +86,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [WizzMedia startSession];
 
     UIView *preview = [WizzMedia previewCamera:CGSizeMake(self.view.frame.size.width, self.view.frame.size.width)];
     preview.frame = CGRectMake(0, 64, preview.frame.size.width, preview.frame.size.width);

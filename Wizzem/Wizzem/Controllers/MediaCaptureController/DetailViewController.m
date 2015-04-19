@@ -135,7 +135,8 @@
 }
 
 - (void)displayGif {
-    FLAnimatedImage *img = [[FLAnimatedImage alloc] initWithAnimatedGIFData:[self.media gif]];
+    NSDictionary *gifContent = [self.media gif];
+    FLAnimatedImage *img = [[FLAnimatedImage alloc] initWithAnimatedGIFData:[gifContent objectForKey:@"data"]];
     self.imageView.animatedImage = img;
     [self.view addSubview:self.imageView];
 }

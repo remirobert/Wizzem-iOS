@@ -176,7 +176,7 @@
             UIImage *image = [[UIImage alloc] initWithData:imageData];
             
             image = [WizzMedia cropImage:image WithRect:CGRectMake(((image.size.width - image.size.width) / 2),
-                                                                   44, image.size.width, image.size.width)];
+                                                                   ((image.size.height - image.size.width) / 2), image.size.width, image.size.width)];
             blockCompletion([self fixOrientationOfImage:image]);
         }
         else {
