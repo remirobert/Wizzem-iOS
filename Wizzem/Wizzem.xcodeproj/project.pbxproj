@@ -56,6 +56,7 @@
 		BBD794CE1ACDE27D0046C1C1 /* MediaCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD794CD1ACDE27D0046C1C1 /* MediaCaptureViewController.m */; };
 		BBD794D11ACDE3660046C1C1 /* SongCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD794D01ACDE3660046C1C1 /* SongCaptureViewController.m */; };
 		BBDAA9841ADDA5B7007CC357 /* TextCaptureController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDAA9831ADDA5B7007CC357 /* TextCaptureController.m */; };
+		BBF0FB3B1AE3A3550019BEBA /* GitCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF0FB3A1AE3A3550019BEBA /* GitCaptureViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +159,8 @@
 		BBD794D01ACDE3660046C1C1 /* SongCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongCaptureViewController.m; sourceTree = "<group>"; };
 		BBDAA9821ADDA5B7007CC357 /* TextCaptureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCaptureController.h; sourceTree = "<group>"; };
 		BBDAA9831ADDA5B7007CC357 /* TextCaptureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCaptureController.m; sourceTree = "<group>"; };
+		BBF0FB391AE3A3550019BEBA /* GitCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitCaptureViewController.h; sourceTree = "<group>"; };
+		BBF0FB3A1AE3A3550019BEBA /* GitCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitCaptureViewController.m; sourceTree = "<group>"; };
 		F44EE1E1271F095C9620B60B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		FEA8B635285A35CE77C00BF3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -343,18 +346,19 @@
 		BB6991651AC9C1B400AC5776 /* MediaCaptureController */ = {
 			isa = PBXGroup;
 			children = (
+				BBF0FB3C1AE3AB110019BEBA /* MediaControllerTemplate */,
 				BB6991661AC9C1D500AC5776 /* PhotoCaptureViewController.h */,
 				BB6991671AC9C1D500AC5776 /* PhotoCaptureViewController.m */,
 				BBC1DF841ACC95E400D9D8FC /* DetailViewController.h */,
 				BBC1DF851ACC95E400D9D8FC /* DetailViewController.m */,
-				BBD794CC1ACDE27D0046C1C1 /* MediaCaptureViewController.h */,
-				BBD794CD1ACDE27D0046C1C1 /* MediaCaptureViewController.m */,
 				BBD794C91ACDDC470046C1C1 /* MovieCaptureViewController.h */,
 				BBD794CA1ACDDC470046C1C1 /* MovieCaptureViewController.m */,
 				BBD794CF1ACDE3660046C1C1 /* SongCaptureViewController.h */,
 				BBD794D01ACDE3660046C1C1 /* SongCaptureViewController.m */,
 				BBDAA9821ADDA5B7007CC357 /* TextCaptureController.h */,
 				BBDAA9831ADDA5B7007CC357 /* TextCaptureController.m */,
+				BBF0FB391AE3A3550019BEBA /* GitCaptureViewController.h */,
+				BBF0FB3A1AE3A3550019BEBA /* GitCaptureViewController.m */,
 			);
 			path = MediaCaptureController;
 			sourceTree = "<group>";
@@ -411,6 +415,15 @@
 				BBC1DF8E1ACC9FA400D9D8FC /* MakeAnimatedImage.m */,
 			);
 			path = WizzMedia;
+			sourceTree = "<group>";
+		};
+		BBF0FB3C1AE3AB110019BEBA /* MediaControllerTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				BBD794CC1ACDE27D0046C1C1 /* MediaCaptureViewController.h */,
+				BBD794CD1ACDE27D0046C1C1 /* MediaCaptureViewController.m */,
+			);
+			name = MediaControllerTemplate;
 			sourceTree = "<group>";
 		};
 		E4BF479B5A2E9DDD09E972B8 /* Pods */ = {
@@ -582,6 +595,7 @@
 				BB7BE9611AC0A21D008040C7 /* WizzMediaModel.m in Sources */,
 				BB34A62A1A9B989200AA2A86 /* AppDelegate.m in Sources */,
 				BB83404F1AE295A600DB83C8 /* KeyboardValidationToolBar.m in Sources */,
+				BBF0FB3B1AE3A3550019BEBA /* GitCaptureViewController.m in Sources */,
 				BBD794CE1ACDE27D0046C1C1 /* MediaCaptureViewController.m in Sources */,
 				BB8748631ABDE72500957909 /* DropDown.m in Sources */,
 				BBBD944A1ABD72DC002F8655 /* WizzMedia+CameraPhoto.m in Sources */,

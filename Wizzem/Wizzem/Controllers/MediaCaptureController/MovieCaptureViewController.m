@@ -217,7 +217,7 @@
     [super viewWillAppear:animated];
     [[PBJVision sharedInstance] startPreview];
     self.timeLabel.text = @"";
-    _captureButton.center = CGPointMake(self.view.frame.size.width + 25, self.recordingButton.center.y);
+    self.captureButton.center = CGPointMake(self.view.frame.size.width + 25, self.recordingButton.center.y);
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

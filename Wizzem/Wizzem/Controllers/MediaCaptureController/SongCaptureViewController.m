@@ -20,9 +20,9 @@
 @property (nonatomic, strong) DismissButton *crossButton;
 @property (nonatomic, strong) ShimmerView *shimmerLabel;
 @property (nonatomic, strong) MultiplePulsingHaloLayer *mutiHal;
-@property (nonatomic, strong) UIButton *captureButton;
 @property (nonatomic, strong) UILabel *currentTimeRecorded;
 @property (nonatomic, strong) UIButton *validateButton;
+@property (nonatomic, strong) UIButton *buttonRecord;
 @end
 
 @implementation SongCaptureViewController
@@ -31,19 +31,21 @@
     self.isRecording = true;
     NSLog(@"start recording");
     
-    [UIView animateWithDuration:0.5 animations:^{
+    NSLog(@"hal : %@ %f %f", self.mutiHal, self.mutiHal.frame.size.width, self.mutiHal.frame.size.height);
+    
+//    [UIView animateWithDuration:0.5 animations:^{
         [_mutiHal setHaloLayerColor:[UIColor grayColor].CGColor];
-    }];
+//    }];
     
     [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:2 initialSpringVelocity:5 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        self.captureButton.frame = CGRectMake(0, 0, self.view.frame.size.width / 3 + 10, self.view.frame.size.width / 3 + 10);
-        self.captureButton.layer.cornerRadius = (self.view.frame.size.width / 3 + 10) / 2;
-        self.captureButton.center = self.view.center;
+        self.buttonRecord.frame = CGRectMake(0, 0, self.view.frame.size.width / 3 + 10, self.view.frame.size.width / 3 + 10);
+        self.buttonRecord.layer.cornerRadius = (self.view.frame.size.width / 3 + 10) / 2;
+        self.buttonRecord.center = self.view.center;
     } completion:^(BOOL finished) {
         [UIView animateKeyframesWithDuration:0.5 delay:0.1 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
-            self.captureButton.frame = CGRectMake(0, 0, self.view.frame.size.width / 3, self.view.frame.size.width / 3);
-            self.captureButton.layer.cornerRadius = (self.view.frame.size.width / 3) / 2;
-            self.captureButton.center = self.view.center;
+            self.buttonRecord.frame = CGRectMake(0, 0, self.view.frame.size.width / 3, self.view.frame.size.width / 3);
+            self.buttonRecord.layer.cornerRadius = (self.view.frame.size.width / 3) / 2;
+            self.buttonRecord.center = self.view.center;
         } completion:nil];
     }];
     
@@ -59,9 +61,9 @@
 - (void)pauseRecording {
     NSLog(@"pause recording");
 
-    [UIView animateWithDuration:0.5 animations:^{
+//    [UIView animateWithDuration:0.5 animations:^{
         [_mutiHal setHaloLayerColor:[UIColor clearColor].CGColor];
-    }];
+//    }];
 
     self.shimmerLabel.text = @"Press to record";
     if (self.isRecording) {
@@ -71,9 +73,9 @@
 
 - (void)resumeRecording {
     NSLog(@"resume recording");
-    [UIView animateWithDuration:0.5 animations:^{
+//    [UIView animateWithDuration:0.5 animations:^{
         [_mutiHal setHaloLayerColor:[UIColor grayColor].CGColor];
-    }];
+//    }];
 
     self.shimmerLabel.text = @"Recording...";
     if (self.isRecording) {
@@ -84,9 +86,9 @@
 - (IBAction)stopRecording:(id)sender {
     NSLog(@"stop recording");
     
-    [UIView animateWithDuration:0.5 animations:^{
+//    [UIView animateWithDuration:0.5 animations:^{
         [_mutiHal setHaloLayerColor:[UIColor clearColor].CGColor];
-    }];
+//    }];
     
     self.shimmerLabel.text = @"Press to record";
     self.isRecording = false;
@@ -192,6 +194,9 @@
 - (void)viewDidAppear:(BOOL)animated {
     [self.view bringSubviewToFront:self.navigationBar];
     self.validateButton.center = CGPointMake(self.view.frame.size.width + 25, self.view.center.y);
+    
+    self.mutiHal = nil;
+    [self.view.layer insertSublayer:self.mutiHal below:self.buttonRecord.layer];
 }
 
 - (void)viewDidLoad {
@@ -205,23 +210,23 @@
     
     [self.view addSubview:self.validateButton];
     
-    UIButton *buttonRecord = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonRecord.backgroundColor = [UIColor colorWithRed:1 green:0.77 blue:0.01 alpha:1];
+    self.buttonRecord = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.buttonRecord.backgroundColor = [UIColor colorWithRed:1 green:0.77 blue:0.01 alpha:1];
     
-    buttonRecord.frame = CGRectMake(self.view.frame.size.width / 2 - self.view.frame.size.width / 3 / 2,
+    self.buttonRecord.frame = CGRectMake(self.view.frame.size.width / 2 - self.view.frame.size.width / 3 / 2,
                                     self.view.frame.size.width + 64 + ((self.view.frame.size.height - self.view.frame.size.width - 64) / 2 - self.view.frame.size.width / 3 / 2),
                                     self.view.frame.size.width / 3,
                                     self.view.frame.size.width / 3);
-    buttonRecord.layer.cornerRadius = buttonRecord.frame.size.width / 2;
-    buttonRecord.center = self.view.center;
-    [self.view addSubview:buttonRecord];
+    self.buttonRecord.layer.cornerRadius = self.buttonRecord.frame.size.width / 2;
+    self.buttonRecord.center = self.view.center;
+    [self.view addSubview:self.buttonRecord];
     
-    [self.view.layer insertSublayer:self.mutiHal below:buttonRecord.layer];
+    //[self.view.layer insertSublayer:self.mutiHal below:self.buttonRecord.layer];
     
     UILongPressGestureRecognizer *pressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGestureRecognizer:)];
-    [buttonRecord addGestureRecognizer:pressGesture];
+    [self.buttonRecord addGestureRecognizer:pressGesture];
     
-    self.captureButton = buttonRecord;
+    self.buttonRecord = self.buttonRecord;
 }
 
 @end

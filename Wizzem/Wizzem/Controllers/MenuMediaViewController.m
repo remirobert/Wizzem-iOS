@@ -27,7 +27,8 @@
     
     UIViewController *controller;
     if (sender.tag == 1) {
-        controller = [storyboard instantiateViewControllerWithIdentifier:@"photoController"];
+//        controller = [storyboard instantiateViewControllerWithIdentifier:@"photoController"];
+        controller = [storyboard instantiateViewControllerWithIdentifier:@"gifController"];
     }
     else if (sender.tag == 2) {
         controller = [storyboard instantiateViewControllerWithIdentifier:@"videoController"];

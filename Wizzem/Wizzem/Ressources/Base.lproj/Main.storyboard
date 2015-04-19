@@ -466,7 +466,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W7f-2V-EJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2325" y="-700.5"/>
+            <point key="canvasLocation" x="2325" y="-1498.5"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="ksZ-as-9zM">
@@ -543,6 +543,27 @@
             </objects>
             <point key="canvasLocation" x="327" y="424"/>
         </scene>
+        <!--Git Capture View Controller-->
+        <scene sceneID="y9z-aW-3ZR">
+            <objects>
+                <viewController id="RXH-vw-55C" customClass="GitCaptureViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gdF-5H-xw9"/>
+                        <viewControllerLayoutGuide type="bottom" id="wtw-9o-xDx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="owu-bD-7Da">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Hqi-E9-X0w"/>
+                    <connections>
+                        <segue destination="I3v-0O-iT3" kind="show" identifier="detailController" id="U0H-ce-Rq0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QxZ-wV-zZt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1236" y="-2349"/>
+        </scene>
         <!--Text Capture Controller-->
         <scene sceneID="wPy-Iv-UTu">
             <objects>
@@ -558,7 +579,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="2oT-8G-PVE"/>
                     <connections>
-                        <segue destination="I3v-0O-iT3" kind="push" identifier="detailController" id="G91-RG-hf7"/>
+                        <segue destination="I3v-0O-iT3" kind="show" identifier="detailController" id="G91-RG-hf7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVZ-xy-iZA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -642,6 +663,24 @@
             </objects>
             <point key="canvasLocation" x="318" y="-1671"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MFW-T3-meX">
+            <objects>
+                <navigationController storyboardIdentifier="gifController" automaticallyAdjustsScrollViewInsets="NO" id="29k-Ap-fuV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lp9-vC-4MV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="RXH-vw-55C" kind="relationship" relationship="rootViewController" id="49u-eA-Daz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nYe-de-ACi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="318" y="-2349"/>
+        </scene>
     </scenes>
     <resources>
         <image name="cross" width="100" height="100"/>
@@ -651,6 +690,6 @@
         <image name="video" width="1181" height="1181"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="G91-RG-hf7"/>
+        <segue reference="U0H-ce-Rq0"/>
     </inferredMetricsTieBreakers>
 </document>

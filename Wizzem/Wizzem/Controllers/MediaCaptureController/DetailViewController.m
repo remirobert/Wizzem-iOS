@@ -16,19 +16,30 @@
 #import "Header.h"
 #import "Colors.h"
 
-@interface DetailViewController () <PBJVideoPlayerControllerDelegate>
+@interface DetailViewController () <PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
 @property (nonatomic, strong) FLAnimatedImageView *imageView;
 @property (nonatomic, strong) PBJVideoPlayerController *videoPlayerController;
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @property (nonatomic, strong) ALAssetsLibrary *assetsLibrary;
 @property (nonatomic, strong) UIView *navigationBar;
 @property (nonatomic, strong) UITextView *textView;
+@property (nonatomic, strong) UIAlertView *alertPop;
 @end
 
 @implementation DetailViewController
 
+#pragma mark -
+#pragma mark UIAlertView Delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        [self.navigationController popToRootViewControllerAnimated:true];
+    }
+}
+
 - (void)dismissController {
-    [self.navigationController popToRootViewControllerAnimated:true];
+    [self.alertPop show];
+    //[self.navigationController popToRootViewControllerAnimated:true];
 }
 
 #pragma mark -
@@ -55,13 +66,13 @@
 - (UIView *)navigationBar {
     if (!_navigationBar) {
         _navigationBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
-        _navigationBar.backgroundColor = [Colors greenColor];
+        _navigationBar.backgroundColor = [UIColor colorWithRed:0.12 green:0.12 blue:0.15 alpha:1];
         
         UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
         [back setImage:[[UIImage imageNamed:@"back"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
         [back addTarget:self action:@selector(dismissController) forControlEvents:UIControlEventTouchUpInside];
         back.frame = CGRectMake(10, 10, 40, 40);
-        back.tintColor = [Colors grayColor];
+        back.tintColor = [UIColor colorWithRed:0.25 green:0.24 blue:0.3 alpha:1];
         [_navigationBar addSubview:back];
     }
     return _navigationBar;
@@ -106,6 +117,13 @@
         _textView.textAlignment = NSTextAlignmentCenter;
     }
     return _textView;
+}
+
+- (UIAlertView *)alertPop {
+    if (!_alertPop) {
+        _alertPop = [[UIAlertView alloc] initWithTitle:@"Voullez vous annuler ?" message:@"Le media va être détruit" delegate:self cancelButtonTitle:@"Annuler" otherButtonTitles:@"Retour", nil];
+    }
+    return  _alertPop;
 }
 
 #pragma mark -
@@ -162,9 +180,17 @@
 #pragma mark media model handler
 
 - (void) viewDidAppear:(BOOL)animated {
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [[self navigationController] setNavigationBarHidden:YES animated:false];
+    self.view.backgroundColor = [UIColor colorWithRed:0.12 green:0.12 blue:0.15 alpha:1];
+    [self.view addSubview:self.navigationBar];
+    
     switch (self.media.mediaType) {
         case WizzMediaPhoto:
-
+            
             
             [self.assetsLibrary saveImage:[self.media photo] toAlbum:ALBUM_MEDIA completion:^(NSURL *assetURL, NSError *error) {
                 
@@ -198,14 +224,7 @@
         default:
             break;
     }
-}
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self.navigationController.interactivePopGestureRecognizer setDelegate:nil];
-    [[self navigationController] setNavigationBarHidden:YES animated:false];
-    self.view.backgroundColor = [Colors grayColor];
-    [self.view addSubview:self.navigationBar];
 }
 
 @end
