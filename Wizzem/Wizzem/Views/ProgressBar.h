@@ -13,6 +13,8 @@
 @property (nonatomic, assign) NSInteger maxValue;
 @property (nonatomic, assign) NSInteger currentValue;
 
+- (void)backgroundColor:(UIColor *)backgroundColor;
+- (void)progressColor:(UIColor *)progressColor;
 - (void)setProgress:(CGFloat)value;
 - (instancetype)initWithFrame:(CGRect)frame;
 

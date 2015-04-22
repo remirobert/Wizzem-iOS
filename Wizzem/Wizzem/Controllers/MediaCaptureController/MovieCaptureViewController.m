@@ -18,8 +18,9 @@
 #import "DismissButton.h"
 #import "ShimmerView.h"
 #import "Colors.h"
+#import "ProgressBar.h"
 
-@interface MovieCaptureViewController () <PBJVisionDelegate, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface MovieCaptureViewController () <PBJVisionDelegate, UIGestureRecognizerDelegate>
 @property (nonatomic, assign) BOOL isRecording;
 @property (nonatomic, strong) PreviewLayerMediaCaptureView *previewCamera;
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
@@ -28,24 +29,11 @@
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) UIButton *captureButton;
 @property (nonatomic, strong) UIButton *flashButton;
-@property (nonatomic, strong) UIImagePickerController *pickerController;
 @property (nonatomic, strong) UIButton *recordingButton;
+@property (nonatomic, strong) ProgressBar *progressBar;
 @end
 
 @implementation MovieCaptureViewController
-
-#pragma mark -
-#pragma mark UIImagePickerControllerDelegate
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    //You can retrieve the actual UIImage
-    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    //Or you can get the image url from AssetsLibrary
-    NSURL *path = [info valueForKey:UIImagePickerControllerReferenceURL];
-    
-    [picker dismissViewControllerAnimated:false completion:nil];
-}
 
 #pragma mark -
 #pragma mark capture delegate
@@ -53,6 +41,8 @@
 - (void)vision:(PBJVision *)vision didCaptureAudioSample:(CMSampleBufferRef)sampleBuffer {
     NSLog(@"capture : %f", [PBJVision sharedInstance].capturedVideoSeconds);
     self.timeLabel.text = [NSString stringWithFormat:@"%.1f", [PBJVision sharedInstance].capturedVideoSeconds];
+    
+    [self.progressBar setProgress:[PBJVision sharedInstance].capturedVideoSeconds];
     
     if ([PBJVision sharedInstance].capturedVideoSeconds >= 3) {
         
@@ -127,10 +117,6 @@
     }
 }
 
-- (void)takePictureGallery {
-    [self presentViewController:self.pickerController animated:false completion:nil];
-}
-
 #pragma mark -
 #pragma mark handle gesture capture
 
@@ -201,13 +187,18 @@
     return _captureButton;
 }
 
-- (UIImagePickerController *)pickerController {
-    if (!_pickerController) {
-        _pickerController = [[UIImagePickerController alloc] init];
-        _pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        _pickerController.delegate = self;
+- (ProgressBar *)progressBar {
+    if (!_progressBar) {
+        _progressBar = [[ProgressBar alloc] initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, 4)];
+        _progressBar.backgroundColor = [UIColor whiteColor];
+        _progressBar.maxValue = 10;
+        _progressBar.currentValue = 0;
+        
+        [_progressBar backgroundColor:[UIColor colorWithRed:0.12 green:0.12 blue:0.15 alpha:1]];
+        [_progressBar progressColor:[UIColor colorWithRed:0.99 green:0.24 blue:0.22 alpha:1]];
+        [_progressBar setCurrentValue:0];
     }
-    return _pickerController;
+    return _progressBar;
 }
 
 #pragma mark -
@@ -217,6 +208,7 @@
     [super viewWillAppear:animated];
     [[PBJVision sharedInstance] startPreview];
     self.timeLabel.text = @"";
+    [self.progressBar setProgress:0];
     self.captureButton.center = CGPointMake(self.view.frame.size.width + 25, self.recordingButton.center.y);
 }
 
@@ -234,6 +226,7 @@
     [PBJVision sharedInstance].outputFormat = PBJOutputFormatSquare;
     [PBJVision sharedInstance].cameraOrientation = PBJCameraOrientationPortrait;
     
+    NSLog(@"path : %@", [PBJVision sharedInstance].captureDirectory);
     
     [[PBJVision sharedInstance] setMaximumCaptureDuration:CMTimeMakeWithSeconds(15, 600)];
     
@@ -276,16 +269,6 @@
     [rotationButton addTarget:self action:@selector(changeRotationCamera) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rotationButton];
     
-    
-    UIButton *galleryButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [galleryButton setImage:[[UIImage imageNamed:@"gallery"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    galleryButton.frame = CGRectMake(10, 0, 50, 50);
-    galleryButton.center = CGPointMake(35, buttonRecord.center.y + 5);
-    galleryButton.tintColor = [UIColor colorWithRed:0.25 green:0.24 blue:0.3 alpha:1];
-    [galleryButton addTarget:self action:@selector(takePictureGallery) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:galleryButton];
-    
-    
     self.flashButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.flashButton setImage:[[UIImage imageNamed:@"flash"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     self.flashButton.frame = CGRectMake(10, 0, 40, 40);
@@ -299,6 +282,7 @@
     self.recordingButton = buttonRecord;
     [self.view addSubview:self.captureButton];
     [self.view addSubview:self.timeLabel];
+    [self.view addSubview:self.progressBar];
 }
 
 @end

@@ -109,6 +109,19 @@
     }
 }
 
+- (void)fontText {
+    if (self.toolBar.quoteButton.selected) {
+        self.textView.textAlignment = NSTextAlignmentJustified;
+        self.textView.font = [UIFont boldSystemFontOfSize:22];
+        self.toolBar.quoteButton.selected = false;
+    }
+    else {
+        self.textView.textAlignment = NSTextAlignmentCenter;
+        self.textView.font = [UIFont italicSystemFontOfSize:22];
+        self.toolBar.quoteButton.selected = true;
+    }
+}
+
 - (void)cleanToolBar {
     self.colorPickerBackground.frame = CGRectMake(0, self.view.frame.size.height, self.colorPickerBackground.frame.size.width, self.colorPickerBackground.frame.size.height);
     self.colorPickerText.frame = CGRectMake(0, self.view.frame.size.height, self.colorPickerText.frame.size.width, self.colorPickerText.frame.size.height);
@@ -194,7 +207,7 @@
         _textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.width)];
         _textView.backgroundColor = [UIColor blackColor];
         _textView.font = [UIFont boldSystemFontOfSize:22];
-        _textView.textAlignment = NSTextAlignmentCenter;
+        _textView.textAlignment = NSTextAlignmentJustified;
         _textView.dataDetectorTypes = UIDataDetectorTypeLink;
     }
     return _textView;
@@ -232,7 +245,7 @@
         [_toolBar.textColor addTarget:self action:@selector(displayColorPickerText) forControlEvents:UIControlEventTouchUpInside];
         [_toolBar.backgroundColorButton addTarget:self action:@selector(displayColorBackgroundPicker) forControlEvents:UIControlEventTouchUpInside];
         [_toolBar.linkButton addTarget:self action:@selector(addLink) forControlEvents:UIControlEventTouchUpInside];
-        [_toolBar.quoteButton addTarget:self action:@selector(addQuote) forControlEvents:UIControlEventTouchUpInside];
+        [_toolBar.quoteButton addTarget:self action:@selector(fontText) forControlEvents:UIControlEventTouchUpInside];
         [_toolBar.validateButton addTarget:self action:@selector(endEditing) forControlEvents:UIControlEventTouchUpInside];
     }
     return  _toolBar;

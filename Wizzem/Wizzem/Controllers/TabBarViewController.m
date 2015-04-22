@@ -19,8 +19,8 @@
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MenuMediaViewController *menuController;
     if (mainStoryboard && (menuController = [mainStoryboard instantiateViewControllerWithIdentifier:@"menuController"])) {
-        menuController.modalPresentationStyle = UIModalPresentationOverFullScreen;
         
+        menuController.modalPresentationStyle = UIModalPresentationOverFullScreen;
         [self presentViewController:menuController animated:false completion:nil];
     }
 }

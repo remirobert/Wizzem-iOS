@@ -14,6 +14,14 @@
 
 @implementation ProgressBar
 
+- (void)backgroundColor:(UIColor *)backgroundColor {
+    self.backgroundColor = backgroundColor;
+}
+
+- (void)progressColor:(UIColor *)progressColor {
+    self.cursor.backgroundColor = progressColor;
+}
+
 - (UIView *)cursor {
     if (!_cursor) {
         _cursor = [[UIView alloc] initWithFrame:CGRectZero];

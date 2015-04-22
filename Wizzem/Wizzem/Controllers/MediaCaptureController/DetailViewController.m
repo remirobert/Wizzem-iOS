@@ -25,9 +25,49 @@
 @property (nonatomic, strong) UIView *navigationBar;
 @property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, strong) UIAlertView *alertPop;
+@property (nonatomic, strong) UIActivityViewController *activityController;
+@property (strong, nonatomic) IBOutlet UIButton *shareButton;
+@property (strong, nonatomic) IBOutlet UIButton *backButton;
 @end
 
 @implementation DetailViewController
+
+#pragma mark -
+#pragma mark share media
+
+- (UIActivityViewController *)activityController {
+    if (!_activityController) {
+        NSArray *data;
+        if (self.media.mediaType == WizzMediaPhoto) {
+            data = @[[self.media photo]];
+        }
+        else if (self.media.mediaType == WizzMediaVideo) {
+            NSURL *urlVideo = [NSURL URLWithString:[self.media video]];
+            NSLog(@"url video : %@", urlVideo);
+            NSData *videoData = [NSData dataWithContentsOfURL:urlVideo];
+            NSLog(@"size data : %d", videoData.length);
+            
+            if (!videoData) {
+                NSLog(@"video data is nil");
+            }
+            
+            data = @[videoData];
+        }
+        NSLog(@"data video : %@", [WizzMedia dataFromFile:[self.media video]]);
+        NSLog(@"data listing : %@", data);
+        _activityController = [[UIActivityViewController alloc] initWithActivityItems:data applicationActivities:nil];
+    }
+    return _activityController;
+}
+
+- (IBAction)shareMedia:(id)sender {
+    if (self.activityController) {
+        [self.navigationController presentViewController:self.activityController animated:true completion:nil];
+    }
+    else {
+        NSLog(@"controller activity nil");
+    }
+}
 
 #pragma mark -
 #pragma mark UIAlertView Delegate
@@ -69,12 +109,12 @@
         _navigationBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
         _navigationBar.backgroundColor = [UIColor colorWithRed:0.12 green:0.12 blue:0.15 alpha:1];
         
-        UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
-        [back setImage:[[UIImage imageNamed:@"back"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-        [back addTarget:self action:@selector(dismissController) forControlEvents:UIControlEventTouchUpInside];
-        back.frame = CGRectMake(10, 10, 40, 40);
-        back.tintColor = [UIColor colorWithRed:0.25 green:0.24 blue:0.3 alpha:1];
-        [_navigationBar addSubview:back];
+//        UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [back setImage:[[UIImage imageNamed:@"back"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+//        [back addTarget:self action:@selector(dismissController) forControlEvents:UIControlEventTouchUpInside];
+//        back.frame = CGRectMake(10, 10, 40, 40);
+//        back.tintColor = [UIColor colorWithRed:0.25 green:0.24 blue:0.3 alpha:1];
+//        [_navigationBar addSubview:back];
     }
     return _navigationBar;
 }
@@ -231,24 +271,19 @@
 #pragma mark -
 #pragma mark media model handler
 
-- (void) viewDidAppear:(BOOL)animated {
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.shareButton setImage:[[UIImage imageNamed:@"check"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [self.backButton addTarget:self action:@selector(dismissController) forControlEvents:UIControlEventTouchUpInside];
+    [self.backButton setImage:[[UIImage imageNamed:@"cross"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+
     [[self navigationController] setNavigationBarHidden:YES animated:false];
     self.view.backgroundColor = [UIColor colorWithRed:0.12 green:0.12 blue:0.15 alpha:1];
     [self.view addSubview:self.navigationBar];
     
     switch (self.media.mediaType) {
         case WizzMediaPhoto:
-            
-            
-            [self.assetsLibrary saveImage:[self.media photo] toAlbum:ALBUM_MEDIA completion:^(NSURL *assetURL, NSError *error) {
-                
-            } failure:^(NSError *error) {
-                
-            }];
             [self displayPhoto];
             break;
             
@@ -257,11 +292,6 @@
             break;
             
         case WizzMediaVideo:
-            [self.assetsLibrary saveVideo:[NSURL URLWithString:[self.media video]] toAlbum:ALBUM_MEDIA completion:^(NSURL *assetURL, NSError *error) {
-                
-            } failure:^(NSError *error) {
-                
-            }];
             [self displayVideo];
             break;
             

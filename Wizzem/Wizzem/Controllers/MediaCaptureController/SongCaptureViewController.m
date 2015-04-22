@@ -12,6 +12,7 @@
 #import "ShimmerView.h"
 #import "Colors.h"
 #import "MultiplePulsingHaloLayer.h"
+#import "ProgressBar.h"
 
 @interface SongCaptureViewController () <UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *viewRecord;
@@ -23,6 +24,7 @@
 @property (nonatomic, strong) UILabel *currentTimeRecorded;
 @property (nonatomic, strong) UIButton *validateButton;
 @property (nonatomic, strong) UIButton *buttonRecord;
+@property (nonatomic, strong) ProgressBar *progressBar;
 @end
 
 @implementation SongCaptureViewController
@@ -179,11 +181,30 @@
     return _validateButton;
 }
 
+- (ProgressBar *)progressBar {
+    if (!_progressBar) {
+        _progressBar = [[ProgressBar alloc] initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, 4)];
+        _progressBar.backgroundColor = [UIColor whiteColor];
+        _progressBar.maxValue = 15;
+        _progressBar.currentValue = 0;
+        
+        [_progressBar backgroundColor:[UIColor colorWithRed:0.12 green:0.12 blue:0.15 alpha:1]];
+        [_progressBar progressColor:[UIColor colorWithRed:1 green:0.77 blue:0.01 alpha:1]];
+        [_progressBar setCurrentValue:0];
+    }
+    return _progressBar;
+}
+
 #pragma mark -
 #pragma UIView cycle
 
 - (void)updateTimer {
     self.currentTimeRecorded.text = [NSString stringWithFormat:@"%.0f sec", [WizzMedia currentTime]];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.progressBar setProgress:[WizzMedia currentTime]];
+    });
+    
     if ([WizzMedia currentTime] >= 3) {
         [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveLinear animations:^{
             self.validateButton.center = CGPointMake(self.view.frame.size.width - 50, self.view.center.y);
@@ -193,8 +214,9 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [self.view bringSubviewToFront:self.navigationBar];
+    [self.view bringSubviewToFront:self.progressBar];
     self.validateButton.center = CGPointMake(self.view.frame.size.width + 25, self.view.center.y);
-    
+    [self.progressBar setProgress:0];
     self.mutiHal = nil;
     [self.view.layer insertSublayer:self.mutiHal below:self.buttonRecord.layer];
 }
@@ -227,6 +249,7 @@
     [self.buttonRecord addGestureRecognizer:pressGesture];
     
     self.buttonRecord = self.buttonRecord;
+    [self.view addSubview:self.progressBar];
 }
 
 @end

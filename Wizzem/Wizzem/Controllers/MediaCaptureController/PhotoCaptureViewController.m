@@ -21,31 +21,16 @@
 #import "ShimmerView.h"
 #import "MenuMediaViewController.h"
 
-@interface PhotoCaptureViewController () <FastttCameraDelegate, SCRecorderDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface PhotoCaptureViewController () <FastttCameraDelegate, SCRecorderDelegate>
 @property (nonatomic, strong) PreviewLayerMediaCaptureView *previewCamera;
 @property (nonatomic, strong) DismissButton *crossButton;
 @property (nonatomic, strong) FastttCamera *fastCamera;
 @property (nonatomic, strong) SCRecorder *recorder;
 @property (nonatomic, strong) SCRecordSession *recordSession;
-@property (nonatomic, strong) UIImagePickerController *pickerController;
-
 @property (nonatomic, strong) UIButton *flashButton;
 @end
 
 @implementation PhotoCaptureViewController
-
-#pragma mark -
-#pragma mark UIImagePickerControllerDelegate
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    //You can retrieve the actual UIImage
-    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    //Or you can get the image url from AssetsLibrary
-    NSURL *path = [info valueForKey:UIImagePickerControllerReferenceURL];
-    
-    [picker dismissViewControllerAnimated:false completion:nil];
-}
 
 #pragma mark -
 #pragma mark FAsstCamera
@@ -88,10 +73,6 @@
     }
 }
 
-- (void)takePictureGallery {
-    [self presentViewController:self.pickerController animated:false completion:nil];
-}
-
 - (void)selectMedia {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MenuMediaViewController *menuController;
@@ -104,15 +85,6 @@
 
 #pragma mark -
 #pragma mark UIView cycle
-
-- (UIImagePickerController *)pickerController {
-    if (!_pickerController) {
-        _pickerController = [[UIImagePickerController alloc] init];
-        _pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        _pickerController.delegate = self;
-    }
-    return _pickerController;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -168,14 +140,6 @@
     [self.view addSubview:rotationButton];
 
     
-    UIButton *galleryButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [galleryButton setImage:[[UIImage imageNamed:@"gallery"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    galleryButton.frame = CGRectMake(10, 0, 50, 50);
-    galleryButton.center = CGPointMake(35, buttonRecord.center.y + 5);
-    galleryButton.tintColor = [UIColor colorWithRed:0.25 green:0.24 blue:0.3 alpha:1];
-    [galleryButton addTarget:self action:@selector(takePictureGallery) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:galleryButton];
-
     
 //    FBShimmeringView *shimmeringView = [[FBShimmeringView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.width + 64, self.view.frame.size.width, self.view.frame.size.height - (self.view.frame.size.width + 64))];
 //    [self.view addSubview:shimmeringView];

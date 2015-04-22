@@ -92,4 +92,6 @@ typedef NS_ENUM(NSInteger, SongEncodingTypes) {
 + (BOOL) isRecordingSong;
 + (NSTimeInterval)currentTime;
 
++ (NSData *)dataFromFile:(NSString *)file;
+
 @end

@@ -10,6 +10,7 @@
 #import "MakeAnimatedImage.h"
 #import "ColorPicker.h"
 #import "ShimmerView.h"
+#import "ProgressBar.h"
 
 @interface GitCaptureViewController ()
 @property (nonatomic, strong) NSMutableArray *photos;
@@ -18,6 +19,7 @@
 @property (nonatomic, strong) UIButton *flashButton;
 @property (nonatomic, strong) UIButton *captureButton;
 @property (nonatomic, strong) UIButton *recordingButton;
+@property (nonatomic, strong) ProgressBar *progressBar;
 @end
 
 @implementation GitCaptureViewController
@@ -43,6 +45,7 @@
     if (self.isTaken) {
         return;
     }
+    [self.progressBar setProgress:self.progressBar.currentValue + 1];
     self.isTaken = true;
     [WizzMedia capturePhoto:^(UIImage *image) {
         self.isTaken = false;
@@ -73,12 +76,27 @@
     return _photos;
 }
 
+- (ProgressBar *)progressBar {
+    if (!_progressBar) {
+        _progressBar = [[ProgressBar alloc] initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, 4)];
+        _progressBar.backgroundColor = [UIColor whiteColor];
+        _progressBar.maxValue = 10;
+        _progressBar.currentValue = 0;
+        
+        [_progressBar backgroundColor:[UIColor colorWithRed:0.12 green:0.12 blue:0.15 alpha:1]];
+        [_progressBar progressColor:[UIColor colorWithRed:0.08 green:0.49 blue:0.98 alpha:1]];
+        [_progressBar setCurrentValue:0];
+    }
+    return _progressBar;
+}
+
 - (void)viewDidDisappear:(BOOL)animated {
     [WizzMedia stopSession];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [WizzMedia startSession];
+    [self.progressBar setProgress:0];
     self.captureButton.center = CGPointMake(self.view.frame.size.width + 25, self.recordingButton.center.y);
     [self.photos removeAllObjects];
 }
@@ -127,6 +145,7 @@
     [self.view addSubview:rotationButton];
     
     [self.view addSubview:self.captureButton];
+    [self.view addSubview:self.progressBar];
 }
 
 @end

@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *buttonVideo;
 @property (strong, nonatomic) IBOutlet UIButton *buttonAudio;
 @property (strong, nonatomic) IBOutlet UIButton *buttonText;
+@property (strong, nonatomic) IBOutlet UIButton *buttonGif;
 @end
 
 @implementation MenuMediaViewController
@@ -27,16 +28,18 @@
     
     UIViewController *controller;
     if (sender.tag == 1) {
-//        controller = [storyboard instantiateViewControllerWithIdentifier:@"photoController"];
-        controller = [storyboard instantiateViewControllerWithIdentifier:@"gifController"];
+        controller = [storyboard instantiateViewControllerWithIdentifier:@"photoController"];
     }
     else if (sender.tag == 2) {
-        controller = [storyboard instantiateViewControllerWithIdentifier:@"videoController"];
+        controller = [storyboard instantiateViewControllerWithIdentifier:@"gifController"];
     }
     else if (sender.tag == 3) {
-        controller = [storyboard instantiateViewControllerWithIdentifier:@"songController"];
+        controller = [storyboard instantiateViewControllerWithIdentifier:@"videoController"];
     }
     else if (sender.tag == 4) {
+        controller = [storyboard instantiateViewControllerWithIdentifier:@"songController"];
+    }
+    else if (sender.tag == 5) {
         controller = [storyboard instantiateViewControllerWithIdentifier:@"textController"];
     }
     
@@ -48,29 +51,21 @@
 }
 
 - (IBAction)dismissMenuController:(id)sender {
-    [UIView animateWithDuration:0.3 animations:^{
-        self.view.alpha = 0;
-    } completion:^(BOOL finished) {
+    //animation
+//    [UIView animateWithDuration:0.3 animations:^{
+//        self.view.alpha = 0;
+//    } completion:^(BOOL finished) {
         [self dismissViewControllerAnimated:false completion:nil];
-    }];
+//    }];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self dismissMenuController:nil];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [UIView animateWithDuration:0.3 animations:^{
-        self.view.alpha = 1.0;
-    }];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
-    self.view.alpha = 0;
-//    self.transitionManager = [[TransitionMenuMediaManager alloc] init];
-//    self.transitioningDelegate = self.transitionManager;
     
     [self.buttonPhoto setImage:[[UIImage imageNamed:@"photo"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     self.buttonPhoto.tintColor = [Colors greenColor];
@@ -82,16 +77,11 @@
     [self.buttonAudio setImage:[[UIImage imageNamed:@"song"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     self.buttonAudio.tintColor = [UIColor colorWithRed:1 green:0.77 blue:0.01 alpha:1];
 
-
+    [self.buttonGif setImage:[[UIImage imageNamed:@"gif"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    self.buttonGif.tintColor = [UIColor colorWithRed:0.08 green:0.49 blue:0.98 alpha:1];
+    
     [self.buttonText setImage:[[UIImage imageNamed:@"text"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    self.buttonText.tintColor = [UIColor colorWithRed:0.35 green:0.35 blue:0.83 alpha:1];
-
-//    UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    closeButton.frame = CGRectMake(self.view.frame.size.width / 2 - 20, self.view.frame.size.height / 2 - 50, 40, 40);
-//    [closeButton setImage:[[UIImage imageNamed:@"cross"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-//    [closeButton addTarget:self action:@selector(dismissMenuController:) forControlEvents:UIControlEventTouchUpInside];
-//    closeButton.tintColor = [UIColor grayColor];
-//    [self.view addSubview:closeButton];
+    self.buttonText.tintColor = [UIColor colorWithRed:0.85 green:0.86 blue:0.86 alpha:1];
 }
 
 @end
