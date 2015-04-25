@@ -53,6 +53,9 @@
             
             data = @[videoData];
         }
+        else if (self.media.mediaType == WizzMediaText) {
+            data = @[[[self.media text] objectForKey:@"text"]];
+        }
         NSLog(@"data video : %@", [WizzMedia dataFromFile:[self.media video]]);
         NSLog(@"data listing : %@", data);
         _activityController = [[UIActivityViewController alloc] initWithActivityItems:data applicationActivities:nil];
@@ -79,8 +82,12 @@
 }
 
 - (void)dismissController {
-    [self.alertPop show];
-    //[self.navigationController popToRootViewControllerAnimated:true];
+    if (self.media.mediaType == WizzMediaText) {
+        [self.navigationController popToRootViewControllerAnimated:true];
+    }
+    else {
+        [self.alertPop show];
+    }
 }
 
 #pragma mark -
@@ -155,7 +162,7 @@
         _textView.editable = false;
         _textView.dataDetectorTypes = UIDataDetectorTypeLink;
         _textView.font = [UIFont boldSystemFontOfSize:22];
-        _textView.textAlignment = NSTextAlignmentCenter;
+        _textView.textAlignment = NSTextAlignmentJustified;
     }
     return _textView;
 }

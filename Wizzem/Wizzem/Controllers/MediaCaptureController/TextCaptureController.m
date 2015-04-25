@@ -117,7 +117,7 @@
     }
     else {
         self.textView.textAlignment = NSTextAlignmentCenter;
-        self.textView.font = [UIFont italicSystemFontOfSize:22];
+        self.textView.font = [UIFont italicSystemFontOfSize:24];
         self.toolBar.quoteButton.selected = true;
     }
 }
@@ -180,23 +180,22 @@
 #pragma mark -
 #pragma mark UItextView delegate
 
-- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
-    NSLog(@"link clicked");
-    return true;
-}
-
-- (void)textViewDidBeginEditing:(UITextView *)textView {
-    if ([textView.text isEqualToString:@"placeholder text here..."]) {
-        textView.text = @"";
-        textView.textColor = [UIColor blackColor]; //optional
-    }
-}
-
-- (void)textViewDidEndEditing:(UITextView *)textView {
+- (void)textViewDidChange:(UITextView *)textView {
     if ([textView.text isEqualToString:@""]) {
-        textView.text = @"placeholder text here...";
+        textView.text = @"Write something amazing here";
         textView.textColor = [UIColor lightGrayColor]; //optional
     }
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([textView.text isEqualToString:@"Write something amazing here"]) {
+        textView.text = @"";
+        textView.textColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1];
+    }
+    else if (![textView.text isEqualToString:@"Write something amazing here"]) {
+        textView.textColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1];
+    }
+    return true;
 }
 
 #pragma mark -
@@ -278,17 +277,17 @@
 - (void)keyboardWasShown:(NSNotification*)aNotification {
     NSDictionary* info = [aNotification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    [self.view addSubview:self.toolBar];
+//    [self.view addSubview:self.toolBar];
     
     CGRect frameTextView = self.textView.frame;
-    frameTextView.size.height = self.view.frame.size.height - kbSize.height - 64 - self.toolBar.frame.size.height;
+    frameTextView.size.height = self.view.frame.size.height - kbSize.height - 64 /*- self.toolBar.frame.size.height*/;
     self.textView.frame = frameTextView;
     
-    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.4 options:UIViewAnimationOptionAllowUserInteraction animations:^{
-        CGRect frameToolBar = self.toolBar.frame;
-        frameToolBar.origin.y = self.view.frame.size.height - kbSize.height - self.toolBar.frame.size.height;
-        self.toolBar.frame = frameToolBar;
-    } completion:nil];
+//    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.4 initialSpringVelocity:0.4 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+//        CGRect frameToolBar = self.toolBar.frame;
+//        frameToolBar.origin.y = self.view.frame.size.height - kbSize.height - self.toolBar.frame.size.height;
+//        self.toolBar.frame = frameToolBar;
+//    } completion:nil];
 }
 
 #pragma mark -
@@ -331,23 +330,31 @@
     };
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
+    [self.textView becomeFirstResponder];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
     [self unregisterForKeyboardNotifications];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidLoad {
+    [super viewDidLoad];
     [self registerForKeyboardNotifications];
     [self.view addSubview:self.textView];
     self.textView.delegate = self;
+    
     self.textView.text = @"Write something amazing here";
-    self.textView.textColor = [UIColor colorWithRed:0.35 green:0.35 blue:0.83 alpha:1];
+    self.textView.backgroundColor = [UIColor colorWithRed:0.85 green:0.86 blue:0.86 alpha:1];
+    self.textView.textColor = [UIColor lightGrayColor];
     [self.textView becomeFirstResponder];
     self.textView.frame = CGRectMake(0, 64, self.textView.frame.size.width, self.textView.frame.size.width);
-
+    
     [self.view addSubview:self.colorPickerText];
     [self.view addSubview:self.colorPickerBackground];
     [self.view bringSubviewToFront:self.keyboardValidation];
     [self.view addSubview:self.keyboardValidation];
+    [self.view addSubview:self.captureButton];
     
     [self blockCompletionView];
 }

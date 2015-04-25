@@ -6,9 +6,10 @@
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
+#import <Crashlytics/Crashlytics.h>
 #import "AppDelegate.h"
 #import "Colors.h"
-#import <Crashlytics/Crashlytics.h>
+#import <Parse/Parse.h>
 
 @interface AppDelegate ()
 

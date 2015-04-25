@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		ACFED7F2462065225925B9DF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F14D01F10DF01B4B8D4D2B /* libPods.a */; };
+		BB2A3FE11AEC0A3D00763FAA /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2A3FDB1AEC0A3D00763FAA /* Parse.framework */; };
+		BB2A3FE21AEC0A3D00763FAA /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2A3FDC1AEC0A3D00763FAA /* ParseCrashReporting.framework */; };
+		BB2A3FE31AEC0A3D00763FAA /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2A3FDD1AEC0A3D00763FAA /* ParseFacebookUtils.framework */; };
+		BB2A3FE41AEC0A3D00763FAA /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2A3FDE1AEC0A3D00763FAA /* ParseFacebookUtilsV4.framework */; };
+		BB2A3FE51AEC0A3D00763FAA /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2A3FDF1AEC0A3D00763FAA /* ParseUI.framework */; };
+		BB2A3FE71AEC0CF800763FAA /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2A3FE61AEC0CF800763FAA /* libstdc++.6.0.9.dylib */; };
 		BB311C8A1A9C7C3600C25668 /* SliderButtonPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = BB311C891A9C7C3600C25668 /* SliderButtonPhoto.m */; };
 		BB31B6C41AB21425001DBFF3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB31B6C31AB21425001DBFF3 /* CoreMedia.framework */; };
 		BB31B6C61AB21573001DBFF3 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB31B6C51AB21573001DBFF3 /* MediaPlayer.framework */; };
@@ -21,6 +27,10 @@
 		BB34A64D1A9B98EB00AA2A86 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB34A64C1A9B98EB00AA2A86 /* AVFoundation.framework */; };
 		BB4E448A1AA1016900760A36 /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E44891AA1016900760A36 /* CircleView.m */; };
 		BB4E448D1AA1E2D100760A36 /* TakeGifButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E448C1AA1E2D100760A36 /* TakeGifButton.m */; };
+		BB68DA381AEC0D8A006E9821 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA371AEC0D8A006E9821 /* Bolts.framework */; };
+		BB68DA3A1AEC0D9C006E9821 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA391AEC0D9C006E9821 /* libsqlite3.0.dylib */; };
+		BB68DA401AEC0E71006E9821 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA3F1AEC0E71006E9821 /* Social.framework */; };
+		BB68DA421AEC0E76006E9821 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA411AEC0E76006E9821 /* Accounts.framework */; };
 		BB6991681AC9C1D500AC5776 /* PhotoCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6991671AC9C1D500AC5776 /* PhotoCaptureViewController.m */; };
 		BB69916B1AC9DD4300AC5776 /* PBJStrobeView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB69916A1AC9DD4300AC5776 /* PBJStrobeView.m */; };
 		BB7BE9611AC0A21D008040C7 /* WizzMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7BE9601AC0A21D008040C7 /* WizzMediaModel.m */; };
@@ -71,6 +81,12 @@
 
 /* Begin PBXFileReference section */
 		99F14D01F10DF01B4B8D4D2B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB2A3FDB1AEC0A3D00763FAA /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		BB2A3FDC1AEC0A3D00763FAA /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
+		BB2A3FDD1AEC0A3D00763FAA /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		BB2A3FDE1AEC0A3D00763FAA /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
+		BB2A3FDF1AEC0A3D00763FAA /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		BB2A3FE61AEC0CF800763FAA /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		BB311C881A9C7C3600C25668 /* SliderButtonPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderButtonPhoto.h; sourceTree = "<group>"; };
 		BB311C891A9C7C3600C25668 /* SliderButtonPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderButtonPhoto.m; sourceTree = "<group>"; };
 		BB31B6C31AB21425001DBFF3 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -92,6 +108,12 @@
 		BB4E44891AA1016900760A36 /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
 		BB4E448B1AA1E2D100760A36 /* TakeGifButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakeGifButton.h; sourceTree = "<group>"; };
 		BB4E448C1AA1E2D100760A36 /* TakeGifButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakeGifButton.m; sourceTree = "<group>"; };
+		BB68DA371AEC0D8A006E9821 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		BB68DA391AEC0D9C006E9821 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		BB68DA3B1AEC0DA6006E9821 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		BB68DA3D1AEC0DB2006E9821 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
+		BB68DA3F1AEC0E71006E9821 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		BB68DA411AEC0E76006E9821 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		BB6991661AC9C1D500AC5776 /* PhotoCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCaptureViewController.h; sourceTree = "<group>"; };
 		BB6991671AC9C1D500AC5776 /* PhotoCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCaptureViewController.m; sourceTree = "<group>"; };
 		BB6991691AC9DD4300AC5776 /* PBJStrobeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBJStrobeView.h; sourceTree = "<group>"; };
@@ -170,15 +192,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB68DA421AEC0E76006E9821 /* Accounts.framework in Frameworks */,
+				BB68DA401AEC0E71006E9821 /* Social.framework in Frameworks */,
+				BB68DA3A1AEC0D9C006E9821 /* libsqlite3.0.dylib in Frameworks */,
+				BB2A3FE71AEC0CF800763FAA /* libstdc++.6.0.9.dylib in Frameworks */,
 				BB8612B01AD46416000A257C /* MobileCoreServices.framework in Frameworks */,
 				BB8612AE1AD4640E000A257C /* AssetsLibrary.framework in Frameworks */,
+				BB2A3FE41AEC0A3D00763FAA /* ParseFacebookUtilsV4.framework in Frameworks */,
 				BB97E8211AB616DD000214E1 /* QuartzCore.framework in Frameworks */,
 				BB97E81F1AB616C4000214E1 /* CoreGraphics.framework in Frameworks */,
 				BB31B6C61AB21573001DBFF3 /* MediaPlayer.framework in Frameworks */,
+				BB2A3FE11AEC0A3D00763FAA /* Parse.framework in Frameworks */,
+				BB2A3FE21AEC0A3D00763FAA /* ParseCrashReporting.framework in Frameworks */,
 				BB31B6C91AB23CA5001DBFF3 /* Crashlytics.framework in Frameworks */,
 				BB31B6C41AB21425001DBFF3 /* CoreMedia.framework in Frameworks */,
 				BB34A64D1A9B98EB00AA2A86 /* AVFoundation.framework in Frameworks */,
+				BB2A3FE51AEC0A3D00763FAA /* ParseUI.framework in Frameworks */,
 				ACFED7F2462065225925B9DF /* libPods.a in Frameworks */,
+				BB2A3FE31AEC0A3D00763FAA /* ParseFacebookUtils.framework in Frameworks */,
+				BB68DA381AEC0D8A006E9821 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +227,13 @@
 		8DB8AFC1963701722EBC773E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB68DA411AEC0E76006E9821 /* Accounts.framework */,
+				BB68DA3F1AEC0E71006E9821 /* Social.framework */,
+				BB68DA3D1AEC0DB2006E9821 /* libstdc++.6.dylib */,
+				BB68DA3B1AEC0DA6006E9821 /* libstdc++.dylib */,
+				BB68DA391AEC0D9C006E9821 /* libsqlite3.0.dylib */,
+				BB2A3FE61AEC0CF800763FAA /* libstdc++.6.0.9.dylib */,
+				BB2A3FCD1AEC07DD00763FAA /* Parse */,
 				BB8612AF1AD46416000A257C /* MobileCoreServices.framework */,
 				BB8612AD1AD4640E000A257C /* AssetsLibrary.framework */,
 				BB97E8201AB616DD000214E1 /* QuartzCore.framework */,
@@ -206,6 +245,19 @@
 				99F14D01F10DF01B4B8D4D2B /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BB2A3FCD1AEC07DD00763FAA /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				BB68DA371AEC0D8A006E9821 /* Bolts.framework */,
+				BB2A3FDB1AEC0A3D00763FAA /* Parse.framework */,
+				BB2A3FDC1AEC0A3D00763FAA /* ParseCrashReporting.framework */,
+				BB2A3FDD1AEC0A3D00763FAA /* ParseFacebookUtils.framework */,
+				BB2A3FDE1AEC0A3D00763FAA /* ParseFacebookUtilsV4.framework */,
+				BB2A3FDF1AEC0A3D00763FAA /* ParseUI.framework */,
+			);
+			name = Parse;
 			sourceTree = "<group>";
 		};
 		BB34A6181A9B989200AA2A86 = {
@@ -272,9 +324,9 @@
 			isa = PBXGroup;
 			children = (
 				BB87486E1ABEB87F00957909 /* Wizzem-Bridging-Header.h */,
+				BB8748711ABEC21900957909 /* Header.h */,
 				BB34A6281A9B989200AA2A86 /* AppDelegate.h */,
 				BB34A6291A9B989200AA2A86 /* AppDelegate.m */,
-				BB8748711ABEC21900957909 /* Header.h */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -756,6 +808,42 @@
 				INFOPLIST_FILE = "Wizzem/Ressources/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-l\"Pods-AYVibrantButton\"",
+					"-l\"Pods-FLAnimatedImage\"",
+					"-l\"Pods-FastttCamera\"",
+					"-l\"Pods-NYTPhotoViewer\"",
+					"-l\"Pods-PBJVideoPlayer\"",
+					"-l\"Pods-PBJVision\"",
+					"-l\"Pods-SCRecorder\"",
+					"-l\"Pods-Shimmer\"",
+					"-l\"Pods-pop\"",
+					"-l\"c++\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreImage\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreMotion\"",
+					"-framework",
+					"\"CoreVideo\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Wizzem/Application/Wizzem-Bridging-Header.h";
@@ -778,6 +866,42 @@
 				INFOPLIST_FILE = "Wizzem/Ressources/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-l\"Pods-AYVibrantButton\"",
+					"-l\"Pods-FLAnimatedImage\"",
+					"-l\"Pods-FastttCamera\"",
+					"-l\"Pods-NYTPhotoViewer\"",
+					"-l\"Pods-PBJVideoPlayer\"",
+					"-l\"Pods-PBJVision\"",
+					"-l\"Pods-SCRecorder\"",
+					"-l\"Pods-Shimmer\"",
+					"-l\"Pods-pop\"",
+					"-l\"c++\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreImage\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreMotion\"",
+					"-framework",
+					"\"CoreVideo\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Wizzem/Application/Wizzem-Bridging-Header.h";
