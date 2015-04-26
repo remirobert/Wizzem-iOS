@@ -36,7 +36,11 @@
     [PFUser logInWithUsernameInBackground:self.email.text password:self.password.text block:^(PFUser *user, NSError *error) {
         if (user) {
             NSLog(@"ok login connection : %@ %@", user.username, user.email);
-            [[NSUserDefaults standardUserDefaults] setObject:user forKey:@"user"];
+            User *newUser = [User instance];
+            newUser.email = user.email;
+            newUser.password = user.password;
+            newUser.username = user.username;
+            [newUser save];
         }
         else {
             if ([error code] == kPFErrorObjectNotFound) {

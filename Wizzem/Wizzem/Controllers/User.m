@@ -19,18 +19,18 @@
 #pragma mark setter getter
 
 - (void)setPassword:(NSString *)password {
-    self.password = password;
-    self.parseUser.password = password;
+    _password = password;
+    _parseUser.password = password;
 }
 
 - (void)setEmail:(NSString *)email {
-    self.email = email;
-    self.parseUser.email = email;
+    _email = email;
+    _parseUser.email = email;
 }
 
 - (void)setUsername:(NSString *)username {
-    self.username = username;
-    self.parseUser.username = username;
+    _username = username;
+    _parseUser.username = username;
 }
 
 #pragma mark -
@@ -41,18 +41,41 @@
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-        user = [[User alloc] init];
+        user = [User restaure];
+        if (!user) {
+            user = [[User alloc] init];
+        }
         
         user.parseUser = [PFUser user];
-        user.parseUser.email = user.email;
-        user.parseUser.password = user.password;
-        user.parseUser.username = user.username;
+        if (user.email) {
+            user.parseUser.email = user.email;
+        }
+        if (user.password) {
+            user.parseUser.password = user.password;
+        }
+        if (user.username) {
+            user.parseUser.username = user.username;
+        }
     });
     return user;
 }
 
 #pragma mark -
 #pragma mark NSCoding protocol
+
+- (void)save {
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@[self]];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"user"];
+}
+
++ (instancetype)restaure {
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"user"];
+    if (data) {
+        NSArray *users = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        return [users firstObject];
+    }
+    return  nil;
+}
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:self.email forKey:@"email"];

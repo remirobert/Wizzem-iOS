@@ -10,6 +10,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <Parse/Parse.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import "User.h"
 #import "AppDelegate.h"
 #import "Colors.h"
 
@@ -38,7 +39,7 @@
     
     [[UINavigationBar appearance] setTintColor:[UIColor greenColor]];
     
-    PFUser *user = [[NSUserDefaults standardUserDefaults] objectForKey:@"user"];
+    User *user = [User restaure];
     if (!user) {
         NSLog(@"not user");
     }

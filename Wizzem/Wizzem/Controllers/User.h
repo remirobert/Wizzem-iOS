@@ -15,4 +15,9 @@
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *username;
 
++ (instancetype)instance;
+
+- (void)save;
++ (instancetype)restaure;
+
 @end
