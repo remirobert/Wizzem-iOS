@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
+#import <SVProgressHUD.h>
 #import <Parse/Parse.h>
 #import "SignupTableViewController.h"
 
@@ -38,7 +39,16 @@
         newUser.email = self.email.text;
         newUser.password = self.password.text;
         
+        [SVProgressHUD show];
+        
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *PF_NULLABLE_S error) {
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [SVProgressHUD dismiss];
+                });
+            });
+            
             if (succeeded) {
                 
                 NSLog(@"Your are signup good game");
