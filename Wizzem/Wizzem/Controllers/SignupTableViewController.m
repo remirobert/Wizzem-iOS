@@ -40,7 +40,18 @@
         
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *PF_NULLABLE_S error) {
             if (succeeded) {
+                
                 NSLog(@"Your are signup good game");
+
+                if ([[PFUser currentUser] isAuthenticated]) {
+                    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    UIViewController *tabbarController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"tabbarController"];
+                    
+                    if (tabbarController) {
+                        [self presentViewController:tabbarController animated:true completion:nil];
+                    }
+                }
+                
             }
             if (error) {
                 NSLog(@"error : %@", error);
