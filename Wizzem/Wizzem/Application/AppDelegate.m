@@ -38,6 +38,14 @@
     
     [[UINavigationBar appearance] setTintColor:[UIColor greenColor]];
     
+    PFUser *user = [[NSUserDefaults standardUserDefaults] objectForKey:@"user"];
+    if (!user) {
+        NSLog(@"not user");
+    }
+    else {
+        NSLog(@"user connected : %@", user.email);
+    }
+    
     [Parse setApplicationId:@"P2PJVDbhrj37sCtIhVdKvrzrQwq5jFYEIAYsoDfb" clientKey:@"G9h48iFlrF6z2IKAGaXGFolTekaVg04rQpqb7AQZ"];
     [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
     
