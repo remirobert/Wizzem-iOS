@@ -1,5 +1,5 @@
 //
-//  SignupViewController.h
+//  SignupTableViewController.h
 //  Wizzem
 //
 //  Created by Remi Robert on 26/04/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SignupViewController : UIViewController
+@interface SignupTableViewController : UITableViewController
 
 @end

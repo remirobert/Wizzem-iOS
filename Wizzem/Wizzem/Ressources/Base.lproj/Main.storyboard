@@ -1071,10 +1071,10 @@
             </objects>
             <point key="canvasLocation" x="-2581.5" y="993.75"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Signup-->
         <scene sceneID="BFt-zk-ajk">
             <objects>
-                <tableViewController id="BTQ-C9-hMQ" sceneMemberID="viewController">
+                <tableViewController title="Signup" id="BTQ-C9-hMQ" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="183" sectionHeaderHeight="22" sectionFooterHeight="22" id="un6-AO-SVi">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -36,8 +36,8 @@
 		BB68DA9A1AEC3E9E006E9821 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA991AEC3E9E006E9821 /* SystemConfiguration.framework */; };
 		BB68DA9C1AEC3ED1006E9821 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA9B1AEC3ED1006E9821 /* ParseFacebookUtilsV4.framework */; };
 		BB68DA9E1AEC3EEE006E9821 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA9D1AEC3EEE006E9821 /* FBSDKLoginKit.framework */; };
-		BB68DAA71AECE4E0006E9821 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB68DAA61AECE4E0006E9821 /* LoginViewController.m */; };
-		BB68DAAA1AECE4EF006E9821 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB68DAA91AECE4EF006E9821 /* SignupViewController.m */; };
+		BB68DAB31AECE58F006E9821 /* LoginTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB68DAB21AECE58F006E9821 /* LoginTableViewController.m */; };
+		BB68DAB61AECE59A006E9821 /* SignupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB68DAB51AECE59A006E9821 /* SignupTableViewController.m */; };
 		BB6991681AC9C1D500AC5776 /* PhotoCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6991671AC9C1D500AC5776 /* PhotoCaptureViewController.m */; };
 		BB69916B1AC9DD4300AC5776 /* PBJStrobeView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB69916A1AC9DD4300AC5776 /* PBJStrobeView.m */; };
 		BB7BE9611AC0A21D008040C7 /* WizzMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7BE9601AC0A21D008040C7 /* WizzMediaModel.m */; };
@@ -126,10 +126,10 @@
 		BB68DA991AEC3E9E006E9821 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BB68DA9B1AEC3ED1006E9821 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		BB68DA9D1AEC3EEE006E9821 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		BB68DAA51AECE4E0006E9821 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		BB68DAA61AECE4E0006E9821 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		BB68DAA81AECE4EF006E9821 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
-		BB68DAA91AECE4EF006E9821 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		BB68DAB11AECE58F006E9821 /* LoginTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTableViewController.h; sourceTree = "<group>"; };
+		BB68DAB21AECE58F006E9821 /* LoginTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTableViewController.m; sourceTree = "<group>"; };
+		BB68DAB41AECE59A006E9821 /* SignupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupTableViewController.h; sourceTree = "<group>"; };
+		BB68DAB51AECE59A006E9821 /* SignupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupTableViewController.m; sourceTree = "<group>"; };
 		BB6991661AC9C1D500AC5776 /* PhotoCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCaptureViewController.h; sourceTree = "<group>"; };
 		BB6991671AC9C1D500AC5776 /* PhotoCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCaptureViewController.m; sourceTree = "<group>"; };
 		BB6991691AC9DD4300AC5776 /* PBJStrobeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBJStrobeView.h; sourceTree = "<group>"; };
@@ -425,10 +425,10 @@
 		BB68DAA21AECE4BF006E9821 /* LoginController */ = {
 			isa = PBXGroup;
 			children = (
-				BB68DAA51AECE4E0006E9821 /* LoginViewController.h */,
-				BB68DAA61AECE4E0006E9821 /* LoginViewController.m */,
-				BB68DAA81AECE4EF006E9821 /* SignupViewController.h */,
-				BB68DAA91AECE4EF006E9821 /* SignupViewController.m */,
+				BB68DAB11AECE58F006E9821 /* LoginTableViewController.h */,
+				BB68DAB21AECE58F006E9821 /* LoginTableViewController.m */,
+				BB68DAB41AECE59A006E9821 /* SignupTableViewController.h */,
+				BB68DAB51AECE59A006E9821 /* SignupTableViewController.m */,
 			);
 			name = LoginController;
 			sourceTree = "<group>";
@@ -678,9 +678,9 @@
 				BBD794CB1ACDDC470046C1C1 /* MovieCaptureViewController.m in Sources */,
 				BB9CDEB91AC88E6D0000964E /* TabBarViewController.m in Sources */,
 				BB4E448D1AA1E2D100760A36 /* TakeGifButton.m in Sources */,
-				BB68DAAA1AECE4EF006E9821 /* SignupViewController.m in Sources */,
 				BBBD944D1ABD72DC002F8655 /* WizzMedia+RecordSong.m in Sources */,
 				BBBD944C1ABD72DC002F8655 /* WizzMedia+FileManager.m in Sources */,
+				BB68DAB31AECE58F006E9821 /* LoginTableViewController.m in Sources */,
 				BB8612AC1AD463E4000A257C /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				BB9CDEBC1AC896230000964E /* MenuMediaViewController.m in Sources */,
 				BB7BE9611AC0A21D008040C7 /* WizzMediaModel.m in Sources */,
@@ -699,6 +699,7 @@
 				BB69916B1AC9DD4300AC5776 /* PBJStrobeView.m in Sources */,
 				BB8748661ABE28EE00957909 /* Colors.m in Sources */,
 				BBD794C81ACDBAF50046C1C1 /* PreviewLayerMediaCaptureView.m in Sources */,
+				BB68DAB61AECE59A006E9821 /* SignupTableViewController.m in Sources */,
 				BB7BE9641AC0A79D008040C7 /* ProgressBar.m in Sources */,
 				BB4E448A1AA1016900760A36 /* CircleView.m in Sources */,
 				BB8340491AE283E300DB83C8 /* ColorPicker.m in Sources */,
@@ -710,7 +711,6 @@
 				BB34A6271A9B989200AA2A86 /* main.m in Sources */,
 				BB884E9E1ADAEE9600063F30 /* MultiplePulsingHaloLayer.m in Sources */,
 				BBCFC48D1AD0785400BD5BF6 /* DismissButton.m in Sources */,
-				BB68DAA71AECE4E0006E9821 /* LoginViewController.m in Sources */,
 				BBDAA9841ADDA5B7007CC357 /* TextCaptureController.m in Sources */,
 				BBBD94491ABD72DC002F8655 /* WizzMedia+CameraGif.m in Sources */,
 				BB311C8A1A9C7C3600C25668 /* SliderButtonPhoto.m in Sources */,
