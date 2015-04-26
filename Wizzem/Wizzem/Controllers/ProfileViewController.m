@@ -6,22 +6,34 @@
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
+#import <Parse/Parse.h>
 #import "ProfileViewController.h"
 
 @interface ProfileViewController ()
-
+@property (strong, nonatomic) IBOutlet UILabel *login;
 @end
 
 @implementation ProfileViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+- (IBAction)logout:(id)sender {
+    [PFUser logOutInBackgroundWithBlock:^(NSError *PF_NULLABLE_S error) {
+        if (error) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error logout" message:@"Try again" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+            [alert show];
+        }
+        else {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UIViewController *loginController = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginController"];
+            if (loginController) {
+                [self presentViewController:loginController animated:true completion:nil];
+            }
+        }
+    }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.login.text = [PFUser currentUser].username;
 }
 
 /*
