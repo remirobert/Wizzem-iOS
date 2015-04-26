@@ -6,42 +6,70 @@
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
+#import <Parse/Parse.h>
 #import "SignupTableViewController.h"
 
-@interface SignupTableViewController ()
-
+@interface SignupTableViewController () <UITextFieldDelegate>
+@property (strong, nonatomic) IBOutlet UITextField *username;
+@property (strong, nonatomic) IBOutlet UITextField *email;
+@property (strong, nonatomic) IBOutlet UITextField *password;
+@property (strong, nonatomic) IBOutlet UITextField *passwordChecked;
 @end
 
 @implementation SignupTableViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+#pragma mark -
+#pragma mark UItextField delegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if ([string isEqualToString:@"\n"]) {
+        [self.view endEditing:true];
+    }
+    return true;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark -
+#pragma mark Action
+
+- (IBAction)signup:(id)sender {
+    if (self.username.text && self.email.text && [self.password.text isEqualToString:self.passwordChecked.text]) {
+        PFUser *newUser = [PFUser user];
+        newUser.username = self.username.text;
+        newUser.email = self.email.text;
+        newUser.password = self.password.text;
+        
+        [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *PF_NULLABLE_S error) {
+            if (succeeded) {
+                NSLog(@"Your are signup good game");
+                return;
+            }
+            if (error) {
+                NSLog(@"error : %@", error);
+            }
+        }];
+    }
+}
+
+#pragma mark -
+#pragma mark UITableView cycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//#warning Potentially incomplete method implementation.
+//    // Return the number of sections.
+//    return 0;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//#warning Incomplete method implementation.
+//    // Return the number of rows in the section.
+//    return 0;
+//}
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -87,14 +115,12 @@
 }
 */
 
-/*
-#pragma mark - Navigation
+#pragma mark - 
+#pragma mark Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
 
 @end

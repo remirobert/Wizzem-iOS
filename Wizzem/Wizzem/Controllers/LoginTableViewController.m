@@ -6,42 +6,70 @@
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
+#import <Parse/Parse.h>
 #import "LoginTableViewController.h"
 
-@interface LoginTableViewController ()
-
+@interface LoginTableViewController () <UITextFieldDelegate>
+@property (strong, nonatomic) IBOutlet UITextField *email;
+@property (strong, nonatomic) IBOutlet UITextField *password;
 @end
 
 @implementation LoginTableViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+#pragma mark -
+#pragma mark UItextField delegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if ([string isEqualToString:@"\n"]) {
+        [self.view endEditing:true];
+    }
+    return true;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark -
+#pragma mark Action
+
+- (IBAction)connection:(id)sender {
+    NSLog(@"connection");
+    [PFUser logInWithUsernameInBackground:self.email.text password:self.password.text block:^(PFUser *user, NSError *error) {
+        if (user) {
+            NSLog(@"ok login connection : %@ %@", user.username, user.email);
+        }
+        else {
+            if ([error code] == kPFErrorObjectNotFound) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection error" message:@"Email or passwork wrong. Click on Signup button for create an account." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+                [alert show];
+                NSLog(@"object not found");
+            }
+            else if ([error code] == kPFErrorConnectionFailed) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection error" message:@"Internet connection error, check your connection." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok",nil];
+                [alert show];
+                NSLog(@"Error connection internet");
+            }
+        }
+    }];
+}
+
+#pragma mark -
+#pragma mark UITableView cycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//#warning Potentially incomplete method implementation.
+//    // Return the number of sections.
+//    return 0;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//#warning Incomplete method implementation.
+//    // Return the number of rows in the section.
+//    return 0;
+//}
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -87,14 +115,12 @@
 }
 */
 
-/*
-#pragma mark - Navigation
+#pragma mark -
+#pragma mark Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
 
 @end
