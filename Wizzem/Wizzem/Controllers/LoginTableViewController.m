@@ -7,6 +7,7 @@
 //
 
 #import <Parse/Parse.h>
+#import <SVProgressHUD.h>
 #import "LoginTableViewController.h"
 #import "User.h"
 #import "PFObject+NSCoding.h"
@@ -34,7 +35,16 @@
 - (IBAction)connection:(id)sender {
     NSLog(@"connection");
     
+    [SVProgressHUD show];
+    
     [PFUser logInWithUsernameInBackground:self.email.text password:self.password.text block:^(PFUser *user, NSError *error) {
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+            });
+        });
+        
         if (user) {
             NSLog(@"ok login connection : %@ %@", user.username, user.email);
 //            User *newUser = [User instance];

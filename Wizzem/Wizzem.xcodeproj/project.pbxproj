@@ -40,6 +40,7 @@
 		BB68DAB61AECE59A006E9821 /* SignupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB68DAB51AECE59A006E9821 /* SignupTableViewController.m */; };
 		BB68DAB91AED16E3006E9821 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BB68DAB81AED16E3006E9821 /* User.m */; };
 		BB68DAC01AED1EC5006E9821 /* PFObject+NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = BB68DABE1AED1EC5006E9821 /* PFObject+NSCoding.m */; };
+		BB68DAC51AED3963006E9821 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB68DAC41AED3963006E9821 /* ProfileViewController.m */; };
 		BB6991681AC9C1D500AC5776 /* PhotoCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6991671AC9C1D500AC5776 /* PhotoCaptureViewController.m */; };
 		BB69916B1AC9DD4300AC5776 /* PBJStrobeView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB69916A1AC9DD4300AC5776 /* PBJStrobeView.m */; };
 		BB7BE9611AC0A21D008040C7 /* WizzMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7BE9601AC0A21D008040C7 /* WizzMediaModel.m */; };
@@ -136,6 +137,8 @@
 		BB68DAB81AED16E3006E9821 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Wizzem/Controllers/User.m; sourceTree = SOURCE_ROOT; };
 		BB68DABD1AED1EC4006E9821 /* PFObject+NSCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFObject+NSCoding.h"; sourceTree = "<group>"; };
 		BB68DABE1AED1EC5006E9821 /* PFObject+NSCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFObject+NSCoding.m"; sourceTree = "<group>"; };
+		BB68DAC31AED3963006E9821 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		BB68DAC41AED3963006E9821 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		BB6991661AC9C1D500AC5776 /* PhotoCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCaptureViewController.h; sourceTree = "<group>"; };
 		BB6991671AC9C1D500AC5776 /* PhotoCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCaptureViewController.m; sourceTree = "<group>"; };
 		BB6991691AC9DD4300AC5776 /* PBJStrobeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBJStrobeView.h; sourceTree = "<group>"; };
@@ -214,6 +217,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB97E8211AB616DD000214E1 /* QuartzCore.framework in Frameworks */,
 				BB68DA9A1AEC3E9E006E9821 /* SystemConfiguration.framework in Frameworks */,
 				BB68DA541AEC38F2006E9821 /* CFNetwork.framework in Frameworks */,
 				BB68DA981AEC3E6F006E9821 /* StoreKit.framework in Frameworks */,
@@ -229,7 +233,6 @@
 				BB8612B01AD46416000A257C /* MobileCoreServices.framework in Frameworks */,
 				BB8612AE1AD4640E000A257C /* AssetsLibrary.framework in Frameworks */,
 				BB68DA9E1AEC3EEE006E9821 /* FBSDKLoginKit.framework in Frameworks */,
-				BB97E8211AB616DD000214E1 /* QuartzCore.framework in Frameworks */,
 				BB97E81F1AB616C4000214E1 /* CoreGraphics.framework in Frameworks */,
 				BB68DA9C1AEC3ED1006E9821 /* ParseFacebookUtilsV4.framework in Frameworks */,
 				BB68DA961AEC3E3D006E9821 /* Parse.framework in Frameworks */,
@@ -377,6 +380,7 @@
 		BB34A64E1A9B98FA00AA2A86 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BB68DAC11AED3946006E9821 /* ProfileController */,
 				BB68DAA21AECE4BF006E9821 /* LoginController */,
 				BB6991651AC9C1B400AC5776 /* MediaCaptureController */,
 				BB9CDEB71AC88E6D0000964E /* TabBarViewController.h */,
@@ -448,6 +452,15 @@
 				BB68DABE1AED1EC5006E9821 /* PFObject+NSCoding.m */,
 			);
 			name = EncodeObject;
+			sourceTree = "<group>";
+		};
+		BB68DAC11AED3946006E9821 /* ProfileController */ = {
+			isa = PBXGroup;
+			children = (
+				BB68DAC31AED3963006E9821 /* ProfileViewController.h */,
+				BB68DAC41AED3963006E9821 /* ProfileViewController.m */,
+			);
+			name = ProfileController;
 			sourceTree = "<group>";
 		};
 		BB6991651AC9C1B400AC5776 /* MediaCaptureController */ = {
@@ -697,6 +710,7 @@
 				BBD794CB1ACDDC470046C1C1 /* MovieCaptureViewController.m in Sources */,
 				BB9CDEB91AC88E6D0000964E /* TabBarViewController.m in Sources */,
 				BB4E448D1AA1E2D100760A36 /* TakeGifButton.m in Sources */,
+				BB68DAC51AED3963006E9821 /* ProfileViewController.m in Sources */,
 				BBBD944D1ABD72DC002F8655 /* WizzMedia+RecordSong.m in Sources */,
 				BBBD944C1ABD72DC002F8655 /* WizzMedia+FileManager.m in Sources */,
 				BB68DAC01AED1EC5006E9821 /* PFObject+NSCoding.m in Sources */,
@@ -869,43 +883,7 @@
 				INFOPLIST_FILE = "Wizzem/Ressources/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-l\"Pods-AYVibrantButton\"",
-					"-l\"Pods-FLAnimatedImage\"",
-					"-l\"Pods-FastttCamera\"",
-					"-l\"Pods-NYTPhotoViewer\"",
-					"-l\"Pods-PBJVideoPlayer\"",
-					"-l\"Pods-PBJVision\"",
-					"-l\"Pods-SCRecorder\"",
-					"-l\"Pods-Shimmer\"",
-					"-l\"Pods-pop\"",
-					"-l\"c++\"",
-					"-framework",
-					"\"AVFoundation\"",
-					"-framework",
-					"\"CoreGraphics\"",
-					"-framework",
-					"\"CoreImage\"",
-					"-framework",
-					"\"CoreMedia\"",
-					"-framework",
-					"\"CoreMotion\"",
-					"-framework",
-					"\"CoreVideo\"",
-					"-framework",
-					"\"Foundation\"",
-					"-framework",
-					"\"ImageIO\"",
-					"-framework",
-					"\"MobileCoreServices\"",
-					"-framework",
-					"\"OpenGLES\"",
-					"-framework",
-					"\"QuartzCore\"",
-					"-framework",
-					"\"UIKit\"",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Wizzem/Application/Wizzem-Bridging-Header.h";
@@ -929,43 +907,7 @@
 				INFOPLIST_FILE = "Wizzem/Ressources/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-l\"Pods-AYVibrantButton\"",
-					"-l\"Pods-FLAnimatedImage\"",
-					"-l\"Pods-FastttCamera\"",
-					"-l\"Pods-NYTPhotoViewer\"",
-					"-l\"Pods-PBJVideoPlayer\"",
-					"-l\"Pods-PBJVision\"",
-					"-l\"Pods-SCRecorder\"",
-					"-l\"Pods-Shimmer\"",
-					"-l\"Pods-pop\"",
-					"-l\"c++\"",
-					"-framework",
-					"\"AVFoundation\"",
-					"-framework",
-					"\"CoreGraphics\"",
-					"-framework",
-					"\"CoreImage\"",
-					"-framework",
-					"\"CoreMedia\"",
-					"-framework",
-					"\"CoreMotion\"",
-					"-framework",
-					"\"CoreVideo\"",
-					"-framework",
-					"\"Foundation\"",
-					"-framework",
-					"\"ImageIO\"",
-					"-framework",
-					"\"MobileCoreServices\"",
-					"-framework",
-					"\"OpenGLES\"",
-					"-framework",
-					"\"QuartzCore\"",
-					"-framework",
-					"\"UIKit\"",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Wizzem/Application/Wizzem-Bridging-Header.h";
