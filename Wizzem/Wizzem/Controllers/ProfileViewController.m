@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
+#import <SVProgressHUD.h>
 #import <Parse/Parse.h>
 #import "ProfileViewController.h"
 
@@ -16,7 +17,16 @@
 @implementation ProfileViewController
 
 - (IBAction)logout:(id)sender {
+    [SVProgressHUD show];
+    
     [PFUser logOutInBackgroundWithBlock:^(NSError *PF_NULLABLE_S error) {
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+            });
+        });
+        
         if (error) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error logout" message:@"Try again" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
             [alert show];
