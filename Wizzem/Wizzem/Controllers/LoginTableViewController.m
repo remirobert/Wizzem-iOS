@@ -55,6 +55,12 @@
             
             PFUser *logUser = [PFUser currentUser];
             if ([logUser isAuthenticated]) {
+                UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                UIViewController *tabbarController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"tabbarController"];
+                
+                if (tabbarController) {
+                    [self presentViewController:tabbarController animated:true completion:nil];
+                }
             }
         }
         else {
@@ -78,11 +84,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    User *user = [User restaure];
-    if (user) {
-        self.email.text = user.email;
-        self.password.text = user.password;
-    }
+    self.email.text = @"remirobert33530@gmail.com";
+    self.password.text = @"remi";
 }
 
 @end
