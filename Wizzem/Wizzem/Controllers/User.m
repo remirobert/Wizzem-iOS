@@ -16,6 +16,13 @@
 @implementation User
 
 #pragma mark -
+#pragma mark Parse API
+
+- (BOOL)isAuthenticated {
+    return [self.parseUser isAuthenticated];
+}
+
+#pragma mark -
 #pragma mark setter getter
 
 - (void)setPassword:(NSString *)password {
@@ -36,6 +43,19 @@
 #pragma mark -
 #pragma mark singleton
 
+- (void)initParseModel {
+    self.parseUser = [[PFUser alloc] init];
+    if (self.email) {
+        self.parseUser.email = self.email;
+    }
+    if (self.password) {
+        self.parseUser.password = self.password;
+    }
+    if (self.username) {
+        self.parseUser.username = self.username;
+    }
+}
+
 + (instancetype)instance {
     static User *user;
     static dispatch_once_t onceToken;
@@ -45,17 +65,7 @@
         if (!user) {
             user = [[User alloc] init];
         }
-        
-        user.parseUser = [PFUser user];
-        if (user.email) {
-            user.parseUser.email = user.email;
-        }
-        if (user.password) {
-            user.parseUser.password = user.password;
-        }
-        if (user.username) {
-            user.parseUser.username = user.username;
-        }
+        [user initParseModel];
     });
     return user;
 }

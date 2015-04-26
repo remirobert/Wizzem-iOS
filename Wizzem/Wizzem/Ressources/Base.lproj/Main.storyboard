@@ -709,7 +709,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="ksZ-as-9zM">
             <objects>
-                <tabBarController id="jXy-Hk-i2l" customClass="TabBarViewController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabbarController" id="jXy-Hk-i2l" customClass="TabBarViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Vri-6Z-IhC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -1593,7 +1593,7 @@
         <!--Navigation Controller-->
         <scene sceneID="tJJ-aF-Fh0">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wXv-ou-nCz" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="loginController" automaticallyAdjustsScrollViewInsets="NO" id="wXv-ou-nCz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pE6-LP-giB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

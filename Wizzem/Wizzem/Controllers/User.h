@@ -20,4 +20,6 @@
 - (void)save;
 + (instancetype)restaure;
 
+- (BOOL)isAuthenticated;
+
 @end

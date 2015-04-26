@@ -37,18 +37,38 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+    [Parse setApplicationId:@"P2PJVDbhrj37sCtIhVdKvrzrQwq5jFYEIAYsoDfb" clientKey:@"G9h48iFlrF6z2IKAGaXGFolTekaVg04rQpqb7AQZ"];
+    [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
+
+    
+    [PFUser enableRevocableSessionInBackground];
     [[UINavigationBar appearance] setTintColor:[UIColor greenColor]];
     
-    User *user = [User restaure];
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *rootController;
+    
+    PFUser *user = [PFUser currentUser];
     if (!user) {
         NSLog(@"not user");
     }
     else {
         NSLog(@"user connected : %@", user.email);
+        if ([user isAuthenticated]) {
+            NSLog(@"authentification oka");
+            rootController = [mainStoryboard instantiateViewControllerWithIdentifier:@"tabbarController"];
+        }
+        else {
+            NSLog(@"not auth");
+        }
+    }
+    if (!rootController) {
+        rootController = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginController"];
     }
     
-    [Parse setApplicationId:@"P2PJVDbhrj37sCtIhVdKvrzrQwq5jFYEIAYsoDfb" clientKey:@"G9h48iFlrF6z2IKAGaXGFolTekaVg04rQpqb7AQZ"];
-    [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
+    self.window.rootViewController = rootController;
+    [self.window makeKeyAndVisible];
     
     [Crashlytics startWithAPIKey:@"d9291a9165795274a4a0ad9f612bfafae0b9685d"];
     return YES;

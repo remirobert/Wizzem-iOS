@@ -33,14 +33,19 @@
 
 - (IBAction)connection:(id)sender {
     NSLog(@"connection");
+    
     [PFUser logInWithUsernameInBackground:self.email.text password:self.password.text block:^(PFUser *user, NSError *error) {
         if (user) {
             NSLog(@"ok login connection : %@ %@", user.username, user.email);
-            User *newUser = [User instance];
-            newUser.email = user.email;
-            newUser.password = user.password;
-            newUser.username = user.username;
-            [newUser save];
+//            User *newUser = [User instance];
+//            newUser.email = user.email;
+//            newUser.password = user.password;
+//            newUser.username = user.username;
+//            [newUser save];
+            
+            PFUser *logUser = [PFUser currentUser];
+            if ([logUser isAuthenticated]) {
+            }
         }
         else {
             if ([error code] == kPFErrorObjectNotFound) {
@@ -62,16 +67,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.email.text = @"remirobert33530@gmail.com";
-    self.password.text = @"remi";
-}
 
-#pragma mark -
-#pragma mark Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    User *user = [User restaure];
+    if (user) {
+        self.email.text = user.email;
+        self.password.text = user.password;
+    }
 }
 
 @end
