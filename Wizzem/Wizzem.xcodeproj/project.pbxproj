@@ -36,8 +36,6 @@
 		BB68DA9A1AEC3E9E006E9821 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA991AEC3E9E006E9821 /* SystemConfiguration.framework */; };
 		BB68DA9C1AEC3ED1006E9821 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA9B1AEC3ED1006E9821 /* ParseFacebookUtilsV4.framework */; };
 		BB68DA9E1AEC3EEE006E9821 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA9D1AEC3EEE006E9821 /* FBSDKLoginKit.framework */; };
-		BB68DAB31AECE58F006E9821 /* LoginTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB68DAB21AECE58F006E9821 /* LoginTableViewController.m */; };
-		BB68DAB61AECE59A006E9821 /* SignupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB68DAB51AECE59A006E9821 /* SignupTableViewController.m */; };
 		BB68DAB91AED16E3006E9821 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BB68DAB81AED16E3006E9821 /* User.m */; };
 		BB68DAC51AED3963006E9821 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB68DAC41AED3963006E9821 /* ProfileViewController.m */; };
 		BB6991681AC9C1D500AC5776 /* PhotoCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6991671AC9C1D500AC5776 /* PhotoCaptureViewController.m */; };
@@ -131,10 +129,6 @@
 		BB68DA991AEC3E9E006E9821 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BB68DA9B1AEC3ED1006E9821 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		BB68DA9D1AEC3EEE006E9821 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		BB68DAB11AECE58F006E9821 /* LoginTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTableViewController.h; sourceTree = "<group>"; };
-		BB68DAB21AECE58F006E9821 /* LoginTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTableViewController.m; sourceTree = "<group>"; };
-		BB68DAB41AECE59A006E9821 /* SignupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupTableViewController.h; sourceTree = "<group>"; };
-		BB68DAB51AECE59A006E9821 /* SignupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupTableViewController.m; sourceTree = "<group>"; };
 		BB68DAB71AED16E3006E9821 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		BB68DAB81AED16E3006E9821 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		BB68DAC31AED3963006E9821 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -445,12 +439,8 @@
 		BB68DAA21AECE4BF006E9821 /* LoginController */ = {
 			isa = PBXGroup;
 			children = (
-				BB68DAB11AECE58F006E9821 /* LoginTableViewController.h */,
-				BB68DAB21AECE58F006E9821 /* LoginTableViewController.m */,
 				BBFFEA561AF0200E008F526E /* SignupViewController.h */,
 				BBFFEA571AF0200E008F526E /* SignupViewController.m */,
-				BB68DAB41AECE59A006E9821 /* SignupTableViewController.h */,
-				BB68DAB51AECE59A006E9821 /* SignupTableViewController.m */,
 				BBFFEA531AF01ED5008F526E /* LoginViewController.h */,
 				BBFFEA541AF01ED5008F526E /* LoginViewController.m */,
 			);
@@ -715,7 +705,6 @@
 				BB68DAC51AED3963006E9821 /* ProfileViewController.m in Sources */,
 				BBBD944D1ABD72DC002F8655 /* WizzMedia+RecordSong.m in Sources */,
 				BBBD944C1ABD72DC002F8655 /* WizzMedia+FileManager.m in Sources */,
-				BB68DAB31AECE58F006E9821 /* LoginTableViewController.m in Sources */,
 				BB8612AC1AD463E4000A257C /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				BB9CDEBC1AC896230000964E /* MenuMediaViewController.m in Sources */,
 				BB7BE9611AC0A21D008040C7 /* WizzMediaModel.m in Sources */,
@@ -736,7 +725,6 @@
 				BB8748661ABE28EE00957909 /* Colors.m in Sources */,
 				BBFFEA581AF0200E008F526E /* SignupViewController.m in Sources */,
 				BBD794C81ACDBAF50046C1C1 /* PreviewLayerMediaCaptureView.m in Sources */,
-				BB68DAB61AECE59A006E9821 /* SignupTableViewController.m in Sources */,
 				BB7BE9641AC0A79D008040C7 /* ProgressBar.m in Sources */,
 				BB4E448A1AA1016900760A36 /* CircleView.m in Sources */,
 				BB8340491AE283E300DB83C8 /* ColorPicker.m in Sources */,
