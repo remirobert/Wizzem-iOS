@@ -44,7 +44,6 @@
 
     
     [PFUser enableRevocableSessionInBackground];
-    [[UINavigationBar appearance] setTintColor:[UIColor greenColor]];
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *rootController;

@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
-#import "PFObject+NSCoding.h"
 #import "User.h"
 
 @interface User() <NSCoding>

@@ -1,22 +1,21 @@
 //
-//  LoginTableViewController.m
+//  LoginViewController.m
 //  Wizzem
 //
-//  Created by Remi Robert on 26/04/15.
+//  Created by Remi Robert on 28/04/15.
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
 #import <Parse/Parse.h>
 #import <SVProgressHUD.h>
-#import "LoginTableViewController.h"
-#import "User.h"
+#import "LoginViewController.h"
 
-@interface LoginTableViewController () <UITextFieldDelegate>
+@interface LoginViewController () <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *email;
 @property (strong, nonatomic) IBOutlet UITextField *password;
 @end
 
-@implementation LoginTableViewController
+@implementation LoginViewController
 
 #pragma mark -
 #pragma mark UItextField delegate
@@ -28,10 +27,7 @@
     return true;
 }
 
-#pragma mark -
-#pragma mark Action
-
-- (IBAction)connection:(id)sender {
+- (IBAction)login:(id)sender {
     NSLog(@"connection");
     
     [SVProgressHUD show];
@@ -46,11 +42,11 @@
         
         if (user) {
             NSLog(@"ok login connection : %@ %@", user.username, user.email);
-//            User *newUser = [User instance];
-//            newUser.email = user.email;
-//            newUser.password = user.password;
-//            newUser.username = user.username;
-//            [newUser save];
+            //            User *newUser = [User instance];
+            //            newUser.email = user.email;
+            //            newUser.password = user.password;
+            //            newUser.username = user.username;
+            //            [newUser save];
             
             PFUser *logUser = [PFUser currentUser];
             if ([logUser isAuthenticated]) {
@@ -77,12 +73,12 @@
     }];
 }
 
-#pragma mark -
-#pragma mark UITableView cycle
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    self.email.delegate = self;
+    self.password.delegate = self;
+    
     self.email.text = @"remirobert33530@gmail.com";
     self.password.text = @"remi";
 }
