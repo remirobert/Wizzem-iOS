@@ -7,6 +7,7 @@
 //
 
 #import <Parse/Parse.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import <SVProgressHUD.h>
 #import "LoginViewController.h"
 
@@ -69,6 +70,30 @@
                 [alert show];
                 NSLog(@"Error connection internet");
             }
+        }
+    }];
+}
+
+- (IBAction)loginFacebook:(id)sender {
+    NSLog(@"log with facebook");
+    
+    NSArray *permissions = @[@"email"];
+    
+    [PFFacebookUtils logInInBackgroundWithReadPermissions:permissions block:^(PFUser *user, NSError *error) {
+        if (!user) {
+            NSLog(@"Uh oh. The user cancelled the Facebook login.");
+            return;
+        } else if (user.isNew) {
+            
+            NSLog(@"User signed up and logged in through Facebook!");
+        } else {
+            NSLog(@"User logged in through Facebook!");
+        }
+        UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIViewController *tabbarController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"tabbarController"];
+        
+        if (tabbarController) {
+            [self presentViewController:tabbarController animated:true completion:nil];
         }
     }];
 }
