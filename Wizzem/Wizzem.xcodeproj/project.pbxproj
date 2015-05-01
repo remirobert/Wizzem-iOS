@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ACFED7F2462065225925B9DF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F14D01F10DF01B4B8D4D2B /* libPods.a */; };
+		BB1162E01AF384CA00462BCF /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1162DF1AF384CA00462BCF /* ProgressView.m */; };
 		BB2A3FE71AEC0CF800763FAA /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2A3FE61AEC0CF800763FAA /* libstdc++.6.0.9.dylib */; };
 		BB311C8A1A9C7C3600C25668 /* SliderButtonPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = BB311C891A9C7C3600C25668 /* SliderButtonPhoto.m */; };
 		BB31B6C41AB21425001DBFF3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB31B6C31AB21425001DBFF3 /* CoreMedia.framework */; };
@@ -98,6 +99,8 @@
 
 /* Begin PBXFileReference section */
 		99F14D01F10DF01B4B8D4D2B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB1162DE1AF384CA00462BCF /* ProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressView.h; sourceTree = "<group>"; };
+		BB1162DF1AF384CA00462BCF /* ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressView.m; sourceTree = "<group>"; };
 		BB2A3FE61AEC0CF800763FAA /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		BB311C881A9C7C3600C25668 /* SliderButtonPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderButtonPhoto.h; sourceTree = "<group>"; };
 		BB311C891A9C7C3600C25668 /* SliderButtonPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderButtonPhoto.m; sourceTree = "<group>"; };
@@ -447,6 +450,8 @@
 				BB83404E1AE295A600DB83C8 /* KeyboardValidationToolBar.m */,
 				BBFFEA501AF017F4008F526E /* CustomNavigationBar.h */,
 				BBFFEA511AF017F4008F526E /* CustomNavigationBar.m */,
+				BB1162DE1AF384CA00462BCF /* ProgressView.h */,
+				BB1162DF1AF384CA00462BCF /* ProgressView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -766,6 +771,7 @@
 				BBBD944C1ABD72DC002F8655 /* WizzMedia+FileManager.m in Sources */,
 				BB8612AC1AD463E4000A257C /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				BB9CDEBC1AC896230000964E /* MenuMediaViewController.m in Sources */,
+				BB1162E01AF384CA00462BCF /* ProgressView.m in Sources */,
 				BB7BE9611AC0A21D008040C7 /* WizzMediaModel.m in Sources */,
 				BB34A62A1A9B989200AA2A86 /* AppDelegate.m in Sources */,
 				BB83404F1AE295A600DB83C8 /* KeyboardValidationToolBar.m in Sources */,

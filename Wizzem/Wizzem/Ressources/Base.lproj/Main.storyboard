@@ -1757,58 +1757,8 @@
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection id="nDQ-VE-XSt">
+                            <tableViewSection headerTitle="required" id="nDQ-VE-XSt">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="wizzCreateCell" rowHeight="108" id="HxJ-zT-eXN">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HxJ-zT-eXN" id="hTg-tc-Cjp">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" scrollEnabled="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyD-Fc-tFh">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <string key="text">Grâce au wizz, organisez vos activités et centralisez les publications de tous les participants impliqués. Retranscrivez, chaque instant que vous vivez en utilisant le média le plus adapté !</string>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="centerX" secondItem="iyD-Fc-tFh" secondAttribute="centerX" constant="-0.5" id="FlE-u5-2da"/>
-                                                <constraint firstItem="iyD-Fc-tFh" firstAttribute="top" secondItem="hTg-tc-Cjp" secondAttribute="topMargin" constant="5" id="fx8-OU-uK2"/>
-                                                <constraint firstAttribute="centerY" secondItem="iyD-Fc-tFh" secondAttribute="centerY" constant="-5" id="gkf-OV-IEg">
-                                                    <variation key="heightClass=regular-widthClass=compact" constant="-14"/>
-                                                </constraint>
-                                                <constraint firstAttribute="trailingMargin" secondItem="iyD-Fc-tFh" secondAttribute="trailing" constant="5" id="ob4-hw-znq"/>
-                                                <constraint firstItem="iyD-Fc-tFh" firstAttribute="leading" secondItem="hTg-tc-Cjp" secondAttribute="leadingMargin" constant="6" id="q9W-fc-75W"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="subviews">
-                                                    <exclude reference="iyD-Fc-tFh"/>
-                                                </mask>
-                                                <mask key="constraints">
-                                                    <exclude reference="FlE-u5-2da"/>
-                                                    <exclude reference="fx8-OU-uK2"/>
-                                                    <exclude reference="gkf-OV-IEg"/>
-                                                    <exclude reference="ob4-hw-znq"/>
-                                                    <exclude reference="q9W-fc-75W"/>
-                                                </mask>
-                                            </variation>
-                                            <variation key="heightClass=regular-widthClass=compact">
-                                                <mask key="subviews">
-                                                    <include reference="iyD-Fc-tFh"/>
-                                                </mask>
-                                                <mask key="constraints">
-                                                    <include reference="FlE-u5-2da"/>
-                                                    <include reference="fx8-OU-uK2"/>
-                                                    <include reference="gkf-OV-IEg"/>
-                                                    <include reference="ob4-hw-znq"/>
-                                                    <include reference="q9W-fc-75W"/>
-                                                </mask>
-                                            </variation>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="wizzCreateCell" id="A2D-nX-yqS">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A2D-nX-yqS" id="BaK-RX-ob3">
@@ -1921,7 +1871,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="" id="eZr-u3-YcG">
+                            <tableViewSection headerTitle="optional" id="eZr-u3-YcG">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="wizzCreateCell" id="yvE-Mk-mf7">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -2001,7 +1951,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6KE-Zc-Pdq" id="nMT-jV-1SG">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a location to your Wizz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyo-ty-W8x">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a location to your Wizz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyo-ty-W8x">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -2101,7 +2051,9 @@
                             <outlet property="delegate" destination="lUV-xf-aQl" id="9oP-R3-reh"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="New Wizz" id="BX5-gF-65U"/>
+                    <navigationItem key="navigationItem" title="New Wizz" id="BX5-gF-65U">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="8Pd-PO-6bA"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oXA-1O-efF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

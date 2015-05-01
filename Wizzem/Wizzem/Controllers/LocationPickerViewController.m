@@ -8,6 +8,7 @@
 
 #import <MapKit/MapKit.h>
 #import "LocationPickerViewController.h"
+#import "ProgressView.h"
 
 @interface LocationPickerViewController () <UISearchBarDelegate>
 @property (nonatomic, strong) UISearchController *searchController;
@@ -23,7 +24,7 @@
 @implementation LocationPickerViewController
 
 - (IBAction)choosePlace:(id)sender {
-    NSDictionary *contentLocation = @{@"place":self.annotation.title,
+    NSDictionary *contentLocation = @{@"title":self.annotation.title,
                                       @"lon":[NSNumber numberWithDouble:self.annotation.coordinate.longitude],
                                       @"lat":[NSNumber numberWithDouble:self.annotation.coordinate.latitude]};
     if (self.selectionBlock) {
@@ -56,8 +57,11 @@
     self.localSearchRequest.naturalLanguageQuery = searchBar.text;
     self.localSearch = [[MKLocalSearch alloc] initWithRequest:self.localSearchRequest];
     
+    [ProgressView show:self.view withTitle:@"Search in progress"];
+    
     [self.localSearch startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
        
+        [ProgressView hide];
         NSLog(@"found place");
         
         if (!response) {
