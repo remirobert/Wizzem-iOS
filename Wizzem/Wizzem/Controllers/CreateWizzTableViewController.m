@@ -157,7 +157,7 @@
     if (section == 0) {
         return 150;
     }
-    return 24;
+    return 44;
 }
 
 @end

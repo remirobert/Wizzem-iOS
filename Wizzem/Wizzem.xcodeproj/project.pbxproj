@@ -10,6 +10,7 @@
 		ACFED7F2462065225925B9DF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99F14D01F10DF01B4B8D4D2B /* libPods.a */; };
 		BB1162E01AF384CA00462BCF /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1162DF1AF384CA00462BCF /* ProgressView.m */; };
 		BB1162E61AF3C98800462BCF /* WizzPrivacyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1162E51AF3C98800462BCF /* WizzPrivacyTableViewController.m */; };
+		BB1162E91AF3FBA600462BCF /* WizzFrriendsInviteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1162E81AF3FBA600462BCF /* WizzFrriendsInviteTableViewController.m */; };
 		BB2A3FE71AEC0CF800763FAA /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2A3FE61AEC0CF800763FAA /* libstdc++.6.0.9.dylib */; };
 		BB311C8A1A9C7C3600C25668 /* SliderButtonPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = BB311C891A9C7C3600C25668 /* SliderButtonPhoto.m */; };
 		BB31B6C41AB21425001DBFF3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB31B6C31AB21425001DBFF3 /* CoreMedia.framework */; };
@@ -104,6 +105,8 @@
 		BB1162DF1AF384CA00462BCF /* ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressView.m; sourceTree = "<group>"; };
 		BB1162E41AF3C98800462BCF /* WizzPrivacyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WizzPrivacyTableViewController.h; sourceTree = "<group>"; };
 		BB1162E51AF3C98800462BCF /* WizzPrivacyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WizzPrivacyTableViewController.m; sourceTree = "<group>"; };
+		BB1162E71AF3FBA600462BCF /* WizzFrriendsInviteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WizzFrriendsInviteTableViewController.h; sourceTree = "<group>"; };
+		BB1162E81AF3FBA600462BCF /* WizzFrriendsInviteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WizzFrriendsInviteTableViewController.m; sourceTree = "<group>"; };
 		BB2A3FE61AEC0CF800763FAA /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		BB311C881A9C7C3600C25668 /* SliderButtonPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderButtonPhoto.h; sourceTree = "<group>"; };
 		BB311C891A9C7C3600C25668 /* SliderButtonPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderButtonPhoto.m; sourceTree = "<group>"; };
@@ -481,6 +484,8 @@
 				BBEED43D1AF3678600ED7BEB /* CreateWizzTableViewController.m */,
 				BB1162E41AF3C98800462BCF /* WizzPrivacyTableViewController.h */,
 				BB1162E51AF3C98800462BCF /* WizzPrivacyTableViewController.m */,
+				BB1162E71AF3FBA600462BCF /* WizzFrriendsInviteTableViewController.h */,
+				BB1162E81AF3FBA600462BCF /* WizzFrriendsInviteTableViewController.m */,
 			);
 			name = Wizz;
 			sourceTree = "<group>";
@@ -778,6 +783,7 @@
 				BB9CDEBC1AC896230000964E /* MenuMediaViewController.m in Sources */,
 				BB1162E01AF384CA00462BCF /* ProgressView.m in Sources */,
 				BB7BE9611AC0A21D008040C7 /* WizzMediaModel.m in Sources */,
+				BB1162E91AF3FBA600462BCF /* WizzFrriendsInviteTableViewController.m in Sources */,
 				BB34A62A1A9B989200AA2A86 /* AppDelegate.m in Sources */,
 				BB83404F1AE295A600DB83C8 /* KeyboardValidationToolBar.m in Sources */,
 				BBEED4411AF370F800ED7BEB /* LocationPickerViewController.m in Sources */,
