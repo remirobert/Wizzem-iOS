@@ -59,6 +59,19 @@
 //    }];
 }
 
+- (IBAction)createWizz:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"wizzCreation"];
+
+    if (!controller) {
+        return;
+    }
+    
+    [self dismissViewControllerAnimated:true completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:PRESENT_CONTROLLER_NOTIFICATION object:nil userInfo:@{@"controller":controller}];
+    }];
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self dismissMenuController:nil];
 }
