@@ -39,7 +39,7 @@
     }
 
     if (textField.text.length > 0 && string.length > 0) {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleDone target:nil action:nil];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleDone target:self action:@selector(nextPrivacyController)];
     }
     return true;
 }
@@ -63,13 +63,6 @@
     }
 }
 
-//- (void)textViewDidChange:(UITextView *)textView {
-//    if ([textView.text isEqualToString:@""]) {
-//        textView.text = @"Add a comment in your Wizz, for add some details.";
-//        textView.textColor = [UIColor lightGrayColor]; //optional
-//    }
-//}
-
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {    
     if ([text isEqualToString:@"\n"]) {
         [self.view endEditing:true];
@@ -83,11 +76,19 @@
 #pragma mark -
 #pragma mark UIView cycle
 
+- (void)nextPrivacyController {
+    [self performSegueWithIdentifier:@"nextPrivacyController" sender:nil];
+}
+
+- (IBAction)cancelCreation:(id)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
     ((UITextField *)[cell.contentView viewWithTag:1]).delegate = self;
     
-    cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:2]];
+    cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:1]];
     ((UITextView *)[cell.contentView viewWithTag:1]).delegate = self;
 }
 
