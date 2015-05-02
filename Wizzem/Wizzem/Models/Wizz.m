@@ -10,4 +10,19 @@
 
 @implementation Wizz
 
++ (instancetype)sharedInstance:(BOOL)reset {
+    static Wizz *wizz;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        wizz = [Wizz new];
+    });
+    
+    if (reset) {
+        wizz = [Wizz new];
+    }
+
+    return wizz;
+}
+
 @end

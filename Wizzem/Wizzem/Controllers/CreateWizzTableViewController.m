@@ -9,6 +9,7 @@
 #import "Wizzem-Swift.h"
 #import "CreateWizzTableViewController.h"
 #import "LocationPickerViewController.h"
+#import "Wizz.h"
 
 @interface CreateWizzTableViewController () <UITextFieldDelegate, UITextViewDelegate>
 @property (nonatomic, strong) DatePickerDialog *datePicker;
@@ -77,6 +78,10 @@
 #pragma mark UIView cycle
 
 - (void)nextPrivacyController {
+    [Wizz sharedInstance:false].title = ((UITextField *)[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]].contentView viewWithTag:1]).text;
+    
+    [Wizz sharedInstance:false].comment = ((UITextView *)[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:1]].contentView viewWithTag:1]).text;
+
     [self performSegueWithIdentifier:@"nextPrivacyController" sender:nil];
 }
 
@@ -96,6 +101,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.delegate = self;
+    [Wizz sharedInstance:true];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -104,7 +110,9 @@
         
         locationController.selectionBlock = ^(NSDictionary *content) {
             if (content) {
-                UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:1]];
+                UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:1]];
+
+                [Wizz sharedInstance:false].location = [PFGeoPoint geoPointWithLatitude:[[content objectForKey:@"lat"] doubleValue] longitude:[[content objectForKey:@"lon"] doubleValue]];
                 
                 UILabel *labelLocation = ((UILabel *)[cell.contentView viewWithTag:1]);
                 labelLocation.text = [content objectForKey:@"title"];
@@ -124,6 +132,14 @@
                  
                  currentCell.detailTextLabel.text = [NSString stringWithFormat:@"%@", date];
                  NSLog(@"date : %@", date);
+
+                 if (indexPath.row == 1) {
+                     [Wizz sharedInstance:false].start = date;
+                 }
+                 else {
+                     [Wizz sharedInstance:false].end = date;
+                 }
+                 
                  [self.datePicker removeFromSuperview];
              }];
             [self.view addSubview:self.datePicker];

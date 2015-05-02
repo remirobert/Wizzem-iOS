@@ -18,6 +18,7 @@
 @implementation SignupTableViewController
 
 - (void)signup {
+    [self.view endEditing:true];
     NSString *username = ((UITextField *)[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]].contentView viewWithTag:1]).text;
     NSString *email = ((UITextField *)[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0]].contentView viewWithTag:1]).text;
 

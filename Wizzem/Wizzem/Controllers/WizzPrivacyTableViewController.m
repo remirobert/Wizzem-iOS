@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
+#import "Wizz.h"
 #import "WizzPrivacyTableViewController.h"
 
 @interface WizzPrivacyTableViewController ()
@@ -25,6 +26,7 @@
 }
 
 - (void)changeValue:(UISwitch *)sender {
+    [Wizz sharedInstance:false].isPublic = sender.on;
     if (sender.on) {
         self.mask.alpha = 0;
     }
@@ -34,7 +36,11 @@
 }
 
 - (void)valueSetepper:(UIStepper *)sender {
+    if ([Wizz sharedInstance:false].isPublic) {
+        [Wizz sharedInstance:false].numberParticipant = sender.value;
+    }
     UITableViewCell *currentCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0]];
+    
     if (sender.value == 0) {
         ((UILabel *)[currentCell.contentView viewWithTag:1]).text = @"Illimited";
     }
@@ -56,12 +62,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.delegate = self;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 1) {
-        
-    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {

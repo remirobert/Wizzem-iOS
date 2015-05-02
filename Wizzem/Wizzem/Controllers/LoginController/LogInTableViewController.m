@@ -38,6 +38,7 @@
 }
 
 - (void)login {
+    [self.view endEditing:true];
     NSString *email = [self email];
     NSString *password = [self password];
     

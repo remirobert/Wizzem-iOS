@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
+#import "Wizz.h"
 #import "WizzFrriendsInviteTableViewController.h"
 
 @interface WizzFrriendsInviteTableViewController ()
@@ -15,7 +16,26 @@
 @implementation WizzFrriendsInviteTableViewController
 
 - (IBAction)createWizz:(id)sender {
+    PFObject *newWizz = [PFObject objectWithClassName:@"Event"];
+    newWizz[@"city"] = [Wizz sharedInstance:false].location;
+    newWizz[@"title"] = [Wizz sharedInstance:false].title;
+    newWizz[@"description"] = [Wizz sharedInstance:false].comment;
+    newWizz[@"start"] = [Wizz sharedInstance:false].start;
+    newWizz[@"end"] = [Wizz sharedInstance:false].end;
+    newWizz[@"nbMaxParticipant"] = [NSNumber numberWithInteger:[Wizz sharedInstance:false].numberParticipant];
+    newWizz[@"public"] = [NSNumber numberWithBool:[Wizz sharedInstance:false].isPublic];
+    newWizz[@"creator"] = [PFUser currentUser];
     
+    [newWizz saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Your Wizz is created, enjey it !" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            [alert show];
+        }
+        else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"The Wizz couldn't be saved. Check your internet connection and try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            [alert show];
+        }
+    }];
 }
 
 - (void)viewDidLoad {
