@@ -25,10 +25,8 @@
 		BB34A6351A9B989200AA2A86 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB34A6331A9B989200AA2A86 /* LaunchScreen.xib */; };
 		BB34A6411A9B989200AA2A86 /* WizzemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB34A6401A9B989200AA2A86 /* WizzemTests.m */; };
 		BB34A64D1A9B98EB00AA2A86 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB34A64C1A9B98EB00AA2A86 /* AVFoundation.framework */; };
-		BB3818391AF158F700480E35 /* CreateWizzViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3818381AF158F700480E35 /* CreateWizzViewController.m */; };
 		BB38183C1AF1621E00480E35 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38183B1AF1621E00480E35 /* DatePickerDialog.swift */; };
 		BB38183F1AF16B0C00480E35 /* Wizz.m in Sources */ = {isa = PBXBuildFile; fileRef = BB38183E1AF16B0C00480E35 /* Wizz.m */; };
-		BB3818451AF16D2E00480E35 /* ValidateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3818441AF16D2E00480E35 /* ValidateViewController.m */; };
 		BB4E448A1AA1016900760A36 /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E44891AA1016900760A36 /* CircleView.m */; };
 		BB4E448D1AA1E2D100760A36 /* TakeGifButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E448C1AA1E2D100760A36 /* TakeGifButton.m */; };
 		BB68DA3A1AEC0D9C006E9821 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA391AEC0D9C006E9821 /* libsqlite3.0.dylib */; };
@@ -87,8 +85,6 @@
 		BBEED4441AF3726000ED7BEB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBEED4431AF3726000ED7BEB /* MapKit.framework */; };
 		BBF0FB3B1AE3A3550019BEBA /* GitCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF0FB3A1AE3A3550019BEBA /* GitCaptureViewController.m */; };
 		BBFFEA521AF017F4008F526E /* CustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFFEA511AF017F4008F526E /* CustomNavigationBar.m */; };
-		BBFFEA551AF01ED5008F526E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFFEA541AF01ED5008F526E /* LoginViewController.m */; };
-		BBFFEA581AF0200E008F526E /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFFEA571AF0200E008F526E /* SignupViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,13 +127,9 @@
 		BB34A63F1A9B989200AA2A86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB34A6401A9B989200AA2A86 /* WizzemTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WizzemTests.m; sourceTree = "<group>"; };
 		BB34A64C1A9B98EB00AA2A86 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		BB3818371AF158F700480E35 /* CreateWizzViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateWizzViewController.h; sourceTree = "<group>"; };
-		BB3818381AF158F700480E35 /* CreateWizzViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateWizzViewController.m; sourceTree = "<group>"; };
 		BB38183B1AF1621E00480E35 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		BB38183D1AF16B0C00480E35 /* Wizz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wizz.h; sourceTree = "<group>"; };
 		BB38183E1AF16B0C00480E35 /* Wizz.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wizz.m; sourceTree = "<group>"; };
-		BB3818431AF16D2E00480E35 /* ValidateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidateViewController.h; sourceTree = "<group>"; };
-		BB3818441AF16D2E00480E35 /* ValidateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateViewController.m; sourceTree = "<group>"; };
 		BB4E44881AA1016900760A36 /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
 		BB4E44891AA1016900760A36 /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
 		BB4E448B1AA1E2D100760A36 /* TakeGifButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakeGifButton.h; sourceTree = "<group>"; };
@@ -238,10 +230,6 @@
 		BBF0FB3A1AE3A3550019BEBA /* GitCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitCaptureViewController.m; sourceTree = "<group>"; };
 		BBFFEA501AF017F4008F526E /* CustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationBar.h; sourceTree = "<group>"; };
 		BBFFEA511AF017F4008F526E /* CustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationBar.m; sourceTree = "<group>"; };
-		BBFFEA531AF01ED5008F526E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		BBFFEA541AF01ED5008F526E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		BBFFEA561AF0200E008F526E /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
-		BBFFEA571AF0200E008F526E /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		F44EE1E1271F095C9620B60B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		FEA8B635285A35CE77C00BF3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -482,10 +470,6 @@
 		BB3818361AF158E500480E35 /* Wizz */ = {
 			isa = PBXGroup;
 			children = (
-				BB3818371AF158F700480E35 /* CreateWizzViewController.h */,
-				BB3818381AF158F700480E35 /* CreateWizzViewController.m */,
-				BB3818431AF16D2E00480E35 /* ValidateViewController.h */,
-				BB3818441AF16D2E00480E35 /* ValidateViewController.m */,
 				BBEED43C1AF3678600ED7BEB /* CreateWizzTableViewController.h */,
 				BBEED43D1AF3678600ED7BEB /* CreateWizzTableViewController.m */,
 				BB1162E41AF3C98800462BCF /* WizzPrivacyTableViewController.h */,
@@ -507,10 +491,6 @@
 		BB68DAA21AECE4BF006E9821 /* LoginController */ = {
 			isa = PBXGroup;
 			children = (
-				BBFFEA561AF0200E008F526E /* SignupViewController.h */,
-				BBFFEA571AF0200E008F526E /* SignupViewController.m */,
-				BBFFEA531AF01ED5008F526E /* LoginViewController.h */,
-				BBFFEA541AF01ED5008F526E /* LoginViewController.m */,
 				BB1162EA1AF431F900462BCF /* LogInTableViewController.h */,
 				BB1162EB1AF431F900462BCF /* LogInTableViewController.m */,
 				BB1162ED1AF4B13C00462BCF /* SignupTableViewController.h */,
@@ -784,10 +764,8 @@
 				BBD794CB1ACDDC470046C1C1 /* MovieCaptureViewController.m in Sources */,
 				BB9CDEB91AC88E6D0000964E /* TabBarViewController.m in Sources */,
 				BB4E448D1AA1E2D100760A36 /* TakeGifButton.m in Sources */,
-				BB3818391AF158F700480E35 /* CreateWizzViewController.m in Sources */,
 				BB68DAC51AED3963006E9821 /* ProfileViewController.m in Sources */,
 				BBBD944D1ABD72DC002F8655 /* WizzMedia+RecordSong.m in Sources */,
-				BB3818451AF16D2E00480E35 /* ValidateViewController.m in Sources */,
 				BBBD944C1ABD72DC002F8655 /* WizzMedia+FileManager.m in Sources */,
 				BB8612AC1AD463E4000A257C /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				BB9CDEBC1AC896230000964E /* MenuMediaViewController.m in Sources */,
@@ -805,14 +783,12 @@
 				BB8748701ABEB88000957909 /* TransitionMenuMediaManager.swift in Sources */,
 				BBBD94481ABD72DC002F8655 /* WizzMedia.m in Sources */,
 				BBC1DF8F1ACC9FA400D9D8FC /* MakeAnimatedImage.m in Sources */,
-				BBFFEA551AF01ED5008F526E /* LoginViewController.m in Sources */,
 				BB6991681AC9C1D500AC5776 /* PhotoCaptureViewController.m in Sources */,
 				BB884EA21ADAF05200063F30 /* PulsingHaloLayer.m in Sources */,
 				BBBD944B1ABD72DC002F8655 /* WizzMedia+CameraVideo.m in Sources */,
 				BB69916B1AC9DD4300AC5776 /* PBJStrobeView.m in Sources */,
 				BB8748661ABE28EE00957909 /* Colors.m in Sources */,
 				BBEED43E1AF3678600ED7BEB /* CreateWizzTableViewController.m in Sources */,
-				BBFFEA581AF0200E008F526E /* SignupViewController.m in Sources */,
 				BBD794C81ACDBAF50046C1C1 /* PreviewLayerMediaCaptureView.m in Sources */,
 				BB7BE9641AC0A79D008040C7 /* ProgressBar.m in Sources */,
 				BB4E448A1AA1016900760A36 /* CircleView.m in Sources */,
