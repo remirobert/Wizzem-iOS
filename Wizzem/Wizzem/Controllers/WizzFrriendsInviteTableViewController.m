@@ -30,7 +30,7 @@
         imageView.image = [[UIImage imageNamed:@"friendNetwork"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         imageView.layer.masksToBounds = true;
         imageView.contentMode = UIViewContentModeScaleAspectFill;
-        imageView.frame = CGRectMake(self.view.frame.size.width / 2 - 50, 10, 100, 100);
+        imageView.frame = CGRectMake(self.view.frame.size.width / 2 - 75, 10, 150, 150);
         imageView.tintColor = [UIColor darkGrayColor];
         
         UITextView *textView = [UITextView new];
@@ -44,7 +44,7 @@
         textView.frame = CGRectMake(0, 0, self.view.frame.size.width, 100);
         textView.text = @"the more the better. Invite some friends to your Wizz, for share great moment.";
         [textView sizeToFit];
-        textView.frame = CGRectMake(0, 150 / 2 - textView.frame.size.height / 2 + 110, self.view.frame.size.width, textView.frame.size.height);
+        textView.frame = CGRectMake(0, 150 / 2 - textView.frame.size.height / 2 + 130, self.view.frame.size.width, textView.frame.size.height);
         
         UIView *container = [UIView new];
         container.frame = CGRectMake(0, 0, self.view.frame.size.width, 260);

@@ -85,6 +85,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [self.view endEditing:true];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
     ((UITextField *)[cell.contentView viewWithTag:1]).delegate = self;
     

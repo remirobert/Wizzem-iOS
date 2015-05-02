@@ -11,6 +11,7 @@
 		BB1162E01AF384CA00462BCF /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1162DF1AF384CA00462BCF /* ProgressView.m */; };
 		BB1162E61AF3C98800462BCF /* WizzPrivacyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1162E51AF3C98800462BCF /* WizzPrivacyTableViewController.m */; };
 		BB1162E91AF3FBA600462BCF /* WizzFrriendsInviteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1162E81AF3FBA600462BCF /* WizzFrriendsInviteTableViewController.m */; };
+		BB1162EC1AF431F900462BCF /* LogInTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1162EB1AF431F900462BCF /* LogInTableViewController.m */; };
 		BB2A3FE71AEC0CF800763FAA /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2A3FE61AEC0CF800763FAA /* libstdc++.6.0.9.dylib */; };
 		BB311C8A1A9C7C3600C25668 /* SliderButtonPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = BB311C891A9C7C3600C25668 /* SliderButtonPhoto.m */; };
 		BB31B6C41AB21425001DBFF3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB31B6C31AB21425001DBFF3 /* CoreMedia.framework */; };
@@ -107,6 +108,8 @@
 		BB1162E51AF3C98800462BCF /* WizzPrivacyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WizzPrivacyTableViewController.m; sourceTree = "<group>"; };
 		BB1162E71AF3FBA600462BCF /* WizzFrriendsInviteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WizzFrriendsInviteTableViewController.h; sourceTree = "<group>"; };
 		BB1162E81AF3FBA600462BCF /* WizzFrriendsInviteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WizzFrriendsInviteTableViewController.m; sourceTree = "<group>"; };
+		BB1162EA1AF431F900462BCF /* LogInTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInTableViewController.h; sourceTree = "<group>"; };
+		BB1162EB1AF431F900462BCF /* LogInTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInTableViewController.m; sourceTree = "<group>"; };
 		BB2A3FE61AEC0CF800763FAA /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		BB311C881A9C7C3600C25668 /* SliderButtonPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderButtonPhoto.h; sourceTree = "<group>"; };
 		BB311C891A9C7C3600C25668 /* SliderButtonPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderButtonPhoto.m; sourceTree = "<group>"; };
@@ -505,6 +508,8 @@
 				BBFFEA571AF0200E008F526E /* SignupViewController.m */,
 				BBFFEA531AF01ED5008F526E /* LoginViewController.h */,
 				BBFFEA541AF01ED5008F526E /* LoginViewController.m */,
+				BB1162EA1AF431F900462BCF /* LogInTableViewController.h */,
+				BB1162EB1AF431F900462BCF /* LogInTableViewController.m */,
 			);
 			path = LoginController;
 			sourceTree = "<group>";
@@ -790,6 +795,7 @@
 				BBF0FB3B1AE3A3550019BEBA /* GitCaptureViewController.m in Sources */,
 				BBD794CE1ACDE27D0046C1C1 /* MediaCaptureViewController.m in Sources */,
 				BB8748631ABDE72500957909 /* DropDown.m in Sources */,
+				BB1162EC1AF431F900462BCF /* LogInTableViewController.m in Sources */,
 				BBBD944A1ABD72DC002F8655 /* WizzMedia+CameraPhoto.m in Sources */,
 				BB8748701ABEB88000957909 /* TransitionMenuMediaManager.swift in Sources */,
 				BBBD94481ABD72DC002F8655 /* WizzMedia.m in Sources */,
