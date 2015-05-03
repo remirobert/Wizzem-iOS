@@ -143,7 +143,7 @@
                     <navigationItem key="navigationItem" title="Profile" id="Dwk-hu-ETW">
                         <barButtonItem key="rightBarButtonItem" title="Friends" id="D0f-Rs-wUA">
                             <connections>
-                                <segue destination="3D3-1L-FrQ" kind="push" id="LvW-p4-los"/>
+                                <segue destination="PbL-G0-T1m" kind="push" id="7Kh-cG-ZER"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1562,34 +1562,54 @@
             <point key="canvasLocation" x="-229.5" y="1764"/>
         </scene>
         <!--My friends-->
-        <scene sceneID="d8c-8X-TZB">
+        <scene sceneID="xe6-Vl-cQJ">
             <objects>
-                <viewController id="3D3-1L-FrQ" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="JDV-Qs-f3Q"/>
-                        <viewControllerLayoutGuide type="bottom" id="krV-vn-ITy"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="D6A-aC-TEk">
+                <tableViewController id="PbL-G0-T1m" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="roB-9j-NzX">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="My friends" id="rdo-Th-e3K">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="oag-cw-gRg">
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" textLabel="t3K-VW-8pM" style="IBUITableViewCellStyleDefault" id="ZSe-T9-nDr">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZSe-T9-nDr" id="h0C-pd-M5b">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t3K-VW-8pM">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="PbL-G0-T1m" id="82i-rN-3Tx"/>
+                            <outlet property="delegate" destination="PbL-G0-T1m" id="CRo-HO-UoE"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="My friends" id="NvA-Sx-DU2">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="CEY-Iv-zjx">
                             <connections>
-                                <segue destination="mgO-QP-Sdq" kind="push" id="8Ce-Ft-lxa"/>
+                                <segue destination="mgO-QP-Sdq" kind="push" id="EFy-iq-d2M"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DYh-cX-4Nq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CQI-I9-Dwz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1191" y="840"/>
+            <point key="canvasLocation" x="-1195.5" y="834.75"/>
         </scene>
         <!--Add friends-->
         <scene sceneID="YQ1-iT-9xJ">
             <objects>
                 <tableViewController id="mgO-QP-Sdq" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="o0s-ZD-mxt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -1612,7 +1632,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="RCZ-mx-Pjk" kind="push" id="XVE-Pc-hGp"/>
+                                            <segue destination="DNl-9c-1uN" kind="push" id="vBa-Dd-CWj"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Q4O-gQ-yMr" style="IBUITableViewCellStyleDefault" id="HMP-hh-jUw">
@@ -1661,25 +1681,52 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nSV-hQ-dvN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-435" y="834.75"/>
+            <point key="canvasLocation" x="-376.5" y="834.75"/>
         </scene>
-        <!--Search a friend-->
-        <scene sceneID="lhd-Qm-sol">
+        <!--Search Friend Wizzem Table View Controller-->
+        <scene sceneID="xfW-78-SdA">
             <objects>
-                <viewController id="RCZ-mx-Pjk" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="iTX-hJ-2Ae"/>
-                        <viewControllerLayoutGuide type="bottom" id="cxL-oD-irf"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kNm-tl-kwp">
+                <tableViewController id="DNl-9c-1uN" customClass="SearchFriendWizzemTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8q6-Zh-TSc">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Search a friend" id="4Uc-CE-qoG"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IZq-ly-1cD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Username or Email" id="89p-dB-Vr2">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="DNl-9c-1uN" id="NsH-ja-g2I"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" textLabel="vpN-P6-Ntg" style="IBUITableViewCellStyleDefault" id="S7J-Ke-IUQ">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S7J-Ke-IUQ" id="bzI-5t-PzE">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vpN-P6-Ntg">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="DNl-9c-1uN" id="pHB-rC-0Je"/>
+                            <outlet property="delegate" destination="DNl-9c-1uN" id="VGi-ce-Qpy"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="AqG-Dd-OZj"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c6l-Dx-ALF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="309" y="834.75"/>
+            <point key="canvasLocation" x="439.5" y="834.75"/>
         </scene>
         <!--Sign up-->
         <scene sceneID="7uS-ZB-7nQ">

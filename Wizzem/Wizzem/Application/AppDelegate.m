@@ -54,13 +54,8 @@
     }
     else {
         NSLog(@"user connected : %@", user.email);
-        if ([user isAuthenticated]) {
-            NSLog(@"authentification oka");
-            rootController = [mainStoryboard instantiateViewControllerWithIdentifier:@"tabbarController"];
-        }
-        else {
-            NSLog(@"not auth");
-        }
+        NSLog(@"authentification oka");
+        rootController = [mainStoryboard instantiateViewControllerWithIdentifier:@"tabbarController"];
     }
     if (!rootController) {
         rootController = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginController"];
