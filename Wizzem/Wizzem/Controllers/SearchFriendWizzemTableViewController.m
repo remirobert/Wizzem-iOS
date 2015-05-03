@@ -72,7 +72,7 @@
         self.users = [NSMutableArray array];
         
         for (PFUser *currentUser in objects) {
-            if (![self.currentFriends containsObject:currentUser]) {
+            if (![self.currentFriends containsObject:currentUser] && ![currentUser isEqual:[PFUser currentUser]]) {
                 [self.users addObject:currentUser];
             }
         }
@@ -128,10 +128,16 @@
 #pragma mark UIAlertView delegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        return;
+    }
     PFUser *user = [self.users objectAtIndex:self.selectedIndex];
     
-    PFRelation *relation = [[PFUser currentUser] objectForKey:@"Friendship"];
+    NSLog(@"current user : %@", [PFUser currentUser].username);
+    
+    PFRelation *relation = [[PFUser currentUser] objectForKey:@"friends"];
     [relation addObject:user];
+    NSLog(@"relations : %@", relation);
     [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[error description] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
@@ -141,6 +147,9 @@
         if (succeeded) {
             [self.users removeObject:user];
             [self.tableView reloadData];
+        }
+        else {
+            NSLog(@"error add friend");
         }
     }];
 }

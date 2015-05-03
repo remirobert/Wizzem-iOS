@@ -28,6 +28,7 @@
 		BB38183C1AF1621E00480E35 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38183B1AF1621E00480E35 /* DatePickerDialog.swift */; };
 		BB38183F1AF16B0C00480E35 /* Wizz.m in Sources */ = {isa = PBXBuildFile; fileRef = BB38183E1AF16B0C00480E35 /* Wizz.m */; };
 		BB48522E1AF61C3F00A11128 /* SearchFriendWizzemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB48522D1AF61C3F00A11128 /* SearchFriendWizzemTableViewController.m */; };
+		BB4852311AF62F6D00A11128 /* FriendsListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4852301AF62F6D00A11128 /* FriendsListTableViewController.m */; };
 		BB4E448A1AA1016900760A36 /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E44891AA1016900760A36 /* CircleView.m */; };
 		BB4E448D1AA1E2D100760A36 /* TakeGifButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E448C1AA1E2D100760A36 /* TakeGifButton.m */; };
 		BB68DA3A1AEC0D9C006E9821 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA391AEC0D9C006E9821 /* libsqlite3.0.dylib */; };
@@ -133,6 +134,8 @@
 		BB38183E1AF16B0C00480E35 /* Wizz.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wizz.m; sourceTree = "<group>"; };
 		BB48522C1AF61C3F00A11128 /* SearchFriendWizzemTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFriendWizzemTableViewController.h; sourceTree = "<group>"; };
 		BB48522D1AF61C3F00A11128 /* SearchFriendWizzemTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFriendWizzemTableViewController.m; sourceTree = "<group>"; };
+		BB48522F1AF62F6D00A11128 /* FriendsListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsListTableViewController.h; sourceTree = "<group>"; };
+		BB4852301AF62F6D00A11128 /* FriendsListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsListTableViewController.m; sourceTree = "<group>"; };
 		BB4E44881AA1016900760A36 /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
 		BB4E44891AA1016900760A36 /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
 		BB4E448B1AA1E2D100760A36 /* TakeGifButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakeGifButton.h; sourceTree = "<group>"; };
@@ -497,6 +500,8 @@
 			children = (
 				BB48522C1AF61C3F00A11128 /* SearchFriendWizzemTableViewController.h */,
 				BB48522D1AF61C3F00A11128 /* SearchFriendWizzemTableViewController.m */,
+				BB48522F1AF62F6D00A11128 /* FriendsListTableViewController.h */,
+				BB4852301AF62F6D00A11128 /* FriendsListTableViewController.m */,
 			);
 			name = FriendsNetwork;
 			sourceTree = "<group>";
@@ -811,6 +816,7 @@
 				BBC1DF861ACC95E400D9D8FC /* DetailViewController.m in Sources */,
 				BB8748691ABE2DC600957909 /* SliderCameraFunction.m in Sources */,
 				BBD794D11ACDE3660046C1C1 /* SongCaptureViewController.m in Sources */,
+				BB4852311AF62F6D00A11128 /* FriendsListTableViewController.m in Sources */,
 				BB83404C1AE2880600DB83C8 /* KeyboardToolBarText.m in Sources */,
 				BBFFEA521AF017F4008F526E /* CustomNavigationBar.m in Sources */,
 				BB7C37A91AD99D690080BE15 /* ShimmerView.m in Sources */,

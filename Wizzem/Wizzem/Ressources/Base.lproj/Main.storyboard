@@ -1564,7 +1564,7 @@
         <!--My friends-->
         <scene sceneID="xe6-Vl-cQJ">
             <objects>
-                <tableViewController id="PbL-G0-T1m" sceneMemberID="viewController">
+                <tableViewController id="PbL-G0-T1m" customClass="FriendsListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="roB-9j-NzX">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
