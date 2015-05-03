@@ -6,11 +6,13 @@
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
+#import <MessageUI/MessageUI.h>
 #import <AddressBookUI/AddressBookUI.h>
 #import <AddressBook/AddressBook.h>
+#import <Parse/Parse.h>
 #import "AddFriendTableViewController.h"
 
-@interface AddFriendTableViewController () <ABPeoplePickerNavigationControllerDelegate>
+@interface AddFriendTableViewController () <ABPeoplePickerNavigationControllerDelegate, MFMessageComposeViewControllerDelegate>
 
 @end
 
@@ -19,28 +21,65 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, nil);
+    CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople( addressBook );
+    CFIndex nPeople = ABAddressBookGetPersonCount( addressBook );
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    for ( int i = 0; i < nPeople; i++ )
+    {
+        ABRecordRef ref = CFArrayGetValueAtIndex( allPeople, i );
+        NSString *firstName = CFBridgingRelease(ABRecordCopyValue(ref, kABPersonFirstNameProperty));
+        NSLog(@"name : %@", firstName);
+    }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker didSelectPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier {
+    
+    NSLog(@"name :");
+    
 }
 
 #pragma mark - Table view data source
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 2) {
-        ABPeoplePickerNavigationController *picker =
-        [[ABPeoplePickerNavigationController alloc] init];
-        picker.peoplePickerDelegate = self;
+        if(![MFMessageComposeViewController canSendText]) {
+            UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device doesn't support SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [warningAlert show];
+            return;
+        }
         
-        [self presentViewController:picker animated:true completion:nil];
+        MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+        messageController.messageComposeDelegate = self;
+        
+        [messageController setBody:[NSString stringWithFormat:@"%@ souhaite vous invitez sur Wizzem. Téléchargez l'application sur http://wizzem.fr", [PFUser currentUser].username]];
+        
+        // Present message view controller on screen
+        [self presentViewController:messageController animated:YES completion:nil];
     }
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult) result
+{
+    switch (result) {
+        case MessageComposeResultCancelled:
+            break;
+            
+        case MessageComposeResultFailed:
+        {
+            UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to send SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [warningAlert show];
+            break;
+        }
+            
+        case MessageComposeResultSent:
+            break;
+            
+        default:
+            break;
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

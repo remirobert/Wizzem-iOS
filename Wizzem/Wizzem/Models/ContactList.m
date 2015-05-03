@@ -42,6 +42,9 @@
     return ((NSMutableArray *)[self.contentList objectForKey:[self.contentList keyFromIndex:section]]).count;
 }
 
+#pragma mark -
+#pragma mark PFUser
+
 - (void)parseUsers:(NSArray *)users {
     for (PFUser *currentUser in users) {
         
@@ -65,11 +68,39 @@
     return [list sortedArrayUsingDescriptors:sortDescriptors];
 }
 
+#pragma mark -
+#pragma mark Contact
+
+- (void)parseContacts:(NSArray *)users {
+    for (NSString *currentUser in users) {
+        
+        NSString *currentKey = [NSString stringWithFormat:@"%c", [[currentUser uppercaseString] characterAtIndex:0]];
+        
+        if ([self.contentList containsKey:currentKey]) {
+            [((NSMutableArray *)[self.contentList objectForKey:currentKey]) addObject:currentUser];
+        }
+        else {
+            [self.contentList setObject:[NSMutableArray array] forKey:currentKey];
+            [((NSMutableArray *)[self.contentList objectForKey:currentKey]) addObject:currentUser];
+        }
+    }
+}
+
 - (instancetype)initWithUsers:(NSArray *)users {
     self = [super init];
     
     if (self) {
         [self parseUsers:[self orderList:users]];
+        self.sections = [self.contentList allKeys];
+    }
+    return self;
+}
+
+- (instancetype)initWithContacts:(NSArray *)contacts {
+    self = [super init];
+    
+    if (self) {
+        [self parseContacts:contacts];
         self.sections = [self.contentList allKeys];
     }
     return self;

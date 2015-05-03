@@ -15,5 +15,6 @@
 - (NSString *)objectForSection:(NSInteger)section inRow:(NSInteger)row;
 - (NSInteger)countObjectsForSection:(NSInteger)section;
 - (instancetype)initWithUsers:(NSArray *)users;
+- (instancetype)initWithContacts:(NSArray *)contacts;
 
 @end

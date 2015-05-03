@@ -34,6 +34,7 @@
 		BB4852381AF673CA00A11128 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB4852371AF673CA00A11128 /* AddressBook.framework */; };
 		BB48523A1AF6740E00A11128 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB4852391AF6740E00A11128 /* AddressBookUI.framework */; };
 		BB48523D1AF674A400A11128 /* AddFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB48523C1AF674A400A11128 /* AddFriendTableViewController.m */; };
+		BB4852431AF69F7C00A11128 /* AddressContact.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4852421AF69F7C00A11128 /* AddressContact.m */; };
 		BB4E448A1AA1016900760A36 /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E44891AA1016900760A36 /* CircleView.m */; };
 		BB4E448D1AA1E2D100760A36 /* TakeGifButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E448C1AA1E2D100760A36 /* TakeGifButton.m */; };
 		BB68DA3A1AEC0D9C006E9821 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA391AEC0D9C006E9821 /* libsqlite3.0.dylib */; };
@@ -148,6 +149,8 @@
 		BB4852391AF6740E00A11128 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		BB48523B1AF674A400A11128 /* AddFriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendTableViewController.h; sourceTree = "<group>"; };
 		BB48523C1AF674A400A11128 /* AddFriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendTableViewController.m; sourceTree = "<group>"; };
+		BB4852411AF69F7C00A11128 /* AddressContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressContact.h; sourceTree = "<group>"; };
+		BB4852421AF69F7C00A11128 /* AddressContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressContact.m; sourceTree = "<group>"; };
 		BB4E44881AA1016900760A36 /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
 		BB4E44891AA1016900760A36 /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
 		BB4E448B1AA1E2D100760A36 /* TakeGifButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakeGifButton.h; sourceTree = "<group>"; };
@@ -490,6 +493,8 @@
 				BB38183E1AF16B0C00480E35 /* Wizz.m */,
 				BB4852321AF6674100A11128 /* ContactList.h */,
 				BB4852331AF6674100A11128 /* ContactList.m */,
+				BB4852411AF69F7C00A11128 /* AddressContact.h */,
+				BB4852421AF69F7C00A11128 /* AddressContact.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -837,6 +842,7 @@
 				BB4E448A1AA1016900760A36 /* CircleView.m in Sources */,
 				BB8340491AE283E300DB83C8 /* ColorPicker.m in Sources */,
 				BB1162E61AF3C98800462BCF /* WizzPrivacyTableViewController.m in Sources */,
+				BB4852431AF69F7C00A11128 /* AddressContact.m in Sources */,
 				BBC1DF861ACC95E400D9D8FC /* DetailViewController.m in Sources */,
 				BB8748691ABE2DC600957909 /* SliderCameraFunction.m in Sources */,
 				BBD794D11ACDE3660046C1C1 /* SongCaptureViewController.m in Sources */,
