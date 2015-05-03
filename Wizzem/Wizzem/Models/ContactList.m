@@ -47,8 +47,6 @@
         
         NSString *currentKey = [NSString stringWithFormat:@"%c", [[currentUser.username uppercaseString] characterAtIndex:0]];
         
-        NSLog(@"------> currentkey : %@", currentKey);
-        
         if ([self.contentList containsKey:currentKey]) {
             [((NSMutableArray *)[self.contentList objectForKey:currentKey]) addObject:currentUser.username];
         }
@@ -57,14 +55,21 @@
             [((NSMutableArray *)[self.contentList objectForKey:currentKey]) addObject:currentUser.username];
         }
     }
-    NSLog(@"final content: %@", self.contentList);
+}
+
+- (NSArray *)orderList:(NSArray *)list {
+    NSSortDescriptor *sortDescriptor;
+    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"username"
+                                                 ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    return [list sortedArrayUsingDescriptors:sortDescriptors];
 }
 
 - (instancetype)initWithUsers:(NSArray *)users {
     self = [super init];
     
     if (self) {
-        [self parseUsers:users];
+        [self parseUsers:[self orderList:users]];
         self.sections = [self.contentList allKeys];
     }
     return self;

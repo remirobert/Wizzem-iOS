@@ -9,6 +9,7 @@
 #import <SVProgressHUD.h>
 #import <Parse/Parse.h>
 #import "SearchFriendWizzemTableViewController.h"
+#import "ContactList.h"
 
 @interface SearchFriendWizzemTableViewController () <UISearchBarDelegate, UISearchDisplayDelegate, UIAlertViewDelegate>
 @property (nonatomic, strong) NSMutableArray *users;
@@ -16,6 +17,7 @@
 @property (nonatomic, strong) NSString *currentSearch;
 @property (nonatomic, strong) NSArray *currentFriends;
 @property (nonatomic, assign) NSInteger selectedIndex;
+@property (nonatomic, strong) ContactList *contactList;
 @end
 
 @implementation SearchFriendWizzemTableViewController
@@ -76,6 +78,9 @@
                 [self.users addObject:currentUser];
             }
         }
+        
+        self.contactList = [[ContactList alloc] initWithUsers:self.users];
+        
         [self.tableView reloadData];
     }];
 }
@@ -99,15 +104,26 @@
 #pragma mark -
 #pragma mark UItableView datasource
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.contactList.sections.count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self.contactList.sections objectAtIndex:section];
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return self.contactList.sections;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.users.count;
+    return [self.contactList countObjectsForSection:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userCell"];
     
-    NSLog(@"load cell");
-    cell.textLabel.text = ((PFUser *)[self.users objectAtIndex:indexPath.row]).username;
+    cell.textLabel.text = [self.contactList objectForSection:indexPath.section inRow:indexPath.row];
+    
     return cell;
 }
 
@@ -116,12 +132,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:true];
-    self.selectedIndex = indexPath.row;
-    PFUser *selectedUser = [self.users objectAtIndex:indexPath.row];
-    NSString *msg = [NSString stringWithFormat:@"Do you wan to add \"%@\" as friend ?", selectedUser.username];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:msg delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add", nil];
-    [alert show];
+//    self.selectedIndex = indexPath.row;
+//    PFUser *selectedUser = [self.users objectAtIndex:indexPath.row];
+//    NSString *msg = [NSString stringWithFormat:@"Do you wan to add \"%@\" as friend ?", selectedUser.username];
+//    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:msg delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add", nil];
+//    [alert show];
 }
 
 #pragma mark -

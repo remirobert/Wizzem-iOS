@@ -22,26 +22,17 @@
     PFQuery *query = [relation query];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"%@", error);
-        NSLog(@"friends : %@", objects);
         
-        
-        
-        self.friends = [NSArray arrayWithArray:objects];
-        
-        NSSortDescriptor *sortDescriptor;
-        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"username"
-                                                     ascending:YES];
-        NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-        self.friends = [self.friends sortedArrayUsingDescriptors:sortDescriptors];
-
-        NSLog(@"friends : %@", self.friends);
-        
-        self.contactList = [[ContactList alloc] initWithUsers:self.friends];
-        
-        NSLog(@"sections : %@", self.contactList.sections);
-        
-        [self.tableView reloadData];
+        if (error) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[error description] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+            [alert show];
+        }
+        else {
+            self.contactList = [[ContactList alloc] initWithUsers:objects];
+            NSLog(@"%@", objects);
+            
+            [self.tableView reloadData];
+        }
     }];
 }
 

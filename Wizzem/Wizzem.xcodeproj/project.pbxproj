@@ -30,6 +30,10 @@
 		BB48522E1AF61C3F00A11128 /* SearchFriendWizzemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB48522D1AF61C3F00A11128 /* SearchFriendWizzemTableViewController.m */; };
 		BB4852311AF62F6D00A11128 /* FriendsListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4852301AF62F6D00A11128 /* FriendsListTableViewController.m */; };
 		BB4852341AF6674100A11128 /* ContactList.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4852331AF6674100A11128 /* ContactList.m */; };
+		BB4852361AF673C200A11128 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB4852351AF673C200A11128 /* MessageUI.framework */; };
+		BB4852381AF673CA00A11128 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB4852371AF673CA00A11128 /* AddressBook.framework */; };
+		BB48523A1AF6740E00A11128 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB4852391AF6740E00A11128 /* AddressBookUI.framework */; };
+		BB48523D1AF674A400A11128 /* AddFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB48523C1AF674A400A11128 /* AddFriendTableViewController.m */; };
 		BB4E448A1AA1016900760A36 /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E44891AA1016900760A36 /* CircleView.m */; };
 		BB4E448D1AA1E2D100760A36 /* TakeGifButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E448C1AA1E2D100760A36 /* TakeGifButton.m */; };
 		BB68DA3A1AEC0D9C006E9821 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA391AEC0D9C006E9821 /* libsqlite3.0.dylib */; };
@@ -139,6 +143,11 @@
 		BB4852301AF62F6D00A11128 /* FriendsListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsListTableViewController.m; sourceTree = "<group>"; };
 		BB4852321AF6674100A11128 /* ContactList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactList.h; sourceTree = "<group>"; };
 		BB4852331AF6674100A11128 /* ContactList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactList.m; sourceTree = "<group>"; };
+		BB4852351AF673C200A11128 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		BB4852371AF673CA00A11128 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		BB4852391AF6740E00A11128 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		BB48523B1AF674A400A11128 /* AddFriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendTableViewController.h; sourceTree = "<group>"; };
+		BB48523C1AF674A400A11128 /* AddFriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendTableViewController.m; sourceTree = "<group>"; };
 		BB4E44881AA1016900760A36 /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
 		BB4E44891AA1016900760A36 /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
 		BB4E448B1AA1E2D100760A36 /* TakeGifButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakeGifButton.h; sourceTree = "<group>"; };
@@ -248,6 +257,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB48523A1AF6740E00A11128 /* AddressBookUI.framework in Frameworks */,
+				BB4852381AF673CA00A11128 /* AddressBook.framework in Frameworks */,
+				BB4852361AF673C200A11128 /* MessageUI.framework in Frameworks */,
 				BBEED4441AF3726000ED7BEB /* MapKit.framework in Frameworks */,
 				BB97E8211AB616DD000214E1 /* QuartzCore.framework in Frameworks */,
 				BB68DA9A1AEC3E9E006E9821 /* SystemConfiguration.framework in Frameworks */,
@@ -289,6 +301,9 @@
 		8DB8AFC1963701722EBC773E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB4852391AF6740E00A11128 /* AddressBookUI.framework */,
+				BB4852371AF673CA00A11128 /* AddressBook.framework */,
+				BB4852351AF673C200A11128 /* MessageUI.framework */,
 				BBEED4431AF3726000ED7BEB /* MapKit.framework */,
 				BB68DA991AEC3E9E006E9821 /* SystemConfiguration.framework */,
 				BB68DA971AEC3E6F006E9821 /* StoreKit.framework */,
@@ -507,6 +522,8 @@
 				BB48522D1AF61C3F00A11128 /* SearchFriendWizzemTableViewController.m */,
 				BB48522F1AF62F6D00A11128 /* FriendsListTableViewController.h */,
 				BB4852301AF62F6D00A11128 /* FriendsListTableViewController.m */,
+				BB48523B1AF674A400A11128 /* AddFriendTableViewController.h */,
+				BB48523C1AF674A400A11128 /* AddFriendTableViewController.m */,
 			);
 			name = FriendsNetwork;
 			sourceTree = "<group>";
@@ -790,6 +807,7 @@
 				BB68DAC51AED3963006E9821 /* ProfileViewController.m in Sources */,
 				BBBD944D1ABD72DC002F8655 /* WizzMedia+RecordSong.m in Sources */,
 				BBBD944C1ABD72DC002F8655 /* WizzMedia+FileManager.m in Sources */,
+				BB48523D1AF674A400A11128 /* AddFriendTableViewController.m in Sources */,
 				BB4852341AF6674100A11128 /* ContactList.m in Sources */,
 				BB8612AC1AD463E4000A257C /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				BB9CDEBC1AC896230000964E /* MenuMediaViewController.m in Sources */,
