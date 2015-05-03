@@ -60,7 +60,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userCell"];
     
-    cell.textLabel.text = [self.contactList objectForSection:indexPath.section inRow:indexPath.row];
+    cell.textLabel.text = ((PFUser *)[self.contactList objectForSection:indexPath.section inRow:indexPath.row]).username;
     
     return cell;
 }

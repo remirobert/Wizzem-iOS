@@ -17,13 +17,25 @@
 
 - (IBAction)createWizz:(id)sender {
     PFObject *newWizz = [PFObject objectWithClassName:@"Event"];
-    newWizz[@"city"] = [Wizz sharedInstance:false].location;
     newWizz[@"title"] = [Wizz sharedInstance:false].title;
-    newWizz[@"description"] = [Wizz sharedInstance:false].comment;
-    newWizz[@"start"] = [Wizz sharedInstance:false].start;
-    newWizz[@"end"] = [Wizz sharedInstance:false].end;
-    newWizz[@"nbMaxParticipant"] = [NSNumber numberWithInteger:[Wizz sharedInstance:false].numberParticipant];
-    newWizz[@"public"] = [NSNumber numberWithBool:[Wizz sharedInstance:false].isPublic];
+    if ([Wizz sharedInstance:false].start) {
+        newWizz[@"start"] = [Wizz sharedInstance:false].start;
+    }
+    if ([Wizz sharedInstance:false].end) {
+        newWizz[@"end"] = [Wizz sharedInstance:false].end;
+    }
+    if ([Wizz sharedInstance:false].location) {
+        newWizz[@"city"] = [Wizz sharedInstance:false].location;
+    }
+    if ([Wizz sharedInstance:false].comment) {
+        newWizz[@"description"] = [Wizz sharedInstance:false].comment;
+    }
+    if ([Wizz sharedInstance:false].numberParticipant) {
+        newWizz[@"nbMaxParticipant"] = [NSNumber numberWithInteger:[Wizz sharedInstance:false].numberParticipant];
+    }
+    if ([Wizz sharedInstance:false].isPublic) {
+        newWizz[@"public"] = [NSNumber numberWithBool:[Wizz sharedInstance:false].isPublic];
+    }
     newWizz[@"creator"] = [PFUser currentUser];
     
     [newWizz saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

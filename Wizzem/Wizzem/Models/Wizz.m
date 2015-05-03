@@ -10,6 +10,18 @@
 
 @implementation Wizz
 
+- (instancetype)init {
+    self = [super init];
+    
+    if (self) {
+        self.isPublic = false;
+        self.numberParticipant = 0;
+        self.comment = @"";
+        self.start = [NSDate new];
+    }
+    return self;
+}
+
 + (instancetype)sharedInstance:(BOOL)reset {
     static Wizz *wizz;
     static dispatch_once_t onceToken;

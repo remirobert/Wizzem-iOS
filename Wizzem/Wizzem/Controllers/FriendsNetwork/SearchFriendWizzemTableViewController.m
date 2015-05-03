@@ -16,7 +16,7 @@
 @property (nonatomic, strong) PFQuery *query;
 @property (nonatomic, strong) NSString *currentSearch;
 @property (nonatomic, strong) NSArray *currentFriends;
-@property (nonatomic, assign) NSInteger selectedIndex;
+@property (nonatomic, strong) PFUser *selectedUser;
 @property (nonatomic, strong) ContactList *contactList;
 @end
 
@@ -30,21 +30,25 @@
     return _query;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    
+- (void)viewDidAppear:(BOOL)animated {
     [SVProgressHUD show];
     PFRelation *relation = [[PFUser currentUser] objectForKey:@"friends"];
     PFQuery *query = [relation query];
     self.currentFriends = [query findObjects];
-
+    
+    NSLog(@"friends : %@", self.currentFriends);
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [SVProgressHUD dismiss];
         });
     });
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
 }
 
 - (void)searchUser:(NSString *)string {
@@ -68,8 +72,6 @@
     }
     
     [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"error : %@", error);
-        NSLog(@"array find : %@", objects);
         
         self.users = [NSMutableArray array];
         
@@ -122,7 +124,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userCell"];
     
-    cell.textLabel.text = [self.contactList objectForSection:indexPath.section inRow:indexPath.row];
+    cell.textLabel.text = ((PFUser *)[self.contactList objectForSection:indexPath.section inRow:indexPath.row]).username;
     
     return cell;
 }
@@ -132,12 +134,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:true];
-//    self.selectedIndex = indexPath.row;
-//    PFUser *selectedUser = [self.users objectAtIndex:indexPath.row];
-//    NSString *msg = [NSString stringWithFormat:@"Do you wan to add \"%@\" as friend ?", selectedUser.username];
-//    
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:msg delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add", nil];
-//    [alert show];
+    self.selectedUser = [self.contactList objectForSection:indexPath.section inRow:indexPath.row];
+    NSString *msg = [NSString stringWithFormat:@"Do you wan to add \"%@\" as friend ?", self.selectedUser.username];
+
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:msg delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add", nil];
+    [alert show];
 }
 
 #pragma mark -
@@ -147,7 +148,7 @@
     if (buttonIndex == 0) {
         return;
     }
-    PFUser *user = [self.users objectAtIndex:self.selectedIndex];
+    PFUser *user = self.selectedUser;
     
     NSLog(@"current user : %@", [PFUser currentUser].username);
     
@@ -162,6 +163,7 @@
         }
         if (succeeded) {
             [self.users removeObject:user];
+            [self.contactList removeUser:user];
             [self.tableView reloadData];
         }
         else {

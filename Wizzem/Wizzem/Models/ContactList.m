@@ -34,12 +34,26 @@
     return _contentList;
 }
 
-- (NSString *)objectForSection:(NSInteger)section inRow:(NSInteger)row {
+- (PFUser *)objectForSection:(NSInteger)section inRow:(NSInteger)row {
     return [((NSMutableArray *)[self.contentList objectForKey:[self.contentList keyFromIndex:section]]) objectAtIndex:row];
 }
 
 - (NSInteger)countObjectsForSection:(NSInteger)section {
     return ((NSMutableArray *)[self.contentList objectForKey:[self.contentList keyFromIndex:section]]).count;
+}
+
+- (void)removeUser:(PFUser *)user {
+    for (NSMutableArray *users in self.contentList) {
+        
+        if ([users containsObject:user]) {
+            [users removeObject:user];
+            if (users.count == 0) {
+                NSString *key = [NSString stringWithFormat:@"%c", [[user.username uppercaseString] characterAtIndex:0]];
+                [self.contentList removeObjectForKey:key];
+            }
+            return;
+        }
+    }
 }
 
 #pragma mark -
@@ -51,11 +65,11 @@
         NSString *currentKey = [NSString stringWithFormat:@"%c", [[currentUser.username uppercaseString] characterAtIndex:0]];
         
         if ([self.contentList containsKey:currentKey]) {
-            [((NSMutableArray *)[self.contentList objectForKey:currentKey]) addObject:currentUser.username];
+            [((NSMutableArray *)[self.contentList objectForKey:currentKey]) addObject:currentUser];
         }
         else {
             [self.contentList setObject:[NSMutableArray array] forKey:currentKey];
-            [((NSMutableArray *)[self.contentList objectForKey:currentKey]) addObject:currentUser.username];
+            [((NSMutableArray *)[self.contentList objectForKey:currentKey]) addObject:currentUser];
         }
     }
 }
@@ -68,39 +82,12 @@
     return [list sortedArrayUsingDescriptors:sortDescriptors];
 }
 
-#pragma mark -
-#pragma mark Contact
-
-- (void)parseContacts:(NSArray *)users {
-    for (NSString *currentUser in users) {
-        
-        NSString *currentKey = [NSString stringWithFormat:@"%c", [[currentUser uppercaseString] characterAtIndex:0]];
-        
-        if ([self.contentList containsKey:currentKey]) {
-            [((NSMutableArray *)[self.contentList objectForKey:currentKey]) addObject:currentUser];
-        }
-        else {
-            [self.contentList setObject:[NSMutableArray array] forKey:currentKey];
-            [((NSMutableArray *)[self.contentList objectForKey:currentKey]) addObject:currentUser];
-        }
-    }
-}
 
 - (instancetype)initWithUsers:(NSArray *)users {
     self = [super init];
     
     if (self) {
         [self parseUsers:[self orderList:users]];
-        self.sections = [self.contentList allKeys];
-    }
-    return self;
-}
-
-- (instancetype)initWithContacts:(NSArray *)contacts {
-    self = [super init];
-    
-    if (self) {
-        [self parseContacts:contacts];
         self.sections = [self.contentList allKeys];
     }
     return self;

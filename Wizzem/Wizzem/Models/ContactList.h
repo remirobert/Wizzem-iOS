@@ -6,15 +6,16 @@
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
+#import <Parse/Parse.h>
 #import <Foundation/Foundation.h>
 
 @interface ContactList : NSObject
 
 @property (nonatomic, strong) NSArray *sections;
 
-- (NSString *)objectForSection:(NSInteger)section inRow:(NSInteger)row;
+- (PFUser *)objectForSection:(NSInteger)section inRow:(NSInteger)row;
 - (NSInteger)countObjectsForSection:(NSInteger)section;
+- (void)removeUser:(PFUser *)user;
 - (instancetype)initWithUsers:(NSArray *)users;
-- (instancetype)initWithContacts:(NSArray *)contacts;
 
 @end
