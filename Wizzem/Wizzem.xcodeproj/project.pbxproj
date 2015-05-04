@@ -27,6 +27,7 @@
 		BB34A64D1A9B98EB00AA2A86 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB34A64C1A9B98EB00AA2A86 /* AVFoundation.framework */; };
 		BB38183C1AF1621E00480E35 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38183B1AF1621E00480E35 /* DatePickerDialog.swift */; };
 		BB38183F1AF16B0C00480E35 /* Wizz.m in Sources */ = {isa = PBXBuildFile; fileRef = BB38183E1AF16B0C00480E35 /* Wizz.m */; };
+		BB38B8E11AF7899E00DE9E0C /* Friends.m in Sources */ = {isa = PBXBuildFile; fileRef = BB38B8E01AF7899E00DE9E0C /* Friends.m */; };
 		BB48522E1AF61C3F00A11128 /* SearchFriendWizzemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB48522D1AF61C3F00A11128 /* SearchFriendWizzemTableViewController.m */; };
 		BB4852311AF62F6D00A11128 /* FriendsListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4852301AF62F6D00A11128 /* FriendsListTableViewController.m */; };
 		BB4852341AF6674100A11128 /* ContactList.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4852331AF6674100A11128 /* ContactList.m */; };
@@ -137,6 +138,8 @@
 		BB38183B1AF1621E00480E35 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		BB38183D1AF16B0C00480E35 /* Wizz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wizz.h; sourceTree = "<group>"; };
 		BB38183E1AF16B0C00480E35 /* Wizz.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wizz.m; sourceTree = "<group>"; };
+		BB38B8DF1AF7899E00DE9E0C /* Friends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friends.h; sourceTree = "<group>"; };
+		BB38B8E01AF7899E00DE9E0C /* Friends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friends.m; sourceTree = "<group>"; };
 		BB48522C1AF61C3F00A11128 /* SearchFriendWizzemTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFriendWizzemTableViewController.h; sourceTree = "<group>"; };
 		BB48522D1AF61C3F00A11128 /* SearchFriendWizzemTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFriendWizzemTableViewController.m; sourceTree = "<group>"; };
 		BB48522F1AF62F6D00A11128 /* FriendsListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsListTableViewController.h; sourceTree = "<group>"; };
@@ -490,6 +493,8 @@
 				BB38183E1AF16B0C00480E35 /* Wizz.m */,
 				BB4852321AF6674100A11128 /* ContactList.h */,
 				BB4852331AF6674100A11128 /* ContactList.m */,
+				BB38B8DF1AF7899E00DE9E0C /* Friends.h */,
+				BB38B8E01AF7899E00DE9E0C /* Friends.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -838,6 +843,7 @@
 				BB8340491AE283E300DB83C8 /* ColorPicker.m in Sources */,
 				BB1162E61AF3C98800462BCF /* WizzPrivacyTableViewController.m in Sources */,
 				BBC1DF861ACC95E400D9D8FC /* DetailViewController.m in Sources */,
+				BB38B8E11AF7899E00DE9E0C /* Friends.m in Sources */,
 				BB8748691ABE2DC600957909 /* SliderCameraFunction.m in Sources */,
 				BBD794D11ACDE3660046C1C1 /* SongCaptureViewController.m in Sources */,
 				BB4852311AF62F6D00A11128 /* FriendsListTableViewController.m in Sources */,

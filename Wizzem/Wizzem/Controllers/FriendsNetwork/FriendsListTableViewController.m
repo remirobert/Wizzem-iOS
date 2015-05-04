@@ -6,9 +6,11 @@
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
+#import <SVProgressHUD.h>
 #import <Parse/Parse.h>
 #import "FriendsListTableViewController.h"
 #import "ContactList.h"
+#import "Friends.h"
 
 @interface FriendsListTableViewController ()
 @property (nonatomic, strong) NSArray *friends;
@@ -17,7 +19,8 @@
 
 @implementation FriendsListTableViewController
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)loadFriends {
+    [SVProgressHUD show];
     PFRelation *relation = [[PFUser currentUser] objectForKey:@"friends"];
     PFQuery *query = [relation query];
     
@@ -29,15 +32,38 @@
         }
         else {
             self.contactList = [[ContactList alloc] initWithUsers:objects];
-            NSLog(@"%@", objects);
-            
+
+            NSLog(@"get request");
             [self.tableView reloadData];
+            Friends *newList = [Friends new];
+            
+            for (PFUser *currentUser in objects) {
+                [newList addFriend:currentUser.username withEmail:currentUser.email];
+            }
+            [newList save];
         }
     }];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+        });
+    });
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    Friends *list = [Friends instance];
+    NSLog(@"%@", list.friends);
+    if (!list.friends || list.friends.count == 0) {
+        [self loadFriends];
+    }
+    else {
+        NSLog(@"get results");
+        self.contactList = [[ContactList alloc] initWithUsers:list.friends];
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - Table view data source
