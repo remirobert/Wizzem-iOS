@@ -27,6 +27,9 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         if (error) {
+//            if (self.refreshControl.refreshing) {
+//                [self.refreshControl endRefreshing];
+//            }
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[error description] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
             [alert show];
         }
@@ -41,6 +44,9 @@
                 [newList addFriend:currentUser.username withEmail:currentUser.email];
             }
             [newList save];
+//            if (self.refreshControl.refreshing) {
+//                [self.refreshControl endRefreshing];
+//            }
         }
     }];
     

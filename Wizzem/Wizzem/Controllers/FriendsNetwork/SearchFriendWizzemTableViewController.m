@@ -9,6 +9,7 @@
 #import <SVProgressHUD.h>
 #import <Parse/Parse.h>
 #import "SearchFriendWizzemTableViewController.h"
+#import "Friends.h"
 #import "ContactList.h"
 
 @interface SearchFriendWizzemTableViewController () <UISearchBarDelegate, UISearchDisplayDelegate, UIAlertViewDelegate>
@@ -30,25 +31,24 @@
     return _query;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [SVProgressHUD show];
-    PFRelation *relation = [[PFUser currentUser] objectForKey:@"friends"];
-    PFQuery *query = [relation query];
-    self.currentFriends = [query findObjects];
-    
-    NSLog(@"friends : %@", self.currentFriends);
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
-    });
+- (BOOL)checkUser:(PFUser *)currentUser {
+    if ([currentUser.email isEqualToString:[PFUser currentUser].email]) {
+        return false;
+    }
+    for (Friend *friend in self.currentFriends) {
+        if ([friend.email isEqualToString:currentUser.email]) {
+            return false;
+        }
+    }
+    return true;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    Friends *list = [Friends instance];
+    self.currentFriends = list.friends;
 }
 
 - (void)searchUser:(NSString *)string {
@@ -74,9 +74,9 @@
     [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         self.users = [NSMutableArray array];
-        
+
         for (PFUser *currentUser in objects) {
-            if (![self.currentFriends containsObject:currentUser] && ![currentUser isEqual:[PFUser currentUser]]) {
+            if ([self checkUser:currentUser]) {
                 [self.users addObject:currentUser];
             }
         }

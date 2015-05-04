@@ -8,10 +8,6 @@
 
 #import "Friends.h"
 
-@interface Friend : NSObject <NSCoding>
-@property (nonatomic, strong) NSString *email;
-@property (nonatomic, strong) NSString *username;
-@end
 
 @implementation Friend
 

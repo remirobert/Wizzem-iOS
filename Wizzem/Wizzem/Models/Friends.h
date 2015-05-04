@@ -9,6 +9,11 @@
 #import <Parse/Parse.h>
 #import <Foundation/Foundation.h>
 
+@interface Friend : NSObject <NSCoding>
+@property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSString *username;
+@end
+
 @interface Friends : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSMutableArray *friends;
