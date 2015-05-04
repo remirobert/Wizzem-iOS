@@ -7,10 +7,11 @@
 //
 
 #import "Wizz.h"
+#import "SelectFriendsTableViewController.h"
 #import "WizzFrriendsInviteTableViewController.h"
 
 @interface WizzFrriendsInviteTableViewController ()
-
+@property (nonatomic, strong) NSMutableArray *users;
 @end
 
 @implementation WizzFrriendsInviteTableViewController
@@ -89,6 +90,39 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 260;
+}
+
+#pragma mark -
+#pragma mark UItableView datasource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section == 0) {
+        return 1;
+    }
+    return self.users.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell;
+    if (indexPath.section == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"inviteCell"];
+    }
+    return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"selectController"]) {
+        NSLog(@"pass here");
+        ((SelectFriendsTableViewController *)((UINavigationController *)segue.destinationViewController).parentViewController).s = @"okofkgfd";
+
+        ((SelectFriendsTableViewController *)((UINavigationController *)segue.destinationViewController).parentViewController).blockCompletion = ^(NSArray *users) {
+            NSLog(@"users : %@", users);
+        };
+    }
 }
 
 @end
