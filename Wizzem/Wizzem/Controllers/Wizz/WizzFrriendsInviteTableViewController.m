@@ -17,38 +17,52 @@
 @implementation WizzFrriendsInviteTableViewController
 
 - (IBAction)createWizz:(id)sender {
-    PFObject *newWizz = [PFObject objectWithClassName:@"Event"];
-    newWizz[@"title"] = [Wizz sharedInstance:false].title;
-    if ([Wizz sharedInstance:false].start) {
-        newWizz[@"start"] = [Wizz sharedInstance:false].start;
-    }
-    if ([Wizz sharedInstance:false].end) {
-        newWizz[@"end"] = [Wizz sharedInstance:false].end;
-    }
-    if ([Wizz sharedInstance:false].location) {
-        newWizz[@"city"] = [Wizz sharedInstance:false].location;
-    }
-    if ([Wizz sharedInstance:false].comment) {
-        newWizz[@"description"] = [Wizz sharedInstance:false].comment;
-    }
-    if ([Wizz sharedInstance:false].numberParticipant) {
-        newWizz[@"nbMaxParticipant"] = [NSNumber numberWithInteger:[Wizz sharedInstance:false].numberParticipant];
-    }
-    if ([Wizz sharedInstance:false].isPublic) {
-        newWizz[@"public"] = [NSNumber numberWithBool:[Wizz sharedInstance:false].isPublic];
-    }
-    newWizz[@"creator"] = [PFUser currentUser];
     
-    [newWizz saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Your Wizz is created, enjey it !" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
-            [alert show];
-        }
-        else {
+    NSDictionary *content = [[Wizz sharedInstance:false] dictionary];
+    
+    [PFCloud callFunctionInBackground:@"EventCreate" withParameters:content block:^(id object, NSError *error) {
+        if (error) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"The Wizz couldn't be saved. Check your internet connection and try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
             [alert show];
         }
+        else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Your Wizz is created, enjey it !" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            [alert show];
+        }
     }];
+    
+//    PFObject *newWizz = [PFObject objectWithClassName:@"Event"];
+//    newWizz[@"title"] = [Wizz sharedInstance:false].title;
+//    if ([Wizz sharedInstance:false].start) {
+//        newWizz[@"start"] = [Wizz sharedInstance:false].start;
+//    }
+//    if ([Wizz sharedInstance:false].end) {
+//        newWizz[@"end"] = [Wizz sharedInstance:false].end;
+//    }
+//    if ([Wizz sharedInstance:false].location) {
+//        newWizz[@"city"] = [Wizz sharedInstance:false].location;
+//    }
+//    if ([Wizz sharedInstance:false].comment) {
+//        newWizz[@"description"] = [Wizz sharedInstance:false].comment;
+//    }
+//    if ([Wizz sharedInstance:false].numberParticipant) {
+//        newWizz[@"nbMaxParticipant"] = [NSNumber numberWithInteger:[Wizz sharedInstance:false].numberParticipant];
+//    }
+//    if ([Wizz sharedInstance:false].isPublic) {
+//        newWizz[@"public"] = [NSNumber numberWithBool:[Wizz sharedInstance:false].isPublic];
+//    }
+//    newWizz[@"creator"] = [PFUser currentUser];
+//    
+//    [newWizz saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        if (succeeded) {
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Your Wizz is created, enjey it !" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+//            [alert show];
+//        }
+//        else {
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"The Wizz couldn't be saved. Check your internet connection and try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+//            [alert show];
+//        }
+//    }];
 }
 
 - (void)viewDidLoad {
@@ -117,11 +131,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"selectController"]) {
         NSLog(@"pass here");
-        ((SelectFriendsTableViewController *)((UINavigationController *)segue.destinationViewController).parentViewController).s = @"okofkgfd";
-
-        ((SelectFriendsTableViewController *)((UINavigationController *)segue.destinationViewController).parentViewController).blockCompletion = ^(NSArray *users) {
-            NSLog(@"users : %@", users);
-        };
+//        ((SelectFriendsTableViewController *)((UINavigationController *)segue.destinationViewController).parentViewController).s = @"okofkgfd";
+//
+//        ((SelectFriendsTableViewController *)((UINavigationController *)segue.destinationViewController).parentViewController).blockCompletion = ^(NSArray *users) {
+//            NSLog(@"users : %@", users);
+//        };
     }
 }
 

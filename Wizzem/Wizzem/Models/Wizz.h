@@ -21,5 +21,6 @@
 @property (nonatomic, assign) NSInteger numberParticipant;
 
 + (instancetype)sharedInstance:(BOOL)reset;
+- (NSDictionary *)dictionary;
 
 @end

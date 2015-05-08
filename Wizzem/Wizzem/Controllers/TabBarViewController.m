@@ -11,18 +11,49 @@
 #import "Header.h"
 
 @interface TabBarViewController ()
+@property (nonatomic, strong) UIAlertController *actionMenu;
 @end
 
 @implementation TabBarViewController
 
-- (void)displayMenuController {
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MenuMediaViewController *menuController;
-    if (mainStoryboard && (menuController = [mainStoryboard instantiateViewControllerWithIdentifier:@"menuController"])) {
+- (UIAlertController *)actionMenu {
+    if (!_actionMenu) {
+        _actionMenu = [UIAlertController alertControllerWithTitle:@"select your media" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         
-        menuController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-        [self presentViewController:menuController animated:false completion:nil];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        __block UIViewController *controller;
+        
+        [_actionMenu addAction:[UIAlertAction actionWithTitle:@"Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            controller = [storyboard instantiateViewControllerWithIdentifier:@"photoController"];
+            [self presentViewController:controller animated:false completion:nil];
+        }]];
+        [_actionMenu addAction:[UIAlertAction actionWithTitle:@"Video" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            controller = [storyboard instantiateViewControllerWithIdentifier:@"videoController"];
+            [self presentViewController:controller animated:false completion:nil];
+        }]];
+        [_actionMenu addAction:[UIAlertAction actionWithTitle:@"Gif" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            controller = [storyboard instantiateViewControllerWithIdentifier:@"gifController"];
+            [self presentViewController:controller animated:false completion:nil];
+        }]];
+        [_actionMenu addAction:[UIAlertAction actionWithTitle:@"Song" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            controller = [storyboard instantiateViewControllerWithIdentifier:@"songController"];
+            [self presentViewController:controller animated:false completion:nil];
+        }]];
+        [_actionMenu addAction:[UIAlertAction actionWithTitle:@"Text" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            controller = [storyboard instantiateViewControllerWithIdentifier:@"textController"];
+            [self presentViewController:controller animated:false completion:nil];
+        }]];
+        [_actionMenu addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
     }
+    return _actionMenu;
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+}
+
+- (void)displayMenuController {
+    [self presentViewController:self.actionMenu animated:true completion:nil];
 }
 
 - (void)presentController:(NSNotification *)notification {

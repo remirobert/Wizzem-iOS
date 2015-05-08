@@ -35,7 +35,6 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
@@ -65,7 +64,8 @@
     [self.window makeKeyAndVisible];
     
     [Crashlytics startWithAPIKey:@"d9291a9165795274a4a0ad9f612bfafae0b9685d"];
-    return YES;
+    
+    return [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
 @end
