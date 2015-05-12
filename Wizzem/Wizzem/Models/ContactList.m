@@ -87,7 +87,7 @@
     self = [super init];
     
     if (self) {
-        [self parseUsers:[self orderList:users]];
+        [self parseUsers:users];
         self.sections = [self.contentList allKeys];
     }
     return self;

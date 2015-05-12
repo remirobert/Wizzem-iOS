@@ -54,41 +54,29 @@
 - (void)searchUser:(NSString *)string {
     [self.query cancel];
     
-    if ([string containsString:@"@"]) {
-        [self.query whereKey:@"email" equalTo:[string lowercaseString]];
-    }
-    else {
-        
-        PFQuery *queryCapitalizedString = [PFUser query];
-        [queryCapitalizedString whereKey:@"username" containsString:[string capitalizedString]];
-        
-        PFQuery *queryLowerCaseString = [PFUser query];
-        [queryLowerCaseString whereKey:@"username" containsString:[string lowercaseString]];
-        
-        PFQuery *querySearchBarString = [PFUser query];
-        [querySearchBarString whereKey:@"username" containsString:string];
-        
-        self.query = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:queryCapitalizedString,queryLowerCaseString, querySearchBarString,nil]];
-    }
-    
-    [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
-        self.users = [NSMutableArray array];
-
-        for (PFUser *currentUser in objects) {
-            if ([self checkUser:currentUser]) {
-                [self.users addObject:currentUser];
-            }
+    [PFCloud callFunctionInBackground:@"FriendSearchFollowing" withParameters:@{@"userHim":[PFUser currentUser].objectId, @"search":string} block:^(id object, NSError *error) {
+        if (error) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Check your internet connection and try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            [alert show];
         }
-        
-        self.contactList = [[ContactList alloc] initWithUsers:self.users];
-        
-        [self.tableView reloadData];
+        else {
+            NSLog(@"dico : %@", (NSDictionary *)object);
+            self.users = [NSMutableArray array];
+            
+            for (PFUser *currentUser in object) {
+                if ([self checkUser:currentUser]) {
+                    [self.users addObject:currentUser];
+                }
+            }
+            
+            self.contactList = [[ContactList alloc] initWithUsers:self.users];
+            [self.tableView reloadData];
+        }
     }];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    if (searchBar.text.length > 0 && ![self.currentSearch isEqualToString:searchBar.text]) {
+    if (searchBar.text.length > 3 && ![self.currentSearch isEqualToString:searchBar.text]) {
         self.currentSearch = searchBar.text;
         [self searchUser:searchBar.text];
     }
@@ -96,7 +84,7 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     NSLog(@"pass here : %@", searchBar.text);
-    if (searchBar.text.length > 0 && ![self.currentSearch isEqualToString:searchBar.text]) {
+    if (searchBar.text.length > 3 && ![self.currentSearch isEqualToString:searchBar.text]) {
         self.currentSearch = searchBar.text;
         [self searchUser:searchBar.text];
     }
@@ -148,27 +136,18 @@
     if (buttonIndex == 0) {
         return;
     }
+    
     PFUser *user = self.selectedUser;
-    
-    NSLog(@"current user : %@", [PFUser currentUser].username);
-    
-    PFRelation *relation = [[PFUser currentUser] objectForKey:@"friends"];
-    [relation addObject:user];
-    NSLog(@"relations : %@", relation);
-    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+
+    [PFCloud callFunctionInBackground:@"FriendAdd" withParameters:@{@"userHim":[PFUser currentUser].objectId, @"userHas":user.objectId} block:^(id object, NSError *error) {
         if (error) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[error description] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Check your internet connection and try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
             [alert show];
-            return;
         }
-        if (succeeded) {
-            [self.users removeObject:user];
-            [self.contactList removeUser:user];
-            [self.tableView reloadData];
-        }
-        else {
-            NSLog(@"error add friend");
-        }
+        NSLog(@"add friend ok");
+        [self.users removeObject:user];
+        [self.contactList removeUser:user];
+        [self.tableView reloadData];
     }];
 }
 

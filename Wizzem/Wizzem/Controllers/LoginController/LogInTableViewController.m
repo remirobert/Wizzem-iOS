@@ -7,6 +7,8 @@
 //
 
 #import <Parse/Parse.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import <SVProgressHUD.h>
 #import "LogInTableViewController.h"
@@ -87,24 +89,81 @@
     }];
 }
 
-- (void)loginFacebook {
-    NSArray *permissions = @[@"email"];
+- (void)presentMainController {
+    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *tabbarController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"tabbarController"];
     
+    if (tabbarController) {
+        [self presentViewController:tabbarController animated:true completion:nil];
+    }
+}
+
+- (void)loginFacebook {
+    NSArray *permissions = @[@"email", @"user_about_me"];
+    
+    [SVProgressHUD show];
+
     [PFFacebookUtils logInInBackgroundWithReadPermissions:permissions block:^(PFUser *user, NSError *error) {
         if (!user) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [SVProgressHUD dismiss];
+                });
+            });
+
             NSLog(@"Uh oh. The user cancelled the Facebook login.");
             return;
         } else if (user.isNew) {
             
+            FBSDKGraphRequest *graph = [[FBSDKGraphRequest alloc] initWithGraphPath:@"/me" parameters:nil HTTPMethod:@"GET"];
+            [graph startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+                
+                NSString *facebookID = result[@"id"];
+                NSString *nameF = result[@"first_name"];
+                NSString *nameL = result[@"last_name"];
+                NSString *email = result[@"email"];
+                
+                NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
+                NSData *imageData = [NSData dataWithContentsOfURL:pictureURL];
+                //UIImage *fbImage = [UIImage imageWithData:imageData];
+                
+                NSLog(@"user n : %@", nameF);
+                NSLog(@"user n : %@", nameL);
+                NSLog(@"email : %@", email);
+                
+                PFFile *imageFile = [PFFile fileWithName:@"Profileimage.png" data:imageData];
+                PFUser *user = [PFUser currentUser];
+                user[@"email"] = email;
+                user[@"first_name"] = nameF;
+                user[@"last_name"] = nameL;
+                user[@"picture"] = imageFile;
+                user[@"true_username"] = [NSString stringWithFormat:@"%@ %@", nameF, nameL];
+                user[@"username"] = email;
+                [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [SVProgressHUD dismiss];
+                        });
+                    });
+
+                    if (!error) {
+                        [self presentMainController];
+                    } else {
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+                        [alert show];
+                    }
+                }];
+                
+            }];
             NSLog(@"User signed up and logged in through Facebook!");
         } else {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [SVProgressHUD dismiss];
+                });
+            });
+            [self presentMainController];
             NSLog(@"User logged in through Facebook!");
-        }
-        UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UIViewController *tabbarController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"tabbarController"];
-        
-        if (tabbarController) {
-            [self presentViewController:tabbarController animated:true completion:nil];
         }
     }];
 }

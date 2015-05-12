@@ -21,55 +21,30 @@
 
 - (void)loadFriends {
     [SVProgressHUD show];
-    PFRelation *relation = [[PFUser currentUser] objectForKey:@"friends"];
-    PFQuery *query = [relation query];
     
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        
+    [PFCloud callFunctionInBackground:@"UserGetFollowing" withParameters:@{@"userHim":[PFUser currentUser].objectId} block:^(id object, NSError *error) {
+        [SVProgressHUD dismiss];
         if (error) {
-//            if (self.refreshControl.refreshing) {
-//                [self.refreshControl endRefreshing];
-//            }
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:[error description] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Check your internet connection and try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
             [alert show];
         }
         else {
-            self.contactList = [[ContactList alloc] initWithUsers:objects];
-
-            NSLog(@"get request");
+            self.contactList = [[ContactList alloc] initWithUsers:object];
+            
+            NSLog(@"get request : %@", object);
             [self.tableView reloadData];
             Friends *newList = [Friends new];
             
-            for (PFUser *currentUser in objects) {
-                [newList addFriend:currentUser.username withEmail:currentUser.email];
+            for (PFUser *currentUser in object) {
+                [newList addFriend:currentUser[@"true_username"] withEmail:currentUser.email];
             }
-            [newList save];
-//            if (self.refreshControl.refreshing) {
-//                [self.refreshControl endRefreshing];
-//            }
         }
     }];
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
-    });
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    Friends *list = [Friends instance];
-    NSLog(@"%@", list.friends);
-    if (!list.friends || list.friends.count == 0) {
-        [self loadFriends];
-    }
-    else {
-        NSLog(@"get results");
-        self.contactList = [[ContactList alloc] initWithUsers:list.friends];
-        [self.tableView reloadData];
-    }
+    [self loadFriends];
 }
 
 #pragma mark - Table view data source
