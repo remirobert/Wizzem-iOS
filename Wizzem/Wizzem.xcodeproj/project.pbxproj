@@ -64,6 +64,7 @@
 		BB8612AC1AD463E4000A257C /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8612AB1AD463E4000A257C /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
 		BB8612AE1AD4640E000A257C /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB8612AD1AD4640E000A257C /* AssetsLibrary.framework */; };
 		BB8612B01AD46416000A257C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB8612AF1AD46416000A257C /* MobileCoreServices.framework */; };
+		BB86B81C1B0293A200CEEB7C /* FollowersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB86B81B1B0293A200CEEB7C /* FollowersTableViewController.m */; };
 		BB8748631ABDE72500957909 /* DropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8748621ABDE72500957909 /* DropDown.m */; };
 		BB8748661ABE28EE00957909 /* Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8748651ABE28EE00957909 /* Colors.m */; };
 		BB8748691ABE2DC600957909 /* SliderCameraFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8748681ABE2DC600957909 /* SliderCameraFunction.m */; };
@@ -196,6 +197,8 @@
 		BB8612AB1AD463E4000A257C /* ALAssetsLibrary+CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+CustomPhotoAlbum.m"; sourceTree = "<group>"; };
 		BB8612AD1AD4640E000A257C /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		BB8612AF1AD46416000A257C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		BB86B81A1B0293A200CEEB7C /* FollowersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowersTableViewController.h; sourceTree = "<group>"; };
+		BB86B81B1B0293A200CEEB7C /* FollowersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowersTableViewController.m; sourceTree = "<group>"; };
 		BB8748611ABDE72500957909 /* DropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
 		BB8748621ABDE72500957909 /* DropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDown.m; sourceTree = "<group>"; };
 		BB8748641ABE28EE00957909 /* Colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colors.h; sourceTree = "<group>"; };
@@ -534,6 +537,8 @@
 				BB48523C1AF674A400A11128 /* AddFriendTableViewController.m */,
 				BBB48CAD1AF7FB3600EE681D /* SelectFriendsTableViewController.h */,
 				BBB48CAE1AF7FB3600EE681D /* SelectFriendsTableViewController.m */,
+				BB86B81A1B0293A200CEEB7C /* FollowersTableViewController.h */,
+				BB86B81B1B0293A200CEEB7C /* FollowersTableViewController.m */,
 			);
 			path = FriendsNetwork;
 			sourceTree = "<group>";
@@ -854,6 +859,7 @@
 				BBD794D11ACDE3660046C1C1 /* SongCaptureViewController.m in Sources */,
 				BB4852311AF62F6D00A11128 /* FriendsListTableViewController.m in Sources */,
 				BB83404C1AE2880600DB83C8 /* KeyboardToolBarText.m in Sources */,
+				BB86B81C1B0293A200CEEB7C /* FollowersTableViewController.m in Sources */,
 				BBFFEA521AF017F4008F526E /* CustomNavigationBar.m in Sources */,
 				BB7C37A91AD99D690080BE15 /* ShimmerView.m in Sources */,
 				BB38183C1AF1621E00480E35 /* DatePickerDialog.swift in Sources */,

@@ -97,14 +97,12 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Profile" id="Dwk-hu-ETW">
-                        <barButtonItem key="rightBarButtonItem" title="Friends" id="D0f-Rs-wUA">
-                            <connections>
-                                <segue destination="PbL-G0-T1m" kind="push" id="7Kh-cG-ZER"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="D0f-Rs-wUA"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="IIl-3w-bqV" id="Nge-Mw-X6Y"/>
+                        <segue destination="PbL-G0-T1m" kind="push" identifier="friendController" id="mrj-DF-yFe"/>
+                        <segue destination="JvC-1C-RW5" kind="push" identifier="followingController" id="ONj-Xp-xs1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ipa-xQ-DQF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1517,6 +1515,43 @@
             </objects>
             <point key="canvasLocation" x="-253.5" y="2215.5"/>
         </scene>
+        <!--Followers-->
+        <scene sceneID="fpe-YG-UKv">
+            <objects>
+                <tableViewController id="JvC-1C-RW5" customClass="FollowersTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="5j0-cZ-0zK">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" textLabel="6ny-LF-Bqo" style="IBUITableViewCellStyleDefault" id="Z52-JD-6jt">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z52-JD-6jt" id="LTh-4n-z7E">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6ny-LF-Bqo">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="JvC-1C-RW5" id="klG-kF-VTZ"/>
+                            <outlet property="delegate" destination="JvC-1C-RW5" id="dXA-hY-IKj"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Followers" id="HWm-9J-FvA"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gGx-Md-wKF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1908" y="834.75"/>
+        </scene>
         <!--My friends-->
         <scene sceneID="xe6-Vl-cQJ">
             <objects>
@@ -1559,7 +1594,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CQI-I9-Dwz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1195.5" y="834.75"/>
+            <point key="canvasLocation" x="-1123.5" y="834.75"/>
         </scene>
         <!--Add friends-->
         <scene sceneID="YQ1-iT-9xJ">

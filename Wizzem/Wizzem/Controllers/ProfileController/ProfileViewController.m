@@ -35,44 +35,65 @@
     return _imageProfile;
 }
 
-//- (IBAction)logout:(id)sender {
-//    [SVProgressHUD show];
-//    
-//    [PFUser logOutInBackgroundWithBlock:^(NSError *PF_NULLABLE_S error) {
-//        
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [SVProgressHUD dismiss];
-//            });
-//        });
-//        
-//        if (error) {
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error logout" message:@"Try again" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
-//            [alert show];
-//        }
-//        else {
-//            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//            UIViewController *loginController = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginController"];
-//            if (loginController) {
-//                [self presentViewController:loginController animated:true completion:nil];
-//            }
-//        }
-//    }];
-//}
+- (void)logout {
+    [SVProgressHUD show];
+    
+    [PFUser logOutInBackgroundWithBlock:^(NSError *PF_NULLABLE_S error) {
+        
+        [SVProgressHUD dismiss];
+        
+        if (error) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error logout" message:@"Try again" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+            [alert show];
+        }
+        else {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UIViewController *loginController = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginController"];
+            if (loginController) {
+                [self presentViewController:loginController animated:true completion:nil];
+            }
+        }
+    }];
+}
+
+- (void)friendAction {
+    [self performSegueWithIdentifier:@"friendController" sender:nil];
+}
+
+- (void)followersAction {
+    [self performSegueWithIdentifier:@"followingController" sender:nil];
+}
+
+- (void)setttingAction {
+    UIAlertController *actionMenu = [UIAlertController alertControllerWithTitle:@"Settings" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [actionMenu addAction:[UIAlertAction actionWithTitle:@"Logout" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self logout];
+    }]];
+    [actionMenu addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+    }]];
+    
+    
+    [self presentViewController:actionMenu animated:true completion:nil];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    
+    self.numberFollowers.text = [NSString stringWithFormat:@"%@", ([[NSUserDefaults standardUserDefaults] objectForKey:@"followers"]) ? [[NSUserDefaults standardUserDefaults] objectForKey:@"followers"] : @"0"];
+    self.numberFollowing.text = [NSString stringWithFormat:@"%@", ([[NSUserDefaults standardUserDefaults] objectForKey:@"following"]) ? [[NSUserDefaults standardUserDefaults] objectForKey:@"following"] : @"0"];
+
     [PFCloud callFunctionInBackground:@"FriendCountFollowing" withParameters:@{@"userHim":[PFUser currentUser].objectId} block:^(id object, NSError *error) {
         if (!error) {
+            [[NSUserDefaults standardUserDefaults] setObject:object forKey:@"following"];
             self.numberFollowing.text = [NSString stringWithFormat:@"%@", object];
         }
     }];
     [PFCloud callFunctionInBackground:@"FriendCountFollowers" withParameters:@{@"userHim":[PFUser currentUser].objectId} block:^(id object, NSError *error) {
         if (!error) {
+            [[NSUserDefaults standardUserDefaults] setObject:object forKey:@"followers"];
             self.numberFollowers.text = [NSString stringWithFormat:@"%@", object];
         }
     }];
@@ -104,9 +125,11 @@
         [buttonSettings setImage:[[UIImage imageNamed:@"settings"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
         buttonSettings.tintColor = [UIColor grayColor];
         buttonSettings.frame = CGRectMake(username.frame.origin.x + username.frame.size.width + 10, username.frame.origin.y, username.frame.size.height, username.frame.size.height);
+        [buttonSettings addTarget:self action:@selector(setttingAction) forControlEvents:UIControlEventTouchUpInside];
 
         UIButton *followers = [[UIButton alloc] init];
         followers.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 3 / 2 - 50, 20 + [UIScreen mainScreen].bounds.size.width / 3 / 2, 100, 100);
+        [followers addTarget:self action:@selector(followersAction) forControlEvents:UIControlEventTouchUpInside];
         
         self.numberFollowers = [[UILabel alloc] init];
         self.numberFollowers.frame = CGRectMake(0, 0, 100, 20);
@@ -125,6 +148,7 @@
         
         UIButton *following = [[UIButton alloc] init];
         following.frame = CGRectMake(([UIScreen mainScreen].bounds.size.width / 3 * 2) + ([UIScreen mainScreen].bounds.size.width / 3 / 2 - 50), 20 + [UIScreen mainScreen].bounds.size.width / 3 / 2, 100, 30);
+        [following addTarget:self action:@selector(friendAction) forControlEvents:UIControlEventTouchUpInside];
 
         self.numberFollowing = [[UILabel alloc] init];
         self.numberFollowing.frame = CGRectMake(0, 0, 100, 20);
@@ -144,6 +168,10 @@
         [container addSubview:followers];
         [container addSubview:following];
         [container addSubview:username];
+        [container addSubview:buttonSettings];
+        
+        self.numberFollowers.text = [NSString stringWithFormat:@"%@", ([[NSUserDefaults standardUserDefaults] objectForKey:@"followers"]) ? [[NSUserDefaults standardUserDefaults] objectForKey:@"followers"] : @"0"];
+        self.numberFollowing.text = [NSString stringWithFormat:@"%@", ([[NSUserDefaults standardUserDefaults] objectForKey:@"following"]) ? [[NSUserDefaults standardUserDefaults] objectForKey:@"following"] : @"0"];
     }
     else {
         container.backgroundColor = [UIColor whiteColor];
@@ -161,7 +189,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return 300;
+        return [UIScreen mainScreen].bounds.size.width / 3 + 20 + 70;
     }
     return 50;
 }
