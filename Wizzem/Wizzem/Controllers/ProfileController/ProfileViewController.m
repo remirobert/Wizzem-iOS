@@ -84,7 +84,7 @@
     
     
     self.numberFollowers.text = [NSString stringWithFormat:@"%ld", [[[PFUser currentUser] objectForKey:@"nbFollower"] integerValue]];
-    self.numberFollowers.text = [NSString stringWithFormat:@"%ld", [[[PFUser currentUser] objectForKey:@"nbFollowing"] integerValue]];
+    self.numberFollowing.text = [NSString stringWithFormat:@"%ld", [[[PFUser currentUser] objectForKey:@"nbFollowing"] integerValue]];
 
 //    self.numberFollowers.text = [NSString stringWithFormat:@"%@", ([[NSUserDefaults standardUserDefaults] objectForKey:@"followers"]) ? [[NSUserDefaults standardUserDefaults] objectForKey:@"followers"] : @"0"];
 //    self.numberFollowing.text = [NSString stringWithFormat:@"%@", ([[NSUserDefaults standardUserDefaults] objectForKey:@"following"]) ? [[NSUserDefaults standardUserDefaults] objectForKey:@"following"] : @"0"];
@@ -175,7 +175,7 @@
         [container addSubview:buttonSettings];
         
         self.numberFollowers.text = [NSString stringWithFormat:@"%ld", [[[PFUser currentUser] objectForKey:@"nbFollower"] integerValue]];
-        self.numberFollowers.text = [NSString stringWithFormat:@"%ld", [[[PFUser currentUser] objectForKey:@"nbFollowing"] integerValue]];
+        self.numberFollowing.text = [NSString stringWithFormat:@"%ld", [[[PFUser currentUser] objectForKey:@"nbFollowing"] integerValue]];
     }
     else {
         container.backgroundColor = [UIColor whiteColor];
