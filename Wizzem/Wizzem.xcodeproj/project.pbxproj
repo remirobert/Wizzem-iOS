@@ -37,6 +37,7 @@
 		BB48523D1AF674A400A11128 /* AddFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB48523C1AF674A400A11128 /* AddFriendTableViewController.m */; };
 		BB4E448A1AA1016900760A36 /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E44891AA1016900760A36 /* CircleView.m */; };
 		BB4E448D1AA1E2D100760A36 /* TakeGifButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4E448C1AA1E2D100760A36 /* TakeGifButton.m */; };
+		BB56E9311B13C79800BF17A3 /* FeedCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB56E9301B13C79800BF17A3 /* FeedCollectionViewController.m */; };
 		BB68DA3A1AEC0D9C006E9821 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA391AEC0D9C006E9821 /* libsqlite3.0.dylib */; };
 		BB68DA401AEC0E71006E9821 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA3F1AEC0E71006E9821 /* Social.framework */; };
 		BB68DA421AEC0E76006E9821 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA411AEC0E76006E9821 /* Accounts.framework */; };
@@ -45,8 +46,6 @@
 		BB68DA521AEC38E8006E9821 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA511AEC38E8006E9821 /* CoreLocation.framework */; };
 		BB68DA541AEC38F2006E9821 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA531AEC38F2006E9821 /* CFNetwork.framework */; };
 		BB68DA921AEC3E1C006E9821 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA911AEC3E1C006E9821 /* FBSDKCoreKit.framework */; };
-		BB68DA941AEC3E22006E9821 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA931AEC3E22006E9821 /* Bolts.framework */; };
-		BB68DA961AEC3E3D006E9821 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA951AEC3E3D006E9821 /* Parse.framework */; };
 		BB68DA981AEC3E6F006E9821 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA971AEC3E6F006E9821 /* StoreKit.framework */; };
 		BB68DA9A1AEC3E9E006E9821 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA991AEC3E9E006E9821 /* SystemConfiguration.framework */; };
 		BB68DA9C1AEC3ED1006E9821 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB68DA9B1AEC3ED1006E9821 /* ParseFacebookUtilsV4.framework */; };
@@ -55,6 +54,7 @@
 		BB68DAC51AED3963006E9821 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB68DAC41AED3963006E9821 /* ProfileViewController.m */; };
 		BB6991681AC9C1D500AC5776 /* PhotoCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6991671AC9C1D500AC5776 /* PhotoCaptureViewController.m */; };
 		BB69916B1AC9DD4300AC5776 /* PBJStrobeView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB69916A1AC9DD4300AC5776 /* PBJStrobeView.m */; };
+		BB7A3FFB1B091D56009CC4AC /* WizzFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7A3FFA1B091D56009CC4AC /* WizzFeedViewController.m */; };
 		BB7BE9611AC0A21D008040C7 /* WizzMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7BE9601AC0A21D008040C7 /* WizzMediaModel.m */; };
 		BB7BE9641AC0A79D008040C7 /* ProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7BE9631AC0A79D008040C7 /* ProgressBar.m */; };
 		BB7C37A91AD99D690080BE15 /* ShimmerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7C37A81AD99D690080BE15 /* ShimmerView.m */; };
@@ -157,6 +157,8 @@
 		BB4E44891AA1016900760A36 /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
 		BB4E448B1AA1E2D100760A36 /* TakeGifButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakeGifButton.h; sourceTree = "<group>"; };
 		BB4E448C1AA1E2D100760A36 /* TakeGifButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakeGifButton.m; sourceTree = "<group>"; };
+		BB56E92F1B13C79800BF17A3 /* FeedCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCollectionViewController.h; sourceTree = "<group>"; };
+		BB56E9301B13C79800BF17A3 /* FeedCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCollectionViewController.m; sourceTree = "<group>"; };
 		BB68DA391AEC0D9C006E9821 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		BB68DA3B1AEC0DA6006E9821 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		BB68DA3D1AEC0DB2006E9821 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
@@ -167,8 +169,6 @@
 		BB68DA511AEC38E8006E9821 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		BB68DA531AEC38F2006E9821 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		BB68DA911AEC3E1C006E9821 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		BB68DA931AEC3E22006E9821 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		BB68DA951AEC3E3D006E9821 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		BB68DA971AEC3E6F006E9821 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BB68DA991AEC3E9E006E9821 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BB68DA9B1AEC3ED1006E9821 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
@@ -181,6 +181,8 @@
 		BB6991671AC9C1D500AC5776 /* PhotoCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCaptureViewController.m; sourceTree = "<group>"; };
 		BB6991691AC9DD4300AC5776 /* PBJStrobeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBJStrobeView.h; sourceTree = "<group>"; };
 		BB69916A1AC9DD4300AC5776 /* PBJStrobeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBJStrobeView.m; sourceTree = "<group>"; };
+		BB7A3FF91B091D56009CC4AC /* WizzFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WizzFeedViewController.h; sourceTree = "<group>"; };
+		BB7A3FFA1B091D56009CC4AC /* WizzFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WizzFeedViewController.m; sourceTree = "<group>"; };
 		BB7BE95F1AC0A21D008040C7 /* WizzMediaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WizzMediaModel.h; sourceTree = "<group>"; };
 		BB7BE9601AC0A21D008040C7 /* WizzMediaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WizzMediaModel.m; sourceTree = "<group>"; };
 		BB7BE9621AC0A79D008040C7 /* ProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressBar.h; sourceTree = "<group>"; };
@@ -274,7 +276,6 @@
 				BB68DA9A1AEC3E9E006E9821 /* SystemConfiguration.framework in Frameworks */,
 				BB68DA541AEC38F2006E9821 /* CFNetwork.framework in Frameworks */,
 				BB68DA981AEC3E6F006E9821 /* StoreKit.framework in Frameworks */,
-				BB68DA941AEC3E22006E9821 /* Bolts.framework in Frameworks */,
 				BB68DA521AEC38E8006E9821 /* CoreLocation.framework in Frameworks */,
 				BB68DA501AEC3882006E9821 /* AdSupport.framework in Frameworks */,
 				BB68DA4E1AEC3878006E9821 /* Security.framework in Frameworks */,
@@ -288,7 +289,6 @@
 				BB68DA9E1AEC3EEE006E9821 /* FBSDKLoginKit.framework in Frameworks */,
 				BB97E81F1AB616C4000214E1 /* CoreGraphics.framework in Frameworks */,
 				BB68DA9C1AEC3ED1006E9821 /* ParseFacebookUtilsV4.framework in Frameworks */,
-				BB68DA961AEC3E3D006E9821 /* Parse.framework in Frameworks */,
 				BB31B6C61AB21573001DBFF3 /* MediaPlayer.framework in Frameworks */,
 				BB31B6C91AB23CA5001DBFF3 /* Crashlytics.framework in Frameworks */,
 				BB31B6C41AB21425001DBFF3 /* CoreMedia.framework in Frameworks */,
@@ -345,8 +345,6 @@
 			children = (
 				BB68DA9D1AEC3EEE006E9821 /* FBSDKLoginKit.framework */,
 				BB68DA9B1AEC3ED1006E9821 /* ParseFacebookUtilsV4.framework */,
-				BB68DA951AEC3E3D006E9821 /* Parse.framework */,
-				BB68DA931AEC3E22006E9821 /* Bolts.framework */,
 				BB68DA911AEC3E1C006E9821 /* FBSDKCoreKit.framework */,
 			);
 			name = Parse;
@@ -437,6 +435,8 @@
 		BB34A64E1A9B98FA00AA2A86 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BB56E92E1B13C74800BF17A3 /* WizzController */,
+				BB7A3FF81B091D3B009CC4AC /* WizzFeed */,
 				BB4852281AF61A6000A11128 /* FriendsNetwork */,
 				BB3818361AF158E500480E35 /* Wizz */,
 				BB68DAC11AED3946006E9821 /* ProfileController */,
@@ -543,6 +543,15 @@
 			path = FriendsNetwork;
 			sourceTree = "<group>";
 		};
+		BB56E92E1B13C74800BF17A3 /* WizzController */ = {
+			isa = PBXGroup;
+			children = (
+				BB56E92F1B13C79800BF17A3 /* FeedCollectionViewController.h */,
+				BB56E9301B13C79800BF17A3 /* FeedCollectionViewController.m */,
+			);
+			name = WizzController;
+			sourceTree = "<group>";
+		};
 		BB68DAA21AECE4BF006E9821 /* LoginController */ = {
 			isa = PBXGroup;
 			children = (
@@ -581,6 +590,15 @@
 				BBF0FB3A1AE3A3550019BEBA /* GitCaptureViewController.m */,
 			);
 			path = MediaCaptureController;
+			sourceTree = "<group>";
+		};
+		BB7A3FF81B091D3B009CC4AC /* WizzFeed */ = {
+			isa = PBXGroup;
+			children = (
+				BB7A3FF91B091D56009CC4AC /* WizzFeedViewController.h */,
+				BB7A3FFA1B091D56009CC4AC /* WizzFeedViewController.m */,
+			);
+			name = WizzFeed;
 			sourceTree = "<group>";
 		};
 		BB87486D1ABEB86D00957909 /* Transition controller */ = {
@@ -834,6 +852,7 @@
 				BB83404F1AE295A600DB83C8 /* KeyboardValidationToolBar.m in Sources */,
 				BBEED4411AF370F800ED7BEB /* LocationPickerViewController.m in Sources */,
 				BBF0FB3B1AE3A3550019BEBA /* GitCaptureViewController.m in Sources */,
+				BB56E9311B13C79800BF17A3 /* FeedCollectionViewController.m in Sources */,
 				BBD794CE1ACDE27D0046C1C1 /* MediaCaptureViewController.m in Sources */,
 				BB8748631ABDE72500957909 /* DropDown.m in Sources */,
 				BB1162EC1AF431F900462BCF /* LogInTableViewController.m in Sources */,
@@ -867,6 +886,7 @@
 				BB34A6271A9B989200AA2A86 /* main.m in Sources */,
 				BB884E9E1ADAEE9600063F30 /* MultiplePulsingHaloLayer.m in Sources */,
 				BBCFC48D1AD0785400BD5BF6 /* DismissButton.m in Sources */,
+				BB7A3FFB1B091D56009CC4AC /* WizzFeedViewController.m in Sources */,
 				BBDAA9841ADDA5B7007CC357 /* TextCaptureController.m in Sources */,
 				BBBD94491ABD72DC002F8655 /* WizzMedia+CameraGif.m in Sources */,
 				BB311C8A1A9C7C3600C25668 /* SliderButtonPhoto.m in Sources */,

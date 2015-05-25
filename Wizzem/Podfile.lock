@@ -1,10 +1,15 @@
 PODS:
   - AYVibrantButton (1.0.3)
+  - Bolts/Tasks (1.1.5)
   - FastttCamera (0.2.9):
     - FastttCamera/Default (= 0.2.9)
   - FastttCamera/Default (0.2.9)
   - FLAnimatedImage (1.0.8)
   - NYTPhotoViewer (0.1.2)
+  - Parse (1.7.2.2):
+    - Bolts/Tasks (>= 1.1.5)
+  - ParseUI (1.1.3):
+    - Parse (~> 1.7)
   - PBJVideoPlayer (0.2.0)
   - PBJVision (0.4.0)
   - pop (1.0.7)
@@ -17,6 +22,7 @@ DEPENDENCIES:
   - FastttCamera
   - FLAnimatedImage (~> 1.0)
   - NYTPhotoViewer
+  - ParseUI
   - PBJVideoPlayer
   - PBJVision
   - Pop
@@ -26,9 +32,12 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AYVibrantButton: 7cc5b2c74f6f6a0a52d5b0db361a9d3b755bc448
+  Bolts: aac24961496d504aa56fc267cde95162a71bac39
   FastttCamera: bd173337377bcf4f1fb698bab3362fcf2914039c
   FLAnimatedImage: f9422f796135aff80d8c00b2afc48015bb746e24
   NYTPhotoViewer: 874a57dd833238b52ab2e8d1c827356c763626c3
+  Parse: 6187586a80eb7b4960d755f85e1353148a611f87
+  ParseUI: 1a68e9cebc3bd458eed9605ce7b33d7cc082f473
   PBJVideoPlayer: 60e8601398ba0fc1e38c431863c9222b4f4b7153
   PBJVision: aa3d9f584324e099898fb83977a815f0ecb7ba5a
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923

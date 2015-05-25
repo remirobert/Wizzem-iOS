@@ -85,22 +85,6 @@
     
     self.numberFollowers.text = [NSString stringWithFormat:@"%ld", [[[PFUser currentUser] objectForKey:@"nbFollower"] integerValue]];
     self.numberFollowing.text = [NSString stringWithFormat:@"%ld", [[[PFUser currentUser] objectForKey:@"nbFollowing"] integerValue]];
-
-//    self.numberFollowers.text = [NSString stringWithFormat:@"%@", ([[NSUserDefaults standardUserDefaults] objectForKey:@"followers"]) ? [[NSUserDefaults standardUserDefaults] objectForKey:@"followers"] : @"0"];
-//    self.numberFollowing.text = [NSString stringWithFormat:@"%@", ([[NSUserDefaults standardUserDefaults] objectForKey:@"following"]) ? [[NSUserDefaults standardUserDefaults] objectForKey:@"following"] : @"0"];
-
-//    [PFCloud callFunctionInBackground:@"FriendCountFollowing" withParameters:@{@"userHim":[PFUser currentUser].objectId} block:^(id object, NSError *error) {
-//        if (!error) {
-//            [[NSUserDefaults standardUserDefaults] setObject:object forKey:@"following"];
-//            self.numberFollowing.text = [NSString stringWithFormat:@"%@", object];
-//        }
-//    }];
-//    [PFCloud callFunctionInBackground:@"FriendCountFollowers" withParameters:@{@"userHim":[PFUser currentUser].objectId} block:^(id object, NSError *error) {
-//        if (!error) {
-//            [[NSUserDefaults standardUserDefaults] setObject:object forKey:@"followers"];
-//            self.numberFollowers.text = [NSString stringWithFormat:@"%@", object];
-//        }
-//    }];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
