@@ -13,6 +13,8 @@
 		BB1162E91AF3FBA600462BCF /* WizzFrriendsInviteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1162E81AF3FBA600462BCF /* WizzFrriendsInviteTableViewController.m */; };
 		BB1162EC1AF431F900462BCF /* LogInTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1162EB1AF431F900462BCF /* LogInTableViewController.m */; };
 		BB1162EF1AF4B13C00462BCF /* SignupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1162EE1AF4B13C00462BCF /* SignupTableViewController.m */; };
+		BB1B36DC1B19A56E009B2ACB /* HeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1B36DB1B19A56E009B2ACB /* HeaderCollectionReusableView.m */; };
+		BB1B36DF1B19AB57009B2ACB /* DetailWizzMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1B36DE1B19AB57009B2ACB /* DetailWizzMediaViewController.m */; };
 		BB2A3FE71AEC0CF800763FAA /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2A3FE61AEC0CF800763FAA /* libstdc++.6.0.9.dylib */; };
 		BB311C8A1A9C7C3600C25668 /* SliderButtonPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = BB311C891A9C7C3600C25668 /* SliderButtonPhoto.m */; };
 		BB31B6C41AB21425001DBFF3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB31B6C31AB21425001DBFF3 /* CoreMedia.framework */; };
@@ -119,6 +121,10 @@
 		BB1162EB1AF431F900462BCF /* LogInTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInTableViewController.m; sourceTree = "<group>"; };
 		BB1162ED1AF4B13C00462BCF /* SignupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupTableViewController.h; sourceTree = "<group>"; };
 		BB1162EE1AF4B13C00462BCF /* SignupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupTableViewController.m; sourceTree = "<group>"; };
+		BB1B36DA1B19A56E009B2ACB /* HeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderCollectionReusableView.h; sourceTree = "<group>"; };
+		BB1B36DB1B19A56E009B2ACB /* HeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderCollectionReusableView.m; sourceTree = "<group>"; };
+		BB1B36DD1B19AB57009B2ACB /* DetailWizzMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailWizzMediaViewController.h; sourceTree = "<group>"; };
+		BB1B36DE1B19AB57009B2ACB /* DetailWizzMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailWizzMediaViewController.m; sourceTree = "<group>"; };
 		BB2A3FE61AEC0CF800763FAA /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		BB311C881A9C7C3600C25668 /* SliderButtonPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderButtonPhoto.h; sourceTree = "<group>"; };
 		BB311C891A9C7C3600C25668 /* SliderButtonPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderButtonPhoto.m; sourceTree = "<group>"; };
@@ -486,6 +492,8 @@
 				BBFFEA511AF017F4008F526E /* CustomNavigationBar.m */,
 				BB1162DE1AF384CA00462BCF /* ProgressView.h */,
 				BB1162DF1AF384CA00462BCF /* ProgressView.m */,
+				BB1B36DA1B19A56E009B2ACB /* HeaderCollectionReusableView.h */,
+				BB1B36DB1B19A56E009B2ACB /* HeaderCollectionReusableView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -548,6 +556,8 @@
 			children = (
 				BB56E92F1B13C79800BF17A3 /* FeedCollectionViewController.h */,
 				BB56E9301B13C79800BF17A3 /* FeedCollectionViewController.m */,
+				BB1B36DD1B19AB57009B2ACB /* DetailWizzMediaViewController.h */,
+				BB1B36DE1B19AB57009B2ACB /* DetailWizzMediaViewController.m */,
 			);
 			name = WizzController;
 			sourceTree = "<group>";
@@ -864,12 +874,14 @@
 				BB48522E1AF61C3F00A11128 /* SearchFriendWizzemTableViewController.m in Sources */,
 				BB884EA21ADAF05200063F30 /* PulsingHaloLayer.m in Sources */,
 				BBBD944B1ABD72DC002F8655 /* WizzMedia+CameraVideo.m in Sources */,
+				BB1B36DF1B19AB57009B2ACB /* DetailWizzMediaViewController.m in Sources */,
 				BB69916B1AC9DD4300AC5776 /* PBJStrobeView.m in Sources */,
 				BB8748661ABE28EE00957909 /* Colors.m in Sources */,
 				BBEED43E1AF3678600ED7BEB /* CreateWizzTableViewController.m in Sources */,
 				BBD794C81ACDBAF50046C1C1 /* PreviewLayerMediaCaptureView.m in Sources */,
 				BB7BE9641AC0A79D008040C7 /* ProgressBar.m in Sources */,
 				BB4E448A1AA1016900760A36 /* CircleView.m in Sources */,
+				BB1B36DC1B19A56E009B2ACB /* HeaderCollectionReusableView.m in Sources */,
 				BB8340491AE283E300DB83C8 /* ColorPicker.m in Sources */,
 				BB1162E61AF3C98800462BCF /* WizzPrivacyTableViewController.m in Sources */,
 				BBC1DF861ACC95E400D9D8FC /* DetailViewController.m in Sources */,

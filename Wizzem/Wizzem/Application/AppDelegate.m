@@ -46,7 +46,7 @@
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *rootController;
-    
+
     PFUser *user = [PFUser currentUser];
     if (!user) {
         NSLog(@"not user");
