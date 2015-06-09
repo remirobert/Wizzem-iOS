@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		37037C4311EDC9ACE2D91C5D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F408DAE9CEB5E14380034C56 /* libPods.a */; };
 		BBCB1A591B27742E00D57CEA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A581B27742E00D57CEA /* LoginViewController.swift */; };
+		BBCB1A5C1B27787100D57CEA /* FacebookAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A5B1B27787100D57CEA /* FacebookAuth.swift */; };
+		BBCB1A5E1B2779B000D57CEA /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A5D1B2779B000D57CEA /* Result.swift */; };
+		BBCB1A601B277D5300D57CEA /* TwitterAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A5F1B277D5300D57CEA /* TwitterAuth.swift */; };
+		BBCB1A621B277EC500D57CEA /* ParseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A611B277EC500D57CEA /* ParseAuth.swift */; };
 		BBE4375F1B2771A7004C0D89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE4375E1B2771A7004C0D89 /* AppDelegate.swift */; };
 		BBE437641B2771A7004C0D89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBE437621B2771A7004C0D89 /* Main.storyboard */; };
 		BBE437661B2771A7004C0D89 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBE437651B2771A7004C0D89 /* Images.xcassets */; };
@@ -30,6 +34,10 @@
 		63FB5AAFCF0C93E31EEC629F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BBCB1A581B27742E00D57CEA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BBCB1A5A1B2775AA00D57CEA /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		BBCB1A5B1B27787100D57CEA /* FacebookAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookAuth.swift; path = Wizzem/FacebookAuth.swift; sourceTree = SOURCE_ROOT; };
+		BBCB1A5D1B2779B000D57CEA /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Wizzem/Result.swift; sourceTree = SOURCE_ROOT; };
+		BBCB1A5F1B277D5300D57CEA /* TwitterAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterAuth.swift; path = Wizzem/TwitterAuth.swift; sourceTree = SOURCE_ROOT; };
+		BBCB1A611B277EC500D57CEA /* ParseAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParseAuth.swift; path = Wizzem/ParseAuth.swift; sourceTree = SOURCE_ROOT; };
 		BBE437591B2771A7004C0D89 /* Wizzem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wizzem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBE4375D1B2771A7004C0D89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBE4375E1B2771A7004C0D89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +105,10 @@
 		BBCB1A571B27723300D57CEA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BBCB1A5B1B27787100D57CEA /* FacebookAuth.swift */,
+				BBCB1A5F1B277D5300D57CEA /* TwitterAuth.swift */,
+				BBCB1A611B277EC500D57CEA /* ParseAuth.swift */,
+				BBCB1A5D1B2779B000D57CEA /* Result.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -306,7 +318,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBCB1A591B27742E00D57CEA /* LoginViewController.swift in Sources */,
+				BBCB1A5C1B27787100D57CEA /* FacebookAuth.swift in Sources */,
+				BBCB1A5E1B2779B000D57CEA /* Result.swift in Sources */,
+				BBCB1A601B277D5300D57CEA /* TwitterAuth.swift in Sources */,
 				BBE4375F1B2771A7004C0D89 /* AppDelegate.swift in Sources */,
+				BBCB1A621B277EC500D57CEA /* ParseAuth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,5 +11,6 @@
 
 #import <Parse.h>
 #import <FBSDKCoreKit.h>
+#import <PFFacebookUtils.h>
 
 #endif

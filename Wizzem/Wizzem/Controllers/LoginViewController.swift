@@ -12,5 +12,13 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        FacebookAuth.login { (result) -> () in
+            switch result {
+            case .👍: println("auth okay")
+            case .👎(_, let error):
+                println("error auth : \(error))")
+            }
+        }
     }
 }
