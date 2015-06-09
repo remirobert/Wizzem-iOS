@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FacebookAuth: NSObject {
+class FacebookAuth {
    
     static let permissionsArray = ["user_about_me", "user_friends"]
     

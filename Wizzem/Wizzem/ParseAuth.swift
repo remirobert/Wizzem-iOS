@@ -8,9 +8,8 @@
 
 import UIKit
 
-class ParseAuth: NSObject {
+class ParseAuth {
    
-    
     class func login(#username: String, userPassword password: String, completionBlock block: (result: Result)->()) {
         PFUser.logInWithUsernameInBackground(username, password:password) {
             (user: PFUser?, error: NSError?) -> Void in
