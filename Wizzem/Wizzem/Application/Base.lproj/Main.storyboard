@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Wizzem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="LoginViewController" customModule="Wizzem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -21,35 +21,26 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="OnF-S9-dEh">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7E-0z-Byn">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PgB-E4-WDy" customClass="LoginButton" customModule="Wizzem" customModuleProvider="target">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.87843137250000003" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="HPI-At-Bre"/>
-                                </constraints>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="HPI-At-Bre"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="HPI-At-Bre"/>
-                                    </mask>
-                                </variation>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PgB-E4-WDy">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.95686274510000002" green="0.42745098040000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="lq0-pF-5KY"/>
                                 </constraints>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Se connecter">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.67450980392156867" green="0.73333333333333328" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="lq0-pF-5KY"/>
@@ -60,6 +51,9 @@
                                         <include reference="lq0-pF-5KY"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="connection:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kXJ-hH-bk1"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="4TZ-Hs-s5Y">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -132,6 +126,9 @@
                                                 <include reference="re4-YG-92c"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="facebookLogin:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="8g1-Rc-DM4"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="abd-TV-YdL">
                                         <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
@@ -371,6 +368,40 @@
                                     </mask>
                                 </variation>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7E-0z-Byn" customClass="LoginButton" customModule="Wizzem" customModuleProvider="target">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="HPI-At-Bre"/>
+                                </constraints>
+                                <state key="normal" title="Créer un compte">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.95686274510000002" green="0.42745098040000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="HPI-At-Bre"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="HPI-At-Bre"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="createAccount:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Z0w-f5-jXr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -379,33 +410,43 @@
                             <constraint firstItem="OnF-S9-dEh" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="6tj-Bf-Op4"/>
                             <constraint firstAttribute="centerY" secondItem="Cjd-mt-Avv" secondAttribute="centerY" constant="0.5" id="8TX-mJ-aW0"/>
                             <constraint firstAttribute="centerY" secondItem="Cjd-mt-Avv" secondAttribute="centerY" constant="0.5" id="ATt-2J-dPF"/>
-                            <constraint firstItem="S7E-0z-Byn" firstAttribute="top" secondItem="PgB-E4-WDy" secondAttribute="bottom" constant="14" id="BLU-0B-LOU"/>
+                            <constraint firstItem="S7E-0z-Byn" firstAttribute="top" secondItem="PgB-E4-WDy" secondAttribute="bottom" constant="14" id="BLU-0B-LOU">
+                                <variation key="heightClass=regular-widthClass=compact" constant="13"/>
+                            </constraint>
                             <constraint firstItem="OnF-S9-dEh" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="GKt-Ep-f3j"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="S7E-0z-Byn" secondAttribute="bottom" constant="36" id="GQ9-kN-ybM"/>
                             <constraint firstAttribute="centerX" secondItem="Cjd-mt-Avv" secondAttribute="centerX" id="KsW-Bm-txi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OnF-S9-dEh" secondAttribute="trailing" constant="-16" id="M6W-Ln-68l"/>
                             <constraint firstItem="Cjd-mt-Avv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="Okm-da-fUF"/>
                             <constraint firstAttribute="centerX" secondItem="Cjd-mt-Avv" secondAttribute="centerX" id="ZXe-9z-bM1"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="PgB-E4-WDy" secondAttribute="trailing" constant="34" id="Ztd-nd-yGK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PgB-E4-WDy" secondAttribute="trailing" constant="34" id="Ztd-nd-yGK">
+                                <variation key="heightClass=regular-widthClass=compact" constant="39"/>
+                            </constraint>
                             <constraint firstItem="Cjd-mt-Avv" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" id="bgC-48-2CF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Cjd-mt-Avv" secondAttribute="trailing" constant="-16" id="cq0-tK-H2h"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="S7E-0z-Byn" secondAttribute="trailing" constant="34" id="eAG-lE-yjA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="S7E-0z-Byn" secondAttribute="trailing" constant="34" id="eAG-lE-yjA">
+                                <variation key="heightClass=regular-widthClass=compact" constant="39"/>
+                            </constraint>
                             <constraint firstItem="4TZ-Hs-s5Y" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="44" id="he5-FX-CA8"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="OnF-S9-dEh" secondAttribute="bottom" id="iHe-di-uuA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Cjd-mt-Avv" secondAttribute="trailing" constant="-16" id="p0U-se-5Mf"/>
                             <constraint firstItem="Cjd-mt-Avv" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="263" id="qvJ-Dc-tMQ"/>
-                            <constraint firstItem="S7E-0z-Byn" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="44" id="trn-z1-0VI"/>
+                            <constraint firstItem="S7E-0z-Byn" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="44" id="trn-z1-0VI">
+                                <variation key="heightClass=regular-widthClass=compact" constant="39"/>
+                            </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="4TZ-Hs-s5Y" secondAttribute="trailing" constant="44" id="uey-cK-4dN"/>
                             <constraint firstItem="Cjd-mt-Avv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="vrc-dp-JyL"/>
-                            <constraint firstItem="PgB-E4-WDy" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="44" id="x3d-cA-TcZ"/>
+                            <constraint firstItem="PgB-E4-WDy" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="44" id="x3d-cA-TcZ">
+                                <variation key="heightClass=regular-widthClass=compact" constant="39"/>
+                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="OnF-S9-dEh"/>
-                                <exclude reference="S7E-0z-Byn"/>
                                 <exclude reference="PgB-E4-WDy"/>
                                 <exclude reference="4TZ-Hs-s5Y"/>
                                 <exclude reference="Cjd-mt-Avv"/>
+                                <exclude reference="S7E-0z-Byn"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="6tj-Bf-Op4"/>
@@ -437,10 +478,10 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="OnF-S9-dEh"/>
-                                <include reference="S7E-0z-Byn"/>
                                 <include reference="PgB-E4-WDy"/>
                                 <include reference="4TZ-Hs-s5Y"/>
                                 <include reference="Cjd-mt-Avv"/>
+                                <include reference="S7E-0z-Byn"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="6tj-Bf-Op4"/>
@@ -470,6 +511,10 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="abd-TV-YdL" id="wuv-VP-E3V"/>
+                        <outlet property="passwordTextField" destination="y0D-Fi-W63" id="OpX-ZJ-206"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
