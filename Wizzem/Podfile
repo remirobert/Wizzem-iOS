@@ -1,0 +1,3 @@
+pod 'ParseUI', '~> 1.1.4'
+pod 'ParseFacebookUtilsV4', '~> 1.7.4'
+pod 'FBSDKCoreKit', '~> 4.2.0'
