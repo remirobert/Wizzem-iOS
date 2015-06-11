@@ -10,5 +10,6 @@
 #define Wizzem_Constants_h
 
 # define SEGUE_LOGIN_CONTAINER      @"loginContainerSegue"
+# define SEGUE_SIGNUP_CONTAINER     @"signupContainerSegue"
 
 #endif
