@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WaitBlock
 
 class LoginViewController: UIViewController {
 

@@ -9,8 +9,4 @@
 #ifndef Wizzem_Header_h
 #define Wizzem_Header_h
 
-#import <Parse.h>
-#import <FBSDKCoreKit.h>
-#import <PFFacebookUtils.h>
-
 #endif

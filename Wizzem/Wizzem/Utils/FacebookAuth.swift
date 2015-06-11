@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import ParseFacebookUtils
 
 class FacebookAuth {
    

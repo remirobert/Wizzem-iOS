@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Parse
+import FBSDKCoreKit
+import ParseFacebookUtils
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
