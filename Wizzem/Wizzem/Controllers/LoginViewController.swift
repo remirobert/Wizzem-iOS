@@ -11,8 +11,8 @@ import WaitBlock
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet var emailTextField: UITextField!
-    @IBOutlet var passwordTextField: UITextField!
+    var emailText: String?
+    var passwordText: String?
     
     @IBAction func facebookLogin(sender: AnyObject) {
         FacebookAuth.login { (result) -> () in
@@ -26,11 +26,23 @@ class LoginViewController: UIViewController {
     
     @IBAction func connection(sender: AnyObject) {
     }
-    
-    @IBAction func createAccount(sender: AnyObject) {
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == SEGUE_LOGIN_CONTAINER {
+            if let loginController = segue.destinationViewController as? LoginTableViewController {
+                loginController.completionUpdateEmail = {(content: String) -> Void in
+                    self.emailText = content
+                    println("email content : \(self.emailText!)")
+                }
+                loginController.completionUpdatePassword = {(content: String) -> Void in
+                    self.passwordText = content
+                    println("password content : \(self.passwordText!)")
+                }
+            }
+        }
     }
 }

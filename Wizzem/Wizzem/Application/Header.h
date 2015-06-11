@@ -9,4 +9,6 @@
 #ifndef Wizzem_Header_h
 #define Wizzem_Header_h
 
+#import "Constants.h"
+
 #endif

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0AE425F2C56C5291402C0F86 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38430E023573645DFB6BE61 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		BB1BE47B1B29AAC600763B88 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1BE47A1B29AAC600763B88 /* LoginTableViewController.swift */; };
 		BBCB1A591B27742E00D57CEA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A581B27742E00D57CEA /* LoginViewController.swift */; };
 		BBCB1A5C1B27787100D57CEA /* FacebookAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A5B1B27787100D57CEA /* FacebookAuth.swift */; };
 		BBCB1A5E1B2779B000D57CEA /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A5D1B2779B000D57CEA /* Result.swift */; };
@@ -32,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		63FB5AAFCF0C93E31EEC629F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		BB1BE4791B29AA1300763B88 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		BB1BE47A1B29AAC600763B88 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
 		BBCB1A581B27742E00D57CEA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BBCB1A5A1B2775AA00D57CEA /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		BBCB1A5B1B27787100D57CEA /* FacebookAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookAuth.swift; sourceTree = "<group>"; };
@@ -87,10 +90,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		BBCB1A551B27722A00D57CEA /* Controllers */ = {
+		BB1BE47C1B29AACA00763B88 /* LoginController */ = {
 			isa = PBXGroup;
 			children = (
 				BBCB1A581B27742E00D57CEA /* LoginViewController.swift */,
+				BB1BE47A1B29AAC600763B88 /* LoginTableViewController.swift */,
+			);
+			name = LoginController;
+			sourceTree = "<group>";
+		};
+		BBCB1A551B27722A00D57CEA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BB1BE47C1B29AACA00763B88 /* LoginController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -178,6 +190,7 @@
 				BBE437651B2771A7004C0D89 /* Images.xcassets */,
 				BBE437671B2771A7004C0D89 /* LaunchScreen.xib */,
 				BBCB1A5A1B2775AA00D57CEA /* Header.h */,
+				BB1BE4791B29AA1300763B88 /* Constants.h */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -339,6 +352,7 @@
 				BBCB1A5E1B2779B000D57CEA /* Result.swift in Sources */,
 				BBE4375F1B2771A7004C0D89 /* AppDelegate.swift in Sources */,
 				BBCB1A621B277EC500D57CEA /* ParseAuth.swift in Sources */,
+				BB1BE47B1B29AAC600763B88 /* LoginTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
