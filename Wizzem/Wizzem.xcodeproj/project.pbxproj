@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0AE425F2C56C5291402C0F86 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38430E023573645DFB6BE61 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		BB1BA99C1B2B6888002A8015 /* RMDateSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1BA99B1B2B6888002A8015 /* RMDateSelectionViewController.m */; };
+		BB1BA9A01B2B6936002A8015 /* RMActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1BA99F1B2B6936002A8015 /* RMActionController.m */; };
 		BB1BE47B1B29AAC600763B88 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1BE47A1B29AAC600763B88 /* LoginTableViewController.swift */; };
+		BB5C32AD1B2C619700B38318 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5C32AC1B2C619700B38318 /* CameraViewController.swift */; };
 		BB8BF4611B2A2BD400D9ACF8 /* SignupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BF4601B2A2BD400D9ACF8 /* SignupTableViewController.swift */; };
 		BB8BF4631B2A307B00D9ACF8 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BF4621B2A307B00D9ACF8 /* SignupViewController.swift */; };
 		BBCB1A591B27742E00D57CEA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A581B27742E00D57CEA /* LoginViewController.swift */; };
@@ -21,6 +24,9 @@
 		BBE437661B2771A7004C0D89 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBE437651B2771A7004C0D89 /* Images.xcassets */; };
 		BBE437691B2771A7004C0D89 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBE437671B2771A7004C0D89 /* LaunchScreen.xib */; };
 		BBE437751B2771A7004C0D89 /* WizzemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE437741B2771A7004C0D89 /* WizzemTests.swift */; };
+		BBFA42F91B2C75F700BAE517 /* PreviewCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA42F81B2C75F700BAE517 /* PreviewCaptureViewController.swift */; };
+		BBFA42FF1B2CBB5300BAE517 /* GifMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFA42FE1B2CBB5300BAE517 /* GifMaker.m */; };
+		BBFA43011B2CC54800BAE517 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA43001B2CC54700BAE517 /* Media.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +41,13 @@
 
 /* Begin PBXFileReference section */
 		63FB5AAFCF0C93E31EEC629F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		BB1BA99A1B2B6888002A8015 /* RMDateSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDateSelectionViewController.h; sourceTree = "<group>"; };
+		BB1BA99B1B2B6888002A8015 /* RMDateSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDateSelectionViewController.m; sourceTree = "<group>"; };
+		BB1BA99E1B2B6936002A8015 /* RMActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMActionController.h; sourceTree = "<group>"; };
+		BB1BA99F1B2B6936002A8015 /* RMActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMActionController.m; sourceTree = "<group>"; };
 		BB1BE4791B29AA1300763B88 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		BB1BE47A1B29AAC600763B88 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
+		BB5C32AC1B2C619700B38318 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		BB8BF4601B2A2BD400D9ACF8 /* SignupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupTableViewController.swift; sourceTree = "<group>"; };
 		BB8BF4621B2A307B00D9ACF8 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		BBCB1A581B27742E00D57CEA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +65,10 @@
 		BBE4376E1B2771A7004C0D89 /* WizzemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WizzemTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBE437731B2771A7004C0D89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBE437741B2771A7004C0D89 /* WizzemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizzemTests.swift; sourceTree = "<group>"; };
+		BBFA42F81B2C75F700BAE517 /* PreviewCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewCaptureViewController.swift; sourceTree = "<group>"; };
+		BBFA42FD1B2CBB5300BAE517 /* GifMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifMaker.h; sourceTree = "<group>"; };
+		BBFA42FE1B2CBB5300BAE517 /* GifMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifMaker.m; sourceTree = "<group>"; };
+		BBFA43001B2CC54700BAE517 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		C38430E023573645DFB6BE61 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA2E643E79B211CB71C6994 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +109,35 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BB1BA9981B2B6877002A8015 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				BBFA42FD1B2CBB5300BAE517 /* GifMaker.h */,
+				BBFA42FE1B2CBB5300BAE517 /* GifMaker.m */,
+				BB1BA99D1B2B6936002A8015 /* RMActionController */,
+				BB1BA9991B2B6888002A8015 /* RMDateSelectionViewController */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		BB1BA9991B2B6888002A8015 /* RMDateSelectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BB1BA99A1B2B6888002A8015 /* RMDateSelectionViewController.h */,
+				BB1BA99B1B2B6888002A8015 /* RMDateSelectionViewController.m */,
+			);
+			path = RMDateSelectionViewController;
+			sourceTree = "<group>";
+		};
+		BB1BA99D1B2B6936002A8015 /* RMActionController */ = {
+			isa = PBXGroup;
+			children = (
+				BB1BA99E1B2B6936002A8015 /* RMActionController.h */,
+				BB1BA99F1B2B6936002A8015 /* RMActionController.m */,
+			);
+			path = RMActionController;
+			sourceTree = "<group>";
+		};
 		BB1BE47C1B29AACA00763B88 /* LoginController */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +145,16 @@
 				BB1BE47A1B29AAC600763B88 /* LoginTableViewController.swift */,
 			);
 			name = LoginController;
+			sourceTree = "<group>";
+		};
+		BB5C32AB1B2C618700B38318 /* CameraController */ = {
+			isa = PBXGroup;
+			children = (
+				BB5C32AC1B2C619700B38318 /* CameraViewController.swift */,
+				BBFA42F81B2C75F700BAE517 /* PreviewCaptureViewController.swift */,
+				BBFA43001B2CC54700BAE517 /* Media.swift */,
+			);
+			name = CameraController;
 			sourceTree = "<group>";
 		};
 		BB8BF45F1B2A2B9500D9ACF8 /* signupController */ = {
@@ -115,6 +169,7 @@
 		BBCB1A551B27722A00D57CEA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BB5C32AB1B2C618700B38318 /* CameraController */,
 				BB8BF45F1B2A2B9500D9ACF8 /* signupController */,
 				BB1BE47C1B29AACA00763B88 /* LoginController */,
 			);
@@ -162,6 +217,7 @@
 		BBE4375B1B2771A7004C0D89 /* Wizzem */ = {
 			isa = PBXGroup;
 			children = (
+				BB1BA9981B2B6877002A8015 /* libs */,
 				BBCB1A571B27723300D57CEA /* Utils */,
 				BBCB1A561B27722F00D57CEA /* Views */,
 				BBCB1A551B27722A00D57CEA /* Controllers */,
@@ -361,14 +417,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB8BF4631B2A307B00D9ACF8 /* SignupViewController.swift in Sources */,
+				BBFA42FF1B2CBB5300BAE517 /* GifMaker.m in Sources */,
 				BBCB1A591B27742E00D57CEA /* LoginViewController.swift in Sources */,
+				BB1BA99C1B2B6888002A8015 /* RMDateSelectionViewController.m in Sources */,
 				BBCB1A641B27926300D57CEA /* LoginButton.swift in Sources */,
 				BBCB1A5C1B27787100D57CEA /* FacebookAuth.swift in Sources */,
+				BB5C32AD1B2C619700B38318 /* CameraViewController.swift in Sources */,
+				BBFA42F91B2C75F700BAE517 /* PreviewCaptureViewController.swift in Sources */,
 				BBCB1A5E1B2779B000D57CEA /* Result.swift in Sources */,
 				BBE4375F1B2771A7004C0D89 /* AppDelegate.swift in Sources */,
 				BBCB1A621B277EC500D57CEA /* ParseAuth.swift in Sources */,
 				BB1BE47B1B29AAC600763B88 /* LoginTableViewController.swift in Sources */,
+				BB1BA9A01B2B6936002A8015 /* RMActionController.m in Sources */,
 				BB8BF4611B2A2BD400D9ACF8 /* SignupTableViewController.swift in Sources */,
+				BBFA43011B2CC54800BAE517 /* Media.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

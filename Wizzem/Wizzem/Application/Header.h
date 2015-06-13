@@ -10,5 +10,6 @@
 #define Wizzem_Header_h
 
 #import "Constants.h"
-
+#import "RMDateSelectionViewController.h"
+#import "GifMaker.h"
 #endif

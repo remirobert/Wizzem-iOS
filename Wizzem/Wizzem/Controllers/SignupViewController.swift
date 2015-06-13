@@ -15,8 +15,13 @@ class SignupViewController: UIViewController {
     var emailText: String?
     var passwordText: String?
 
+    @IBAction func backController(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.interactivePopGestureRecognizer.delegate = nil
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

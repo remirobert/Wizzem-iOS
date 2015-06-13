@@ -36,7 +36,17 @@ class SignupTableViewController: UITableViewController, UITextFieldDelegate {
                 view.endEditing(true)
                 return false
             }
-            return true
+            return true 
+    }
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        if textField.tag == 5 {
+            
+            let dateController = RMDateSelectionViewController(style: RMActionControllerStyle.White)
+            
+            return false
+        }
+        return true
     }
     
     override func viewDidAppear(animated: Bool) {
