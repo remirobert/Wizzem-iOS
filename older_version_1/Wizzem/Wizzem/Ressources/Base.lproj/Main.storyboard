@@ -89,6 +89,7 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="headerView" id="upX-8N-DW0" customClass="HeaderCollectionReusableView">
+                            <rect key="frame" x="0.0" y="64" width="600" height="125"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJH-dW-oir">
@@ -196,14 +197,14 @@
                                     <exclude reference="7sY-0L-6M3"/>
                                 </mask>
                                 <mask key="constraints">
-                                    <exclude reference="0d9-gK-lk6"/>
-                                    <exclude reference="zjr-p7-cZx"/>
                                     <exclude reference="Hd8-w8-RRc"/>
                                     <exclude reference="Q7z-A9-Fvf"/>
                                     <exclude reference="kmr-1H-gTd"/>
                                     <exclude reference="pNb-dj-wA1"/>
                                     <exclude reference="Dxi-wI-VWP"/>
                                     <exclude reference="ycO-Hc-TFj"/>
+                                    <exclude reference="0d9-gK-lk6"/>
+                                    <exclude reference="zjr-p7-cZx"/>
                                     <exclude reference="b5c-Wz-fMu"/>
                                     <exclude reference="tkj-mf-SEe"/>
                                 </mask>
@@ -216,14 +217,14 @@
                                     <include reference="7sY-0L-6M3"/>
                                 </mask>
                                 <mask key="constraints">
-                                    <include reference="0d9-gK-lk6"/>
-                                    <include reference="zjr-p7-cZx"/>
                                     <include reference="Hd8-w8-RRc"/>
                                     <include reference="Q7z-A9-Fvf"/>
                                     <include reference="kmr-1H-gTd"/>
                                     <include reference="pNb-dj-wA1"/>
                                     <include reference="Dxi-wI-VWP"/>
                                     <include reference="ycO-Hc-TFj"/>
+                                    <include reference="0d9-gK-lk6"/>
+                                    <include reference="zjr-p7-cZx"/>
                                     <include reference="b5c-Wz-fMu"/>
                                     <include reference="tkj-mf-SEe"/>
                                 </mask>
@@ -258,6 +259,7 @@
                         <viewControllerLayoutGuide type="bottom" id="W59-2Y-zU6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lZH-la-WjG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tmh-hJ-Q48" customClass="FLAnimatedImageView">
@@ -311,6 +313,9 @@
                                 <exclude reference="fRf-Yx-NT5"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="J8L-h4-Kz9"/>
+                                <exclude reference="XRM-1G-FgE"/>
+                                <exclude reference="qlu-Jg-bvK"/>
                                 <exclude reference="3ex-fi-XKH"/>
                                 <exclude reference="70s-Os-3DA"/>
                                 <exclude reference="bKJ-sz-Lcn"/>
@@ -324,9 +329,6 @@
                                 <exclude reference="maV-Od-XSZ"/>
                                 <exclude reference="mpi-t3-Yca"/>
                                 <exclude reference="rek-YS-Zd2"/>
-                                <exclude reference="J8L-h4-Kz9"/>
-                                <exclude reference="XRM-1G-FgE"/>
-                                <exclude reference="qlu-Jg-bvK"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -335,6 +337,9 @@
                                 <include reference="fRf-Yx-NT5"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="J8L-h4-Kz9"/>
+                                <exclude reference="XRM-1G-FgE"/>
+                                <include reference="qlu-Jg-bvK"/>
                                 <exclude reference="3ex-fi-XKH"/>
                                 <include reference="70s-Os-3DA"/>
                                 <exclude reference="bKJ-sz-Lcn"/>
@@ -348,9 +353,6 @@
                                 <include reference="maV-Od-XSZ"/>
                                 <include reference="mpi-t3-Yca"/>
                                 <exclude reference="rek-YS-Zd2"/>
-                                <exclude reference="J8L-h4-Kz9"/>
-                                <exclude reference="XRM-1G-FgE"/>
-                                <include reference="qlu-Jg-bvK"/>
                             </mask>
                         </variation>
                     </view>

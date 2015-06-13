@@ -15,7 +15,8 @@ class SignupTableViewController: UITableViewController, UITextFieldDelegate {
     var completionUpdateLastName: ((content: String) -> Void)?
     var completionUpdateEmail: ((content: String) -> Void)?
     var completionUpdatePassword: ((content: String) -> Void)?
-    var completionUpdateDate: ((date: NSDate) -> Void)?
+    var completionUpdateDate: ((date: String) -> Void)?
+    var completionUpdateSex: ((sex: Int) -> Void)?
 
     lazy var datePicker: UIDatePicker! = {
         let datePicker = UIDatePicker(frame: CGRectZero)
@@ -48,8 +49,9 @@ class SignupTableViewController: UITableViewController, UITextFieldDelegate {
             let selectAction = RMAction(title: "Select", style: RMActionStyle.Done, andHandler: { (controller: RMActionController!) -> Void in
                 
                 if let date = (controller.contentView as? UIDatePicker)?.date {
-                    textField.text = "\(date)"
-                    self.completionUpdateDate?(date: date)
+                    let stringDate = moment(date).format(dateFormat: "dd-MM-yyyy")
+                    textField.text = stringDate
+                    self.completionUpdateDate?(date: moment(date).format(dateFormat: "yyyy-MM-dd"))
                 }
             })
             let dateController = RMDateSelectionViewController(style: RMActionControllerStyle.White, selectAction: selectAction, andCancelAction: cancelAction)
@@ -63,6 +65,10 @@ class SignupTableViewController: UITableViewController, UITextFieldDelegate {
         return true
     }
     
+    func changeValueSegment(segment: UISegmentedControl) {
+        completionUpdateSex?(sex: segment.selectedSegmentIndex)
+    }
+    
     override func viewDidAppear(animated: Bool) {
 
         for var index = 1; index <= 5; index++ {
@@ -70,6 +76,12 @@ class SignupTableViewController: UITableViewController, UITextFieldDelegate {
                 if let textField = cell.contentView.viewWithTag(index) as? UITextField {
                     textField.delegate = self
                 }
+            }
+        }
+
+        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 5, inSection: 0)) {
+            if let sexSegment = cell.contentView.viewWithTag(6) as? UISegmentedControl {
+                sexSegment.addTarget(self, action: "changeValueSegment:", forControlEvents: UIControlEvents.ValueChanged)
             }
         }
     }

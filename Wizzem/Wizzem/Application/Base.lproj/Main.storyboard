@@ -1194,6 +1194,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
+                                    <action selector="createAccount:" destination="YnP-iV-PPg" eventType="touchUpInside" id="KeF-Z6-zc8"/>
                                     <action selector="createAccount:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="VU4-Ut-I17"/>
                                 </connections>
                             </button>

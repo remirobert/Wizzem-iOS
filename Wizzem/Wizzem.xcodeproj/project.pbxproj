@@ -27,6 +27,7 @@
 		BBFA42F91B2C75F700BAE517 /* PreviewCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA42F81B2C75F700BAE517 /* PreviewCaptureViewController.swift */; };
 		BBFA42FF1B2CBB5300BAE517 /* GifMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFA42FE1B2CBB5300BAE517 /* GifMaker.m */; };
 		BBFA43011B2CC54800BAE517 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA43001B2CC54700BAE517 /* Media.swift */; };
+		BBFA43031B2CDDBB00BAE517 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA43021B2CDDBB00BAE517 /* Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		BBFA42FD1B2CBB5300BAE517 /* GifMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifMaker.h; sourceTree = "<group>"; };
 		BBFA42FE1B2CBB5300BAE517 /* GifMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifMaker.m; sourceTree = "<group>"; };
 		BBFA43001B2CC54700BAE517 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		BBFA43021B2CDDBB00BAE517 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		C38430E023573645DFB6BE61 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA2E643E79B211CB71C6994 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,6 +192,7 @@
 				BBCB1A5B1B27787100D57CEA /* FacebookAuth.swift */,
 				BBCB1A611B277EC500D57CEA /* ParseAuth.swift */,
 				BBCB1A5D1B2779B000D57CEA /* Result.swift */,
+				BBFA43021B2CDDBB00BAE517 /* Alert.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				BB1BE47B1B29AAC600763B88 /* LoginTableViewController.swift in Sources */,
 				BB1BA9A01B2B6936002A8015 /* RMActionController.m in Sources */,
 				BB8BF4611B2A2BD400D9ACF8 /* SignupTableViewController.swift in Sources */,
+				BBFA43031B2CDDBB00BAE517 /* Alert.swift in Sources */,
 				BBFA43011B2CC54800BAE517 /* Media.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
