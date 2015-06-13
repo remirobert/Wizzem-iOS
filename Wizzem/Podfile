@@ -4,5 +4,6 @@ pod 'FBSDKCoreKit', '~> 4.2.0'
 pod 'PBJVision'
 pod 'FLAnimatedImage', '~> 1.0'
 pod 'MBProgressHUD'
+pod 'SwiftMoment'
 use_frameworks!
 pod 'WaitBlock'

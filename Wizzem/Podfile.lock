@@ -27,6 +27,7 @@ PODS:
   - ParseUI (1.1.4):
     - Parse (~> 1.7)
   - PBJVision (0.4.2)
+  - SwiftMoment (0.1.2)
   - WaitBlock (0.1)
 
 DEPENDENCIES:
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - ParseFacebookUtils
   - ParseUI (~> 1.1.4)
   - PBJVision
+  - SwiftMoment
   - WaitBlock
 
 SPEC CHECKSUMS:
@@ -48,6 +50,7 @@ SPEC CHECKSUMS:
   ParseFacebookUtils: 7115990b291ae95b920fde413272828d0eb0d963
   ParseUI: d1228541b02a36a7354c8f47747f5f7a89cf1ff0
   PBJVision: fe43c9a58bb1c1277d16fd802fa836d25e034a45
+  SwiftMoment: a439fccf86c8f3367557e406204c93ec1269c8c5
   WaitBlock: 8c32c0172a599c78a11d1e25cfd44ae519abaa61
 
 COCOAPODS: 0.37.2

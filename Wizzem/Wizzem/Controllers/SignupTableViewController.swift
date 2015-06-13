@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftMoment
 
 class SignupTableViewController: UITableViewController, UITextFieldDelegate {
     
@@ -14,6 +15,7 @@ class SignupTableViewController: UITableViewController, UITextFieldDelegate {
     var completionUpdateLastName: ((content: String) -> Void)?
     var completionUpdateEmail: ((content: String) -> Void)?
     var completionUpdatePassword: ((content: String) -> Void)?
+    var completionUpdateDate: ((date: NSDate) -> Void)?
 
     lazy var datePicker: UIDatePicker! = {
         let datePicker = UIDatePicker(frame: CGRectZero)
@@ -42,32 +44,32 @@ class SignupTableViewController: UITableViewController, UITextFieldDelegate {
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         if textField.tag == 5 {
             
-            let dateController = RMDateSelectionViewController(style: RMActionControllerStyle.White)
+            let cancelAction = RMAction(title: "Cancel", style: RMActionStyle.Cancel, andHandler: { (controller: RMActionController!) -> Void in})
+            let selectAction = RMAction(title: "Select", style: RMActionStyle.Done, andHandler: { (controller: RMActionController!) -> Void in
+                
+                if let date = (controller.contentView as? UIDatePicker)?.date {
+                    textField.text = "\(date)"
+                    self.completionUpdateDate?(date: date)
+                }
+            })
+            let dateController = RMDateSelectionViewController(style: RMActionControllerStyle.White, selectAction: selectAction, andCancelAction: cancelAction)
+            dateController.datePicker.datePickerMode = UIDatePickerMode.Date
+            dateController.datePicker.locale = NSLocale.currentLocale()
+            dateController.title = "Date de naissance"
             
+            navigationController?.presentViewController(dateController, animated: true, completion: nil)
             return false
         }
         return true
     }
     
     override func viewDidAppear(animated: Bool) {
-        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) {
-            if let textField = cell.contentView.viewWithTag(1) as? UITextField {
-                textField.delegate = self
-            }
-        }
-        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0)) {
-            if let textField = cell.contentView.viewWithTag(2) as? UITextField {
-                textField.delegate = self
-            }
-        }
-        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 3, inSection: 0)) {
-            if let textField = cell.contentView.viewWithTag(3) as? UITextField {
-                textField.delegate = self
-            }
-        }
-        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 4, inSection: 0)) {
-            if let textField = cell.contentView.viewWithTag(4) as? UITextField {
-                textField.delegate = self
+
+        for var index = 1; index <= 5; index++ {
+            if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) {
+                if let textField = cell.contentView.viewWithTag(index) as? UITextField {
+                    textField.delegate = self
+                }
             }
         }
     }
