@@ -8,6 +8,7 @@
 
 import UIKit
 import WaitBlock
+import MBProgressHUD
 
 class LoginViewController: UIViewController {
 
@@ -15,16 +16,33 @@ class LoginViewController: UIViewController {
     var passwordText: String?
     
     @IBAction func facebookLogin(sender: AnyObject) {
+        let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
+        hud.labelText = "Connection en cours"
+        
         FacebookAuth.login { (result) -> () in
+            hud.hide(true)
             switch result {
             case .👍: println("auth okay")
             case .👎(_, let error):
-                println("error auth : \(error))")
+                Alert.error("Error lors de la connection : \(error)")
             }
         }
     }
     
     @IBAction func connection(sender: AnyObject) {
+        if let emailText = emailText, let passwordText = passwordText {
+            let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
+            hud.labelText = "Connection en cours"
+            
+            ParseAuth.login(username: emailText, userPassword: passwordText, completionBlock: { (result) -> () in
+                hud.hide(true)
+                switch result {
+                case Result.👍: break
+                case Result.👎(_, let error):
+                    Alert.error("Error lors de la connection : \(error)")
+                }
+            })
+        }
     }
         
     override func viewDidLoad() {
