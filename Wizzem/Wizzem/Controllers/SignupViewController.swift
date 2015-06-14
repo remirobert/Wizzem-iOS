@@ -22,6 +22,12 @@ class SignupViewController: UIViewController {
     
     var newUser: PFUser?
 
+    func presentMediaMainController() {
+        if let controller = InstanceController.fromStoryboard(CONTROLLER_MEDIA_CAPTURE) {
+            navigationController?.presentViewController(controller, animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func backController(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
     }
@@ -43,7 +49,7 @@ class SignupViewController: UIViewController {
                 ParseAuth.signup(user: newUser, completionBlock: { (result) -> () in
                     hud.hide(true)
                     switch result {
-                    case Result.👍: break
+                    case Result.👍: self.presentMediaMainController()
                     case Result.👎(_, let error):
                         Alert.error("\(error))")
                     }

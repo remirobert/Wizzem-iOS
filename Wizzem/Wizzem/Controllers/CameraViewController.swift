@@ -23,6 +23,8 @@ class CameraViewController: UIViewController, PBJVisionDelegate {
     @IBOutlet var textCameraMode: UIButton!
     @IBOutlet var validateGifCaptureButton: UIButton!
     
+    @IBOutlet var textView: UITextView!
+    
     @IBOutlet var previewView: UIView!
     @IBOutlet var captureButton: UIButton!
     
@@ -31,10 +33,21 @@ class CameraViewController: UIViewController, PBJVisionDelegate {
     
     @IBOutlet var photoNumberGif: UILabel!
     
+    lazy var inputViewKeyboard: UIToolbar! = {
+        let inputView = UIToolbar()
+        inputView.frame.size = CGSizeMake(UIScreen.mainScreen().bounds.size.width, 44)
+        let cancelButton = UIBarButtonItem(title: "Annuler", style: UIBarButtonItemStyle.Done, target: self, action: "cancelEdit")
+        let valideButton = UIBarButtonItem(title: "Valider", style: UIBarButtonItemStyle.Done, target: self, action: "validateEdit")
+        
+        inputView.items = [cancelButton, valideButton]
+        return inputView
+    }()
+    
     var previewLayer: AVCaptureVideoPreviewLayer!
     var capturedImage: UIImage!
     var capturedGif: NSData!
     var gifImages = Array<UIImage>()
+    var selectedTextContent: String!
     var currentCameraMode: CameraMode = CameraMode.Photo
     
     func setupCamera() {
@@ -132,6 +145,8 @@ class CameraViewController: UIViewController, PBJVisionDelegate {
             return
         }
         currentCameraMode = .Photo
+        textView.resignFirstResponder()
+        textView.alpha = 0
         PBJVision.sharedInstance().captureSessionPreset = AVCaptureSessionPresetPhoto
         validateGifCaptureButton.alpha = 0
         photoNumberGif.alpha = 0
@@ -146,6 +161,8 @@ class CameraViewController: UIViewController, PBJVisionDelegate {
             return
         }
         gifImages.removeAll(keepCapacity: false)
+        textView.resignFirstResponder()
+        textView.alpha = 0
         currentCameraMode = .Gif
         PBJVision.sharedInstance().captureSessionPreset = AVCaptureSessionPresetMedium
         validateGifCaptureButton.alpha = 1
@@ -161,6 +178,9 @@ class CameraViewController: UIViewController, PBJVisionDelegate {
         if currentCameraMode == .Text {
             return
         }
+        textView.text = ""
+        textView.alpha = 1
+        textView.becomeFirstResponder()
         currentCameraMode = .Text
         validateGifCaptureButton.alpha = 0
         photoNumberGif.alpha = 0
@@ -169,17 +189,37 @@ class CameraViewController: UIViewController, PBJVisionDelegate {
         textCameraMode.alpha = 0.2
     }
     
+    //MARK: keyboard
+    
+    func cancelEdit() {
+        changePhotoCameraMode(self)
+    }
+    
+    func validateEdit() {
+        selectedTextContent = textView.text
+        self.performSegueWithIdentifier(SEGUE_PREVIEW_CAPTURE, sender: nil)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            textView.frame.size.height -= keyboardSize.height
+        }
+    }
+    
     //MARK: UIView cycle
     
     override func viewWillDisappear(animated: Bool) {
         PBJVision.sharedInstance().stopPreview()
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     override func viewDidAppear(animated: Bool) {
-        setupCamera()
+        previewLayer.frame = previewView.bounds
+        photoNumberGif.text = "0"
         gifImages.removeAll(keepCapacity: false)
         PBJVision.sharedInstance().startPreview()
         view.bringSubviewToFront(captureButton)
+        view.bringSubviewToFront(textView)
     }
     
     override func viewDidLayoutSubviews() {
@@ -187,22 +227,27 @@ class CameraViewController: UIViewController, PBJVisionDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCamera()
         photoCameraMode.alpha = 0.2
         validateGifCaptureButton.alpha = 0
         photoNumberGif.alpha = 0
+        textView.alpha = 0
+        
+        textView.contentInset = UIEdgeInsetsMake(24, 0, 10, 0)
+        textView.inputAccessoryView = inputViewKeyboard
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SEGUE_PREVIEW_CAPTURE {
-            if let capturedImage = capturedImage {
-                var media: Media💿!
-                switch currentCameraMode {
-                case .Photo: media = Media💿.Photo(image: capturedImage)
-                case .Gif: media = Media💿.Gif(data: capturedGif)
-                default: break
-                }
-                (segue.destinationViewController as! PreviewCaptureViewController).capturedMedia = media
+            var media: Media💿!
+            switch currentCameraMode {
+            case .Photo: media = Media💿.Photo(image: capturedImage)
+            case .Gif: media = Media💿.Gif(data: capturedGif)
+            case .Text: media = Media💿.Text(content: selectedTextContent)
+            default: break
             }
+            (segue.destinationViewController as! PreviewCaptureViewController).capturedMedia = media
         }
     }
 }

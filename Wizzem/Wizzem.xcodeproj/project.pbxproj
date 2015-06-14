@@ -30,6 +30,11 @@
 		BBFA43031B2CDDBB00BAE517 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA43021B2CDDBB00BAE517 /* Alert.swift */; };
 		BBFA43051B2D691C00BAE517 /* InstanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA43041B2D691C00BAE517 /* InstanceController.swift */; };
 		BBFA43081B2D6C7500BAE517 /* FacebookInit.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFA43071B2D6C7500BAE517 /* FacebookInit.m */; };
+		BBFA43131B2DC89500BAE517 /* CreateWizzDatailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA43121B2DC89500BAE517 /* CreateWizzDatailTableViewController.swift */; };
+		BBFA43161B2DCEE500BAE517 /* RRLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA43151B2DCEE500BAE517 /* RRLocationManager.swift */; };
+		BBFA43181B2DCF2700BAE517 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFA43171B2DCF2700BAE517 /* CoreLocation.framework */; };
+		BBFA431A1B2DCF2B00BAE517 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFA43191B2DCF2B00BAE517 /* MapKit.framework */; };
+		BBFA431C1B2DCFC500BAE517 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFA431B1B2DCFC500BAE517 /* AddressBookUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +81,11 @@
 		BBFA43041B2D691C00BAE517 /* InstanceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstanceController.swift; sourceTree = "<group>"; };
 		BBFA43061B2D6C7500BAE517 /* FacebookInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookInit.h; sourceTree = "<group>"; };
 		BBFA43071B2D6C7500BAE517 /* FacebookInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookInit.m; sourceTree = "<group>"; };
+		BBFA43121B2DC89500BAE517 /* CreateWizzDatailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWizzDatailTableViewController.swift; sourceTree = "<group>"; };
+		BBFA43151B2DCEE500BAE517 /* RRLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RRLocationManager.swift; sourceTree = "<group>"; };
+		BBFA43171B2DCF2700BAE517 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		BBFA43191B2DCF2B00BAE517 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		BBFA431B1B2DCFC500BAE517 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		C38430E023573645DFB6BE61 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA2E643E79B211CB71C6994 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +95,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBFA431C1B2DCFC500BAE517 /* AddressBookUI.framework in Frameworks */,
+				BBFA431A1B2DCF2B00BAE517 /* MapKit.framework in Frameworks */,
+				BBFA43181B2DCF2700BAE517 /* CoreLocation.framework in Frameworks */,
 				0AE425F2C56C5291402C0F86 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,6 +124,9 @@
 		AC9C61A0D51B03DA609B2AE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BBFA431B1B2DCFC500BAE517 /* AddressBookUI.framework */,
+				BBFA43191B2DCF2B00BAE517 /* MapKit.framework */,
+				BBFA43171B2DCF2700BAE517 /* CoreLocation.framework */,
 				C38430E023573645DFB6BE61 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -179,6 +195,7 @@
 				BB5C32AB1B2C618700B38318 /* CameraController */,
 				BB8BF45F1B2A2B9500D9ACF8 /* signupController */,
 				BB1BE47C1B29AACA00763B88 /* LoginController */,
+				BBFA43141B2DC89A00BAE517 /* CreationWizzController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -194,6 +211,7 @@
 		BBCB1A571B27723300D57CEA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BBFA43151B2DCEE500BAE517 /* RRLocationManager.swift */,
 				BBCB1A5B1B27787100D57CEA /* FacebookAuth.swift */,
 				BBCB1A611B277EC500D57CEA /* ParseAuth.swift */,
 				BBCB1A5D1B2779B000D57CEA /* Result.swift */,
@@ -282,6 +300,14 @@
 				BBFA43071B2D6C7500BAE517 /* FacebookInit.m */,
 			);
 			name = FacebookInit;
+			sourceTree = "<group>";
+		};
+		BBFA43141B2DC89A00BAE517 /* CreationWizzController */ = {
+			isa = PBXGroup;
+			children = (
+				BBFA43121B2DC89500BAE517 /* CreateWizzDatailTableViewController.swift */,
+			);
+			name = CreationWizzController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,7 +469,9 @@
 				BBCB1A641B27926300D57CEA /* LoginButton.swift in Sources */,
 				BBCB1A5C1B27787100D57CEA /* FacebookAuth.swift in Sources */,
 				BB5C32AD1B2C619700B38318 /* CameraViewController.swift in Sources */,
+				BBFA43131B2DC89500BAE517 /* CreateWizzDatailTableViewController.swift in Sources */,
 				BBFA42F91B2C75F700BAE517 /* PreviewCaptureViewController.swift in Sources */,
+				BBFA43161B2DCEE500BAE517 /* RRLocationManager.swift in Sources */,
 				BBCB1A5E1B2779B000D57CEA /* Result.swift in Sources */,
 				BBE4375F1B2771A7004C0D89 /* AppDelegate.swift in Sources */,
 				BBCB1A621B277EC500D57CEA /* ParseAuth.swift in Sources */,

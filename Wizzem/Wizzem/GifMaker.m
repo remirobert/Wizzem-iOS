@@ -19,14 +19,17 @@
     NSDictionary *frameProperties = @{(__bridge id)kCGImagePropertyGIFDictionary:
                                           @{(__bridge id)kCGImagePropertyGIFDelayTime: DEFAULT_SPEED_GIF,}};
     
-    //    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory
-    //                                                                          inDomain:NSUserDomainMask
-    //                                                                 appropriateForURL:nil create:YES error:nil];
-    //    NSURL *fileURL = [documentsDirectoryURL URLByAppendingPathComponent:@"animated.gif"];
+//        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory
+//                                                                              inDomain:NSUserDomainMask
+//                                                                     appropriateForURL:nil create:YES error:nil];
+//        NSURL *fileURL = [documentsDirectoryURL URLByAppendingPathComponent:@"animated.gif"];
     
-    CFMutableDataRef data = CFDataCreateMutable (kCFAllocatorDefault, 0);
-    
-    CGImageDestinationRef destination = CGImageDestinationCreateWithData(data, kUTTypeGIF, kFrameCount, NULL);
+    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
+    NSURL *fileURL = [documentsDirectoryURL URLByAppendingPathComponent:@"animated.gif"];
+
+    [[NSFileManager defaultManager] removeItemAtPath:[fileURL absoluteString] error:nil];
+
+    CGImageDestinationRef destination = CGImageDestinationCreateWithURL((__bridge CFURLRef)fileURL, kUTTypeGIF, kFrameCount, NULL);
     CGImageDestinationSetProperties(destination, (__bridge CFDictionaryRef)fileProperties);
     
     for (UIImage *currentImage in images) {
@@ -38,9 +41,9 @@
     if (!CGImageDestinationFinalize(destination)) {
         NSLog(@"failed to finalize image destination");
     }
-    NSData *gifData = [NSData dataWithData:(__bridge NSData *)data];
     CFRelease(destination);
-    completionBlock(gifData);
+    NSData *data = [NSData dataWithContentsOfURL:fileURL];
+    completionBlock(data);
 }
 
 @end

@@ -15,6 +15,12 @@ class LoginViewController: UIViewController {
     var emailText: String?
     var passwordText: String?
     
+    func presentMediaMainController() {
+        if let controller = InstanceController.fromStoryboard(CONTROLLER_MEDIA_CAPTURE) {
+            navigationController?.presentViewController(controller, animated: true, completion: nil)
+        }
+    }
+    
     func facebookLogin() {
         let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
         hud.labelText = "Connection en cours"
@@ -22,7 +28,7 @@ class LoginViewController: UIViewController {
         FacebookAuth.login { (result) -> () in
             hud.hide(true)
             switch result {
-            case .👍: println("auth okay")
+            case .👍: self.presentMediaMainController()
             case .👎(_, let error):
                 Alert.error("Error lors de la connection : \(error)")
             }
@@ -37,7 +43,7 @@ class LoginViewController: UIViewController {
             ParseAuth.login(username: emailText, userPassword: passwordText, completionBlock: { (result) -> () in
                 hud.hide(true)
                 switch result {
-                case Result.👍: break
+                case Result.👍: self.presentMediaMainController()
                 case Result.👎(_, let error):
                     Alert.error("Error lors de la connection : \(error)")
                 }
