@@ -36,6 +36,8 @@
 		BBFA431A1B2DCF2B00BAE517 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFA43191B2DCF2B00BAE517 /* MapKit.framework */; };
 		BBFA431C1B2DCFC500BAE517 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFA431B1B2DCFC500BAE517 /* AddressBookUI.framework */; };
 		BBFA431E1B2DD5E200BAE517 /* CreationWizzPeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA431D1B2DD5E200BAE517 /* CreationWizzPeopleTableViewController.swift */; };
+		BBFA43211B2E075E00BAE517 /* WizzListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA43201B2E075E00BAE517 /* WizzListViewController.swift */; };
+		BBFA43241B2E20D600BAE517 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFA43231B2E20D600BAE517 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		BBFA43191B2DCF2B00BAE517 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BBFA431B1B2DCFC500BAE517 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		BBFA431D1B2DD5E200BAE517 /* CreationWizzPeopleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationWizzPeopleTableViewController.swift; sourceTree = "<group>"; };
+		BBFA43201B2E075E00BAE517 /* WizzListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WizzListViewController.swift; sourceTree = "<group>"; };
+		BBFA43231B2E20D600BAE517 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		C38430E023573645DFB6BE61 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA2E643E79B211CB71C6994 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +102,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBFA431C1B2DCFC500BAE517 /* AddressBookUI.framework in Frameworks */,
+				BBFA43241B2E20D600BAE517 /* Crashlytics.framework in Frameworks */,
 				BBFA431A1B2DCF2B00BAE517 /* MapKit.framework in Frameworks */,
 				BBFA43181B2DCF2700BAE517 /* CoreLocation.framework in Frameworks */,
 				0AE425F2C56C5291402C0F86 /* Pods.framework in Frameworks */,
@@ -126,6 +131,7 @@
 		AC9C61A0D51B03DA609B2AE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BBFA43231B2E20D600BAE517 /* Crashlytics.framework */,
 				BBFA431B1B2DCFC500BAE517 /* AddressBookUI.framework */,
 				BBFA43191B2DCF2B00BAE517 /* MapKit.framework */,
 				BBFA43171B2DCF2700BAE517 /* CoreLocation.framework */,
@@ -194,6 +200,7 @@
 		BBCB1A551B27722A00D57CEA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BBFA431F1B2E075000BAE517 /* WizzController */,
 				BB5C32AB1B2C618700B38318 /* CameraController */,
 				BB8BF45F1B2A2B9500D9ACF8 /* signupController */,
 				BB1BE47C1B29AACA00763B88 /* LoginController */,
@@ -313,6 +320,14 @@
 			name = CreationWizzController;
 			sourceTree = "<group>";
 		};
+		BBFA431F1B2E075000BAE517 /* WizzController */ = {
+			isa = PBXGroup;
+			children = (
+				BBFA43201B2E075E00BAE517 /* WizzListViewController.swift */,
+			);
+			name = WizzController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -326,6 +341,7 @@
 				BBE437571B2771A7004C0D89 /* Resources */,
 				3E659E5AAA038FAEAC577B3D /* Copy Pods Resources */,
 				EC593D60CA04E42F4B50FB1E /* Embed Pods Frameworks */,
+				BBFA43221B2E20B300BAE517 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -442,6 +458,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BBFA43221B2E20B300BAE517 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run d9291a9165795274a4a0ad9f612bfafae0b9685d 054127c9bafbcc58f894717f58d5d0544364c4499e266bb0bebef0905ebfb097";
+		};
 		EC593D60CA04E42F4B50FB1E /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -464,6 +493,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBFA43211B2E075E00BAE517 /* WizzListViewController.swift in Sources */,
 				BB8BF4631B2A307B00D9ACF8 /* SignupViewController.swift in Sources */,
 				BBFA42FF1B2CBB5300BAE517 /* GifMaker.m in Sources */,
 				BBCB1A591B27742E00D57CEA /* LoginViewController.swift in Sources */,

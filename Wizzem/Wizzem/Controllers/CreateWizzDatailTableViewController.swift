@@ -133,6 +133,10 @@ class CreateWizzDatailTableViewController: UITableViewController, UITextFieldDel
         }
     }
     
+    @IBAction func dismissController(sender: AnyObject) {
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

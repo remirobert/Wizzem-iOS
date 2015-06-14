@@ -11,7 +11,7 @@ import Parse
 import FBSDKCoreKit
 import ParseUI
 import ParseFacebookUtils
-
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -34,6 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         window?.makeKeyAndVisible()
+        
+        Crashlytics.startWithAPIKey("d9291a9165795274a4a0ad9f612bfafae0b9685d")
+        
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     

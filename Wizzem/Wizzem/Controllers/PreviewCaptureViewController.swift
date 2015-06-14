@@ -8,6 +8,7 @@
 
 import UIKit
 import FLAnimatedImage
+import Parse
 
 class PreviewCaptureViewController: UIViewController {
 
@@ -18,6 +19,13 @@ class PreviewCaptureViewController: UIViewController {
     @IBOutlet var closeButton: UIButton!
     @IBOutlet var shareButton: UIButton!
     @IBOutlet var valideButton: UIButton!
+    
+    @IBOutlet var activityLoding: UIActivityIndicatorView!
+    @IBOutlet var lastWizzText: UILabel!
+    
+    @IBAction func loadWizz(sender: AnyObject) {
+        
+    }
     
     @IBAction func cancelPreview(sender: AnyObject) {
         navigationController?.popToRootViewControllerAnimated(true)
@@ -63,5 +71,7 @@ class PreviewCaptureViewController: UIViewController {
         default: break
         }
         
+        let querry = PFQuery(className: "Event")
+        querry
     }
 }
