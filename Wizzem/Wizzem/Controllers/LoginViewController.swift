@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     var emailText: String?
     var passwordText: String?
     
-    @IBAction func facebookLogin(sender: AnyObject) {
+    func facebookLogin() {
         let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
         hud.labelText = "Connection en cours"
         
@@ -59,6 +59,9 @@ class LoginViewController: UIViewController {
                 loginController.completionUpdatePassword = {(content: String) -> Void in
                     self.passwordText = content
                     println("password content : \(self.passwordText!)")
+                }
+                loginController.completionFacebookAuth = {() -> Void in
+                    self.facebookLogin()
                 }
             }
         }

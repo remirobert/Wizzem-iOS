@@ -9,7 +9,9 @@
 import UIKit
 import Parse
 import FBSDKCoreKit
+import ParseUI
 import ParseFacebookUtils
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,8 +19,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        Parse.enableLocalDatastore()
         Parse.setApplicationId("P2PJVDbhrj37sCtIhVdKvrzrQwq5jFYEIAYsoDfb", clientKey: "G9h48iFlrF6z2IKAGaXGFolTekaVg04rQpqb7AQZ")
+
         PFFacebookUtils.initializeFacebook()
+ 
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        if (PFUser.currentUser() != nil) {
+            window?.rootViewController = InstanceController.fromStoryboard(CONTROLLER_MEDIA_CAPTURE)
+        }
+        else {
+            window?.rootViewController = InstanceController.fromStoryboard(CONTROLLER_LOGIN)
+        }
+        
+        window?.makeKeyAndVisible()
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     

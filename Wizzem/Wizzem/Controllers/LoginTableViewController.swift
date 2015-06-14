@@ -12,6 +12,7 @@ class LoginTableViewController: UITableViewController, UITextFieldDelegate {
 
     var completionUpdateEmail: ((content: String) -> Void)?
     var completionUpdatePassword: ((content: String) -> Void)?
+    var completionFacebookAuth: (() -> Void)?
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string:
         String) -> Bool {
@@ -34,6 +35,10 @@ class LoginTableViewController: UITableViewController, UITextFieldDelegate {
             return true
     }
     
+    func facebookAuth() {
+        completionFacebookAuth?()
+    }
+    
     override func viewDidAppear(animated: Bool) {
         if let emailCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0)) {
             if let textField = emailCell.contentView.viewWithTag(1) as? UITextField {
@@ -45,6 +50,10 @@ class LoginTableViewController: UITableViewController, UITextFieldDelegate {
                 textField.delegate = self
             }
         }
+        if let loginCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) {
+            if let buttonLogin = loginCell.contentView.viewWithTag(1) as? UIButton {
+                buttonLogin.addTarget(self, action: "facebookAuth", forControlEvents: UIControlEvents.TouchUpInside)
+            }
+        }
     }
-
 }

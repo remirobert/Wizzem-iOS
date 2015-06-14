@@ -12,4 +12,6 @@
 #import "Constants.h"
 #import "RMDateSelectionViewController.h"
 #import "GifMaker.h"
+#import "FacebookInit.h"
+
 #endif

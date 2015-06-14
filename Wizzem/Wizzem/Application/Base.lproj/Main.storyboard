@@ -139,7 +139,7 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60a-DY-DHV">
+                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60a-DY-DHV">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="55" id="ddH-2Z-DOl"/>
@@ -1297,7 +1297,7 @@
         <!--Navigation Controller-->
         <scene sceneID="SUf-bg-YJd">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Jy5-UZ-cSp" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="loginSignupController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Jy5-UZ-cSp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xPX-mw-bpC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1921,7 +1921,7 @@
         <!--Navigation Controller-->
         <scene sceneID="j69-w8-Rio">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="LVy-OW-ADE" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mediaCaptureController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="LVy-OW-ADE" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="f3N-Re-k5o">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

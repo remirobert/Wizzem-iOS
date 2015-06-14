@@ -28,6 +28,8 @@
 		BBFA42FF1B2CBB5300BAE517 /* GifMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFA42FE1B2CBB5300BAE517 /* GifMaker.m */; };
 		BBFA43011B2CC54800BAE517 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA43001B2CC54700BAE517 /* Media.swift */; };
 		BBFA43031B2CDDBB00BAE517 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA43021B2CDDBB00BAE517 /* Alert.swift */; };
+		BBFA43051B2D691C00BAE517 /* InstanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA43041B2D691C00BAE517 /* InstanceController.swift */; };
+		BBFA43081B2D6C7500BAE517 /* FacebookInit.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFA43071B2D6C7500BAE517 /* FacebookInit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,9 @@
 		BBFA42FE1B2CBB5300BAE517 /* GifMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifMaker.m; sourceTree = "<group>"; };
 		BBFA43001B2CC54700BAE517 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		BBFA43021B2CDDBB00BAE517 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		BBFA43041B2D691C00BAE517 /* InstanceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstanceController.swift; sourceTree = "<group>"; };
+		BBFA43061B2D6C7500BAE517 /* FacebookInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookInit.h; sourceTree = "<group>"; };
+		BBFA43071B2D6C7500BAE517 /* FacebookInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookInit.m; sourceTree = "<group>"; };
 		C38430E023573645DFB6BE61 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA2E643E79B211CB71C6994 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,6 +198,7 @@
 				BBCB1A611B277EC500D57CEA /* ParseAuth.swift */,
 				BBCB1A5D1B2779B000D57CEA /* Result.swift */,
 				BBFA43021B2CDDBB00BAE517 /* Alert.swift */,
+				BBFA43041B2D691C00BAE517 /* InstanceController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -258,6 +264,7 @@
 		BBE4377E1B2771B6004C0D89 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				BBFA430B1B2D75C400BAE517 /* FacebookInit */,
 				BBE4375E1B2771A7004C0D89 /* AppDelegate.swift */,
 				BBE437621B2771A7004C0D89 /* Main.storyboard */,
 				BBE437651B2771A7004C0D89 /* Images.xcassets */,
@@ -266,6 +273,15 @@
 				BB1BE4791B29AA1300763B88 /* Constants.h */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		BBFA430B1B2D75C400BAE517 /* FacebookInit */ = {
+			isa = PBXGroup;
+			children = (
+				BBFA43061B2D6C7500BAE517 /* FacebookInit.h */,
+				BBFA43071B2D6C7500BAE517 /* FacebookInit.m */,
+			);
+			name = FacebookInit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -423,6 +439,7 @@
 				BBFA42FF1B2CBB5300BAE517 /* GifMaker.m in Sources */,
 				BBCB1A591B27742E00D57CEA /* LoginViewController.swift in Sources */,
 				BB1BA99C1B2B6888002A8015 /* RMDateSelectionViewController.m in Sources */,
+				BBFA43051B2D691C00BAE517 /* InstanceController.swift in Sources */,
 				BBCB1A641B27926300D57CEA /* LoginButton.swift in Sources */,
 				BBCB1A5C1B27787100D57CEA /* FacebookAuth.swift in Sources */,
 				BB5C32AD1B2C619700B38318 /* CameraViewController.swift in Sources */,
@@ -431,6 +448,7 @@
 				BBE4375F1B2771A7004C0D89 /* AppDelegate.swift in Sources */,
 				BBCB1A621B277EC500D57CEA /* ParseAuth.swift in Sources */,
 				BB1BE47B1B29AAC600763B88 /* LoginTableViewController.swift in Sources */,
+				BBFA43081B2D6C7500BAE517 /* FacebookInit.m in Sources */,
 				BB1BA9A01B2B6936002A8015 /* RMActionController.m in Sources */,
 				BB8BF4611B2A2BD400D9ACF8 /* SignupTableViewController.swift in Sources */,
 				BBFA43031B2CDDBB00BAE517 /* Alert.swift in Sources */,
@@ -564,6 +582,10 @@
 			baseConfigurationReference = 63FB5AAFCF0C93E31EEC629F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Wizzem/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -576,6 +598,10 @@
 			baseConfigurationReference = FCA2E643E79B211CB71C6994 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Wizzem/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -35,7 +35,7 @@ DEPENDENCIES:
   - FLAnimatedImage (~> 1.0)
   - MBProgressHUD
   - ParseFacebookUtils
-  - ParseUI (~> 1.1.4)
+  - ParseUI
   - PBJVision
   - SwiftMoment
   - WaitBlock
