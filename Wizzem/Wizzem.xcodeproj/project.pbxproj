@@ -35,6 +35,7 @@
 		BBFA43181B2DCF2700BAE517 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFA43171B2DCF2700BAE517 /* CoreLocation.framework */; };
 		BBFA431A1B2DCF2B00BAE517 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFA43191B2DCF2B00BAE517 /* MapKit.framework */; };
 		BBFA431C1B2DCFC500BAE517 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFA431B1B2DCFC500BAE517 /* AddressBookUI.framework */; };
+		BBFA431E1B2DD5E200BAE517 /* CreationWizzPeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA431D1B2DD5E200BAE517 /* CreationWizzPeopleTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		BBFA43171B2DCF2700BAE517 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		BBFA43191B2DCF2B00BAE517 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BBFA431B1B2DCFC500BAE517 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		BBFA431D1B2DD5E200BAE517 /* CreationWizzPeopleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationWizzPeopleTableViewController.swift; sourceTree = "<group>"; };
 		C38430E023573645DFB6BE61 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA2E643E79B211CB71C6994 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -306,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				BBFA43121B2DC89500BAE517 /* CreateWizzDatailTableViewController.swift */,
+				BBFA431D1B2DD5E200BAE517 /* CreationWizzPeopleTableViewController.swift */,
 			);
 			name = CreationWizzController;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				BBFA43081B2D6C7500BAE517 /* FacebookInit.m in Sources */,
 				BB1BA9A01B2B6936002A8015 /* RMActionController.m in Sources */,
 				BB8BF4611B2A2BD400D9ACF8 /* SignupTableViewController.swift in Sources */,
+				BBFA431E1B2DD5E200BAE517 /* CreationWizzPeopleTableViewController.swift in Sources */,
 				BBFA43031B2CDDBB00BAE517 /* Alert.swift in Sources */,
 				BBFA43011B2CC54800BAE517 /* Media.swift in Sources */,
 			);

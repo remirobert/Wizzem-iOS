@@ -2435,22 +2435,25 @@
         <!--Créer votre Wizz-->
         <scene sceneID="ina-gy-mBT">
             <objects>
-                <tableViewController title="Créer votre Wizz" id="J7e-hL-rIk" sceneMemberID="viewController">
+                <tableViewController title="Créer votre Wizz" id="J7e-hL-rIk" customClass="CreationWizzPeopleTableViewController" customModule="Wizzem" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="WeF-0h-sfy">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="" id="mlr-Iu-j1q">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="QQF-lb-T6P">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="120" id="QQF-lb-T6P">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QQF-lb-T6P" id="WhV-DS-YW4">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="otE-uS-5df">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="31" minValue="1" maxValue="31" translatesAutoresizingMaskIntoConstraints="NO" id="otE-uS-5df">
                                                     <rect key="frame" x="0.0" y="-15" width="118" height="31"/>
                                                     <color key="minimumTrackTintColor" red="0.95686274510000002" green="0.63137254899999995" blue="0.066666666669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="thumbTintColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="changeValue:" destination="J7e-hL-rIk" eventType="valueChanged" id="nWS-7s-dgj"/>
+                                                    </connections>
                                                 </slider>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre de places disponible" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Rh-H9-odu">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -2549,7 +2552,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="  " id="yR2-kV-vVr">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="350" id="Se9-1I-aDD">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="328" id="Se9-1I-aDD">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Se9-1I-aDD" id="Mbb-UV-cv9">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -2678,6 +2681,10 @@
                                                             <include reference="kwW-nJ-UV6"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="changeOption1:" destination="J7e-hL-rIk" eventType="valueChanged" id="iGB-1V-TQQ"/>
+                                                        <action selector="changeOption2:" destination="J7e-hL-rIk" eventType="valueChanged" id="Dhp-p2-YJ8"/>
+                                                    </connections>
                                                 </switch>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPh-fK-aWq" customClass="LoginButton" customModule="Wizzem" customModuleProvider="target">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -2712,6 +2719,9 @@
                                                             <include reference="6ri-UP-ObL"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="createWizz:" destination="J7e-hL-rIk" eventType="touchUpInside" id="jwJ-f3-amy"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -2720,7 +2730,9 @@
                                                 <constraint firstItem="bmY-NH-cmy" firstAttribute="top" secondItem="J9Y-IH-ydt" secondAttribute="bottom" constant="33" id="I5T-fN-1ez"/>
                                                 <constraint firstAttribute="centerX" secondItem="J9Y-IH-ydt" secondAttribute="centerX" constant="-0.5" id="ObK-MX-gMP"/>
                                                 <constraint firstItem="rhC-X0-KG4" firstAttribute="leading" secondItem="bmY-NH-cmy" secondAttribute="trailing" constant="16" id="TlS-JN-7Ou"/>
-                                                <constraint firstItem="yPh-fK-aWq" firstAttribute="bottom" secondItem="Mbb-UV-cv9" secondAttribute="bottomMargin" id="XHD-lh-XT3"/>
+                                                <constraint firstItem="yPh-fK-aWq" firstAttribute="bottom" secondItem="Mbb-UV-cv9" secondAttribute="bottomMargin" id="XHD-lh-XT3">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="-8.5"/>
+                                                </constraint>
                                                 <constraint firstItem="J9Y-IH-ydt" firstAttribute="top" secondItem="eGo-xS-I3q" secondAttribute="bottom" constant="8" id="ZNl-eb-Lid"/>
                                                 <constraint firstItem="IXa-nF-7FE" firstAttribute="leading" secondItem="pDr-12-yfJ" secondAttribute="trailing" constant="16" id="bte-83-bxh"/>
                                                 <constraint firstItem="IXa-nF-7FE" firstAttribute="trailing" secondItem="Mbb-UV-cv9" secondAttribute="trailingMargin" id="ege-wD-huE"/>
@@ -2806,6 +2818,10 @@
                             <outlet property="delegate" destination="J7e-hL-rIk" id="67V-qR-pLk"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="numberTextFlied" destination="P7Y-nw-RB9" id="MtQ-jj-EVc"/>
+                        <outlet property="sliderNumberParticipant" destination="otE-uS-5df" id="VA0-4Y-aVX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Po-gI-yV9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2837,6 +2853,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="n4F-su-zyB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.32941176470588235" green="0.44705882352941179" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

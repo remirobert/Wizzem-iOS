@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import SwiftMoment
 import AddressBookUI
+import Parse
 
 class CreateWizzDatailTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
 
@@ -21,8 +22,16 @@ class CreateWizzDatailTableViewController: UITableViewController, UITextFieldDel
     var descriptionLocation: UITextField!
     var descriptionWizz: UITextView!
     
+    var start: NSDate!
+    var end: NSDate!
+    
     @IBAction func nextCreationWizz(sender: AnyObject) {
-        
+        if titleTextView.text != "" &&  beginDate.text != "" && endDate.text != "" && cityLocation.text != "" {
+            self.performSegueWithIdentifier(SEGUE_NEXT_CREATION_WIZZ, sender: nil)
+        }
+        else {
+            Alert.error("Veuillez remplir les champs (Titre, date de début et de fin), afin de pouvoir créer votre Wizz")
+        }
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
@@ -42,7 +51,7 @@ class CreateWizzDatailTableViewController: UITableViewController, UITextFieldDel
     }
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        if textField.tag >= 4 {
+        if textField.tag == 4 || textField.tag == 6 {
             
             let cancelAction = RMAction(title: "Cancel", style: RMActionStyle.Cancel, andHandler: { (controller: RMActionController!) -> Void in})
             let selectAction = RMAction(title: "Select", style: RMActionStyle.Done, andHandler: { (controller: RMActionController!) -> Void in
@@ -50,9 +59,11 @@ class CreateWizzDatailTableViewController: UITableViewController, UITextFieldDel
                 if let date = (controller.contentView as? UIDatePicker)?.date {
                     let stringDate = moment(date).format(dateFormat: "dd / MM / yyyy à HH:mm")
                     if textField.tag == 4 {
+                        self.start = date
                         textField.text = "Début le \(stringDate)"
                     }
                     else {
+                        self.end = date
                         textField.text = "Fin le \(stringDate)"
                     }
                 }
@@ -68,7 +79,7 @@ class CreateWizzDatailTableViewController: UITableViewController, UITextFieldDel
             else {
                 dateController.title = "Date de fin de votre Wizz"
             }
-            
+            view.endEditing(true)
             navigationController?.presentViewController(dateController, animated: true, completion: nil)
             return false
         }
@@ -130,6 +141,32 @@ class CreateWizzDatailTableViewController: UITableViewController, UITextFieldDel
             if let currentAddress = currentAddress?.first {
                 let city = currentAddress.addressDictionary[kABPersonAddressCityKey] as! String
                 self.cityLocation.text = city
+            }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == SEGUE_NEXT_CREATION_WIZZ {
+            if let controller = segue.destinationViewController as? CreationWizzPeopleTableViewController {
+                var wizz = PFObject(className: "Event")
+                
+                wizz["title"] = titleTextView.text
+                wizz["start"] = start
+                wizz["end"] = end
+                wizz["city"] = cityLocation.text
+                wizz["public"] = switchPrivacy.on
+                wizz["nbParticipant"] = 0
+                wizz["creator"] = PFUser.currentUser()
+                wizz["closed"] = false
+                wizz["nbMedia"] = 0
+                if descriptionLocation.text != "" {
+                    wizz["location_text"] = descriptionLocation.text
+                }
+                if descriptionWizz.text != "" {
+                    wizz["description"] = descriptionWizz.text
+                }
+                
+                controller.wizz = wizz
             }
         }
     }
