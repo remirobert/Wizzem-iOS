@@ -75,7 +75,7 @@ class CameraViewController: UIViewController, PBJVisionDelegate {
             }
             else {
                 if let photo = UIImage(data: UIImageJPEGRepresentation(photo, 0.5)) {
-                    gifImages.append(photo)
+                    gifImages.append(PhotoHelper.fixOrientationOfImage(photo))
                     photoNumberGif.text = "\(gifImages.count)"
                     PBJVision.sharedInstance().startPreview()
                 }

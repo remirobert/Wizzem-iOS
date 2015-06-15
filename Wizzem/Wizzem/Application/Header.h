@@ -13,5 +13,6 @@
 #import "RMDateSelectionViewController.h"
 #import "GifMaker.h"
 #import "FacebookInit.h"
+#import "PhotoHelper.h"
 
 #endif

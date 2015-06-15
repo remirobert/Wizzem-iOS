@@ -31,7 +31,7 @@ class PreviewCaptureViewController: UIViewController {
         var shareMedia: AnyObject!
         switch capturedMedia! {
         case Media💿.Photo(let image): shareMedia = image
-        case Media💿.Gif(let data): shareMedia = FLAnimatedImage(GIFData: data)
+        case Media💿.Gif(let data): shareMedia = data
         case Media💿.Text(let content): shareMedia = content
         default: break
         }

@@ -21,6 +21,7 @@
 		BBCB1A5E1B2779B000D57CEA /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A5D1B2779B000D57CEA /* Result.swift */; };
 		BBCB1A621B277EC500D57CEA /* ParseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A611B277EC500D57CEA /* ParseAuth.swift */; };
 		BBCB1A641B27926300D57CEA /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A631B27926300D57CEA /* LoginButton.swift */; };
+		BBDCC8B51B2F78DA00061993 /* PhotoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDCC8B41B2F78DA00061993 /* PhotoHelper.m */; };
 		BBE4375F1B2771A7004C0D89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE4375E1B2771A7004C0D89 /* AppDelegate.swift */; };
 		BBE437641B2771A7004C0D89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBE437621B2771A7004C0D89 /* Main.storyboard */; };
 		BBE437661B2771A7004C0D89 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBE437651B2771A7004C0D89 /* Images.xcassets */; };
@@ -70,6 +71,8 @@
 		BBCB1A5D1B2779B000D57CEA /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		BBCB1A611B277EC500D57CEA /* ParseAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAuth.swift; sourceTree = "<group>"; };
 		BBCB1A631B27926300D57CEA /* LoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		BBDCC8B31B2F78DA00061993 /* PhotoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoHelper.h; sourceTree = "<group>"; };
+		BBDCC8B41B2F78DA00061993 /* PhotoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoHelper.m; sourceTree = "<group>"; };
 		BBE437591B2771A7004C0D89 /* Wizzem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wizzem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBE4375D1B2771A7004C0D89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBE4375E1B2771A7004C0D89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 			children = (
 				BBFA42FD1B2CBB5300BAE517 /* GifMaker.h */,
 				BBFA42FE1B2CBB5300BAE517 /* GifMaker.m */,
+				BBDCC8B31B2F78DA00061993 /* PhotoHelper.h */,
+				BBDCC8B41B2F78DA00061993 /* PhotoHelper.m */,
 				BB1BA99D1B2B6936002A8015 /* RMActionController */,
 				BB1BA9991B2B6888002A8015 /* RMDateSelectionViewController */,
 			);
@@ -502,6 +507,7 @@
 				BBFA42FF1B2CBB5300BAE517 /* GifMaker.m in Sources */,
 				BBCB1A591B27742E00D57CEA /* LoginViewController.swift in Sources */,
 				BB1BA99C1B2B6888002A8015 /* RMDateSelectionViewController.m in Sources */,
+				BBDCC8B51B2F78DA00061993 /* PhotoHelper.m in Sources */,
 				BBFA43051B2D691C00BAE517 /* InstanceController.swift in Sources */,
 				BBCB1A641B27926300D57CEA /* LoginButton.swift in Sources */,
 				BBCB1A5C1B27787100D57CEA /* FacebookAuth.swift in Sources */,
