@@ -14,6 +14,8 @@
 		BB5C32AD1B2C619700B38318 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5C32AC1B2C619700B38318 /* CameraViewController.swift */; };
 		BB8BF4611B2A2BD400D9ACF8 /* SignupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BF4601B2A2BD400D9ACF8 /* SignupTableViewController.swift */; };
 		BB8BF4631B2A307B00D9ACF8 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BF4621B2A307B00D9ACF8 /* SignupViewController.swift */; };
+		BB8ED4B01B2E265C00253C5C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB8ED4AE1B2E265C00253C5C /* Fabric.framework */; };
+		BB8ED4B11B2E265C00253C5C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB8ED4AF1B2E265C00253C5C /* Crashlytics.framework */; };
 		BBCB1A591B27742E00D57CEA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A581B27742E00D57CEA /* LoginViewController.swift */; };
 		BBCB1A5C1B27787100D57CEA /* FacebookAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A5B1B27787100D57CEA /* FacebookAuth.swift */; };
 		BBCB1A5E1B2779B000D57CEA /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A5D1B2779B000D57CEA /* Result.swift */; };
@@ -37,7 +39,6 @@
 		BBFA431C1B2DCFC500BAE517 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFA431B1B2DCFC500BAE517 /* AddressBookUI.framework */; };
 		BBFA431E1B2DD5E200BAE517 /* CreationWizzPeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA431D1B2DD5E200BAE517 /* CreationWizzPeopleTableViewController.swift */; };
 		BBFA43211B2E075E00BAE517 /* WizzListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFA43201B2E075E00BAE517 /* WizzListViewController.swift */; };
-		BBFA43241B2E20D600BAE517 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFA43231B2E20D600BAE517 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		BB5C32AC1B2C619700B38318 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		BB8BF4601B2A2BD400D9ACF8 /* SignupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupTableViewController.swift; sourceTree = "<group>"; };
 		BB8BF4621B2A307B00D9ACF8 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		BB8ED4AE1B2E265C00253C5C /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
+		BB8ED4AF1B2E265C00253C5C /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		BBCB1A581B27742E00D57CEA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BBCB1A5A1B2775AA00D57CEA /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		BBCB1A5B1B27787100D57CEA /* FacebookAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookAuth.swift; sourceTree = "<group>"; };
@@ -91,7 +94,6 @@
 		BBFA431B1B2DCFC500BAE517 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		BBFA431D1B2DD5E200BAE517 /* CreationWizzPeopleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationWizzPeopleTableViewController.swift; sourceTree = "<group>"; };
 		BBFA43201B2E075E00BAE517 /* WizzListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WizzListViewController.swift; sourceTree = "<group>"; };
-		BBFA43231B2E20D600BAE517 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		C38430E023573645DFB6BE61 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA2E643E79B211CB71C6994 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,9 +104,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBFA431C1B2DCFC500BAE517 /* AddressBookUI.framework in Frameworks */,
-				BBFA43241B2E20D600BAE517 /* Crashlytics.framework in Frameworks */,
+				BB8ED4B01B2E265C00253C5C /* Fabric.framework in Frameworks */,
 				BBFA431A1B2DCF2B00BAE517 /* MapKit.framework in Frameworks */,
 				BBFA43181B2DCF2700BAE517 /* CoreLocation.framework in Frameworks */,
+				BB8ED4B11B2E265C00253C5C /* Crashlytics.framework in Frameworks */,
 				0AE425F2C56C5291402C0F86 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,7 +134,6 @@
 		AC9C61A0D51B03DA609B2AE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BBFA43231B2E20D600BAE517 /* Crashlytics.framework */,
 				BBFA431B1B2DCFC500BAE517 /* AddressBookUI.framework */,
 				BBFA43191B2DCF2B00BAE517 /* MapKit.framework */,
 				BBFA43171B2DCF2700BAE517 /* CoreLocation.framework */,
@@ -253,6 +255,8 @@
 		BBE4375B1B2771A7004C0D89 /* Wizzem */ = {
 			isa = PBXGroup;
 			children = (
+				BB8ED4AE1B2E265C00253C5C /* Fabric.framework */,
+				BB8ED4AF1B2E265C00253C5C /* Crashlytics.framework */,
 				BB1BA9981B2B6877002A8015 /* libs */,
 				BBCB1A571B27723300D57CEA /* Utils */,
 				BBCB1A561B27722F00D57CEA /* Views */,
@@ -469,7 +473,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run d9291a9165795274a4a0ad9f612bfafae0b9685d 054127c9bafbcc58f894717f58d5d0544364c4499e266bb0bebef0905ebfb097";
+			shellScript = "./Fabric.framework/run d9291a9165795274a4a0ad9f612bfafae0b9685d 054127c9bafbcc58f894717f58d5d0544364c4499e266bb0bebef0905ebfb097";
 		};
 		EC593D60CA04E42F4B50FB1E /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -15,11 +15,7 @@ class PreviewCaptureViewController: UIViewController {
     var capturedMedia: Media💿!
     @IBOutlet var imageView: FLAnimatedImageView!
     @IBOutlet var textView: UITextView!
-    
-    @IBOutlet var closeButton: UIButton!
-    @IBOutlet var shareButton: UIButton!
-    @IBOutlet var valideButton: UIButton!
-    
+        
     @IBOutlet var activityLoding: UIActivityIndicatorView!
     @IBOutlet var lastWizzText: UILabel!
     
@@ -31,7 +27,7 @@ class PreviewCaptureViewController: UIViewController {
         navigationController?.popToRootViewControllerAnimated(true)
     }
     
-    @IBAction func sharePreview(sender: AnyObject) {
+    @IBAction func sharePreviewContent(sender: AnyObject) {
         var shareMedia: AnyObject!
         switch capturedMedia! {
         case Media💿.Photo(let image): shareMedia = image
@@ -39,18 +35,13 @@ class PreviewCaptureViewController: UIViewController {
         case Media💿.Text(let content): shareMedia = content
         default: break
         }
-
+        
         let shareController = UIActivityViewController(activityItems: [shareMedia], applicationActivities: nil)
         navigationController?.presentViewController(shareController, animated: true, completion: nil)
     }
     
     @IBAction func validatePreview(sender: AnyObject) {
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        view.bringSubviewToFront(closeButton)
-        view.bringSubviewToFront(shareButton)
-        view.bringSubviewToFront(valideButton)
+        
     }
     
     override func viewDidLoad() {

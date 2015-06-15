@@ -32,6 +32,7 @@ class CameraViewController: UIViewController, PBJVisionDelegate {
     @IBOutlet var buttonRotation: UIButton!
     
     @IBOutlet var photoNumberGif: UILabel!
+    @IBOutlet var buttonResetGif: UIButton!
     
     lazy var inputViewKeyboard: UIToolbar! = {
         let inputView = UIToolbar()
@@ -138,12 +139,24 @@ class CameraViewController: UIViewController, PBJVisionDelegate {
         })
     }
     
+    @IBAction func resetGif(sender: AnyObject) {
+        let alert = Alert()
+        
+        alert.initAlertViewWithBlock("Voulez vous reset votre GIF ?", completionSuccess: { () -> Void in
+            
+        }) { () -> Void in
+            
+        }
+    }
+    
     //MARK: capture camera mode
     
     @IBAction func changePhotoCameraMode(sender: AnyObject) {
         if currentCameraMode == .Photo {
             return
         }
+        buttonResetGif.alpha = 0
+        title = "Photo"
         currentCameraMode = .Photo
         textView.resignFirstResponder()
         textView.alpha = 0
@@ -160,6 +173,8 @@ class CameraViewController: UIViewController, PBJVisionDelegate {
         if currentCameraMode == .Gif {
             return
         }
+        buttonResetGif.alpha = 1
+        title = "GIF"
         gifImages.removeAll(keepCapacity: false)
         textView.resignFirstResponder()
         textView.alpha = 0
@@ -178,6 +193,8 @@ class CameraViewController: UIViewController, PBJVisionDelegate {
         if currentCameraMode == .Text {
             return
         }
+        buttonResetGif.alpha = 0
+        title = "Text"
         textView.text = ""
         textView.alpha = 1
         textView.becomeFirstResponder()
@@ -202,7 +219,7 @@ class CameraViewController: UIViewController, PBJVisionDelegate {
     
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            textView.frame.size.height -= keyboardSize.height
+            textView.frame.size.height = UIScreen.mainScreen().bounds.size.height - keyboardSize.height - 64 - 44
         }
     }
     
@@ -232,6 +249,7 @@ class CameraViewController: UIViewController, PBJVisionDelegate {
         validateGifCaptureButton.alpha = 0
         photoNumberGif.alpha = 0
         textView.alpha = 0
+        buttonResetGif.alpha = 0
         
         textView.contentInset = UIEdgeInsetsMake(24, 0, 10, 0)
         textView.inputAccessoryView = inputViewKeyboard

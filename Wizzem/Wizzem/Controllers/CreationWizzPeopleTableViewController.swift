@@ -18,6 +18,8 @@ class CreationWizzPeopleTableViewController: UITableViewController {
     var inviteOption2: Bool = false
     @IBOutlet var sliderNumberParticipant: UISlider!
     @IBOutlet var numberTextFlied: UILabel!
+    @IBOutlet var switchOption2: UISwitch!
+    @IBOutlet var indicatorLabelOption: UILabel!
     
     @IBAction func changeValue(sender: AnyObject) {
         let slider = sender as! UISlider
@@ -31,6 +33,16 @@ class CreationWizzPeopleTableViewController: UITableViewController {
     
     @IBAction func changeOption1(sender: AnyObject) {
         inviteOption1 = (sender as! UISwitch).on
+        if (sender as! UISwitch).on {
+            switchOption2.alpha = 1
+            indicatorLabelOption.alpha = 1
+        }
+        else {
+            switchOption2.alpha = 0.4
+            indicatorLabelOption.alpha = 0.4
+            switchOption2.on = false
+            inviteOption2 = false
+        }
     }
     
     @IBAction func changeOption2(sender: AnyObject) {

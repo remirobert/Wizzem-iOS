@@ -19,5 +19,10 @@ class WizzListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        PFCloud.callFunctionInBackground("EventGetParticipating", withParameters: nil) { (result: AnyObject?, err: NSError?) -> Void in
+            println("error: \(err)")
+            println("result : \(result)")
+        }
     }
 }
