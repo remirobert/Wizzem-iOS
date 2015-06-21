@@ -8,9 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0AE425F2C56C5291402C0F86 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38430E023573645DFB6BE61 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		BB0234E61B30410900FFD2DF /* villes_frances.json in Resources */ = {isa = PBXBuildFile; fileRef = BB0234E51B30410900FFD2DF /* villes_frances.json */; };
+		BB0234E81B30413400FFD2DF /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0234E71B30413400FFD2DF /* SelectCityViewController.swift */; };
 		BB1BA99C1B2B6888002A8015 /* RMDateSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1BA99B1B2B6888002A8015 /* RMDateSelectionViewController.m */; };
 		BB1BA9A01B2B6936002A8015 /* RMActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1BA99F1B2B6936002A8015 /* RMActionController.m */; };
 		BB1BE47B1B29AAC600763B88 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1BE47A1B29AAC600763B88 /* LoginTableViewController.swift */; };
+		BB35BF6D1B36D87100E6B773 /* FeedEventCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB35BF6C1B36D87100E6B773 /* FeedEventCollectionViewCell.xib */; };
 		BB5C32AD1B2C619700B38318 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5C32AC1B2C619700B38318 /* CameraViewController.swift */; };
 		BB8BF4611B2A2BD400D9ACF8 /* SignupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BF4601B2A2BD400D9ACF8 /* SignupTableViewController.swift */; };
 		BB8BF4631B2A307B00D9ACF8 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BF4621B2A307B00D9ACF8 /* SignupViewController.swift */; };
@@ -21,6 +24,14 @@
 		BBCB1A5E1B2779B000D57CEA /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A5D1B2779B000D57CEA /* Result.swift */; };
 		BBCB1A621B277EC500D57CEA /* ParseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A611B277EC500D57CEA /* ParseAuth.swift */; };
 		BBCB1A641B27926300D57CEA /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A631B27926300D57CEA /* LoginButton.swift */; };
+		BBD3EACD1B34A80A0087989B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3EACC1B34A80A0087989B /* ProfileViewController.swift */; };
+		BBD3EAD11B34A9BF0087989B /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3EAD01B34A9BF0087989B /* ProfileHeaderView.swift */; };
+		BBD3EAD31B34A9EA0087989B /* ProfilerHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD3EAD21B34A9EA0087989B /* ProfilerHeaderView.xib */; };
+		BBD3EAD51B34AD000087989B /* HeaderSectionProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD3EAD41B34AD000087989B /* HeaderSectionProfileView.xib */; };
+		BBD3EAD71B34AD210087989B /* HeaderSectionProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3EAD61B34AD210087989B /* HeaderSectionProfileView.swift */; };
+		BBD3EAD91B3551940087989B /* WizzemAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3EAD81B3551940087989B /* WizzemAPI.swift */; };
+		BBD3EADB1B3558400087989B /* FeedEventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3EADA1B3558400087989B /* FeedEventCollectionViewCell.swift */; };
+		BBD3EADD1B3559600087989B /* FeedWizzViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3EADC1B3559600087989B /* FeedWizzViewController.swift */; };
 		BBDCC8B51B2F78DA00061993 /* PhotoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDCC8B41B2F78DA00061993 /* PhotoHelper.m */; };
 		BBE4375F1B2771A7004C0D89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE4375E1B2771A7004C0D89 /* AppDelegate.swift */; };
 		BBE437641B2771A7004C0D89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBE437621B2771A7004C0D89 /* Main.storyboard */; };
@@ -54,12 +65,15 @@
 
 /* Begin PBXFileReference section */
 		63FB5AAFCF0C93E31EEC629F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		BB0234E51B30410900FFD2DF /* villes_frances.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = villes_frances.json; sourceTree = "<group>"; };
+		BB0234E71B30413400FFD2DF /* SelectCityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCityViewController.swift; sourceTree = "<group>"; };
 		BB1BA99A1B2B6888002A8015 /* RMDateSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDateSelectionViewController.h; sourceTree = "<group>"; };
 		BB1BA99B1B2B6888002A8015 /* RMDateSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDateSelectionViewController.m; sourceTree = "<group>"; };
 		BB1BA99E1B2B6936002A8015 /* RMActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMActionController.h; sourceTree = "<group>"; };
 		BB1BA99F1B2B6936002A8015 /* RMActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMActionController.m; sourceTree = "<group>"; };
 		BB1BE4791B29AA1300763B88 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		BB1BE47A1B29AAC600763B88 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
+		BB35BF6C1B36D87100E6B773 /* FeedEventCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedEventCollectionViewCell.xib; sourceTree = "<group>"; };
 		BB5C32AC1B2C619700B38318 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		BB8BF4601B2A2BD400D9ACF8 /* SignupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupTableViewController.swift; sourceTree = "<group>"; };
 		BB8BF4621B2A307B00D9ACF8 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +85,14 @@
 		BBCB1A5D1B2779B000D57CEA /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		BBCB1A611B277EC500D57CEA /* ParseAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAuth.swift; sourceTree = "<group>"; };
 		BBCB1A631B27926300D57CEA /* LoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		BBD3EACC1B34A80A0087989B /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BBD3EAD01B34A9BF0087989B /* ProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		BBD3EAD21B34A9EA0087989B /* ProfilerHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfilerHeaderView.xib; sourceTree = "<group>"; };
+		BBD3EAD41B34AD000087989B /* HeaderSectionProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderSectionProfileView.xib; sourceTree = "<group>"; };
+		BBD3EAD61B34AD210087989B /* HeaderSectionProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderSectionProfileView.swift; sourceTree = "<group>"; };
+		BBD3EAD81B3551940087989B /* WizzemAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WizzemAPI.swift; sourceTree = "<group>"; };
+		BBD3EADA1B3558400087989B /* FeedEventCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedEventCollectionViewCell.swift; sourceTree = "<group>"; };
+		BBD3EADC1B3559600087989B /* FeedWizzViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedWizzViewController.swift; sourceTree = "<group>"; };
 		BBDCC8B31B2F78DA00061993 /* PhotoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoHelper.h; sourceTree = "<group>"; };
 		BBDCC8B41B2F78DA00061993 /* PhotoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoHelper.m; sourceTree = "<group>"; };
 		BBE437591B2771A7004C0D89 /* Wizzem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wizzem.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +229,7 @@
 		BBCB1A551B27722A00D57CEA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BBD3EACB1B34A7EC0087989B /* ProfileControllers */,
 				BBFA431F1B2E075000BAE517 /* WizzController */,
 				BB5C32AB1B2C618700B38318 /* CameraController */,
 				BB8BF45F1B2A2B9500D9ACF8 /* signupController */,
@@ -219,6 +242,12 @@
 		BBCB1A561B27722F00D57CEA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BBD3EADA1B3558400087989B /* FeedEventCollectionViewCell.swift */,
+				BB35BF6C1B36D87100E6B773 /* FeedEventCollectionViewCell.xib */,
+				BBD3EAD01B34A9BF0087989B /* ProfileHeaderView.swift */,
+				BBD3EAD61B34AD210087989B /* HeaderSectionProfileView.swift */,
+				BBD3EAD41B34AD000087989B /* HeaderSectionProfileView.xib */,
+				BBD3EAD21B34A9EA0087989B /* ProfilerHeaderView.xib */,
 				BBCB1A631B27926300D57CEA /* LoginButton.swift */,
 			);
 			path = Views;
@@ -227,6 +256,7 @@
 		BBCB1A571B27723300D57CEA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BBD3EAD81B3551940087989B /* WizzemAPI.swift */,
 				BBFA43151B2DCEE500BAE517 /* RRLocationManager.swift */,
 				BBCB1A5B1B27787100D57CEA /* FacebookAuth.swift */,
 				BBCB1A611B277EC500D57CEA /* ParseAuth.swift */,
@@ -235,6 +265,15 @@
 				BBFA43041B2D691C00BAE517 /* InstanceController.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		BBD3EACB1B34A7EC0087989B /* ProfileControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BBD3EADC1B3559600087989B /* FeedWizzViewController.swift */,
+				BBD3EACC1B34A80A0087989B /* ProfileViewController.swift */,
+			);
+			name = ProfileControllers;
 			sourceTree = "<group>";
 		};
 		BBE437501B2771A7004C0D89 = {
@@ -275,6 +314,7 @@
 		BBE4375C1B2771A7004C0D89 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BB0234E51B30410900FFD2DF /* villes_frances.json */,
 				BBE4375D1B2771A7004C0D89 /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -325,6 +365,7 @@
 			children = (
 				BBFA43121B2DC89500BAE517 /* CreateWizzDatailTableViewController.swift */,
 				BBFA431D1B2DD5E200BAE517 /* CreationWizzPeopleTableViewController.swift */,
+				BB0234E71B30413400FFD2DF /* SelectCityViewController.swift */,
 			);
 			name = CreationWizzController;
 			sourceTree = "<group>";
@@ -385,6 +426,7 @@
 		BBE437511B2771A7004C0D89 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Remi Robert";
 				TargetAttributes = {
@@ -422,8 +464,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBE437641B2771A7004C0D89 /* Main.storyboard in Resources */,
+				BBD3EAD31B34A9EA0087989B /* ProfilerHeaderView.xib in Resources */,
 				BBE437691B2771A7004C0D89 /* LaunchScreen.xib in Resources */,
+				BBD3EAD51B34AD000087989B /* HeaderSectionProfileView.xib in Resources */,
 				BBE437661B2771A7004C0D89 /* Images.xcassets in Resources */,
+				BB35BF6D1B36D87100E6B773 /* FeedEventCollectionViewCell.xib in Resources */,
+				BB0234E61B30410900FFD2DF /* villes_frances.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,8 +555,10 @@
 				BB1BA99C1B2B6888002A8015 /* RMDateSelectionViewController.m in Sources */,
 				BBDCC8B51B2F78DA00061993 /* PhotoHelper.m in Sources */,
 				BBFA43051B2D691C00BAE517 /* InstanceController.swift in Sources */,
+				BBD3EAD71B34AD210087989B /* HeaderSectionProfileView.swift in Sources */,
 				BBCB1A641B27926300D57CEA /* LoginButton.swift in Sources */,
 				BBCB1A5C1B27787100D57CEA /* FacebookAuth.swift in Sources */,
+				BBD3EAD91B3551940087989B /* WizzemAPI.swift in Sources */,
 				BB5C32AD1B2C619700B38318 /* CameraViewController.swift in Sources */,
 				BBFA43131B2DC89500BAE517 /* CreateWizzDatailTableViewController.swift in Sources */,
 				BBFA42F91B2C75F700BAE517 /* PreviewCaptureViewController.swift in Sources */,
@@ -519,10 +567,15 @@
 				BBE4375F1B2771A7004C0D89 /* AppDelegate.swift in Sources */,
 				BBCB1A621B277EC500D57CEA /* ParseAuth.swift in Sources */,
 				BB1BE47B1B29AAC600763B88 /* LoginTableViewController.swift in Sources */,
+				BB0234E81B30413400FFD2DF /* SelectCityViewController.swift in Sources */,
 				BBFA43081B2D6C7500BAE517 /* FacebookInit.m in Sources */,
+				BBD3EAD11B34A9BF0087989B /* ProfileHeaderView.swift in Sources */,
+				BBD3EADD1B3559600087989B /* FeedWizzViewController.swift in Sources */,
 				BB1BA9A01B2B6936002A8015 /* RMActionController.m in Sources */,
+				BBD3EADB1B3558400087989B /* FeedEventCollectionViewCell.swift in Sources */,
 				BB8BF4611B2A2BD400D9ACF8 /* SignupTableViewController.swift in Sources */,
 				BBFA431E1B2DD5E200BAE517 /* CreationWizzPeopleTableViewController.swift in Sources */,
+				BBD3EACD1B34A80A0087989B /* ProfileViewController.swift in Sources */,
 				BBFA43031B2CDDBB00BAE517 /* Alert.swift in Sources */,
 				BBFA43011B2CC54800BAE517 /* Media.swift in Sources */,
 			);

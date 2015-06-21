@@ -265,7 +265,9 @@ class CameraViewController: UIViewController, PBJVisionDelegate {
             case .Text: media = Media💿.Text(content: selectedTextContent)
             default: break
             }
-            (segue.destinationViewController as! PreviewCaptureViewController).capturedMedia = media
+            if let controller = (segue.destinationViewController as! UINavigationController).viewControllers.first as? PreviewCaptureViewController {
+                controller.capturedMedia = media
+            }
         }
     }
 }

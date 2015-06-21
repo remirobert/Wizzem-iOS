@@ -68,7 +68,10 @@ class SignupViewController: UIViewController {
         newUser = PFUser()
         self.sex = 0
         self.newUser?.setValue("F", forKey: "gender")
-        
+        self.newUser?.setValue(0, forKey: "nbFollower")
+        self.newUser?.setValue(0, forKey: "nbFollowing")
+        self.newUser?.setValue(false, forKey: "public")
+
         navigationController?.interactivePopGestureRecognizer.delegate = nil
     }
     

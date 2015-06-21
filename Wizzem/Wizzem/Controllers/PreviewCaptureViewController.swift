@@ -24,7 +24,8 @@ class PreviewCaptureViewController: UIViewController {
     }
     
     @IBAction func cancelPreview(sender: AnyObject) {
-        navigationController?.popToRootViewControllerAnimated(true)
+        self.dismissViewControllerAnimated(true, completion: nil)
+            //navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func sharePreviewContent(sender: AnyObject) {

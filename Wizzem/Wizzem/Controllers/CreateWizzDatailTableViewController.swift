@@ -109,6 +109,7 @@ class CreateWizzDatailTableViewController: UITableViewController, UITextFieldDel
             return false
         }
         else if textField.tag == 12 {
+            self.performSegueWithIdentifier(SEGUE_SELECT_CITY_WIZZ, sender: nil)
             return false
         }
         return true

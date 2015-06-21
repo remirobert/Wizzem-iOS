@@ -13,6 +13,7 @@
 # define SEGUE_SIGNUP_CONTAINER         @"signupContainerSegue"
 # define SEGUE_PREVIEW_CAPTURE          @"previewCaptureSegue"
 # define SEGUE_NEXT_CREATION_WIZZ       @"nextStepWizzCreationSegue"
+# define SEGUE_SELECT_CITY_WIZZ         @"selectCityControllerSegue"
 
 # define CONTROLLER_LOGIN           @"loginSignupController"
 # define CONTROLLER_MEDIA_CAPTURE   @"mediaCaptureController"
