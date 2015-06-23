@@ -13,6 +13,7 @@ import ParseUI
 import ParseFacebookUtils
 import Fabric
 import Crashlytics
+import PBJVision
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         if (PFUser.currentUser() != nil) {
-            window?.rootViewController = InstanceController.fromStoryboard(CONTROLLER_MEDIA_CAPTURE)
+            window?.rootViewController = InstanceController.fromStoryboard("mainController")
         }
         else {
             window?.rootViewController = InstanceController.fromStoryboard(CONTROLLER_LOGIN)
@@ -36,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
 
-        
+        PBJVision.sharedInstance().startPreview()
         Fabric.with([Crashlytics()])
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }

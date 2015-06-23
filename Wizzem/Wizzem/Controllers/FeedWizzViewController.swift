@@ -15,6 +15,10 @@ class FeedWizzViewController: UITableViewController, UITableViewDataSource {
     var events = Array<PFObject>()
     var eventsClass = NSMutableDictionary()
     
+    @IBAction func refreshContent(sender: AnyObject) {
+        fetchContent()
+    }
+    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 93
     }
@@ -72,29 +76,23 @@ class FeedWizzViewController: UITableViewController, UITableViewDataSource {
                 })
             }
         }
-        
         return cell!
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tableView.dataSource = self
-        
-        
+    func fetchContent() {
         let query = PFQuery(className: "Event")
         query.cachePolicy = PFCachePolicy.CacheThenNetwork
         
         query.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, err: NSError?) -> Void in
             if let results = results {
-
+                
                 self.events = results as! [PFObject]
                 self.eventsClass.removeAllObjects()
-
+                
                 for currentEvent in self.events {
                     if let stringSection = currentEvent.objectForKey("start") as? NSDate {
-                        let stringDate = moment(stringSection, timeZone: NSTimeZone(), locale: NSLocale.currentLocale()).format(dateFormat: "dd / MM")
-
+                        let stringDate = moment(stringSection, timeZone: NSTimeZone(), locale: NSLocale.currentLocale()).format(dateFormat: "EEE d MMM")
+                        
                         if let eventsForDate = self.eventsClass[stringDate] as? NSMutableArray {
                             eventsForDate.addObject(currentEvent)
                         }
@@ -104,10 +102,19 @@ class FeedWizzViewController: UITableViewController, UITableViewDataSource {
                         }
                     }
                 }
-                
-                
+                if self.refreshControl!.refreshing {
+                    self.refreshControl?.endRefreshing()
+                }
+            
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.dataSource = self
+        fetchContent()
     }
 }

@@ -14,7 +14,10 @@
 		BB1BA9A01B2B6936002A8015 /* RMActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1BA99F1B2B6936002A8015 /* RMActionController.m */; };
 		BB1BE47B1B29AAC600763B88 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1BE47A1B29AAC600763B88 /* LoginTableViewController.swift */; };
 		BB35BF6D1B36D87100E6B773 /* FeedEventCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB35BF6C1B36D87100E6B773 /* FeedEventCollectionViewCell.xib */; };
+		BB49BDFE1B37507400248277 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49BDFD1B37507400248277 /* BaseViewController.swift */; };
+		BB49BE001B37514800248277 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49BDFF1B37514800248277 /* MainTabBarViewController.swift */; };
 		BB5C32AD1B2C619700B38318 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5C32AC1B2C619700B38318 /* CameraViewController.swift */; };
+		BB733DFD1B397977009EA48E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB733DFC1B397977009EA48E /* SearchViewController.swift */; };
 		BB8BF4611B2A2BD400D9ACF8 /* SignupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BF4601B2A2BD400D9ACF8 /* SignupTableViewController.swift */; };
 		BB8BF4631B2A307B00D9ACF8 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BF4621B2A307B00D9ACF8 /* SignupViewController.swift */; };
 		BB8ED4B01B2E265C00253C5C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB8ED4AE1B2E265C00253C5C /* Fabric.framework */; };
@@ -74,7 +77,10 @@
 		BB1BE4791B29AA1300763B88 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		BB1BE47A1B29AAC600763B88 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
 		BB35BF6C1B36D87100E6B773 /* FeedEventCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedEventCollectionViewCell.xib; sourceTree = "<group>"; };
+		BB49BDFD1B37507400248277 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		BB49BDFF1B37514800248277 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BB5C32AC1B2C619700B38318 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		BB733DFC1B397977009EA48E /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		BB8BF4601B2A2BD400D9ACF8 /* SignupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupTableViewController.swift; sourceTree = "<group>"; };
 		BB8BF4621B2A307B00D9ACF8 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		BB8ED4AE1B2E265C00253C5C /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
@@ -229,6 +235,7 @@
 		BBCB1A551B27722A00D57CEA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BB49BDFD1B37507400248277 /* BaseViewController.swift */,
 				BBD3EACB1B34A7EC0087989B /* ProfileControllers */,
 				BBFA431F1B2E075000BAE517 /* WizzController */,
 				BB5C32AB1B2C618700B38318 /* CameraController */,
@@ -270,6 +277,8 @@
 		BBD3EACB1B34A7EC0087989B /* ProfileControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BB733DFC1B397977009EA48E /* SearchViewController.swift */,
+				BB49BDFF1B37514800248277 /* MainTabBarViewController.swift */,
 				BBD3EADC1B3559600087989B /* FeedWizzViewController.swift */,
 				BBD3EACC1B34A80A0087989B /* ProfileViewController.swift */,
 			);
@@ -432,6 +441,7 @@
 				TargetAttributes = {
 					BBE437581B2771A7004C0D89 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = 44Q2J6374R;
 					};
 					BBE4376D1B2771A7004C0D89 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -552,12 +562,15 @@
 				BB8BF4631B2A307B00D9ACF8 /* SignupViewController.swift in Sources */,
 				BBFA42FF1B2CBB5300BAE517 /* GifMaker.m in Sources */,
 				BBCB1A591B27742E00D57CEA /* LoginViewController.swift in Sources */,
+				BB49BDFE1B37507400248277 /* BaseViewController.swift in Sources */,
 				BB1BA99C1B2B6888002A8015 /* RMDateSelectionViewController.m in Sources */,
 				BBDCC8B51B2F78DA00061993 /* PhotoHelper.m in Sources */,
 				BBFA43051B2D691C00BAE517 /* InstanceController.swift in Sources */,
 				BBD3EAD71B34AD210087989B /* HeaderSectionProfileView.swift in Sources */,
+				BB49BE001B37514800248277 /* MainTabBarViewController.swift in Sources */,
 				BBCB1A641B27926300D57CEA /* LoginButton.swift in Sources */,
 				BBCB1A5C1B27787100D57CEA /* FacebookAuth.swift in Sources */,
+				BB733DFD1B397977009EA48E /* SearchViewController.swift in Sources */,
 				BBD3EAD91B3551940087989B /* WizzemAPI.swift in Sources */,
 				BB5C32AD1B2C619700B38318 /* CameraViewController.swift in Sources */,
 				BBFA43131B2DC89500BAE517 /* CreateWizzDatailTableViewController.swift in Sources */,
@@ -707,6 +720,8 @@
 			baseConfigurationReference = 63FB5AAFCF0C93E31EEC629F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -714,6 +729,7 @@
 				INFOPLIST_FILE = "Wizzem/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = Wizzem/Application/Header.h;
 			};
 			name = Debug;
@@ -723,6 +739,8 @@
 			baseConfigurationReference = FCA2E643E79B211CB71C6994 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -730,6 +748,7 @@
 				INFOPLIST_FILE = "Wizzem/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = Wizzem/Application/Header.h;
 			};
 			name = Release;

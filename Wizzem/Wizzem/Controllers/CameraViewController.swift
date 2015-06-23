@@ -16,7 +16,7 @@ enum CameraMode {
     case Text
 }
 
-class CameraViewController: UIViewController, PBJVisionDelegate {
+class CameraViewController: UIViewController, PBJVisionDelegate, PageController {
     
     @IBOutlet var photoCameraMode: UIButton!
     @IBOutlet var gifCameraMode: UIButton!
@@ -33,6 +33,8 @@ class CameraViewController: UIViewController, PBJVisionDelegate {
     
     @IBOutlet var photoNumberGif: UILabel!
     @IBOutlet var buttonResetGif: UIButton!
+    
+    var page: Int = 1
     
     lazy var inputViewKeyboard: UIToolbar! = {
         let inputView = UIToolbar()
@@ -226,7 +228,6 @@ class CameraViewController: UIViewController, PBJVisionDelegate {
     //MARK: UIView cycle
     
     override func viewWillDisappear(animated: Bool) {
-        PBJVision.sharedInstance().stopPreview()
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
@@ -234,7 +235,7 @@ class CameraViewController: UIViewController, PBJVisionDelegate {
         previewLayer.frame = previewView.bounds
         photoNumberGif.text = "0"
         gifImages.removeAll(keepCapacity: false)
-        PBJVision.sharedInstance().startPreview()
+        //PBJVision.sharedInstance().startPreview()
         view.bringSubviewToFront(captureButton)
         view.bringSubviewToFront(textView)
     }
