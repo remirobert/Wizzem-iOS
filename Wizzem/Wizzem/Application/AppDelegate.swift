@@ -11,8 +11,8 @@ import Parse
 import FBSDKCoreKit
 import ParseUI
 import ParseFacebookUtils
-import Fabric
-import Crashlytics
+//import Fabric
+//import Crashlytics
 import PBJVision
 
 @UIApplicationMain
@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 
         PBJVision.sharedInstance().startPreview()
-        Fabric.with([Crashlytics()])
+//        Fabric.with([Crashlytics()])
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     

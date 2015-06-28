@@ -13,6 +13,7 @@
 		BB1BA99C1B2B6888002A8015 /* RMDateSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1BA99B1B2B6888002A8015 /* RMDateSelectionViewController.m */; };
 		BB1BA9A01B2B6936002A8015 /* RMActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1BA99F1B2B6936002A8015 /* RMActionController.m */; };
 		BB1BE47B1B29AAC600763B88 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1BE47A1B29AAC600763B88 /* LoginTableViewController.swift */; };
+		BB31149B1B39E14000759FF3 /* SearchWizzTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB31149A1B39E14000759FF3 /* SearchWizzTableViewCell.swift */; };
 		BB35BF6D1B36D87100E6B773 /* FeedEventCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB35BF6C1B36D87100E6B773 /* FeedEventCollectionViewCell.xib */; };
 		BB49BDFE1B37507400248277 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49BDFD1B37507400248277 /* BaseViewController.swift */; };
 		BB49BE001B37514800248277 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49BDFF1B37514800248277 /* MainTabBarViewController.swift */; };
@@ -20,8 +21,7 @@
 		BB733DFD1B397977009EA48E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB733DFC1B397977009EA48E /* SearchViewController.swift */; };
 		BB8BF4611B2A2BD400D9ACF8 /* SignupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BF4601B2A2BD400D9ACF8 /* SignupTableViewController.swift */; };
 		BB8BF4631B2A307B00D9ACF8 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BF4621B2A307B00D9ACF8 /* SignupViewController.swift */; };
-		BB8ED4B01B2E265C00253C5C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB8ED4AE1B2E265C00253C5C /* Fabric.framework */; };
-		BB8ED4B11B2E265C00253C5C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB8ED4AF1B2E265C00253C5C /* Crashlytics.framework */; };
+		BBB04DB21B39DAA600668589 /* SearchProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB04DB11B39DAA600668589 /* SearchProfileTableViewCell.swift */; };
 		BBCB1A591B27742E00D57CEA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A581B27742E00D57CEA /* LoginViewController.swift */; };
 		BBCB1A5C1B27787100D57CEA /* FacebookAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A5B1B27787100D57CEA /* FacebookAuth.swift */; };
 		BBCB1A5E1B2779B000D57CEA /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A5D1B2779B000D57CEA /* Result.swift */; };
@@ -76,6 +76,7 @@
 		BB1BA99F1B2B6936002A8015 /* RMActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMActionController.m; sourceTree = "<group>"; };
 		BB1BE4791B29AA1300763B88 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		BB1BE47A1B29AAC600763B88 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
+		BB31149A1B39E14000759FF3 /* SearchWizzTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchWizzTableViewCell.swift; sourceTree = "<group>"; };
 		BB35BF6C1B36D87100E6B773 /* FeedEventCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedEventCollectionViewCell.xib; sourceTree = "<group>"; };
 		BB49BDFD1B37507400248277 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BB49BDFF1B37514800248277 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
@@ -83,8 +84,7 @@
 		BB733DFC1B397977009EA48E /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		BB8BF4601B2A2BD400D9ACF8 /* SignupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupTableViewController.swift; sourceTree = "<group>"; };
 		BB8BF4621B2A307B00D9ACF8 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		BB8ED4AE1B2E265C00253C5C /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
-		BB8ED4AF1B2E265C00253C5C /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		BBB04DB11B39DAA600668589 /* SearchProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchProfileTableViewCell.swift; sourceTree = "<group>"; };
 		BBCB1A581B27742E00D57CEA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BBCB1A5A1B2775AA00D57CEA /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		BBCB1A5B1B27787100D57CEA /* FacebookAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookAuth.swift; sourceTree = "<group>"; };
@@ -135,10 +135,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBFA431C1B2DCFC500BAE517 /* AddressBookUI.framework in Frameworks */,
-				BB8ED4B01B2E265C00253C5C /* Fabric.framework in Frameworks */,
 				BBFA431A1B2DCF2B00BAE517 /* MapKit.framework in Frameworks */,
 				BBFA43181B2DCF2700BAE517 /* CoreLocation.framework in Frameworks */,
-				BB8ED4B11B2E265C00253C5C /* Crashlytics.framework in Frameworks */,
 				0AE425F2C56C5291402C0F86 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,7 +181,7 @@
 				BB1BA99D1B2B6936002A8015 /* RMActionController */,
 				BB1BA9991B2B6888002A8015 /* RMDateSelectionViewController */,
 			);
-			name = libs;
+			path = libs;
 			sourceTree = "<group>";
 		};
 		BB1BA9991B2B6888002A8015 /* RMDateSelectionViewController */ = {
@@ -210,7 +208,7 @@
 				BBCB1A581B27742E00D57CEA /* LoginViewController.swift */,
 				BB1BE47A1B29AAC600763B88 /* LoginTableViewController.swift */,
 			);
-			name = LoginController;
+			path = LoginController;
 			sourceTree = "<group>";
 		};
 		BB5C32AB1B2C618700B38318 /* CameraController */ = {
@@ -220,7 +218,7 @@
 				BBFA42F81B2C75F700BAE517 /* PreviewCaptureViewController.swift */,
 				BBFA43001B2CC54700BAE517 /* Media.swift */,
 			);
-			name = CameraController;
+			path = CameraController;
 			sourceTree = "<group>";
 		};
 		BB8BF45F1B2A2B9500D9ACF8 /* signupController */ = {
@@ -229,7 +227,7 @@
 				BB8BF4601B2A2BD400D9ACF8 /* SignupTableViewController.swift */,
 				BB8BF4621B2A307B00D9ACF8 /* SignupViewController.swift */,
 			);
-			name = signupController;
+			path = signupController;
 			sourceTree = "<group>";
 		};
 		BBCB1A551B27722A00D57CEA /* Controllers */ = {
@@ -249,6 +247,8 @@
 		BBCB1A561B27722F00D57CEA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BB31149A1B39E14000759FF3 /* SearchWizzTableViewCell.swift */,
+				BBB04DB11B39DAA600668589 /* SearchProfileTableViewCell.swift */,
 				BBD3EADA1B3558400087989B /* FeedEventCollectionViewCell.swift */,
 				BB35BF6C1B36D87100E6B773 /* FeedEventCollectionViewCell.xib */,
 				BBD3EAD01B34A9BF0087989B /* ProfileHeaderView.swift */,
@@ -282,7 +282,7 @@
 				BBD3EADC1B3559600087989B /* FeedWizzViewController.swift */,
 				BBD3EACC1B34A80A0087989B /* ProfileViewController.swift */,
 			);
-			name = ProfileControllers;
+			path = ProfileControllers;
 			sourceTree = "<group>";
 		};
 		BBE437501B2771A7004C0D89 = {
@@ -308,8 +308,6 @@
 		BBE4375B1B2771A7004C0D89 /* Wizzem */ = {
 			isa = PBXGroup;
 			children = (
-				BB8ED4AE1B2E265C00253C5C /* Fabric.framework */,
-				BB8ED4AF1B2E265C00253C5C /* Crashlytics.framework */,
 				BB1BA9981B2B6877002A8015 /* libs */,
 				BBCB1A571B27723300D57CEA /* Utils */,
 				BBCB1A561B27722F00D57CEA /* Views */,
@@ -366,7 +364,7 @@
 				BBFA43061B2D6C7500BAE517 /* FacebookInit.h */,
 				BBFA43071B2D6C7500BAE517 /* FacebookInit.m */,
 			);
-			name = FacebookInit;
+			path = FacebookInit;
 			sourceTree = "<group>";
 		};
 		BBFA43141B2DC89A00BAE517 /* CreationWizzController */ = {
@@ -376,7 +374,7 @@
 				BBFA431D1B2DD5E200BAE517 /* CreationWizzPeopleTableViewController.swift */,
 				BB0234E71B30413400FFD2DF /* SelectCityViewController.swift */,
 			);
-			name = CreationWizzController;
+			path = CreationWizzController;
 			sourceTree = "<group>";
 		};
 		BBFA431F1B2E075000BAE517 /* WizzController */ = {
@@ -384,7 +382,7 @@
 			children = (
 				BBFA43201B2E075E00BAE517 /* WizzListViewController.swift */,
 			);
-			name = WizzController;
+			path = WizzController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,7 +398,6 @@
 				BBE437571B2771A7004C0D89 /* Resources */,
 				3E659E5AAA038FAEAC577B3D /* Copy Pods Resources */,
 				EC593D60CA04E42F4B50FB1E /* Embed Pods Frameworks */,
-				BBFA43221B2E20B300BAE517 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -523,19 +520,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BBFA43221B2E20B300BAE517 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run d9291a9165795274a4a0ad9f612bfafae0b9685d 054127c9bafbcc58f894717f58d5d0544364c4499e266bb0bebef0905ebfb097";
-		};
 		EC593D60CA04E42F4B50FB1E /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -575,6 +559,7 @@
 				BB5C32AD1B2C619700B38318 /* CameraViewController.swift in Sources */,
 				BBFA43131B2DC89500BAE517 /* CreateWizzDatailTableViewController.swift in Sources */,
 				BBFA42F91B2C75F700BAE517 /* PreviewCaptureViewController.swift in Sources */,
+				BB31149B1B39E14000759FF3 /* SearchWizzTableViewCell.swift in Sources */,
 				BBFA43161B2DCEE500BAE517 /* RRLocationManager.swift in Sources */,
 				BBCB1A5E1B2779B000D57CEA /* Result.swift in Sources */,
 				BBE4375F1B2771A7004C0D89 /* AppDelegate.swift in Sources */,
@@ -582,6 +567,7 @@
 				BB1BE47B1B29AAC600763B88 /* LoginTableViewController.swift in Sources */,
 				BB0234E81B30413400FFD2DF /* SelectCityViewController.swift in Sources */,
 				BBFA43081B2D6C7500BAE517 /* FacebookInit.m in Sources */,
+				BBB04DB21B39DAA600668589 /* SearchProfileTableViewCell.swift in Sources */,
 				BBD3EAD11B34A9BF0087989B /* ProfileHeaderView.swift in Sources */,
 				BBD3EADD1B3559600087989B /* FeedWizzViewController.swift in Sources */,
 				BB1BA9A01B2B6936002A8015 /* RMActionController.m in Sources */,
