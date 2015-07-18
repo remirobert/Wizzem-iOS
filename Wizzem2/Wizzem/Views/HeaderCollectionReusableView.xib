@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="15A216g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HeaderCollectionReusableView" customModule="Wizzem" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="249"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Par rémi robert" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJa-Gz-G3R">
+                    <rect key="frame" x="8" y="56" width="410" height="30"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="QLj-81-jJn"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titre moment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7Z-Zb-Vlc">
+                    <rect key="frame" x="8" y="8" width="584" height="40"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="t2O-jG-Rpb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Proposé le 13 avril" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIR-xX-ku7">
+                    <rect key="frame" x="426" y="60" width="166" height="21"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="TEd-kH-L0K"/>
+                        <constraint firstAttribute="width" constant="166" id="yiM-oT-3sc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Desciption moment" translatesAutoresizingMaskIntoConstraints="NO" id="vqM-2i-DiA">
+                    <rect key="frame" x="8" y="94" width="584" height="53"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="53" id="Mx7-wq-M3t"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre de participants" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ww6-p1-54p">
+                    <rect key="frame" x="8" y="155" width="584" height="21"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="1l7-cV-gT3"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dnc-dB-pLp">
+                    <rect key="frame" x="0.0" y="192" width="600" height="57"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nqe-Th-ALW">
+                            <rect key="frame" x="344" y="0.0" width="256" height="57"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="57" id="2th-wL-Id0"/>
+                                <constraint firstAttribute="width" constant="256" id="pd8-0a-KgZ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
+                            <state key="normal" title="Ajouter un média">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A97-C1-Fzb">
+                            <rect key="frame" x="0.0" y="0.0" width="83" height="57"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="83" id="cx8-QL-QGB"/>
+                                <constraint firstAttribute="height" constant="57" id="sOP-O7-rmZ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
+                            <state key="normal" title="Tools">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="57" id="5Iy-Rx-GAW"/>
+                        <constraint firstAttribute="trailing" secondItem="Nqe-Th-ALW" secondAttribute="trailing" id="OQS-xi-Cmh"/>
+                        <constraint firstAttribute="bottom" secondItem="Nqe-Th-ALW" secondAttribute="bottom" id="g43-kI-U8Z"/>
+                        <constraint firstItem="A97-C1-Fzb" firstAttribute="top" secondItem="dnc-dB-pLp" secondAttribute="top" id="i1G-KT-j5j"/>
+                        <constraint firstItem="A97-C1-Fzb" firstAttribute="leading" secondItem="dnc-dB-pLp" secondAttribute="leading" id="r70-Mj-kG2"/>
+                        <constraint firstItem="Nqe-Th-ALW" firstAttribute="top" secondItem="dnc-dB-pLp" secondAttribute="top" id="rC4-jY-Dwk"/>
+                        <constraint firstAttribute="bottom" secondItem="A97-C1-Fzb" secondAttribute="bottom" id="tFZ-As-0Ue"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="dnc-dB-pLp" firstAttribute="top" secondItem="ww6-p1-54p" secondAttribute="bottom" constant="16" id="0lR-dN-wFP"/>
+                <constraint firstItem="jIR-xX-ku7" firstAttribute="leading" secondItem="fJa-Gz-G3R" secondAttribute="trailing" constant="8" id="1gg-ZQ-Kuw"/>
+                <constraint firstAttribute="bottom" secondItem="dnc-dB-pLp" secondAttribute="bottom" id="8QP-G5-u2e"/>
+                <constraint firstAttribute="trailing" secondItem="M7Z-Zb-Vlc" secondAttribute="trailing" constant="8" id="HZz-Jb-mOE"/>
+                <constraint firstAttribute="trailing" secondItem="ww6-p1-54p" secondAttribute="trailing" constant="8" id="JpG-b6-bnQ"/>
+                <constraint firstItem="fJa-Gz-G3R" firstAttribute="top" secondItem="M7Z-Zb-Vlc" secondAttribute="bottom" constant="8" id="Oep-jp-VMS"/>
+                <constraint firstAttribute="trailing" secondItem="jIR-xX-ku7" secondAttribute="trailing" constant="8" id="SBS-bf-h8F"/>
+                <constraint firstItem="vqM-2i-DiA" firstAttribute="top" secondItem="fJa-Gz-G3R" secondAttribute="bottom" constant="8" id="XN5-5F-Ygl"/>
+                <constraint firstAttribute="trailing" secondItem="dnc-dB-pLp" secondAttribute="trailing" id="gka-6u-Mca"/>
+                <constraint firstItem="ww6-p1-54p" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="heb-Bq-OIW"/>
+                <constraint firstItem="jIR-xX-ku7" firstAttribute="top" secondItem="M7Z-Zb-Vlc" secondAttribute="bottom" constant="12" id="jyq-fy-lGd"/>
+                <constraint firstItem="M7Z-Zb-Vlc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="rQv-rg-ZTE"/>
+                <constraint firstAttribute="trailing" secondItem="vqM-2i-DiA" secondAttribute="trailing" constant="8" id="ru7-pZ-6tq"/>
+                <constraint firstItem="ww6-p1-54p" firstAttribute="top" secondItem="vqM-2i-DiA" secondAttribute="bottom" constant="8" id="sbz-YS-rMl"/>
+                <constraint firstItem="M7Z-Zb-Vlc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="tH9-xf-5K7"/>
+                <constraint firstItem="dnc-dB-pLp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tJX-GQ-fyG"/>
+                <constraint firstItem="vqM-2i-DiA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="uLQ-CO-UFT"/>
+                <constraint firstItem="fJa-Gz-G3R" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="vlZ-vD-iOX"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addMediaButton" destination="Nqe-Th-ALW" id="t5V-df-4VN"/>
+                <outlet property="authorLabel" destination="fJa-Gz-G3R" id="Hh7-ix-rym"/>
+                <outlet property="createDateLabel" destination="jIR-xX-ku7" id="Cxo-Vm-UXp"/>
+                <outlet property="desciptionTextView" destination="vqM-2i-DiA" id="OvG-vY-Hkf"/>
+                <outlet property="participantsLabel" destination="ww6-p1-54p" id="DlS-Nl-I1h"/>
+                <outlet property="titleLabel" destination="M7Z-Zb-Vlc" id="8ds-a1-K9p"/>
+                <outlet property="toolsEventButton" destination="A97-C1-Fzb" id="uQ0-cH-neK"/>
+            </connections>
+            <point key="canvasLocation" x="559" y="125.5"/>
+        </view>
+    </objects>
+</document>
