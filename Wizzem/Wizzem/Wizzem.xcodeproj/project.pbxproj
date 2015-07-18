@@ -1,0 +1,524 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BBB42B231B46628000F53E46 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB42B221B46628000F53E46 /* CameraViewController.m */; };
+		BBB42B261B46631600F53E46 /* SocialTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB42B251B46631600F53E46 /* SocialTabBarViewController.m */; };
+		BBD0849B1B45C3210095B518 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD0849A1B45C3210095B518 /* main.m */; };
+		BBD0849E1B45C3210095B518 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD0849D1B45C3210095B518 /* AppDelegate.m */; };
+		BBD084A41B45C3210095B518 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBD084A21B45C3210095B518 /* Main.storyboard */; };
+		BBD084A61B45C3210095B518 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBD084A51B45C3210095B518 /* Assets.xcassets */; };
+		BBD084A91B45C3210095B518 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBD084A71B45C3210095B518 /* LaunchScreen.storyboard */; };
+		BBD084D01B45C3760095B518 /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD084CF1B45C3760095B518 /* MainPageViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BBD084B01B45C3210095B518 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BBD0848E1B45C3210095B518 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BBD084951B45C3210095B518;
+			remoteInfo = Wizzem;
+		};
+		BBD084BB1B45C3210095B518 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BBD0848E1B45C3210095B518 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BBD084951B45C3210095B518;
+			remoteInfo = Wizzem;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BBB42B211B46628000F53E46 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		BBB42B221B46628000F53E46 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		BBB42B241B46631600F53E46 /* SocialTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialTabBarViewController.h; sourceTree = "<group>"; };
+		BBB42B251B46631600F53E46 /* SocialTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialTabBarViewController.m; sourceTree = "<group>"; };
+		BBD084961B45C3210095B518 /* Wizzem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wizzem.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBD0849A1B45C3210095B518 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BBD0849C1B45C3210095B518 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BBD0849D1B45C3210095B518 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BBD084A31B45C3210095B518 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BBD084A51B45C3210095B518 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BBD084A81B45C3210095B518 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BBD084AA1B45C3210095B518 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBD084AF1B45C3210095B518 /* WizzemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WizzemTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBD084BA1B45C3210095B518 /* WizzemUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WizzemUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBD084CE1B45C3760095B518 /* MainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageViewController.h; sourceTree = "<group>"; };
+		BBD084CF1B45C3760095B518 /* MainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BBD084931B45C3210095B518 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBD084AC1B45C3210095B518 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBD084B71B45C3210095B518 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BBD0848D1B45C3210095B518 = {
+			isa = PBXGroup;
+			children = (
+				BBD084981B45C3210095B518 /* Wizzem */,
+				BBD084971B45C3210095B518 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BBD084971B45C3210095B518 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BBD084961B45C3210095B518 /* Wizzem.app */,
+				BBD084AF1B45C3210095B518 /* WizzemTests.xctest */,
+				BBD084BA1B45C3210095B518 /* WizzemUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BBD084981B45C3210095B518 /* Wizzem */ = {
+			isa = PBXGroup;
+			children = (
+				BBD084CD1B45C3380095B518 /* Application */,
+				BBD084CC1B45C32F0095B518 /* Controllers */,
+				BBD084991B45C3210095B518 /* Supporting Files */,
+			);
+			path = Wizzem;
+			sourceTree = "<group>";
+		};
+		BBD084991B45C3210095B518 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BBD0849A1B45C3210095B518 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BBD084CC1B45C32F0095B518 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BBD084CE1B45C3760095B518 /* MainPageViewController.h */,
+				BBD084CF1B45C3760095B518 /* MainPageViewController.m */,
+				BBB42B241B46631600F53E46 /* SocialTabBarViewController.h */,
+				BBB42B251B46631600F53E46 /* SocialTabBarViewController.m */,
+				BBB42B211B46628000F53E46 /* CameraViewController.h */,
+				BBB42B221B46628000F53E46 /* CameraViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		BBD084CD1B45C3380095B518 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				BBD084A21B45C3210095B518 /* Main.storyboard */,
+				BBD084A51B45C3210095B518 /* Assets.xcassets */,
+				BBD084A71B45C3210095B518 /* LaunchScreen.storyboard */,
+				BBD084AA1B45C3210095B518 /* Info.plist */,
+				BBD0849C1B45C3210095B518 /* AppDelegate.h */,
+				BBD0849D1B45C3210095B518 /* AppDelegate.m */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BBD084951B45C3210095B518 /* Wizzem */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BBD084C31B45C3210095B518 /* Build configuration list for PBXNativeTarget "Wizzem" */;
+			buildPhases = (
+				BBD084921B45C3210095B518 /* Sources */,
+				BBD084931B45C3210095B518 /* Frameworks */,
+				BBD084941B45C3210095B518 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Wizzem;
+			productName = Wizzem;
+			productReference = BBD084961B45C3210095B518 /* Wizzem.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BBD084AE1B45C3210095B518 /* WizzemTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BBD084C61B45C3210095B518 /* Build configuration list for PBXNativeTarget "WizzemTests" */;
+			buildPhases = (
+				BBD084AB1B45C3210095B518 /* Sources */,
+				BBD084AC1B45C3210095B518 /* Frameworks */,
+				BBD084AD1B45C3210095B518 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BBD084B11B45C3210095B518 /* PBXTargetDependency */,
+			);
+			name = WizzemTests;
+			productName = WizzemTests;
+			productReference = BBD084AF1B45C3210095B518 /* WizzemTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BBD084B91B45C3210095B518 /* WizzemUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BBD084C91B45C3210095B518 /* Build configuration list for PBXNativeTarget "WizzemUITests" */;
+			buildPhases = (
+				BBD084B61B45C3210095B518 /* Sources */,
+				BBD084B71B45C3210095B518 /* Frameworks */,
+				BBD084B81B45C3210095B518 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BBD084BC1B45C3210095B518 /* PBXTargetDependency */,
+			);
+			name = WizzemUITests;
+			productName = WizzemUITests;
+			productReference = BBD084BA1B45C3210095B518 /* WizzemUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BBD0848E1B45C3210095B518 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Remi Robert";
+				TargetAttributes = {
+					BBD084951B45C3210095B518 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					BBD084AE1B45C3210095B518 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = BBD084951B45C3210095B518;
+					};
+					BBD084B91B45C3210095B518 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = BBD084951B45C3210095B518;
+					};
+				};
+			};
+			buildConfigurationList = BBD084911B45C3210095B518 /* Build configuration list for PBXProject "Wizzem" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BBD0848D1B45C3210095B518;
+			productRefGroup = BBD084971B45C3210095B518 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BBD084951B45C3210095B518 /* Wizzem */,
+				BBD084AE1B45C3210095B518 /* WizzemTests */,
+				BBD084B91B45C3210095B518 /* WizzemUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BBD084941B45C3210095B518 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBD084A91B45C3210095B518 /* LaunchScreen.storyboard in Resources */,
+				BBD084A61B45C3210095B518 /* Assets.xcassets in Resources */,
+				BBD084A41B45C3210095B518 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBD084AD1B45C3210095B518 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBD084B81B45C3210095B518 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BBD084921B45C3210095B518 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBB42B231B46628000F53E46 /* CameraViewController.m in Sources */,
+				BBB42B261B46631600F53E46 /* SocialTabBarViewController.m in Sources */,
+				BBD0849E1B45C3210095B518 /* AppDelegate.m in Sources */,
+				BBD0849B1B45C3210095B518 /* main.m in Sources */,
+				BBD084D01B45C3760095B518 /* MainPageViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBD084AB1B45C3210095B518 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBD084B61B45C3210095B518 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BBD084B11B45C3210095B518 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BBD084951B45C3210095B518 /* Wizzem */;
+			targetProxy = BBD084B01B45C3210095B518 /* PBXContainerItemProxy */;
+		};
+		BBD084BC1B45C3210095B518 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BBD084951B45C3210095B518 /* Wizzem */;
+			targetProxy = BBD084BB1B45C3210095B518 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BBD084A21B45C3210095B518 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BBD084A31B45C3210095B518 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BBD084A71B45C3210095B518 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BBD084A81B45C3210095B518 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BBD084C11B45C3210095B518 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BBD084C21B45C3210095B518 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BBD084C41B45C3210095B518 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Wizzem/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.remirobert.Wizzem;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BBD084C51B45C3210095B518 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Wizzem/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.remirobert.Wizzem;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BBD084C71B45C3210095B518 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = WizzemTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.remirobert.WizzemTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wizzem.app/Wizzem";
+			};
+			name = Debug;
+		};
+		BBD084C81B45C3210095B518 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = WizzemTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.remirobert.WizzemTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wizzem.app/Wizzem";
+			};
+			name = Release;
+		};
+		BBD084CA1B45C3210095B518 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = WizzemUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.remirobert.WizzemUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Wizzem;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		BBD084CB1B45C3210095B518 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = WizzemUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.remirobert.WizzemUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Wizzem;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BBD084911B45C3210095B518 /* Build configuration list for PBXProject "Wizzem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBD084C11B45C3210095B518 /* Debug */,
+				BBD084C21B45C3210095B518 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BBD084C31B45C3210095B518 /* Build configuration list for PBXNativeTarget "Wizzem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBD084C41B45C3210095B518 /* Debug */,
+				BBD084C51B45C3210095B518 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BBD084C61B45C3210095B518 /* Build configuration list for PBXNativeTarget "WizzemTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBD084C71B45C3210095B518 /* Debug */,
+				BBD084C81B45C3210095B518 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BBD084C91B45C3210095B518 /* Build configuration list for PBXNativeTarget "WizzemUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBD084CA1B45C3210095B518 /* Debug */,
+				BBD084CB1B45C3210095B518 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BBD0848E1B45C3210095B518 /* Project object */;
+}

@@ -1,0 +1,63 @@
+PODS:
+  - Bolts (1.2.0):
+    - Bolts/AppLinks (= 1.2.0)
+    - Bolts/Tasks (= 1.2.0)
+  - Bolts/AppLinks (1.2.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.2.0)
+  - Facebook-iOS-SDK (3.23.2):
+    - Bolts (~> 1.0)
+  - FBSDKCoreKit (4.2.0):
+    - Bolts (~> 1.1)
+    - FBSDKCoreKit/arc (= 4.2.0)
+    - FBSDKCoreKit/no-arc (= 4.2.0)
+  - FBSDKCoreKit/arc (4.2.0):
+    - Bolts (~> 1.1)
+  - FBSDKCoreKit/no-arc (4.2.0):
+    - Bolts (~> 1.1)
+    - FBSDKCoreKit/arc
+  - FLAnimatedImage (1.0.8)
+  - jot (0.1.3):
+    - Masonry (~> 0.6.1)
+  - Masonry (0.6.2)
+  - MBProgressHUD (0.9.1)
+  - Parse (1.7.4):
+    - Bolts/Tasks (>= 1.1.5)
+  - ParseFacebookUtils (1.7.4):
+    - Bolts/Tasks (>= 1.1.5)
+    - Facebook-iOS-SDK (~> 3.23)
+    - Parse (~> 1.7.4)
+  - ParseUI (1.1.4):
+    - Parse (~> 1.7)
+  - PBJVision (0.4.2)
+  - SwiftMoment (0.1.2)
+  - WaitBlock (0.1)
+
+DEPENDENCIES:
+  - FBSDKCoreKit (~> 4.2.0)
+  - FLAnimatedImage (~> 1.0)
+  - jot
+  - Masonry (~> 0.6.1)
+  - MBProgressHUD
+  - ParseFacebookUtils
+  - ParseUI
+  - PBJVision
+  - SwiftMoment
+  - WaitBlock
+
+SPEC CHECKSUMS:
+  Bolts: d176cb1e0012175589e389a9db49b85e27787576
+  Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
+  FBSDKCoreKit: 84b3616a361801f190e43a9909caead7bb6087c7
+  FLAnimatedImage: f9422f796135aff80d8c00b2afc48015bb746e24
+  jot: 86da410a8bd544860166d5617707f3b2a8f0e4a1
+  Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  Parse: 6ca512c6e860b66739c95151b2f76ac4712b7842
+  ParseFacebookUtils: 7115990b291ae95b920fde413272828d0eb0d963
+  ParseUI: d1228541b02a36a7354c8f47747f5f7a89cf1ff0
+  PBJVision: fe43c9a58bb1c1277d16fd802fa836d25e034a45
+  SwiftMoment: a439fccf86c8f3367557e406204c93ec1269c8c5
+  WaitBlock: 8c32c0172a599c78a11d1e25cfd44ae519abaa61
+
+COCOAPODS: 0.37.2

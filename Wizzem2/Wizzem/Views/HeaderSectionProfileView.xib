@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HeaderSectionProfileView" customModule="Wizzem" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="709" height="59"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yaq-fb-7BW">
+                    <rect key="frame" x="8" y="16" width="693" height="29"/>
+                    <animations/>
+                    <segments>
+                        <segment title="Passés"/>
+                        <segment title="Imminents"/>
+                        <segment title="à venir"/>
+                    </segments>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </segmentedControl>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" red="0.3294117647" green="0.44705882349999998" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="yaq-fb-7BW" secondAttribute="trailing" constant="8" id="cK7-AC-EIa"/>
+                <constraint firstAttribute="bottom" secondItem="yaq-fb-7BW" secondAttribute="bottom" constant="15" id="e5g-uW-QeU"/>
+                <constraint firstItem="yaq-fb-7BW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="nDK-Se-cCD"/>
+                <constraint firstItem="yaq-fb-7BW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="wRC-ou-jEN"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="619.5" y="108.5"/>
+        </view>
+    </objects>
+</document>
