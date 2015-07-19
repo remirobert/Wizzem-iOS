@@ -17,7 +17,7 @@ enum CameraMode {
     case Text
 }
 
-class CameraViewController: UIViewController, PBJVisionDelegate, PageController {
+class CameraViewController: UIViewController, PBJVisionDelegate, PageController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet var photoCameraMode: UIButton!
     @IBOutlet var gifCameraMode: UIButton!
@@ -32,11 +32,11 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController 
     
     @IBOutlet var photoNumberGif: UILabel!
     @IBOutlet var buttonResetGif: UIButton!
-    
-    @IBOutlet var cancelCameraButton: UIButton!
+    @IBOutlet var buttonGallerie: UIButton!
     
     var event: PFObject?
     var page: Int = 1
+    
     
     lazy var inputViewKeyboard: UIToolbar! = {
         let inputView = UIToolbar()
@@ -54,6 +54,25 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController 
     var gifImages = Array<UIImage>()
     var selectedTextContent: String!
     var currentCameraMode: CameraMode = CameraMode.Photo
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        var image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        capturedImage = image
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            self.performSegueWithIdentifier(SEGUE_PREVIEW_CAPTURE, sender: nil)
+        })
+    }
+    
+    @IBAction func pickPhotoGallerie(sender: AnyObject) {
+        let controller = UIImagePickerController()
+        controller.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        controller.delegate = self
+        self.presentViewController(controller, animated: true, completion: nil)        
+    }
+    
+    @IBAction func swipeFeedController(sender: AnyObject) {
+        NSNotificationCenter.defaultCenter().postNotificationName("swipControllerFeed", object: nil)
+    }
     
     func setupCamera() {
         previewLayer = PBJVision.sharedInstance().previewLayer
@@ -179,6 +198,7 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController 
         photoCameraMode.alpha = 0.2
         gifCameraMode.alpha = 1
         buttonResetGif.alpha = 0
+        buttonGallerie.alpha = 1
         validateGifCaptureButton.alpha = 0
     }
     
@@ -198,15 +218,12 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController 
         photoCameraMode.alpha = 1
         gifCameraMode.alpha = 0.2
         buttonResetGif.alpha = 0
+        buttonGallerie.alpha = 0
         validateGifCaptureButton.alpha = 0
     }
     
     //MARK: UIView cycle
-    
-    @IBAction func dismissCameraController(sender: AnyObject) {
-        dismissController()
-    }
-    
+        
     func dismissController() {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -238,13 +255,7 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController 
         validateGifCaptureButton.alpha = 0
         photoNumberGif.alpha = 0
         buttonResetGif.alpha = 0
-        
-        if let event = event {
-            cancelCameraButton.alpha = 1
-        }
-        else {
-            cancelCameraButton.alpha = 0
-        }
+        buttonGallerie.alpha = 1
     }
     
     deinit {
@@ -256,7 +267,7 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController 
             var media: Media💿!
             switch currentCameraMode {
             case .Photo: media = Media💿.Photo(image: capturedImage)
-            case .Gif: media = Media💿.Gif(data: capturedGif)
+            case .Gif: media = Media💿.Gif(data: capturedGif, frames: gifImages)
             default: break
             }
             if let controller = (segue.destinationViewController as! UINavigationController).viewControllers.first as? PreviewCaptureViewController {

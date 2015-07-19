@@ -6,12 +6,17 @@
 //
 //
 
-import UIKit
 import Masonry
+
+class CustomLabel: UILabel {
+    override func drawTextInRect(rect: CGRect) {
+        super.drawTextInRect(UIEdgeInsetsInsetRect(rect, UIEdgeInsetsMake(0, 5, 0, 5)))
+    }
+}
 
 class DrawTextView: UIView {
 
-    private var textLabel: UILabel!
+    var textLabel: CustomLabel!
     
     var text: String! {
         didSet {
@@ -19,29 +24,23 @@ class DrawTextView: UIView {
             sizeTextLabel()
         }
     }
-    
-    var fontSize: CGFloat! {
-        didSet {
-            textLabel.font = textLabel.font.fontWithSize(fontSize)
-        }
-    }
-    
+
     init() {
         super.init(frame: CGRectZero)
-
-        fontSize = 44
+        
+        layer.masksToBounds = true
         backgroundColor = UIColor.clearColor()
-        textLabel = UILabel()
+        textLabel = CustomLabel()
+        textLabel.font = textLabel.font.fontWithSize(44)
         textLabel.textAlignment = NSTextAlignment.Center
-        textLabel.text = "init text"
         textLabel.numberOfLines = 0
-        textLabel.font = UIFont.systemFontOfSize(44)
         textLabel.textColor = UIColor.whiteColor()
         addSubview(textLabel)
         
         textLabel.mas_makeConstraints { (make: MASConstraintMaker!) -> Void in
-            make.trailing.and().leading().equalTo()(self)
+            make.right.and().left().equalTo()(self)
             make.centerY.equalTo()(self)
+            make.centerX.equalTo()(self)
         }
     }
 
@@ -53,9 +52,10 @@ class DrawTextView: UIView {
         let oldCenter = textLabel.center
         let styleText = NSMutableParagraphStyle()
         styleText.alignment = NSTextAlignment.Center
-        let attributsText = [NSParagraphStyleAttributeName:styleText, NSFontAttributeName:UIFont.boldSystemFontOfSize(44)]
+        let attributsText = [NSParagraphStyleAttributeName:styleText, NSFontAttributeName:UIFont.boldSystemFontOfSize(textLabel.font.pointSize)]
+        let sizeParentView = CGSizeMake(CGRectGetWidth(superview!.frame) - 10, CGRectGetHeight(superview!.frame) - 10)
         let sizeTextLabel = (NSString(string: textLabel.text!)).boundingRectWithSize(superview!.frame.size, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributsText, context: nil)
-        textLabel.frame.size = sizeTextLabel.size
+        textLabel.frame.size = CGSizeMake(sizeTextLabel.width + 10, sizeTextLabel.height + 10)
         textLabel.center = oldCenter
     }
 }

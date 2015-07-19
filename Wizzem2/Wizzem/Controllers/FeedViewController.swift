@@ -14,6 +14,10 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var events = Array<PFObject>()
     @IBOutlet var tableView: UITableView!
     
+    @IBAction func swipeCameraController(sender: AnyObject) {
+        NSNotificationCenter.defaultCenter().postNotificationName("swipControllerCamera", object: nil)
+    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier("detailEventSegue", sender: events[indexPath.row])
     }

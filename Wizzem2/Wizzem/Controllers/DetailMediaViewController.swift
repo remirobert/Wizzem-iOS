@@ -33,7 +33,11 @@ class DetailMediaViewController: UIViewController {
             mediaFile.getDataInBackgroundWithBlock({ (data: NSData?, _) -> Void in
                 if let data = data {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.imageView.image = UIImage(data: data)
+                        switch self.currentMedia["type"] as! String {
+                        case "photo": self.imageView.image = UIImage(data: data)
+                        case "gif": self.imageView.animatedImage = FLAnimatedImage(animatedGIFData: data)
+                        default: return
+                        }
                         self.view.bringSubviewToFront(self.titleEvent)
                         self.view.bringSubviewToFront(self.currentMediaLabel)
                         self.view.bringSubviewToFront(self.profileImageView)

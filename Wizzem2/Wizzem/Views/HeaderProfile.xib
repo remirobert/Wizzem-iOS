@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="15A216g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HeaderProfileView" customModule="Wizzem" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="161"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="hWS-UK-HrO">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="161"/>
+                    <animations/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3XE-7Y-Ioa">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="161"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bWS-X4-aj3">
+                            <rect key="frame" x="22" y="31" width="100" height="100"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="RlF-iO-IAA"/>
+                                <constraint firstAttribute="width" constant="100" id="rAi-h6-fIE"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rémi ROBERT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIk-UQ-td4">
+                            <rect key="frame" x="130" y="61" width="462" height="40"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="W5T-F0-sKp"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="22"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GG1-ln-WEh">
+                            <rect key="frame" x="22" y="134" width="100" height="20"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="aTt-9F-zaa"/>
+                                <constraint firstAttribute="width" constant="100" id="xKH-iP-rk0"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                            <state key="normal" title="Editer">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45 stars" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kve-cH-M0q">
+                            <rect key="frame" x="444" y="129" width="148" height="30"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="lFQ-9P-S7l"/>
+                                <constraint firstAttribute="width" constant="148" id="mU0-6J-Pu6"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="19"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.25263935810810811" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="centerY" secondItem="bWS-X4-aj3" secondAttribute="centerY" id="3hl-9u-GZD"/>
+                        <constraint firstItem="QIk-UQ-td4" firstAttribute="leading" secondItem="bWS-X4-aj3" secondAttribute="trailing" constant="8" id="807-tR-8fv"/>
+                        <constraint firstItem="GG1-ln-WEh" firstAttribute="top" secondItem="bWS-X4-aj3" secondAttribute="bottom" constant="3" id="JUz-pq-wWw"/>
+                        <constraint firstAttribute="bottom" secondItem="kve-cH-M0q" secondAttribute="bottom" constant="19" id="KSh-4K-Fp5"/>
+                        <constraint firstAttribute="trailing" secondItem="QIk-UQ-td4" secondAttribute="trailing" constant="8" id="NvK-dH-EMX"/>
+                        <constraint firstItem="bWS-X4-aj3" firstAttribute="leading" secondItem="3XE-7Y-Ioa" secondAttribute="leading" constant="22" id="P8U-SZ-Ydz"/>
+                        <constraint firstAttribute="trailing" secondItem="kve-cH-M0q" secondAttribute="trailing" constant="8" id="WTc-9F-nCT"/>
+                        <constraint firstItem="kve-cH-M0q" firstAttribute="top" secondItem="QIk-UQ-td4" secondAttribute="bottom" constant="28" id="c7R-Wf-WAH"/>
+                        <constraint firstAttribute="centerY" secondItem="QIk-UQ-td4" secondAttribute="centerY" id="erv-ez-fdC"/>
+                        <constraint firstItem="GG1-ln-WEh" firstAttribute="leading" secondItem="3XE-7Y-Ioa" secondAttribute="leading" constant="22" id="gTq-GU-qSz"/>
+                        <constraint firstItem="QIk-UQ-td4" firstAttribute="top" secondItem="3XE-7Y-Ioa" secondAttribute="top" constant="53" id="sSb-Dz-Gzv"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="sSb-Dz-Gzv"/>
+                            <exclude reference="KSh-4K-Fp5"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="hWS-UK-HrO" secondAttribute="bottom" id="59L-nz-BlI"/>
+                <constraint firstAttribute="trailing" secondItem="3XE-7Y-Ioa" secondAttribute="trailing" id="At7-Pt-IYb"/>
+                <constraint firstItem="hWS-UK-HrO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="I3g-Be-bvN"/>
+                <constraint firstItem="3XE-7Y-Ioa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LzU-Wk-GwE"/>
+                <constraint firstAttribute="trailing" secondItem="hWS-UK-HrO" secondAttribute="trailing" id="T7B-U3-adl"/>
+                <constraint firstItem="hWS-UK-HrO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Tb2-hD-vTz"/>
+                <constraint firstItem="3XE-7Y-Ioa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="X6c-EJ-EIa"/>
+                <constraint firstAttribute="bottom" secondItem="3XE-7Y-Ioa" secondAttribute="bottom" id="n4p-st-wzn"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="backgroundImageView" destination="hWS-UK-HrO" id="T19-0R-b4n"/>
+                <outlet property="buttonEditProfile" destination="GG1-ln-WEh" id="vc4-Aw-kRu"/>
+                <outlet property="profileImageView" destination="bWS-X4-aj3" id="9KT-iZ-LBm"/>
+                <outlet property="starsNumberLabel" destination="kve-cH-M0q" id="pkV-O8-nxn"/>
+                <outlet property="usernameLabel" destination="QIk-UQ-td4" id="HyB-GC-0jF"/>
+            </connections>
+            <point key="canvasLocation" x="325" y="185.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="640" height="960"/>
+    </resources>
+</document>

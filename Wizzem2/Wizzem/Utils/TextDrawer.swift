@@ -6,14 +6,17 @@
 //
 //
 
+//Scrux
+
 import UIKit
 import Masonry
 
-class DrawView: UIView, TextEditViewDelegate {
+class TextDrawer: UIView, TextEditViewDelegate {
 
     private var textEditView: TextEditView!
     private var drawTextView: DrawTextView!
     
+    private var initialTransformation: CGAffineTransform!
     private var initialCenterDrawTextView: CGPoint!
     private var initialRotationTransform: CGAffineTransform!
     private var initialReferenceRotationTransform: CGAffineTransform!
@@ -46,9 +49,27 @@ class DrawView: UIView, TextEditViewDelegate {
         return zoomRecognizer
     }()
     
+    func clearText() {
+        text = ""
+    }
+    
+    func resetTransformation() {
+        drawTextView.transform = initialTransformation
+        drawTextView.mas_updateConstraints({ (make: MASConstraintMaker!) -> Void in
+            make.edges.equalTo()(self)
+            make.centerX.and().centerY().equalTo()(self)
+        })
+        drawTextView.center = center
+        //drawTextView.sizeTextLabel()
+    }
+    
+    //MARK: -
+    //MARK: Setup DrawView
+    
     private func setup() {
         self.layer.masksToBounds = true
         drawTextView = DrawTextView()
+        initialTransformation = drawTextView.transform
         addSubview(drawTextView)
         drawTextView.mas_makeConstraints { (make: MASConstraintMaker!) -> Void in
             make.edges.equalTo()(self)
@@ -70,9 +91,13 @@ class DrawView: UIView, TextEditViewDelegate {
         initialReferenceRotationTransform = CGAffineTransformIdentity
     }
     
+    //MARK: -
+    //MARK: Initialisation
+    
     init() {
         super.init(frame: CGRectZero)
         setup()
+        drawTextView.textLabel.font = drawTextView.textLabel.font.fontWithSize(44)
     }
     
     override init(frame: CGRect) {
@@ -91,13 +116,77 @@ class DrawView: UIView, TextEditViewDelegate {
     }
 }
 
-extension DrawView: UIGestureRecognizerDelegate {
+//MARK: -
+//MARK: Proprety extension
+
+extension TextDrawer {
+    
+    var fontSize: CGFloat! {
+        set {
+            drawTextView.textLabel.font = drawTextView.textLabel.font.fontWithSize(newValue)
+        }
+        get {
+            return  drawTextView.textLabel.font.pointSize
+        }
+    }
+    
+    var font: UIFont! {
+        set {
+            drawTextView.textLabel.font = newValue
+        }
+        get {
+            return drawTextView.textLabel.font
+        }
+    }
+    
+    var textColor: UIColor! {
+        set {
+            drawTextView.textLabel.textColor = newValue
+        }
+        get {
+            return drawTextView.textLabel.textColor
+        }
+    }
+    
+    var textAlignement: NSTextAlignment! {
+        set {
+            drawTextView.textLabel.textAlignment = newValue
+        }
+        get {
+            return drawTextView.textLabel.textAlignment
+        }
+    }
+    
+    var textBackgroundColor: UIColor! {
+        set {
+            drawTextView.textLabel.backgroundColor = newValue
+        }
+        get {
+            return drawTextView.textLabel.backgroundColor
+        }
+    }
+    
+    var text: String! {
+        set {
+            drawTextView.text = newValue
+        }
+        get {
+            return drawTextView.text
+        }
+    }
+}
+
+//MARK: -
+//MARK: Gesture handler extension
+
+extension TextDrawer: UIGestureRecognizerDelegate {
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
     
     func handleTapGesture(recognizer: UITapGestureRecognizer) {
+        textEditView.textEntry = text
         textEditView.isEditing = true
         textEditView.hidden = false
     }
@@ -154,41 +243,43 @@ extension DrawView: UIGestureRecognizerDelegate {
     }
 }
 
-extension DrawView {
+//MARK: -
+//MARK: Render extension
+
+extension TextDrawer {
     
-    func background() -> UIImage {
-        let size = UIScreen.mainScreen().bounds.size
-        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.mainScreen().scale)
-        UIColor.whiteColor().setFill()
-        CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, size.width, size.height))
-        let colorImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return colorImage
+    func render() -> UIImage? {
+        return renderTextOnView(self)
     }
     
-    func currentView() -> UIImage {
+    func renderTextOnView(view: UIView) -> UIImage? {
         let size = UIScreen.mainScreen().bounds.size
-        let scale = size.width / CGRectGetWidth(self.bounds)
-        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, scale)
         
-        layer.renderInContext(UIGraphicsGetCurrentContext())
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 0)
+        
+        view.layer.renderInContext(UIGraphicsGetCurrentContext())
         let img = UIGraphicsGetImageFromCurrentImageContext()
         
         UIGraphicsEndImageContext()
-        return img
+        return renderTextOnImage(img)
     }
     
-    func drawTextOnImage(image: UIImage) -> UIImage? {
+    func renderTextOnImage(image: UIImage) -> UIImage? {
         let size = image.size
-        let scale = image.size.width / CGRectGetWidth(self.bounds)
+        let scale = size.width / CGRectGetWidth(self.bounds)
+        let color = layer.backgroundColor
+
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
         
-        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 1.5)
-        
-        image.drawInRect(CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)))
+        image.drawInRect(CGRectMake(CGRectGetWidth(self.bounds) / 2 - (image.size.width / scale) / 2,
+            CGRectGetHeight(self.bounds) / 2 - (image.size.height / scale) / 2,
+            image.size.width / scale,
+            image.size.height / scale))
+        layer.backgroundColor = UIColor.clearColor().CGColor
         layer.renderInContext(UIGraphicsGetCurrentContext())
+        layer.backgroundColor = color
 
-
-
+        
         let drawnImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         return UIImage(CGImage: drawnImage.CGImage, scale: 1, orientation: drawnImage.imageOrientation)

@@ -85,7 +85,12 @@ class CreationWizzPeopleTableViewController: UITableViewController {
                     Alert.error("Erreur survenie lors de la création de votre moment. Veuillez vérifier les champs rentrés, et recommencer.")
                     return
                 }
-                self.dismissViewControllerAnimated(true, completion: nil)
+                if self.switchOpen.on {
+                    self.performSegueWithIdentifier("privacySegue", sender: nil)
+                }
+                else {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
             })
         }
     }

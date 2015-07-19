@@ -13,6 +13,7 @@ class LastWizzMomentTableViewCell: UITableViewCell {
     @IBOutlet var title: UILabel!
     @IBOutlet var numberMedia: UILabel!
     @IBOutlet var numberUsers: UILabel!
+    @IBOutlet var author: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,5 +23,6 @@ class LastWizzMomentTableViewCell: UITableViewCell {
         title.text = nil
         numberMedia.text = nil
         numberUsers.text = nil
+        author.text = nil
     }
 }

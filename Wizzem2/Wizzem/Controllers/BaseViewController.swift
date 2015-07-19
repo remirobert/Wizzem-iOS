@@ -37,8 +37,19 @@ class BaseViewController: UIViewController, UIPageViewControllerDataSource {
         return nil
     }
     
+    func swipeControllerCamera() {
+        pageViewController.setViewControllers([controllers[1]], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+    }
+
+    func swipeControllerFeed() {
+        pageViewController.setViewControllers([controllers[0]], direction: UIPageViewControllerNavigationDirection.Reverse, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "swipeControllerCamera", name: "swipControllerCamera", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "swipeControllerFeed", name: "swipControllerFeed", object: nil)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         controllers = [storyboard.instantiateViewControllerWithIdentifier("mainNavigationController"),

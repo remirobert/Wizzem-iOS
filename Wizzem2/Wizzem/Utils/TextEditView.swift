@@ -20,6 +20,15 @@ class TextEditView: UIView {
     
     var delegate: TextEditViewDelegate?
 
+    var textEntry: String! {
+        set {
+            textView.text = newValue
+        }
+        get {
+            return textView.text
+        }
+    }
+    
     var isEditing: Bool! {
         didSet {
             if isEditing == true {
@@ -76,7 +85,6 @@ class TextEditView: UIView {
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
-    
 }
 
 extension TextEditView: UITextViewDelegate {

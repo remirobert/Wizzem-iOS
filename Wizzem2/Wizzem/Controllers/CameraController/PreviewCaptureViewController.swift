@@ -17,20 +17,15 @@ class PreviewCaptureViewController: UIViewController {
     var event: PFObject?
     var capturedMedia: Media💿!
     var currentEvent: PFObject?
-    var jotController: JotViewController!
     @IBOutlet var imageView: FLAnimatedImageView!
     @IBOutlet var buttonCurrentMoment: UIButton!
     @IBOutlet var validateButton: UIButton!
-    //@IBOutlet var drawView: DrawView!
+    @IBOutlet var closeButton: UIButton!
+    @IBOutlet var selectMomentButton: UIButton!
+    @IBOutlet var containerView: UIView!
+    @IBOutlet var drawView: TextDrawer!
     
     @IBAction func addTextViewMedia(sender: AnyObject) {
-//        if mediaTextView.alpha == 0 {
-//            mediaTextView.text = "Ajoute ton text ici."
-//            mediaTextView.alpha = 1
-//        }
-//        else {
-//            mediaTextView.alpha = 0
-//        }
     }
     
     @IBAction func cancelPreview(sender: AnyObject) {
@@ -41,7 +36,7 @@ class PreviewCaptureViewController: UIViewController {
         var shareMedia: AnyObject!
         switch capturedMedia! {
         case Media💿.Photo(let image): shareMedia = image
-        case Media💿.Gif(let data): shareMedia = data
+        case Media💿.Gif(let data, _): shareMedia = data
         default: break
         }
         
@@ -49,46 +44,17 @@ class PreviewCaptureViewController: UIViewController {
         navigationController?.presentViewController(shareController, animated: true, completion: nil)
     }
     
-    @IBAction func validatePreview(sender: AnyObject) {
-        let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
-        hud.labelText = "Votre Wizz est en cours d'upload."
-        
-        var file: PFFile!
-        switch capturedMedia! {
-        case Media💿.Photo(let image):
-            let img = jotController.drawOnImage(image)
-            file = PFFile(data: UIImageJPEGRepresentation(img, 0.5))
-        case Media💿.Gif(let data): file = PFFile(data: data)
+    func addTextOnGif(images: [UIImage]) -> [UIImage] {
+        var imagesText = Array<UIImage>()
+        for img in images {
+            if let image = drawView.renderTextOnImage(img) {
+                imagesText.append(image)
+            }
         }
-        
-//        if mediaTextView.alpha > 0 {
-//            let imageSize = PhotoHelper.aspectScaledImageSizeForImageView(imageView, image: imageView.image!)
-//            
-//            let font:UIFont = UIFont.boldSystemFontOfSize(60)
-//            let color: UIColor = UIColor.whiteColor()
-//            let paragrapheStyle = NSMutableParagraphStyle()
-//            paragrapheStyle.alignment = NSTextAlignment.Center
-//            let attributeDict:NSDictionary = [NSFontAttributeName:font,
-//                NSForegroundColorAttributeName:color,
-//                NSParagraphStyleAttributeName:paragrapheStyle]
-//            
-//            let text = NSString(string: mediaTextView.text)
-//            
-//            UIGraphicsBeginImageContextWithOptions(imageView.image!.size, false, 0)
-//            imageView.image!.drawInRect(CGRectMake(0, 0, imageView.image!.size.width, imageView.image!.size.height))
-//            
-//            let positionX = imageView.image!.size.width / imageSize.width * mediaTextView.frame.origin.x
-//            let positionY = imageView.image!.size.height / imageSize.height * (mediaTextView.frame.origin.y - (UIScreen.mainScreen().bounds.size.height - imageSize.height) / 2)
-//            
-//            println("position : \(mediaTextView.frame.origin.x) \(mediaTextView.frame.origin.x)")
-//            
-//            text.drawInRect(CGRectMake(0, positionY, imageView.image!.size.width, 500), withAttributes: attributeDict as [NSObject : AnyObject])
-//            
-//            let image = UIGraphicsGetImageFromCurrentImageContext()
-//            file = PFFile(data: UIImageJPEGRepresentation(image, 0.5))
-//            imageView.image = image
-//        }
-        
+        return imagesText
+    }
+    
+    func addMedia(file: PFFile, hud: MBProgressHUD, type: String) {
         PFGeoPoint.geoPointForCurrentLocationInBackground { (geo: PFGeoPoint?, _) -> Void in
             if let geo = geo {
                 file.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
@@ -109,6 +75,7 @@ class PreviewCaptureViewController: UIViewController {
                     params.setValue(PFUser.currentUser()!.objectId!, forKey: "userId")
                     params.setValue(file, forKey: "file")
                     params.setValue(geo, forKey: "location")
+                    params.setValue(type, forKey: "type")
                     
                     println("\(params)")
                     
@@ -135,14 +102,36 @@ class PreviewCaptureViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
-        addChildViewController(jotController)
-        view.addSubview(jotController.view)
-        jotController.didMoveToParentViewController(self)
-        jotController.view.frame = view.bounds
-        jotController.state = JotViewState.Text
+    @IBAction func validatePreview(sender: AnyObject) {
+        let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
+        hud.labelText = "Votre Wizz est en cours d'upload."
         
+        var imagesGif: [UIImage]?
+        var file: PFFile!
+        switch capturedMedia! {
+        case Media💿.Photo(let image):
+            let img = drawView.renderTextOnImage(image)
+            file = PFFile(data: UIImageJPEGRepresentation(img, 0.5))
+        case Media💿.Gif(let data, let frames): imagesGif = addTextOnGif(frames)
+        }
+        
+        if let images = imagesGif {
+            GifMaker().makeAnimatedGif(images, blockCompletion: { (dataGif: NSData!) -> Void in
+                file = PFFile(data: dataGif)
+                self.addMedia(file, hud: hud, type: "gif")
+
+            })
+        }
+        else {
+            addMedia(file, hud: hud, type: "photo")
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         view.bringSubviewToFront(validateButton)
+        view.bringSubviewToFront(closeButton)
+        view.bringSubviewToFront(selectMomentButton)
+        view.bringSubviewToFront(containerView)
     }
     
     override func viewDidLoad() {
@@ -172,15 +161,13 @@ class PreviewCaptureViewController: UIViewController {
         switch capturedMedia! {
         case Media💿.Photo(let image):
             imageView.image = image
-        case Media💿.Gif(let data):
+        case Media💿.Gif(let data, _):
             imageView.animatedImage = FLAnimatedImage(GIFData: data)
         default: break
         }
         
         let querry = PFQuery(className: "Event")
         querry
-        
-        jotController = JotViewController()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

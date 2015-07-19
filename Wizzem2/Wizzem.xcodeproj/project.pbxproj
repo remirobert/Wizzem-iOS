@@ -12,21 +12,25 @@
 		BB1BA99C1B2B6888002A8015 /* RMDateSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1BA99B1B2B6888002A8015 /* RMDateSelectionViewController.m */; };
 		BB1BA9A01B2B6936002A8015 /* RMActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1BA99F1B2B6936002A8015 /* RMActionController.m */; };
 		BB1BE47B1B29AAC600763B88 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1BE47A1B29AAC600763B88 /* LoginTableViewController.swift */; };
-		BB31149B1B39E14000759FF3 /* SearchWizzTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB31149A1B39E14000759FF3 /* SearchWizzTableViewCell.swift */; };
-		BB35BF6D1B36D87100E6B773 /* FeedEventCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB35BF6C1B36D87100E6B773 /* FeedEventCollectionViewCell.xib */; };
 		BB49BDFE1B37507400248277 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49BDFD1B37507400248277 /* BaseViewController.swift */; };
 		BB49BE001B37514800248277 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49BDFF1B37514800248277 /* MainTabBarViewController.swift */; };
 		BB51C0721B4F0C1C00805962 /* LastWizzMomentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB51C0711B4F0C1C00805962 /* LastWizzMomentTableViewCell.swift */; };
 		BB5C32AD1B2C619700B38318 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5C32AC1B2C619700B38318 /* CameraViewController.swift */; };
+		BB6319191B5A4E9400944870 /* PrivacyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6319181B5A4E9400944870 /* PrivacyDetailViewController.swift */; };
+		BB63191D1B5AA14800944870 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63191C1B5AA14800944870 /* ProfileViewController.swift */; };
+		BB6319201B5AA1BD00944870 /* MomentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB63191F1B5AA1BD00944870 /* MomentCell.xib */; };
+		BB6319221B5AA29600944870 /* HeaderProfile.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6319211B5AA29600944870 /* HeaderProfile.xib */; };
+		BB6319241B5AA40400944870 /* HeaderProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6319231B5AA40400944870 /* HeaderProfileView.swift */; };
+		BB6319261B5AACA300944870 /* MomentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6319251B5AACA300944870 /* MomentTableViewCell.swift */; };
+		BB63192C1B5AC1D400944870 /* ProfileSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63192B1B5AC1D400944870 /* ProfileSettingTableViewController.swift */; };
+		BB6319301B5C008600944870 /* DrawTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63192D1B5C008600944870 /* DrawTextView.swift */; };
+		BB6319311B5C008600944870 /* TextDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63192E1B5C008600944870 /* TextDrawer.swift */; };
+		BB6319321B5C008600944870 /* TextEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63192F1B5C008600944870 /* TextEditView.swift */; };
 		BB8BF4611B2A2BD400D9ACF8 /* SignupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BF4601B2A2BD400D9ACF8 /* SignupTableViewController.swift */; };
 		BB8BF4631B2A307B00D9ACF8 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BF4621B2A307B00D9ACF8 /* SignupViewController.swift */; };
-		BBB04DB21B39DAA600668589 /* SearchProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB04DB11B39DAA600668589 /* SearchProfileTableViewCell.swift */; };
 		BBBC9B3D1B504DF90096E68E /* FeedEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBC9B3C1B504DF90096E68E /* FeedEventTableViewCell.swift */; };
 		BBBC9B421B504EC60096E68E /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBC9B411B504EC60096E68E /* FeedViewController.swift */; };
 		BBBC9B441B5057380096E68E /* MediaTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBC9B431B5057380096E68E /* MediaTextView.swift */; };
-		BBBC9B871B525E130096E68E /* DrawTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBC9B841B525E130096E68E /* DrawTextView.swift */; };
-		BBBC9B881B525E130096E68E /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBC9B851B525E130096E68E /* DrawView.swift */; };
-		BBBC9B891B525E130096E68E /* TextEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBC9B861B525E130096E68E /* TextEditView.swift */; };
 		BBBC9B8B1B52A0A30096E68E /* DetailEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBC9B8A1B52A0A30096E68E /* DetailEventViewController.swift */; };
 		BBBC9B8F1B52C71E0096E68E /* MediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBC9B8E1B52C71E0096E68E /* MediaCollectionViewCell.swift */; };
 		BBBC9B911B52EEE90096E68E /* DetailMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBC9B901B52EEE90096E68E /* DetailMediaViewController.swift */; };
@@ -38,12 +42,7 @@
 		BBCB1A5E1B2779B000D57CEA /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A5D1B2779B000D57CEA /* Result.swift */; };
 		BBCB1A621B277EC500D57CEA /* ParseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A611B277EC500D57CEA /* ParseAuth.swift */; };
 		BBCB1A641B27926300D57CEA /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCB1A631B27926300D57CEA /* LoginButton.swift */; };
-		BBD3EAD11B34A9BF0087989B /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3EAD01B34A9BF0087989B /* ProfileHeaderView.swift */; };
-		BBD3EAD31B34A9EA0087989B /* ProfilerHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD3EAD21B34A9EA0087989B /* ProfilerHeaderView.xib */; };
-		BBD3EAD51B34AD000087989B /* HeaderSectionProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD3EAD41B34AD000087989B /* HeaderSectionProfileView.xib */; };
-		BBD3EAD71B34AD210087989B /* HeaderSectionProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3EAD61B34AD210087989B /* HeaderSectionProfileView.swift */; };
 		BBD3EAD91B3551940087989B /* WizzemAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3EAD81B3551940087989B /* WizzemAPI.swift */; };
-		BBD3EADB1B3558400087989B /* FeedEventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3EADA1B3558400087989B /* FeedEventCollectionViewCell.swift */; };
 		BBDCC8B51B2F78DA00061993 /* PhotoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDCC8B41B2F78DA00061993 /* PhotoHelper.m */; };
 		BBE4375F1B2771A7004C0D89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE4375E1B2771A7004C0D89 /* AppDelegate.swift */; };
 		BBE437641B2771A7004C0D89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBE437621B2771A7004C0D89 /* Main.storyboard */; };
@@ -84,21 +83,25 @@
 		BB1BA99F1B2B6936002A8015 /* RMActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMActionController.m; sourceTree = "<group>"; };
 		BB1BE4791B29AA1300763B88 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		BB1BE47A1B29AAC600763B88 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
-		BB31149A1B39E14000759FF3 /* SearchWizzTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchWizzTableViewCell.swift; sourceTree = "<group>"; };
-		BB35BF6C1B36D87100E6B773 /* FeedEventCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedEventCollectionViewCell.xib; sourceTree = "<group>"; };
 		BB49BDFD1B37507400248277 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BB49BDFF1B37514800248277 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BB51C0711B4F0C1C00805962 /* LastWizzMomentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastWizzMomentTableViewCell.swift; sourceTree = "<group>"; };
 		BB5C32AC1B2C619700B38318 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		BB6319181B5A4E9400944870 /* PrivacyDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyDetailViewController.swift; sourceTree = "<group>"; };
+		BB63191C1B5AA14800944870 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BB63191F1B5AA1BD00944870 /* MomentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MomentCell.xib; sourceTree = "<group>"; };
+		BB6319211B5AA29600944870 /* HeaderProfile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderProfile.xib; sourceTree = "<group>"; };
+		BB6319231B5AA40400944870 /* HeaderProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderProfileView.swift; sourceTree = "<group>"; };
+		BB6319251B5AACA300944870 /* MomentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentTableViewCell.swift; sourceTree = "<group>"; };
+		BB63192B1B5AC1D400944870 /* ProfileSettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingTableViewController.swift; sourceTree = "<group>"; };
+		BB63192D1B5C008600944870 /* DrawTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawTextView.swift; sourceTree = "<group>"; };
+		BB63192E1B5C008600944870 /* TextDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextDrawer.swift; sourceTree = "<group>"; };
+		BB63192F1B5C008600944870 /* TextEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditView.swift; sourceTree = "<group>"; };
 		BB8BF4601B2A2BD400D9ACF8 /* SignupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupTableViewController.swift; sourceTree = "<group>"; };
 		BB8BF4621B2A307B00D9ACF8 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		BBB04DB11B39DAA600668589 /* SearchProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchProfileTableViewCell.swift; sourceTree = "<group>"; };
 		BBBC9B3C1B504DF90096E68E /* FeedEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedEventTableViewCell.swift; sourceTree = "<group>"; };
 		BBBC9B411B504EC60096E68E /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		BBBC9B431B5057380096E68E /* MediaTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaTextView.swift; sourceTree = "<group>"; };
-		BBBC9B841B525E130096E68E /* DrawTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawTextView.swift; sourceTree = "<group>"; };
-		BBBC9B851B525E130096E68E /* DrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
-		BBBC9B861B525E130096E68E /* TextEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditView.swift; sourceTree = "<group>"; };
 		BBBC9B8A1B52A0A30096E68E /* DetailEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailEventViewController.swift; sourceTree = "<group>"; };
 		BBBC9B8E1B52C71E0096E68E /* MediaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBBC9B901B52EEE90096E68E /* DetailMediaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMediaViewController.swift; sourceTree = "<group>"; };
@@ -111,12 +114,7 @@
 		BBCB1A5D1B2779B000D57CEA /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		BBCB1A611B277EC500D57CEA /* ParseAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAuth.swift; sourceTree = "<group>"; };
 		BBCB1A631B27926300D57CEA /* LoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
-		BBD3EAD01B34A9BF0087989B /* ProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
-		BBD3EAD21B34A9EA0087989B /* ProfilerHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfilerHeaderView.xib; sourceTree = "<group>"; };
-		BBD3EAD41B34AD000087989B /* HeaderSectionProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderSectionProfileView.xib; sourceTree = "<group>"; };
-		BBD3EAD61B34AD210087989B /* HeaderSectionProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderSectionProfileView.swift; sourceTree = "<group>"; };
 		BBD3EAD81B3551940087989B /* WizzemAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WizzemAPI.swift; sourceTree = "<group>"; };
-		BBD3EADA1B3558400087989B /* FeedEventCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedEventCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBDCC8B31B2F78DA00061993 /* PhotoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoHelper.h; sourceTree = "<group>"; };
 		BBDCC8B41B2F78DA00061993 /* PhotoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoHelper.m; sourceTree = "<group>"; };
 		BBE437591B2771A7004C0D89 /* Wizzem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wizzem.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,6 +237,25 @@
 			path = CameraController;
 			sourceTree = "<group>";
 		};
+		BB63191E1B5AA17400944870 /* ProfileController */ = {
+			isa = PBXGroup;
+			children = (
+				BB63192B1B5AC1D400944870 /* ProfileSettingTableViewController.swift */,
+				BB63191C1B5AA14800944870 /* ProfileViewController.swift */,
+			);
+			name = ProfileController;
+			sourceTree = "<group>";
+		};
+		BB6319331B5C008A00944870 /* TextDrawer */ = {
+			isa = PBXGroup;
+			children = (
+				BB63192D1B5C008600944870 /* DrawTextView.swift */,
+				BB63192E1B5C008600944870 /* TextDrawer.swift */,
+				BB63192F1B5C008600944870 /* TextEditView.swift */,
+			);
+			name = TextDrawer;
+			sourceTree = "<group>";
+		};
 		BB8BF45F1B2A2B9500D9ACF8 /* signupController */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,20 +276,11 @@
 			name = FeedController;
 			sourceTree = "<group>";
 		};
-		BBBC9B7D1B51BA4D0096E68E /* DrawImage */ = {
-			isa = PBXGroup;
-			children = (
-				BBBC9B841B525E130096E68E /* DrawTextView.swift */,
-				BBBC9B851B525E130096E68E /* DrawView.swift */,
-				BBBC9B861B525E130096E68E /* TextEditView.swift */,
-			);
-			name = DrawImage;
-			sourceTree = "<group>";
-		};
 		BBCB1A551B27722A00D57CEA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				BB49BDFD1B37507400248277 /* BaseViewController.swift */,
+				BB63191E1B5AA17400944870 /* ProfileController */,
 				BBBC9B3E1B504E530096E68E /* FeedController */,
 				BBD3EACB1B34A7EC0087989B /* ProfileControllers */,
 				BBFA431F1B2E075000BAE517 /* WizzController */,
@@ -293,15 +301,11 @@
 				BBBC9B431B5057380096E68E /* MediaTextView.swift */,
 				BBBC9B3C1B504DF90096E68E /* FeedEventTableViewCell.swift */,
 				BB51C0711B4F0C1C00805962 /* LastWizzMomentTableViewCell.swift */,
-				BB31149A1B39E14000759FF3 /* SearchWizzTableViewCell.swift */,
-				BBB04DB11B39DAA600668589 /* SearchProfileTableViewCell.swift */,
-				BBD3EADA1B3558400087989B /* FeedEventCollectionViewCell.swift */,
-				BB35BF6C1B36D87100E6B773 /* FeedEventCollectionViewCell.xib */,
-				BBD3EAD01B34A9BF0087989B /* ProfileHeaderView.swift */,
-				BBD3EAD61B34AD210087989B /* HeaderSectionProfileView.swift */,
-				BBD3EAD41B34AD000087989B /* HeaderSectionProfileView.xib */,
-				BBD3EAD21B34A9EA0087989B /* ProfilerHeaderView.xib */,
 				BBCB1A631B27926300D57CEA /* LoginButton.swift */,
+				BB6319251B5AACA300944870 /* MomentTableViewCell.swift */,
+				BB63191F1B5AA1BD00944870 /* MomentCell.xib */,
+				BB6319231B5AA40400944870 /* HeaderProfileView.swift */,
+				BB6319211B5AA29600944870 /* HeaderProfile.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -309,7 +313,7 @@
 		BBCB1A571B27723300D57CEA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				BBBC9B7D1B51BA4D0096E68E /* DrawImage */,
+				BB6319331B5C008A00944870 /* TextDrawer */,
 				BBD3EAD81B3551940087989B /* WizzemAPI.swift */,
 				BBFA43151B2DCEE500BAE517 /* RRLocationManager.swift */,
 				BBCB1A5B1B27787100D57CEA /* FacebookAuth.swift */,
@@ -414,6 +418,7 @@
 		BBFA43141B2DC89A00BAE517 /* CreationWizzController */ = {
 			isa = PBXGroup;
 			children = (
+				BB6319181B5A4E9400944870 /* PrivacyDetailViewController.swift */,
 				BBFA43121B2DC89500BAE517 /* CreateWizzDatailTableViewController.swift */,
 				BBFA431D1B2DD5E200BAE517 /* CreationWizzPeopleTableViewController.swift */,
 			);
@@ -515,11 +520,10 @@
 			files = (
 				BBBC9B971B539EF70096E68E /* HeaderCollectionReusableView.xib in Resources */,
 				BBE437641B2771A7004C0D89 /* Main.storyboard in Resources */,
-				BBD3EAD31B34A9EA0087989B /* ProfilerHeaderView.xib in Resources */,
 				BBE437691B2771A7004C0D89 /* LaunchScreen.xib in Resources */,
-				BBD3EAD51B34AD000087989B /* HeaderSectionProfileView.xib in Resources */,
 				BBE437661B2771A7004C0D89 /* Images.xcassets in Resources */,
-				BB35BF6D1B36D87100E6B773 /* FeedEventCollectionViewCell.xib in Resources */,
+				BB6319221B5AA29600944870 /* HeaderProfile.xib in Resources */,
+				BB6319201B5AA1BD00944870 /* MomentCell.xib in Resources */,
 				BB0234E61B30410900FFD2DF /* villes_frances.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -596,37 +600,37 @@
 				BB1BA99C1B2B6888002A8015 /* RMDateSelectionViewController.m in Sources */,
 				BBDCC8B51B2F78DA00061993 /* PhotoHelper.m in Sources */,
 				BBBC9B441B5057380096E68E /* MediaTextView.swift in Sources */,
+				BB6319321B5C008600944870 /* TextEditView.swift in Sources */,
 				BBFA43051B2D691C00BAE517 /* InstanceController.swift in Sources */,
-				BBD3EAD71B34AD210087989B /* HeaderSectionProfileView.swift in Sources */,
 				BB49BE001B37514800248277 /* MainTabBarViewController.swift in Sources */,
+				BB6319241B5AA40400944870 /* HeaderProfileView.swift in Sources */,
 				BBCB1A641B27926300D57CEA /* LoginButton.swift in Sources */,
 				BBCB1A5C1B27787100D57CEA /* FacebookAuth.swift in Sources */,
-				BBBC9B881B525E130096E68E /* DrawView.swift in Sources */,
 				BBBC9B8F1B52C71E0096E68E /* MediaCollectionViewCell.swift in Sources */,
 				BBD3EAD91B3551940087989B /* WizzemAPI.swift in Sources */,
+				BB6319301B5C008600944870 /* DrawTextView.swift in Sources */,
 				BB5C32AD1B2C619700B38318 /* CameraViewController.swift in Sources */,
 				BBFA43131B2DC89500BAE517 /* CreateWizzDatailTableViewController.swift in Sources */,
 				BBFA42F91B2C75F700BAE517 /* PreviewCaptureViewController.swift in Sources */,
-				BB31149B1B39E14000759FF3 /* SearchWizzTableViewCell.swift in Sources */,
 				BBFA43161B2DCEE500BAE517 /* RRLocationManager.swift in Sources */,
 				BBBC9B911B52EEE90096E68E /* DetailMediaViewController.swift in Sources */,
+				BB6319261B5AACA300944870 /* MomentTableViewCell.swift in Sources */,
 				BBBC9B3D1B504DF90096E68E /* FeedEventTableViewCell.swift in Sources */,
+				BB6319311B5C008600944870 /* TextDrawer.swift in Sources */,
 				BBCB1A5E1B2779B000D57CEA /* Result.swift in Sources */,
 				BBE4375F1B2771A7004C0D89 /* AppDelegate.swift in Sources */,
-				BBBC9B871B525E130096E68E /* DrawTextView.swift in Sources */,
 				BBCB1A621B277EC500D57CEA /* ParseAuth.swift in Sources */,
 				BB1BE47B1B29AAC600763B88 /* LoginTableViewController.swift in Sources */,
 				BBBC9B8B1B52A0A30096E68E /* DetailEventViewController.swift in Sources */,
-				BBBC9B891B525E130096E68E /* TextEditView.swift in Sources */,
 				BBFA43081B2D6C7500BAE517 /* FacebookInit.m in Sources */,
-				BBB04DB21B39DAA600668589 /* SearchProfileTableViewCell.swift in Sources */,
 				BBBC9B421B504EC60096E68E /* FeedViewController.swift in Sources */,
-				BBD3EAD11B34A9BF0087989B /* ProfileHeaderView.swift in Sources */,
+				BB6319191B5A4E9400944870 /* PrivacyDetailViewController.swift in Sources */,
 				BB1BA9A01B2B6936002A8015 /* RMActionController.m in Sources */,
-				BBD3EADB1B3558400087989B /* FeedEventCollectionViewCell.swift in Sources */,
 				BB8BF4611B2A2BD400D9ACF8 /* SignupTableViewController.swift in Sources */,
 				BBFA431E1B2DD5E200BAE517 /* CreationWizzPeopleTableViewController.swift in Sources */,
+				BB63192C1B5AC1D400944870 /* ProfileSettingTableViewController.swift in Sources */,
 				BBFA43031B2CDDBB00BAE517 /* Alert.swift in Sources */,
+				BB63191D1B5AA14800944870 /* ProfileViewController.swift in Sources */,
 				BBBC9B931B52F64D0096E68E /* FeedNavigationViewController.swift in Sources */,
 				BBFA43011B2CC54800BAE517 /* Media.swift in Sources */,
 			);

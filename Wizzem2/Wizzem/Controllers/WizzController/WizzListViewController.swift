@@ -41,6 +41,12 @@ class WizzListViewController: UIViewController, UITableViewDataSource, UITableVi
         if let numberMedia = currentEvent["nbMedia"] as? Int {
             cell.numberMedia.text = "\(numberMedia)"
         }
+        
+        if let user = currentEvent["creator"] as? PFUser {
+            let username = user["true_username"] as? String
+            cell.author.text = username
+        }
+        
         return cell
     }
     

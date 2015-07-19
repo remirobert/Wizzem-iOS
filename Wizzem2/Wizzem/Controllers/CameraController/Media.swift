@@ -10,5 +10,5 @@ import UIKit
 
 enum Media💿 {
     case Photo(image: UIImage)
-    case Gif(data: NSData)
+    case Gif(data: NSData, frames: [UIImage])
 }
