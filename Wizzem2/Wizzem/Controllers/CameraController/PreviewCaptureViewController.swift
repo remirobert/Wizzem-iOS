@@ -47,7 +47,8 @@ class PreviewCaptureViewController: UIViewController {
     func addTextOnGif(images: [UIImage]) -> [UIImage] {
         var imagesText = Array<UIImage>()
         for img in images {
-            if let image = drawView.renderTextOnImage(img) {
+            self.imageView.image = img
+            if let image = drawView.renderTextOnView(self.imageView) {
                 imagesText.append(image)
             }
         }
@@ -110,7 +111,7 @@ class PreviewCaptureViewController: UIViewController {
         var file: PFFile!
         switch capturedMedia! {
         case Media💿.Photo(let image):
-            let img = drawView.renderTextOnImage(image)
+            let img = drawView.renderTextOnView(self.imageView)
             file = PFFile(data: UIImageJPEGRepresentation(img, 0.5))
         case Media💿.Gif(let data, let frames): imagesGif = addTextOnGif(frames)
         }

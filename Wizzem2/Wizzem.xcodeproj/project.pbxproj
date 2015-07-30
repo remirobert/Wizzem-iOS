@@ -12,6 +12,9 @@
 		BB1BA99C1B2B6888002A8015 /* RMDateSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1BA99B1B2B6888002A8015 /* RMDateSelectionViewController.m */; };
 		BB1BA9A01B2B6936002A8015 /* RMActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1BA99F1B2B6936002A8015 /* RMActionController.m */; };
 		BB1BE47B1B29AAC600763B88 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1BE47A1B29AAC600763B88 /* LoginTableViewController.swift */; };
+		BB222BF31B68054C0035D6D2 /* PreviewDetailWizzCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB222BF11B68054C0035D6D2 /* PreviewDetailWizzCollectionViewCell.swift */; };
+		BB222BF41B68054C0035D6D2 /* PreviewDetailWizzCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB222BF21B68054C0035D6D2 /* PreviewDetailWizzCollectionViewCell.xib */; };
+		BB241CC81B617E2D00A859AA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB241CC71B617E2D00A859AA /* SettingsViewController.swift */; };
 		BB49BDFE1B37507400248277 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49BDFD1B37507400248277 /* BaseViewController.swift */; };
 		BB49BE001B37514800248277 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49BDFF1B37514800248277 /* MainTabBarViewController.swift */; };
 		BB51C0721B4F0C1C00805962 /* LastWizzMomentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB51C0711B4F0C1C00805962 /* LastWizzMomentTableViewCell.swift */; };
@@ -28,6 +31,11 @@
 		BB6319321B5C008600944870 /* TextEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63192F1B5C008600944870 /* TextEditView.swift */; };
 		BB8BF4611B2A2BD400D9ACF8 /* SignupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BF4601B2A2BD400D9ACF8 /* SignupTableViewController.swift */; };
 		BB8BF4631B2A307B00D9ACF8 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BF4621B2A307B00D9ACF8 /* SignupViewController.swift */; };
+		BB995C1B1B6AA83700865BBF /* DetailMomentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB995C191B6AA83700865BBF /* DetailMomentCollectionViewCell.swift */; };
+		BB995C1C1B6AA83700865BBF /* DetailMomentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB995C1A1B6AA83700865BBF /* DetailMomentCollectionViewCell.xib */; };
+		BB995C1F1B6ABD1A00865BBF /* SelectMediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB995C1D1B6ABD1A00865BBF /* SelectMediaCollectionViewCell.swift */; };
+		BB995C201B6ABD1A00865BBF /* SelectMediaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB995C1E1B6ABD1A00865BBF /* SelectMediaCollectionViewCell.xib */; };
+		BB995C261B6ABDA600865BBF /* SelectionMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB995C251B6ABDA600865BBF /* SelectionMediaViewController.swift */; };
 		BBBC9B3D1B504DF90096E68E /* FeedEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBC9B3C1B504DF90096E68E /* FeedEventTableViewCell.swift */; };
 		BBBC9B421B504EC60096E68E /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBC9B411B504EC60096E68E /* FeedViewController.swift */; };
 		BBBC9B441B5057380096E68E /* MediaTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBC9B431B5057380096E68E /* MediaTextView.swift */; };
@@ -83,6 +91,9 @@
 		BB1BA99F1B2B6936002A8015 /* RMActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMActionController.m; sourceTree = "<group>"; };
 		BB1BE4791B29AA1300763B88 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		BB1BE47A1B29AAC600763B88 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
+		BB222BF11B68054C0035D6D2 /* PreviewDetailWizzCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewDetailWizzCollectionViewCell.swift; sourceTree = "<group>"; };
+		BB222BF21B68054C0035D6D2 /* PreviewDetailWizzCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviewDetailWizzCollectionViewCell.xib; sourceTree = "<group>"; };
+		BB241CC71B617E2D00A859AA /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BB49BDFD1B37507400248277 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BB49BDFF1B37514800248277 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BB51C0711B4F0C1C00805962 /* LastWizzMomentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastWizzMomentTableViewCell.swift; sourceTree = "<group>"; };
@@ -99,6 +110,11 @@
 		BB63192F1B5C008600944870 /* TextEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditView.swift; sourceTree = "<group>"; };
 		BB8BF4601B2A2BD400D9ACF8 /* SignupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupTableViewController.swift; sourceTree = "<group>"; };
 		BB8BF4621B2A307B00D9ACF8 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		BB995C191B6AA83700865BBF /* DetailMomentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMomentCollectionViewCell.swift; sourceTree = "<group>"; };
+		BB995C1A1B6AA83700865BBF /* DetailMomentCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailMomentCollectionViewCell.xib; sourceTree = "<group>"; };
+		BB995C1D1B6ABD1A00865BBF /* SelectMediaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMediaCollectionViewCell.swift; sourceTree = "<group>"; };
+		BB995C1E1B6ABD1A00865BBF /* SelectMediaCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectMediaCollectionViewCell.xib; sourceTree = "<group>"; };
+		BB995C251B6ABDA600865BBF /* SelectionMediaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionMediaViewController.swift; sourceTree = "<group>"; };
 		BBBC9B3C1B504DF90096E68E /* FeedEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedEventTableViewCell.swift; sourceTree = "<group>"; };
 		BBBC9B411B504EC60096E68E /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		BBBC9B431B5057380096E68E /* MediaTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaTextView.swift; sourceTree = "<group>"; };
@@ -268,6 +284,7 @@
 		BBBC9B3E1B504E530096E68E /* FeedController */ = {
 			isa = PBXGroup;
 			children = (
+				BB995C251B6ABDA600865BBF /* SelectionMediaViewController.swift */,
 				BBBC9B921B52F64D0096E68E /* FeedNavigationViewController.swift */,
 				BBBC9B901B52EEE90096E68E /* DetailMediaViewController.swift */,
 				BBBC9B411B504EC60096E68E /* FeedViewController.swift */,
@@ -279,6 +296,7 @@
 		BBCB1A551B27722A00D57CEA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BB241CC71B617E2D00A859AA /* SettingsViewController.swift */,
 				BB49BDFD1B37507400248277 /* BaseViewController.swift */,
 				BB63191E1B5AA17400944870 /* ProfileController */,
 				BBBC9B3E1B504E530096E68E /* FeedController */,
@@ -295,6 +313,12 @@
 		BBCB1A561B27722F00D57CEA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BB995C1D1B6ABD1A00865BBF /* SelectMediaCollectionViewCell.swift */,
+				BB995C1E1B6ABD1A00865BBF /* SelectMediaCollectionViewCell.xib */,
+				BB995C191B6AA83700865BBF /* DetailMomentCollectionViewCell.swift */,
+				BB995C1A1B6AA83700865BBF /* DetailMomentCollectionViewCell.xib */,
+				BB222BF11B68054C0035D6D2 /* PreviewDetailWizzCollectionViewCell.swift */,
+				BB222BF21B68054C0035D6D2 /* PreviewDetailWizzCollectionViewCell.xib */,
 				BBBC9B941B530C880096E68E /* HeaderCollectionReusableView.swift */,
 				BBBC9B961B539EF70096E68E /* HeaderCollectionReusableView.xib */,
 				BBBC9B8E1B52C71E0096E68E /* MediaCollectionViewCell.swift */,
@@ -518,11 +542,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB222BF41B68054C0035D6D2 /* PreviewDetailWizzCollectionViewCell.xib in Resources */,
+				BB995C1C1B6AA83700865BBF /* DetailMomentCollectionViewCell.xib in Resources */,
 				BBBC9B971B539EF70096E68E /* HeaderCollectionReusableView.xib in Resources */,
 				BBE437641B2771A7004C0D89 /* Main.storyboard in Resources */,
 				BBE437691B2771A7004C0D89 /* LaunchScreen.xib in Resources */,
 				BBE437661B2771A7004C0D89 /* Images.xcassets in Resources */,
 				BB6319221B5AA29600944870 /* HeaderProfile.xib in Resources */,
+				BB995C201B6ABD1A00865BBF /* SelectMediaCollectionViewCell.xib in Resources */,
 				BB6319201B5AA1BD00944870 /* MomentCell.xib in Resources */,
 				BB0234E61B30410900FFD2DF /* villes_frances.json in Resources */,
 			);
@@ -602,6 +629,7 @@
 				BBBC9B441B5057380096E68E /* MediaTextView.swift in Sources */,
 				BB6319321B5C008600944870 /* TextEditView.swift in Sources */,
 				BBFA43051B2D691C00BAE517 /* InstanceController.swift in Sources */,
+				BB995C1F1B6ABD1A00865BBF /* SelectMediaCollectionViewCell.swift in Sources */,
 				BB49BE001B37514800248277 /* MainTabBarViewController.swift in Sources */,
 				BB6319241B5AA40400944870 /* HeaderProfileView.swift in Sources */,
 				BBCB1A641B27926300D57CEA /* LoginButton.swift in Sources */,
@@ -615,6 +643,8 @@
 				BBFA43161B2DCEE500BAE517 /* RRLocationManager.swift in Sources */,
 				BBBC9B911B52EEE90096E68E /* DetailMediaViewController.swift in Sources */,
 				BB6319261B5AACA300944870 /* MomentTableViewCell.swift in Sources */,
+				BB995C261B6ABDA600865BBF /* SelectionMediaViewController.swift in Sources */,
+				BB995C1B1B6AA83700865BBF /* DetailMomentCollectionViewCell.swift in Sources */,
 				BBBC9B3D1B504DF90096E68E /* FeedEventTableViewCell.swift in Sources */,
 				BB6319311B5C008600944870 /* TextDrawer.swift in Sources */,
 				BBCB1A5E1B2779B000D57CEA /* Result.swift in Sources */,
@@ -622,9 +652,11 @@
 				BBCB1A621B277EC500D57CEA /* ParseAuth.swift in Sources */,
 				BB1BE47B1B29AAC600763B88 /* LoginTableViewController.swift in Sources */,
 				BBBC9B8B1B52A0A30096E68E /* DetailEventViewController.swift in Sources */,
+				BB222BF31B68054C0035D6D2 /* PreviewDetailWizzCollectionViewCell.swift in Sources */,
 				BBFA43081B2D6C7500BAE517 /* FacebookInit.m in Sources */,
 				BBBC9B421B504EC60096E68E /* FeedViewController.swift in Sources */,
 				BB6319191B5A4E9400944870 /* PrivacyDetailViewController.swift in Sources */,
+				BB241CC81B617E2D00A859AA /* SettingsViewController.swift in Sources */,
 				BB1BA9A01B2B6936002A8015 /* RMActionController.m in Sources */,
 				BB8BF4611B2A2BD400D9ACF8 /* SignupTableViewController.swift in Sources */,
 				BBFA431E1B2DD5E200BAE517 /* CreationWizzPeopleTableViewController.swift in Sources */,

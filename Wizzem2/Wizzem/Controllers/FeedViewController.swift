@@ -42,32 +42,46 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func fetchData() {
-        PFGeoPoint.geoPointForCurrentLocationInBackground { (geo: PFGeoPoint?, _) -> Void in
-            if let geo = geo {
-                
-                let params = NSMutableDictionary()
-                params.setValue(geo.latitude, forKey: "lat")
-                params.setValue(geo.longitude, forKey: "lng")
-                
-                PFCloud.callFunctionInBackground("EventAround", withParameters: params as [NSObject : AnyObject], block: { (results: AnyObject?, _) -> Void in
-                    if let results = results as? [PFObject] {
-                        self.events = results
-                        self.tableView.reloadData()
-                    }
-                })
-                
-            }
-            else {
-                Alert.error("Erreur de géolocalisation.")
+        let querry = PFQuery(className: "Event")
+        querry.cachePolicy = PFCachePolicy.CacheThenNetwork
+        querry.orderByAscending("updatedAt")
+        
+        querry.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, _) -> Void in
+            if let results = results as? [PFObject] {
+                self.events = results
+                self.tableView.reloadData()
             }
         }
+        
+//        PFGeoPoint.geoPointForCurrentLocationInBackground { (geo: PFGeoPoint?, _) -> Void in
+//            if let geo = geo {
+//                
+//                let params = NSMutableDictionary()
+//                params.setValue(geo.latitude, forKey: "lat")
+//                params.setValue(geo.longitude, forKey: "lng")
+//                
+//                PFCloud.callFunctionInBackground("EventAround", withParameters: params as [NSObject : AnyObject], block: { (results: AnyObject?, _) -> Void in
+//                    if let results = results as? [PFObject] {
+//                        self.events = results
+//                        self.tableView.reloadData()
+//                    }
+//                })
+//                
+//            }
+//            else {
+//                Alert.error("Erreur de géolocalisation.")
+//            }
+//        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        fetchData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        fetchData()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

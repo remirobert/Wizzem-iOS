@@ -87,7 +87,7 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController,
         vision.cameraMode = PBJCameraMode.Photo
         vision.cameraOrientation = PBJCameraOrientation.Portrait
         vision.focusMode = PBJFocusMode.ContinuousAutoFocus
-        vision.outputFormat = PBJOutputFormat.Standard
+        vision.outputFormat = PBJOutputFormat.Widescreen
     }
     
     //MARK: PBJVision delegate

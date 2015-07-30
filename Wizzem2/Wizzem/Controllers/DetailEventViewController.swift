@@ -106,6 +106,9 @@ class DetailEventViewController: UIViewController, UICollectionViewDataSource, U
             (segue.destinationViewController as! DetailMediaViewController).currentMedia = sender as! PFObject
             (segue.destinationViewController as! DetailMediaViewController).currentEvent = currentEvent
             (segue.destinationViewController as! DetailMediaViewController).currentIndex = currentSelectedMedia
+            
+            (segue.destinationViewController as! DetailMediaViewController).medias = self.medias
+
         }
         else if (segue.identifier == "addMediaSegue") {
             (segue.destinationViewController as! CameraViewController).event = currentEvent
