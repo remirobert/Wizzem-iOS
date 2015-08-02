@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import MBProgressHUD
-import FLAnimatedImage
-import Parse
 
 class PreviewCaptureViewController: UIViewController {
 
@@ -71,7 +68,9 @@ class PreviewCaptureViewController: UIViewController {
                 if let event = self.event {
                     self.addMedia(file, type: "gif")
                 }
-                self.performSegueWithIdentifier("selectMomentSegue", sender: file)
+                else {
+                    self.performSegueWithIdentifier("selectMomentSegue", sender: file)
+                }
             })
         }
         else {
@@ -141,45 +140,37 @@ extension PreviewCaptureViewController {
         let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
         hud.labelText = "Votre Wizz est en cours d'upload."
 
-        PFGeoPoint.geoPointForCurrentLocationInBackground { (geo: PFGeoPoint?, _) -> Void in
-            if let geo = geo {
-                file.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
-                    
-                    if err != nil {
-                        Alert.error("Vous devez selectionnez ou créer un moment avant de publier.")
-                        return
-                    }
-                    
-                    let params = NSMutableDictionary()
-                    if let event = self.currentEvent {
-                        params.setValue(event.objectId!, forKey: "eventId")
-                    }
-                    else {
-                        Alert.error("Vous devez selectionnez ou créer un moment avant de publier.")
-                    }
-                    
-                    params.setValue(PFUser.currentUser()!.objectId!, forKey: "userId")
-                    params.setValue(file, forKey: "file")
-                    params.setValue(geo, forKey: "location")
-                    params.setValue(type, forKey: "type")
-                    
-                    PFCloud.callFunctionInBackground("MediaAdd", withParameters: params as [NSObject : AnyObject]) { (_, error: NSError?) -> Void in
-                        hud.hide(true)
-                        if let error = error {
-                            println("error : \(error)")
-                            Alert.error("Erreur lors de l'uplaod de votre Wizz.")
-                        }
-                        else {
-                            self.dismissViewControllerAnimated(true, completion: { () -> Void in
-                                NSNotificationCenter.defaultCenter().postNotificationName("dismissCameraController", object: nil)
-                            })
-                        }
-                    }
-                }
+        file.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
+            
+            if err != nil {
+                Alert.error("Vous devez selectionnez ou créer un moment avant de publier.")
+                return
+            }
+            
+            let params = NSMutableDictionary()
+            if let event = self.currentEvent {
+                params.setValue(event.objectId!, forKey: "eventId")
             }
             else {
-                Alert.error("Erreur, lors de la récupération de votre géolocalisation.")
-                return
+                Alert.error("Vous devez selectionnez ou créer un moment avant de publier.")
+            }
+            
+            params.setValue(PFUser.currentUser()!.objectId!, forKey: "userId")
+            params.setValue(self.event!.objectId!, forKey: "eventId")
+            params.setValue(file, forKey: "file")
+            params.setValue(type, forKey: "type")
+            
+            PFCloud.callFunctionInBackground("MediaAdd", withParameters: params as [NSObject : AnyObject]) { (_, error: NSError?) -> Void in
+                hud.hide(true)
+                if let error = error {
+                    println("error : \(error)")
+                    Alert.error("Erreur lors de l'uplaod de votre Wizz.")
+                }
+                else {
+                    self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                        NSNotificationCenter.defaultCenter().postNotificationName("dismissCameraController", object: nil)
+                    })
+                }
             }
         }
     }

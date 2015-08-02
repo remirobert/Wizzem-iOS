@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0AE425F2C56C5291402C0F86 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38430E023573645DFB6BE61 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		95A2BF7D17A762B3CAD2D616 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0413C297E9B622A6A12AA0B3 /* libPods.a */; };
 		BB0234E61B30410900FFD2DF /* villes_frances.json in Resources */ = {isa = PBXBuildFile; fileRef = BB0234E51B30410900FFD2DF /* villes_frances.json */; };
 		BB1BA99C1B2B6888002A8015 /* RMDateSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1BA99B1B2B6888002A8015 /* RMDateSelectionViewController.m */; };
 		BB1BA9A01B2B6936002A8015 /* RMActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1BA99F1B2B6936002A8015 /* RMActionController.m */; };
 		BB1BE47B1B29AAC600763B88 /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1BE47A1B29AAC600763B88 /* LoginTableViewController.swift */; };
+		BB1C03061B6E53060035F09F /* Pods.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C38430E023573645DFB6BE61 /* Pods.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BB1C73991B6CEF1100263B22 /* DrawTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C73961B6CEF1100263B22 /* DrawTextView.swift */; };
 		BB1C739A1B6CEF1100263B22 /* TextDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C73971B6CEF1100263B22 /* TextDrawer.swift */; };
 		BB1C739B1B6CEF1100263B22 /* TextEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C73981B6CEF1100263B22 /* TextEditView.swift */; };
@@ -83,8 +84,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BB1C03071B6E53060035F09F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BB1C03061B6E53060035F09F /* Pods.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		63FB5AAFCF0C93E31EEC629F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		0413C297E9B622A6A12AA0B3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		413D0CECADC151E5113EC79B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7E173379DB7D4E7E6257DE29 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BB0234E51B30410900FFD2DF /* villes_frances.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = villes_frances.json; sourceTree = "<group>"; };
 		BB1BA99A1B2B6888002A8015 /* RMDateSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMDateSelectionViewController.h; sourceTree = "<group>"; };
 		BB1BA99B1B2B6888002A8015 /* RMDateSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMDateSelectionViewController.m; sourceTree = "<group>"; };
@@ -92,6 +109,7 @@
 		BB1BA99F1B2B6936002A8015 /* RMActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMActionController.m; sourceTree = "<group>"; };
 		BB1BE4791B29AA1300763B88 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		BB1BE47A1B29AAC600763B88 /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
+		BB1C03081B6E53760035F09F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "Pods/../build/Debug-iphoneos/Bolts.framework"; sourceTree = "<group>"; };
 		BB1C73961B6CEF1100263B22 /* DrawTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawTextView.swift; sourceTree = "<group>"; };
 		BB1C73971B6CEF1100263B22 /* TextDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextDrawer.swift; sourceTree = "<group>"; };
 		BB1C73981B6CEF1100263B22 /* TextEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditView.swift; sourceTree = "<group>"; };
@@ -160,7 +178,6 @@
 		BBFA431D1B2DD5E200BAE517 /* CreationWizzPeopleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationWizzPeopleTableViewController.swift; sourceTree = "<group>"; };
 		BBFA43201B2E075E00BAE517 /* WizzListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WizzListViewController.swift; sourceTree = "<group>"; };
 		C38430E023573645DFB6BE61 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FCA2E643E79B211CB71C6994 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +188,7 @@
 				BBFA431C1B2DCFC500BAE517 /* AddressBookUI.framework in Frameworks */,
 				BBFA431A1B2DCF2B00BAE517 /* MapKit.framework in Frameworks */,
 				BBFA43181B2DCF2700BAE517 /* CoreLocation.framework in Frameworks */,
-				0AE425F2C56C5291402C0F86 /* Pods.framework in Frameworks */,
+				95A2BF7D17A762B3CAD2D616 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,11 +202,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		29F371C6C85A1E2B2366C984 /* Pods */ = {
+		73E3E7C3BDCD92E9334BAB7D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				63FB5AAFCF0C93E31EEC629F /* Pods.debug.xcconfig */,
-				FCA2E643E79B211CB71C6994 /* Pods.release.xcconfig */,
+				7E173379DB7D4E7E6257DE29 /* Pods.debug.xcconfig */,
+				413D0CECADC151E5113EC79B /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -197,10 +214,11 @@
 		AC9C61A0D51B03DA609B2AE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB1C03081B6E53760035F09F /* Bolts.framework */,
 				BBFA431B1B2DCFC500BAE517 /* AddressBookUI.framework */,
 				BBFA43191B2DCF2B00BAE517 /* MapKit.framework */,
 				BBFA43171B2DCF2700BAE517 /* CoreLocation.framework */,
-				C38430E023573645DFB6BE61 /* Pods.framework */,
+				0413C297E9B622A6A12AA0B3 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -366,8 +384,8 @@
 				BBE4375B1B2771A7004C0D89 /* Wizzem */,
 				BBE437711B2771A7004C0D89 /* WizzemTests */,
 				BBE4375A1B2771A7004C0D89 /* Products */,
-				29F371C6C85A1E2B2366C984 /* Pods */,
 				AC9C61A0D51B03DA609B2AE8 /* Frameworks */,
+				73E3E7C3BDCD92E9334BAB7D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -467,12 +485,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBE437781B2771A7004C0D89 /* Build configuration list for PBXNativeTarget "Wizzem" */;
 			buildPhases = (
-				189DE38A8C759390820EE4CB /* Check Pods Manifest.lock */,
+				F20947A69579FDF7577644CC /* Check Pods Manifest.lock */,
 				BBE437551B2771A7004C0D89 /* Sources */,
 				BBE437561B2771A7004C0D89 /* Frameworks */,
 				BBE437571B2771A7004C0D89 /* Resources */,
-				3E659E5AAA038FAEAC577B3D /* Copy Pods Resources */,
-				EC593D60CA04E42F4B50FB1E /* Embed Pods Frameworks */,
+				BB1C03071B6E53060035F09F /* Embed Frameworks */,
+				FD02AB2440D40DE0917D26E0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -569,7 +587,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		189DE38A8C759390820EE4CB /* Check Pods Manifest.lock */ = {
+		F20947A69579FDF7577644CC /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -584,7 +602,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		3E659E5AAA038FAEAC577B3D /* Copy Pods Resources */ = {
+		FD02AB2440D40DE0917D26E0 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -597,21 +615,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EC593D60CA04E42F4B50FB1E /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -795,7 +798,7 @@
 		};
 		BBE437791B2771A7004C0D89 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 63FB5AAFCF0C93E31EEC629F /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 7E173379DB7D4E7E6257DE29 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -803,10 +806,39 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = "Wizzem/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-framework",
+					"\"Bolts\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FLAnimatedImage\"",
+					"-framework",
+					"\"FacebookSDK\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"PBJVision\"",
+					"-framework",
+					"\"Parse\"",
+					"-framework",
+					"\"ParseFacebookUtils\"",
+					"-framework",
+					"\"SZTextView\"",
+					"-framework",
+					"\"SwiftMoment\"",
+					"-framework",
+					"\"ZFDragableModalTransition\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = Wizzem/Application/Header.h;
@@ -815,7 +847,7 @@
 		};
 		BBE4377A1B2771A7004C0D89 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FCA2E643E79B211CB71C6994 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 413D0CECADC151E5113EC79B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -823,10 +855,39 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = "Wizzem/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-framework",
+					"\"Bolts\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FLAnimatedImage\"",
+					"-framework",
+					"\"FacebookSDK\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"PBJVision\"",
+					"-framework",
+					"\"Parse\"",
+					"-framework",
+					"\"ParseFacebookUtils\"",
+					"-framework",
+					"\"SZTextView\"",
+					"-framework",
+					"\"SwiftMoment\"",
+					"-framework",
+					"\"ZFDragableModalTransition\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = Wizzem/Application/Header.h;

@@ -1,5 +1,3 @@
-link_with 'Wizzem'
-
 pod 'Parse'
 pod 'ParseFacebookUtils'
 pod 'FBSDKCoreKit', '~> 4.2.0'
