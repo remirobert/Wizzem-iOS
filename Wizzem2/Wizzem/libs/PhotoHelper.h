@@ -13,5 +13,6 @@
 
 + (CGSize)aspectScaledImageSizeForImageView:(UIView *)iv image:(UIImage *)im;
 + (UIImage *)fixOrientationOfImage:(UIImage *)image;
++ (UIImage *)compraseImage:(UIImage *)largeImage;
 
 @end

@@ -14,7 +14,7 @@ class CustomLabel: UILabel {
     }
 }
 
-class DrawTextView: UIView {
+public class DrawTextView: UIView {
 
     var textLabel: CustomLabel!
     
@@ -34,7 +34,8 @@ class DrawTextView: UIView {
         textLabel.font = textLabel.font.fontWithSize(44)
         textLabel.textAlignment = NSTextAlignment.Center
         textLabel.numberOfLines = 0
-        textLabel.textColor = UIColor.whiteColor()
+        textLabel.textColor = UIColor.blackColor()
+        textLabel.backgroundColor = UIColor.clearColor()
         addSubview(textLabel)
         
         textLabel.mas_makeConstraints { (make: MASConstraintMaker!) -> Void in
@@ -44,7 +45,7 @@ class DrawTextView: UIView {
         }
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required public init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

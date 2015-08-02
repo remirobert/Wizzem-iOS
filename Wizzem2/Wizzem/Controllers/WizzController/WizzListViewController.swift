@@ -14,13 +14,16 @@ class WizzListViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet var tableView: UITableView!
     var events = Array<PFObject>()
     var completionSelection: ((event: PFObject) -> ())?
+    var file: PFFile!
+    var type: String!
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let block = completionSelection {
-            let event = events[indexPath.row]
-            block(event: event)
-            dismissViewControllerAnimated(true, completion: nil)
-        }
+        let event = events[indexPath.row]
+        self.addMedia(event)
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 63
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -30,21 +33,17 @@ class WizzListViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("wizzCell") as! LastWizzMomentTableViewCell
         
+        cell.title.text = nil
+        cell.date.text = nil
+        
         var currentEvent = events[indexPath.row]
         println("current event : \(currentEvent)")
         if let titleEvent = currentEvent["title"] as? String {
             cell.title.text = titleEvent
         }
-        if let numberUser = currentEvent["nbParticipant"] as? Int {
-            cell.numberUsers.text = "\(numberUser)"
-        }
-        if let numberMedia = currentEvent["nbMedia"] as? Int {
-            cell.numberMedia.text = "\(numberMedia)"
-        }
         
-        if let user = currentEvent["creator"] as? PFUser {
-            let username = user["true_username"] as? String
-            cell.author.text = username
+        if let date = currentEvent.createdAt {
+            cell.date.text = date.description
         }
         
         return cell
@@ -54,10 +53,14 @@ class WizzListViewController: UIViewController, UITableViewDataSource, UITableVi
         navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.contentInset = UIEdgeInsetsMake(0, 0, 100, 0)
+        
         PFCloud.callFunctionInBackground("EventGetParticipating", withParameters: nil) { (result: AnyObject?, err: NSError?) -> Void in
-            println("error: \(err)")
-            println("result : \(result)")
             
             if let result = result as? [PFObject] {
                 self.events = result
@@ -66,9 +69,55 @@ class WizzListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "createMomentSegue" {
+            let controller = segue.destinationViewController as! CreateWizzDatailViewController
+            controller.blockEndCreationMoment = {(moment: PFObject?) -> Void in
+                if let moment = moment {
+                    self.addMedia(moment)
+                }
+            }
+        }
+    }
+}
+
+extension WizzListViewController {
+    
+    func addMedia(currentEvent: PFObject) {
+        PFGeoPoint.geoPointForCurrentLocationInBackground { (geo: PFGeoPoint?, _) -> Void in
+            if let geo = geo {
+                self.file.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
+                    
+                    if err != nil {
+                        Alert.error("Vous devez selectionnez ou créer un moment avant de publier.")
+                        return
+                    }
+                    
+                    let params = NSMutableDictionary()
+
+                    params.setValue(currentEvent.objectId!, forKey: "eventId")
+                    params.setValue(PFUser.currentUser()!.objectId!, forKey: "userId")
+                    params.setValue(self.file, forKey: "file")
+                    params.setValue(geo, forKey: "location")
+                    params.setValue(self.type, forKey: "type")
+                    
+                    PFCloud.callFunctionInBackground("MediaAdd", withParameters: params as [NSObject : AnyObject]) { (_, error: NSError?) -> Void in
+                        if let error = error {
+                            println("error : \(error)")
+                            Alert.error("Erreur lors de l'uplaod de votre Wizz.")
+                        }
+                        else {
+                            self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                                NSNotificationCenter.defaultCenter().postNotificationName("dismissCameraController", object: nil)
+                            })
+                        }
+                    }
+                }
+            }
+            else {
+                Alert.error("Erreur, lors de la récupération de votre géolocalisation.")
+                return
+            }
+        }
     }
 }

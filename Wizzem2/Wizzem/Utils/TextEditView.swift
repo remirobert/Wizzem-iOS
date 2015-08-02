@@ -13,13 +13,15 @@ protocol TextEditViewDelegate {
     func textEditViewFinishedEditing(text: String)
 }
 
-class TextEditView: UIView {
+public class TextEditView: UIView {
 
     private var textView: UITextView!
     private var textContainer: UIView!
     
     var delegate: TextEditViewDelegate?
 
+    var textSize: Int! = 42
+    
     var textEntry: String! {
         set {
             textView.text = newValue
@@ -34,7 +36,7 @@ class TextEditView: UIView {
             if isEditing == true {
                 textContainer.hidden = false;
                 userInteractionEnabled = true;
-                backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.65)
+                backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.7)
                 textView.becomeFirstResponder()
             }
             else {
@@ -60,7 +62,7 @@ class TextEditView: UIView {
         
         textView = UITextView()
         textView.tintColor = UIColor.whiteColor()
-        textView.font = UIFont.systemFontOfSize(44)
+        textView.font = UIFont(name: "ArialRoundedMTBold", size: 40)
         textView.textColor = UIColor.whiteColor()
         textView.backgroundColor = UIColor.clearColor()
         textView.returnKeyType = UIReturnKeyType.Done
@@ -69,16 +71,16 @@ class TextEditView: UIView {
         
         textContainer.addSubview(textView)
         textView.mas_makeConstraints { (make: MASConstraintMaker!) -> Void in
-            make.edges.equalTo()(self.textContainer)
+            make.left.and().right().and().bottom().equalTo()(self.textContainer)
+            make.top.offset()(64)
         }
-        
         textContainer.hidden = true
         userInteractionEnabled = false
         
         keyboardNotification()
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required public init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -89,12 +91,12 @@ class TextEditView: UIView {
 
 extension TextEditView: UITextViewDelegate {
     
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    public func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             isEditing = false
             return false
         }
-        if count(textView.text) + count(text) > 200 {
+        if count(textView.text) + count(text) > textSize {
             return false
         }
         return true

@@ -10,6 +10,44 @@
 
 @implementation PhotoHelper
 
++ (UIImage *)compraseImage:(UIImage *)largeImage {
+    double compressionRatio = 0.5;
+    int resizeAttempts = 4;
+    
+    NSData * imgData = UIImageJPEGRepresentation(largeImage,compressionRatio);
+    
+    NSLog(@"Starting Size: %lu", (unsigned long)[imgData length]);
+    
+    //Trying to push it below around about 0.4 meg
+    while (resizeAttempts > 0) {
+        resizeAttempts -= 1;
+        
+        NSLog(@"Image was bigger than 400000 Bytes. Resizing.");
+        NSLog(@"%i Attempts Remaining",resizeAttempts);
+        
+        //Increase the compression amount
+        compressionRatio = compressionRatio*0.5;
+        NSLog(@"compressionRatio %f",compressionRatio);
+        //Test size before compression
+        NSLog(@"Current Size: %lu",(unsigned long)[imgData length]);
+        imgData = UIImageJPEGRepresentation(largeImage,compressionRatio);
+        
+        //Test size after compression
+        NSLog(@"New Size: %lu",(unsigned long)[imgData length]);
+    }
+    
+    //Set image by comprssed version
+    UIImage *savedImage = [UIImage imageWithData:imgData];
+    
+    //Check how big the image is now its been compressed and put into the UIImageView
+    
+    // *** I made Change here, you were again storing it with Highest Resolution ***
+    NSData *endData = UIImageJPEGRepresentation(largeImage,compressionRatio);
+    NSLog(@"Ending Size: %lu", (unsigned long)[endData length]);
+    return savedImage;
+}
+
+
 + (CGSize) aspectScaledImageSizeForImageView:(UIView *)iv image:(UIImage *)im {
     
     float x,y;

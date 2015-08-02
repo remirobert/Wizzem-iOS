@@ -9,6 +9,7 @@
 import UIKit
 import FLAnimatedImage
 import Parse
+import MBProgressHUD
 
 class DetailMediaViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -16,11 +17,9 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
     var currentMedia: PFObject!
     var currentIndex: Int!
     var dataMedia: NSData!
-    var medias: [PFObject]!
+    var medias = Array<PFObject>()
     
     @IBOutlet var collectionView: UICollectionView!
-    @IBOutlet var titleEvent: UILabel!
-    @IBOutlet var currentMediaLabel: UILabel!
     @IBOutlet var backButton: UIButton!
     @IBOutlet var collectionViewLayout: UICollectionViewFlowLayout!
     
@@ -63,7 +62,7 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return medias.count + 1
     }
-    
+
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell: UICollectionViewCell!
         
@@ -77,25 +76,30 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
         }
         
         return cell
+
     }
-    
-    func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
-            if (indexPath.row == 0) {
-                self.currentMediaLabel.frame.origin.y = -40
-            }
-            else {
-                self.currentMediaLabel.frame.origin.y = 15
-            }
-        })
         
-        if (indexPath.row >= 1) {
-            self.currentMediaLabel.text = "(\(indexPath.row) / \(self.medias.count)))"
+    func fetchMedia() {
+        let params = NSMutableDictionary()
+        params.setValue(currentEvent.objectId, forKey: "eventId")
+        
+        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        
+        PFCloud.callFunctionInBackground("MediaAll", withParameters: params as [NSObject : AnyObject]) { (results: AnyObject?, _) -> Void in
+            
+            hud.hide(true)
+            
+            if let results = results as? [PFObject] {
+                self.medias = results
+                self.collectionView.reloadData()
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchMedia()
         
         self.navigationController
         self.collectionViewLayout.itemSize = CGSizeMake(CGRectGetWidth(UIScreen.mainScreen().bounds), CGRectGetHeight(UIScreen.mainScreen().bounds))
@@ -123,5 +127,5 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
             
         }
     }
-    
 }
+

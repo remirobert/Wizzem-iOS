@@ -19,19 +19,14 @@ enum CameraMode {
 
 class CameraViewController: UIViewController, PBJVisionDelegate, PageController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet var photoCameraMode: UIButton!
-    @IBOutlet var gifCameraMode: UIButton!
     @IBOutlet var validateGifCaptureButton: UIButton!
     
-    
     @IBOutlet var previewView: UIView!
-    @IBOutlet var captureButton: UIButton!
     
     @IBOutlet var buttonFlash: UIButton!
     @IBOutlet var buttonRotation: UIButton!
     
     @IBOutlet var photoNumberGif: UILabel!
-    @IBOutlet var buttonResetGif: UIButton!
     @IBOutlet var buttonGallerie: UIButton!
     
     var event: PFObject?
@@ -71,43 +66,48 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController,
     }
     
     @IBAction func swipeFeedController(sender: AnyObject) {
-        NSNotificationCenter.defaultCenter().postNotificationName("swipControllerFeed", object: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func setupCamera() {
         previewLayer = PBJVision.sharedInstance().previewLayer
-        previewLayer.frame = previewView.bounds
+        previewLayer.frame = CGRectMake(0, 0, CGRectGetWidth(UIScreen.mainScreen().bounds), CGRectGetHeight(UIScreen.mainScreen().bounds))
         previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         previewView.layer.addSublayer(previewLayer)
 
         let vision = PBJVision.sharedInstance()
         vision.delegate = self
-        vision.captureSessionPreset = AVCaptureSessionPresetPhoto
+        vision.captureSessionPreset = AVCaptureSessionPresetHigh
         vision.autoFreezePreviewDuringCapture = false
         vision.cameraMode = PBJCameraMode.Photo
         vision.cameraOrientation = PBJCameraOrientation.Portrait
         vision.focusMode = PBJFocusMode.ContinuousAutoFocus
         vision.outputFormat = PBJOutputFormat.Widescreen
+        
+        vision.startPreview()
     }
     
     //MARK: PBJVision delegate
     
     func vision(vision: PBJVision, capturedPhoto photoDict: [NSObject : AnyObject]?, error: NSError?) {
         if let photo = photoDict![PBJVisionPhotoImageKey] as? UIImage {
-            if currentCameraMode == .Photo {
-                capturedImage = photo
-                performSegueWithIdentifier(SEGUE_PREVIEW_CAPTURE, sender: nil)
+            let photoFixed = PhotoHelper.fixOrientationOfImage(photo)
+            if gifImages.count == 0 {
+                gifImages.append(photoFixed)
             }
             else {
-                if let photo = UIImage(data: UIImageJPEGRepresentation(photo, 0.5)) {
-                    gifImages.append(PhotoHelper.fixOrientationOfImage(photo))
-                    if gifImages.count > 1 {
-                        buttonResetGif.alpha = 1
-                        validateGifCaptureButton.alpha = 1
-                    }
-                    photoNumberGif.text = "\(gifImages.count)"
-                    PBJVision.sharedInstance().startPreview()
-                }
+                let compressedImage = UIImage(data: UIImageJPEGRepresentation(photoFixed, 0.1))!
+                gifImages.append(PhotoHelper.compraseImage(compressedImage))
+            }
+            if gifImages.count == 2 {
+                let compressedImage = UIImage(data: UIImageJPEGRepresentation(gifImages.first, 0.1))!
+                gifImages[0] = (PhotoHelper.compraseImage(compressedImage))
+            }
+            validateGifCaptureButton.alpha = 1
+            photoNumberGif.text = "\(gifImages.count)"
+
+            if gifImages.count == 15 {
+                validateGifCapture(self)
             }
         }
     }
@@ -140,7 +140,10 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController,
     
     //MARK: capture action
     
-    @IBAction func captureMedia(sender: AnyObject) {
+    func captureMedia() {
+        if gifImages.count >= 15 {
+            return
+        }
         PBJVision.sharedInstance().capturePhoto()
     }
     
@@ -149,77 +152,27 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController,
             return
         }
         
-        
-        var hud: MBProgressHUD!
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            hud.labelText = "Making GIF"
-        })
-        
-        
-        GifMaker().makeAnimatedGif(gifImages, blockCompletion: { (dataGif: NSData!) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                hud.hide(true)
+        if self.gifImages.count == 1 {
+            currentCameraMode = .Photo
+            capturedImage = gifImages.first
+            performSegueWithIdentifier(SEGUE_PREVIEW_CAPTURE, sender: nil)
+        }
+        else {
+            println("========> create gif")
+            currentCameraMode = .Gif
+            
+            let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+                GifMaker().makeAnimatedGif(self.gifImages, blockCompletion: { (dataGif: NSData!) -> Void in
+                    hud.hide(true)
+                    if let datagif = dataGif {
+                        self.capturedGif = datagif
+                        self.performSegueWithIdentifier(SEGUE_PREVIEW_CAPTURE, sender: nil)
+                    }
+                })
             })
-            if let datagif = dataGif {
-                self.capturedGif = datagif
-                self.performSegueWithIdentifier(SEGUE_PREVIEW_CAPTURE, sender: nil)
-            }
-        })
-    }
-    
-    @IBAction func resetGif(sender: AnyObject) {
-        let alertController = UIAlertController(title: "Voulez vous reset votre GIF ?", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-        let actionValidate = UIAlertAction(title: "Oui", style: UIAlertActionStyle.Default) { (_) -> Void in
-            self.gifImages.removeAll(keepCapacity: false)
-            self.buttonResetGif.alpha = 0
-            self.validateGifCaptureButton.alpha = 0
-            self.photoNumberGif.text = "0"
         }
-        let cancelAction = UIAlertAction(title: "Non", style: UIAlertActionStyle.Cancel, handler: nil)
-        alertController.addAction(actionValidate)
-        alertController.addAction(cancelAction)
-        presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-    //MARK: capture camera mode
-    
-    @IBAction func changePhotoCameraMode(sender: AnyObject) {
-        if currentCameraMode == .Photo {
-            return
-        }
-        buttonResetGif.alpha = 0
-        title = "Photo"
-        currentCameraMode = .Photo
-        PBJVision.sharedInstance().captureSessionPreset = AVCaptureSessionPresetPhoto
-        validateGifCaptureButton.alpha = 0
-        photoNumberGif.alpha = 0
-        captureButton.setImage(UIImage(named: "ButtonPhoto"), forState: UIControlState.Normal)
-        photoCameraMode.alpha = 0.2
-        gifCameraMode.alpha = 1
-        buttonResetGif.alpha = 0
-        buttonGallerie.alpha = 1
-        validateGifCaptureButton.alpha = 0
-    }
-    
-    @IBAction func changeGifCameraMode(sender: AnyObject) {
-        if currentCameraMode == .Gif {
-            return
-        }
-        buttonResetGif.alpha = 1
-        title = "GIF"
-        gifImages.removeAll(keepCapacity: false)
-        currentCameraMode = .Gif
-        PBJVision.sharedInstance().captureSessionPreset = AVCaptureSessionPresetMedium
-        validateGifCaptureButton.alpha = 1
-        photoNumberGif.alpha = 1
-        photoNumberGif.text = "0"
-        captureButton.setImage(UIImage(named: "ButtonGIF"), forState: UIControlState.Normal)
-        photoCameraMode.alpha = 1
-        gifCameraMode.alpha = 0.2
-        buttonResetGif.alpha = 0
-        buttonGallerie.alpha = 0
-        validateGifCaptureButton.alpha = 0
     }
     
     //MARK: UIView cycle
@@ -228,34 +181,18 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController,
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        PBJVision.sharedInstance().stopPreview()
-    }
-
     override func viewDidAppear(animated: Bool) {
-        previewLayer.frame = previewView.bounds
         photoNumberGif.text = "0"
         gifImages.removeAll(keepCapacity: false)
-        //PBJVision.sharedInstance().startPreview()
-        view.bringSubviewToFront(captureButton)
-    }
-    
-    override func viewDidLayoutSubviews() {
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        PBJVision.sharedInstance().startPreview()
+        validateGifCaptureButton.alpha = 0
     }
     
     override func viewDidLoad() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "dismissController", name: "dismissCameraController", object: nil)
+        let tapGesture = UITapGestureRecognizer(target: self, action: "captureMedia")
+        self.previewView.addGestureRecognizer(tapGesture)
         super.viewDidLoad()
         setupCamera()
-        photoCameraMode.alpha = 0.2
-        validateGifCaptureButton.alpha = 0
-        photoNumberGif.alpha = 0
-        buttonResetGif.alpha = 0
-        buttonGallerie.alpha = 1
     }
     
     deinit {

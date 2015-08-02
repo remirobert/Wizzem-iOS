@@ -15,8 +15,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     var events = Array<PFObject>()
     lazy var headerViewCell: HeaderProfileView! = {
         let header = NSBundle.mainBundle().loadNibNamed("HeaderProfile", owner: self, options: nil).first as! HeaderProfileView
-        
-        
         return header
     }()
     
@@ -69,6 +67,22 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+                
+        let logo = UIImageView(frame: CGRectMake(8, 44 / 2 - 15, 70, 30))
+        logo.image = UIImage(named: "LogoWz")
+        logo.backgroundColor = UIColor.clearColor()
+        self.navigationController?.navigationBar.addSubview(logo)
+
+        let titleLabel = UILabel()
+        titleLabel.textAlignment = NSTextAlignment.Right
+        titleLabel.text = "Profile  "
+        titleLabel.frame.size = CGSizeMake(CGRectGetWidth(UIScreen.mainScreen().bounds) - 40, 40)
+        titleLabel.frame.origin = CGPointMake(20, 24)
+        titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 18)!
+        self.navigationItem.titleView = titleLabel
+        
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.backgroundColor = UIColor.whiteColor()
         
         headerViewCell.buttonEditProfile.addTarget(self, action: "editProfile", forControlEvents: UIControlEvents.TouchUpInside)
         

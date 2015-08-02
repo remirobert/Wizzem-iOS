@@ -13,7 +13,10 @@ class DetailMomentCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet var titleEvent: UILabel!
     @IBOutlet var authorLabel: UILabel!
-    @IBOutlet var descriptionLabel: UITextView!
+    @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var numberWizzLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var participantLabel: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,5 +38,11 @@ class DetailMomentCollectionViewCell: UICollectionViewCell {
                 }
             })
         }
+        
+        if let participant = moment["nbParticipant"] as? Int {
+            self.participantLabel.setTitle("Avec \(participant) participants", forState: UIControlState.Normal)
+        }
+        
+        self.dateLabel.text = "Créé le \(moment.createdAt!)"
     }
 }

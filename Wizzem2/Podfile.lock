@@ -31,7 +31,9 @@ PODS:
     - Parse (~> 1.7)
   - PBJVision (0.4.2)
   - SwiftMoment (0.1.2)
+  - SZTextView (1.2.1)
   - WaitBlock (0.1)
+  - ZFDragableModalTransition (0.5.1)
 
 DEPENDENCIES:
   - FBSDKCoreKit (~> 4.2.0)
@@ -43,7 +45,9 @@ DEPENDENCIES:
   - ParseUI
   - PBJVision
   - SwiftMoment
+  - SZTextView
   - WaitBlock
+  - ZFDragableModalTransition
 
 SPEC CHECKSUMS:
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
@@ -58,6 +62,8 @@ SPEC CHECKSUMS:
   ParseUI: d1228541b02a36a7354c8f47747f5f7a89cf1ff0
   PBJVision: fe43c9a58bb1c1277d16fd802fa836d25e034a45
   SwiftMoment: a439fccf86c8f3367557e406204c93ec1269c8c5
+  SZTextView: 906df45afd3c1b24fc5252088d5ef8061513c238
   WaitBlock: 8c32c0172a599c78a11d1e25cfd44ae519abaa61
+  ZFDragableModalTransition: 048189eda437f91944ce6d5151618b8bf770196d
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.38.0
