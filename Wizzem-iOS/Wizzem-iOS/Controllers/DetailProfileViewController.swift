@@ -28,14 +28,18 @@ class DetailProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let userFile = self.user["picture"] as? PFFile {
-            userFile.getDataInBackgroundWithBlock({ (data: NSData?, _) -> Void in
-                if let data = data {
-                    self.profilePicture.image = UIImage(data: data)
-                }
-            })
-        }
 
+        self.user.fetchIfNeededInBackgroundWithBlock { (user: PFObject?, _) -> Void in
+            if let user = user {
+                if let userFile = user["picture"] as? PFFile {
+                    userFile.getDataInBackgroundWithBlock({ (data: NSData?, _) -> Void in
+                        if let data = data {
+                            self.profilePicture.image = UIImage(data: data)
+                        }
+                    })
+                }
+                self.usernameLabel.text = user["true_username"] as? String
+            }
+        }
     }
 }

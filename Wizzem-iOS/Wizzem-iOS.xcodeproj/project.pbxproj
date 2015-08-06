@@ -70,6 +70,10 @@
 		BB1C03C61B6E56CD0035F09F /* SelectMediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C038F1B6E56CD0035F09F /* SelectMediaCollectionViewCell.swift */; };
 		BB1C03C71B6E56CD0035F09F /* SelectMediaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB1C03901B6E56CD0035F09F /* SelectMediaCollectionViewCell.xib */; };
 		BB5D4A441B6EA044008C89BC /* DetailProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D4A431B6EA044008C89BC /* DetailProfileViewController.swift */; };
+		BBE4E3851B73F32F0042F11F /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE4E3841B73F32F0042F11F /* Photos.framework */; };
+		BBE4E3871B73F3370042F11F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE4E3861B73F3370042F11F /* AssetsLibrary.framework */; };
+		BBE4E3891B73F3400042F11F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE4E3881B73F3400042F11F /* MobileCoreServices.framework */; };
+		BBE4E38C1B73F36C0042F11F /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE4E38B1B73F36C0042F11F /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +161,11 @@
 		BB1C038F1B6E56CD0035F09F /* SelectMediaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMediaCollectionViewCell.swift; sourceTree = "<group>"; };
 		BB1C03901B6E56CD0035F09F /* SelectMediaCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectMediaCollectionViewCell.xib; sourceTree = "<group>"; };
 		BB5D4A431B6EA044008C89BC /* DetailProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailProfileViewController.swift; sourceTree = "<group>"; };
+		BBE4E3841B73F32F0042F11F /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		BBE4E3861B73F3370042F11F /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		BBE4E3881B73F3400042F11F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		BBE4E38A1B73F36C0042F11F /* ALAssetsLibrary+CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+CustomPhotoAlbum.h"; sourceTree = "<group>"; };
+		BBE4E38B1B73F36C0042F11F /* ALAssetsLibrary+CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+CustomPhotoAlbum.m"; sourceTree = "<group>"; };
 		C174404B633EEBC7B8903B24 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C494A5163AF6F439845F4927 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -166,6 +175,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBE4E3891B73F3400042F11F /* MobileCoreServices.framework in Frameworks */,
+				BBE4E3871B73F3370042F11F /* AssetsLibrary.framework in Frameworks */,
+				BBE4E3851B73F32F0042F11F /* Photos.framework in Frameworks */,
 				9DA0B2CEF94C1C6AB493C5B7 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,6 +195,9 @@
 		AB6D8265959EAEBE76ECFCA0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BBE4E3881B73F3400042F11F /* MobileCoreServices.framework */,
+				BBE4E3861B73F3370042F11F /* AssetsLibrary.framework */,
+				BBE4E3841B73F32F0042F11F /* Photos.framework */,
 				C494A5163AF6F439845F4927 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -389,6 +404,8 @@
 		BB1C03721B6E56CD0035F09F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BBE4E38A1B73F36C0042F11F /* ALAssetsLibrary+CustomPhotoAlbum.h */,
+				BBE4E38B1B73F36C0042F11F /* ALAssetsLibrary+CustomPhotoAlbum.m */,
 				BB1C03731B6E56CD0035F09F /* Alert.swift */,
 				BB1C03741B6E56CD0035F09F /* DrawTextView.swift */,
 				BB1C03751B6E56CD0035F09F /* FacebookAuth.swift */,
@@ -489,6 +506,7 @@
 				TargetAttributes = {
 					BB1C03121B6E56310035F09F = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 44Q2J6374R;
 					};
 					BB1C03271B6E56310035F09F = {
 						CreatedOnToolsVersion = 6.4;
@@ -627,6 +645,7 @@
 				BB5D4A441B6EA044008C89BC /* DetailProfileViewController.swift in Sources */,
 				BB1C03911B6E56CD0035F09F /* BaseViewController.swift in Sources */,
 				BB1C03BD1B6E56CD0035F09F /* LoginButton.swift in Sources */,
+				BBE4E38C1B73F36C0042F11F /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				BB1C039A1B6E56CD0035F09F /* FeedViewController.swift in Sources */,
 				BB1C03931B6E56CD0035F09F /* Media.swift in Sources */,
 				BB1C03A21B6E56CD0035F09F /* SignupTableViewController.swift in Sources */,
@@ -758,6 +777,7 @@
 			baseConfigurationReference = C174404B633EEBC7B8903B24 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Wizzem-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -770,6 +790,7 @@
 			baseConfigurationReference = 8FC4FD53C680A81308A55C30 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Wizzem-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

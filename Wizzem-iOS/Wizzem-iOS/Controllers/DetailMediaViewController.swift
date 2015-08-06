@@ -25,7 +25,7 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
     }
     
     func displayDetailProfile() {
-        let media = self.medias[self.currentIndex]
+        let media = self.medias[self.currentIndex - 1]
         if let author = media["userId"] as? PFObject {
             self.performSegueWithIdentifier("detailProfileSegue", sender: author)
         }
@@ -39,32 +39,10 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
         self.collectionView.setContentOffset(CGPointZero, animated: true)
     }
     
-    @IBAction func displayOptions(sender: AnyObject) {
-        let alertController = UIAlertController(title: "Options media", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        
-        let removeAction = UIAlertAction(title: "Supprimer", style: UIAlertActionStyle.Destructive) { (_) -> Void in
-            let param = NSMutableDictionary()
-            param.setValue(self.currentMedia.objectId!, forKey: "mediaId")
-            
-            PFCloud.callFunctionInBackground("MediaRemove", withParameters: param as [NSObject : AnyObject], block: { (_, err: NSError?) -> Void in
-                if err == nil {
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                }
-                else {
-                    Alert.error("Impossible de supprimer votre Wizz.")
-                }
-            })
+    func downToDetailMoment() {
+        if self.medias.count > 0 {
+            self.collectionView.setContentOffset(CGPointMake(0, CGRectGetHeight(UIScreen.mainScreen().bounds)), animated: true)
         }
-        
-        let shareAction = UIAlertAction(title: "Partager", style: UIAlertActionStyle.Default) { (_) -> Void in
-            let activityController = UIActivityViewController(activityItems: [self.dataMedia], applicationActivities: nil)
-            self.presentViewController(activityController, animated: true, completion: nil)
-        }
-        
-        alertController.addAction(shareAction)
-        alertController.addAction(removeAction)
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -80,12 +58,16 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
             cell = collectionView.dequeueReusableCellWithReuseIdentifier("cellPreview", forIndexPath: indexPath) as! PreviewDetailWizzCollectionViewCell
             (cell as! PreviewDetailWizzCollectionViewCell).loadData(medias[indexPath.row - 1])
             (cell as! PreviewDetailWizzCollectionViewCell).upButton.addTarget(self, action: "upToDetailMoment", forControlEvents: UIControlEvents.TouchUpInside)
-            (cell as! PreviewDetailWizzCollectionViewCell).authorPicture.addTarget(self, action: "displayDetailProfile", forControlEvents: UIControlEvents.TouchUpInside)
+            
+            (cell as! PreviewDetailWizzCollectionViewCell).buttonDisplayAuthor.addTarget(self, action: "displayDetailProfile", forControlEvents: UIControlEvents.TouchUpInside)
+            (cell as! PreviewDetailWizzCollectionViewCell).optionButton.addTarget(self, action: "displayOptions", forControlEvents: UIControlEvents.TouchUpInside)
         }
         else {
             cell = collectionView.dequeueReusableCellWithReuseIdentifier("detailMomentCell", forIndexPath: indexPath) as! DetailMomentCollectionViewCell
             (cell as! DetailMomentCollectionViewCell).loadDetailMoment(self.currentEvent)
             (cell as! DetailMomentCollectionViewCell).addMediaButton.addTarget(self, action: "addMedia", forControlEvents: UIControlEvents.TouchUpInside)
+            (cell as! DetailMomentCollectionViewCell).settingButton.addTarget(self, action: "displayOptionMoment", forControlEvents: UIControlEvents.TouchUpInside)
+            (cell as! DetailMomentCollectionViewCell).downbutton.addTarget(self, action: "downToDetailMoment", forControlEvents: UIControlEvents.TouchUpInside)
         }
         
         return cell
@@ -107,22 +89,6 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
                 self.collectionView.reloadData()
             }
         }
-        
-        
-//        let params = NSMutableDictionary()
-//        params.setValue(currentEvent.objectId, forKey: "eventId")
-//        
-//        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-//        
-//        PFCloud.callFunctionInBackground("MediaAll", withParameters: params as [NSObject : AnyObject]) { (results: AnyObject?, _) -> Void in
-//            
-//            hud.hide(true)
-//            
-//            if let results = results as? [PFObject] {
-//                self.medias = results
-//                self.collectionView.reloadData()
-//            }
-//        }
     }
     
     override func viewDidLoad() {
@@ -161,6 +127,103 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
         else if segue.identifier == "detailProfileSegue" {
             (segue.destinationViewController as! DetailProfileViewController).user = sender as! PFObject
         }
+    }
+}
+
+extension DetailMediaViewController {
+    func displayOptionMoment() {
+        let alertController = UIAlertController(title: "Options moment", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        let removeAction = UIAlertAction(title: "Supprimer", style: UIAlertActionStyle.Destructive) { (_) -> Void in
+            
+            let param = NSMutableDictionary()
+            param.setValue(self.currentEvent.objectId!, forKey: "eventId")
+            println("param : \(param)")
+        
+            PFCloud.callFunctionInBackground("EventRemove", withParameters: param as [NSObject : AnyObject], block: { (_, error: NSError?) -> Void in
+                if error == nil {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+            })
+        }
+        
+        let shareAction = UIAlertAction(title: "Partager", style: UIAlertActionStyle.Default) { (_) -> Void in
+            let activityController = UIActivityViewController(activityItems: ["link moment here"], applicationActivities: nil)
+            self.presentViewController(activityController, animated: true, completion: nil)
+        }
+        let cancelButton = UIAlertAction(title: "Annuler", style: UIAlertActionStyle.Cancel, handler: nil)
+
+        alertController.addAction(shareAction)
+        if (currentEvent["creator"] as! PFObject).objectId! == PFUser.currentUser()?.objectId! {
+            alertController.addAction(removeAction)
+        }
+        alertController.addAction(cancelButton)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func displayOptions() {
+        if (self.currentIndex <= 0) {
+            return
+        }
+        let alertController = UIAlertController(title: "Options media", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        let removeAction = UIAlertAction(title: "Supprimer", style: UIAlertActionStyle.Destructive) { (_) -> Void in
+            let param = NSMutableDictionary()
+            let currenMediaSelect = self.medias[self.currentIndex - 1]
+            param.setValue(currenMediaSelect.objectId!, forKey: "mediaId")
+            
+            PFCloud.callFunctionInBackground("MediaRemove", withParameters: param as [NSObject : AnyObject], block: { (_, err: NSError?) -> Void in
+                if err == nil {
+                    self.fetchMedia()
+                }
+                else {
+                    Alert.error("Impossible de supprimer votre Wizz.")
+                }
+            })
+        }
+        
+        let shareAction = UIAlertAction(title: "Partager", style: UIAlertActionStyle.Default) { (_) -> Void in
+            let currenMediaSelect = self.medias[self.currentIndex - 1]
+            
+            if let file = currenMediaSelect["file"] as? PFFile {
+                file.getDataInBackgroundWithBlock({ (data: NSData?, _) -> Void in
+                    if let data = data {
+                        let activityController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+                        self.presentViewController(activityController, animated: true, completion: nil)
+                    }
+                })
+            }
+            
+        }
+        
+        let saveMediaAction = UIAlertAction(title: "Sauvegarder le media", style: UIAlertActionStyle.Default) { (_) -> Void in
+            let currenMediaSelect = self.medias[self.currentIndex - 1]
+            
+            if let file = currenMediaSelect["file"] as? PFFile {
+                file.getDataInBackgroundWithBlock({ (data: NSData?, _) -> Void in
+                    if let data = data {
+                        let ala = ALAssetsLibrary()
+                        ala.writeImageDataToSavedPhotosAlbum(data, metadata: nil, completionBlock: { (_, error: NSError!) -> Void in
+                            println("error:  \(error)")
+                        })
+//                        let ala = ALAssetsLibrary()
+//                        ala.saveImageData(data)
+                    }
+                })
+            }
+        }
+        
+        let cancelButton = UIAlertAction(title: "Annuler", style: UIAlertActionStyle.Cancel, handler: nil)
+        
+        alertController.addAction(shareAction)
+        alertController.addAction(saveMediaAction)
+        let currenMediaSelect = self.medias[self.currentIndex - 1]
+        if (currenMediaSelect["userId"] as! PFObject).objectId! == PFUser.currentUser()?.objectId! {
+            alertController.addAction(removeAction)
+        }
+        alertController.addAction(cancelButton)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 }
 

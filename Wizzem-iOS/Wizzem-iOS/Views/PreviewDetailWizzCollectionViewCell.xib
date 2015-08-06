@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="15A235d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -76,14 +76,22 @@
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0c1-1X-ny1">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SJX-Pv-kl5">
                         <rect key="frame" x="313" y="426" width="40" height="40"/>
                         <animations/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="40" id="LFo-Vr-FsM"/>
-                            <constraint firstAttribute="width" constant="40" id="XA8-i1-455"/>
+                            <constraint firstAttribute="height" constant="40" id="Nhe-xF-QEh"/>
+                            <constraint firstAttribute="width" constant="40" id="cut-CY-GtK"/>
                         </constraints>
-                        <state key="normal">
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wup-Qk-RAd">
+                        <rect key="frame" x="313" y="426" width="40" height="40"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="DDO-fh-Vk6"/>
+                            <constraint firstAttribute="width" constant="40" id="pEy-Lm-v0I"/>
+                        </constraints>
+                        <state key="normal" title="Button">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
@@ -95,22 +103,27 @@
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="SCe-r9-xuT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="4ft-sw-gbl"/>
+                <constraint firstAttribute="bottom" secondItem="Wup-Qk-RAd" secondAttribute="bottom" constant="8" id="7Dx-OT-l1g"/>
                 <constraint firstItem="qsj-ve-YQR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7Zk-Jf-LHB"/>
                 <constraint firstAttribute="centerX" secondItem="MgQ-zN-WqD" secondAttribute="centerX" id="8lf-06-5wC"/>
                 <constraint firstAttribute="centerX" secondItem="p0S-KZ-v7L" secondAttribute="centerX" id="Iz8-vU-xQq"/>
                 <constraint firstAttribute="bottom" secondItem="qsj-ve-YQR" secondAttribute="bottom" id="PWV-gD-HTg"/>
+                <constraint firstAttribute="bottom" secondItem="SJX-Pv-kl5" secondAttribute="bottom" constant="8" id="RWq-j7-Qxp"/>
                 <constraint firstAttribute="bottom" secondItem="p0S-KZ-v7L" secondAttribute="bottom" id="Sgh-wd-DaJ"/>
                 <constraint firstAttribute="trailing" secondItem="qsj-ve-YQR" secondAttribute="trailing" id="UkG-Fy-Di4"/>
-                <constraint firstAttribute="bottom" secondItem="0c1-1X-ny1" secondAttribute="bottom" constant="8" id="cD7-ms-AVV"/>
                 <constraint firstItem="MgQ-zN-WqD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="dk6-Tl-94M"/>
                 <constraint firstAttribute="bottom" secondItem="SCe-r9-xuT" secondAttribute="bottom" constant="8" id="egg-t5-UTy"/>
-                <constraint firstAttribute="trailing" secondItem="0c1-1X-ny1" secondAttribute="trailing" constant="8" id="i2N-mS-dfe"/>
+                <constraint firstAttribute="trailing" secondItem="Wup-Qk-RAd" secondAttribute="trailing" constant="8" id="gOH-8v-lsR"/>
+                <constraint firstAttribute="trailing" secondItem="SJX-Pv-kl5" secondAttribute="trailing" constant="8" id="j3h-FP-1Kh"/>
                 <constraint firstItem="qsj-ve-YQR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="zLE-XQ-40d"/>
             </constraints>
             <size key="customSize" width="361" height="474"/>
             <connections>
-                <outlet property="authorPicture" destination="0c1-1X-ny1" id="nUE-Ln-vml"/>
+                <outlet property="authorPictureProfile" destination="SJX-Pv-kl5" id="Zmm-B3-X9u"/>
+                <outlet property="buttonDisplayAuthor" destination="Wup-Qk-RAd" id="L19-zo-ggx"/>
                 <outlet property="containerDateView" destination="p0S-KZ-v7L" id="9FH-qB-8am"/>
+                <outlet property="dateLabel" destination="st5-2F-C8P" id="W6S-fK-SVi"/>
+                <outlet property="hourLabel" destination="nSD-f2-wq8" id="maY-Hr-WKS"/>
                 <outlet property="imageContentView" destination="qsj-ve-YQR" id="8UP-zV-caQ"/>
                 <outlet property="optionButton" destination="SCe-r9-xuT" id="oDl-e6-WWg"/>
                 <outlet property="upButton" destination="MgQ-zN-WqD" id="FM2-Yw-wlm"/>

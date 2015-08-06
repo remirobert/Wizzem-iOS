@@ -45,7 +45,12 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let wizzNumber = currentEvent["nbMedia"] as? Int {
             cell.wizzLabel.text = "\(wizzNumber)"
         }
-        cell.dataMoment.text = "Créé le \(currentEvent.createdAt!)"
+        if let dateEvent = currentEvent.createdAt {
+            let formatString = dateEvent.formattedDateWithFormat("EEE, MMM d")
+            let formatStringHour = dateEvent.formattedDateWithFormat("h:mm")
+            cell.dataMoment.text = "Créé le \(formatString) à \(formatStringHour)"
+        }
+
         
         return cell
     }

@@ -18,7 +18,9 @@
 #import <PFFacebookUtils.h>
 #import <SZTextView.h>
 #import <ZFModalTransitionAnimator.h>
+#import <DateTools.h>
 
+#import "ALAssetsLibrary+CustomPhotoAlbum.h"
 #import "Constants.h"
 #import "RMDateSelectionViewController.h"
 #import "GifMaker.h"

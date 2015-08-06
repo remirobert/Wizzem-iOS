@@ -17,6 +17,8 @@ class DetailMomentCollectionViewCell: UICollectionViewCell {
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var participantLabel: UIButton!
     @IBOutlet var addMediaButton: UIButton!
+    @IBOutlet var settingButton: UIButton!
+    @IBOutlet var downbutton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,6 +48,10 @@ class DetailMomentCollectionViewCell: UICollectionViewCell {
             self.numberWizzLabel.text = "\(nbWizz)"
         }
         
-        self.dateLabel.text = "Créé le \(moment.createdAt!)"
+        if let dateMoment = moment.createdAt {
+            let formatString = dateMoment.formattedDateWithFormat("EEE, MMM d")
+            let formatStringHour = dateMoment.formattedDateWithFormat("h:mm")
+            self.dateLabel.text = "Créé le \(formatString) à \(formatStringHour)"
+        }
     }
 }

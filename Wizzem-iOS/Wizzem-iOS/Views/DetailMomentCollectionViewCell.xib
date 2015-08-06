@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="15A235d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -56,7 +56,7 @@
                             <constraint firstAttribute="width" constant="47" id="syu-Po-qsG"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
-                        <color key="textColor" red="0.29803921570000003" green="0.85098039219999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                         <variation key="default">
                             <mask key="constraints">
@@ -83,7 +83,7 @@
                             <constraint firstAttribute="height" constant="21" id="mhR-3l-GyU"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
-                        <color key="textColor" red="0.29803921570000003" green="0.85098039219999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                         <variation key="default">
                             <mask key="constraints">
@@ -345,15 +345,17 @@
                 <outlet property="authorLabel" destination="XIA-Y9-yzD" id="cZT-pj-GzP"/>
                 <outlet property="dateLabel" destination="s6n-p4-CUg" id="jiY-rL-Xp3"/>
                 <outlet property="descriptionLabel" destination="hil-5O-kcO" id="PJY-hq-1LC"/>
+                <outlet property="downbutton" destination="Oly-rn-1VN" id="qf9-AK-mVj"/>
                 <outlet property="numberWizzLabel" destination="MyN-kI-uzg" id="9oE-H0-4Dh"/>
                 <outlet property="participantLabel" destination="oug-AJ-2x3" id="PvK-b3-xbF"/>
+                <outlet property="settingButton" destination="2o9-vQ-wAh" id="c1F-sr-tDR"/>
                 <outlet property="titleEvent" destination="OSo-OJ-Pv3" id="ePm-YT-w8G"/>
             </connections>
             <point key="canvasLocation" x="314" y="369"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="Diffuse" width="70" height="70"/>
+        <image name="Diffuse" width="50" height="50"/>
         <image name="Down" width="70" height="50"/>
         <image name="Settings" width="50" height="50"/>
         <image name="addMoment" width="110" height="110"/>
