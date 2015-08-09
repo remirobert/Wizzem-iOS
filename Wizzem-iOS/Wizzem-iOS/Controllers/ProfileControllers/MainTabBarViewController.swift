@@ -15,6 +15,30 @@ class MainTabBarViewController: UITabBarController, PageController {
     var buttonProfile: UIButton!
     var animator: ZFModalTransitionAnimator!
     
+    func displayInvitation(eventId: String) {
+        let alertController = UIAlertController(title: "Vous avez reçu une invitation", message: "De l'event : \(eventId)", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let cancel = UIAlertAction(title: "Refuser", style: UIAlertActionStyle.Default, handler: nil)
+        let joinAction = UIAlertAction(title: "Rejoindre", style: UIAlertActionStyle.Default, handler: { (_) -> Void in
+            let controller = InstanceController.fromStoryboard("detailMomentController")
+
+            let querry = PFQuery(className: "Event")
+            querry.whereKey("objectId", equalTo: eventId)
+            querry.findObjectsInBackgroundWithBlock({ (results: [AnyObject]?, _) -> Void in
+                if let results = results {
+                    let event = results.first as! PFObject
+                    (controller as! DetailMediaViewController).currentEvent = event
+                    
+                    self.presentViewController(controller!, animated: true, completion: nil)
+                }
+            })
+            
+        })
+        alertController.addAction(cancel)
+        alertController.addAction(joinAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     func clickAction(sender: UIButton) {
         if sender.tag == 1 {
 //            self.buttonExplore.setImage(UIImage(named: "icon-publicRoomOn"), forState: UIControlState.Normal)

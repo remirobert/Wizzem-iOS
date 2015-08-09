@@ -142,29 +142,6 @@
                             </mask>
                         </variation>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="inviter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIp-IS-4D0">
-                        <rect key="frame" x="169" y="407" width="72" height="21"/>
-                        <animations/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="GVu-fm-znU"/>
-                            <constraint firstAttribute="width" constant="72" id="J5A-EC-vQo"/>
-                            <constraint firstAttribute="width" constant="72" id="LbQ-mN-PAD"/>
-                            <constraint firstAttribute="height" constant="21" id="Uqd-7b-dw5"/>
-                            <constraint firstAttribute="height" constant="21" id="YPG-du-NS1"/>
-                            <constraint firstAttribute="width" constant="72" id="tCy-6Q-DzC"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
-                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="GVu-fm-znU"/>
-                                <exclude reference="J5A-EC-vQo"/>
-                                <exclude reference="Uqd-7b-dw5"/>
-                                <exclude reference="tCy-6Q-DzC"/>
-                            </mask>
-                        </variation>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2o9-vQ-wAh">
                         <rect key="frame" x="362" y="460" width="40" height="40"/>
                         <animations/>
@@ -222,6 +199,29 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="R9F-Hv-BEl"/>
+                            </mask>
+                        </variation>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="inviter (par lien)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIp-IS-4D0">
+                        <rect key="frame" x="130" y="407" width="150" height="21"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="GVu-fm-znU"/>
+                            <constraint firstAttribute="width" constant="72" id="J5A-EC-vQo"/>
+                            <constraint firstAttribute="width" constant="150" id="LbQ-mN-PAD"/>
+                            <constraint firstAttribute="height" constant="21" id="Uqd-7b-dw5"/>
+                            <constraint firstAttribute="height" constant="21" id="YPG-du-NS1"/>
+                            <constraint firstAttribute="width" constant="72" id="tCy-6Q-DzC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="GVu-fm-znU"/>
+                                <exclude reference="J5A-EC-vQo"/>
+                                <exclude reference="Uqd-7b-dw5"/>
+                                <exclude reference="tCy-6Q-DzC"/>
                             </mask>
                         </variation>
                     </label>
@@ -346,6 +346,7 @@
                 <outlet property="dateLabel" destination="s6n-p4-CUg" id="jiY-rL-Xp3"/>
                 <outlet property="descriptionLabel" destination="hil-5O-kcO" id="PJY-hq-1LC"/>
                 <outlet property="downbutton" destination="Oly-rn-1VN" id="qf9-AK-mVj"/>
+                <outlet property="inviteLink" destination="LgM-i7-rLa" id="bgO-5q-FyJ"/>
                 <outlet property="numberWizzLabel" destination="MyN-kI-uzg" id="9oE-H0-4Dh"/>
                 <outlet property="participantLabel" destination="oug-AJ-2x3" id="PvK-b3-xbF"/>
                 <outlet property="settingButton" destination="2o9-vQ-wAh" id="c1F-sr-tDR"/>

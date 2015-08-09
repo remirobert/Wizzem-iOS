@@ -20,6 +20,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
         performSegueWithIdentifier("detailEventSegue", sender: events[indexPath.row])
     }
     
@@ -36,6 +37,11 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let currentEvent = events[indexPath.row]
         
+        cell.titleMoment.text = nil
+        cell.participantLabel.text = nil
+        cell.wizzLabel.text = nil
+        cell.dataMoment.text = nil
+        
         if let title = currentEvent["title"] as? String {
             cell.titleMoment.text = title
         }
@@ -45,32 +51,41 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let wizzNumber = currentEvent["nbMedia"] as? Int {
             cell.wizzLabel.text = "\(wizzNumber)"
         }
-        if let dateEvent = currentEvent.createdAt {
-            let formatString = dateEvent.formattedDateWithFormat("EEE, MMM d")
-            let formatStringHour = dateEvent.formattedDateWithFormat("h:mm")
-            cell.dataMoment.text = "Créé le \(formatString) à \(formatStringHour)"
+        if let city = currentEvent["city"] as? String {
+            cell.dataMoment.text = "à \(city)"
         }
 
-        
         return cell
     }
     
     func fetchData() {
-        let querry = PFQuery(className: "Event")
-        querry.cachePolicy = PFCachePolicy.CacheThenNetwork
-        querry.orderByAscending("updatedAt")
-        
-        querry.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, _) -> Void in
-            
-            if self.refreshControl.refreshing {
-                self.refreshControl.endRefreshing()
+        PFGeoPoint.geoPointForCurrentLocationInBackground { (location: PFGeoPoint?, _) -> Void in
+            if let location = location {
+                let querry = PFQuery(className: "Event")
+                querry.cachePolicy = PFCachePolicy.CacheThenNetwork
+                querry.orderByAscending("updatedAt")
+                querry.whereKey("position", nearGeoPoint: location, withinKilometers: 25)
+                
+                querry.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, _) -> Void in
+                    
+                    if self.refreshControl.refreshing {
+                        self.refreshControl.endRefreshing()
+                    }
+                    
+                    if let results = results as? [PFObject] {
+                        self.events.removeAll(keepCapacity: true)
+                        for currentEvent in results {
+                            if let numberWizz = currentEvent["nbMedia"] as? Int {
+                                if numberWizz > 0 {
+                                    self.events.append(currentEvent)
+                                }
+                            }
+                        }
+                        self.tableView.reloadData()
+                    }
+                }
             }
-            
-            if let results = results as? [PFObject] {
-                self.events = results
-                self.tableView.reloadData()
-            }
-        }        
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -98,7 +113,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let titleLabel = UILabel()
         titleLabel.textAlignment = NSTextAlignment.Right
-        titleLabel.text = "Exploring  "
+        titleLabel.text = "Autour de moi "
         titleLabel.frame.size = CGSizeMake(CGRectGetWidth(UIScreen.mainScreen().bounds) - 40, 40)
         titleLabel.frame.origin = CGPointMake(20, 24)
         titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 18)!

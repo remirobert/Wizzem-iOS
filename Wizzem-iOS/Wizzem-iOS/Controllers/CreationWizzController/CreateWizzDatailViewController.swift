@@ -84,27 +84,48 @@ class CreateWizzDatailViewController: UIViewController, UITextFieldDelegate, UIT
 extension CreateWizzDatailViewController {
     
     func createMoment() {
-        
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         
-        var wizz = PFObject(className: "Event")
-        wizz["title"] = titleTextField.text!
-        wizz["description"] = descriptionTextView.text
-        wizz["creator"] = PFUser.currentUser()
-        wizz["public"] = privacySwitch.on
-        wizz["author_approval"] = true
-        wizz["nbMedia"] = 0
-        wizz["nbMaxParticipant"] = 0
-        wizz["closed"] = false
-        wizz["nbParticipant"] = 1
-        
-        wizz.saveInBackgroundWithBlock { (_, error: NSError?) -> Void in
-            if let error = error {
-                MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
-                Alert.error("Erreur lors de la creation de votre moment.")
-                return
+        PFGeoPoint.geoPointForCurrentLocationInBackground { (currentLocation:PFGeoPoint?, _) -> Void in
+            if let currentLocation = currentLocation {
+                
+                let location = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
+                
+                RRLocationManager.reverseGeocodingFromLocation(location, { (address, error) -> () in
+                    if let address = address?.first {
+                        var wizz = PFObject(className: "Event")
+                        wizz["title"] = self.titleTextField.text!
+                        wizz["description"] = self.descriptionTextView.text
+                        wizz["creator"] = PFUser.currentUser()
+                        wizz["public"] = self.privacySwitch.on
+                        wizz["author_approval"] = true
+                        wizz["nbMedia"] = 0
+                        wizz["nbMaxParticipant"] = 0
+                        wizz["closed"] = false
+                        wizz["nbParticipant"] = 1
+                        wizz["position"] = currentLocation
+                        wizz["city"] = address.locality
+                        
+                        wizz.saveInBackgroundWithBlock { (_, error: NSError?) -> Void in
+                            if let error = error {
+                                MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+                                Alert.error("Erreur lors de la creation de votre moment.")
+                                return
+                            }
+                            self.addParticipant(wizz)
+                        }
+                    }
+                    else {
+                        MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+                        Alert.error("Erreur lors de la récupération de votre localisation.")
+                    }
+                })
+                
             }
-            self.addParticipant(wizz)
+            else {
+                MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+                Alert.error("Erreur lors de la récupération de votre localisation.")
+            }
         }
     }
     

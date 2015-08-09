@@ -19,6 +19,7 @@ class DetailMomentCollectionViewCell: UICollectionViewCell {
     @IBOutlet var addMediaButton: UIButton!
     @IBOutlet var settingButton: UIButton!
     @IBOutlet var downbutton: UIButton!
+    @IBOutlet var inviteLink: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,11 +32,22 @@ class DetailMomentCollectionViewCell: UICollectionViewCell {
         if let description = moment["description"] as? String {
             self.descriptionLabel.text = description
         }
+        
+        if (moment["creator"] as! PFUser).objectId != PFUser.currentUser()?.objectId {
+            self.addMediaButton.setImage(UIImage(), forState: UIControlState.Normal)
+            self.addMediaButton.backgroundColor = UIColor.redColor()
+        }
+        else {
+            self.addMediaButton.backgroundColor = UIColor.clearColor()
+        }
+        
         if let author = moment["creator"] as? PFUser {
             author.fetchIfNeededInBackgroundWithBlock({ (user: PFObject?, _) -> Void in
                 if let user = user {
                     if let username = user["true_username"] as? String {
-                        self.authorLabel.text = username
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.authorLabel.text = username
+                        });
                     }
                 }
             })

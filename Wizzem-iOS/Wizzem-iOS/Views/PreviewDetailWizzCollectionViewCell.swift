@@ -14,28 +14,37 @@ class PreviewDetailWizzCollectionViewCell: UICollectionViewCell {
     @IBOutlet var containerDateView: UIView!
     @IBOutlet var optionButton: UIButton!
     @IBOutlet var upButton: UIButton!
-    @IBOutlet var authorPictureProfile: UIImageView!
+    @IBOutlet var authorPictureProfile: FLAnimatedImageView!
     @IBOutlet var buttonDisplayAuthor: UIButton!
     @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.authorPictureProfile.layer.cornerRadius = 20
+        self.authorPictureProfile.layer.cornerRadius = 30
         self.authorPictureProfile.layer.masksToBounds = true
+        self.authorPictureProfile.contentMode = UIViewContentMode.ScaleAspectFill
     }
     
     func loadData(media: PFObject) {
         self.authorPictureProfile.image = nil
         
         if let author = media["userId"] as? PFObject {
-            author.fetchIfNeededInBackgroundWithBlock({ (author: PFObject?, _) -> Void in
+            author.fetchInBackgroundWithBlock({ (author: PFObject?, _) -> Void in
                 if let author = author {
                     if let userFile = author["picture"] as? PFFile {
                         userFile.getDataInBackgroundWithBlock({ (data: NSData?, _) -> Void in
                             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                 if let data = data {
-                                    self.authorPictureProfile.image = UIImage(data: data)
+                                    if let dataType = author["typePicture"] as? String where dataType == "GIF" {
+                                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                            let animatedImage = FLAnimatedImage(animatedGIFData: data)
+                                            self.authorPictureProfile.animatedImage = animatedImage
+                                        })
+                                    }
+                                    else {
+                                        self.authorPictureProfile.image = UIImage(data: data)
+                                    }
                                 }
                             })
                         })

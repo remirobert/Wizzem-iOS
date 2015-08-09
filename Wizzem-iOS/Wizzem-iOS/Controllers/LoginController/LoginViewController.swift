@@ -26,8 +26,11 @@ class LoginViewController: UIViewController {
         FacebookAuth.login { (result) -> () in
             hud.hide(true)
             switch result {
-            case .👍: self.presentMediaMainController()
+            case .👍:
+                hud.hide(true)
+                self.presentMediaMainController()
             case .👎(_, let error):
+                hud.hide(true)
                 Alert.error("Error lors de la connection : \(error)")
             }
         }

@@ -31,6 +31,17 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
         }
     }
     
+    func invteByLink() {
+        if let eventId = currentEvent.objectId {
+            let activityController = UIActivityViewController(activityItems: ["wizzem://?eventId=\(eventId)"], applicationActivities: nil)
+            self.presentViewController(activityController, animated: true, completion: nil)
+        }
+    }
+    
+    func displayParticipantList() {
+        self.performSegueWithIdentifier("participantListSegue", sender: nil)
+    }
+    
     func addMedia() {
         self.performSegueWithIdentifier("addMediaSegue", sender: self.currentEvent)
     }
@@ -68,8 +79,16 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
             (cell as! DetailMomentCollectionViewCell).addMediaButton.addTarget(self, action: "addMedia", forControlEvents: UIControlEvents.TouchUpInside)
             (cell as! DetailMomentCollectionViewCell).settingButton.addTarget(self, action: "displayOptionMoment", forControlEvents: UIControlEvents.TouchUpInside)
             (cell as! DetailMomentCollectionViewCell).downbutton.addTarget(self, action: "downToDetailMoment", forControlEvents: UIControlEvents.TouchUpInside)
+            (cell as! DetailMomentCollectionViewCell).inviteLink.addTarget(self, action: "invteByLink", forControlEvents: UIControlEvents.TouchUpInside)
+            (cell as! DetailMomentCollectionViewCell).participantLabel.addTarget(self, action: "displayParticipantList", forControlEvents: UIControlEvents.TouchUpInside)
+            
+            if (currentEvent["creator"] as! PFObject).objectId! != PFUser.currentUser()?.objectId! {
+                (cell as! DetailMomentCollectionViewCell).settingButton.alpha = 0
+            }
+            else {
+                (cell as! DetailMomentCollectionViewCell).settingButton.alpha = 1
+            }
         }
-        
         return cell
 
     }
@@ -127,6 +146,9 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
         else if segue.identifier == "detailProfileSegue" {
             (segue.destinationViewController as! DetailProfileViewController).user = sender as! PFObject
         }
+        else if segue.identifier == "participantListSegue" {
+            (segue.destinationViewController as! ParticipantListViewController).currentMoment = self.currentEvent
+        }
     }
 }
 
@@ -147,13 +169,8 @@ extension DetailMediaViewController {
             })
         }
         
-        let shareAction = UIAlertAction(title: "Partager", style: UIAlertActionStyle.Default) { (_) -> Void in
-            let activityController = UIActivityViewController(activityItems: ["link moment here"], applicationActivities: nil)
-            self.presentViewController(activityController, animated: true, completion: nil)
-        }
         let cancelButton = UIAlertAction(title: "Annuler", style: UIAlertActionStyle.Cancel, handler: nil)
 
-        alertController.addAction(shareAction)
         if (currentEvent["creator"] as! PFObject).objectId! == PFUser.currentUser()?.objectId! {
             alertController.addAction(removeAction)
         }
@@ -194,7 +211,6 @@ extension DetailMediaViewController {
                     }
                 })
             }
-            
         }
         
         let saveMediaAction = UIAlertAction(title: "Sauvegarder le media", style: UIAlertActionStyle.Default) { (_) -> Void in
@@ -207,8 +223,6 @@ extension DetailMediaViewController {
                         ala.writeImageDataToSavedPhotosAlbum(data, metadata: nil, completionBlock: { (_, error: NSError!) -> Void in
                             println("error:  \(error)")
                         })
-//                        let ala = ALAssetsLibrary()
-//                        ala.saveImageData(data)
                     }
                 })
             }

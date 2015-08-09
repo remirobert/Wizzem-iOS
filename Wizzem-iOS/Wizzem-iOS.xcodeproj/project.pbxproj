@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9DA0B2CEF94C1C6AB493C5B7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C494A5163AF6F439845F4927 /* libPods.a */; };
+		BB136F171B774F5100987A94 /* ParticipantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB136F151B774F5100987A94 /* ParticipantTableViewCell.swift */; };
+		BB136F181B774F5100987A94 /* ParticipantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB136F161B774F5100987A94 /* ParticipantTableViewCell.xib */; };
+		BB136F1C1B7750F900987A94 /* ParticipantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB136F1B1B7750F900987A94 /* ParticipantListViewController.swift */; };
 		BB1C032F1B6E56310035F09F /* Wizzem_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C032E1B6E56310035F09F /* Wizzem_iOSTests.swift */; };
 		BB1C03441B6E56BD0035F09F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C03391B6E56BD0035F09F /* AppDelegate.swift */; };
 		BB1C03451B6E56BD0035F09F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB1C033A1B6E56BD0035F09F /* LaunchScreen.xib */; };
@@ -70,6 +73,7 @@
 		BB1C03C61B6E56CD0035F09F /* SelectMediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C038F1B6E56CD0035F09F /* SelectMediaCollectionViewCell.swift */; };
 		BB1C03C71B6E56CD0035F09F /* SelectMediaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB1C03901B6E56CD0035F09F /* SelectMediaCollectionViewCell.xib */; };
 		BB5D4A441B6EA044008C89BC /* DetailProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D4A431B6EA044008C89BC /* DetailProfileViewController.swift */; };
+		BBB569B21B76144300626F12 /* UIViewControllerInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB569B11B76144300626F12 /* UIViewControllerInvitation.swift */; };
 		BBE4E3851B73F32F0042F11F /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE4E3841B73F32F0042F11F /* Photos.framework */; };
 		BBE4E3871B73F3370042F11F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE4E3861B73F3370042F11F /* AssetsLibrary.framework */; };
 		BBE4E3891B73F3400042F11F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE4E3881B73F3400042F11F /* MobileCoreServices.framework */; };
@@ -88,6 +92,9 @@
 
 /* Begin PBXFileReference section */
 		8FC4FD53C680A81308A55C30 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		BB136F151B774F5100987A94 /* ParticipantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantTableViewCell.swift; sourceTree = "<group>"; };
+		BB136F161B774F5100987A94 /* ParticipantTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParticipantTableViewCell.xib; sourceTree = "<group>"; };
+		BB136F1B1B7750F900987A94 /* ParticipantListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantListViewController.swift; sourceTree = "<group>"; };
 		BB1C03131B6E56310035F09F /* Wizzem-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wizzem-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB1C03171B6E56310035F09F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB1C03281B6E56310035F09F /* Wizzem-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wizzem-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,6 +168,7 @@
 		BB1C038F1B6E56CD0035F09F /* SelectMediaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMediaCollectionViewCell.swift; sourceTree = "<group>"; };
 		BB1C03901B6E56CD0035F09F /* SelectMediaCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectMediaCollectionViewCell.xib; sourceTree = "<group>"; };
 		BB5D4A431B6EA044008C89BC /* DetailProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailProfileViewController.swift; sourceTree = "<group>"; };
+		BBB569B11B76144300626F12 /* UIViewControllerInvitation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerInvitation.swift; sourceTree = "<group>"; };
 		BBE4E3841B73F32F0042F11F /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		BBE4E3861B73F3370042F11F /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		BBE4E3881B73F3400042F11F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -266,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				BB1C03391B6E56BD0035F09F /* AppDelegate.swift */,
+				BBB569B11B76144300626F12 /* UIViewControllerInvitation.swift */,
 				BB1C033A1B6E56BD0035F09F /* LaunchScreen.xib */,
 				BB1C033C1B6E56BD0035F09F /* Main.storyboard */,
 				BB1C033E1B6E56BD0035F09F /* Constants.h */,
@@ -301,6 +310,7 @@
 				BB1C035C1B6E56CD0035F09F /* ProfileViewController.swift */,
 				BB1C035D1B6E56CD0035F09F /* SelectionMediaViewController.swift */,
 				BB1C035E1B6E56CD0035F09F /* SettingsViewController.swift */,
+				BB136F1B1B7750F900987A94 /* ParticipantListViewController.swift */,
 				BB1C035F1B6E56CD0035F09F /* signupController */,
 				BB1C03621B6E56CD0035F09F /* WizzController */,
 			);
@@ -442,6 +452,8 @@
 				BB1C038E1B6E56CD0035F09F /* PreviewDetailWizzCollectionViewCell.xib */,
 				BB1C038F1B6E56CD0035F09F /* SelectMediaCollectionViewCell.swift */,
 				BB1C03901B6E56CD0035F09F /* SelectMediaCollectionViewCell.xib */,
+				BB136F151B774F5100987A94 /* ParticipantTableViewCell.swift */,
+				BB136F161B774F5100987A94 /* ParticipantTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -541,6 +553,7 @@
 				BB1C03B91B6E56CD0035F09F /* HeaderCollectionReusableView.xib in Resources */,
 				BB1C03A91B6E56CD0035F09F /* Info.plist in Resources */,
 				BB1C03B61B6E56CD0035F09F /* DetailMomentCollectionViewCell.xib in Resources */,
+				BB136F181B774F5100987A94 /* ParticipantTableViewCell.xib in Resources */,
 				BB1C03C71B6E56CD0035F09F /* SelectMediaCollectionViewCell.xib in Resources */,
 				BB1C03C21B6E56CD0035F09F /* MomentFeedTableViewCell.xib in Resources */,
 				BB1C03481B6E56BD0035F09F /* Images.xcassets in Resources */,
@@ -601,6 +614,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB1C03A41B6E56CD0035F09F /* WizzListViewController.swift in Sources */,
+				BBB569B21B76144300626F12 /* UIViewControllerInvitation.swift in Sources */,
 				BB1C03C31B6E56CD0035F09F /* MomentTableViewCell.swift in Sources */,
 				BB1C039D1B6E56CD0035F09F /* MainTabBarViewController.swift in Sources */,
 				BB1C03B41B6E56CD0035F09F /* WizzemAPI.swift in Sources */,
@@ -616,6 +630,7 @@
 				BB1C03C61B6E56CD0035F09F /* SelectMediaCollectionViewCell.swift in Sources */,
 				BB1C03951B6E56CD0035F09F /* CreateWizzDatailViewController.swift in Sources */,
 				BB1C03A51B6E56CD0035F09F /* GifMaker.m in Sources */,
+				BB136F1C1B7750F900987A94 /* ParticipantListViewController.swift in Sources */,
 				BB1C03C11B6E56CD0035F09F /* MomentFeedTableViewCell.swift in Sources */,
 				BB1C03AB1B6E56CD0035F09F /* Alert.swift in Sources */,
 				BB1C03981B6E56CD0035F09F /* DetailMediaViewController.swift in Sources */,
@@ -646,6 +661,7 @@
 				BB1C03911B6E56CD0035F09F /* BaseViewController.swift in Sources */,
 				BB1C03BD1B6E56CD0035F09F /* LoginButton.swift in Sources */,
 				BBE4E38C1B73F36C0042F11F /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
+				BB136F171B774F5100987A94 /* ParticipantTableViewCell.swift in Sources */,
 				BB1C039A1B6E56CD0035F09F /* FeedViewController.swift in Sources */,
 				BB1C03931B6E56CD0035F09F /* Media.swift in Sources */,
 				BB1C03A21B6E56CD0035F09F /* SignupTableViewController.swift in Sources */,

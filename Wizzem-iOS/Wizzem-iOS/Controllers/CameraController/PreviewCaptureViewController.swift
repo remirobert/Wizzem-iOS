@@ -167,10 +167,45 @@ extension PreviewCaptureViewController {
                     Alert.error("Erreur lors de l'uplaod de votre Wizz.")
                 }
                 else {
-                    self.dismissViewControllerAnimated(true, completion: { () -> Void in
-                        NSNotificationCenter.defaultCenter().postNotificationName("dismissCameraController", object: nil)
-                    })
+                    self.checkJoinUser(self.currentEvent!.objectId!)
                 }
+            }
+        }
+    }
+    
+    func checkJoinUser(eventId: String) {
+        let querry = PFQuery(className: "Participant")
+        querry.whereKey("eventId", equalTo: self.currentEvent!)
+        querry.whereKey("userId", equalTo: PFUser.currentUser()!)
+        
+        println("try join \(PFUser.currentUser()!) to \(self.currentEvent!)")
+        
+        querry.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, _) -> Void in
+            if results == nil || results?.count == 0 {
+                let newParticipant = PFObject(className: "Participant")
+                newParticipant["eventId"] = self.currentEvent!
+                newParticipant["userId"] = PFUser.currentUser()!
+                newParticipant["approval"] = true
+                newParticipant["invited"] = false
+                newParticipant["status"] = "accepted"
+                newParticipant.saveInBackgroundWithBlock({ (success: Bool, _) -> Void in
+                    if success {
+                        println("sucess add")
+                        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                            NSNotificationCenter.defaultCenter().postNotificationName("dismissCameraController", object: nil)
+                        })
+                    }
+                    else {
+                        Alert.error("Erreur lors de l'uplaod de votre Wizz.")
+                    }
+                })
+            }
+            else {
+                println("results : \(results)")
+                println("you are in already")
+                self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    NSNotificationCenter.defaultCenter().postNotificationName("dismissCameraController", object: nil)
+                })
             }
         }
     }

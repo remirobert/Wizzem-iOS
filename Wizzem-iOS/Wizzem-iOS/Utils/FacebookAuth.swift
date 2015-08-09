@@ -14,6 +14,9 @@ class FacebookAuth {
     private class func createNewUser(user: PFUser, blockCompletion: (success: Bool, error: NSError?) -> Void) {
         FBRequestConnection.startForMeWithCompletionHandler { (_, result: AnyObject!, error: NSError!) -> Void in
             if let result = result as? NSDictionary {
+                
+                println("result \(result)")
+                
                 let facebookID = result.objectForKey("id") as? String
                 let firstName = result.objectForKey("first_name") as? String
                 let lastName = result.objectForKey("last_name") as? String
@@ -28,6 +31,7 @@ class FacebookAuth {
                         fileProfileImage = PFFile(name: "profilePicture.png", data: dataImage)
                 }
                 
+                user.setValue(facebookID, forKey: "facebookId")
                 user.setValue(email, forKey: "email")
                 user.setValue(firstName, forKey: "first_name")
                 user.setValue(lastName, forKey: "last_name")

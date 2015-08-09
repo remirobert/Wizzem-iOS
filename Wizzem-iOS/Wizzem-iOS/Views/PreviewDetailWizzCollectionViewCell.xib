@@ -61,7 +61,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCe-r9-xuT">
-                        <rect key="frame" x="8" y="416" width="60" height="50"/>
+                        <rect key="frame" x="293" y="416" width="60" height="50"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="qwG-jC-s05"/>
@@ -76,22 +76,22 @@
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SJX-Pv-kl5">
-                        <rect key="frame" x="313" y="426" width="40" height="40"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SJX-Pv-kl5" customClass="FLAnimatedImageView">
+                        <rect key="frame" x="8" y="406" width="60" height="60"/>
                         <animations/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="40" id="Nhe-xF-QEh"/>
-                            <constraint firstAttribute="width" constant="40" id="cut-CY-GtK"/>
+                            <constraint firstAttribute="height" constant="60" id="Nhe-xF-QEh"/>
+                            <constraint firstAttribute="width" constant="60" id="cut-CY-GtK"/>
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wup-Qk-RAd">
-                        <rect key="frame" x="313" y="426" width="40" height="40"/>
+                        <rect key="frame" x="8" y="403" width="60" height="63"/>
                         <animations/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="40" id="DDO-fh-Vk6"/>
-                            <constraint firstAttribute="width" constant="40" id="pEy-Lm-v0I"/>
+                            <constraint firstAttribute="height" constant="63" id="DDO-fh-Vk6"/>
+                            <constraint firstAttribute="width" constant="60" id="pEy-Lm-v0I"/>
                         </constraints>
-                        <state key="normal" title="Button">
+                        <state key="normal">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
@@ -102,22 +102,38 @@
             <animations/>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="SCe-r9-xuT" secondAttribute="trailing" constant="8" id="1qZ-xp-i9X"/>
                 <constraint firstItem="SCe-r9-xuT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="4ft-sw-gbl"/>
                 <constraint firstAttribute="bottom" secondItem="Wup-Qk-RAd" secondAttribute="bottom" constant="8" id="7Dx-OT-l1g"/>
                 <constraint firstItem="qsj-ve-YQR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7Zk-Jf-LHB"/>
                 <constraint firstAttribute="centerX" secondItem="MgQ-zN-WqD" secondAttribute="centerX" id="8lf-06-5wC"/>
+                <constraint firstAttribute="bottom" secondItem="SJX-Pv-kl5" secondAttribute="bottom" constant="8" id="D7E-ht-GXn"/>
+                <constraint firstItem="Wup-Qk-RAd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="IGL-vD-wUJ"/>
                 <constraint firstAttribute="centerX" secondItem="p0S-KZ-v7L" secondAttribute="centerX" id="Iz8-vU-xQq"/>
                 <constraint firstAttribute="bottom" secondItem="qsj-ve-YQR" secondAttribute="bottom" id="PWV-gD-HTg"/>
                 <constraint firstAttribute="bottom" secondItem="SJX-Pv-kl5" secondAttribute="bottom" constant="8" id="RWq-j7-Qxp"/>
                 <constraint firstAttribute="bottom" secondItem="p0S-KZ-v7L" secondAttribute="bottom" id="Sgh-wd-DaJ"/>
                 <constraint firstAttribute="trailing" secondItem="qsj-ve-YQR" secondAttribute="trailing" id="UkG-Fy-Di4"/>
+                <constraint firstItem="SJX-Pv-kl5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="XNv-NH-hf0"/>
+                <constraint firstAttribute="bottom" secondItem="SCe-r9-xuT" secondAttribute="bottom" constant="8" id="Z0P-G2-bTq"/>
                 <constraint firstItem="MgQ-zN-WqD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="dk6-Tl-94M"/>
                 <constraint firstAttribute="bottom" secondItem="SCe-r9-xuT" secondAttribute="bottom" constant="8" id="egg-t5-UTy"/>
                 <constraint firstAttribute="trailing" secondItem="Wup-Qk-RAd" secondAttribute="trailing" constant="8" id="gOH-8v-lsR"/>
+                <constraint firstAttribute="bottom" secondItem="Wup-Qk-RAd" secondAttribute="bottom" constant="8" id="i2w-7y-Z4G"/>
                 <constraint firstAttribute="trailing" secondItem="SJX-Pv-kl5" secondAttribute="trailing" constant="8" id="j3h-FP-1Kh"/>
                 <constraint firstItem="qsj-ve-YQR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="zLE-XQ-40d"/>
             </constraints>
             <size key="customSize" width="361" height="474"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="7Dx-OT-l1g"/>
+                    <exclude reference="gOH-8v-lsR"/>
+                    <exclude reference="RWq-j7-Qxp"/>
+                    <exclude reference="j3h-FP-1Kh"/>
+                    <exclude reference="4ft-sw-gbl"/>
+                    <exclude reference="egg-t5-UTy"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="authorPictureProfile" destination="SJX-Pv-kl5" id="Zmm-B3-X9u"/>
                 <outlet property="buttonDisplayAuthor" destination="Wup-Qk-RAd" id="L19-zo-ggx"/>

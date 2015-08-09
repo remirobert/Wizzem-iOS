@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.setApplicationId("P2PJVDbhrj37sCtIhVdKvrzrQwq5jFYEIAYsoDfb", clientKey: "G9h48iFlrF6z2IKAGaXGFolTekaVg04rQpqb7AQZ")
         PFFacebookUtils.initializeFacebook()
@@ -41,6 +41,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        println("application recaived link: \(url.absoluteString)")
+
+        if let eventId = url.absoluteString?.componentsSeparatedByString("eventId=").last {
+            //let param = NSMutableDictionary()
+            //param.setValue(eventId, forKey: "eventId")
+            
+            
+            //NSNotificationCenter.defaultCenter().postNotificationName("notificationInvitation", object: nil, userInfo: param as [NSObject : AnyObject])
+            
+            println("root :\(window?.rootViewController)")
+            
+            
+            if (PFUser.currentUser() != nil) {
+                window?.rootViewController = InstanceController.fromStoryboard("mainController")
+                (window?.rootViewController as! MainTabBarViewController).displayInvitation(eventId)
+                
+            }
+//            if let rootController = window?.rootViewController as? MainTabBarViewController {
+//                rootController.displayInvitation(eventId)
+//            }
+            
+            println("receive for event : \(eventId)")
+        }
+
         return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
     

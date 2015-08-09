@@ -6,9 +6,18 @@
 //  Copyright (c) 2015 Remi Robert. All rights reserved.
 //
 
+#import "ALAssetsLibrary+CustomPhotoAlbum.h"
 #import "PhotoHelper.h"
 
 @implementation PhotoHelper
+
++ (NSData *)convertAssetToData:(ALAsset *)asset {
+    ALAssetRepresentation *rep = [asset defaultRepresentation];
+    Byte *buffer = (Byte*)malloc((NSUInteger)rep.size);
+    NSUInteger buffered = [rep getBytes:buffer fromOffset:0.0 length:(NSUInteger)rep.size error:nil];
+    NSData *data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES];
+    return data;
+}
 
 + (UIImage *)compraseImage:(UIImage *)largeImage {
     double compressionRatio = 0.5;
