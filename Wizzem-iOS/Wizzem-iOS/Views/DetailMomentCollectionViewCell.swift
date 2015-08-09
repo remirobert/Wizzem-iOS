@@ -26,21 +26,20 @@ class DetailMomentCollectionViewCell: UICollectionViewCell {
     }
 
     func loadDetailMoment(moment: PFObject) {
+        titleEvent.text = nil
+        descriptionLabel.text = nil
+        authorLabel.text = nil
+        participantLabel.setTitle("0", forState: UIControlState.Normal)
+        numberWizzLabel.text = nil
+        dateLabel.text = nil
+        
         if let title = moment["title"] as? String {
             self.titleEvent.text = title
         }
         if let description = moment["description"] as? String {
             self.descriptionLabel.text = description
         }
-        
-        if (moment["creator"] as! PFUser).objectId != PFUser.currentUser()?.objectId {
-            self.addMediaButton.setImage(UIImage(), forState: UIControlState.Normal)
-            self.addMediaButton.backgroundColor = UIColor.redColor()
-        }
-        else {
-            self.addMediaButton.backgroundColor = UIColor.clearColor()
-        }
-        
+                
         if let author = moment["creator"] as? PFUser {
             author.fetchIfNeededInBackgroundWithBlock({ (user: PFObject?, _) -> Void in
                 if let user = user {

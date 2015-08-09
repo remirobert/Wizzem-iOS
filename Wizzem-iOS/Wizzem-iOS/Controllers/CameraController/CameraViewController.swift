@@ -177,7 +177,11 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController,
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         photoNumberGif.text = "0"
         gifImages.removeAll(keepCapacity: false)
         validateGifCaptureButton.alpha = 0
@@ -189,6 +193,7 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController,
         self.previewView.addGestureRecognizer(tapGesture)
         super.viewDidLoad()
         setupCamera()
+        validateGifCaptureButton.alpha = 0
     }
     
     deinit {

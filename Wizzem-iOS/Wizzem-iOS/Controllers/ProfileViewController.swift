@@ -110,7 +110,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 97
     }
-            
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -145,6 +145,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         let logo = UIImageView(frame: CGRectMake(8, 44 / 2 - 15, 70, 30))
         logo.image = UIImage(named: "LogoWz")
         logo.backgroundColor = UIColor.clearColor()
+        logo.contentMode = UIViewContentMode.ScaleAspectFit
         self.navigationController?.navigationBar.addSubview(logo)
 
         let titleLabel = UILabel()

@@ -124,6 +124,10 @@ class MainTabBarViewController: UITabBarController, PageController {
         self.view.addSubview(buttonProfile)
         self.view.addSubview(button)
     }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "addMediaSegue" {

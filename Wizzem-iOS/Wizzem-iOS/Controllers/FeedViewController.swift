@@ -109,6 +109,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let logo = UIImageView(frame: CGRectMake(8, 44 / 2 - 15, 70, 30))
         logo.image = UIImage(named: "LogoWz")
         logo.backgroundColor = UIColor.clearColor()
+        logo.contentMode = UIViewContentMode.ScaleAspectFit
         self.navigationController?.navigationBar.addSubview(logo)
         
         let titleLabel = UILabel()

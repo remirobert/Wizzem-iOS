@@ -90,6 +90,8 @@ class DetailProfileViewController: UIViewController, UIImagePickerControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.usernameLabel.text = nil
+        
         settingButton.alpha = 0
         if user.objectId == PFUser.currentUser()?.objectId {
             settingButton.alpha = 1
