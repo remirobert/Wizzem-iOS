@@ -28,6 +28,7 @@ PODS:
     - Parse (~> 1.7.5.3)
   - PBJVision (0.4.2)
   - SZTextView (1.2.1)
+  - UIImage+ImageCompress (0.0.1)
   - ZFDragableModalTransition (0.5.1)
 
 DEPENDENCIES:
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - ParseFacebookUtils
   - PBJVision
   - SZTextView
+  - UIImage+ImageCompress
   - ZFDragableModalTransition
 
 SPEC CHECKSUMS:
@@ -54,6 +56,7 @@ SPEC CHECKSUMS:
   ParseFacebookUtils: 008a24dc35884519ed6a6750648beb5149f1fad9
   PBJVision: fe43c9a58bb1c1277d16fd802fa836d25e034a45
   SZTextView: 906df45afd3c1b24fc5252088d5ef8061513c238
+  UIImage+ImageCompress: 6b38489f38075d569d9f25d72af7ecf5c84c1057
   ZFDragableModalTransition: 048189eda437f91944ce6d5151618b8bf770196d
 
 COCOAPODS: 0.38.2

@@ -8,4 +8,4 @@ pod 'Masonry', '~> 0.6.1'
 pod 'SZTextView'
 pod 'ZFDragableModalTransition'
 pod 'DateTools'
-
+pod 'UIImage+ImageCompress'

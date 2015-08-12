@@ -20,19 +20,18 @@ class MainTabBarViewController: UITabBarController, PageController {
         
         let cancel = UIAlertAction(title: "Refuser", style: UIAlertActionStyle.Default, handler: nil)
         let joinAction = UIAlertAction(title: "Rejoindre", style: UIAlertActionStyle.Default, handler: { (_) -> Void in
-            let controller = InstanceController.fromStoryboard("detailMomentController")
 
             let querry = PFQuery(className: "Event")
             querry.whereKey("objectId", equalTo: eventId)
             querry.findObjectsInBackgroundWithBlock({ (results: [AnyObject]?, _) -> Void in
                 if let results = results {
                     let event = results.first as! PFObject
-                    (controller as! DetailMediaViewController).currentEvent = event
-                    
-                    self.presentViewController(controller!, animated: true, completion: nil)
+                    self.checkJoinUser(eventId, currentEvent: event)
+                }
+                else {
+                    Alert.error("Moment non trouvé. Veuillez renouveller votre lien de partage.")
                 }
             })
-            
         })
         alertController.addAction(cancel)
         alertController.addAction(joinAction)
@@ -41,27 +40,20 @@ class MainTabBarViewController: UITabBarController, PageController {
     
     func clickAction(sender: UIButton) {
         if sender.tag == 1 {
-//            self.buttonExplore.setImage(UIImage(named: "icon-publicRoomOn"), forState: UIControlState.Normal)
-//            self.buttonProfile.setImage(UIImage(named: "icon-privateRoomOff"), forState: UIControlState.Normal)
             self.selectedIndex = 0
         }
         else {
-//            self.buttonExplore.setImage(UIImage(named: "icon-publicRoomOff"), forState: UIControlState.Normal)
-//            self.buttonProfile.setImage(UIImage(named: "icon-privateRoomOn"), forState: UIControlState.Normal)
             self.selectedIndex = 1
         }
     }
     
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
         if self.selectedIndex == 0 {
-//            self.buttonExplore.setImage(UIImage(named: "icon-publicRoomOn"), forState: UIControlState.Normal)
-//            self.buttonProfile.setImage(UIImage(named: "icon-privateRoomOff"), forState: UIControlState.Normal)
         }
         else {
-//            self.buttonExplore.setImage(UIImage(named: "icon-publicRoomOff"), forState: UIControlState.Normal)
-//            self.buttonProfile.setImage(UIImage(named: "icon-privateRoomOn"), forState: UIControlState.Normal)
         }
     }
+
     
     func createWizz() {
         self.performSegueWithIdentifier("addMediaSegue", sender: nil)
@@ -69,14 +61,6 @@ class MainTabBarViewController: UITabBarController, PageController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let button = UIButton()
-//        button.frame.size = CGSizeMake(30, 30)
-//        button.frame.origin = CGPointMake(CGRectGetWidth(UIScreen.mainScreen().bounds) / 2 - 25, CGRectGetHeight(UIScreen.mainScreen().bounds) - 30)
-//        button.backgroundColor = UIColor.redColor()
-//        button.addTarget(self, action: "createWizz", forControlEvents: UIControlEvents.TouchUpInside)
-//        view.addSubview(button)
-
         
         let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         button.frame.origin = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2 - 40, UIScreen.mainScreen().bounds.size.height - 40)
@@ -143,4 +127,37 @@ class MainTabBarViewController: UITabBarController, PageController {
         }
     }
     
+}
+
+extension MainTabBarViewController {
+    func checkJoinUser(eventId: String, currentEvent: PFObject) {
+        let querry = PFQuery(className: "Participant")
+        querry.whereKey("eventId", equalTo: currentEvent)
+        querry.whereKey("userId", equalTo: PFUser.currentUser()!)
+        
+        querry.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, _) -> Void in
+            if results == nil || results?.count == 0 {
+                let newParticipant = PFObject(className: "Participant")
+                newParticipant["eventId"] = currentEvent
+                newParticipant["userId"] = PFUser.currentUser()!
+                newParticipant["approval"] = true
+                newParticipant["invited"] = false
+                newParticipant["status"] = "accepted"
+                newParticipant.saveInBackgroundWithBlock({ (success: Bool, _) -> Void in
+                    if success {
+                        println("sucess add")
+                        let controller = InstanceController.fromStoryboard("detailMomentController")
+                        (controller as! DetailMediaViewController).currentEvent = currentEvent
+                        self.presentViewController(controller!, animated: true, completion: nil)
+                    }
+                    else {
+                        Alert.error("Impossible de rejoindre ce moment.")
+                    }
+                })
+            }
+            else {
+                Alert.error("Vous participez déjà à ce moment.")
+            }
+        }
+    }
 }

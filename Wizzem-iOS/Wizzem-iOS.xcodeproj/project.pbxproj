@@ -28,7 +28,7 @@
 		BB1C03991B6E56CD0035F09F /* FeedNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C03541B6E56CD0035F09F /* FeedNavigationViewController.swift */; };
 		BB1C039A1B6E56CD0035F09F /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C03551B6E56CD0035F09F /* FeedViewController.swift */; };
 		BB1C039B1B6E56CD0035F09F /* LoginTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C03571B6E56CD0035F09F /* LoginTableViewController.swift */; };
-		BB1C039C1B6E56CD0035F09F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C03581B6E56CD0035F09F /* LoginViewController.swift */; };
+		BB1C039C1B6E56CD0035F09F /* LoginViewController23.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C03581B6E56CD0035F09F /* LoginViewController23.swift */; };
 		BB1C039D1B6E56CD0035F09F /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C035A1B6E56CD0035F09F /* MainTabBarViewController.swift */; };
 		BB1C039E1B6E56CD0035F09F /* ProfileSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C035B1B6E56CD0035F09F /* ProfileSettingTableViewController.swift */; };
 		BB1C039F1B6E56CD0035F09F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C035C1B6E56CD0035F09F /* ProfileViewController.swift */; };
@@ -73,7 +73,15 @@
 		BB1C03C61B6E56CD0035F09F /* SelectMediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C038F1B6E56CD0035F09F /* SelectMediaCollectionViewCell.swift */; };
 		BB1C03C71B6E56CD0035F09F /* SelectMediaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB1C03901B6E56CD0035F09F /* SelectMediaCollectionViewCell.xib */; };
 		BB5D4A441B6EA044008C89BC /* DetailProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D4A431B6EA044008C89BC /* DetailProfileViewController.swift */; };
+		BB723E3C1B7BEF7300BAA4F1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB723E3B1B7BEF7300BAA4F1 /* LoginViewController.swift */; };
 		BBB569B21B76144300626F12 /* UIViewControllerInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB569B11B76144300626F12 /* UIViewControllerInvitation.swift */; };
+		BBD571EA1B77E89C00B286F9 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD571E91B77E89C00B286F9 /* libxml2.dylib */; };
+		BBD571F11B77EB0A00B286F9 /* IM in Resources */ = {isa = PBXBuildFile; fileRef = BBD571F01B77EB0A00B286F9 /* IM */; };
+		BBD571F71B77EB3900B286F9 /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD571F21B77EB3900B286F9 /* libjpeg.a */; };
+		BBD571F81B77EB3900B286F9 /* libMagickCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD571F31B77EB3900B286F9 /* libMagickCore.a */; };
+		BBD571F91B77EB3900B286F9 /* libMagickWand.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD571F41B77EB3900B286F9 /* libMagickWand.a */; };
+		BBD571FA1B77EB3900B286F9 /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD571F51B77EB3900B286F9 /* libpng.a */; };
+		BBD571FB1B77EB3900B286F9 /* libtiff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD571F61B77EB3900B286F9 /* libtiff.a */; };
 		BBE4E3851B73F32F0042F11F /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE4E3841B73F32F0042F11F /* Photos.framework */; };
 		BBE4E3871B73F3370042F11F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE4E3861B73F3370042F11F /* AssetsLibrary.framework */; };
 		BBE4E3891B73F3400042F11F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE4E3881B73F3400042F11F /* MobileCoreServices.framework */; };
@@ -119,7 +127,7 @@
 		BB1C03541B6E56CD0035F09F /* FeedNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedNavigationViewController.swift; sourceTree = "<group>"; };
 		BB1C03551B6E56CD0035F09F /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		BB1C03571B6E56CD0035F09F /* LoginTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewController.swift; sourceTree = "<group>"; };
-		BB1C03581B6E56CD0035F09F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BB1C03581B6E56CD0035F09F /* LoginViewController23.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController23.swift; sourceTree = "<group>"; };
 		BB1C035A1B6E56CD0035F09F /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BB1C035B1B6E56CD0035F09F /* ProfileSettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSettingTableViewController.swift; sourceTree = "<group>"; };
 		BB1C035C1B6E56CD0035F09F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -168,7 +176,15 @@
 		BB1C038F1B6E56CD0035F09F /* SelectMediaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMediaCollectionViewCell.swift; sourceTree = "<group>"; };
 		BB1C03901B6E56CD0035F09F /* SelectMediaCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectMediaCollectionViewCell.xib; sourceTree = "<group>"; };
 		BB5D4A431B6EA044008C89BC /* DetailProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailProfileViewController.swift; sourceTree = "<group>"; };
+		BB723E3B1B7BEF7300BAA4F1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BBB569B11B76144300626F12 /* UIViewControllerInvitation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerInvitation.swift; sourceTree = "<group>"; };
+		BBD571E91B77E89C00B286F9 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		BBD571F01B77EB0A00B286F9 /* IM */ = {isa = PBXFileReference; lastKnownFileType = folder; path = IM; sourceTree = "<group>"; };
+		BBD571F21B77EB3900B286F9 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjpeg.a; path = IM/libjpeg.a; sourceTree = "<group>"; };
+		BBD571F31B77EB3900B286F9 /* libMagickCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMagickCore.a; path = IM/libMagickCore.a; sourceTree = "<group>"; };
+		BBD571F41B77EB3900B286F9 /* libMagickWand.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMagickWand.a; path = IM/libMagickWand.a; sourceTree = "<group>"; };
+		BBD571F51B77EB3900B286F9 /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng.a; path = IM/libpng.a; sourceTree = "<group>"; };
+		BBD571F61B77EB3900B286F9 /* libtiff.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtiff.a; path = IM/libtiff.a; sourceTree = "<group>"; };
 		BBE4E3841B73F32F0042F11F /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		BBE4E3861B73F3370042F11F /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		BBE4E3881B73F3400042F11F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -183,6 +199,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBD571F71B77EB3900B286F9 /* libjpeg.a in Frameworks */,
+				BBD571F81B77EB3900B286F9 /* libMagickCore.a in Frameworks */,
+				BBD571F91B77EB3900B286F9 /* libMagickWand.a in Frameworks */,
+				BBD571FA1B77EB3900B286F9 /* libpng.a in Frameworks */,
+				BBD571FB1B77EB3900B286F9 /* libtiff.a in Frameworks */,
+				BBD571EA1B77E89C00B286F9 /* libxml2.dylib in Frameworks */,
 				BBE4E3891B73F3400042F11F /* MobileCoreServices.framework in Frameworks */,
 				BBE4E3871B73F3370042F11F /* AssetsLibrary.framework in Frameworks */,
 				BBE4E3851B73F32F0042F11F /* Photos.framework in Frameworks */,
@@ -203,6 +225,13 @@
 		AB6D8265959EAEBE76ECFCA0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BBD571F21B77EB3900B286F9 /* libjpeg.a */,
+				BBD571F31B77EB3900B286F9 /* libMagickCore.a */,
+				BBD571F41B77EB3900B286F9 /* libMagickWand.a */,
+				BBD571F51B77EB3900B286F9 /* libpng.a */,
+				BBD571F61B77EB3900B286F9 /* libtiff.a */,
+				BBD571F01B77EB0A00B286F9 /* IM */,
+				BBD571E91B77E89C00B286F9 /* libxml2.dylib */,
 				BBE4E3881B73F3400042F11F /* MobileCoreServices.framework */,
 				BBE4E3861B73F3370042F11F /* AssetsLibrary.framework */,
 				BBE4E3841B73F32F0042F11F /* Photos.framework */,
@@ -341,7 +370,7 @@
 			isa = PBXGroup;
 			children = (
 				BB1C03571B6E56CD0035F09F /* LoginTableViewController.swift */,
-				BB1C03581B6E56CD0035F09F /* LoginViewController.swift */,
+				BB1C03581B6E56CD0035F09F /* LoginViewController23.swift */,
 			);
 			path = LoginController;
 			sourceTree = "<group>";
@@ -359,6 +388,7 @@
 			children = (
 				BB1C03601B6E56CD0035F09F /* SignupTableViewController.swift */,
 				BB1C03611B6E56CD0035F09F /* SignupViewController.swift */,
+				BB723E3B1B7BEF7300BAA4F1 /* LoginViewController.swift */,
 			);
 			path = signupController;
 			sourceTree = "<group>";
@@ -560,6 +590,7 @@
 				BB1C03BA1B6E56CD0035F09F /* HeaderProfile.xib in Resources */,
 				BB1C03C01B6E56CD0035F09F /* MomentCell.xib in Resources */,
 				BB1C03451B6E56BD0035F09F /* LaunchScreen.xib in Resources */,
+				BBD571F11B77EB0A00B286F9 /* IM in Resources */,
 				BB1C03461B6E56BD0035F09F /* Main.storyboard in Resources */,
 				BB1C03AA1B6E56CD0035F09F /* villes_frances.json in Resources */,
 				BB1C03C51B6E56CD0035F09F /* PreviewDetailWizzCollectionViewCell.xib in Resources */,
@@ -613,12 +644,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB723E3C1B7BEF7300BAA4F1 /* LoginViewController.swift in Sources */,
 				BB1C03A41B6E56CD0035F09F /* WizzListViewController.swift in Sources */,
 				BBB569B21B76144300626F12 /* UIViewControllerInvitation.swift in Sources */,
 				BB1C03C31B6E56CD0035F09F /* MomentTableViewCell.swift in Sources */,
 				BB1C039D1B6E56CD0035F09F /* MainTabBarViewController.swift in Sources */,
 				BB1C03B41B6E56CD0035F09F /* WizzemAPI.swift in Sources */,
-				BB1C039C1B6E56CD0035F09F /* LoginViewController.swift in Sources */,
+				BB1C039C1B6E56CD0035F09F /* LoginViewController23.swift in Sources */,
 				BB1C03BC1B6E56CD0035F09F /* LastWizzMomentTableViewCell.swift in Sources */,
 				BB1C03941B6E56CD0035F09F /* PreviewCaptureViewController.swift in Sources */,
 				BB1C03971B6E56CD0035F09F /* PrivacyDetailViewController.swift in Sources */,
@@ -794,8 +826,33 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Bolts\"",
+					"\"${PODS_ROOT}/Headers/Public/DateTools\"",
+					"\"${PODS_ROOT}/Headers/Public/FBSDKCoreKit\"",
+					"\"${PODS_ROOT}/Headers/Public/FLAnimatedImage\"",
+					"\"${PODS_ROOT}/Headers/Public/Facebook-iOS-SDK\"",
+					"\"${PODS_ROOT}/Headers/Public/Facebook-iOS-SDK/FacebookSDK\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/PBJVision\"",
+					"\"${PODS_ROOT}/Headers/Public/Parse\"",
+					"\"${PODS_ROOT}/Headers/Public/ParseFacebookUtils\"",
+					"\"${PODS_ROOT}/Headers/Public/SZTextView\"",
+					"\"${PODS_ROOT}/Headers/Public/ZFDragableModalTransition\"",
+					"$(SRCROOT)/**",
+				);
 				INFOPLIST_FILE = "Wizzem-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Wizzem-iOS/iOSMagick-6.7.5-3-libs",
+					"$(PROJECT_DIR)/Wizzem-iOS/Application",
+					"$(PROJECT_DIR)/Wizzem-iOS/Application/iOSMagick-6.7.5-3-libs",
+					"$(PROJECT_DIR)/IM",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Wizzem-iOS/Application/Header.h";
 			};
@@ -807,8 +864,33 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Bolts\"",
+					"\"${PODS_ROOT}/Headers/Public/DateTools\"",
+					"\"${PODS_ROOT}/Headers/Public/FBSDKCoreKit\"",
+					"\"${PODS_ROOT}/Headers/Public/FLAnimatedImage\"",
+					"\"${PODS_ROOT}/Headers/Public/Facebook-iOS-SDK\"",
+					"\"${PODS_ROOT}/Headers/Public/Facebook-iOS-SDK/FacebookSDK\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/PBJVision\"",
+					"\"${PODS_ROOT}/Headers/Public/Parse\"",
+					"\"${PODS_ROOT}/Headers/Public/ParseFacebookUtils\"",
+					"\"${PODS_ROOT}/Headers/Public/SZTextView\"",
+					"\"${PODS_ROOT}/Headers/Public/ZFDragableModalTransition\"",
+					"$(SRCROOT)/**",
+				);
 				INFOPLIST_FILE = "Wizzem-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Wizzem-iOS/iOSMagick-6.7.5-3-libs",
+					"$(PROJECT_DIR)/Wizzem-iOS/Application",
+					"$(PROJECT_DIR)/Wizzem-iOS/Application/iOSMagick-6.7.5-3-libs",
+					"$(PROJECT_DIR)/IM",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Wizzem-iOS/Application/Header.h";
 			};
