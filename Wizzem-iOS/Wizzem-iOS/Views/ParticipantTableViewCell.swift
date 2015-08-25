@@ -21,6 +21,7 @@ class ParticipantTableViewCell: UITableViewCell {
     
     func loadParticipant(user: PFObject) {
         pictureProfile.image = nil
+        pictureProfile.contentMode = UIViewContentMode.ScaleAspectFit
         nameParticipant.text = nil
 
         user.fetchIfNeededInBackgroundWithBlock { (user: PFObject?, _) -> Void in

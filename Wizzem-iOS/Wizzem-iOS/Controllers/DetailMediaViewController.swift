@@ -92,7 +92,19 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
         return cell
 
     }
+    
+    func refreshEvent() {
+        let querry = PFQuery(className: "Event")
+        querry.whereKey("objectId", equalTo: currentEvent.objectId!)
         
+        querry.getFirstObjectInBackgroundWithBlock { (event: PFObject?, _) -> Void in
+            if let event = event {
+                self.currentEvent = event
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
     func fetchMedia() {
         let querry = PFQuery(className: "Media")
         querry.whereKey("eventId", equalTo: currentEvent!)
@@ -110,10 +122,18 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
         }
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchMedia()
+        NSNotificationCenter.defaultCenter().addObserverForName("reloadContent", object: nil, queue: nil) { (_) -> Void in
+            self.refreshEvent()
+            self.fetchMedia()
+        }
+        self.fetchMedia()
         
         self.navigationController
         self.collectionViewLayout.itemSize = CGSizeMake(CGRectGetWidth(UIScreen.mainScreen().bounds), CGRectGetHeight(UIScreen.mainScreen().bounds))
@@ -227,17 +247,65 @@ extension DetailMediaViewController {
                 })
             }
         }
+
+        let setProfilePictureAction = UIAlertAction(title: "Défénir comme photo de profile", style: UIAlertActionStyle.Default) { (_) -> Void in
+            
+            let currentMediaSelect = self.medias[self.currentIndex - 1]
+            if let file = currentMediaSelect["file"] as? PFFile {
+                file.getDataInBackgroundWithBlock({ (data: NSData?, _) -> Void in
+                    if let data = data {
+                        if currentMediaSelect["type"] as! String == "gif" {
+                            self.updateProfile(data, type: "GIF")
+                        }
+                        else {
+                            self.updateProfile(data, type: "JPG")
+                        }
+                    }
+                })
+            }
+        }
         
         let cancelButton = UIAlertAction(title: "Annuler", style: UIAlertActionStyle.Cancel, handler: nil)
         
         alertController.addAction(shareAction)
         alertController.addAction(saveMediaAction)
+        alertController.addAction(setProfilePictureAction)
+        
         let currenMediaSelect = self.medias[self.currentIndex - 1]
         if (currenMediaSelect["userId"] as! PFObject).objectId! == PFUser.currentUser()?.objectId! {
             alertController.addAction(removeAction)
         }
+        
         alertController.addAction(cancelButton)
         self.presentViewController(alertController, animated: true, completion: nil)
     }
 }
 
+extension DetailMediaViewController {
+    func updateProfile(imageData: NSData, type: String) {
+        if let user = PFUser.currentUser() {
+            let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            let fileImage = PFFile(data: imageData)
+            fileImage.saveInBackgroundWithBlock({ (success: Bool, _) -> Void in
+                if success {
+                    
+                    user["typePicture"] = type
+                    user["picture"] = fileImage
+                    user.saveInBackgroundWithBlock({ (success: Bool, _) -> Void in
+                        if success {
+                            hud.hide(true)
+                        }
+                        else {
+                            hud.hide(true)
+                            Alert.error("Impossible de changer votre image de profile")
+                        }
+                    })
+                }
+                else {
+                    hud.hide(true)
+                    Alert.error("Impossible de changer votre image de profile")
+                }
+            })
+        }
+    }
+}

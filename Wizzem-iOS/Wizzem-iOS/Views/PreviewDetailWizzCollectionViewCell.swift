@@ -18,6 +18,7 @@ class PreviewDetailWizzCollectionViewCell: UICollectionViewCell {
     @IBOutlet var buttonDisplayAuthor: UIButton!
     @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet var progressTimer: UIProgressView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,6 +29,9 @@ class PreviewDetailWizzCollectionViewCell: UICollectionViewCell {
     
     func loadData(media: PFObject) {
         self.authorPictureProfile.image = nil
+        self.imageContentView.image = nil
+        self.imageContentView.animatedImage = nil
+        self.progressTimer.setProgress(0, animated: false)
         
         if let author = media["userId"] as? PFObject {
             author.fetchInBackgroundWithBlock({ (author: PFObject?, _) -> Void in
@@ -75,6 +79,27 @@ class PreviewDetailWizzCollectionViewCell: UICollectionViewCell {
         if let dateFile = media.createdAt {
             let formatString = dateFile.formattedDateWithFormat("EEE/MMM")
             let formatStringHour = dateFile.formattedDateWithFormat("h:mm")
+            
+            let distanceBetweenDates = NSDate().timeIntervalSinceDate(dateFile)
+            let realHoursDiff = distanceBetweenDates / 3600
+            
+            var pourcent = 72 * realHoursDiff / 100
+            
+//            NSTimeInterval distanceBetweenDates = [now timeIntervalSinceDate:lastViewed];
+//            double secondsInAnHour = 3600;
+//            NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
+            
+            switch pourcent {
+            case 0...25: self.progressTimer.progressTintColor = UIColor.greenColor()
+            case 25...50: self.progressTimer.progressTintColor = UIColor.yellowColor()
+            case 50...75: self.progressTimer.progressTintColor = UIColor.orangeColor()
+            case 75...100: self.progressTimer.progressTintColor = UIColor.redColor()
+            default: Void()
+            }
+            
+            pourcent = 100 - pourcent
+            
+            self.progressTimer.setProgress(Float(pourcent) / 100, animated: true)
             self.hourLabel.text = "\(formatStringHour)"
             self.dateLabel.text = "Le \(formatString)"
         }

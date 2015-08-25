@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate {
 
     @IBOutlet var tableView: UITableView!
     var events = Array<PFObject>()
@@ -16,6 +17,18 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     var animator: ZFModalTransitionAnimator!
     @IBOutlet var pictureProfile: FLAnimatedImageView!
     @IBOutlet var usernameLabel: UILabel!
+    
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            if result.value == MFMailComposeResultSent.value {
+                Alert.error("Merci d'avoir contribué à l'amélioration de Wizzem 😀👍")
+            }
+        })
+    }
+    
+    @IBAction func viewProfile(sender: AnyObject) {
+        self.performSegueWithIdentifier("detailProfileSegue", sender: nil)
+    }
     
     @IBAction func editProfile(sender: AnyObject) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
@@ -35,9 +48,24 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 }
             })
         }
+        let shareApp = UIAlertAction(title: "Partager l'application", style: UIAlertActionStyle.Default) { (_) -> Void in
+            let stringLink = "http://wizzem.fr"
+            let activityController = UIActivityViewController(activityItems: [stringLink], applicationActivities: nil)
+            self.presentViewController(activityController, animated: true, completion: nil)
+        }
+        let feebback = UIAlertAction(title: "Envoyer un feedback", style: UIAlertActionStyle.Default) { (_) -> Void in
+            let controller = MFMailComposeViewController()
+            controller.mailComposeDelegate = self
+            controller.setToRecipients(["feedback@wizzem.fr"])
+            controller.setSubject("feedback")
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
+        
         let cancelAction = UIAlertAction(title: "Annuler", style: UIAlertActionStyle.Cancel, handler: nil)
         
         alertController.addAction(profileAction)
+        alertController.addAction(shareApp)
+        alertController.addAction(feebback)
         alertController.addAction(logoutAction)
         alertController.addAction(cancelAction)
         self.presentViewController(alertController, animated: true, completion: nil)
@@ -88,7 +116,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     func fetchData() {
         let querry = PFQuery(className: "Participant")
         querry.whereKey("userId", equalTo: PFUser.currentUser()!)
-        
+        querry.orderByDescending("updatedAt")
+
         querry.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, _) -> Void in
 
             if self.refreshControl.refreshing {
@@ -109,6 +138,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 97
+    }
+    
+    func displayFeed() {
+        NSNotificationCenter.defaultCenter().postNotificationName("displayProfileController", object: nil)
     }
     
     override func viewDidLoad() {
@@ -142,11 +175,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         })
     
-        let logo = UIImageView(frame: CGRectMake(8, 44 / 2 - 15, 70, 30))
-        logo.image = UIImage(named: "LogoWz")
-        logo.backgroundColor = UIColor.clearColor()
-        logo.contentMode = UIViewContentMode.ScaleAspectFit
-        self.navigationController?.navigationBar.addSubview(logo)
 
         let titleLabel = UILabel()
         titleLabel.textAlignment = NSTextAlignment.Right
@@ -155,6 +183,14 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         titleLabel.frame.origin = CGPointMake(20, 24)
         titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 18)!
         self.navigationItem.titleView = titleLabel
+        
+        let logo = UIButton(frame: CGRectMake(8, 44 / 2 - 15, 70, 40))
+        logo.setImage(UIImage(named: "LogoWz"), forState: UIControlState.Normal)
+        logo.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        logo.backgroundColor = UIColor.clearColor()
+        logo.addTarget(self, action: "displayFeed", forControlEvents: UIControlEvents.TouchUpInside)
+        self.navigationController?.navigationBar.addSubview(logo)
+
         
         let v = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 100))
         v.backgroundColor = UIColor.redColor()

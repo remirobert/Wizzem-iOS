@@ -41,19 +41,42 @@ class MainTabBarViewController: UITabBarController, PageController {
     func clickAction(sender: UIButton) {
         if sender.tag == 1 {
             self.selectedIndex = 0
+            self.buttonProfile.setImage(UIImage(named: "Profile"), forState: UIControlState.Normal)
+            self.buttonExplore.setImage(UIImage(named: "ExploreOn"), forState: UIControlState.Normal)
         }
         else {
             self.selectedIndex = 1
+            self.buttonProfile.setImage(UIImage(named: "ProfileOn"), forState: UIControlState.Normal)
+            self.buttonExplore.setImage(UIImage(named: "Explore"), forState: UIControlState.Normal)
         }
     }
     
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
         if self.selectedIndex == 0 {
+            self.buttonProfile.setImage(UIImage(named: "Profile"), forState: UIControlState.Normal)
+            self.buttonExplore.setImage(UIImage(named: "ExploreOn"), forState: UIControlState.Normal)
         }
         else {
+            self.buttonProfile.setImage(UIImage(named: "ProfileOn"), forState: UIControlState.Normal)
+            self.buttonExplore.setImage(UIImage(named: "Explore"), forState: UIControlState.Normal)
         }
     }
 
+    func displayProfileController() {
+        if let controller = self.viewControllers?.last as? UIViewController {
+            self.selectedIndex = 0
+            self.buttonProfile.setImage(UIImage(named: "Profile"), forState: UIControlState.Normal)
+            self.buttonExplore.setImage(UIImage(named: "ExploreOn"), forState: UIControlState.Normal)
+        }
+    }
+    
+    func displayFeedController() {
+        if let controller = self.viewControllers?.first as? UIViewController {
+            self.selectedIndex = 1
+            self.buttonProfile.setImage(UIImage(named: "ProfileOn"), forState: UIControlState.Normal)
+            self.buttonExplore.setImage(UIImage(named: "Explore"), forState: UIControlState.Normal)
+        }
+    }
     
     func createWizz() {
         self.performSegueWithIdentifier("addMediaSegue", sender: nil)
@@ -62,28 +85,34 @@ class MainTabBarViewController: UITabBarController, PageController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "displayProfileController", name: "displayProfileController", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "displayFeedController", name: "displayFeedController", object: nil)
+        
         let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        button.frame.origin = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2 - 40, UIScreen.mainScreen().bounds.size.height - 40)
+        button.frame.origin = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2 - 50, UIScreen.mainScreen().bounds.size.height - 50 - self.tabBar.frame.size.height / 2)
         button.backgroundColor = UIColor.clearColor()
         button.setImage(UIImage(named: "Capture"), forState: UIControlState.Normal)
         //button.tintColor = UIColor(red:0.99, green:0.37, blue:0.4, alpha:1)
         button.autoresizingMask = UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleTopMargin
         button.addTarget(self, action: "createWizz", forControlEvents: UIControlEvents.TouchUpInside)
-        button.frame.size = CGSizeMake(40, 40)
+        button.frame.size = CGSizeMake(50, 50)
         button.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         
+        button.center.x = self.view.center.x
+        
+        
         buttonExplore = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        buttonExplore.frame.size = CGSizeMake(UIScreen.mainScreen().bounds.size.width / 2 - 50, 40)
+        buttonExplore.frame.size = CGSizeMake(UIScreen.mainScreen().bounds.size.width / 2 - 50, 30)
         buttonExplore.frame.origin = CGPointMake(0, UIScreen.mainScreen().bounds.size.height - 44.5)
         buttonExplore.backgroundColor = UIColor.clearColor()
-        buttonExplore.setImage(UIImage(named: "Explore"), forState: UIControlState.Normal)
+        buttonExplore.setImage(UIImage(named: "ExploreOn"), forState: UIControlState.Normal)
         buttonExplore.autoresizingMask = UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleTopMargin
         buttonExplore.tag = 1
         buttonExplore.addTarget(self, action: "clickAction:", forControlEvents: UIControlEvents.TouchUpInside)
         buttonExplore.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         
         buttonProfile = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        buttonProfile.frame.size = CGSizeMake(UIScreen.mainScreen().bounds.size.width / 2 - 50, 40)
+        buttonProfile.frame.size = CGSizeMake(UIScreen.mainScreen().bounds.size.width / 2 - 50, 30)
         buttonProfile.frame.origin = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2 + 50, UIScreen.mainScreen().bounds.size.height - 44.5)
         buttonProfile.backgroundColor = UIColor.clearColor()
         buttonProfile.setImage(UIImage(named: "Profile"), forState: UIControlState.Normal)
@@ -93,7 +122,7 @@ class MainTabBarViewController: UITabBarController, PageController {
         buttonProfile.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         
         
-        let heightDifference = 40 - self.tabBar.frame.size.height;
+        let heightDifference = 25 - self.tabBar.frame.size.height;
         
         if heightDifference < 0 {
             button.center = self.tabBar.center;
@@ -103,6 +132,8 @@ class MainTabBarViewController: UITabBarController, PageController {
             center.y = center.y - heightDifference/2.0;
             button.center = center;
         }
+        
+        button.center.y = buttonProfile.center.y
         
         self.view.addSubview(buttonExplore)
         self.view.addSubview(buttonProfile)
@@ -146,6 +177,12 @@ extension MainTabBarViewController {
                 newParticipant.saveInBackgroundWithBlock({ (success: Bool, _) -> Void in
                     if success {
                         println("sucess add")
+                        
+                        if let numberParticipant = currentEvent["nbParticipant"] as? Int {
+                            currentEvent["nbParticipant"] = numberParticipant + 1
+                            currentEvent.saveInBackgroundWithBlock({ (_, _) -> Void in})
+                        }
+                        
                         let controller = InstanceController.fromStoryboard("detailMomentController")
                         (controller as! DetailMediaViewController).currentEvent = currentEvent
                         self.presentViewController(controller!, animated: true, completion: nil)

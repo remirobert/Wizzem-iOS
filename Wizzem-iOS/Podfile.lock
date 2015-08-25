@@ -17,6 +17,7 @@ PODS:
   - FBSDKCoreKit/no-arc (4.2.0):
     - Bolts (~> 1.1)
     - FBSDKCoreKit/arc
+  - FCFileManager (1.0.12)
   - FLAnimatedImage (1.0.8)
   - Masonry (0.6.2)
   - MBProgressHUD (0.9.1)
@@ -34,6 +35,7 @@ PODS:
 DEPENDENCIES:
   - DateTools
   - FBSDKCoreKit (~> 4.2.0)
+  - FCFileManager
   - FLAnimatedImage (~> 1.0)
   - Masonry (~> 0.6.1)
   - MBProgressHUD
@@ -49,6 +51,7 @@ SPEC CHECKSUMS:
   DateTools: 9bcc89e4f2f9004d8a7a2bd1b49269cf78968e65
   Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
   FBSDKCoreKit: 84b3616a361801f190e43a9909caead7bb6087c7
+  FCFileManager: 5cb3d223ff185b4f565dd917e1eb2ccb6c43a1d8
   FLAnimatedImage: f9422f796135aff80d8c00b2afc48015bb746e24
   Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad

@@ -18,11 +18,11 @@
     NSLog(@"Going into ImageMagick stuff");
     for (UIImage *img in images) {
         MagickWand *localWand = NewMagickWand();
-        UIImage *imgCompressed = [UIImage compressImage:img compressRatio:0.1];
+        UIImage *imgCompressed = [UIImage compressImage:img compressRatio:0.5];
         //UIImage *imgCompressed = [self convertImageToIndexed:img noOfColors:32 withoutTransformation:true];
         NSData *dataObj = UIImageJPEGRepresentation(imgCompressed, 1);
         MagickReadImageBlob(localWand, [dataObj bytes], [dataObj length]);
-        MagickQuantizeImage(localWand, 32, MagickGetImageColorspace(localWand), 0, NO, NO);
+        MagickQuantizeImage(localWand, 128, MagickGetImageColorspace(localWand), 0, NO, NO);
 //        MagickSetImageCompression(localWand, LosslessJPEGCompression);
 //        MagickSetImageCompressionQuality(localWand, 0.1);
         MagickSetImageDelay(localWand, 80);

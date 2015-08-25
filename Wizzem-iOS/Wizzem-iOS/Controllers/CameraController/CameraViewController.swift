@@ -17,7 +17,6 @@ enum CameraMode {
 class CameraViewController: UIViewController, PBJVisionDelegate, PageController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet var validateGifCaptureButton: UIButton!
-    
     @IBOutlet var previewView: UIView!
     
     @IBOutlet var buttonFlash: UIButton!
@@ -48,11 +47,19 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController,
     var currentCameraMode: CameraMode = CameraMode.Photo
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        var image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        capturedImage = image
-        self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            self.performSegueWithIdentifier(SEGUE_PREVIEW_CAPTURE, sender: nil)
-        })
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            capturedImage = image
+            self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                self.performSegueWithIdentifier(SEGUE_PREVIEW_CAPTURE, sender: nil)
+            })
+        }
+        else {
+            self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    Alert.error("Impossible de charger le contenu.")
+                })
+            })
+        }
     }
     
     @IBAction func pickPhotoGallerie(sender: AnyObject) {
@@ -93,17 +100,17 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController,
                 gifImages.append(photoFixed)
             }
             else {
-                let compressedImage = UIImage(data: UIImageJPEGRepresentation(photoFixed, 0.1))!
-                gifImages.append(PhotoHelper.compraseImage(compressedImage))
+                //let compressedImage = UIImage(data: UIImageJPEGRepresentation(photoFixed, 0.1))!
+                gifImages.append(photoFixed)
             }
-            if gifImages.count == 2 {
-                let compressedImage = UIImage(data: UIImageJPEGRepresentation(gifImages.first, 0.1))!
-                gifImages[0] = (PhotoHelper.compraseImage(compressedImage))
-            }
+//            if gifImages.count == 2 {
+//                let compressedImage = UIImage(data: UIImageJPEGRepresentation(gifImages.first, 0.1))!
+//                gifImages[0] = (PhotoHelper.compraseImage(compressedImage))
+//            }
             validateGifCaptureButton.alpha = 1
             photoNumberGif.text = "\(gifImages.count)"
 
-            if gifImages.count == 15 {
+            if gifImages.count == 10 {
                 validateGifCapture(self)
             }
         }
@@ -115,11 +122,11 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController,
         let vision = PBJVision.sharedInstance()
         if vision.flashMode == PBJFlashMode.Off {
            vision.flashMode = PBJFlashMode.On
-            buttonFlash.setImage(UIImage(named: "IconFlashOn"), forState: UIControlState.Normal)
+            buttonFlash.setImage(UIImage(named: "FlashOn"), forState: UIControlState.Normal)
         }
         else {
             vision.flashMode = PBJFlashMode.Off
-            buttonFlash.setImage(UIImage(named: "IconFlash"), forState: UIControlState.Normal)
+            buttonFlash.setImage(UIImage(named: "FlashOff"), forState: UIControlState.Normal)
         }
     }
     
@@ -127,11 +134,9 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController,
         let vision = PBJVision.sharedInstance()
         if vision.cameraDevice == PBJCameraDevice.Back {
             vision.cameraDevice = PBJCameraDevice.Front
-            buttonRotation.setImage(UIImage(named: "IconSelfieOn"), forState: UIControlState.Normal)
         }
         else {
             vision.cameraDevice = PBJCameraDevice.Back
-            buttonRotation.setImage(UIImage(named: "IconSelfie"), forState: UIControlState.Normal)
         }
     }
     

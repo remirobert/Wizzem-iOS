@@ -82,6 +82,7 @@
 		BBD571F91B77EB3900B286F9 /* libMagickWand.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD571F41B77EB3900B286F9 /* libMagickWand.a */; };
 		BBD571FA1B77EB3900B286F9 /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD571F51B77EB3900B286F9 /* libpng.a */; };
 		BBD571FB1B77EB3900B286F9 /* libtiff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD571F61B77EB3900B286F9 /* libtiff.a */; };
+		BBDD0E5C1B88B22100BB7CC0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDD0E5B1B88B22100BB7CC0 /* MessageUI.framework */; };
 		BBE4E3851B73F32F0042F11F /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE4E3841B73F32F0042F11F /* Photos.framework */; };
 		BBE4E3871B73F3370042F11F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE4E3861B73F3370042F11F /* AssetsLibrary.framework */; };
 		BBE4E3891B73F3400042F11F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE4E3881B73F3400042F11F /* MobileCoreServices.framework */; };
@@ -185,6 +186,7 @@
 		BBD571F41B77EB3900B286F9 /* libMagickWand.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMagickWand.a; path = IM/libMagickWand.a; sourceTree = "<group>"; };
 		BBD571F51B77EB3900B286F9 /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng.a; path = IM/libpng.a; sourceTree = "<group>"; };
 		BBD571F61B77EB3900B286F9 /* libtiff.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtiff.a; path = IM/libtiff.a; sourceTree = "<group>"; };
+		BBDD0E5B1B88B22100BB7CC0 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		BBE4E3841B73F32F0042F11F /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		BBE4E3861B73F3370042F11F /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		BBE4E3881B73F3400042F11F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -199,6 +201,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBDD0E5C1B88B22100BB7CC0 /* MessageUI.framework in Frameworks */,
 				BBD571F71B77EB3900B286F9 /* libjpeg.a in Frameworks */,
 				BBD571F81B77EB3900B286F9 /* libMagickCore.a in Frameworks */,
 				BBD571F91B77EB3900B286F9 /* libMagickWand.a in Frameworks */,
@@ -225,6 +228,7 @@
 		AB6D8265959EAEBE76ECFCA0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BBDD0E5B1B88B22100BB7CC0 /* MessageUI.framework */,
 				BBD571F21B77EB3900B286F9 /* libjpeg.a */,
 				BBD571F31B77EB3900B286F9 /* libMagickCore.a */,
 				BBD571F41B77EB3900B286F9 /* libMagickWand.a */,

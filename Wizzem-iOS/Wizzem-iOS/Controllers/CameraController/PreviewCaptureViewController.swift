@@ -29,6 +29,28 @@ class PreviewCaptureViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func shareMedia(sender: AnyObject) {
+        var imagesGif: [UIImage]?
+        var file: PFFile!
+        switch capturedMedia! {
+        case Media💿.Gif(let data, let frames):imagesGif = addTextOnGif(frames)
+        default: Void()
+        }
+        
+        if let images = imagesGif {
+            GifMaker().makeAnimatedGif(images, blockCompletion: { (dataGif: NSData!) -> Void in
+                let controller = UIActivityViewController(activityItems: [dataGif], applicationActivities: nil)
+                self.presentViewController(controller, animated: true, completion: nil)
+            })
+        }
+        else {
+            let img = drawView.renderTextOnView(self.imageView)
+            let controller = UIActivityViewController(activityItems: [UIImagePNGRepresentation(img)], applicationActivities: nil)
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
+        
+    }
+    
     @IBAction func sharePreviewContent(sender: AnyObject) {
         var shareMedia: AnyObject!
         switch capturedMedia! {
@@ -80,7 +102,6 @@ class PreviewCaptureViewController: UIViewController {
             else {
                 self.performSegueWithIdentifier("selectMomentSegue", sender: file)
             }
-
         }
     }
     
@@ -191,7 +212,14 @@ extension PreviewCaptureViewController {
                 newParticipant.saveInBackgroundWithBlock({ (success: Bool, _) -> Void in
                     if success {
                         println("sucess add")
+
+                        if let numberParticipant = self.currentEvent!["nbParticipant"] as? Int {
+                            self.currentEvent!["nbParticipant"] = numberParticipant + 1
+                            self.currentEvent!.saveInBackgroundWithBlock({ (_, _) -> Void in})
+                        }
+                        
                         self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                            NSNotificationCenter.defaultCenter().postNotificationName("reloadContent", object: nil)
                             NSNotificationCenter.defaultCenter().postNotificationName("dismissCameraController", object: nil)
                         })
                     }
@@ -204,6 +232,7 @@ extension PreviewCaptureViewController {
                 println("results : \(results)")
                 println("you are in already")
                 self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    NSNotificationCenter.defaultCenter().postNotificationName("reloadContent", object: nil)
                     NSNotificationCenter.defaultCenter().postNotificationName("dismissCameraController", object: nil)
                 })
             }

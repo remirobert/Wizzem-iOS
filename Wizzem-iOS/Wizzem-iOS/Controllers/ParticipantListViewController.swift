@@ -57,6 +57,12 @@ class ParticipantListViewController: UIViewController, UITableViewDataSource, UI
         querry.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, _) -> Void in
             if let results = results as? [PFObject] {
                 self.participants = results
+                if self.participants.count > 0 {
+                    self.participantNumber.text = "\(self.participants.count) participants"
+                }
+                else {
+                    self.participantNumber.text = "\(self.participants.count) participant"
+                }
                 self.tableView.reloadData()
             }
         }
@@ -66,6 +72,7 @@ class ParticipantListViewController: UIViewController, UITableViewDataSource, UI
         super.viewDidLoad()
         
         fetchParticipant()
+        self.participantNumber.text = ""
         self.tableView.registerNib(UINib(nibName: "ParticipantTableViewCell", bundle: nil), forCellReuseIdentifier: "participantCell")
         
         self.tableView.dataSource = self

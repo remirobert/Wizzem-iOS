@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -46,17 +46,27 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ztk-3I-S0d">
+                                <rect key="frame" x="2" y="56" width="116" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="2E6-NN-yZP"/>
+                                </constraints>
+                                <color key="progressTintColor" red="0.29803921570000003" green="0.85098039219999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </progressView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ztk-3I-S0d" secondAttribute="trailing" constant="2" id="0Uu-tT-ZJc"/>
                             <constraint firstAttribute="trailing" secondItem="st5-2F-C8P" secondAttribute="trailing" constant="8" id="0gV-pW-rSB"/>
                             <constraint firstAttribute="bottom" secondItem="st5-2F-C8P" secondAttribute="bottom" constant="8" id="4Ui-lK-DFC"/>
                             <constraint firstItem="st5-2F-C8P" firstAttribute="leading" secondItem="p0S-KZ-v7L" secondAttribute="leading" constant="8" id="Ybf-Zn-44Z"/>
                             <constraint firstAttribute="height" constant="58" id="byP-Lv-B95"/>
+                            <constraint firstAttribute="bottom" secondItem="ztk-3I-S0d" secondAttribute="bottom" id="iTB-kn-axw"/>
                             <constraint firstItem="nSD-f2-wq8" firstAttribute="top" secondItem="p0S-KZ-v7L" secondAttribute="top" id="lwS-LR-caJ"/>
                             <constraint firstAttribute="width" constant="120" id="reh-wc-XXX"/>
                             <constraint firstItem="nSD-f2-wq8" firstAttribute="leading" secondItem="p0S-KZ-v7L" secondAttribute="leading" constant="8" id="tct-hM-mYN"/>
+                            <constraint firstItem="ztk-3I-S0d" firstAttribute="leading" secondItem="p0S-KZ-v7L" secondAttribute="leading" constant="2" id="vKr-68-pvK"/>
                             <constraint firstAttribute="trailing" secondItem="nSD-f2-wq8" secondAttribute="trailing" constant="8" id="voz-24-rQg"/>
                         </constraints>
                     </view>
@@ -142,6 +152,7 @@
                 <outlet property="hourLabel" destination="nSD-f2-wq8" id="maY-Hr-WKS"/>
                 <outlet property="imageContentView" destination="qsj-ve-YQR" id="8UP-zV-caQ"/>
                 <outlet property="optionButton" destination="SCe-r9-xuT" id="oDl-e6-WWg"/>
+                <outlet property="progressTimer" destination="ztk-3I-S0d" id="Psh-dp-RZE"/>
                 <outlet property="upButton" destination="MgQ-zN-WqD" id="FM2-Yw-wlm"/>
             </connections>
             <point key="canvasLocation" x="239.5" y="328"/>

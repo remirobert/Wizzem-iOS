@@ -63,7 +63,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if let location = location {
                 let querry = PFQuery(className: "Event")
                 querry.cachePolicy = PFCachePolicy.CacheThenNetwork
-                querry.orderByAscending("updatedAt")
+                querry.orderByDescending("updatedAt")
                 querry.whereKey("position", nearGeoPoint: location, withinKilometers: 25)
                 
                 querry.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, _) -> Void in
@@ -92,6 +92,10 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         fetchData()
     }
     
+    func displayProfileController() {
+        NSNotificationCenter.defaultCenter().postNotificationName("displayFeedController", object: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -106,20 +110,21 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         tableView.delegate = self
         
-        let logo = UIImageView(frame: CGRectMake(8, 44 / 2 - 15, 70, 30))
-        logo.image = UIImage(named: "LogoWz")
-        logo.backgroundColor = UIColor.clearColor()
-        logo.contentMode = UIViewContentMode.ScaleAspectFit
-        self.navigationController?.navigationBar.addSubview(logo)
-        
         let titleLabel = UILabel()
-        titleLabel.textAlignment = NSTextAlignment.Right
+        titleLabel.textAlignment = NSTextAlignment.Left
         titleLabel.text = "Autour de moi "
         titleLabel.frame.size = CGSizeMake(CGRectGetWidth(UIScreen.mainScreen().bounds) - 40, 40)
         titleLabel.frame.origin = CGPointMake(20, 24)
         titleLabel.font = UIFont(name: "ArialRoundedMTBold", size: 18)!
         self.navigationItem.titleView = titleLabel
         
+        let logo = UIButton(frame: CGRectMake(CGRectGetWidth(UIScreen.mainScreen().bounds) - 78, 44 / 2 - 15, 70, 40))
+        logo.setImage(UIImage(named: "LogoReverse"), forState: UIControlState.Normal)
+        logo.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        logo.backgroundColor = UIColor.clearColor()
+        logo.addTarget(self, action: "displayProfileController", forControlEvents: UIControlEvents.TouchUpInside)
+        self.navigationController?.navigationBar.addSubview(logo)
+
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarPosition: .Any, barMetrics: .Default)
         navigationController?.navigationBar.shadowImage = UIImage()

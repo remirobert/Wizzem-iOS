@@ -37,14 +37,16 @@ class SelectionMediaViewController: UIViewController, UICollectionViewDataSource
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        self.collectionViewLayout.itemSize = CGSizeMake((CGRectGetWidth(self.collectionView.frame) - 6) / 3, (CGRectGetWidth(self.collectionView.frame) - 6) / 3)
+        self.collectionViewLayout.minimumInteritemSpacing = 2
+        self.collectionViewLayout.minimumLineSpacing = 2
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.numberWizzLabel.text = nil
-        self.collectionViewLayout.itemSize = CGSizeMake(CGRectGetWidth(self.collectionView.frame) / 3, CGRectGetWidth(self.collectionView.frame) / 3)
-        self.collectionViewLayout.minimumInteritemSpacing = 0
-        self.collectionViewLayout.minimumLineSpacing = 15
-        
         fetchMedia()
         
         self.collectionView.registerNib(UINib(nibName: "SelectMediaCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "selectionMediaCell")
