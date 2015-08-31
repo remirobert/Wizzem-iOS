@@ -61,7 +61,7 @@ class MainTabBarViewController: UITabBarController, PageController {
             self.buttonExplore.setImage(UIImage(named: "Explore"), forState: UIControlState.Normal)
         }
     }
-
+    
     func displayProfileController() {
         if let controller = self.viewControllers?.last as? UIViewController {
             self.selectedIndex = 0

@@ -17,6 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("P2PJVDbhrj37sCtIhVdKvrzrQwq5jFYEIAYsoDfb", clientKey: "G9h48iFlrF6z2IKAGaXGFolTekaVg04rQpqb7AQZ")
         PFFacebookUtils.initializeFacebook()
         
+        var typeSettingsNotification = UIUserNotificationType.Alert
+        let notificationSettings = UIUserNotificationSettings(forTypes: typeSettingsNotification, categories: nil)
+        application.registerUserNotificationSettings(notificationSettings)
+        application.registerForRemoteNotifications()
+        
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().backgroundColor = UIColor.whiteColor()
  
@@ -72,5 +77,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKAppEvents.activateApp()
     }
 
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let currentInstallation = PFInstallation.currentInstallation()
+        currentInstallation.setDeviceTokenFromData(deviceToken)
+        currentInstallation.channels = ["global"]
+        currentInstallation.save()
+    }
 }
 

@@ -8,11 +8,10 @@
 
 import UIKit
 
-class CreateWizzDatailViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class CreateWizzDatailViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet var titleTextField: UITextField!
-    @IBOutlet var descriptionTextView: UITextView!
-    @IBOutlet var containerView: UIView!
+    @IBOutlet var descriptionTextView: SZTextView!
     @IBOutlet var labelDetailSwitch: UILabel!
     @IBOutlet var privacySwitch: UISwitch!
     @IBOutlet var createButton: UIButton!
@@ -76,9 +75,9 @@ class CreateWizzDatailViewController: UIViewController, UITextFieldDelegate, UIT
         self.titleTextField.delegate = self
         self.descriptionTextView.delegate = self
         
-        self.containerView.layer.cornerRadius = 10
-        self.containerView.layer.masksToBounds = true
-    }    
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarPosition: .Any, barMetrics: .Default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+    }
 }
 
 extension CreateWizzDatailViewController {

@@ -50,6 +50,10 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
         self.collectionView.setContentOffset(CGPointZero, animated: true)
     }
     
+    func displayDescriptionDetail() {
+        self.performSegueWithIdentifier("detailDescriptionSegue", sender: self.currentEvent["description"] as! String)
+    }
+    
     func downToDetailMoment() {
         if self.medias.count > 0 {
             self.collectionView.setContentOffset(CGPointMake(0, CGRectGetHeight(UIScreen.mainScreen().bounds)), animated: true)
@@ -81,6 +85,8 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
             (cell as! DetailMomentCollectionViewCell).downbutton.addTarget(self, action: "downToDetailMoment", forControlEvents: UIControlEvents.TouchUpInside)
             (cell as! DetailMomentCollectionViewCell).inviteLink.addTarget(self, action: "invteByLink", forControlEvents: UIControlEvents.TouchUpInside)
             (cell as! DetailMomentCollectionViewCell).participantLabel.addTarget(self, action: "displayParticipantList", forControlEvents: UIControlEvents.TouchUpInside)
+
+            (cell as! DetailMomentCollectionViewCell).buttonDisplayDescription.addTarget(self, action: "displayDescriptionDetail", forControlEvents: UIControlEvents.TouchUpInside)
             
             if (currentEvent["creator"] as! PFObject).objectId! != PFUser.currentUser()?.objectId! {
                 (cell as! DetailMomentCollectionViewCell).settingButton.alpha = 0
@@ -168,6 +174,9 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
         }
         else if segue.identifier == "participantListSegue" {
             (segue.destinationViewController as! ParticipantListViewController).currentMoment = self.currentEvent
+        }
+        else if segue.identifier == "detailDescriptionSegue" {
+            (segue.destinationViewController as! DetailDescriptionViewController).content = sender as! String
         }
     }
 }

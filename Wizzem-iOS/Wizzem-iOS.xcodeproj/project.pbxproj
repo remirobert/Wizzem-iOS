@@ -73,6 +73,7 @@
 		BB1C03C61B6E56CD0035F09F /* SelectMediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C038F1B6E56CD0035F09F /* SelectMediaCollectionViewCell.swift */; };
 		BB1C03C71B6E56CD0035F09F /* SelectMediaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB1C03901B6E56CD0035F09F /* SelectMediaCollectionViewCell.xib */; };
 		BB5D4A441B6EA044008C89BC /* DetailProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D4A431B6EA044008C89BC /* DetailProfileViewController.swift */; };
+		BB621E911B94DCE2000B0567 /* DetailDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB621E901B94DCE2000B0567 /* DetailDescriptionViewController.swift */; };
 		BB723E3C1B7BEF7300BAA4F1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB723E3B1B7BEF7300BAA4F1 /* LoginViewController.swift */; };
 		BBB569B21B76144300626F12 /* UIViewControllerInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB569B11B76144300626F12 /* UIViewControllerInvitation.swift */; };
 		BBD571EA1B77E89C00B286F9 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD571E91B77E89C00B286F9 /* libxml2.dylib */; };
@@ -177,6 +178,7 @@
 		BB1C038F1B6E56CD0035F09F /* SelectMediaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMediaCollectionViewCell.swift; sourceTree = "<group>"; };
 		BB1C03901B6E56CD0035F09F /* SelectMediaCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectMediaCollectionViewCell.xib; sourceTree = "<group>"; };
 		BB5D4A431B6EA044008C89BC /* DetailProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailProfileViewController.swift; sourceTree = "<group>"; };
+		BB621E901B94DCE2000B0567 /* DetailDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailDescriptionViewController.swift; sourceTree = "<group>"; };
 		BB723E3B1B7BEF7300BAA4F1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BBB569B11B76144300626F12 /* UIViewControllerInvitation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerInvitation.swift; sourceTree = "<group>"; };
 		BBD571E91B77E89C00B286F9 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -335,6 +337,7 @@
 				BB1C034B1B6E56CD0035F09F /* CameraController */,
 				BB1C034F1B6E56CD0035F09F /* CreationWizzController */,
 				BB1C03531B6E56CD0035F09F /* DetailMediaViewController.swift */,
+				BB621E901B94DCE2000B0567 /* DetailDescriptionViewController.swift */,
 				BB1C03541B6E56CD0035F09F /* FeedNavigationViewController.swift */,
 				BB1C03551B6E56CD0035F09F /* FeedViewController.swift */,
 				BB1C03561B6E56CD0035F09F /* LoginController */,
@@ -547,12 +550,13 @@
 		BB1C030B1B6E56310035F09F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Remi Robert";
 				TargetAttributes = {
 					BB1C03121B6E56310035F09F = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 44Q2J6374R;
+						DevelopmentTeam = LYE79VW645;
 					};
 					BB1C03271B6E56310035F09F = {
 						CreatedOnToolsVersion = 6.4;
@@ -678,6 +682,7 @@
 				BB1C03A01B6E56CD0035F09F /* SelectionMediaViewController.swift in Sources */,
 				BB1C03AF1B6E56CD0035F09F /* ParseAuth.swift in Sources */,
 				BB1C039B1B6E56CD0035F09F /* LoginTableViewController.swift in Sources */,
+				BB621E911B94DCE2000B0567 /* DetailDescriptionViewController.swift in Sources */,
 				BB1C039E1B6E56CD0035F09F /* ProfileSettingTableViewController.swift in Sources */,
 				BB1C03B51B6E56CD0035F09F /* DetailMomentCollectionViewCell.swift in Sources */,
 				BB1C03B21B6E56CD0035F09F /* TextDrawer.swift in Sources */,

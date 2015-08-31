@@ -20,11 +20,12 @@ class DetailMomentCollectionViewCell: UICollectionViewCell {
     @IBOutlet var settingButton: UIButton!
     @IBOutlet var downbutton: UIButton!
     @IBOutlet var inviteLink: UIButton!
+    @IBOutlet var buttonDisplayDescription: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     func loadDetailMoment(moment: PFObject) {
         titleEvent.text = nil
         descriptionLabel.text = nil
@@ -32,7 +33,7 @@ class DetailMomentCollectionViewCell: UICollectionViewCell {
         participantLabel.setTitle("0", forState: UIControlState.Normal)
         numberWizzLabel.text = nil
         dateLabel.text = nil
-        
+
         if let title = moment["title"] as? String {
             self.titleEvent.text = title
         }

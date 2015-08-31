@@ -61,6 +61,9 @@ class WizzListViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.dataSource = self
         
         tableView.contentInset = UIEdgeInsetsMake(0, 0, 100, 0)
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarPosition: .Any, barMetrics: .Default)
+        navigationController?.navigationBar.shadowImage = UIImage()
 
         let querry = PFQuery(className: "Participant")
         querry.whereKey("userId", equalTo: PFUser.currentUser()!)
@@ -80,7 +83,11 @@ class WizzListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "createMomentSegue" {
-            let controller = segue.destinationViewController as! CreateWizzDatailViewController
+            
+            let navigationController = segue.destinationViewController as! UINavigationController
+        
+            let controller = navigationController.viewControllers.first as! CreateWizzDatailViewController
+            
             controller.blockEndCreationMoment = {(moment: PFObject?) -> Void in
                 if let moment = moment {
                     self.addMedia(moment)

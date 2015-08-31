@@ -202,6 +202,15 @@
                             </mask>
                         </variation>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rRu-Kd-gtU">
+                        <rect key="frame" x="53" y="224" width="301" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Hi7-NN-phW"/>
+                        </constraints>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
                 <animations/>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -219,6 +228,7 @@
                 <constraint firstAttribute="centerX" secondItem="hil-5O-kcO" secondAttribute="centerX" id="6Eg-jK-uir"/>
                 <constraint firstItem="hil-5O-kcO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="57" id="7bK-aB-Xlz"/>
                 <constraint firstItem="DSE-bU-wB6" firstAttribute="leading" secondItem="0x4-d2-6Br" secondAttribute="trailing" constant="5" id="7tY-2J-SXk"/>
+                <constraint firstItem="rRu-Kd-gtU" firstAttribute="top" secondItem="oug-AJ-2x3" secondAttribute="bottom" constant="20" id="8PK-G7-9ae"/>
                 <constraint firstItem="TVw-VG-7Vb" firstAttribute="top" secondItem="MyN-kI-uzg" secondAttribute="bottom" constant="1" id="9zu-j6-y7c"/>
                 <constraint firstItem="DSE-bU-wB6" firstAttribute="leading" secondItem="0x4-d2-6Br" secondAttribute="trailing" constant="5" id="AlM-Bj-dFG"/>
                 <constraint firstItem="hil-5O-kcO" firstAttribute="top" secondItem="oug-AJ-2x3" secondAttribute="bottom" constant="20" id="CMK-mm-9oo"/>
@@ -260,7 +270,9 @@
                 <constraint firstItem="TVw-VG-7Vb" firstAttribute="top" secondItem="MyN-kI-uzg" secondAttribute="bottom" constant="1" id="pVJ-yd-t8s"/>
                 <constraint firstItem="oug-AJ-2x3" firstAttribute="top" secondItem="s6n-p4-CUg" secondAttribute="bottom" constant="16" id="qHh-TR-pEO"/>
                 <constraint firstAttribute="centerX" secondItem="Oly-rn-1VN" secondAttribute="centerX" id="qL7-ZL-lfv"/>
+                <constraint firstItem="rRu-Kd-gtU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="53" id="t4e-bc-1n2"/>
                 <constraint firstItem="s6n-p4-CUg" firstAttribute="top" secondItem="OSo-OJ-Pv3" secondAttribute="bottom" constant="-1" id="tGg-66-EFL"/>
+                <constraint firstAttribute="trailing" secondItem="rRu-Kd-gtU" secondAttribute="trailing" constant="56" id="tUT-aS-xnx"/>
                 <constraint firstAttribute="centerX" secondItem="0x4-d2-6Br" secondAttribute="centerX" id="wIr-Qi-zKy"/>
                 <constraint firstItem="XIA-Y9-yzD" firstAttribute="top" secondItem="OSo-OJ-Pv3" secondAttribute="bottom" constant="16" id="wJo-VD-nOI"/>
                 <constraint firstItem="MyN-kI-uzg" firstAttribute="top" secondItem="hil-5O-kcO" secondAttribute="bottom" constant="31" id="ybP-r4-IZr"/>
@@ -308,6 +320,7 @@
             <connections>
                 <outlet property="addMediaButton" destination="DSE-bU-wB6" id="Gpx-VQ-kSj"/>
                 <outlet property="authorLabel" destination="XIA-Y9-yzD" id="cZT-pj-GzP"/>
+                <outlet property="buttonDisplayDescription" destination="rRu-Kd-gtU" id="Jty-Oa-ljX"/>
                 <outlet property="dateLabel" destination="s6n-p4-CUg" id="jiY-rL-Xp3"/>
                 <outlet property="descriptionLabel" destination="hil-5O-kcO" id="PJY-hq-1LC"/>
                 <outlet property="downbutton" destination="Oly-rn-1VN" id="qf9-AK-mVj"/>

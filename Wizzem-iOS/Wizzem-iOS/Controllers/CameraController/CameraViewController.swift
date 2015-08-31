@@ -24,6 +24,7 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController,
     
     @IBOutlet var photoNumberGif: UILabel!
     @IBOutlet var buttonGallerie: UIButton!
+    @IBOutlet var buttonLibrairi: UIButton!
     
     var event: PFObject?
     var page: Int = 1
@@ -101,6 +102,7 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController,
             }
             else {
                 //let compressedImage = UIImage(data: UIImageJPEGRepresentation(photoFixed, 0.1))!
+                self.buttonLibrairi.alpha = 0
                 gifImages.append(photoFixed)
             }
 //            if gifImages.count == 2 {
@@ -190,6 +192,7 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController,
         photoNumberGif.text = "0"
         gifImages.removeAll(keepCapacity: false)
         validateGifCaptureButton.alpha = 0
+        buttonLibrairi.alpha = 1
     }
     
     override func viewDidLoad() {
