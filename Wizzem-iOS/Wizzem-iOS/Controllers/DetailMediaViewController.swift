@@ -154,8 +154,13 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
 
             (cell as! DetailMomentCollectionViewCell).buttonDisplayDescription.addTarget(self, action: "displayDescriptionDetail", forControlEvents: UIControlEvents.TouchUpInside)
             
-            if (currentEvent["creator"] as! PFObject).objectId! != PFUser.currentUser()?.objectId! {
-                (cell as! DetailMomentCollectionViewCell).settingButton.alpha = 0
+            if let creator = currentEvent["creator"] as? PFUser {
+                if (currentEvent["creator"] as! PFObject).objectId! != PFUser.currentUser()?.objectId! {
+                    (cell as! DetailMomentCollectionViewCell).settingButton.alpha = 0
+                }
+                else {
+                    (cell as! DetailMomentCollectionViewCell).settingButton.alpha = 1
+                }
             }
             else {
                 (cell as! DetailMomentCollectionViewCell).settingButton.alpha = 1

@@ -95,6 +95,7 @@ class FacebookEvent: NSObject {
         event["nbMedia"] = 0
         event["facebookEvent"] = currentEvent.id
         event["coverUrl"] = currentEvent.coverPhoto
+        event["closed"] = false
         
         event.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
             if err != nil {

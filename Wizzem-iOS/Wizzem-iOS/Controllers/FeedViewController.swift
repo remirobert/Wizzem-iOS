@@ -18,13 +18,14 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet var segmentData: UISegmentedControl!
     
     @IBAction func changeSegment(sender: AnyObject) {
+        self.events.removeAll(keepCapacity: true)
+        self.tableView.reloadData()
         if self.segmentData.selectedSegmentIndex == 0 {
             self.fetchData()
         }
         else {
             self.querryFetchWizzenEvent.cancel()
-            self.events.removeAll(keepCapacity: true)
-            self.tableView.reloadData()
+            self.fetchDataFacebook()
         }
     }
     
@@ -71,6 +72,25 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
+    func fetchDataFacebook() {
+        let relation = PFUser.currentUser()?.relationForKey("facebookEvents")
+        let querry = relation?.query()
+        
+        querry?.cachePolicy = PFCachePolicy.CacheThenNetwork
+        querry?.findObjectsInBackgroundWithBlock({ (results: [AnyObject]?, _) -> Void in
+            if self.refreshControl.refreshing {
+                self.refreshControl.endRefreshing()
+            }
+            
+            println("results : \(results)")
+            
+            if let results = results as? [PFObject] {
+                self.events = results
+                self.tableView.reloadData()
+            }
+        })
+    }
+    
     func fetchData() {
         PFGeoPoint.geoPointForCurrentLocationInBackground { (location: PFGeoPoint?, _) -> Void in
             if let location = location {
@@ -106,18 +126,33 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func viewDidAppear(animated: Bool) {
-        fetchData()
+        if self.segmentData.selectedSegmentIndex == 0 {
+            self.fetchData()
+        }
+        else {
+            self.fetchDataFacebook()
+        }
     }
     
     func displayProfileController() {
         NSNotificationCenter.defaultCenter().postNotificationName("displayFeedController", object: nil)
     }
     
+    func refreshContentSpinner() {
+        if self.segmentData.selectedSegmentIndex == 0 {
+            self.fetchData()
+        }
+        else {
+            self.querryFetchWizzenEvent.cancel()
+            self.fetchDataFacebook()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "fetchData", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: "refreshContentSpinner", forControlEvents: UIControlEvents.ValueChanged)
         refreshControl.backgroundColor = UIColor.clearColor()
         refreshControl.tintColor = UIColor(red:0.3, green:0.85, blue:0.39, alpha:1)
         tableView.addSubview(refreshControl)
