@@ -188,6 +188,13 @@ extension PreviewCaptureViewController {
                     Alert.error("Erreur lors de l'uplaod de votre Wizz.")
                 }
                 else {
+                    let username = (PFUser.currentUser()!["true_username"] as? String)!
+                    let nameEvent = (self.event!["title"] as? String)!
+                    let message = "\(username) à publier un nouveau média dans \(nameEvent)."
+                    
+                    println("message : \(message)")
+                    
+                    PushNotification.pushNotification("c\(self.event!.objectId!)", message: message)
                     self.checkJoinUser(self.currentEvent!.objectId!)
                 }
             }
@@ -198,6 +205,8 @@ extension PreviewCaptureViewController {
         let querry = PFQuery(className: "Participant")
         querry.whereKey("eventId", equalTo: self.currentEvent!)
         querry.whereKey("userId", equalTo: PFUser.currentUser()!)
+        
+        PushNotification.addNotification("c\(self.currentEvent!.objectId!)")
         
         println("try join \(PFUser.currentUser()!) to \(self.currentEvent!)")
         

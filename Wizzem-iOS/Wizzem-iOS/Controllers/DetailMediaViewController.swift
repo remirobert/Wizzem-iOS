@@ -8,13 +8,14 @@
 
 import UIKit
 
-class DetailMediaViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class DetailMediaViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, GMImagePickerControllerDelegate {
 
     var currentEvent: PFObject!
     var currentMedia: PFObject!
     var currentIndex: Int!
     var dataMedia: NSData!
     var medias = Array<PFObject>()
+    var pickerMedia: GMImagePickerController!
     
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var backButton: UIButton!
@@ -42,8 +43,73 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
         self.performSegueWithIdentifier("participantListSegue", sender: nil)
     }
     
+    func assetsPickerController(picker: GMImagePickerController!, didFinishPickingAssets assets: [AnyObject]!) {
+        self.pickerMedia.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        
+        println("assets : \(assets)")
+        let datas = Array<NSData>()
+        let manager = PHImageManager.defaultManager()
+        
+        ProgressionData.addDataToProgression(assets.count)
+        
+        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.labelText = "Envoie de vos médias en cour"
+        hud.labelColor = UIColor(red:0.3, green:0.85, blue:0.39, alpha:1)
+        hud.tintColor = UIColor(red:0.3, green:0.85, blue:0.39, alpha:1)
+        hud.dimBackground = true
+        
+        for asset in assets {
+            manager.requestImageForAsset(asset as! PHAsset,
+                targetSize: CGSizeMake(750, 1334),
+                contentMode: PHImageContentMode.AspectFit,
+                options: nil,
+                resultHandler: { (image: UIImage!, _) -> Void in
+                    
+                    if let image = image, let data = UIImageJPEGRepresentation(image, 0.5) {
+                        MediaUpload.addMedia(self.currentEvent, media: data, completion: { (sucess) -> Void in
+                            
+                            println("download : \(ProgressionData.sharedInstance.numberDatas)")
+                            println("current : \(ProgressionData.sharedInstance.numberUploaded)")
+                        
+                            if ProgressionData.sharedInstance.numberDatas == 0 ||
+                                ProgressionData.sharedInstance.numberDatas - 1 == ProgressionData.sharedInstance.numberUploaded {
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    hud.hide(true)
+                                })
+                            }
+                            
+                            if !sucess {
+                                Alert.error("Error upload media.")
+                                return
+                            }
+                        })
+                    }
+            })
+        }
+    }
+    
     func addMedia() {
-        self.performSegueWithIdentifier("addMediaSegue", sender: self.currentEvent)
+        
+        let controller = UIAlertController(title: "Ajouter un média à ce moment", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        let galleriAction = UIAlertAction(title: "Depuis la gallerie", style: UIAlertActionStyle.Default) { (_) -> Void in
+            self.pickerMedia = GMImagePickerController()
+            self.pickerMedia.delegate = self
+            self.presentViewController(self.pickerMedia, animated: true, completion: nil)
+        }
+        
+        let cameraAction = UIAlertAction(title: "Capturer depuis la camera", style: UIAlertActionStyle.Default) { (_) -> Void in
+            self.performSegueWithIdentifier("addMediaSegue", sender: self.currentEvent)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Annuler", style: UIAlertActionStyle.Cancel) { (_) -> Void in }
+        
+        controller.addAction(galleriAction)
+        controller.addAction(cameraAction)
+        controller.addAction(cancelAction)
+        
+        self.presentViewController(controller, animated: true, completion: nil)
+        //self.performSegueWithIdentifier("addMediaSegue", sender: self.currentEvent)
     }
     
     func upToDetailMoment() {

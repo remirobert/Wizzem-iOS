@@ -14,6 +14,19 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet var tableView: UITableView!
     var refreshControl: UIRefreshControl!
     var animator: ZFModalTransitionAnimator!
+    var querryFetchWizzenEvent: PFQuery!
+    @IBOutlet var segmentData: UISegmentedControl!
+    
+    @IBAction func changeSegment(sender: AnyObject) {
+        if self.segmentData.selectedSegmentIndex == 0 {
+            self.fetchData()
+        }
+        else {
+            self.querryFetchWizzenEvent.cancel()
+            self.events.removeAll(keepCapacity: true)
+            self.tableView.reloadData()
+        }
+    }
     
     @IBAction func swipeCameraController(sender: AnyObject) {
         NSNotificationCenter.defaultCenter().postNotificationName("swipControllerCamera", object: nil)
@@ -61,12 +74,12 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func fetchData() {
         PFGeoPoint.geoPointForCurrentLocationInBackground { (location: PFGeoPoint?, _) -> Void in
             if let location = location {
-                let querry = PFQuery(className: "Event")
-                querry.cachePolicy = PFCachePolicy.CacheThenNetwork
-                querry.orderByDescending("updatedAt")
-                querry.whereKey("position", nearGeoPoint: location, withinKilometers: 25)
+                self.querryFetchWizzenEvent = PFQuery(className: "Event")
+                self.querryFetchWizzenEvent.cachePolicy = PFCachePolicy.CacheThenNetwork
+                self.querryFetchWizzenEvent.orderByDescending("updatedAt")
+                self.querryFetchWizzenEvent.whereKey("position", nearGeoPoint: location, withinKilometers: 25)
                 
-                querry.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, _) -> Void in
+                self.querryFetchWizzenEvent.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, _) -> Void in
                     
                     if self.refreshControl.refreshing {
                         self.refreshControl.endRefreshing()
@@ -86,6 +99,10 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        FacebookEvent.fetchEventUser()
     }
     
     override func viewDidAppear(animated: Bool) {

@@ -9,7 +9,7 @@
 import UIKit
 
 class FacebookAuth {
-    static let permissionsArray = ["user_about_me", "user_friends"]
+    static let permissionsArray = ["user_about_me", "user_friends", "email", "user_events"]
     
     private class func createNewUser(user: PFUser, blockCompletion: (success: Bool, error: NSError?) -> Void) {
         FBRequestConnection.startForMeWithCompletionHandler { (_, result: AnyObject!, error: NSError!) -> Void in

@@ -19,6 +19,7 @@ PODS:
     - FBSDKCoreKit/arc
   - FCFileManager (1.0.12)
   - FLAnimatedImage (1.0.8)
+  - GMImagePicker (0.0.1)
   - Masonry (0.6.2)
   - MBProgressHUD (0.9.1)
   - Parse (1.7.5.3):
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - FBSDKCoreKit (~> 4.2.0)
   - FCFileManager
   - FLAnimatedImage (~> 1.0)
+  - GMImagePicker
   - Masonry (~> 0.6.1)
   - MBProgressHUD
   - Parse
@@ -53,6 +55,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 84b3616a361801f190e43a9909caead7bb6087c7
   FCFileManager: 5cb3d223ff185b4f565dd917e1eb2ccb6c43a1d8
   FLAnimatedImage: f9422f796135aff80d8c00b2afc48015bb746e24
+  GMImagePicker: e9c726e514c275c914c1b3390d6bb7c3c3e87ead
   Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Parse: 373adbb1ad2e34d383542c3b28f678c49ebe4881

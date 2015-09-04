@@ -44,7 +44,9 @@ class WizzListViewController: UIViewController, UITableViewDataSource, UITableVi
                 }
                 
                 if let date = event.createdAt {
-                    cell.date.text = date.description
+                    let formatString = date.formattedDateWithFormat("EEE, MMM d")
+                    let formatStringHour = date.formattedDateWithFormat("h:mm")
+                    cell.date.text = "Créé le \(formatString) à \(formatStringHour)"
                 }
             }
         }

@@ -75,6 +75,7 @@
 		BB5D4A441B6EA044008C89BC /* DetailProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D4A431B6EA044008C89BC /* DetailProfileViewController.swift */; };
 		BB621E911B94DCE2000B0567 /* DetailDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB621E901B94DCE2000B0567 /* DetailDescriptionViewController.swift */; };
 		BB723E3C1B7BEF7300BAA4F1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB723E3B1B7BEF7300BAA4F1 /* LoginViewController.swift */; };
+		BB98711F1B9827B800C5E492 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB98711E1B9827B800C5E492 /* Event.swift */; };
 		BBB569B21B76144300626F12 /* UIViewControllerInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB569B11B76144300626F12 /* UIViewControllerInvitation.swift */; };
 		BBD571EA1B77E89C00B286F9 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD571E91B77E89C00B286F9 /* libxml2.dylib */; };
 		BBD571F11B77EB0A00B286F9 /* IM in Resources */ = {isa = PBXBuildFile; fileRef = BBD571F01B77EB0A00B286F9 /* IM */; };
@@ -88,6 +89,10 @@
 		BBE4E3871B73F3370042F11F /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE4E3861B73F3370042F11F /* AssetsLibrary.framework */; };
 		BBE4E3891B73F3400042F11F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE4E3881B73F3400042F11F /* MobileCoreServices.framework */; };
 		BBE4E38C1B73F36C0042F11F /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE4E38B1B73F36C0042F11F /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
+		BBEE859B1B958F82001771B8 /* MediaUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEE859A1B958F82001771B8 /* MediaUpload.swift */; };
+		BBF9F4771B9599F50074CD0A /* ProgressionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF9F4761B9599F50074CD0A /* ProgressionData.swift */; };
+		BBF9F4791B9624A00074CD0A /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF9F4781B9624A00074CD0A /* PushNotification.swift */; };
+		BBF9F47D1B9787100074CD0A /* FacebookEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF9F47C1B9787100074CD0A /* FacebookEvent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +185,7 @@
 		BB5D4A431B6EA044008C89BC /* DetailProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailProfileViewController.swift; sourceTree = "<group>"; };
 		BB621E901B94DCE2000B0567 /* DetailDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailDescriptionViewController.swift; sourceTree = "<group>"; };
 		BB723E3B1B7BEF7300BAA4F1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BB98711E1B9827B800C5E492 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BBB569B11B76144300626F12 /* UIViewControllerInvitation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerInvitation.swift; sourceTree = "<group>"; };
 		BBD571E91B77E89C00B286F9 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		BBD571F01B77EB0A00B286F9 /* IM */ = {isa = PBXFileReference; lastKnownFileType = folder; path = IM; sourceTree = "<group>"; };
@@ -194,6 +200,10 @@
 		BBE4E3881B73F3400042F11F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		BBE4E38A1B73F36C0042F11F /* ALAssetsLibrary+CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+CustomPhotoAlbum.h"; sourceTree = "<group>"; };
 		BBE4E38B1B73F36C0042F11F /* ALAssetsLibrary+CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+CustomPhotoAlbum.m"; sourceTree = "<group>"; };
+		BBEE859A1B958F82001771B8 /* MediaUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaUpload.swift; sourceTree = "<group>"; };
+		BBF9F4761B9599F50074CD0A /* ProgressionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressionData.swift; sourceTree = "<group>"; };
+		BBF9F4781B9624A00074CD0A /* PushNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
+		BBF9F47C1B9787100074CD0A /* FacebookEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookEvent.swift; sourceTree = "<group>"; };
 		C174404B633EEBC7B8903B24 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C494A5163AF6F439845F4927 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -451,6 +461,7 @@
 		BB1C03721B6E56CD0035F09F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BB98711D1B9827AF00C5E492 /* Model */,
 				BBE4E38A1B73F36C0042F11F /* ALAssetsLibrary+CustomPhotoAlbum.h */,
 				BBE4E38B1B73F36C0042F11F /* ALAssetsLibrary+CustomPhotoAlbum.m */,
 				BB1C03731B6E56CD0035F09F /* Alert.swift */,
@@ -463,6 +474,10 @@
 				BB1C037A1B6E56CD0035F09F /* TextDrawer.swift */,
 				BB1C037B1B6E56CD0035F09F /* TextEditView.swift */,
 				BB1C037C1B6E56CD0035F09F /* WizzemAPI.swift */,
+				BBEE859A1B958F82001771B8 /* MediaUpload.swift */,
+				BBF9F4761B9599F50074CD0A /* ProgressionData.swift */,
+				BBF9F4781B9624A00074CD0A /* PushNotification.swift */,
+				BBF9F47C1B9787100074CD0A /* FacebookEvent.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -493,6 +508,14 @@
 				BB136F161B774F5100987A94 /* ParticipantTableViewCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		BB98711D1B9827AF00C5E492 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BB98711E1B9827B800C5E492 /* Event.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		E57ADCFF320CA358D2D46F3F /* Pods */ = {
@@ -656,11 +679,13 @@
 				BB1C03A41B6E56CD0035F09F /* WizzListViewController.swift in Sources */,
 				BBB569B21B76144300626F12 /* UIViewControllerInvitation.swift in Sources */,
 				BB1C03C31B6E56CD0035F09F /* MomentTableViewCell.swift in Sources */,
+				BB98711F1B9827B800C5E492 /* Event.swift in Sources */,
 				BB1C039D1B6E56CD0035F09F /* MainTabBarViewController.swift in Sources */,
 				BB1C03B41B6E56CD0035F09F /* WizzemAPI.swift in Sources */,
 				BB1C039C1B6E56CD0035F09F /* LoginViewController23.swift in Sources */,
 				BB1C03BC1B6E56CD0035F09F /* LastWizzMomentTableViewCell.swift in Sources */,
 				BB1C03941B6E56CD0035F09F /* PreviewCaptureViewController.swift in Sources */,
+				BBF9F4771B9599F50074CD0A /* ProgressionData.swift in Sources */,
 				BB1C03971B6E56CD0035F09F /* PrivacyDetailViewController.swift in Sources */,
 				BB1C03441B6E56BD0035F09F /* AppDelegate.swift in Sources */,
 				BB1C03BB1B6E56CD0035F09F /* HeaderProfileView.swift in Sources */,
@@ -682,8 +707,10 @@
 				BB1C03A01B6E56CD0035F09F /* SelectionMediaViewController.swift in Sources */,
 				BB1C03AF1B6E56CD0035F09F /* ParseAuth.swift in Sources */,
 				BB1C039B1B6E56CD0035F09F /* LoginTableViewController.swift in Sources */,
+				BBEE859B1B958F82001771B8 /* MediaUpload.swift in Sources */,
 				BB621E911B94DCE2000B0567 /* DetailDescriptionViewController.swift in Sources */,
 				BB1C039E1B6E56CD0035F09F /* ProfileSettingTableViewController.swift in Sources */,
+				BBF9F4791B9624A00074CD0A /* PushNotification.swift in Sources */,
 				BB1C03B51B6E56CD0035F09F /* DetailMomentCollectionViewCell.swift in Sources */,
 				BB1C03B21B6E56CD0035F09F /* TextDrawer.swift in Sources */,
 				BB1C03961B6E56CD0035F09F /* CreationWizzPeopleTableViewController.swift in Sources */,
@@ -691,6 +718,7 @@
 				BB1C03AC1B6E56CD0035F09F /* DrawTextView.swift in Sources */,
 				BB1C03471B6E56BD0035F09F /* FacebookInit.m in Sources */,
 				BB1C03AE1B6E56CD0035F09F /* InstanceController.swift in Sources */,
+				BBF9F47D1B9787100074CD0A /* FacebookEvent.swift in Sources */,
 				BB1C03A31B6E56CD0035F09F /* SignupViewController.swift in Sources */,
 				BB1C03B71B6E56CD0035F09F /* FeedEventTableViewCell.swift in Sources */,
 				BB1C03B81B6E56CD0035F09F /* HeaderCollectionReusableView.swift in Sources */,
@@ -834,7 +862,7 @@
 			baseConfigurationReference = C174404B633EEBC7B8903B24 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vincent Dionis (GDPNZCGN4S)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -863,6 +891,7 @@
 					"$(PROJECT_DIR)/IM",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "44d64cb5-cd4d-4964-aa9a-14a6536802c0";
 				SWIFT_OBJC_BRIDGING_HEADER = "Wizzem-iOS/Application/Header.h";
 			};
 			name = Debug;
@@ -872,7 +901,7 @@
 			baseConfigurationReference = 8FC4FD53C680A81308A55C30 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vincent Dionis (GDPNZCGN4S)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -901,6 +930,7 @@
 					"$(PROJECT_DIR)/IM",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "44d64cb5-cd4d-4964-aa9a-14a6536802c0";
 				SWIFT_OBJC_BRIDGING_HEADER = "Wizzem-iOS/Application/Header.h";
 			};
 			name = Release;
