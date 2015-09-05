@@ -14,11 +14,21 @@ class PushNotification: NSObject {
         let currentInstallation = PFInstallation.currentInstallation()
         currentInstallation.addUniqueObject(group, forKey: "channels")
         currentInstallation.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
+            println("error add channels : \(err)")
         }
     }
 
     class func pushNotification(group: String, message: String) {
         PFPush.sendPushMessageToChannelInBackground(group, withMessage: message) { (_, err: NSError?) -> Void in
+            println("error push notification : \(err)")
+        }
+    }
+    
+    class func addNotificationAndPush(group: String, message: String) {
+        let currentInstallation = PFInstallation.currentInstallation()
+        currentInstallation.addUniqueObject(group, forKey: "channels")
+        currentInstallation.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
+            self.pushNotification(group, message: message)
         }
     }
 }

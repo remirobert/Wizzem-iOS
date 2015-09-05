@@ -67,6 +67,10 @@ class MediaUpload: NSObject {
                     if success {
                         println("sucess add")
                         
+                        let name = PFUser.currentUser()!["true_username"] as? String
+                        let nameEvent = event["title"] as? String
+                        PushNotification.addNotificationAndPush("c\(event.objectId!)", message: "\(name) à publier dans \(nameEvent)")
+                        
                         if let numberParticipant = event["nbParticipant"] as? Int {
                             event["nbParticipant"] = numberParticipant + 1
                             event.saveInBackgroundWithBlock({ (_, _) -> Void in})

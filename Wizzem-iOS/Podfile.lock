@@ -29,6 +29,10 @@ PODS:
     - Facebook-iOS-SDK (~> 3.23)
     - Parse (~> 1.7.5.3)
   - PBJVision (0.4.2)
+  - PINCache (2.0)
+  - PINRemoteImage (1.1.2):
+    - FLAnimatedImage (>= 1.0)
+    - PINCache (>= 2.0)
   - SZTextView (1.2.1)
   - UIImage+ImageCompress (0.0.1)
   - ZFDragableModalTransition (0.5.1)
@@ -44,6 +48,7 @@ DEPENDENCIES:
   - Parse
   - ParseFacebookUtils
   - PBJVision
+  - PINRemoteImage
   - SZTextView
   - UIImage+ImageCompress
   - ZFDragableModalTransition
@@ -61,6 +66,8 @@ SPEC CHECKSUMS:
   Parse: 373adbb1ad2e34d383542c3b28f678c49ebe4881
   ParseFacebookUtils: 008a24dc35884519ed6a6750648beb5149f1fad9
   PBJVision: fe43c9a58bb1c1277d16fd802fa836d25e034a45
+  PINCache: ca953ba93ce1edde056fdd99121ee65b295a08c9
+  PINRemoteImage: 0696e5f679deabf2e2ddfb57085fb978ca51bfc3
   SZTextView: 906df45afd3c1b24fc5252088d5ef8061513c238
   UIImage+ImageCompress: 6b38489f38075d569d9f25d72af7ecf5c84c1057
   ZFDragableModalTransition: 048189eda437f91944ce6d5151618b8bf770196d

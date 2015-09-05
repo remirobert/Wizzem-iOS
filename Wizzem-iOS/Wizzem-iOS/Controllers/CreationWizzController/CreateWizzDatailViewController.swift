@@ -106,6 +106,7 @@ extension CreateWizzDatailViewController {
                         wizz["city"] = address.locality
                         
                         wizz.saveInBackgroundWithBlock { (_, error: NSError?) -> Void in
+                            
                             if let error = error {
                                 MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                                 Alert.error("Erreur lors de la creation de votre moment.")
@@ -135,6 +136,8 @@ extension CreateWizzDatailViewController {
         params.setValue("accepted", forKey: "status")
         params.setValue(true, forKey: "approval")
         params.setValue(false, forKey: "invited")
+        
+        PushNotification.addNotification("c\(moment.objectId!)")
         
         PFCloud.callFunctionInBackground("ParticipantAdd", withParameters: params as [NSObject : AnyObject], block: { (result: AnyObject?, error: NSError?) -> Void in
             

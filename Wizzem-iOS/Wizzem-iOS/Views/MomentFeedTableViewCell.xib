@@ -139,7 +139,7 @@
                 <outlet property="titleMoment" destination="GZC-RU-pf0" id="chT-Sv-OKP"/>
                 <outlet property="wizzLabel" destination="t5e-qc-pr1" id="VeQ-hs-oxN"/>
             </connections>
-            <point key="canvasLocation" x="349" y="83.5"/>
+            <point key="canvasLocation" x="263" y="70.5"/>
         </tableViewCell>
     </objects>
 </document>

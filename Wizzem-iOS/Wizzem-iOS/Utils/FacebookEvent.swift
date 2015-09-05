@@ -20,6 +20,7 @@ class FacebookEvent: NSObject {
         let requestGraph = FBSDKGraphRequest(graphPath: "/me/events", parameters: nil, HTTPMethod: "GET")
         requestGraph.startWithCompletionHandler({ (connection: FBSDKGraphRequestConnection!, result: AnyObject!, err: NSError!) -> Void in
             if let result = result as? NSDictionary, let events = result.objectForKey("data") as? [NSDictionary] {
+                println("events : \(events)")
                 for currentEvent in events {
                     if let idEvent = currentEvent.objectForKey("id") as? String {
                         let requestEventGraph = FBSDKGraphRequest(graphPath: "/\(idEvent)", parameters: nil, HTTPMethod: "GET")
@@ -123,6 +124,9 @@ extension FacebookEvent {
         newParticipant["approval"] = true
         newParticipant["invited"] = false
         newParticipant["status"] = "accepted"
+        
+        PushNotification.addNotification("c\(event.objectId!)")
+        
         newParticipant.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
             if err == nil {
                 self.addRelationFacebookEventToUser(event)
