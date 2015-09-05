@@ -10,7 +10,7 @@ import UIKit
 
 class MediaUpload: NSObject {
     
-    class func addMedia(event: PFObject, media: NSData, completion: ((sucess: Bool)->Void)) {
+    class func addMedia(event: PFObject, media: NSData, creationDate: NSDate, completion: ((sucess: Bool)->Void)) {
         let file = PFFile(data: media)
         
         file.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
@@ -32,8 +32,9 @@ class MediaUpload: NSObject {
             params.setValue(event.objectId!, forKey: "eventId")
             params.setValue(file, forKey: "file")
             params.setValue("photo", forKey: "type")
+            params.setValue(creationDate, forKey: "creationDate")
             
-            PFCloud.callFunctionInBackground("MediaAdd", withParameters: params as [NSObject : AnyObject]) { (_, error: NSError?) -> Void in
+            PFCloud.callFunctionInBackground("MediaAdd", withParameters: params as [NSObject : AnyObject]) { (media :AnyObject?, error: NSError?) -> Void in
                 if let error = error {
                     println("error : \(error)")
                     ProgressionData.completeDataProgression()
@@ -42,9 +43,21 @@ class MediaUpload: NSObject {
                 }
                 else {
                     self.checkJoinUser(event.objectId!, event: event)
-                    completion(sucess: true)
-                    ProgressionData.completeDataProgression()
-                    NSNotificationCenter.defaultCenter().postNotificationName("reloadContent", object: nil)
+                    
+                    if let media = media as? PFObject {
+                        media["creationDate"] = creationDate
+                        
+                        media.saveInBackgroundWithBlock({ (_, error: NSError?) -> Void in
+                            if error == nil {
+                                completion(sucess: true)
+                                ProgressionData.completeDataProgression()
+                                NSNotificationCenter.defaultCenter().postNotificationName("reloadContent", object: nil)
+                            }
+                            else {
+                                completion(sucess: false)
+                            }
+                        })
+                    }
                 }
             }
         }

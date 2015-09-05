@@ -66,7 +66,7 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
                 resultHandler: { (image: UIImage!, _) -> Void in
                     
                     if let image = image, let data = UIImageJPEGRepresentation(image, 0.5) {
-                        MediaUpload.addMedia(self.currentEvent, media: data, completion: { (sucess) -> Void in
+                        MediaUpload.addMedia(self.currentEvent, media: data, creationDate: (asset as! PHAsset).creationDate, completion: { (sucess) -> Void in
                             
                             println("download : \(ProgressionData.sharedInstance.numberDatas)")
                             println("current : \(ProgressionData.sharedInstance.numberUploaded)")
@@ -186,6 +186,8 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
         let querry = PFQuery(className: "Media")
         querry.whereKey("eventId", equalTo: currentEvent!)
         
+        querry.orderByDescending("creationDate")
+        
         querry.cachePolicy = PFCachePolicy.CacheThenNetwork
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
 
@@ -261,10 +263,24 @@ extension DetailMediaViewController {
             let param = NSMutableDictionary()
             param.setValue(self.currentEvent.objectId!, forKey: "eventId")
             println("param : \(param)")
-        
-            PFCloud.callFunctionInBackground("EventRemove", withParameters: param as [NSObject : AnyObject], block: { (_, error: NSError?) -> Void in
-                if error == nil {
-                    self.dismissViewControllerAnimated(true, completion: nil)
+            
+            let querry = PFQuery(className: "Participant")
+            querry.whereKey("eventId", equalTo: self.currentEvent)
+            
+            querry.findObjectsInBackgroundWithBlock({ (participants: [AnyObject]?, _) -> Void in
+                if let participants = participants as? [PFObject] {
+                    PFObject.deleteAllInBackground(participants, block: { (_, err: NSError?) -> Void in
+                        if err == nil {
+                            PFCloud.callFunctionInBackground("EventRemove",
+                                withParameters: param as [NSObject : AnyObject],
+                                block: { (_, error: NSError?) -> Void in
+
+                                    if error == nil {
+                                        self.dismissViewControllerAnimated(true, completion: nil)
+                                    }
+                            })
+                        }
+                    })
                 }
             })
         }
@@ -297,6 +313,8 @@ extension DetailMediaViewController {
                 else {
                     Alert.error("Impossible de supprimer votre Wizz.")
                 }
+                
+                
             })
         }
         

@@ -180,8 +180,9 @@ extension PreviewCaptureViewController {
             params.setValue(self.event!.objectId!, forKey: "eventId")
             params.setValue(file, forKey: "file")
             params.setValue(type, forKey: "type")
+            params.setValue(NSDate(), forKey: "creationDate")
             
-            PFCloud.callFunctionInBackground("MediaAdd", withParameters: params as [NSObject : AnyObject]) { (_, error: NSError?) -> Void in
+            PFCloud.callFunctionInBackground("MediaAdd", withParameters: params as [NSObject : AnyObject]) { (media: AnyObject?, error: NSError?) -> Void in
                 hud.hide(true)
                 if let error = error {
                     println("error : \(error)")
@@ -194,8 +195,20 @@ extension PreviewCaptureViewController {
                     
                     println("message : \(message)")
                     
-                    PushNotification.pushNotification("c\(self.event!.objectId!)", message: message)
-                    self.checkJoinUser(self.currentEvent!.objectId!)
+                    if let media = media as? PFObject {
+                        media["creationDate"] = NSDate()
+                        
+                        media.saveInBackgroundWithBlock({ (_, error: NSError?) -> Void in
+                            if error == nil {
+                                ProgressionData.completeDataProgression()
+                                PushNotification.pushNotification("c\(self.event!.objectId!)", message: message)
+                                self.checkJoinUser(self.currentEvent!.objectId!)
+                            }
+                            else {
+                                return
+                            }
+                        })
+                    }
                 }
             }
         }

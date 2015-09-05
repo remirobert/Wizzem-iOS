@@ -76,7 +76,7 @@ class PreviewDetailWizzCollectionViewCell: UICollectionViewCell {
             })
         }
         
-        if let dateFile = media.createdAt {
+        if let dateFile = media["creationDate"] as? NSDate {
             let formatString = dateFile.formattedDateWithFormat("EEE/MMM")
             let formatStringHour = dateFile.formattedDateWithFormat("h:mm")
             
@@ -84,10 +84,6 @@ class PreviewDetailWizzCollectionViewCell: UICollectionViewCell {
             let realHoursDiff = distanceBetweenDates / 3600
             
             var pourcent = 72 * realHoursDiff / 100
-            
-//            NSTimeInterval distanceBetweenDates = [now timeIntervalSinceDate:lastViewed];
-//            double secondsInAnHour = 3600;
-//            NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
             
             switch pourcent {
             case 0...25: self.progressTimer.progressTintColor = UIColor.greenColor()
