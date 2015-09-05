@@ -59,8 +59,12 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
         hud.dimBackground = true
         
         for asset in assets {
+            
+            let retinaMult = UIScreen.mainScreen().scale
+            let retinaSquare = CGSizeMake(CGRectGetWidth(UIScreen.mainScreen().bounds) * retinaMult, CGRectGetHeight(UIScreen.mainScreen().bounds) * retinaMult)
+            
             manager.requestImageForAsset(asset as! PHAsset,
-                targetSize: CGSizeMake(750, 1334),
+                targetSize: CGSizeMake(CGFloat((asset as! PHAsset).pixelWidth), CGFloat((asset as! PHAsset).pixelHeight)),
                 contentMode: PHImageContentMode.AspectFit,
                 options: nil,
                 resultHandler: { (image: UIImage!, _) -> Void in
@@ -70,12 +74,12 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
                             
                             println("download : \(ProgressionData.sharedInstance.numberDatas)")
                             println("current : \(ProgressionData.sharedInstance.numberUploaded)")
-                        
+                            
                             if ProgressionData.sharedInstance.numberDatas == 0 ||
                                 ProgressionData.sharedInstance.numberDatas - 1 == ProgressionData.sharedInstance.numberUploaded {
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    hud.hide(true)
-                                })
+                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                        hud.hide(true)
+                                    })
                             }
                             
                             if !sucess {
@@ -250,6 +254,7 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
         }
         else if segue.identifier == "detailDescriptionSegue" {
             (segue.destinationViewController as! DetailDescriptionViewController).content = sender as! String
+            (segue.destinationViewController as! DetailDescriptionViewController).titleEventContent = (self.currentEvent["title"] as? String)!
         }
     }
 }

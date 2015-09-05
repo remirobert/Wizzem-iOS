@@ -11,7 +11,9 @@ import UIKit
 class DetailDescriptionViewController: UIViewController {
 
     var content: String!
+    var titleEventContent: String!
     @IBOutlet var textView: UITextView!
+    @IBOutlet var titleEvent: UILabel!
     
     @IBAction func dismissDetailDescription(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -20,5 +22,6 @@ class DetailDescriptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.textView.text = content
+        self.titleEvent.text = self.titleEventContent
     }
 }
