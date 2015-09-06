@@ -46,10 +46,10 @@ class LoginViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let fbSDKLoginButton = FBSDKLoginButton()
-        fbSDKLoginButton.userInteractionEnabled = false
-        self.loginButton.addSubview(fbSDKLoginButton)
-        fbSDKLoginButton.frame = CGRectMake(0, 0, 220, 45)
+//        let fbSDKLoginButton = FBSDKLoginButton()
+//        fbSDKLoginButton.userInteractionEnabled = false
+//        self.loginButton.addSubview(fbSDKLoginButton)
+//        fbSDKLoginButton.frame = CGRectMake(0, 0, 220, 45)
         
         let page1 = UIImageView(frame: CGRectMake(0, 0, CGRectGetWidth(UIScreen.mainScreen().bounds), CGRectGetHeight(UIScreen.mainScreen().bounds)))
         page1.image = UIImage(named: "page1")

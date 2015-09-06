@@ -16,7 +16,7 @@ class Event: NSObject {
     var descriptioEvent: String!
     var author: String!
     var idAuthor: String!
-    var start: String!
+    var start: NSDate!
     var coverPhoto: String!
     var position: PFGeoPoint!
     var publicEvent: Bool!
@@ -37,7 +37,6 @@ class Event: NSObject {
             self.author = owner.objectForKey("name") as! String
             self.idAuthor = owner.objectForKey("id") as! String
         }
-        self.start = json.objectForKey("start_time") as! String
         self.coverPhoto = ""
         
         if let privacy = json.objectForKey("privacy") as? NSString {
@@ -50,6 +49,11 @@ class Event: NSObject {
         }
         
         NSLog("json current Event : \(json)")
+        
+        self.start = NSDate()
+        if let startTimeString = json.objectForKey("start_time") as? String {
+            self.start = NSDate(string: startTimeString, formatString: "YYYY-MM-dd\'T\'HH:mm:ssZZZZZ")
+        }
         
         if let venue = json.objectForKey("venue") as? NSDictionary,
             latitude = venue.objectForKey("latitude") as? Float,

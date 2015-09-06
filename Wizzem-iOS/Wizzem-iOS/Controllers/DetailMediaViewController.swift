@@ -42,12 +42,10 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
     
     func displayParticipantList() {
         if let isParticipant = self.isParticipant where isParticipant == true {
-            if isParticipant {
-                self.performSegueWithIdentifier("participantListSegue", sender: nil)
-            }
-            else {
-                Alert.error("Publiez un média, pour participer, et voir la liste des participants")
-            }
+            self.performSegueWithIdentifier("participantListSegue", sender: nil)
+        }
+        else {
+            Alert.error("Publiez un média, pour participer, et voir la liste des participants")
         }
     }
     

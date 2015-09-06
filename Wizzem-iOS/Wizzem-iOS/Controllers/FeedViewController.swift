@@ -78,7 +78,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         PFGeoPoint.geoPointForCurrentLocationInBackground { (location: PFGeoPoint?, _) -> Void in
             if let location = location {
                 self.querryFetchFacebookEvent.cachePolicy = PFCachePolicy.CacheThenNetwork
-                //self.querryFetchFacebookEvent.orderByDescending("start")
+                self.querryFetchFacebookEvent.orderByDescending("start")
                 self.querryFetchFacebookEvent.whereKey("public", equalTo: true)
                 self.querryFetchFacebookEvent.whereKey("facebook", equalTo: true)
                 self.querryFetchFacebookEvent.whereKey("position", nearGeoPoint: location, withinKilometers: 25)

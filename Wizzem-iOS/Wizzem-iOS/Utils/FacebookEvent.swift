@@ -17,7 +17,7 @@ class FacebookEvent: NSObject {
         var eventId = Array<String>()
         var passCount = 0
         
-        let requestGraph = FBSDKGraphRequest(graphPath: "/me/events", parameters: nil, HTTPMethod: "GET")
+        let requestGraph = FBSDKGraphRequest(graphPath: "me/events", parameters: nil, HTTPMethod: "GET")
         requestGraph.startWithCompletionHandler({ (connection: FBSDKGraphRequestConnection!, result: AnyObject!, err: NSError!) -> Void in
             if let result = result as? NSDictionary, let events = result.objectForKey("data") as? [NSDictionary] {
                 println("events : \(events)")
@@ -98,6 +98,7 @@ class FacebookEvent: NSObject {
         event["closed"] = false
         event["facebook"] = true
         event["position"] = currentEvent.position
+        event["start"] = currentEvent.start
         
         event.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
             if err != nil {
