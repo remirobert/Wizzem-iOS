@@ -14,10 +14,10 @@ class LoginViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet var pageIndicator: UIPageControl!
     @IBOutlet var loginButton: UIButton!
     
-    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        println("content : %f \(scrollView.contentOffset.x)")
-//        let currentIndex = self.scrollView.contentOffset.x % CGRecGetWidth(UIScreen.mainScreen().bounds)
-//        self.pageIndicator.currentPage = Int(currentIndex)
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        let currentPage = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
+        
+        self.pageIndicator.currentPage = currentPage
     }
     
     func presentMediaMainController() {
@@ -49,13 +49,11 @@ class LoginViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         let fbSDKLoginButton = FBSDKLoginButton()
         fbSDKLoginButton.userInteractionEnabled = false
         self.loginButton.addSubview(fbSDKLoginButton)
-        fbSDKLoginButton.frame = self.loginButton.frame
+        fbSDKLoginButton.frame = CGRectMake(0, 0, 220, 45)
         
-
         let page1 = UIImageView(frame: CGRectMake(0, 0, CGRectGetWidth(UIScreen.mainScreen().bounds), CGRectGetHeight(UIScreen.mainScreen().bounds)))
         page1.image = UIImage(named: "page1")
         page1.contentMode = UIViewContentMode.ScaleAspectFit
@@ -71,6 +69,6 @@ class LoginViewController: UIViewController, UIScrollViewDelegate {
         self.scrollView.delegate = self
         self.scrollView.pagingEnabled = true
         self.scrollView.bounces = false
-        self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(UIScreen.mainScreen().bounds) * 3, CGRectGetHeight(UIScreen.mainScreen().bounds))
+        self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(UIScreen.mainScreen().bounds) * 2, CGRectGetHeight(UIScreen.mainScreen().bounds))
     }
 }

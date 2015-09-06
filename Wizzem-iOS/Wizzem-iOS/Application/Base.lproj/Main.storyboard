@@ -2489,7 +2489,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="oDR-B1-aUS">
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="oDR-B1-aUS">
                                 <rect key="frame" x="-19" y="-18" width="39" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="Eov-xI-8RS"/>
@@ -2514,12 +2514,14 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="105" id="5zt-8p-rRa"/>
                                     <constraint firstAttribute="height" constant="28" id="MtO-ze-Nyu"/>
-                                    <constraint firstAttribute="width" constant="181" id="bGu-qL-3uz"/>
+                                    <constraint firstAttribute="width" constant="181" id="bGu-qL-3uz">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="220"/>
+                                    </constraint>
                                     <constraint firstAttribute="height" constant="28" id="wHv-4f-LsG">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="39"/>
+                                        <variation key="heightClass=regular-widthClass=compact" constant="45"/>
                                     </constraint>
                                 </constraints>
-                                <state key="normal" title="Button">
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
@@ -2538,6 +2540,9 @@
                                         <include reference="wHv-4f-LsG"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="login:" destination="vwr-U5-KBS" eventType="touchUpInside" id="bT4-Be-rSm"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -2546,7 +2551,9 @@
                             <constraint firstItem="X0g-cR-Iir" firstAttribute="top" secondItem="X0A-qo-sef" secondAttribute="topMargin" id="6vu-MC-kbw"/>
                             <constraint firstItem="CrY-Ue-Apj" firstAttribute="top" secondItem="X0g-cR-Iir" secondAttribute="bottom" id="ARR-aF-XWC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="X0g-cR-Iir" secondAttribute="trailing" constant="-16" id="AUb-NT-4UR"/>
-                            <constraint firstAttribute="centerX" secondItem="5bG-rb-Ril" secondAttribute="centerX" id="DGh-AA-mv4"/>
+                            <constraint firstAttribute="centerX" secondItem="5bG-rb-Ril" secondAttribute="centerX" id="DGh-AA-mv4">
+                                <variation key="heightClass=regular-widthClass=compact" constant="1"/>
+                            </constraint>
                             <constraint firstAttribute="centerX" secondItem="0uU-qu-JNx" secondAttribute="centerX" id="Gum-Op-rY1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="X0g-cR-Iir" secondAttribute="trailing" constant="-16" id="JvS-fW-HbN"/>
                             <constraint firstItem="X0g-cR-Iir" firstAttribute="top" secondItem="X0A-qo-sef" secondAttribute="topMargin" id="UMh-PC-EmK"/>
@@ -2556,7 +2563,9 @@
                             <constraint firstItem="0uU-qu-JNx" firstAttribute="top" secondItem="oDR-B1-aUS" secondAttribute="bottom" constant="65" id="kqm-fy-xVo"/>
                             <constraint firstItem="CrY-Ue-Apj" firstAttribute="top" secondItem="X0g-cR-Iir" secondAttribute="bottom" id="n3D-gR-BSM"/>
                             <constraint firstItem="X0g-cR-Iir" firstAttribute="leading" secondItem="X0A-qo-sef" secondAttribute="leadingMargin" constant="-16" id="nhK-NL-el8"/>
-                            <constraint firstItem="0uU-qu-JNx" firstAttribute="top" secondItem="5bG-rb-Ril" secondAttribute="bottom" constant="18" id="p3u-Yb-KDl"/>
+                            <constraint firstItem="0uU-qu-JNx" firstAttribute="top" secondItem="5bG-rb-Ril" secondAttribute="bottom" constant="18" id="p3u-Yb-KDl">
+                                <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                            </constraint>
                             <constraint firstItem="X0g-cR-Iir" firstAttribute="leading" secondItem="X0A-qo-sef" secondAttribute="leadingMargin" constant="-16" id="sr9-nX-POc"/>
                             <constraint firstItem="X0g-cR-Iir" firstAttribute="top" secondItem="X0A-qo-sef" secondAttribute="topMargin" id="wrn-9R-iJD"/>
                             <constraint firstItem="CrY-Ue-Apj" firstAttribute="top" secondItem="X0g-cR-Iir" secondAttribute="bottom" id="yRe-fK-KCC"/>
