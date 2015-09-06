@@ -15,12 +15,14 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var refreshControl: UIRefreshControl!
     var animator: ZFModalTransitionAnimator!
     var querryFetchWizzenEvent: PFQuery!
+    var querryFetchFacebookEvent: PFQuery!
     @IBOutlet var segmentData: UISegmentedControl!
     
     @IBAction func changeSegment(sender: AnyObject) {
         self.events.removeAll(keepCapacity: true)
         self.tableView.reloadData()
         if self.segmentData.selectedSegmentIndex == 0 {
+            self.querryFetchFacebookEvent.cancel()
             self.fetchData()
         }
         else {
@@ -73,30 +75,35 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func fetchDataFacebook() {
-        let relation = PFUser.currentUser()?.relationForKey("facebookEvents")
-        let querry = relation?.query()
-        
-        querry?.cachePolicy = PFCachePolicy.CacheThenNetwork
-        querry?.findObjectsInBackgroundWithBlock({ (results: [AnyObject]?, _) -> Void in
-            if self.refreshControl.refreshing {
-                self.refreshControl.endRefreshing()
+        PFGeoPoint.geoPointForCurrentLocationInBackground { (location: PFGeoPoint?, _) -> Void in
+            if let location = location {
+                self.querryFetchFacebookEvent.cachePolicy = PFCachePolicy.CacheThenNetwork
+                //self.querryFetchFacebookEvent.orderByDescending("start")
+                self.querryFetchFacebookEvent.whereKey("facebook", equalTo: true)
+                self.querryFetchFacebookEvent.whereKey("position", nearGeoPoint: location, withinKilometers: 25)
+                
+                self.querryFetchFacebookEvent.findObjectsInBackgroundWithBlock({ (results: [AnyObject]?, _) -> Void in
+
+                    if self.refreshControl.refreshing {
+                        self.refreshControl.endRefreshing()
+                    }
+
+                    println("result : \(results)")
+                    if let results = results as? [PFObject] {
+                        self.events = results
+                        self.tableView.reloadData()
+                    }
+                })
             }
-            
-            println("results : \(results)")
-            
-            if let results = results as? [PFObject] {
-                self.events = results
-                self.tableView.reloadData()
-            }
-        })
+        }
     }
     
     func fetchData() {
         PFGeoPoint.geoPointForCurrentLocationInBackground { (location: PFGeoPoint?, _) -> Void in
             if let location = location {
-                self.querryFetchWizzenEvent = PFQuery(className: "Event")
                 self.querryFetchWizzenEvent.cachePolicy = PFCachePolicy.CacheThenNetwork
                 self.querryFetchWizzenEvent.orderByDescending("updatedAt")
+                self.querryFetchWizzenEvent.whereKey("facebook", equalTo: false)
                 self.querryFetchWizzenEvent.whereKey("position", nearGeoPoint: location, withinKilometers: 25)
                 
                 self.querryFetchWizzenEvent.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, _) -> Void in
@@ -140,6 +147,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func refreshContentSpinner() {
         if self.segmentData.selectedSegmentIndex == 0 {
+            self.querryFetchFacebookEvent.cancel()
             self.fetchData()
         }
         else {
@@ -150,6 +158,9 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.querryFetchFacebookEvent = PFQuery(className: "Event")
+        self.querryFetchWizzenEvent = PFQuery(className: "Event")
         
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refreshContentSpinner", forControlEvents: UIControlEvents.ValueChanged)

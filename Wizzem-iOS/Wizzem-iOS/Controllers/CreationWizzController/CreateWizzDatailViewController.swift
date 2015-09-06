@@ -104,6 +104,7 @@ extension CreateWizzDatailViewController {
                         wizz["nbParticipant"] = 1
                         wizz["position"] = currentLocation
                         wizz["city"] = address.locality
+                        wizz["facebook"] = false
                         
                         wizz.saveInBackgroundWithBlock { (_, error: NSError?) -> Void in
                             

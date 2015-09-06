@@ -18,6 +18,7 @@ class Event: NSObject {
     var idAuthor: String!
     var start: String!
     var coverPhoto: String!
+    var position: PFGeoPoint!
     
     init(json: NSDictionary) {
         super.init()
@@ -32,5 +33,18 @@ class Event: NSObject {
         }
         self.start = json.objectForKey("start_time") as! String
         self.coverPhoto = ""
+        
+        NSLog("json current Event : \(json)")
+        
+        if let venue = json.objectForKey("venue") as? NSDictionary,
+            latitude = venue.objectForKey("latitude") as? Float,
+            longitude = venue.objectForKey("longitude") as? Float {
+            
+                let point = PFGeoPoint(latitude: Double(latitude), longitude: Double(longitude))
+                self.position = point
+        }
+        else {
+            self.position = PFGeoPoint()
+        }
     }
 }
