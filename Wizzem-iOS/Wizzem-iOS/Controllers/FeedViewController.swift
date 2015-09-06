@@ -22,12 +22,12 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.events.removeAll(keepCapacity: true)
         self.tableView.reloadData()
         if self.segmentData.selectedSegmentIndex == 0 {
-            self.querryFetchFacebookEvent.cancel()
-            self.fetchData()
-        }
-        else {
             self.querryFetchWizzenEvent.cancel()
             self.fetchDataFacebook()
+        }
+        else {
+            self.querryFetchFacebookEvent.cancel()
+            self.fetchData()
         }
     }
     
@@ -134,10 +134,12 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidAppear(animated: Bool) {
         if self.segmentData.selectedSegmentIndex == 0 {
-            self.fetchData()
+            self.querryFetchWizzenEvent.cancel()
+            self.fetchDataFacebook()
         }
         else {
-            self.fetchDataFacebook()
+            self.querryFetchFacebookEvent.cancel()
+            self.fetchData()
         }
     }
     
@@ -147,18 +149,18 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func refreshContentSpinner() {
         if self.segmentData.selectedSegmentIndex == 0 {
-            self.querryFetchFacebookEvent.cancel()
-            self.fetchData()
-        }
-        else {
             self.querryFetchWizzenEvent.cancel()
             self.fetchDataFacebook()
+        }
+        else {
+            self.querryFetchFacebookEvent.cancel()
+            self.fetchData()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         self.querryFetchFacebookEvent = PFQuery(className: "Event")
         self.querryFetchWizzenEvent = PFQuery(className: "Event")
         

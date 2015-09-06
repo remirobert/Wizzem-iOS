@@ -75,6 +75,7 @@
 		BB5D4A441B6EA044008C89BC /* DetailProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D4A431B6EA044008C89BC /* DetailProfileViewController.swift */; };
 		BB621E911B94DCE2000B0567 /* DetailDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB621E901B94DCE2000B0567 /* DetailDescriptionViewController.swift */; };
 		BB723E3C1B7BEF7300BAA4F1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB723E3B1B7BEF7300BAA4F1 /* LoginViewController.swift */; };
+		BB73368B1B9C75AE0054EEC7 /* EventCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB73368A1B9C75AE0054EEC7 /* EventCloud.swift */; };
 		BB98711F1B9827B800C5E492 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB98711E1B9827B800C5E492 /* Event.swift */; };
 		BBB569B21B76144300626F12 /* UIViewControllerInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB569B11B76144300626F12 /* UIViewControllerInvitation.swift */; };
 		BBD571EA1B77E89C00B286F9 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD571E91B77E89C00B286F9 /* libxml2.dylib */; };
@@ -185,6 +186,7 @@
 		BB5D4A431B6EA044008C89BC /* DetailProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailProfileViewController.swift; sourceTree = "<group>"; };
 		BB621E901B94DCE2000B0567 /* DetailDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailDescriptionViewController.swift; sourceTree = "<group>"; };
 		BB723E3B1B7BEF7300BAA4F1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BB73368A1B9C75AE0054EEC7 /* EventCloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCloud.swift; sourceTree = "<group>"; };
 		BB98711E1B9827B800C5E492 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BBB569B11B76144300626F12 /* UIViewControllerInvitation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerInvitation.swift; sourceTree = "<group>"; };
 		BBD571E91B77E89C00B286F9 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -478,6 +480,7 @@
 				BBF9F4761B9599F50074CD0A /* ProgressionData.swift */,
 				BBF9F4781B9624A00074CD0A /* PushNotification.swift */,
 				BBF9F47C1B9787100074CD0A /* FacebookEvent.swift */,
+				BB73368A1B9C75AE0054EEC7 /* EventCloud.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -731,6 +734,7 @@
 				BB1C03911B6E56CD0035F09F /* BaseViewController.swift in Sources */,
 				BB1C03BD1B6E56CD0035F09F /* LoginButton.swift in Sources */,
 				BBE4E38C1B73F36C0042F11F /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
+				BB73368B1B9C75AE0054EEC7 /* EventCloud.swift in Sources */,
 				BB136F171B774F5100987A94 /* ParticipantTableViewCell.swift in Sources */,
 				BB1C039A1B6E56CD0035F09F /* FeedViewController.swift in Sources */,
 				BB1C03931B6E56CD0035F09F /* Media.swift in Sources */,

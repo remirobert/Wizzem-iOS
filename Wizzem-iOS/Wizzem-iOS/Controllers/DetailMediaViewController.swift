@@ -15,6 +15,7 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
     var currentIndex: Int!
     var dataMedia: NSData!
     var medias = Array<PFObject>()
+    var isParticipant: Bool?
     var pickerMedia: GMImagePickerController!
     
     @IBOutlet var collectionView: UICollectionView!
@@ -40,7 +41,14 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
     }
     
     func displayParticipantList() {
-        self.performSegueWithIdentifier("participantListSegue", sender: nil)
+        if let isParticipant = self.isParticipant where isParticipant == true {
+            if isParticipant {
+                self.performSegueWithIdentifier("participantListSegue", sender: nil)
+            }
+            else {
+                Alert.error("Publiez un média, pour participer, et voir la liste des participants")
+            }
+        }
     }
     
     func assetsPickerController(picker: GMImagePickerController!, didFinishPickingAssets assets: [AnyObject]!) {
@@ -211,6 +219,10 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        EventCloud.checkParticipantToEvent(self.currentEvent, blockParticipant: { (isParticipant) -> Void in
+            self.isParticipant = isParticipant
+        })
         
         NSNotificationCenter.defaultCenter().addObserverForName("reloadContent", object: nil, queue: nil) { (_) -> Void in
             self.refreshEvent()
