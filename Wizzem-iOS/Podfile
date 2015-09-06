@@ -1,6 +1,7 @@
 pod 'Parse'
 pod 'ParseFacebookUtils'
-pod 'FBSDKCoreKit', '~> 4.2.0'
+#pod 'FBSDKCoreKit', '~> 4.2.0'
+pod 'FBSDKLoginKit', '~> 4.6.0-beta1'
 pod 'PBJVision'
 pod 'FLAnimatedImage', '~> 1.0'
 pod 'MBProgressHUD'

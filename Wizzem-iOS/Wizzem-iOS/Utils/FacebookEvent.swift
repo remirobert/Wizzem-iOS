@@ -53,7 +53,6 @@ class FacebookEvent: NSObject {
                     }
                 }
             }
-            println("===================================")
         })
     }
     
@@ -91,7 +90,7 @@ class FacebookEvent: NSObject {
         event["city"] = currentEvent.location
         event["description"] = currentEvent.descriptioEvent
         event["nbParticipant"] = 0
-        event["public"] = true
+        event["public"] = currentEvent.publicEvent
         event["title"] = currentEvent.title
         event["nbMedia"] = 0
         event["facebookEvent"] = currentEvent.id

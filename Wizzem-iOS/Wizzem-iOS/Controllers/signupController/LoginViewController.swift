@@ -12,11 +12,12 @@ class LoginViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var pageIndicator: UIPageControl!
+    @IBOutlet var loginButton: UIButton!
     
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         println("content : %f \(scrollView.contentOffset.x)")
-        let currentIndex = self.scrollView.contentOffset.x % CGRectGetWidth(UIScreen.mainScreen().bounds)
-        self.pageIndicator.currentPage = Int(currentIndex)
+//        let currentIndex = self.scrollView.contentOffset.x % CGRecGetWidth(UIScreen.mainScreen().bounds)
+//        self.pageIndicator.currentPage = Int(currentIndex)
     }
     
     func presentMediaMainController() {
@@ -47,6 +48,13 @@ class LoginViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        let fbSDKLoginButton = FBSDKLoginButton()
+        fbSDKLoginButton.userInteractionEnabled = false
+        self.loginButton.addSubview(fbSDKLoginButton)
+        fbSDKLoginButton.frame = self.loginButton.frame
+        
 
         let page1 = UIImageView(frame: CGRectMake(0, 0, CGRectGetWidth(UIScreen.mainScreen().bounds), CGRectGetHeight(UIScreen.mainScreen().bounds)))
         page1.image = UIImage(named: "page1")
@@ -55,14 +63,9 @@ class LoginViewController: UIViewController, UIScrollViewDelegate {
         let page2 = UIImageView(frame: CGRectMake(CGRectGetWidth(UIScreen.mainScreen().bounds), 0, CGRectGetWidth(UIScreen.mainScreen().bounds), CGRectGetHeight(UIScreen.mainScreen().bounds)))
         page2.image = UIImage(named: "page2")
         page2.contentMode = UIViewContentMode.ScaleAspectFit
-
-        let page3 = UIImageView(frame: CGRectMake(CGRectGetWidth(UIScreen.mainScreen().bounds) * 2, 0, CGRectGetWidth(UIScreen.mainScreen().bounds), CGRectGetHeight(UIScreen.mainScreen().bounds)))
-        page3.image = UIImage(named: "page3")
-        page3.contentMode = UIViewContentMode.ScaleAspectFit
         
         self.scrollView.addSubview(page1)
         self.scrollView.addSubview(page2)
-        self.scrollView.addSubview(page3)
         
         self.scrollView.showsHorizontalScrollIndicator = false
         self.scrollView.delegate = self

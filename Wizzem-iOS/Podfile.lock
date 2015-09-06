@@ -8,15 +8,17 @@ PODS:
   - DateTools (1.6.1)
   - Facebook-iOS-SDK (3.23.2):
     - Bolts (~> 1.0)
-  - FBSDKCoreKit (4.2.0):
+  - FBSDKCoreKit (4.6.0-beta1):
     - Bolts (~> 1.1)
-    - FBSDKCoreKit/arc (= 4.2.0)
-    - FBSDKCoreKit/no-arc (= 4.2.0)
-  - FBSDKCoreKit/arc (4.2.0):
+    - FBSDKCoreKit/arc (= 4.6.0-beta1)
+    - FBSDKCoreKit/no-arc (= 4.6.0-beta1)
+  - FBSDKCoreKit/arc (4.6.0-beta1):
     - Bolts (~> 1.1)
-  - FBSDKCoreKit/no-arc (4.2.0):
+  - FBSDKCoreKit/no-arc (4.6.0-beta1):
     - Bolts (~> 1.1)
     - FBSDKCoreKit/arc
+  - FBSDKLoginKit (4.6.0-beta1):
+    - FBSDKCoreKit (= 4.6.0-beta1)
   - FCFileManager (1.0.12)
   - FLAnimatedImage (1.0.8)
   - GMImagePicker (0.0.1)
@@ -39,7 +41,7 @@ PODS:
 
 DEPENDENCIES:
   - DateTools
-  - FBSDKCoreKit (~> 4.2.0)
+  - FBSDKLoginKit (~> 4.6.0-beta1)
   - FCFileManager
   - FLAnimatedImage (~> 1.0)
   - GMImagePicker
@@ -57,7 +59,8 @@ SPEC CHECKSUMS:
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   DateTools: 9bcc89e4f2f9004d8a7a2bd1b49269cf78968e65
   Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
-  FBSDKCoreKit: 84b3616a361801f190e43a9909caead7bb6087c7
+  FBSDKCoreKit: abce8d2d6f556110c8ef5fcf4edc44e9be83da2f
+  FBSDKLoginKit: 3dab7e800b8ec7e0a2af580c22462e9d1d5bcad0
   FCFileManager: 5cb3d223ff185b4f565dd917e1eb2ccb6c43a1d8
   FLAnimatedImage: f9422f796135aff80d8c00b2afc48015bb746e24
   GMImagePicker: e9c726e514c275c914c1b3390d6bb7c3c3e87ead

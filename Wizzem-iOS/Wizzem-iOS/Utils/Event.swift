@@ -19,20 +19,35 @@ class Event: NSObject {
     var start: String!
     var coverPhoto: String!
     var position: PFGeoPoint!
+    var publicEvent: Bool!
     
     init(json: NSDictionary) {
         super.init()
         
         self.id = json.objectForKey("id") as! String
-        self.location = json.objectForKey("location") as! String
+
+        if let location = json.objectForKey("location") as? String {
+            self.location = location
+        }
         self.title = json.objectForKey("name") as! String
-        self.descriptioEvent = json.objectForKey("description") as! String
+        if let description = json.objectForKey("description") as? String {
+            self.descriptioEvent = description
+        }
         if let owner = json.objectForKey("owner") as? NSDictionary {
             self.author = owner.objectForKey("name") as! String
             self.idAuthor = owner.objectForKey("id") as! String
         }
         self.start = json.objectForKey("start_time") as! String
         self.coverPhoto = ""
+        
+        if let privacy = json.objectForKey("privacy") as? NSString {
+            if privacy.isEqualToString("SECRET") {
+                self.publicEvent = false
+            }
+            else {
+                self.publicEvent = true
+            }
+        }
         
         NSLog("json current Event : \(json)")
         

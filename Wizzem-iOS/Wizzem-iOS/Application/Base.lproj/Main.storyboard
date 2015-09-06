@@ -32,7 +32,7 @@
                                     <constraint firstAttribute="height" constant="28" id="j3h-GQ-4Z5"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Facebook"/>
+                                    <segment title="Evénements"/>
                                     <segment title="Groupes"/>
                                 </segments>
                                 <color key="tintColor" red="0.29803921570000003" green="0.85098039219999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -2467,31 +2467,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X0g-cR-Iir">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsh-ZQ-B52">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="246" id="SJC-QF-JaQ"/>
-                                    <constraint firstAttribute="height" constant="92" id="gHO-zk-FWb"/>
-                                </constraints>
-                                <state key="normal" image="LogFB">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="SJC-QF-JaQ"/>
-                                        <exclude reference="gHO-zk-FWb"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="SJC-QF-JaQ"/>
-                                        <include reference="gHO-zk-FWb"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="login:" destination="vwr-U5-KBS" eventType="touchUpInside" id="eOV-gM-Q3o"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inscription / Connexion" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0uU-qu-JNx">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <constraints>
@@ -2534,62 +2509,117 @@
                                     </mask>
                                 </variation>
                             </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bG-rb-Ril">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="105" id="5zt-8p-rRa"/>
+                                    <constraint firstAttribute="height" constant="28" id="MtO-ze-Nyu"/>
+                                    <constraint firstAttribute="width" constant="181" id="bGu-qL-3uz"/>
+                                    <constraint firstAttribute="height" constant="28" id="wHv-4f-LsG">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="39"/>
+                                    </constraint>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5zt-8p-rRa"/>
+                                        <exclude reference="MtO-ze-Nyu"/>
+                                        <exclude reference="bGu-qL-3uz"/>
+                                        <exclude reference="wHv-4f-LsG"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="5zt-8p-rRa"/>
+                                        <exclude reference="MtO-ze-Nyu"/>
+                                        <include reference="bGu-qL-3uz"/>
+                                        <include reference="wHv-4f-LsG"/>
+                                    </mask>
+                                </variation>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="CrY-Ue-Apj" firstAttribute="top" secondItem="0uU-qu-JNx" secondAttribute="bottom" constant="8" id="6hd-cd-1px"/>
+                            <constraint firstItem="X0g-cR-Iir" firstAttribute="top" secondItem="X0A-qo-sef" secondAttribute="topMargin" id="6vu-MC-kbw"/>
+                            <constraint firstItem="CrY-Ue-Apj" firstAttribute="top" secondItem="X0g-cR-Iir" secondAttribute="bottom" id="ARR-aF-XWC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="X0g-cR-Iir" secondAttribute="trailing" constant="-16" id="AUb-NT-4UR"/>
+                            <constraint firstAttribute="centerX" secondItem="5bG-rb-Ril" secondAttribute="centerX" id="DGh-AA-mv4"/>
                             <constraint firstAttribute="centerX" secondItem="0uU-qu-JNx" secondAttribute="centerX" id="Gum-Op-rY1"/>
-                            <constraint firstAttribute="centerX" secondItem="hsh-ZQ-B52" secondAttribute="centerX" id="HtE-Dw-Vy5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="X0g-cR-Iir" secondAttribute="trailing" constant="-16" id="JvS-fW-HbN"/>
-                            <constraint firstItem="CrY-Ue-Apj" firstAttribute="top" secondItem="hsh-ZQ-B52" secondAttribute="bottom" constant="20" id="d0x-up-Ji4"/>
+                            <constraint firstItem="X0g-cR-Iir" firstAttribute="top" secondItem="X0A-qo-sef" secondAttribute="topMargin" id="UMh-PC-EmK"/>
+                            <constraint firstItem="X0g-cR-Iir" firstAttribute="leading" secondItem="X0A-qo-sef" secondAttribute="leadingMargin" constant="-16" id="Wqp-D0-yPY"/>
                             <constraint firstAttribute="centerX" secondItem="oDR-B1-aUS" secondAttribute="centerX" id="e2M-A1-JcQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="X0g-cR-Iir" secondAttribute="trailing" constant="-16" id="iWW-HH-aY1"/>
                             <constraint firstItem="0uU-qu-JNx" firstAttribute="top" secondItem="oDR-B1-aUS" secondAttribute="bottom" constant="65" id="kqm-fy-xVo"/>
                             <constraint firstItem="CrY-Ue-Apj" firstAttribute="top" secondItem="X0g-cR-Iir" secondAttribute="bottom" id="n3D-gR-BSM"/>
+                            <constraint firstItem="X0g-cR-Iir" firstAttribute="leading" secondItem="X0A-qo-sef" secondAttribute="leadingMargin" constant="-16" id="nhK-NL-el8"/>
+                            <constraint firstItem="0uU-qu-JNx" firstAttribute="top" secondItem="5bG-rb-Ril" secondAttribute="bottom" constant="18" id="p3u-Yb-KDl"/>
                             <constraint firstItem="X0g-cR-Iir" firstAttribute="leading" secondItem="X0A-qo-sef" secondAttribute="leadingMargin" constant="-16" id="sr9-nX-POc"/>
                             <constraint firstItem="X0g-cR-Iir" firstAttribute="top" secondItem="X0A-qo-sef" secondAttribute="topMargin" id="wrn-9R-iJD"/>
+                            <constraint firstItem="CrY-Ue-Apj" firstAttribute="top" secondItem="X0g-cR-Iir" secondAttribute="bottom" id="yRe-fK-KCC"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="X0g-cR-Iir"/>
-                                <exclude reference="hsh-ZQ-B52"/>
                                 <exclude reference="0uU-qu-JNx"/>
                                 <exclude reference="oDR-B1-aUS"/>
+                                <exclude reference="5bG-rb-Ril"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Gum-Op-rY1"/>
-                                <exclude reference="kqm-fy-xVo"/>
-                                <exclude reference="6hd-cd-1px"/>
-                                <exclude reference="d0x-up-Ji4"/>
-                                <exclude reference="n3D-gR-BSM"/>
-                                <exclude reference="e2M-A1-JcQ"/>
-                                <exclude reference="HtE-Dw-Vy5"/>
+                                <exclude reference="6vu-MC-kbw"/>
+                                <exclude reference="AUb-NT-4UR"/>
                                 <exclude reference="JvS-fW-HbN"/>
+                                <exclude reference="UMh-PC-EmK"/>
+                                <exclude reference="Wqp-D0-yPY"/>
+                                <exclude reference="iWW-HH-aY1"/>
+                                <exclude reference="nhK-NL-el8"/>
                                 <exclude reference="sr9-nX-POc"/>
                                 <exclude reference="wrn-9R-iJD"/>
+                                <exclude reference="e2M-A1-JcQ"/>
+                                <exclude reference="DGh-AA-mv4"/>
+                                <exclude reference="Gum-Op-rY1"/>
+                                <exclude reference="kqm-fy-xVo"/>
+                                <exclude reference="p3u-Yb-KDl"/>
+                                <exclude reference="6hd-cd-1px"/>
+                                <exclude reference="ARR-aF-XWC"/>
+                                <exclude reference="n3D-gR-BSM"/>
+                                <exclude reference="yRe-fK-KCC"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="X0g-cR-Iir"/>
-                                <include reference="hsh-ZQ-B52"/>
                                 <include reference="0uU-qu-JNx"/>
                                 <include reference="oDR-B1-aUS"/>
+                                <include reference="5bG-rb-Ril"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="6vu-MC-kbw"/>
+                                <exclude reference="AUb-NT-4UR"/>
+                                <exclude reference="JvS-fW-HbN"/>
+                                <exclude reference="UMh-PC-EmK"/>
+                                <include reference="Wqp-D0-yPY"/>
+                                <include reference="iWW-HH-aY1"/>
+                                <exclude reference="nhK-NL-el8"/>
+                                <exclude reference="sr9-nX-POc"/>
+                                <exclude reference="wrn-9R-iJD"/>
+                                <include reference="e2M-A1-JcQ"/>
+                                <include reference="DGh-AA-mv4"/>
                                 <include reference="Gum-Op-rY1"/>
                                 <include reference="kqm-fy-xVo"/>
+                                <include reference="p3u-Yb-KDl"/>
                                 <include reference="6hd-cd-1px"/>
-                                <include reference="d0x-up-Ji4"/>
-                                <include reference="n3D-gR-BSM"/>
-                                <include reference="e2M-A1-JcQ"/>
-                                <include reference="HtE-Dw-Vy5"/>
-                                <include reference="JvS-fW-HbN"/>
-                                <include reference="sr9-nX-POc"/>
-                                <include reference="wrn-9R-iJD"/>
+                                <exclude reference="ARR-aF-XWC"/>
+                                <exclude reference="n3D-gR-BSM"/>
+                                <include reference="yRe-fK-KCC"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="loginButton" destination="5bG-rb-Ril" id="bfe-X7-I4o"/>
                         <outlet property="pageIndicator" destination="oDR-B1-aUS" id="u4K-RJ-LWo"/>
                         <outlet property="scrollView" destination="X0g-cR-Iir" id="4R6-Pb-PNx"/>
                     </connections>
@@ -4437,7 +4467,6 @@
         <image name="FlashOff" width="40" height="40"/>
         <image name="Gallery" width="40" height="40"/>
         <image name="GalleryMoment" width="50" height="50"/>
-        <image name="LogFB" width="240" height="80"/>
         <image name="Quit" width="40" height="40"/>
         <image name="Retour" width="40" height="40"/>
         <image name="Reverse" width="40" height="40"/>

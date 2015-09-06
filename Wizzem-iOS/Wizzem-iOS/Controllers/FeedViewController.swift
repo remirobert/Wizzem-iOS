@@ -79,6 +79,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if let location = location {
                 self.querryFetchFacebookEvent.cachePolicy = PFCachePolicy.CacheThenNetwork
                 //self.querryFetchFacebookEvent.orderByDescending("start")
+                self.querryFetchFacebookEvent.whereKey("public", equalTo: true)
                 self.querryFetchFacebookEvent.whereKey("facebook", equalTo: true)
                 self.querryFetchFacebookEvent.whereKey("position", nearGeoPoint: location, withinKilometers: 25)
                 
@@ -103,6 +104,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if let location = location {
                 self.querryFetchWizzenEvent.cachePolicy = PFCachePolicy.CacheThenNetwork
                 self.querryFetchWizzenEvent.orderByDescending("updatedAt")
+                self.querryFetchWizzenEvent.whereKey("public", equalTo: true)
                 self.querryFetchWizzenEvent.whereKey("facebook", equalTo: false)
                 self.querryFetchWizzenEvent.whereKey("position", nearGeoPoint: location, withinKilometers: 25)
                 
