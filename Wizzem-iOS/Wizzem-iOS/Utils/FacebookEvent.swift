@@ -21,6 +21,8 @@ class FacebookEvent: NSObject {
         requestGraph.startWithCompletionHandler({ (connection: FBSDKGraphRequestConnection!, result: AnyObject!, err: NSError!) -> Void in
             if let result = result as? NSDictionary, let events = result.objectForKey("data") as? [NSDictionary] {
                 println("events : \(events)")
+                println("COUNT EVENTS : \(events.count)")
+                
                 for currentEvent in events {
                     if let idEvent = currentEvent.objectForKey("id") as? String {
                         let requestEventGraph = FBSDKGraphRequest(graphPath: "/\(idEvent)", parameters: nil, HTTPMethod: "GET")
@@ -30,24 +32,26 @@ class FacebookEvent: NSObject {
 
                                 let newEvent = Event(json: result)
                                 
-                                let requestPhoto = FBSDKGraphRequest(graphPath: "/\(idEvent)?fields=cover", parameters: nil, HTTPMethod: "GET")
-                                requestPhoto.startWithCompletionHandler({ (_, resultCover: AnyObject!, err: NSError!) -> Void in
-                                    println("content cover : \(resultCover)")
-                                    
-                                    if let resultCover = resultCover as? NSDictionary,
-                                        cover = resultCover.objectForKey("cover") as? NSDictionary,
-                                        coverSourceUrl = cover.objectForKey("source") as? String  {
-                                        newEvent.coverPhoto = coverSourceUrl
-                                    }
-                                    
-                                    eventId.append(newEvent.id)
-                                    facebookEvents.append(newEvent)
-                                    passCount += 1
-                                    
-                                    if passCount == events.count {
-                                        self.checkAndUpdateFacebookEvent(eventId, events: facebookEvents)
-                                    }
-                                })
+                                eventId.append(newEvent.id)
+                                facebookEvents.append(newEvent)
+                                passCount += 1
+                                
+                                if passCount == events.count {
+                                    self.checkAndUpdateFacebookEvent(eventId, events: facebookEvents)
+                                }
+
+                                
+//                                let requestPhoto = FBSDKGraphRequest(graphPath: "/\(idEvent)?fields=cover", parameters: nil, HTTPMethod: "GET")
+//                                requestPhoto.startWithCompletionHandler({ (_, resultCover: AnyObject!, err: NSError!) -> Void in
+//                                    println("content cover : \(resultCover)")
+//                                    
+//                                    if let resultCover = resultCover as? NSDictionary,
+//                                        cover = resultCover.objectForKey("cover") as? NSDictionary,
+//                                        coverSourceUrl = cover.objectForKey("source") as? String  {
+//                                        newEvent.coverPhoto = coverSourceUrl
+//                                    }
+//                                    
+//                                })
                             }
                         })
                     }

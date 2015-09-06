@@ -72,10 +72,21 @@ class DetailMomentCollectionViewCell: UICollectionViewCell {
                     self.numberWizzLabel.text = "\(nbWizz)"
                 }
                 
-                if let dateMoment = moment.createdAt {
-                    let formatString = dateMoment.formattedDateWithFormat("EEE, MMM d")
-                    let formatStringHour = dateMoment.formattedDateWithFormat("h:mm")
-                    self.dateLabel.text = "Créé le \(formatString) à \(formatStringHour)"
+                if let isFacebookEvent = moment["facebook"] as? Bool {
+                    if !isFacebookEvent {
+                        if let dateMoment = moment.createdAt {
+                            let formatString = dateMoment.formattedDateWithFormat("EEE, MMM d")
+                            let formatStringHour = dateMoment.formattedDateWithFormat("h:mm")
+                            self.dateLabel.text = "Créé le \(formatString) à \(formatStringHour)"
+                        }
+                    }
+                    else {
+                        if let dateMoment = moment["start"] as? NSDate {
+                            let formatString = dateMoment.formattedDateWithFormat("EEE, MMM d")
+                            let formatStringHour = dateMoment.formattedDateWithFormat("h:mm")
+                            self.dateLabel.text = "Commence le \(formatString) à \(formatStringHour)"
+                        }
+                    }
                 }
             }
         }
