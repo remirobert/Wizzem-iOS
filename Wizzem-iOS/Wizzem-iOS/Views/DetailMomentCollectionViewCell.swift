@@ -21,6 +21,7 @@ class DetailMomentCollectionViewCell: UICollectionViewCell {
     @IBOutlet var downbutton: UIButton!
     @IBOutlet var inviteLink: UIButton!
     @IBOutlet var buttonDisplayDescription: UIButton!
+    @IBOutlet var privacyEvent: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,6 +37,16 @@ class DetailMomentCollectionViewCell: UICollectionViewCell {
         
         moment.fetchIfNeededInBackgroundWithBlock { (moment: PFObject?, _) -> Void in
             if let moment = moment {
+                
+                if let privacy = moment["public"] as? Bool {
+                    if privacy {
+                        self.privacyEvent.image = UIImage(named: "LockOpen")
+                    }
+                    else {
+                        self.privacyEvent.image = UIImage(named: "LockLock")
+                    }
+                }
+                
                 if let title = moment["title"] as? String {
                     self.titleEvent.text = title
                 }

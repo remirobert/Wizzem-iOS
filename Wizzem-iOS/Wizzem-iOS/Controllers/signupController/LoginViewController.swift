@@ -42,10 +42,7 @@ class LoginViewController: UIViewController, UIScrollViewDelegate {
             }
         }
     }
-    
-    override func viewDidLayoutSubviews() {
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         

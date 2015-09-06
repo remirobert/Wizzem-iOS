@@ -211,6 +211,13 @@
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qmC-2s-Xa3">
+                        <rect key="frame" x="180" y="20" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="1AK-zM-AWb"/>
+                            <constraint firstAttribute="height" constant="50" id="3vl-27-VYY"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <animations/>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -226,6 +233,7 @@
                 <constraint firstAttribute="trailing" secondItem="hil-5O-kcO" secondAttribute="trailing" constant="16" id="5RI-5i-CAS"/>
                 <constraint firstItem="0x4-d2-6Br" firstAttribute="leading" secondItem="TVw-VG-7Vb" secondAttribute="trailing" constant="4" id="6DX-47-2a6"/>
                 <constraint firstAttribute="centerX" secondItem="hil-5O-kcO" secondAttribute="centerX" id="6Eg-jK-uir"/>
+                <constraint firstItem="qmC-2s-Xa3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="6fS-Gu-HMh"/>
                 <constraint firstItem="hil-5O-kcO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="57" id="7bK-aB-Xlz"/>
                 <constraint firstItem="DSE-bU-wB6" firstAttribute="leading" secondItem="0x4-d2-6Br" secondAttribute="trailing" constant="5" id="7tY-2J-SXk"/>
                 <constraint firstItem="rRu-Kd-gtU" firstAttribute="top" secondItem="oug-AJ-2x3" secondAttribute="bottom" constant="20" id="8PK-G7-9ae"/>
@@ -240,6 +248,7 @@
                 <constraint firstItem="hil-5O-kcO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="57" id="HZ3-E0-NLH"/>
                 <constraint firstAttribute="bottom" secondItem="Oly-rn-1VN" secondAttribute="bottom" id="Lmb-Uw-L40"/>
                 <constraint firstItem="0x4-d2-6Br" firstAttribute="leading" secondItem="TVw-VG-7Vb" secondAttribute="trailing" constant="1" id="Mid-lb-Aku"/>
+                <constraint firstAttribute="centerX" secondItem="qmC-2s-Xa3" secondAttribute="centerX" id="QQs-hI-i95"/>
                 <constraint firstItem="XIA-Y9-yzD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="U6F-XG-b3V"/>
                 <constraint firstItem="DSE-bU-wB6" firstAttribute="top" secondItem="hil-5O-kcO" secondAttribute="bottom" constant="33" id="V30-7S-ZTh"/>
                 <constraint firstAttribute="centerX" secondItem="oug-AJ-2x3" secondAttribute="centerX" id="Vn4-5R-bE4"/>
@@ -327,6 +336,7 @@
                 <outlet property="inviteLink" destination="LgM-i7-rLa" id="bgO-5q-FyJ"/>
                 <outlet property="numberWizzLabel" destination="MyN-kI-uzg" id="9oE-H0-4Dh"/>
                 <outlet property="participantLabel" destination="oug-AJ-2x3" id="PvK-b3-xbF"/>
+                <outlet property="privacyEvent" destination="qmC-2s-Xa3" id="6wv-Cu-9Hn"/>
                 <outlet property="settingButton" destination="2o9-vQ-wAh" id="c1F-sr-tDR"/>
                 <outlet property="titleEvent" destination="OSo-OJ-Pv3" id="ePm-YT-w8G"/>
             </connections>
