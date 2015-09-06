@@ -65,6 +65,8 @@ class FacebookEvent: NSObject {
         let querry = PFQuery(className: "Event")
         querry.whereKey("facebookEvent", containedIn: eventsId)
         
+        println("events id : \(eventsId.count) / event : \(events.count)")
+        
         querry.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, err: NSError?) -> Void in
             if err != nil {
                 println("error \(err)")
@@ -76,6 +78,7 @@ class FacebookEvent: NSObject {
                         let currentFacebookItem = eventsFacebook[index]
                         
                         if currentFacebookItem.id == result["facebookEvent"] as? String {
+                            println("REMOVE DOUBLE EVENT : \(currentFacebookItem.title)")
                             self.checkJoinFacebookEvent(result)
                             eventsFacebook.removeAtIndex(index)
                         }
@@ -131,9 +134,8 @@ extension FacebookEvent {
         newParticipant["invited"] = false
         newParticipant["status"] = "accepted"
         
-        PushNotification.addNotification("c\(event.objectId!)")
-        
         newParticipant.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
+            println("error new participant add : \(err)")
             if err == nil {
                 self.addRelationFacebookEventToUser(event)
             }
