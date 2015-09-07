@@ -167,13 +167,16 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController,
             currentCameraMode = .Gif
             
             let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            hud.labelText = "Creation de la preview"
             
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
                 GifMaker().makeAnimatedGif(self.gifImages, blockCompletion: { (dataGif: NSData!) -> Void in
                     hud.hide(true)
                     if let datagif = dataGif {
                         self.capturedGif = datagif
-                        self.performSegueWithIdentifier(SEGUE_PREVIEW_CAPTURE, sender: nil)
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.performSegueWithIdentifier(SEGUE_PREVIEW_CAPTURE, sender: nil)
+                        })
                     }
                 })
             })

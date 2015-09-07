@@ -10,13 +10,29 @@ import UIKit
 
 class MediaUpload: NSObject {
     
-    class func addMedia(event: PFObject, media: NSData, creationDate: NSDate, completion: ((sucess: Bool)->Void)) {
-        let file = PFFile(data: media)
+    var hud: MBProgressHUD!
+    var event: PFObject!
+    var medias = Array<NSData>()
+    var creationDates = Array<NSDate>()
+    var currentCount: Int!
+    var completion: (() -> ())!
+    
+    func addMedia() {
+        if self.currentCount >= self.medias.count {
+            hud.hide(true)
+            self.completion()
+            return
+        }
         
-        file.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
-            
+        let file = PFFile(data: self.medias[self.currentCount])
+        
+//        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//            self.hud.labelText = "Upload [\(self.currentCount + 1) / \(self.medias.count)] (0%)"
+//        })
+        
+        file.saveInBackgroundWithBlock({ (_, err: NSError?) -> Void in
             let username = (PFUser.currentUser()!["true_username"] as? String)!
-            let nameEvent = (event["title"] as? String)!
+            let nameEvent = (self.event["title"] as? String)!
             let message = "\(username) à publier dans \(nameEvent)."
             
             println("message : \(message)")
@@ -27,43 +43,46 @@ class MediaUpload: NSObject {
             }
             
             let params = NSMutableDictionary()
-            params.setValue(event.objectId!, forKey: "eventId")
+            params.setValue(self.event.objectId!, forKey: "eventId")
             params.setValue(PFUser.currentUser()!.objectId!, forKey: "userId")
-            params.setValue(event.objectId!, forKey: "eventId")
+            params.setValue(self.event.objectId!, forKey: "eventId")
             params.setValue(file, forKey: "file")
             params.setValue("photo", forKey: "type")
-            params.setValue(creationDate, forKey: "creationDate")
+            params.setValue(self.creationDates[self.currentCount], forKey: "creationDate")
             
             PFCloud.callFunctionInBackground("MediaAdd", withParameters: params as [NSObject : AnyObject]) { (media :AnyObject?, error: NSError?) -> Void in
                 if let error = error {
                     println("error : \(error)")
-                    ProgressionData.completeDataProgression()
                     Alert.error("Erreur lors de l'uplaod de votre Wizz.")
-                    completion(sucess: false)
+                    self.currentCount! += 1
+                    self.addMedia()
                 }
                 else {
-                    self.checkJoinUser(event.objectId!, event: event)
+                    self.checkJoinUser(self.event.objectId!, event: self.event)
                     
                     if let media = media as? PFObject {
-                        media["creationDate"] = creationDate
+                        media["creationDate"] = self.creationDates[self.currentCount]
                         
                         media.saveInBackgroundWithBlock({ (_, error: NSError?) -> Void in
-                            if error == nil {
-                                completion(sucess: true)
-                                ProgressionData.completeDataProgression()
-                                NSNotificationCenter.defaultCenter().postNotificationName("reloadContent", object: nil)
-                            }
-                            else {
-                                completion(sucess: false)
-                            }
+                            self.currentCount! += 1
+                            self.addMedia()
                         })
                     }
                 }
             }
-        }
+            }, progressBlock: { (progress: Int32) -> Void in
+                println("progress : \(progress)")
+                //dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.hud.labelText = "Upload [\(self.currentCount + 1) / \(self.medias.count)] (\(progress)%)"
+                //})
+        })
+        
+//        file.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
+//            
+//        }
     }
     
-    class func checkJoinUser(eventId: String, event: PFObject) {
+    func checkJoinUser(eventId: String, event: PFObject) {
         let querry = PFQuery(className: "Participant")
         querry.whereKey("eventId", equalTo: event)
         querry.whereKey("userId", equalTo: PFUser.currentUser()!)
@@ -95,6 +114,17 @@ class MediaUpload: NSObject {
                 })
             }
         }
+    }
+    
+    class func uploadMedia(medias: [NSData], creationDates: [NSDate], event: PFObject, view: UIView) {
+        var mediaUpload = MediaUpload()
+
+        mediaUpload.hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
+        mediaUpload.event = event
+        mediaUpload.currentCount = 0
+        mediaUpload.medias = medias
+        
+        mediaUpload.addMedia()
     }
     
 }

@@ -79,6 +79,8 @@
 		BB73368D1B9D72730054EEC7 /* HeaderSectionEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB73368C1B9D72730054EEC7 /* HeaderSectionEventView.swift */; };
 		BB73368F1B9D72890054EEC7 /* HeaderSectionEventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB73368E1B9D72890054EEC7 /* HeaderSectionEventView.xib */; };
 		BB7336911B9D755F0054EEC7 /* WaitBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7336901B9D755F0054EEC7 /* WaitBlock.swift */; };
+		BB7336971B9DCD6C0054EEC7 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7336941B9DCD6C0054EEC7 /* MBProgressHUD.m */; };
+		BB7336981B9DCD6C0054EEC7 /* MMMaterialDesignSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7336961B9DCD6C0054EEC7 /* MMMaterialDesignSpinner.m */; };
 		BB98711F1B9827B800C5E492 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB98711E1B9827B800C5E492 /* Event.swift */; };
 		BBB569B21B76144300626F12 /* UIViewControllerInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB569B11B76144300626F12 /* UIViewControllerInvitation.swift */; };
 		BBD571EA1B77E89C00B286F9 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD571E91B77E89C00B286F9 /* libxml2.dylib */; };
@@ -193,6 +195,10 @@
 		BB73368C1B9D72730054EEC7 /* HeaderSectionEventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderSectionEventView.swift; sourceTree = "<group>"; };
 		BB73368E1B9D72890054EEC7 /* HeaderSectionEventView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderSectionEventView.xib; sourceTree = "<group>"; };
 		BB7336901B9D755F0054EEC7 /* WaitBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitBlock.swift; sourceTree = "<group>"; };
+		BB7336931B9DCD6C0054EEC7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		BB7336941B9DCD6C0054EEC7 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		BB7336951B9DCD6C0054EEC7 /* MMMaterialDesignSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMaterialDesignSpinner.h; sourceTree = "<group>"; };
+		BB7336961B9DCD6C0054EEC7 /* MMMaterialDesignSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMaterialDesignSpinner.m; sourceTree = "<group>"; };
 		BB98711E1B9827B800C5E492 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BBB569B11B76144300626F12 /* UIViewControllerInvitation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerInvitation.swift; sourceTree = "<group>"; };
 		BBD571E91B77E89C00B286F9 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -429,6 +435,7 @@
 		BB1C03641B6E56CD0035F09F /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				BB7336921B9DCD4D0054EEC7 /* MBProgressHUD */,
 				BB1C03651B6E56CD0035F09F /* GifMaker.h */,
 				BB1C03661B6E56CD0035F09F /* GifMaker.m */,
 				BB1C03671B6E56CD0035F09F /* PhotoHelper.h */,
@@ -520,6 +527,17 @@
 				BB73368E1B9D72890054EEC7 /* HeaderSectionEventView.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		BB7336921B9DCD4D0054EEC7 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				BB7336931B9DCD6C0054EEC7 /* MBProgressHUD.h */,
+				BB7336941B9DCD6C0054EEC7 /* MBProgressHUD.m */,
+				BB7336951B9DCD6C0054EEC7 /* MMMaterialDesignSpinner.h */,
+				BB7336961B9DCD6C0054EEC7 /* MMMaterialDesignSpinner.m */,
+			);
+			name = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		BB98711D1B9827AF00C5E492 /* Model */ = {
@@ -694,6 +712,7 @@
 				BB1C03A41B6E56CD0035F09F /* WizzListViewController.swift in Sources */,
 				BBB569B21B76144300626F12 /* UIViewControllerInvitation.swift in Sources */,
 				BB1C03C31B6E56CD0035F09F /* MomentTableViewCell.swift in Sources */,
+				BB7336981B9DCD6C0054EEC7 /* MMMaterialDesignSpinner.m in Sources */,
 				BB98711F1B9827B800C5E492 /* Event.swift in Sources */,
 				BB1C039D1B6E56CD0035F09F /* MainTabBarViewController.swift in Sources */,
 				BB1C03B41B6E56CD0035F09F /* WizzemAPI.swift in Sources */,
@@ -736,6 +755,7 @@
 				BB1C03AE1B6E56CD0035F09F /* InstanceController.swift in Sources */,
 				BBF9F47D1B9787100074CD0A /* FacebookEvent.swift in Sources */,
 				BB1C03A31B6E56CD0035F09F /* SignupViewController.swift in Sources */,
+				BB7336971B9DCD6C0054EEC7 /* MBProgressHUD.m in Sources */,
 				BB1C03B71B6E56CD0035F09F /* FeedEventTableViewCell.swift in Sources */,
 				BB1C03B81B6E56CD0035F09F /* HeaderCollectionReusableView.swift in Sources */,
 				BB1C03BF1B6E56CD0035F09F /* MediaTextView.swift in Sources */,

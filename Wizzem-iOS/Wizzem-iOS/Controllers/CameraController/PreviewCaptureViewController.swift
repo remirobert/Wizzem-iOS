@@ -75,6 +75,10 @@ class PreviewCaptureViewController: UIViewController {
     }
     
     @IBAction func validatePreview(sender: AnyObject) {
+        
+        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.labelText = "Création de votre Media"
+        
         var imagesGif: [UIImage]?
         var file: PFFile!
         switch capturedMedia! {
@@ -85,14 +89,19 @@ class PreviewCaptureViewController: UIViewController {
         }
         
         if let images = imagesGif {
-            GifMaker().makeAnimatedGif(images, blockCompletion: { (dataGif: NSData!) -> Void in
-                file = PFFile(data: dataGif)
-                if let event = self.event {
-                    self.addMedia(file, type: "gif")
-                }
-                else {
-                    self.performSegueWithIdentifier("selectMomentSegue", sender: file)
-                }
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+                GifMaker().makeAnimatedGif(images, blockCompletion: { (dataGif: NSData!) -> Void in
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        hud.hide(true)
+                    })
+                    file = PFFile(data: dataGif)
+                    if let event = self.event {
+                        self.addMedia(file, type: "gif")
+                    }
+                    else {
+                        self.performSegueWithIdentifier("selectMomentSegue", sender: file)
+                    }
+                })
             })
         }
         else {
@@ -159,10 +168,9 @@ extension PreviewCaptureViewController {
     func addMedia(file: PFFile, type: String) {
         
         let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
-        hud.labelText = "Votre Wizz est en cours d'upload."
+        hud.labelText = "Upload en cours (0%)"
 
-        file.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
-            
+        file.saveInBackgroundWithBlock({ (_, err: NSError?) -> Void in
             if err != nil {
                 Alert.error("Vous devez selectionnez ou créer un moment avant de publier.")
                 return
@@ -182,7 +190,8 @@ extension PreviewCaptureViewController {
             params.setValue(type, forKey: "type")
             params.setValue(NSDate(), forKey: "creationDate")
             
-            PFCloud.callFunctionInBackground("MediaAdd", withParameters: params as [NSObject : AnyObject]) { (media: AnyObject?, error: NSError?) -> Void in
+            PFCloud.callFunctionInBackground("MediaAdd", withParameters: params as [NSObject : AnyObject])
+                { (media: AnyObject?, error: NSError?) -> Void in
                 hud.hide(true)
                 if let error = error {
                     println("error : \(error)")
@@ -211,7 +220,9 @@ extension PreviewCaptureViewController {
                     }
                 }
             }
-        }
+            }, progressBlock: { (progress: Int32) -> Void in
+                hud.labelText = "Upload en cours (\(progress)%)"
+        })
     }
     
     func checkJoinUser(eventId: String) {

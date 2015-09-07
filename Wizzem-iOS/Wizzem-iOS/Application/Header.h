@@ -26,6 +26,7 @@
 #import "GifMaker.h"
 #import "FacebookInit.h"
 #import "PhotoHelper.h"
-#import "GMImagePickerController.h"
+//#import "GMImagePickerController.h"
+#import "QBImagePickerController.h"
 
 #endif

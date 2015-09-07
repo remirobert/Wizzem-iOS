@@ -29,6 +29,7 @@ class LoginViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func login(sender: AnyObject) {
         let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
         hud.labelText = "Connection en cours"
+        hud.dimBackground = true
         
         FacebookAuth.login { (result) -> () in
             hud.hide(true)
@@ -45,11 +46,6 @@ class LoginViewController: UIViewController, UIScrollViewDelegate {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let fbSDKLoginButton = FBSDKLoginButton()
-//        fbSDKLoginButton.userInteractionEnabled = false
-//        self.loginButton.addSubview(fbSDKLoginButton)
-//        fbSDKLoginButton.frame = CGRectMake(0, 0, 220, 45)
         
         let page1 = UIImageView(frame: CGRectMake(0, 0, CGRectGetWidth(UIScreen.mainScreen().bounds), CGRectGetHeight(UIScreen.mainScreen().bounds)))
         page1.image = UIImage(named: "page1")

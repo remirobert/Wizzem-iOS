@@ -24,10 +24,14 @@ class SelectionMediaViewController: UIViewController, UICollectionViewDataSource
     }
     
     func fetchMedia() {
-        let params = NSMutableDictionary()
-        params.setValue(currentEvent.objectId, forKey: "eventId")
+        let querry = PFQuery(className: "Media")
+        querry.whereKey("eventId", equalTo: currentEvent!)
         
-        PFCloud.callFunctionInBackground("MediaAll", withParameters: params as [NSObject : AnyObject]) { (results: AnyObject?, _) -> Void in
+        querry.orderByDescending("creationDate")
+        
+        querry.cachePolicy = PFCachePolicy.CacheThenNetwork
+        
+        querry.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, _) -> Void in
             
             if let results = results as? [PFObject] {
                 self.medias = results

@@ -17,6 +17,16 @@ class PushNotification: NSObject {
             println("error add channels : \(err)")
         }
     }
+    
+    class func addNotifications(group: [String]) {
+        let currentInstallation = PFInstallation.currentInstallation()
+        for currentNotif in group {
+            currentInstallation.addUniqueObject(currentNotif, forKey: "channels")
+        }
+        currentInstallation.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
+            println("error add channels : \(err)")
+        }
+    }
 
     class func pushNotification(group: String, message: String) {
         PFPush.sendPushMessageToChannelInBackground(group, withMessage: message) { (_, err: NSError?) -> Void in

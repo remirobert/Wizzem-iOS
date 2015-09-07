@@ -37,7 +37,12 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             self.performSegueWithIdentifier("detailProfileSegue", sender: nil)
         }
         let logoutAction = UIAlertAction(title: "Deconnexion", style: UIAlertActionStyle.Destructive) { (_) -> Void in
+            let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            hud.dimBackground = true
+            hud.labelText = "Deconnection"
+            
             PFUser.logOutInBackgroundWithBlock({ (error: NSError?) -> Void in
+                hud.hide(true)
                 if error != nil {
                     Alert.error("Erreur lors de la deconnexion")
                 }

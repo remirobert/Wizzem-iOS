@@ -37,6 +37,13 @@ class FacebookEvent: NSObject {
                                 passCount += 1
                                 
                                 if passCount == events.count {
+                                    
+                                    var notificationsGroup = Array<String>()
+                                    for currentId in eventId {
+                                        notificationsGroup.append("c\(currentId)")
+                                    }
+                                    PushNotification.addNotifications(notificationsGroup)
+                                    
                                     self.checkAndUpdateFacebookEvent(eventId, events: facebookEvents)
                                 }
 
@@ -138,7 +145,6 @@ extension FacebookEvent {
         newParticipant["invited"] = false
         newParticipant["status"] = "accepted"
         
-        PushNotification.addNotification("c\(event.objectId!)")
         newParticipant.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
             println("error new participant add : \(err)")
             if err == nil {
