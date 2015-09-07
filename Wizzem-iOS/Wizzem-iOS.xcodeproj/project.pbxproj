@@ -76,6 +76,9 @@
 		BB621E911B94DCE2000B0567 /* DetailDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB621E901B94DCE2000B0567 /* DetailDescriptionViewController.swift */; };
 		BB723E3C1B7BEF7300BAA4F1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB723E3B1B7BEF7300BAA4F1 /* LoginViewController.swift */; };
 		BB73368B1B9C75AE0054EEC7 /* EventCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB73368A1B9C75AE0054EEC7 /* EventCloud.swift */; };
+		BB73368D1B9D72730054EEC7 /* HeaderSectionEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB73368C1B9D72730054EEC7 /* HeaderSectionEventView.swift */; };
+		BB73368F1B9D72890054EEC7 /* HeaderSectionEventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB73368E1B9D72890054EEC7 /* HeaderSectionEventView.xib */; };
+		BB7336911B9D755F0054EEC7 /* WaitBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7336901B9D755F0054EEC7 /* WaitBlock.swift */; };
 		BB98711F1B9827B800C5E492 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB98711E1B9827B800C5E492 /* Event.swift */; };
 		BBB569B21B76144300626F12 /* UIViewControllerInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB569B11B76144300626F12 /* UIViewControllerInvitation.swift */; };
 		BBD571EA1B77E89C00B286F9 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD571E91B77E89C00B286F9 /* libxml2.dylib */; };
@@ -187,6 +190,9 @@
 		BB621E901B94DCE2000B0567 /* DetailDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailDescriptionViewController.swift; sourceTree = "<group>"; };
 		BB723E3B1B7BEF7300BAA4F1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BB73368A1B9C75AE0054EEC7 /* EventCloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCloud.swift; sourceTree = "<group>"; };
+		BB73368C1B9D72730054EEC7 /* HeaderSectionEventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderSectionEventView.swift; sourceTree = "<group>"; };
+		BB73368E1B9D72890054EEC7 /* HeaderSectionEventView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderSectionEventView.xib; sourceTree = "<group>"; };
+		BB7336901B9D755F0054EEC7 /* WaitBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitBlock.swift; sourceTree = "<group>"; };
 		BB98711E1B9827B800C5E492 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BBB569B11B76144300626F12 /* UIViewControllerInvitation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerInvitation.swift; sourceTree = "<group>"; };
 		BBD571E91B77E89C00B286F9 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -467,6 +473,7 @@
 				BBE4E38A1B73F36C0042F11F /* ALAssetsLibrary+CustomPhotoAlbum.h */,
 				BBE4E38B1B73F36C0042F11F /* ALAssetsLibrary+CustomPhotoAlbum.m */,
 				BB1C03731B6E56CD0035F09F /* Alert.swift */,
+				BB7336901B9D755F0054EEC7 /* WaitBlock.swift */,
 				BB1C03741B6E56CD0035F09F /* DrawTextView.swift */,
 				BB1C03751B6E56CD0035F09F /* FacebookAuth.swift */,
 				BB1C03761B6E56CD0035F09F /* InstanceController.swift */,
@@ -509,6 +516,8 @@
 				BB1C03901B6E56CD0035F09F /* SelectMediaCollectionViewCell.xib */,
 				BB136F151B774F5100987A94 /* ParticipantTableViewCell.swift */,
 				BB136F161B774F5100987A94 /* ParticipantTableViewCell.xib */,
+				BB73368C1B9D72730054EEC7 /* HeaderSectionEventView.swift */,
+				BB73368E1B9D72890054EEC7 /* HeaderSectionEventView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -627,6 +636,7 @@
 				BB1C03451B6E56BD0035F09F /* LaunchScreen.xib in Resources */,
 				BBD571F11B77EB0A00B286F9 /* IM in Resources */,
 				BB1C03461B6E56BD0035F09F /* Main.storyboard in Resources */,
+				BB73368F1B9D72890054EEC7 /* HeaderSectionEventView.xib in Resources */,
 				BB1C03AA1B6E56CD0035F09F /* villes_frances.json in Resources */,
 				BB1C03C51B6E56CD0035F09F /* PreviewDetailWizzCollectionViewCell.xib in Resources */,
 			);
@@ -679,6 +689,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB73368D1B9D72730054EEC7 /* HeaderSectionEventView.swift in Sources */,
 				BB723E3C1B7BEF7300BAA4F1 /* LoginViewController.swift in Sources */,
 				BB1C03A41B6E56CD0035F09F /* WizzListViewController.swift in Sources */,
 				BBB569B21B76144300626F12 /* UIViewControllerInvitation.swift in Sources */,
@@ -696,6 +707,7 @@
 				BB1C03B01B6E56CD0035F09F /* Result.swift in Sources */,
 				BB1C03B11B6E56CD0035F09F /* RRLocationManager.swift in Sources */,
 				BB1C03A11B6E56CD0035F09F /* SettingsViewController.swift in Sources */,
+				BB7336911B9D755F0054EEC7 /* WaitBlock.swift in Sources */,
 				BB1C03C61B6E56CD0035F09F /* SelectMediaCollectionViewCell.swift in Sources */,
 				BB1C03951B6E56CD0035F09F /* CreateWizzDatailViewController.swift in Sources */,
 				BB1C03A51B6E56CD0035F09F /* GifMaker.m in Sources */,
@@ -818,7 +830,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "44d64cb5-cd4d-4964-aa9a-14a6536802c0";
@@ -858,7 +870,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "44d64cb5-cd4d-4964-aa9a-14a6536802c0";
 				SDKROOT = iphoneos;
@@ -871,7 +883,7 @@
 			baseConfigurationReference = C174404B633EEBC7B8903B24 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Vincent Dionis (GDPNZCGN4S)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vincent Dionis (GDPNZCGN4S)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -892,6 +904,7 @@
 					"$(SRCROOT)/**",
 				);
 				INFOPLIST_FILE = "Wizzem-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -911,7 +924,7 @@
 			baseConfigurationReference = 8FC4FD53C680A81308A55C30 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Vincent Dionis (GDPNZCGN4S)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -931,6 +944,7 @@
 					"$(SRCROOT)/**",
 				);
 				INFOPLIST_FILE = "Wizzem-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

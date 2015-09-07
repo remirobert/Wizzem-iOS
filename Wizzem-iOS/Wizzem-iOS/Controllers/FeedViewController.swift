@@ -16,6 +16,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var animator: ZFModalTransitionAnimator!
     var querryFetchWizzenEvent: PFQuery!
     var querryFetchFacebookEvent: PFQuery!
+    var sections = NSMutableDictionary()
+    var sortDaysSection = Array<String>()
     @IBOutlet var segmentData: UISegmentedControl!
     
     @IBAction func changeSegment(sender: AnyObject) {
@@ -35,9 +37,31 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         NSNotificationCenter.defaultCenter().postNotificationName("swipControllerCamera", object: nil)
     }
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if self.segmentData.selectedSegmentIndex == 0 {
+            return self.sections.count
+        }
+        else {
+            return 1
+        }
+    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        performSegueWithIdentifier("detailEventSegue", sender: events[indexPath.row])
+        var selectedEvent: PFObject?
+        
+        if self.segmentData.selectedSegmentIndex == 0 {
+            if let eventsArray = self.sections.objectForKey(self.sortDaysSection[indexPath.section]) as? NSMutableArray,
+                event = eventsArray.objectAtIndex(indexPath.row) as? PFObject {
+                    selectedEvent = event
+            }
+        }
+        else {
+            selectedEvent = events[indexPath.row]
+        }
+        if let selectedEvent = selectedEvent {
+            performSegueWithIdentifier("detailEventSegue", sender: selectedEvent)
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -45,13 +69,49 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.segmentData.selectedSegmentIndex == 0 {
+            if let events = self.sections.objectForKey(self.sortDaysSection[section]) as? NSMutableArray {
+                return events.count
+            }
+        }
         return events.count
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if self.segmentData.selectedSegmentIndex == 0 {
+            return 50
+        }
+        return  0
+    }
+        
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if self.segmentData.selectedSegmentIndex == 0 {
+            if let header = UINib(nibName: "HeaderSectionEventView", bundle: nil).instantiateWithOwner(self, options: nil).first as? HeaderSectionEventView {
+                header.labelDate.text = self.sortDaysSection[section]
+                return header
+            }
+        }
+        return nil
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("momentCell") as! MomentFeedTableViewCell
+
+        var currentEvent: PFObject!
         
-        let currentEvent = events[indexPath.row]
+        if self.segmentData.selectedSegmentIndex == 0 {
+            if let eventsArray = self.sections.objectForKey(self.sortDaysSection[indexPath.section]) as? NSMutableArray,
+                event = eventsArray.objectAtIndex(indexPath.row) as? PFObject {
+                currentEvent = event
+            }
+        }
+        else {
+            currentEvent = events[indexPath.row]
+        }
+        
+        if currentEvent == nil {
+            return cell
+        }
         
         cell.titleMoment.text = nil
         cell.participantLabel.text = nil
@@ -74,6 +134,46 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
+    func initSectionFacebookEvents() {
+        self.sections.removeAllObjects()
+        self.sortDaysSection.removeAll(keepCapacity: false)
+        var dates = Array<NSDate>()
+        
+        for currentEvent in self.events {
+            if let startDate = currentEvent["start"] as? NSDate {
+                var currentDate = startDate.formattedDateWithFormat("EEE, MMM d")
+                currentDate = "Le \(currentDate)"
+                
+                var eventsDays = self.sections.objectForKey(currentDate) as? NSMutableArray
+                if  eventsDays == nil {
+                    eventsDays = NSMutableArray()
+                    dates.append(startDate)
+                    self.sections.setObject(eventsDays!, forKey: currentDate)
+                }
+                
+                eventsDays?.addObject(currentEvent)
+            }
+        }
+        
+        dates.sort { (date1, date2) -> Bool in
+            if date1.timeIntervalSince1970 < date2.timeIntervalSince1970 {
+                return true
+            }
+            return false
+        }
+        
+        for currentDate in dates {
+            var currentDateString = currentDate.formattedDateWithFormat("EEE, MMM d")
+            currentDateString = "Le \(currentDateString)"
+            self.sortDaysSection.append(currentDateString)
+        }
+        
+        println("sorted dates : \(dates)")
+        println("sorted strings : \(self.sortDaysSection)")
+        
+        self.tableView.reloadData()
+    }
+    
     func fetchDataFacebook() {
         PFGeoPoint.geoPointForCurrentLocationInBackground { (location: PFGeoPoint?, _) -> Void in
             if let location = location {
@@ -81,7 +181,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.querryFetchFacebookEvent.orderByDescending("start")
                 self.querryFetchFacebookEvent.whereKey("public", equalTo: true)
                 self.querryFetchFacebookEvent.whereKey("facebook", equalTo: true)
-                self.querryFetchFacebookEvent.whereKey("position", nearGeoPoint: location, withinKilometers: 25)
+                 self.querryFetchFacebookEvent.whereKey("position", nearGeoPoint: location, withinKilometers: 25)
                 
                 self.querryFetchFacebookEvent.findObjectsInBackgroundWithBlock({ (results: [AnyObject]?, _) -> Void in
 
@@ -92,7 +192,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     println("result : \(results)")
                     if let results = results as? [PFObject] {
                         self.events = results
-                        self.tableView.reloadData()
+                        self.initSectionFacebookEvents()
                     }
                 })
             }
@@ -130,10 +230,6 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    override func viewDidLayoutSubviews() {
-        FacebookEvent.fetchEventUser()
-    }
-    
     override func viewDidAppear(animated: Bool) {
         if self.segmentData.selectedSegmentIndex == 0 {
             self.querryFetchWizzenEvent.cancel()
@@ -151,6 +247,9 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func refreshContentSpinner() {
         if self.segmentData.selectedSegmentIndex == 0 {
+            Wait🕟Block.executeBlock("eventFacebook", limitTimer: 20, completionBlock: { () -> Void in
+                FacebookEvent.fetchEventUser()
+            })
             self.querryFetchWizzenEvent.cancel()
             self.fetchDataFacebook()
         }
@@ -162,7 +261,9 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        FacebookEvent.fetchEventUser()
+        
         self.querryFetchFacebookEvent = PFQuery(className: "Event")
         self.querryFetchWizzenEvent = PFQuery(className: "Event")
         

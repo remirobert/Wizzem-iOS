@@ -61,7 +61,10 @@ class FacebookEvent: NSObject {
     }
     
     class func checkAndUpdateFacebookEvent(eventsId: [String], events: [Event]) {
-        var eventsFacebook = events
+        var eventsFacebook = Array<Event>()
+        for ev in events {
+            eventsFacebook.append(ev)
+        }
         let querry = PFQuery(className: "Event")
         querry.whereKey("facebookEvent", containedIn: eventsId)
         
@@ -81,39 +84,40 @@ class FacebookEvent: NSObject {
                             println("REMOVE DOUBLE EVENT : \(currentFacebookItem.title)")
                             self.checkJoinFacebookEvent(result)
                             eventsFacebook.removeAtIndex(index)
+                            break
                         }
                     }
                 }
             }
-            for facebookEvent in eventsFacebook {
-                self.createNewFacebookEvent(facebookEvent)
-            }
+            self.createNewFacebookEvent(eventsFacebook)
         }
     }
     
-    class func createNewFacebookEvent(currentEvent: Event) {
-        let event = PFObject(className: "Event")
-        
-        event["city"] = currentEvent.location
-        event["description"] = currentEvent.descriptioEvent
-        event["nbParticipant"] = 0
-        event["public"] = currentEvent.publicEvent
-        event["title"] = currentEvent.title
-        event["nbMedia"] = 0
-        event["facebookEvent"] = currentEvent.id
-        event["coverUrl"] = currentEvent.coverPhoto
-        event["closed"] = false
-        event["facebook"] = true
-        event["position"] = currentEvent.position
-        event["start"] = currentEvent.start
-        
-        event.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
-            if err != nil {
-                println("error save new facebook event : \(err)")
-                return
+    class func createNewFacebookEvent(events: [Event]) {
+        for currentEvent in events {
+            let event = PFObject(className: "Event")
+            
+            event["start"] = currentEvent.start
+            event["city"] = currentEvent.location
+            event["description"] = currentEvent.descriptioEvent
+            event["nbParticipant"] = 0
+            event["public"] = currentEvent.publicEvent
+            event["title"] = currentEvent.title
+            event["nbMedia"] = 0
+            event["facebookEvent"] = currentEvent.id
+            event["coverUrl"] = currentEvent.coverPhoto
+            event["closed"] = false
+            event["facebook"] = true
+            event["position"] = currentEvent.position
+            
+            event.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
+                if err != nil {
+                    println("error save new facebook event : \(err)")
+                }
+                else {
+                    self.joinFacebookEvent(event)
+                }
             }
-            self.joinFacebookEvent(event)
-            println("save new facebook event ok")
         }
     }
 }
@@ -134,6 +138,7 @@ extension FacebookEvent {
         newParticipant["invited"] = false
         newParticipant["status"] = "accepted"
         
+        PushNotification.addNotification("c\(event.objectId!)")
         newParticipant.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
             println("error new participant add : \(err)")
             if err == nil {
@@ -144,7 +149,6 @@ extension FacebookEvent {
                 event.saveInBackgroundWithBlock({ (_, _) -> Void in})
             }
         }
-        PushNotification.addNotification("c\(event.objectId!)")
     }
     
     class func checkJoinFacebookEvent(event: PFObject) {

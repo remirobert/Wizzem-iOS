@@ -50,6 +50,8 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController,
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             capturedImage = image
+            photoNumberGif.text = "0"
+            gifImages.removeAll(keepCapacity: false)
             self.dismissViewControllerAnimated(true, completion: { () -> Void in
                 self.performSegueWithIdentifier(SEGUE_PREVIEW_CAPTURE, sender: nil)
             })

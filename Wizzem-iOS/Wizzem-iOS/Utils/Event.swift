@@ -52,7 +52,12 @@ class Event: NSObject {
         
         self.start = NSDate()
         if let startTimeString = json.objectForKey("start_time") as? String {
-            self.start = NSDate(string: startTimeString, formatString: "YYYY-MM-dd\'T\'HH:mm:ssZZZZZ")
+            if startTimeString.componentsSeparatedByString("T").count == 2 {
+                self.start = NSDate(string: startTimeString, formatString: "YYYY-MM-dd\'T\'HH:mm:ssZZZZZ")
+            }
+            else {
+                self.start = NSDate(string: startTimeString, formatString: "YYYY-MM-dd")
+            }
         }
         
         if let venue = json.objectForKey("venue") as? NSDictionary,
