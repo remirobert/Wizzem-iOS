@@ -903,7 +903,7 @@
 			baseConfigurationReference = C174404B633EEBC7B8903B24 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vincent Dionis (GDPNZCGN4S)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vincent Dionis (GDPNZCGN4S)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -944,7 +944,7 @@
 			baseConfigurationReference = 8FC4FD53C680A81308A55C30 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vincent Dionis (GDPNZCGN4S)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",

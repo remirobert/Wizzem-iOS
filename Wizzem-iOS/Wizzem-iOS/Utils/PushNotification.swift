@@ -11,25 +11,29 @@ import UIKit
 class PushNotification: NSObject {
    
     class func addNotification(group: String) {
-        let currentInstallation = PFInstallation.currentInstallation()
-        currentInstallation.addUniqueObject(group, forKey: "channels")
-        currentInstallation.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
-            println("error add channels : \(err)")
-        }
+        PFPush.subscribeToChannel(group, error: nil)
     }
     
     class func addNotifications(group: [String]) {
         let currentInstallation = PFInstallation.currentInstallation()
         for currentNotif in group {
             currentInstallation.addUniqueObject(currentNotif, forKey: "channels")
-        }
-        currentInstallation.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
-            println("error add channels : \(err)")
+            PFPush.subscribeToChannel(currentNotif, error: nil)
         }
     }
 
     class func pushNotification(group: String, message: String) {
-        PFPush.sendPushMessageToChannelInBackground(group, withMessage: message) { (_, err: NSError?) -> Void in
+        
+        let data = [
+            "alert" : message,
+            "badge" : 1,
+            "sounds" : ""
+        ]
+        let push = PFPush()
+        push.setChannels([group])
+        push.setData(data as [NSObject : AnyObject])
+
+        push.sendPushInBackgroundWithBlock { (_, err: NSError?) -> Void in
             println("error push notification : \(err)")
         }
     }

@@ -76,6 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
+        application.applicationIconBadgeNumber = 0
         FBSDKAppEvents.activateApp()
     }
 

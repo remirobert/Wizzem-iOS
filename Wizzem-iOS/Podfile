@@ -1,18 +1,13 @@
 pod 'Parse'
 pod 'ParseFacebookUtils'
 pod 'FBSDKCoreKit', '~> 4.2.0'
-#pod 'FBSDKLoginKit', '~> 4.2.0'
 pod 'PBJVision'
 pod 'FLAnimatedImage', '~> 1.0'
-#pod 'MBProgressHUD'
 pod 'Masonry', '~> 0.6.1'
 pod 'SZTextView'
 pod 'ZFDragableModalTransition'
 pod 'DateTools'
 pod 'UIImage+ImageCompress'
 pod 'FCFileManager'
-#pod 'GMImagePicker'
 pod 'PINRemoteImage'
-
-
 pod 'QBImagePickerController'
