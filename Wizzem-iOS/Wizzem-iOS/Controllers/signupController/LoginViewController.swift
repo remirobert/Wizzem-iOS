@@ -13,6 +13,7 @@ class LoginViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var pageIndicator: UIPageControl!
     @IBOutlet var loginButton: UIButton!
+    @IBOutlet var labelIndicator: UILabel!
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         let currentPage = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
@@ -43,7 +44,13 @@ class LoginViewController: UIViewController, UIScrollViewDelegate {
             }
         }
     }
-        
+    
+    override func viewDidAppear(animated: Bool) {
+        self.view.bringSubviewToFront(self.pageIndicator)
+        self.view.bringSubviewToFront(self.loginButton)
+        self.view.bringSubviewToFront(self.labelIndicator)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

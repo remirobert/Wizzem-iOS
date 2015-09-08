@@ -2562,6 +2562,7 @@
                             <constraint firstItem="X0g-cR-Iir" firstAttribute="top" secondItem="X0A-qo-sef" secondAttribute="topMargin" id="6vu-MC-kbw"/>
                             <constraint firstItem="CrY-Ue-Apj" firstAttribute="top" secondItem="X0g-cR-Iir" secondAttribute="bottom" id="ARR-aF-XWC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="X0g-cR-Iir" secondAttribute="trailing" constant="-16" id="AUb-NT-4UR"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="5bG-rb-Ril" secondAttribute="bottom" constant="33" id="DKO-o1-Vi1"/>
                             <constraint firstAttribute="centerX" secondItem="5bG-rb-Ril" secondAttribute="centerX" id="Ftw-S2-RQP"/>
                             <constraint firstAttribute="centerX" secondItem="0uU-qu-JNx" secondAttribute="centerX" id="Gum-Op-rY1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="X0g-cR-Iir" secondAttribute="trailing" constant="-16" id="JvS-fW-HbN"/>
@@ -2595,6 +2596,7 @@
                                 <exclude reference="sr9-nX-POc"/>
                                 <exclude reference="wrn-9R-iJD"/>
                                 <exclude reference="e2M-A1-JcQ"/>
+                                <exclude reference="DKO-o1-Vi1"/>
                                 <exclude reference="Ftw-S2-RQP"/>
                                 <exclude reference="Gum-Op-rY1"/>
                                 <exclude reference="dPJ-tu-mpg"/>
@@ -2623,9 +2625,10 @@
                                 <exclude reference="sr9-nX-POc"/>
                                 <exclude reference="wrn-9R-iJD"/>
                                 <include reference="e2M-A1-JcQ"/>
+                                <include reference="DKO-o1-Vi1"/>
                                 <include reference="Ftw-S2-RQP"/>
                                 <include reference="Gum-Op-rY1"/>
-                                <include reference="dPJ-tu-mpg"/>
+                                <exclude reference="dPJ-tu-mpg"/>
                                 <include reference="kqm-fy-xVo"/>
                                 <include reference="6hd-cd-1px"/>
                                 <exclude reference="ARR-aF-XWC"/>
@@ -2635,6 +2638,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="labelIndicator" destination="0uU-qu-JNx" id="S1M-5Y-bbx"/>
                         <outlet property="loginButton" destination="5bG-rb-Ril" id="bfe-X7-I4o"/>
                         <outlet property="pageIndicator" destination="oDR-B1-aUS" id="u4K-RJ-LWo"/>
                         <outlet property="scrollView" destination="X0g-cR-Iir" id="4R6-Pb-PNx"/>

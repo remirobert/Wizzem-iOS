@@ -215,6 +215,16 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     }
                     
                     if let results = results as? [PFObject] {
+                        if results.count == 0 {
+                            let imageBack = UIImageView(image: UIImage(named: "AucunMoment"))
+                            imageBack.frame = self.tableView.frame
+                            imageBack.frame.origin = CGPointZero
+                            imageBack.contentMode = UIViewContentMode.ScaleAspectFit
+                            self.tableView.backgroundView = imageBack
+                        }
+                        else {
+                            self.tableView.backgroundView = nil
+                        }
                         self.events.removeAll(keepCapacity: true)
                         for currentEvent in results {
                             if let numberWizz = currentEvent["nbMedia"] as? Int {

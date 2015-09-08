@@ -102,8 +102,8 @@ class MainTabBarViewController: UITabBarController, PageController {
         
         
         buttonExplore = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        buttonExplore.frame.size = CGSizeMake(UIScreen.mainScreen().bounds.size.width / 2 - 50, 30)
-        buttonExplore.frame.origin = CGPointMake(0, UIScreen.mainScreen().bounds.size.height - 44.5)
+        buttonExplore.frame.size = CGSizeMake(UIScreen.mainScreen().bounds.size.width / 2 + 50, 30)
+        buttonExplore.frame.origin = CGPointMake(-50, UIScreen.mainScreen().bounds.size.height - 44.5)
         buttonExplore.backgroundColor = UIColor.clearColor()
         buttonExplore.setImage(UIImage(named: "ExploreOn"), forState: UIControlState.Normal)
         buttonExplore.autoresizingMask = UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleTopMargin
@@ -112,8 +112,8 @@ class MainTabBarViewController: UITabBarController, PageController {
         buttonExplore.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         
         buttonProfile = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        buttonProfile.frame.size = CGSizeMake(UIScreen.mainScreen().bounds.size.width / 2 - 50, 30)
-        buttonProfile.frame.origin = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2 + 50, UIScreen.mainScreen().bounds.size.height - 44.5)
+        buttonProfile.frame.size = CGSizeMake(UIScreen.mainScreen().bounds.size.width / 2 + 50, 30)
+        buttonProfile.frame.origin = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height - 44.5)
         buttonProfile.backgroundColor = UIColor.clearColor()
         buttonProfile.setImage(UIImage(named: "Profile"), forState: UIControlState.Normal)
         buttonProfile.autoresizingMask = UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleTopMargin
