@@ -68,9 +68,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let cancelAction = UIAlertAction(title: "Annuler", style: UIAlertActionStyle.Cancel, handler: nil)
         
-        alertController.addAction(profileAction)
-        alertController.addAction(shareApp)
         alertController.addAction(feebback)
+        alertController.addAction(shareApp)
         alertController.addAction(logoutAction)
         alertController.addAction(cancelAction)
         self.presentViewController(alertController, animated: true, completion: nil)
@@ -122,7 +121,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         let querry = PFQuery(className: "Participant")
         querry.whereKey("userId", equalTo: PFUser.currentUser()!)
         querry.orderByDescending("updatedAt")
-
+        
         querry.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, _) -> Void in
 
             if self.refreshControl.refreshing {
@@ -138,7 +137,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 }
                 self.tableView.reloadData()
             }
-        }        
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

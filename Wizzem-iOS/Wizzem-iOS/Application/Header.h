@@ -19,6 +19,7 @@
 #import <SZTextView.h>
 #import <ZFModalTransitionAnimator.h>
 #import <DateTools.h>
+#import <AFNetworking.h>
 
 #import "ALAssetsLibrary+CustomPhotoAlbum.h"
 #import "Constants.h"

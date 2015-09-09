@@ -20,10 +20,10 @@ class CreateWizzDatailViewController: UITableViewController, UITextFieldDelegate
     
     @IBAction func changePrivacy(sender: AnyObject) {
         if privacySwitch.on {
-            labelDetailSwitch.text = "Visible par tous"
+            labelDetailSwitch.text = "Public (visible par tous)"
         }
         else {
-            labelDetailSwitch.text = "Visible avec lien"
+            labelDetailSwitch.text = "Privé (accessible par lien)"
         }
     }
     

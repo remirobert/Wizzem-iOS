@@ -275,7 +275,7 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
         
         querry.orderByDescending("creationDate")
         
-        querry.cachePolicy = PFCachePolicy.CacheThenNetwork
+        querry.cachePolicy = PFCachePolicy.NetworkOnly
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
 
         querry.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, _) -> Void in
@@ -377,11 +377,18 @@ extension DetailMediaViewController {
             })
         }
         
+        let report = UIAlertAction(title: "Reporter le moment", style: UIAlertActionStyle.Default) { (_) -> Void in
+            Report.send("salut test")
+        }
+        
         let cancelButton = UIAlertAction(title: "Annuler", style: UIAlertActionStyle.Cancel, handler: nil)
 
-        if (currentEvent["creator"] as! PFObject).objectId! == PFUser.currentUser()?.objectId! {
-            alertController.addAction(removeAction)
+        if let creator = currentEvent["creator"] as? PFObject {
+            if creator.objectId! == PFUser.currentUser()?.objectId! {
+                alertController.addAction(removeAction)
+            }
         }
+        alertController.addAction(report)
         alertController.addAction(cancelButton)
         
         self.presentViewController(alertController, animated: true, completion: nil)

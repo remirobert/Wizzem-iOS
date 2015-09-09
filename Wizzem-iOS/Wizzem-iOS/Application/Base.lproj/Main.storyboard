@@ -32,8 +32,8 @@
                                     <constraint firstAttribute="height" constant="28" id="j3h-GQ-4Z5"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Evénements"/>
-                                    <segment title="Groupes"/>
+                                    <segment title="Evénements FB"/>
+                                    <segment title="Groupes WZ"/>
                                 </segments>
                                 <color key="tintColor" red="0.29803921570000003" green="0.85098039219999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <variation key="default">
@@ -1525,7 +1525,7 @@
             </objects>
             <point key="canvasLocation" x="3579" y="-760.5"/>
         </scene>
-        <!--Vos Wizz-->
+        <!--Vos moments-->
         <scene sceneID="oRX-VM-88R">
             <objects>
                 <viewController id="8sg-Ja-zsa" customClass="WizzListViewController" customModule="Wizzem_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -1771,7 +1771,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Vos Wizz" id="BqA-iP-mzp">
+                    <navigationItem key="navigationItem" title="Vos moments" id="BqA-iP-mzp">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="1F4-Yk-Zj9">
                             <color key="tintColor" red="0.29803921570000003" green="0.85098039219999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -1985,7 +1985,7 @@
                                                         <action selector="changePrivacy:" destination="Zq5-bE-Vbr" eventType="valueChanged" id="vZ4-Dg-d3R"/>
                                                     </connections>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visible par tous" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uh3-pW-ti7">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Public (visible par tous)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uh3-pW-ti7">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="zlg-56-caj"/>

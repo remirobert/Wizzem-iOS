@@ -74,6 +74,7 @@
 		BB1C03C71B6E56CD0035F09F /* SelectMediaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB1C03901B6E56CD0035F09F /* SelectMediaCollectionViewCell.xib */; };
 		BB5D4A441B6EA044008C89BC /* DetailProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D4A431B6EA044008C89BC /* DetailProfileViewController.swift */; };
 		BB621E911B94DCE2000B0567 /* DetailDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB621E901B94DCE2000B0567 /* DetailDescriptionViewController.swift */; };
+		BB69D2341BA090C500747AF4 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69D2331BA090C500747AF4 /* Report.swift */; };
 		BB723E3C1B7BEF7300BAA4F1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB723E3B1B7BEF7300BAA4F1 /* LoginViewController.swift */; };
 		BB73368B1B9C75AE0054EEC7 /* EventCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB73368A1B9C75AE0054EEC7 /* EventCloud.swift */; };
 		BB73368D1B9D72730054EEC7 /* HeaderSectionEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB73368C1B9D72730054EEC7 /* HeaderSectionEventView.swift */; };
@@ -190,6 +191,7 @@
 		BB1C03901B6E56CD0035F09F /* SelectMediaCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectMediaCollectionViewCell.xib; sourceTree = "<group>"; };
 		BB5D4A431B6EA044008C89BC /* DetailProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailProfileViewController.swift; sourceTree = "<group>"; };
 		BB621E901B94DCE2000B0567 /* DetailDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailDescriptionViewController.swift; sourceTree = "<group>"; };
+		BB69D2331BA090C500747AF4 /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		BB723E3B1B7BEF7300BAA4F1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BB73368A1B9C75AE0054EEC7 /* EventCloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCloud.swift; sourceTree = "<group>"; };
 		BB73368C1B9D72730054EEC7 /* HeaderSectionEventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderSectionEventView.swift; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 				BBF9F4781B9624A00074CD0A /* PushNotification.swift */,
 				BBF9F47C1B9787100074CD0A /* FacebookEvent.swift */,
 				BB73368A1B9C75AE0054EEC7 /* EventCloud.swift */,
+				BB69D2331BA090C500747AF4 /* Report.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -718,6 +721,7 @@
 				BB1C03B41B6E56CD0035F09F /* WizzemAPI.swift in Sources */,
 				BB1C039C1B6E56CD0035F09F /* LoginViewController23.swift in Sources */,
 				BB1C03BC1B6E56CD0035F09F /* LastWizzMomentTableViewCell.swift in Sources */,
+				BB69D2341BA090C500747AF4 /* Report.swift in Sources */,
 				BB1C03941B6E56CD0035F09F /* PreviewCaptureViewController.swift in Sources */,
 				BBF9F4771B9599F50074CD0A /* ProgressionData.swift in Sources */,
 				BB1C03971B6E56CD0035F09F /* PrivacyDetailViewController.swift in Sources */,

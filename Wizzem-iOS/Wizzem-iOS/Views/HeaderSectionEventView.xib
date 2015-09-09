@@ -14,7 +14,7 @@
                     <rect key="frame" x="18" y="8" width="564" height="34"/>
                     <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="0.0" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
-                    <color key="textColor" red="0.29803921570000003" green="0.85098039219999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>

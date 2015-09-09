@@ -18,16 +18,25 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var querryFetchFacebookEvent: PFQuery!
     var sections = NSMutableDictionary()
     var sortDaysSection = Array<String>()
+    
+    lazy var backgroundTableView: UIImageView! = {
+        let view = UIImageView(frame: UIScreen.mainScreen().bounds)
+        view.contentMode = UIViewContentMode.ScaleAspectFill
+        return view
+    }()
+    
     @IBOutlet var segmentData: UISegmentedControl!
     
     @IBAction func changeSegment(sender: AnyObject) {
         self.events.removeAll(keepCapacity: true)
         self.tableView.reloadData()
         if self.segmentData.selectedSegmentIndex == 0 {
+            self.backgroundTableView.image = UIImage(named: "EventFB")
             self.querryFetchWizzenEvent.cancel()
             self.fetchDataFacebook()
         }
         else {
+            self.backgroundTableView.image = UIImage(named: "GroupeWz")
             self.querryFetchFacebookEvent.cancel()
             self.fetchData()
         }
@@ -141,8 +150,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         for currentEvent in self.events {
             if let startDate = currentEvent["start"] as? NSDate {
-                var currentDate = startDate.formattedDateWithFormat("EEE, MMM d")
-                currentDate = "Le \(currentDate)"
+                var currentDate = startDate.formattedDateWithFormat("EEEE d MMM")
+                currentDate = "\(currentDate)"
                 
                 var eventsDays = self.sections.objectForKey(currentDate) as? NSMutableArray
                 if  eventsDays == nil {
@@ -163,8 +172,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         for currentDate in dates {
-            var currentDateString = currentDate.formattedDateWithFormat("EEE, MMM d")
-            currentDateString = "Le \(currentDateString)"
+            var currentDateString = currentDate.formattedDateWithFormat("EEEE d MMM")
+            currentDateString = "\(currentDateString)"
             self.sortDaysSection.append(currentDateString)
         }
         
@@ -215,16 +224,16 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     }
                     
                     if let results = results as? [PFObject] {
-                        if results.count == 0 {
-                            let imageBack = UIImageView(image: UIImage(named: "AucunMoment"))
-                            imageBack.frame = self.tableView.frame
-                            imageBack.frame.origin = CGPointZero
-                            imageBack.contentMode = UIViewContentMode.ScaleAspectFit
-                            self.tableView.backgroundView = imageBack
-                        }
-                        else {
-                            self.tableView.backgroundView = nil
-                        }
+//                        if results.count == 0 {
+//                            let imageBack = UIImageView(image: UIImage(named: "AucunMoment"))
+//                            imageBack.frame = self.tableView.frame
+//                            imageBack.frame.origin = CGPointZero
+//                            imageBack.contentMode = UIViewContentMode.ScaleAspectFit
+//                            self.tableView.backgroundView = imageBack
+//                        }
+//                        else {
+//                            self.tableView.backgroundView = nil
+//                        }
                         self.events.removeAll(keepCapacity: true)
                         for currentEvent in results {
                             if let numberWizz = currentEvent["nbMedia"] as? Int {
@@ -271,6 +280,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.backgroundView = self.backgroundTableView
         
         FacebookEvent.fetchEventUser()
         

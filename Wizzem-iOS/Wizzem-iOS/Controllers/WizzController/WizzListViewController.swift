@@ -101,6 +101,7 @@ class WizzListViewController: UIViewController, UITableViewDataSource, UITableVi
 
 extension WizzListViewController {
     func addMedia(currentEvent: PFObject) {
+
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         hud.labelText = "Upload de votre media."
 
@@ -119,16 +120,36 @@ extension WizzListViewController {
             params.setValue(self.file, forKey: "file")
             params.setValue(self.type, forKey: "type")
             
-            PFCloud.callFunctionInBackground("MediaAdd", withParameters: params as [NSObject : AnyObject]) { (_, error: NSError?) -> Void in
+            PFCloud.callFunctionInBackground("MediaAdd", withParameters: params as [NSObject : AnyObject]) { (media: AnyObject?, error: NSError?) -> Void in
                 hud.hide(true)
                 if let error = error {
                     println("error : \(error)")
                     Alert.error("Erreur lors de l'uplaod de votre Wizz.")
                 }
                 else {
-                    self.dismissViewControllerAnimated(true, completion: { () -> Void in
-                        NSNotificationCenter.defaultCenter().postNotificationName("dismissCameraController", object: nil)
-                    })
+                    let username = (PFUser.currentUser()!["true_username"] as? String)!
+                    let nameEvent = (currentEvent["title"] as? String)!
+                    let message = "\(username) à publier un nouveau média dans \(nameEvent)."
+                    
+                    println("message : \(message)")
+                    
+                    if let media = media as? PFObject {
+                        media["creationDate"] = NSDate()
+                        
+                        media.saveInBackgroundWithBlock({ (_, error: NSError?) -> Void in
+                            if error == nil {
+                                ProgressionData.completeDataProgression()
+                                PushNotification.pushNotification("c\(currentEvent.objectId!)", message: message)
+                                self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                                    NSNotificationCenter.defaultCenter().postNotificationName("dismissCameraController", object: nil)
+                                })
+                            }
+                            else {
+                                Alert.error("Erreur lors de l'uplaod de votre Wizz.")
+                                return
+                            }
+                        })
+                    }
                 }
             }
         }

@@ -27,9 +27,8 @@ class SelectionMediaViewController: UIViewController, UICollectionViewDataSource
         let querry = PFQuery(className: "Media")
         querry.whereKey("eventId", equalTo: currentEvent!)
         
-        querry.orderByDescending("creationDate")
-        
-        querry.cachePolicy = PFCachePolicy.CacheThenNetwork
+        querry.orderByDescending("creationDate")        
+        querry.cachePolicy = PFCachePolicy.NetworkOnly
         
         querry.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, _) -> Void in
             

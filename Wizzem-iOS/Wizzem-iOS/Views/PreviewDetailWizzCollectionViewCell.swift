@@ -77,8 +77,13 @@ class PreviewDetailWizzCollectionViewCell: UICollectionViewCell {
         }
         
         if let dateFile = media["creationDate"] as? NSDate {
-            let formatString = dateFile.formattedDateWithFormat("EEE/MMM")
+            let formatString = dateFile.formattedDateWithFormat("dd/MM")
             let formatStringHour = dateFile.formattedDateWithFormat("h:mm")
+            self.hourLabel.text = "\(formatStringHour)"
+            self.dateLabel.text = "Le \(formatString)"
+        }
+        
+        if let dateFile = media.createdAt {
             
             let distanceBetweenDates = NSDate().timeIntervalSinceDate(dateFile)
             let realHoursDiff = distanceBetweenDates / 3600
@@ -96,8 +101,6 @@ class PreviewDetailWizzCollectionViewCell: UICollectionViewCell {
             pourcent = 100 - pourcent
             
             self.progressTimer.setProgress(Float(pourcent) / 100, animated: true)
-            self.hourLabel.text = "\(formatStringHour)"
-            self.dateLabel.text = "Le \(formatString)"
         }
     }
 }
