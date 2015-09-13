@@ -22,6 +22,7 @@ class DetailDescriptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.textView.text = content
+        self.textView.editable = false
         self.titleEvent.text = self.titleEventContent
     }
 }

@@ -66,7 +66,7 @@ class PreviewDetailWizzCollectionViewCell: UICollectionViewCell {
                         case "gif": self.imageContentView.animatedImage = FLAnimatedImage(animatedGIFData: data)
                         default: return
                         }
-                        self.imageContentView.contentMode = UIViewContentMode.ScaleAspectFill
+                        self.imageContentView.contentMode = UIViewContentMode.ScaleAspectFit
                         self.contentView.bringSubviewToFront(self.authorPictureProfile)
                         self.contentView.bringSubviewToFront(self.containerDateView)
                         self.contentView.bringSubviewToFront(self.upButton)

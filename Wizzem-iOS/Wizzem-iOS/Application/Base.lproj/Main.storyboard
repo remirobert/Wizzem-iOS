@@ -2586,6 +2586,16 @@
                                 <exclude reference="X0g-cR-Iir"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Gum-Op-rY1"/>
+                                <exclude reference="dPJ-tu-mpg"/>
+                                <exclude reference="kqm-fy-xVo"/>
+                                <exclude reference="6hd-cd-1px"/>
+                                <exclude reference="ARR-aF-XWC"/>
+                                <exclude reference="n3D-gR-BSM"/>
+                                <exclude reference="yRe-fK-KCC"/>
+                                <exclude reference="e2M-A1-JcQ"/>
+                                <exclude reference="DKO-o1-Vi1"/>
+                                <exclude reference="Ftw-S2-RQP"/>
                                 <exclude reference="6vu-MC-kbw"/>
                                 <exclude reference="AUb-NT-4UR"/>
                                 <exclude reference="JvS-fW-HbN"/>
@@ -2595,16 +2605,6 @@
                                 <exclude reference="nhK-NL-el8"/>
                                 <exclude reference="sr9-nX-POc"/>
                                 <exclude reference="wrn-9R-iJD"/>
-                                <exclude reference="e2M-A1-JcQ"/>
-                                <exclude reference="DKO-o1-Vi1"/>
-                                <exclude reference="Ftw-S2-RQP"/>
-                                <exclude reference="Gum-Op-rY1"/>
-                                <exclude reference="dPJ-tu-mpg"/>
-                                <exclude reference="kqm-fy-xVo"/>
-                                <exclude reference="6hd-cd-1px"/>
-                                <exclude reference="ARR-aF-XWC"/>
-                                <exclude reference="n3D-gR-BSM"/>
-                                <exclude reference="yRe-fK-KCC"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -2615,6 +2615,16 @@
                                 <include reference="X0g-cR-Iir"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="Gum-Op-rY1"/>
+                                <exclude reference="dPJ-tu-mpg"/>
+                                <include reference="kqm-fy-xVo"/>
+                                <include reference="6hd-cd-1px"/>
+                                <exclude reference="ARR-aF-XWC"/>
+                                <exclude reference="n3D-gR-BSM"/>
+                                <include reference="yRe-fK-KCC"/>
+                                <include reference="e2M-A1-JcQ"/>
+                                <include reference="DKO-o1-Vi1"/>
+                                <include reference="Ftw-S2-RQP"/>
                                 <include reference="6vu-MC-kbw"/>
                                 <exclude reference="AUb-NT-4UR"/>
                                 <exclude reference="JvS-fW-HbN"/>
@@ -2624,16 +2634,6 @@
                                 <exclude reference="nhK-NL-el8"/>
                                 <exclude reference="sr9-nX-POc"/>
                                 <exclude reference="wrn-9R-iJD"/>
-                                <include reference="e2M-A1-JcQ"/>
-                                <include reference="DKO-o1-Vi1"/>
-                                <include reference="Ftw-S2-RQP"/>
-                                <include reference="Gum-Op-rY1"/>
-                                <exclude reference="dPJ-tu-mpg"/>
-                                <include reference="kqm-fy-xVo"/>
-                                <include reference="6hd-cd-1px"/>
-                                <exclude reference="ARR-aF-XWC"/>
-                                <exclude reference="n3D-gR-BSM"/>
-                                <include reference="yRe-fK-KCC"/>
                             </mask>
                         </variation>
                     </view>

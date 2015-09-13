@@ -104,6 +104,7 @@ extension WizzListViewController {
 
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         hud.labelText = "Upload de votre media."
+        hud.dimBackground = true
 
         self.file.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
             
