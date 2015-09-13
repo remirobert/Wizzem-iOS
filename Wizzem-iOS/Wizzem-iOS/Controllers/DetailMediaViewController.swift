@@ -58,19 +58,52 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
         var medias = Array<NSData>()
         var creationDates = Array<NSDate>()
         
+        let options = PHImageRequestOptions()
+        options.deliveryMode = .FastFormat
+        options.resizeMode = .None
+        options.synchronous = true
+        options.networkAccessAllowed = false
+        
+        
         for asset in assets {
-            
-            let retinaMult = UIScreen.mainScreen().scale
-            let retinaSquare = CGSizeMake(CGRectGetWidth(UIScreen.mainScreen().bounds) * retinaMult, CGRectGetHeight(UIScreen.mainScreen().bounds) * retinaMult)
+//            
+//            manager.requestImageDataForAsset(asset as! PHAsset, options: options, resultHandler: { (data: NSData!, _, _, _) -> Void in
+//                
+//                println("data = \(data)")
+//                
+//                if let data = data {
+//                    medias.append(data)
+//                    creationDates.append((asset as! PHAsset).creationDate)
+//                    
+//                    if medias.count == assets.count {
+//                        var mediaUpload = MediaUpload()
+//                        
+//                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                            mediaUpload.hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+//                        })
+//                        mediaUpload.event = self.currentEvent
+//                        mediaUpload.currentCount = 0
+//                        mediaUpload.medias = medias
+//                        mediaUpload.creationDates = creationDates
+//                        
+//                        mediaUpload.completion = {
+//                            NSNotificationCenter.defaultCenter().postNotificationName("reloadContent", object: nil)
+//                        }
+//                        mediaUpload.addMedia()
+//                    }
+//                }
+//            })
+        
+            println("current size image : \((asset as! PHAsset).pixelWidth) / \((asset as! PHAsset).pixelHeight)")
             
             manager.requestImageForAsset(asset as! PHAsset,
                 targetSize: CGSizeMake(CGFloat((asset as! PHAsset).pixelWidth * Int(UIScreen.mainScreen().scale)),
                     CGFloat((asset as! PHAsset).pixelHeight * Int(UIScreen.mainScreen().scale))),
                 contentMode: PHImageContentMode.AspectFit,
-                options: nil,
+                options: options,
                 resultHandler: { (image: UIImage!, _) -> Void in
                     
-                    if let image = image, let data = UIImagePNGRepresentation(image) {
+                    if let image = image, let data = UIImageJPEGRepresentation(image, 1) {
                         
                         medias.append(data)
                         creationDates.append((asset as! PHAsset).creationDate)
@@ -99,7 +132,7 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
     func qb_imagePickerControllerDidCancel(imagePickerController: QBImagePickerController!) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-        
+    
     func addMedia() {
         
         let controller = UIAlertController(title: "Ajouter un média à ce moment", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
