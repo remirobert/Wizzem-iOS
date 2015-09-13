@@ -64,12 +64,13 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
             let retinaSquare = CGSizeMake(CGRectGetWidth(UIScreen.mainScreen().bounds) * retinaMult, CGRectGetHeight(UIScreen.mainScreen().bounds) * retinaMult)
             
             manager.requestImageForAsset(asset as! PHAsset,
-                targetSize: CGSizeMake(CGFloat((asset as! PHAsset).pixelWidth), CGFloat((asset as! PHAsset).pixelHeight)),
+                targetSize: CGSizeMake(CGFloat((asset as! PHAsset).pixelWidth * Int(UIScreen.mainScreen().scale)),
+                    CGFloat((asset as! PHAsset).pixelHeight * Int(UIScreen.mainScreen().scale))),
                 contentMode: PHImageContentMode.AspectFit,
                 options: nil,
                 resultHandler: { (image: UIImage!, _) -> Void in
                     
-                    if let image = image, let data = UIImageJPEGRepresentation(image, 0.5) {
+                    if let image = image, let data = UIImagePNGRepresentation(image) {
                         
                         medias.append(data)
                         creationDates.append((asset as! PHAsset).creationDate)
@@ -98,78 +99,7 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
     func qb_imagePickerControllerDidCancel(imagePickerController: QBImagePickerController!) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
-//    func assetsPickerController(picker: GMImagePickerController!, didFinishPickingAssets assets: [AnyObject]!) {
-//        self.pickerMedia.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-//        
-//        println("assets : \(assets)")
-//        let datas = Array<NSData>()
-//        let manager = PHImageManager.defaultManager()
-//        
-//        ProgressionData.addDataToProgression(assets.count)
-//        
-//        
-//        var medias = Array<NSData>()
-//        var creationDates = Array<NSDate>()
-//        
-//        for asset in assets {
-//            
-//            let retinaMult = UIScreen.mainScreen().scale
-//            let retinaSquare = CGSizeMake(CGRectGetWidth(UIScreen.mainScreen().bounds) * retinaMult, CGRectGetHeight(UIScreen.mainScreen().bounds) * retinaMult)
-//            
-//            manager.requestImageForAsset(asset as! PHAsset,
-//                targetSize: CGSizeMake(CGFloat((asset as! PHAsset).pixelWidth), CGFloat((asset as! PHAsset).pixelHeight)),
-//                contentMode: PHImageContentMode.AspectFit,
-//                options: nil,
-//                resultHandler: { (image: UIImage!, _) -> Void in
-//                    
-//                    if let image = image, let data = UIImageJPEGRepresentation(image, 0.5) {
-//                        
-//                        medias.append(data)
-//                        creationDates.append((asset as! PHAsset).creationDate)
-//                        
-//                        if medias.count == assets.count {
-//                            var mediaUpload = MediaUpload()
-//                            
-//                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                                mediaUpload.hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-//                            })
-//                            mediaUpload.event = self.currentEvent
-//                            mediaUpload.currentCount = 0
-//                            mediaUpload.medias = medias
-//                            mediaUpload.creationDates = creationDates
-//                            
-//                            mediaUpload.completion = {
-//                                NSNotificationCenter.defaultCenter().postNotificationName("reloadContent", object: nil)
-//                            }
-//                            mediaUpload.addMedia()
-//                        }
-//                        
-//                        
-////                        MediaUpload.addMedia(self.currentEvent, media: data, creationDate: (asset as! PHAsset).creationDate, completion: { (sucess) -> Void in
-////                            
-////                            println("download : \(ProgressionData.sharedInstance.numberDatas)")
-////                            println("current : \(ProgressionData.sharedInstance.numberUploaded)")
-////                            
-////                            if ProgressionData.sharedInstance.numberDatas == 0 ||
-////                                ProgressionData.sharedInstance.numberDatas - 1 == ProgressionData.sharedInstance.numberUploaded {
-////                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-////                                        hud.hide(true)
-////                                    })
-////                            }
-////                            
-////                            if !sucess {
-////                                Alert.error("Error upload media.")
-////                                return
-////                            }
-////                        })
-//                    }
-//            })
-//        }
-//        
-////        MediaUpload.uploadMedia(medias, creationDates: creationDates, event: self.currentEvent, view: self.view)
-//    }
-    
+        
     func addMedia() {
         
         let controller = UIAlertController(title: "Ajouter un média à ce moment", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)

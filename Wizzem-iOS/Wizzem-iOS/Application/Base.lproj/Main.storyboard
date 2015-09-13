@@ -32,8 +32,8 @@
                                     <constraint firstAttribute="height" constant="28" id="j3h-GQ-4Z5"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Evénements FB"/>
-                                    <segment title="Groupes WZ"/>
+                                    <segment title="Evénements fb"/>
+                                    <segment title="Moments Wz"/>
                                 </segments>
                                 <color key="tintColor" red="0.29803921570000003" green="0.85098039219999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <variation key="default">
