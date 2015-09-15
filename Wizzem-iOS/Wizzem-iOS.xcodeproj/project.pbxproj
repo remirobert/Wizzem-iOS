@@ -84,6 +84,10 @@
 		BB7336981B9DCD6C0054EEC7 /* MMMaterialDesignSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7336961B9DCD6C0054EEC7 /* MMMaterialDesignSpinner.m */; };
 		BB98711F1B9827B800C5E492 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB98711E1B9827B800C5E492 /* Event.swift */; };
 		BBB569B21B76144300626F12 /* UIViewControllerInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB569B11B76144300626F12 /* UIViewControllerInvitation.swift */; };
+		BBD1D4511BA7C08C006AC0CB /* DatilMomentWithCoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD1D44F1BA7C08C006AC0CB /* DatilMomentWithCoverTableViewCell.swift */; };
+		BBD1D4521BA7C08C006AC0CB /* DatilMomentWithCoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD1D4501BA7C08C006AC0CB /* DatilMomentWithCoverTableViewCell.xib */; };
+		BBD1D4541BA7C265006AC0CB /* MomentCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD1D4531BA7C265006AC0CB /* MomentCellProtocol.swift */; };
+		BBD1D4561BA7C8F9006AC0CB /* DetailCoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD1D4551BA7C8F9006AC0CB /* DetailCoverViewController.swift */; };
 		BBD571EA1B77E89C00B286F9 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD571E91B77E89C00B286F9 /* libxml2.dylib */; };
 		BBD571F11B77EB0A00B286F9 /* IM in Resources */ = {isa = PBXBuildFile; fileRef = BBD571F01B77EB0A00B286F9 /* IM */; };
 		BBD571F71B77EB3900B286F9 /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD571F21B77EB3900B286F9 /* libjpeg.a */; };
@@ -203,6 +207,10 @@
 		BB7336961B9DCD6C0054EEC7 /* MMMaterialDesignSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMaterialDesignSpinner.m; sourceTree = "<group>"; };
 		BB98711E1B9827B800C5E492 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BBB569B11B76144300626F12 /* UIViewControllerInvitation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerInvitation.swift; sourceTree = "<group>"; };
+		BBD1D44F1BA7C08C006AC0CB /* DatilMomentWithCoverTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatilMomentWithCoverTableViewCell.swift; sourceTree = "<group>"; };
+		BBD1D4501BA7C08C006AC0CB /* DatilMomentWithCoverTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatilMomentWithCoverTableViewCell.xib; sourceTree = "<group>"; };
+		BBD1D4531BA7C265006AC0CB /* MomentCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentCellProtocol.swift; sourceTree = "<group>"; };
+		BBD1D4551BA7C8F9006AC0CB /* DetailCoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCoverViewController.swift; sourceTree = "<group>"; };
 		BBD571E91B77E89C00B286F9 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		BBD571F01B77EB0A00B286F9 /* IM */ = {isa = PBXFileReference; lastKnownFileType = folder; path = IM; sourceTree = "<group>"; };
 		BBD571F21B77EB3900B286F9 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjpeg.a; path = IM/libjpeg.a; sourceTree = "<group>"; };
@@ -363,6 +371,7 @@
 				BB1C034B1B6E56CD0035F09F /* CameraController */,
 				BB1C034F1B6E56CD0035F09F /* CreationWizzController */,
 				BB1C03531B6E56CD0035F09F /* DetailMediaViewController.swift */,
+				BBD1D4551BA7C8F9006AC0CB /* DetailCoverViewController.swift */,
 				BB621E901B94DCE2000B0567 /* DetailDescriptionViewController.swift */,
 				BB1C03541B6E56CD0035F09F /* FeedNavigationViewController.swift */,
 				BB1C03551B6E56CD0035F09F /* FeedViewController.swift */,
@@ -507,6 +516,8 @@
 			children = (
 				BB1C037E1B6E56CD0035F09F /* DetailMomentCollectionViewCell.swift */,
 				BB1C037F1B6E56CD0035F09F /* DetailMomentCollectionViewCell.xib */,
+				BBD1D44F1BA7C08C006AC0CB /* DatilMomentWithCoverTableViewCell.swift */,
+				BBD1D4501BA7C08C006AC0CB /* DatilMomentWithCoverTableViewCell.xib */,
 				BB1C03801B6E56CD0035F09F /* FeedEventTableViewCell.swift */,
 				BB1C03811B6E56CD0035F09F /* HeaderCollectionReusableView.swift */,
 				BB1C03821B6E56CD0035F09F /* HeaderCollectionReusableView.xib */,
@@ -528,6 +539,7 @@
 				BB136F161B774F5100987A94 /* ParticipantTableViewCell.xib */,
 				BB73368C1B9D72730054EEC7 /* HeaderSectionEventView.swift */,
 				BB73368E1B9D72890054EEC7 /* HeaderSectionEventView.xib */,
+				BBD1D4531BA7C265006AC0CB /* MomentCellProtocol.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -647,6 +659,7 @@
 			files = (
 				BB1C03B91B6E56CD0035F09F /* HeaderCollectionReusableView.xib in Resources */,
 				BB1C03A91B6E56CD0035F09F /* Info.plist in Resources */,
+				BBD1D4521BA7C08C006AC0CB /* DatilMomentWithCoverTableViewCell.xib in Resources */,
 				BB1C03B61B6E56CD0035F09F /* DetailMomentCollectionViewCell.xib in Resources */,
 				BB136F181B774F5100987A94 /* ParticipantTableViewCell.xib in Resources */,
 				BB1C03C71B6E56CD0035F09F /* SelectMediaCollectionViewCell.xib in Resources */,
@@ -738,6 +751,7 @@
 				BB1C03C11B6E56CD0035F09F /* MomentFeedTableViewCell.swift in Sources */,
 				BB1C03AB1B6E56CD0035F09F /* Alert.swift in Sources */,
 				BB1C03981B6E56CD0035F09F /* DetailMediaViewController.swift in Sources */,
+				BBD1D4511BA7C08C006AC0CB /* DatilMomentWithCoverTableViewCell.swift in Sources */,
 				BB1C03A81B6E56CD0035F09F /* RMDateSelectionViewController.m in Sources */,
 				BB1C03A61B6E56CD0035F09F /* PhotoHelper.m in Sources */,
 				BB1C039F1B6E56CD0035F09F /* ProfileViewController.swift in Sources */,
@@ -766,6 +780,8 @@
 				BB1C03BE1B6E56CD0035F09F /* MediaCollectionViewCell.swift in Sources */,
 				BB1C03991B6E56CD0035F09F /* FeedNavigationViewController.swift in Sources */,
 				BB1C03B31B6E56CD0035F09F /* TextEditView.swift in Sources */,
+				BBD1D4561BA7C8F9006AC0CB /* DetailCoverViewController.swift in Sources */,
+				BBD1D4541BA7C265006AC0CB /* MomentCellProtocol.swift in Sources */,
 				BB5D4A441B6EA044008C89BC /* DetailProfileViewController.swift in Sources */,
 				BB1C03911B6E56CD0035F09F /* BaseViewController.swift in Sources */,
 				BB1C03BD1B6E56CD0035F09F /* LoginButton.swift in Sources */,

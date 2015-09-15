@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MomentFeedTableViewCell: UITableViewCell {
+class MomentFeedTableViewCell: UITableViewCell, MomentCellProtocol {
 
     @IBOutlet var titleMoment: UILabel!
     @IBOutlet var dataMoment: UILabel!

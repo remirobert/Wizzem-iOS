@@ -11,8 +11,6 @@ import UIKit
 class FacebookEvent: NSObject {
    
     class func fetchEventUser() {
-        println("===================================")
-        println("fetch event user")
         var facebookEvents = Array<Event>()
         var eventId = Array<String>()
         var passCount = 0
@@ -20,15 +18,12 @@ class FacebookEvent: NSObject {
         let requestGraph = FBSDKGraphRequest(graphPath: "me/events", parameters: nil, HTTPMethod: "GET")
         requestGraph.startWithCompletionHandler({ (connection: FBSDKGraphRequestConnection!, result: AnyObject!, err: NSError!) -> Void in
             if let result = result as? NSDictionary, let events = result.objectForKey("data") as? [NSDictionary] {
-                println("events : \(events)")
-                println("COUNT EVENTS : \(events.count)")
                 
                 for currentEvent in events {
                     if let idEvent = currentEvent.objectForKey("id") as? String {
                         let requestEventGraph = FBSDKGraphRequest(graphPath: "/\(idEvent)", parameters: nil, HTTPMethod: "GET")
                         requestEventGraph.startWithCompletionHandler({ (connection: FBSDKGraphRequestConnection!, result: AnyObject!, err: NSError!) -> Void in
                             if let result = result as? NSDictionary {
-                                println("result : \(result)")
 
                                 let newEvent = Event(json: result)
                                 
@@ -47,7 +42,7 @@ class FacebookEvent: NSObject {
                                     self.checkAndUpdateFacebookEvent(eventId, events: facebookEvents)
                                 }
 
-                                
+                                //couv event image.
 //                                let requestPhoto = FBSDKGraphRequest(graphPath: "/\(idEvent)?fields=cover", parameters: nil, HTTPMethod: "GET")
 //                                requestPhoto.startWithCompletionHandler({ (_, resultCover: AnyObject!, err: NSError!) -> Void in
 //                                    println("content cover : \(resultCover)")
@@ -72,14 +67,12 @@ class FacebookEvent: NSObject {
         for ev in events {
             eventsFacebook.append(ev)
         }
+        
         let querry = PFQuery(className: "Event")
+        
         querry.whereKey("facebookEvent", containedIn: eventsId)
-        
-        println("events id : \(eventsId.count) / event : \(events.count)")
-        
         querry.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, err: NSError?) -> Void in
             if err != nil {
-                println("error \(err)")
                 return
             }
             if let results = results as? [PFObject] {
@@ -88,7 +81,6 @@ class FacebookEvent: NSObject {
                         let currentFacebookItem = eventsFacebook[index]
                         
                         if currentFacebookItem.id == result["facebookEvent"] as? String {
-                            println("REMOVE DOUBLE EVENT : \(currentFacebookItem.title)")
                             self.checkJoinFacebookEvent(result)
                             eventsFacebook.removeAtIndex(index)
                             break
@@ -146,7 +138,6 @@ extension FacebookEvent {
         newParticipant["status"] = "accepted"
         
         newParticipant.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
-            println("error new participant add : \(err)")
             if err == nil {
                 self.addRelationFacebookEventToUser(event)
             }

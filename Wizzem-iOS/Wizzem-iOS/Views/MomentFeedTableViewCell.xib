@@ -122,6 +122,11 @@
                             <constraint firstAttribute="bottom" secondItem="Shj-Jy-goB" secondAttribute="bottom" constant="15" id="wqV-cW-X4t"/>
                             <constraint firstItem="GZC-RU-pf0" firstAttribute="leading" secondItem="oef-KX-Nxg" secondAttribute="leading" constant="8" id="zyU-se-lL9"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="wqV-cW-X4t"/>
+                            </mask>
+                        </variation>
                     </view>
                 </subviews>
                 <animations/>

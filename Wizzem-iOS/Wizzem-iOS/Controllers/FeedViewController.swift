@@ -42,10 +42,6 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    @IBAction func swipeCameraController(sender: AnyObject) {
-        NSNotificationCenter.defaultCenter().postNotificationName("swipControllerCamera", object: nil)
-    }
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if self.segmentData.selectedSegmentIndex == 0 {
             return self.sections.count
@@ -74,6 +70,9 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == 1 {
+            return 206
+        }
         return 97
     }
     
@@ -103,8 +102,16 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return nil
     }
     
+    //TODO : Make a protocole for the moment cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("momentCell") as! MomentFeedTableViewCell
+        var cell: UITableViewCell!
+        
+        if indexPath.row != 1 {
+            cell = tableView.dequeueReusableCellWithIdentifier("momentCell") as! MomentFeedTableViewCell
+        }
+        else {
+            cell = tableView.dequeueReusableCellWithIdentifier("momentCellCover") as! DatilMomentWithCoverTableViewCell
+        }
 
         var currentEvent: PFObject!
         
@@ -122,24 +129,30 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return cell
         }
         
-        cell.titleMoment.text = nil
-        cell.participantLabel.text = nil
-        cell.wizzLabel.text = nil
-        cell.dataMoment.text = nil
+        (cell as! MomentCellProtocol).titleMoment.text = nil
+        (cell as! MomentCellProtocol).participantLabel.text = nil
+        (cell as! MomentCellProtocol).wizzLabel.text = nil
+        (cell as! MomentCellProtocol).dataMoment.text = nil
         
         if let title = currentEvent["title"] as? String {
-            cell.titleMoment.text = title
+            (cell as! MomentCellProtocol).titleMoment.text = title
         }
         if let numberParticipant = currentEvent["nbParticipant"] as? Int {
-            cell.participantLabel.text = "Avec \(numberParticipant) participants"
+            (cell as! MomentCellProtocol).participantLabel.text = "Avec \(numberParticipant) participants"
         }
         if let wizzNumber = currentEvent["nbMedia"] as? Int {
-            cell.wizzLabel.text = "\(wizzNumber)"
+            (cell as! MomentCellProtocol).wizzLabel.text = "\(wizzNumber)"
         }
         if let city = currentEvent["city"] as? String {
-            cell.dataMoment.text = "à \(city)"
+            (cell as! MomentCellProtocol).dataMoment.text = "à \(city)"
         }
 
+        if indexPath.row == 1 {
+            (cell as! DatilMomentWithCoverTableViewCell).cover.image = UIImage(named: "Cover")
+            (cell as! DatilMomentWithCoverTableViewCell).cover.layer.masksToBounds = true
+            (cell as! DatilMomentWithCoverTableViewCell).coverButton.addTarget(self, action: "displayCoverDetailMoment",
+                forControlEvents: UIControlEvents.TouchUpInside)
+        }        
         return cell
     }
     
@@ -149,7 +162,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var dates = Array<NSDate>()
         
         for currentEvent in self.events {
-            if let startDate = currentEvent["start"] as? NSDate {
+            if let startDate = currentEvent["start"] as? NSDate where startDate.isEarlierThan(NSDate()) {
                 var currentDate = startDate.formattedDateWithFormat("EEEE d MMM")
                 currentDate = "\(currentDate)"
                 
@@ -176,9 +189,6 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             currentDateString = "\(currentDateString)"
             self.sortDaysSection.append(currentDateString)
         }
-        
-        println("sorted dates : \(dates)")
-        println("sorted strings : \(self.sortDaysSection)")
         
         self.tableView.reloadData()
     }
@@ -224,16 +234,17 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     }
                     
                     if let results = results as? [PFObject] {
-//                        if results.count == 0 {
-//                            let imageBack = UIImageView(image: UIImage(named: "AucunMoment"))
-//                            imageBack.frame = self.tableView.frame
-//                            imageBack.frame.origin = CGPointZero
-//                            imageBack.contentMode = UIViewContentMode.ScaleAspectFit
-//                            self.tableView.backgroundView = imageBack
-//                        }
-//                        else {
-//                            self.tableView.backgroundView = nil
-//                        }
+                        if results.count == 0 {
+                            self.backgroundTableView.image = UIImage(named: "AucunMoment")
+                        }
+                        else {
+                            if self.segmentData.selectedSegmentIndex == 0 {
+                                self.backgroundTableView.image = UIImage(named: "EventFB")
+                            }
+                            else {
+                                self.backgroundTableView.image = UIImage(named: "GroupeWz")
+                            }
+                        }
                         self.events.removeAll(keepCapacity: true)
                         for currentEvent in results {
                             if let numberWizz = currentEvent["nbMedia"] as? Int {
@@ -264,6 +275,10 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         NSNotificationCenter.defaultCenter().postNotificationName("displayFeedController", object: nil)
     }
     
+    func displayCoverDetailMoment() {
+        self.performSegueWithIdentifier("detailCoverSegue", sender: nil)
+    }
+    
     func refreshContentSpinner() {
         if self.segmentData.selectedSegmentIndex == 0 {
             Wait🕟Block.executeBlock("eventFacebook", limitTimer: 20, completionBlock: { () -> Void in
@@ -282,7 +297,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         
         self.tableView.backgroundView = self.backgroundTableView
-        
+        self.backgroundTableView.image = UIImage(named: "EventFB")
+
         FacebookEvent.fetchEventUser()
         
         self.querryFetchFacebookEvent = PFQuery(className: "Event")
@@ -295,6 +311,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.addSubview(refreshControl)
         
         tableView.registerNib(UINib(nibName: "MomentFeedTableViewCell", bundle: nil), forCellReuseIdentifier: "momentCell")
+        tableView.registerNib(UINib(nibName: "DatilMomentWithCoverTableViewCell", bundle: nil), forCellReuseIdentifier: "momentCellCover")
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -333,7 +350,19 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.animator.behindViewScale = 0.9
             self.animator.transitionDuration = 0.7
             controller.transitioningDelegate = self.animator
-
+        }
+        else if segue.identifier == "detailCoverSegue" {
+            (segue.destinationViewController as! DetailCoverViewController).imageCover = UIImage(named: "Cover")
+            
+            let controller = segue.destinationViewController as! UIViewController
+            
+            self.animator = ZFModalTransitionAnimator(modalViewController: controller)
+            self.animator.dragable = true
+            self.animator.bounces = false
+            self.animator.behindViewAlpha = 0.5
+            self.animator.behindViewScale = 0.9
+            self.animator.transitionDuration = 0.7
+            controller.transitioningDelegate = self.animator
         }
     }
 
