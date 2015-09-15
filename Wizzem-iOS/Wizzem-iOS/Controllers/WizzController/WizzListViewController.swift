@@ -89,11 +89,12 @@ class WizzListViewController: UIViewController, UITableViewDataSource, UITableVi
             let navigationController = segue.destinationViewController as! UINavigationController
         
             let controller = navigationController.viewControllers.first as! CreateWizzDatailViewController
+            controller.media = self.file
+            controller.type = self.type
             
             controller.blockEndCreationMoment = {(moment: PFObject?) -> Void in
-                if let moment = moment {
-                    self.addMedia(moment)
-                }
+                self.dismissViewControllerAnimated(false, completion: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName("dismissCameraController", object: nil)
             }
         }
     }
@@ -131,8 +132,6 @@ extension WizzListViewController {
                     let username = (PFUser.currentUser()!["true_username"] as? String)!
                     let nameEvent = (currentEvent["title"] as? String)!
                     let message = "\(username) à publier un nouveau média dans \(nameEvent)."
-                    
-                    println("message : \(message)")
                     
                     if let media = media as? PFObject {
                         media["creationDate"] = NSDate()

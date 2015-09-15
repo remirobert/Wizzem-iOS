@@ -15,6 +15,8 @@ class CreateWizzDatailViewController: UITableViewController, UITextFieldDelegate
     @IBOutlet var labelDetailSwitch: UILabel!
     @IBOutlet var privacySwitch: UISwitch!
     @IBOutlet var createButton: UIButton!
+    var media: PFFile!
+    var type: String!
     
     var blockEndCreationMoment: ((moment: PFObject?) -> Void)!
     
@@ -148,8 +150,11 @@ extension CreateWizzDatailViewController {
                 Alert.error("Erreur survenie lors de la création de votre moment.")
                 return
             }
-            self.blockEndCreationMoment(moment: moment)
-            self.dismissViewControllerAnimated(true, completion: nil)
+            
+            MediaFile.add(self.media, type: self.type, event: moment, blockCompletion: { (success) -> () in
+                self.blockEndCreationMoment(moment: moment)
+                self.dismissViewControllerAnimated(true, completion: nil)
+            })
         })
     }
 }
