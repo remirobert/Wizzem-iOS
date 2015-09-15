@@ -93,8 +93,9 @@ class WizzListViewController: UIViewController, UITableViewDataSource, UITableVi
             controller.type = self.type
             
             controller.blockEndCreationMoment = {(moment: PFObject?) -> Void in
-                self.dismissViewControllerAnimated(false, completion: nil)
-                NSNotificationCenter.defaultCenter().postNotificationName("dismissCameraController", object: nil)
+                self.dismissViewControllerAnimated(false, completion: { () -> Void in
+                    NSNotificationCenter.defaultCenter().postNotificationName("dismissCameraController", object: nil)
+                })
             }
         }
     }

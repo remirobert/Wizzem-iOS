@@ -17,6 +17,7 @@ class CreateWizzDatailViewController: UITableViewController, UITextFieldDelegate
     @IBOutlet var createButton: UIButton!
     var media: PFFile!
     var type: String!
+    var hud: MBProgressHUD!
     
     var blockEndCreationMoment: ((moment: PFObject?) -> Void)!
     
@@ -85,7 +86,9 @@ class CreateWizzDatailViewController: UITableViewController, UITextFieldDelegate
 extension CreateWizzDatailViewController {
     
     func createMoment() {
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        self.hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.dimBackground = true
+        self.hud.labelText = "Création du moment"
         
         PFGeoPoint.geoPointForCurrentLocationInBackground { (currentLocation:PFGeoPoint?, _) -> Void in
             if let currentLocation = currentLocation {
@@ -146,14 +149,15 @@ extension CreateWizzDatailViewController {
             
             if let error = error {
                 println("error : \(error)")
-                MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+                self.hud.hide(true)
                 Alert.error("Erreur survenie lors de la création de votre moment.")
                 return
             }
             
+            self.hud.labelText = "Upload de votre média"
             MediaFile.add(self.media, type: self.type, event: moment, blockCompletion: { (success) -> () in
                 self.blockEndCreationMoment(moment: moment)
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismissViewControllerAnimated(false, completion: nil)
             })
         })
     }

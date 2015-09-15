@@ -836,7 +836,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	CGRect allRect = self.bounds;
 	CGRect circleRect = CGRectInset(allRect, 2.0f, 2.0f);
 	CGContextRef context = UIGraphicsGetCurrentContext();
-	
+    
 	if (_annular) {
 		// Draw background
 		BOOL isPreiOS7 = NSFoundationVersionNumber < kCFCoreFoundationVersionNumber_iOS_7_0;
@@ -877,6 +877,29 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		CGContextClosePath(context);
 		CGContextFillPath(context);
 	}
+    
+    UIGraphicsPushContext(context);
+    
+        //Gradient colours
+        size_t gradLocationsNum = 2;
+        CGFloat gradLocations[2] = {0.0f, 1.0f};
+        CGFloat gradColors[8] = {0.0f,0.0f,0.0f,0.0f,0.0f,0.0f,0.0f,0.75f};
+        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+        CGGradientRef gradient = CGGradientCreateWithColorComponents(colorSpace, gradColors, gradLocations, gradLocationsNum);
+        CGColorSpaceRelease(colorSpace);
+        //Gradient center
+        CGPoint gradCenter= CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
+        //Gradient radius
+        float gradRadius = MIN(self.bounds.size.width , self.bounds.size.height) ;
+        //Gradient draw
+        CGContextDrawRadialGradient (context, gradient, gradCenter,
+                                     0, gradCenter, gradRadius,
+                                     kCGGradientDrawsAfterEndLocation);
+        CGGradientRelease(gradient);
+    
+        // Set background rect color
+    //CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
+    //UIGraphicsPopContext();
 }
 
 #pragma mark - KVO
