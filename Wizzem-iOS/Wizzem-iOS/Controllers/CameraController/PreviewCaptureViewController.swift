@@ -105,6 +105,9 @@ class PreviewCaptureViewController: UIViewController {
             })
         }
         else {
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                hud.hide(true)
+            })
             if let event = event {
                 addMedia(file, type: "photo")
             }
