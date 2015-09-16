@@ -156,8 +156,9 @@ extension CreateWizzDatailViewController {
             
             self.hud.labelText = "Upload de votre média"
             MediaFile.add(self.media, type: self.type, event: moment, blockCompletion: { (success) -> () in
-                self.blockEndCreationMoment(moment: moment)
-                self.dismissViewControllerAnimated(false, completion: nil)
+                if let application = UIApplication.sharedApplication().delegate as? AppDelegate {
+                    application.window?.rootViewController = InstanceController.fromStoryboard("mainController")
+                }
             })
         })
     }

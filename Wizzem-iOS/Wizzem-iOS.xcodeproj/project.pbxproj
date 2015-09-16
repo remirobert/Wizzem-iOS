@@ -102,6 +102,7 @@
 		BBE4E38C1B73F36C0042F11F /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE4E38B1B73F36C0042F11F /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
 		BBEE859B1B958F82001771B8 /* MediaUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEE859A1B958F82001771B8 /* MediaUpload.swift */; };
 		BBF897F91BA7F1960063909D /* AddMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF897F81BA7F1960063909D /* AddMedia.swift */; };
+		BBF897FB1BA94A980063909D /* DimBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF897FA1BA94A980063909D /* DimBackgroundView.swift */; };
 		BBF9F4771B9599F50074CD0A /* ProgressionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF9F4761B9599F50074CD0A /* ProgressionData.swift */; };
 		BBF9F4791B9624A00074CD0A /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF9F4781B9624A00074CD0A /* PushNotification.swift */; };
 		BBF9F47D1B9787100074CD0A /* FacebookEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF9F47C1B9787100074CD0A /* FacebookEvent.swift */; };
@@ -227,6 +228,7 @@
 		BBE4E38B1B73F36C0042F11F /* ALAssetsLibrary+CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+CustomPhotoAlbum.m"; sourceTree = "<group>"; };
 		BBEE859A1B958F82001771B8 /* MediaUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaUpload.swift; sourceTree = "<group>"; };
 		BBF897F81BA7F1960063909D /* AddMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMedia.swift; sourceTree = "<group>"; };
+		BBF897FA1BA94A980063909D /* DimBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DimBackgroundView.swift; path = ../Controllers/CreationWizzController/DimBackgroundView.swift; sourceTree = "<group>"; };
 		BBF9F4761B9599F50074CD0A /* ProgressionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressionData.swift; sourceTree = "<group>"; };
 		BBF9F4781B9624A00074CD0A /* PushNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
 		BBF9F47C1B9787100074CD0A /* FacebookEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookEvent.swift; sourceTree = "<group>"; };
@@ -517,6 +519,7 @@
 		BB1C037D1B6E56CD0035F09F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BBF897FA1BA94A980063909D /* DimBackgroundView.swift */,
 				BB1C037E1B6E56CD0035F09F /* DetailMomentCollectionViewCell.swift */,
 				BB1C037F1B6E56CD0035F09F /* DetailMomentCollectionViewCell.xib */,
 				BBD1D44F1BA7C08C006AC0CB /* DatilMomentWithCoverTableViewCell.swift */,
@@ -727,6 +730,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB73368D1B9D72730054EEC7 /* HeaderSectionEventView.swift in Sources */,
+				BBF897FB1BA94A980063909D /* DimBackgroundView.swift in Sources */,
 				BB723E3C1B7BEF7300BAA4F1 /* LoginViewController.swift in Sources */,
 				BB1C03A41B6E56CD0035F09F /* WizzListViewController.swift in Sources */,
 				BBB569B21B76144300626F12 /* UIViewControllerInvitation.swift in Sources */,

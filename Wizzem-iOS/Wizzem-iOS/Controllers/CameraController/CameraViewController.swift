@@ -201,7 +201,11 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController,
     }
     
     override func viewDidLoad() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "dismissController", name: "dismissCameraController", object: nil)
+
+        NSNotificationCenter.defaultCenter().addObserverForName("dismissCameraController", object: nil, queue: nil) { (_) -> Void in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: "captureMedia")
         self.previewView.addGestureRecognizer(tapGesture)
         super.viewDidLoad()
@@ -209,10 +213,6 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController,
         validateGifCaptureButton.alpha = 0
     }
     
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
-
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == SEGUE_PREVIEW_CAPTURE {
             var media: Media💿!

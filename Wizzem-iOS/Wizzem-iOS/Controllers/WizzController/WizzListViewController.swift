@@ -104,6 +104,8 @@ class WizzListViewController: UIViewController, UITableViewDataSource, UITableVi
 extension WizzListViewController {
     func addMedia(currentEvent: PFObject) {
 
+        
+        
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         hud.labelText = "Upload de votre media."
         hud.dimBackground = true

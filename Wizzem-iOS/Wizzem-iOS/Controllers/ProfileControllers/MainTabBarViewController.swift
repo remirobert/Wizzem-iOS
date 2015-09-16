@@ -16,6 +16,7 @@ class MainTabBarViewController: UITabBarController, PageController {
     var animator: ZFModalTransitionAnimator!
     
     func displayInvitation(eventId: String) {
+        println("detect invitation link")
         let alertController = UIAlertController(title: "Vous avez reçu une invitation", message: "De l'event : \(eventId)", preferredStyle: UIAlertControllerStyle.Alert)
         
         let cancel = UIAlertAction(title: "Refuser", style: UIAlertActionStyle.Default, handler: nil)
@@ -157,7 +158,6 @@ class MainTabBarViewController: UITabBarController, PageController {
             controller.transitioningDelegate = self.animator
         }
     }
-    
 }
 
 extension MainTabBarViewController {
