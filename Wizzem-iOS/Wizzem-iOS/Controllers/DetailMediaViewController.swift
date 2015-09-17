@@ -60,7 +60,7 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
         
         let options = PHImageRequestOptions()
         options.deliveryMode = .FastFormat
-        options.resizeMode = .None
+        options.resizeMode = .Fast
         options.synchronous = true
         options.networkAccessAllowed = false
         
@@ -73,7 +73,7 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
                 options: options,
                 resultHandler: { (image: UIImage!, _) -> Void in
                     
-                    if let image = image, let data = UIImageJPEGRepresentation(image, 1) {
+                    if let image = image, let data = UIImageJPEGRepresentation(image, 0.5) {
                         
                         medias.append(data)
                         creationDates.append((asset as! PHAsset).creationDate)
@@ -94,6 +94,9 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
                             }
                             mediaUpload.addMedia()
                         }
+                    }
+                    else {
+                        println("error image nil")
                     }
             })
         }

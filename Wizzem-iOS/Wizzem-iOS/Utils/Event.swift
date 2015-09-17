@@ -20,6 +20,7 @@ class Event: NSObject {
     var coverPhoto: String!
     var position: PFGeoPoint!
     var publicEvent: Bool!
+    var pictureCover: PFFile!
     
     init(json: NSDictionary) {
         super.init()

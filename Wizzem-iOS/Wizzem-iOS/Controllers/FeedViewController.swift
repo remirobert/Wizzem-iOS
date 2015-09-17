@@ -282,7 +282,10 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func refreshContentSpinner() {
         if self.segmentData.selectedSegmentIndex == 0 {
             Wait🕟Block.executeBlock("eventFacebook", limitTimer: 20, completionBlock: { () -> Void in
-                FacebookEvent.fetchEventUser()
+                FacebookKit.fetchEvents { (events) -> Void in
+                    println("result events fetched by facebook : \(events)")
+                }
+                //FacebookEvent.fetchEventUser()
             })
             self.querryFetchWizzenEvent.cancel()
             self.fetchDataFacebook()
@@ -299,7 +302,11 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tableView.backgroundView = self.backgroundTableView
         self.backgroundTableView.image = UIImage(named: "EventFB")
 
-        FacebookEvent.fetchEventUser()
+        FacebookKit.fetchEvents { (events) -> Void in
+            println("result events fetched by facebook : \(events)")
+        }
+        
+        //FacebookEvent.fetchEventUser()
         
         self.querryFetchFacebookEvent = PFQuery(className: "Event")
         self.querryFetchWizzenEvent = PFQuery(className: "Event")

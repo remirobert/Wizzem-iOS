@@ -27,33 +27,52 @@ class FacebookEvent: NSObject {
 
                                 let newEvent = Event(json: result)
                                 
-                                eventId.append(newEvent.id)
-                                facebookEvents.append(newEvent)
-                                passCount += 1
-                                
-                                if passCount == events.count {
+                                let requestPhoto = FBSDKGraphRequest(graphPath: "/\(idEvent)?fields=cover", parameters: nil, HTTPMethod: "GET")
+                                requestPhoto.startWithCompletionHandler({ (_, resultCover: AnyObject!, err: NSError!) -> Void in
+                                    println("content cover : \(resultCover)")
                                     
-                                    var notificationsGroup = Array<String>()
-                                    for currentId in eventId {
-                                        notificationsGroup.append("c\(currentId)")
+                                    if let resultCover = resultCover as? NSDictionary,
+                                        cover = resultCover.objectForKey("cover") as? NSDictionary,
+                                        coverSourceUrl = cover.objectForKey("source") as? String  {
+                                        newEvent.coverPhoto = coverSourceUrl
+                                            
+                                            
+                                        ImageDownloader.download(coverSourceUrl, blockCompletion: { (image) -> Void in
+                                            if let image = image {
+                                                let fileCover = PFFile(data: UIImageJPEGRepresentation(image, 0.5))
+                                                newEvent.pictureCover = fileCover
+                                            }
+                                            eventId.append(newEvent.id)
+                                            facebookEvents.append(newEvent)
+                                            passCount += 1
+                                            
+                                            if passCount == events.count {
+                                                
+                                                var notificationsGroup = Array<String>()
+                                                for currentId in eventId {
+                                                    notificationsGroup.append("c\(currentId)")
+                                                }
+                                                PushNotification.addNotifications(notificationsGroup)
+                                                self.checkAndUpdateFacebookEvent(eventId, events: facebookEvents)
+                                            }
+                                        })
                                     }
-                                    PushNotification.addNotifications(notificationsGroup)
-                                    
-                                    self.checkAndUpdateFacebookEvent(eventId, events: facebookEvents)
-                                }
-
-                                //couv event image.
-//                                let requestPhoto = FBSDKGraphRequest(graphPath: "/\(idEvent)?fields=cover", parameters: nil, HTTPMethod: "GET")
-//                                requestPhoto.startWithCompletionHandler({ (_, resultCover: AnyObject!, err: NSError!) -> Void in
-//                                    println("content cover : \(resultCover)")
-//                                    
-//                                    if let resultCover = resultCover as? NSDictionary,
-//                                        cover = resultCover.objectForKey("cover") as? NSDictionary,
-//                                        coverSourceUrl = cover.objectForKey("source") as? String  {
-//                                        newEvent.coverPhoto = coverSourceUrl
-//                                    }
-//                                    
-//                                })
+                                    else {
+                                        eventId.append(newEvent.id)
+                                        facebookEvents.append(newEvent)
+                                        passCount += 1
+                                        
+                                        if passCount == events.count {
+                                            
+                                            var notificationsGroup = Array<String>()
+                                            for currentId in eventId {
+                                                notificationsGroup.append("c\(currentId)")
+                                            }
+                                            PushNotification.addNotifications(notificationsGroup)
+                                            self.checkAndUpdateFacebookEvent(eventId, events: facebookEvents)
+                                        }
+                                    }
+                                })
                             }
                         })
                     }
@@ -108,6 +127,7 @@ class FacebookEvent: NSObject {
             event["closed"] = false
             event["facebook"] = true
             event["position"] = currentEvent.position
+            event["picture"] = currentEvent.pictureCover
             
             event.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
                 if err != nil {
