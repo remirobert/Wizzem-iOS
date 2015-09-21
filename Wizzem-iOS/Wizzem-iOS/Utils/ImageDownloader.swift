@@ -19,7 +19,7 @@ class ImageDownloader: NSObject {
             
             let downloadTask = manager.downloadTaskWithRequest(request, progress: nil, destination: { (url: NSURL, response: NSURLResponse) -> NSURL in
                 if let documentsPath = NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory,
-                    inDomains: NSSearchPathDomainMask.UserDomainMask).first as? NSURL,
+                    inDomains: NSSearchPathDomainMask.UserDomainMask).first,
                     let suggestFile = response.suggestedFilename {
                         return documentsPath.URLByAppendingPathComponent(suggestFile)
                 }
@@ -36,6 +36,7 @@ class ImageDownloader: NSObject {
                         blockCompletion(image: nil)
                     }
             })
+            downloadTask.resume()
         }
     }
 }

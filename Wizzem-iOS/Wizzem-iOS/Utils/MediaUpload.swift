@@ -35,7 +35,7 @@ class MediaUpload: NSObject {
             let nameEvent = (self.event["title"] as? String)!
             let message = "\(username) à publier dans \(nameEvent)."
             
-            println("message : \(message)")
+            print("message : \(message)")
             
             if err != nil {
                 Alert.error("Vous devez selectionnez ou créer un moment avant de publier.")
@@ -52,7 +52,7 @@ class MediaUpload: NSObject {
             
             PFCloud.callFunctionInBackground("MediaAdd", withParameters: params as [NSObject : AnyObject]) { (media :AnyObject?, error: NSError?) -> Void in
                 if let error = error {
-                    println("error : \(error)")
+                    print("error : \(error)")
                     Alert.error("Erreur lors de l'uplaod de votre Wizz.")
                     self.currentCount! += 1
                     self.addMedia()
@@ -71,7 +71,7 @@ class MediaUpload: NSObject {
                 }
             }
             }, progressBlock: { (progress: Int32) -> Void in
-                println("progress : \(progress)")
+                print("progress : \(progress)")
                 //dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.hud.labelText = "Upload [\(self.currentCount + 1) / \(self.medias.count)] (\(progress)%)"
                 //})
@@ -97,7 +97,7 @@ class MediaUpload: NSObject {
                 newParticipant["status"] = "accepted"
                 newParticipant.saveInBackgroundWithBlock({ (success: Bool, _) -> Void in
                     if success {
-                        println("sucess add")
+                        print("sucess add")
                         
                         let name = PFUser.currentUser()!["true_username"] as? String
                         let nameEvent = event["title"] as? String
@@ -117,7 +117,7 @@ class MediaUpload: NSObject {
     }
     
     class func uploadMedia(medias: [NSData], creationDates: [NSDate], event: PFObject, view: UIView) {
-        var mediaUpload = MediaUpload()
+        let mediaUpload = MediaUpload()
 
         mediaUpload.hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
         mediaUpload.event = event

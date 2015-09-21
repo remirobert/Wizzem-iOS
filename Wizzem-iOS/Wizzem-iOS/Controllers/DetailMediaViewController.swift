@@ -52,7 +52,6 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
     func qb_imagePickerController(imagePickerController: QBImagePickerController!, didFinishPickingAssets assets: [AnyObject]!) {
         self.dismissViewControllerAnimated(true, completion: nil)
         
-        let datas = Array<NSData>()
         let manager = PHImageManager.defaultManager()
         
         var medias = Array<NSData>()
@@ -71,15 +70,15 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
                     CGFloat((asset as! PHAsset).pixelHeight * Int(UIScreen.mainScreen().scale))),
                 contentMode: PHImageContentMode.AspectFit,
                 options: options,
-                resultHandler: { (image: UIImage!, _) -> Void in
+                resultHandler: { (image: UIImage?, _) -> Void in
                     
                     if let image = image, let data = UIImageJPEGRepresentation(image, 0.5) {
                         
                         medias.append(data)
-                        creationDates.append((asset as! PHAsset).creationDate)
+                        creationDates.append((asset as! PHAsset).creationDate!)
                         
                         if medias.count == assets.count {
-                            var mediaUpload = MediaUpload()
+                            let mediaUpload = MediaUpload()
                             
                             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                 mediaUpload.hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -96,7 +95,7 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
                         }
                     }
                     else {
-                        println("error image nil")
+                        print("error image nil")
                     }
             })
         }
@@ -177,7 +176,7 @@ class DetailMediaViewController: UIViewController, UICollectionViewDataSource, U
 
             (cell as! DetailMomentCollectionViewCell).buttonDisplayDescription.addTarget(self, action: "displayDescriptionDetail", forControlEvents: UIControlEvents.TouchUpInside)
             
-            if let creator = currentEvent["creator"] as? PFUser {
+            if let _ = currentEvent["creator"] as? PFUser {
                 if (currentEvent["creator"] as! PFObject).objectId! != PFUser.currentUser()?.objectId! {
                     (cell as! DetailMomentCollectionViewCell).settingButton.alpha = 0
                 }
@@ -290,7 +289,7 @@ extension DetailMediaViewController {
             
             let param = NSMutableDictionary()
             param.setValue(self.currentEvent.objectId!, forKey: "eventId")
-            println("param : \(param)")
+            print("param : \(param)")
             
             let querry = PFQuery(className: "Participant")
             querry.whereKey("eventId", equalTo: self.currentEvent)
@@ -374,7 +373,7 @@ extension DetailMediaViewController {
                     if let data = data {
                         let ala = ALAssetsLibrary()
                         ala.writeImageDataToSavedPhotosAlbum(data, metadata: nil, completionBlock: { (_, error: NSError!) -> Void in
-                            println("error:  \(error)")
+                            print("error:  \(error)")
                         })
                     }
                 })

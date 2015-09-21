@@ -39,13 +39,13 @@ class PrivacyDetailViewController: UIViewController {
         
         let filter = CIFilter(name: "CIQRCodeGenerator")
         
-        filter.setValue(data, forKey: "inputMessage")
-        filter.setValue("Q", forKey: "inputCorrectionLevel")
+        filter!.setValue(data, forKey: "inputMessage")
+        filter!.setValue("Q", forKey: "inputCorrectionLevel")
         
-        qrcodeImage = filter.outputImage
+        qrcodeImage = filter!.outputImage
         
-        let scaleX = imageFlashCode.frame.size.width / qrcodeImage.extent().size.width
-        let scaleY = imageFlashCode.frame.size.height / qrcodeImage.extent().size.height
+        let scaleX = imageFlashCode.frame.size.width / qrcodeImage.extent.size.width
+        let scaleY = imageFlashCode.frame.size.height / qrcodeImage.extent.size.height
         let transformedImage = qrcodeImage.imageByApplyingTransform(CGAffineTransformMakeScale(scaleX, scaleY))
         
         imageFlashCode.image = UIImage(CIImage: transformedImage)

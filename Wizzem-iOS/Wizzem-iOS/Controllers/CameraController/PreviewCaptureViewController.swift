@@ -31,9 +31,8 @@ class PreviewCaptureViewController: UIViewController {
     
     @IBAction func shareMedia(sender: AnyObject) {
         var imagesGif: [UIImage]?
-        var file: PFFile!
         switch capturedMedia! {
-        case Media💿.Gif(let data, let frames):imagesGif = addTextOnGif(frames)
+        case Media💿.Gif(_, let frames):imagesGif = addTextOnGif(frames)
         default: Void()
         }
         
@@ -45,7 +44,7 @@ class PreviewCaptureViewController: UIViewController {
         }
         else {
             let img = drawView.renderTextOnView(self.imageView)
-            let controller = UIActivityViewController(activityItems: [UIImagePNGRepresentation(img)], applicationActivities: nil)
+            let controller = UIActivityViewController(activityItems: [UIImagePNGRepresentation(img!)!], applicationActivities: nil)
             self.presentViewController(controller, animated: true, completion: nil)
         }
         
@@ -56,7 +55,6 @@ class PreviewCaptureViewController: UIViewController {
         switch capturedMedia! {
         case Media💿.Photo(let image): shareMedia = image
         case Media💿.Gif(let data, _): shareMedia = data
-        default: break
         }
         
         let shareController = UIActivityViewController(activityItems: [shareMedia], applicationActivities: nil)
@@ -82,10 +80,10 @@ class PreviewCaptureViewController: UIViewController {
         var imagesGif: [UIImage]?
         var file: PFFile!
         switch capturedMedia! {
-        case Media💿.Photo(let image):
+        case Media💿.Photo(_):
             let img = drawView.renderTextOnView(self.imageView)
-            file = PFFile(data: UIImageJPEGRepresentation(img, 0.5))
-        case Media💿.Gif(let data, let frames): imagesGif = addTextOnGif(frames)
+            file = PFFile(data: UIImageJPEGRepresentation(img!, 0.5)!)
+        case Media💿.Gif(_, let frames): imagesGif = addTextOnGif(frames)
         }
         
         if let images = imagesGif {
@@ -95,7 +93,7 @@ class PreviewCaptureViewController: UIViewController {
                         hud.hide(true)
                     })
                     file = PFFile(data: dataGif)
-                    if let event = self.event {
+                    if let _ = self.event {
                         self.addMedia(file, type: "gif")
                     }
                     else {
@@ -108,7 +106,7 @@ class PreviewCaptureViewController: UIViewController {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 hud.hide(true)
             })
-            if let event = event {
+            if let _ = event {
                 addMedia(file, type: "photo")
             }
             else {
@@ -127,7 +125,7 @@ class PreviewCaptureViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.interactivePopGestureRecognizer.delegate = nil
+        navigationController?.interactivePopGestureRecognizer!.delegate = nil
 
         self.drawView.textColor = UIColor.whiteColor()
         self.drawView.fontSize = 40
@@ -147,7 +145,6 @@ class PreviewCaptureViewController: UIViewController {
             imageView.image = image
         case Media💿.Gif(let data, _):
             imageView.animatedImage = FLAnimatedImage(GIFData: data)
-        default: break
         }
         
         let querry = PFQuery(className: "Event")
@@ -197,7 +194,7 @@ extension PreviewCaptureViewController {
                 { (media: AnyObject?, error: NSError?) -> Void in
                 hud.hide(true)
                 if let error = error {
-                    println("error : \(error)")
+                    print("error : \(error)")
                     Alert.error("Erreur lors de l'uplaod de votre Wizz.")
                 }
                 else {
@@ -205,7 +202,7 @@ extension PreviewCaptureViewController {
                     let nameEvent = (self.event!["title"] as? String)!
                     let message = "\(username) à publier un nouveau média dans \(nameEvent)."
                     
-                    println("message : \(message)")
+                    print("message : \(message)")
                     
                     if let media = media as? PFObject {
                         media["creationDate"] = NSDate()
@@ -235,7 +232,7 @@ extension PreviewCaptureViewController {
         
         PushNotification.addNotification("c\(self.currentEvent!.objectId!)")
         
-        println("try join \(PFUser.currentUser()!) to \(self.currentEvent!)")
+        print("try join \(PFUser.currentUser()!) to \(self.currentEvent!)")
         
         querry.findObjectsInBackgroundWithBlock { (results: [AnyObject]?, _) -> Void in
             if results == nil || results?.count == 0 {
@@ -247,7 +244,7 @@ extension PreviewCaptureViewController {
                 newParticipant["status"] = "accepted"
                 newParticipant.saveInBackgroundWithBlock({ (success: Bool, _) -> Void in
                     if success {
-                        println("sucess add")
+                        print("sucess add")
 
                         if let numberParticipant = self.currentEvent!["nbParticipant"] as? Int {
                             self.currentEvent!["nbParticipant"] = numberParticipant + 1
@@ -265,8 +262,8 @@ extension PreviewCaptureViewController {
                 })
             }
             else {
-                println("results : \(results)")
-                println("you are in already")
+                print("results : \(results)")
+                print("you are in already")
                 self.dismissViewControllerAnimated(true, completion: { () -> Void in
                     NSNotificationCenter.defaultCenter().postNotificationName("reloadContent", object: nil)
                     NSNotificationCenter.defaultCenter().postNotificationName("dismissCameraController", object: nil)

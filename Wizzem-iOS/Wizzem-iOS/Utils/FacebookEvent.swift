@@ -29,7 +29,7 @@ class FacebookEvent: NSObject {
                                 
                                 let requestPhoto = FBSDKGraphRequest(graphPath: "/\(idEvent)?fields=cover", parameters: nil, HTTPMethod: "GET")
                                 requestPhoto.startWithCompletionHandler({ (_, resultCover: AnyObject!, err: NSError!) -> Void in
-                                    println("content cover : \(resultCover)")
+                                    print("content cover : \(resultCover)")
                                     
                                     if let resultCover = resultCover as? NSDictionary,
                                         cover = resultCover.objectForKey("cover") as? NSDictionary,
@@ -39,7 +39,7 @@ class FacebookEvent: NSObject {
                                             
                                         ImageDownloader.download(coverSourceUrl, blockCompletion: { (image) -> Void in
                                             if let image = image {
-                                                let fileCover = PFFile(data: UIImageJPEGRepresentation(image, 0.5))
+                                                let fileCover = PFFile(data: UIImageJPEGRepresentation(image, 0.5)!)
                                                 newEvent.pictureCover = fileCover
                                             }
                                             eventId.append(newEvent.id)
@@ -131,7 +131,7 @@ class FacebookEvent: NSObject {
             
             event.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
                 if err != nil {
-                    println("error save new facebook event : \(err)")
+                    print("error save new facebook event : \(err)")
                 }
                 else {
                     self.joinFacebookEvent(event)

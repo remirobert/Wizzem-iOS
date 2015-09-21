@@ -51,14 +51,14 @@ class Report: NSObject {
         let manager = AFHTTPRequestOperationManager()
         manager.GET("https://mandrillapp.com/api/1.0/messages/send.json", parameters: param, success: { (response: AFHTTPRequestOperation, result: AnyObject?) -> Void in
             
-            println("response : \(response)")
-            println("result : \(result)")
+            print("response : \(response)")
+            print("result : \(result)")
             
-            println("send success")
+            print("send success")
             
             }) { (_, err: NSError) -> Void in
             
-                println("err : \(err)")
+                print("err : \(err)")
         }
     }
 }

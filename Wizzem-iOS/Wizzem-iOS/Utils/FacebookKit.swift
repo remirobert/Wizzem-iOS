@@ -61,7 +61,7 @@ class FacebookKit: NSObject {
     }
     
     class func fetchEvents(blockCompletion:((events: [Event]?) -> Void)) {
-        println("fetch event facebook called")
+        print("fetch event facebook called")
         self.sharedInstance.blockCompletion = blockCompletion
         self.sharedInstance.eventsList.removeAll(keepCapacity: true)
         self.sharedInstance.objectsEventsList.removeAll(keepCapacity: true)
@@ -83,7 +83,7 @@ extension FacebookKit {
             if let result = result as? NSDictionary, let events = result.objectForKey("data") as? [NSDictionary] {
                 self.eventsList = events
                 
-                println("fetched events : \(self.eventsList)")
+                print("fetched events : \(self.eventsList)")
                 blockCompletionEvent(success: true)
                 return
             }
@@ -100,7 +100,7 @@ extension FacebookKit {
 
             if let result = result as? NSDictionary {
                 let newEvent = Event(json: result)
-                println("new event created : \(idEvent)")
+                print("new event created : \(idEvent)")
                 self.fetchCoverPhotoEvent(idEvent, blockCompletionCover: { (image) -> Void in
                     newEvent.pictureCover = image
                     blockCompletionEvent(event: newEvent)
@@ -114,11 +114,11 @@ extension FacebookKit {
     }
     
     private func fetchCoverPhotoEvent(idEvent: String, blockCompletionCover: ((image: PFFile?) -> Void)) {
-        println("try fetch cover image")
+        print("try fetch cover image")
         let requestGraph = FBSDKGraphRequest(graphPath: "/\(idEvent)?fields=cover", parameters: nil, HTTPMethod: "GET")
         requestGraph.startWithCompletionHandler { (_, result: AnyObject!, error: NSError!) -> Void in
             if error != nil {
-                println("cover error : \(error))")
+                print("cover error : \(error))")
                 blockCompletionCover(image: nil)
                 return
             }
@@ -126,11 +126,11 @@ extension FacebookKit {
                 cover = resultCover.objectForKey("cover") as? NSDictionary,
                 coverSourceUrl = cover.objectForKey("source") as? String {
                     ImageDownloader.download(coverSourceUrl, blockCompletion: { (image) -> Void in
-                        println("get image cover")
+                        print("get image cover")
                         if let image = image {
-                            let fileCover = PFFile(data: UIImageJPEGRepresentation(image, 0.5))
+                            let fileCover = PFFile(data: UIImageJPEGRepresentation(image, 0.5)!)
                             fileCover.saveInBackgroundWithBlock({ (_, _) -> Void in
-                                println("result cover image : \(fileCover)")
+                                print("result cover image : \(fileCover)")
                                 blockCompletionCover(image: fileCover)
                             })
                         }
@@ -150,7 +150,7 @@ extension FacebookKit {
 extension FacebookKit {
     
     private func checkAndUpdateFacebookEvent(blockCompletion: (() -> ())) {
-        println("check and update facebook events.")
+        print("check and update facebook events.")
         var eventsFacebook = self.objectsEventsList
         let querry = PFQuery(className: "Event")
         

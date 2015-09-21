@@ -19,12 +19,12 @@ class LoginTableViewController: UITableViewController, UITextFieldDelegate {
         
             if textField.tag == 1 {
                 if let completionUpdateEmail = self.completionUpdateEmail {
-                    completionUpdateEmail(content: textField.text)
+                    completionUpdateEmail(content: textField.text!)
                 }
             }
             else {
                 if let completionUpdatePassword = self.completionUpdatePassword {
-                    completionUpdatePassword(content: textField.text)
+                    completionUpdatePassword(content: textField.text!)
                 }
             }
             

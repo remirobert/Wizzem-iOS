@@ -30,12 +30,12 @@ class WizzListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("wizzCell") as! LastWizzMomentTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("wizzCell") as! LastWizzMomentTableViewCell
         
         cell.title.text = nil
         cell.date.text = nil
         
-        var currentEvent = events[indexPath.row]
+        let currentEvent = events[indexPath.row]
         
         currentEvent.fetchIfNeededInBackgroundWithBlock { (event: PFObject?, _) -> Void in
             if let event = event {
@@ -128,7 +128,7 @@ extension WizzListViewController {
             PFCloud.callFunctionInBackground("MediaAdd", withParameters: params as [NSObject : AnyObject]) { (media: AnyObject?, error: NSError?) -> Void in
                 hud.hide(true)
                 if let error = error {
-                    println("error : \(error)")
+                    print("error : \(error)")
                     Alert.error("Erreur lors de l'uplaod de votre Wizz.")
                 }
                 else {

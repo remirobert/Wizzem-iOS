@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("P2PJVDbhrj37sCtIhVdKvrzrQwq5jFYEIAYsoDfb", clientKey: "G9h48iFlrF6z2IKAGaXGFolTekaVg04rQpqb7AQZ")
         PFFacebookUtils.initializeFacebook()
         
-        var typeSettingsNotification = (UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound)
+        let typeSettingsNotification: UIUserNotificationType = ([UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound])
         let notificationSettings = UIUserNotificationSettings(forTypes: typeSettingsNotification, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         UIApplication.sharedApplication().registerForRemoteNotifications()
@@ -48,10 +48,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-        println("application recaived link: \(url.absoluteString)")
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        print("application recaived link: \(url.absoluteString)")
 
-        if let eventId = url.absoluteString?.componentsSeparatedByString("eventId=").last {
+        if let eventId = url.absoluteString.componentsSeparatedByString("eventId=").last {
             if (PFUser.currentUser() != nil) {
                 window?.rootViewController = InstanceController.fromStoryboard("mainController")
                 (window?.rootViewController as! MainTabBarViewController).displayInvitation(eventId)
@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-        if let eventId = url.absoluteString?.componentsSeparatedByString("eventId=").last {
+        if let eventId = url.absoluteString.componentsSeparatedByString("eventId=").last {
             if (PFUser.currentUser() != nil) {
                 window?.rootViewController = InstanceController.fromStoryboard("mainController")
                 (window?.rootViewController as! MainTabBarViewController).displayInvitation(eventId)
@@ -84,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         currentInstallation.setDeviceTokenFromData(deviceToken)
         currentInstallation.channels = ["global"]
         currentInstallation.saveInBackgroundWithBlock { (_, err: NSError?) -> Void in
-            println("err set device token : \(err)")
+            print("err set device token : \(err)")
         }
     }
 }

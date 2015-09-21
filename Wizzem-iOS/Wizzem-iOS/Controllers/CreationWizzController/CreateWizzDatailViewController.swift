@@ -43,10 +43,10 @@ class CreateWizzDatailViewController: UITableViewController, UITextFieldDelegate
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        if count(textField.text) > 0 || count(string) > 0 {
+        if textField.text!.characters.count > 0 || string.characters.count > 0 {
             self.createButton.enabled = true
         }
-        if count(textField.text) + count(string) == 0 {
+        if textField.text!.characters.count + string.characters.count == 0 {
             self.createButton.enabled = false
         }
         if string == "\n" {
@@ -57,7 +57,7 @@ class CreateWizzDatailViewController: UITableViewController, UITextFieldDelegate
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        if count(textField.text) > 0 {
+        if textField.text!.characters.count > 0 {
             self.createButton.enabled = true
         }
         else {
@@ -97,7 +97,7 @@ extension CreateWizzDatailViewController {
                 
                 RRLocationManager.reverseGeocodingFromLocation(location, { (address, error) -> () in
                     if let address = address?.first {
-                        var wizz = PFObject(className: "Event")
+                        let wizz = PFObject(className: "Event")
                         wizz["title"] = self.titleTextField.text!
                         wizz["description"] = self.descriptionTextView.text
                         wizz["creator"] = PFUser.currentUser()
@@ -113,7 +113,7 @@ extension CreateWizzDatailViewController {
                         
                         wizz.saveInBackgroundWithBlock { (_, error: NSError?) -> Void in
                             
-                            if let error = error {
+                            if let _ = error {
                                 MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                                 Alert.error("Erreur lors de la creation de votre moment.")
                                 return
@@ -148,7 +148,7 @@ extension CreateWizzDatailViewController {
         PFCloud.callFunctionInBackground("ParticipantAdd", withParameters: params as [NSObject : AnyObject], block: { (result: AnyObject?, error: NSError?) -> Void in
             
             if let error = error {
-                println("error : \(error)")
+                print("error : \(error)")
                 self.hud.hide(true)
                 Alert.error("Erreur survenie lors de la création de votre moment.")
                 return

@@ -22,7 +22,7 @@ class SettingsViewController: UIViewController {
                 return
             }
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewControllerWithIdentifier("loginSignupController") as! UIViewController
+            let controller = storyboard.instantiateViewControllerWithIdentifier("loginSignupController") 
             self.presentViewController(controller, animated: true, completion: nil)
         }
         

@@ -47,7 +47,7 @@ class CameraViewController: UIViewController, PBJVisionDelegate, PageController,
     var selectedTextContent: String!
     var currentCameraMode: CameraMode = CameraMode.Photo
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             capturedImage = image
             photoNumberGif.text = "0"

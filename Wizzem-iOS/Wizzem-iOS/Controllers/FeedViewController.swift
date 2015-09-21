@@ -177,7 +177,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
         
-        dates.sort { (date1, date2) -> Bool in
+        dates.sortInPlace { (date1, date2) -> Bool in
             if date1.timeIntervalSince1970 < date2.timeIntervalSince1970 {
                 return true
             }
@@ -208,7 +208,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         self.refreshControl.endRefreshing()
                     }
 
-                    println("result : \(results)")
+                    print("result : \(results)")
                     if let results = results as? [PFObject] {
                         self.events = results
                         self.initSectionFacebookEvents()
@@ -283,7 +283,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if self.segmentData.selectedSegmentIndex == 0 {
             Wait🕟Block.executeBlock("eventFacebook", limitTimer: 20, completionBlock: { () -> Void in
                 FacebookKit.fetchEvents { (events) -> Void in
-                    println("result events fetched by facebook : \(events)")
+                    print("result events fetched by facebook : \(events)")
                 }
                 //FacebookEvent.fetchEventUser()
             })
@@ -303,7 +303,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.backgroundTableView.image = UIImage(named: "EventFB")
 
         FacebookKit.fetchEvents { (events) -> Void in
-            println("result events fetched by facebook : \(events)")
+            print("result events fetched by facebook : \(events)")
         }
         
         //FacebookEvent.fetchEventUser()
@@ -347,7 +347,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if segue.identifier == "detailEventSegue" {
             (segue.destinationViewController as! DetailMediaViewController).currentEvent = sender as! PFObject
             
-            let controller = segue.destinationViewController as! UIViewController
+            let controller = segue.destinationViewController 
             
             self.animator = ZFModalTransitionAnimator(modalViewController: controller)
             self.animator.dragable = true
@@ -361,7 +361,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         else if segue.identifier == "detailCoverSegue" {
             (segue.destinationViewController as! DetailCoverViewController).imageCover = UIImage(named: "Cover")
             
-            let controller = segue.destinationViewController as! UIViewController
+            let controller = segue.destinationViewController 
             
             self.animator = ZFModalTransitionAnimator(modalViewController: controller)
             self.animator.dragable = true

@@ -43,7 +43,7 @@ class ParticipantListViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("participantCell") as! ParticipantTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("participantCell") as! ParticipantTableViewCell
         
         let participant = participants[indexPath.row]
         cell.loadParticipant(participant["userId"] as! PFUser)

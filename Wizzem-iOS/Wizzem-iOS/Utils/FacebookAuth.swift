@@ -15,7 +15,7 @@ class FacebookAuth {
         FBRequestConnection.startForMeWithCompletionHandler { (_, result: AnyObject!, error: NSError!) -> Void in
             if let result = result as? NSDictionary {
                 
-                println("result \(result)")
+                print("result \(result)")
                 
                 let facebookID = result.objectForKey("id") as? String
                 let firstName = result.objectForKey("first_name") as? String
@@ -54,7 +54,7 @@ class FacebookAuth {
             }
             else {
                 
-                println("error : \(error)")
+                print("error : \(error)")
                 
                 blockCompletion(success: false, error: error)
             }
@@ -64,13 +64,13 @@ class FacebookAuth {
     class func login(completionBlock: (result: Result)->()) {
         FBSession.activeSession()
         PFFacebookUtils.logInWithPermissions(permissionsArray, block: { (user: PFUser?, error: NSError?) -> Void in
-            println("error : \(error)")
+            print("error : \(error)")
             if (user == nil) {
                 completionBlock(result: Result.👎(statusCode: nil, error: error))
             }
             else {
                 if user!.isNew {
-                    println("FACEBOOK new user creation")
+                    print("FACEBOOK new user creation")
                     self.createNewUser(user!, blockCompletion: { (success, error) -> Void in
                         if success {
                             completionBlock(result: Result.👍)
@@ -81,7 +81,7 @@ class FacebookAuth {
                     })
                 }
                 else {
-                    println("FACEBOOK user login ok !")
+                    print("FACEBOOK user login ok !")
                     completionBlock(result: Result.👍)
                 }
             }

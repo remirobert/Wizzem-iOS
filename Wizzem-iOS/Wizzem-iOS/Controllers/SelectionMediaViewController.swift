@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectionMediaViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class SelectionMediaViewController: UIViewController {
 
     @IBOutlet var numberWizzLabel: UILabel!
     var currentEvent: PFObject!
@@ -71,7 +71,7 @@ extension SelectionMediaViewController: UICollectionViewDataSource, UICollection
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("selectionMediaCell", forIndexPath: indexPath) as! SelectMediaCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("selectionMediaCell", forIndexPath: indexPath) as! SelectMediaCollectionViewCell
         
         cell.contentView.layer.borderWidth = 0
         

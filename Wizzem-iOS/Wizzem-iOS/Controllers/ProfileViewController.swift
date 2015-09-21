@@ -18,9 +18,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet var pictureProfile: FLAnimatedImageView!
     @IBOutlet var usernameLabel: UILabel!
     
-    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            if result.value == MFMailComposeResultSent.value {
+            if result.rawValue == MFMailComposeResultSent.rawValue {
                 Alert.error("Merci d'avoir contribué à l'amélioration de Wizzem 😀👍")
             }
         })
@@ -89,7 +89,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("momentCell") as! MomentFeedTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("momentCell") as! MomentFeedTableViewCell
         
         let currentEvent = events[indexPath.row]
         
@@ -166,7 +166,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                             if let dataType = user["typePicture"] as? String where dataType == "GIF" {
                                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                     let animatedImage = FLAnimatedImage(animatedGIFData: data)
-                                    println("aimated image : \(animatedImage)")
+                                    print("aimated image : \(animatedImage)")
                                     self.pictureProfile.animatedImage = animatedImage
                                 })
                             }
@@ -220,7 +220,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         if segue.identifier == "detailEventSegue" {
             (segue.destinationViewController as! DetailMediaViewController).currentEvent = sender as! PFObject
             
-            let controller = segue.destinationViewController as! UIViewController
+            let controller = segue.destinationViewController 
             
             self.animator = ZFModalTransitionAnimator(modalViewController: controller)
             self.animator.dragable = true

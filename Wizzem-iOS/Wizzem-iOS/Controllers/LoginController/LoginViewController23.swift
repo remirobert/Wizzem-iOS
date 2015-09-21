@@ -61,11 +61,11 @@ class LoginViewController2: UIViewController {
             if let loginController = segue.destinationViewController as? LoginTableViewController {
                 loginController.completionUpdateEmail = {(content: String) -> Void in
                     self.emailText = content
-                    println("email content : \(self.emailText!)")
+                    print("email content : \(self.emailText!)")
                 }
                 loginController.completionUpdatePassword = {(content: String) -> Void in
                     self.passwordText = content
-                    println("password content : \(self.passwordText!)")
+                    print("password content : \(self.passwordText!)")
                 }
                 loginController.completionFacebookAuth = {() -> Void in
                     self.facebookLogin()

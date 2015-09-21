@@ -44,7 +44,7 @@ class Alert: NSObject, UIAlertViewDelegate {
     
     class func withBlock(message: String, completionSuccess:(() -> Void), completionCancel:(() -> Void)) {
        
-        var alert = Alert()
+        let alert = Alert()
         alert.initAlertViewWithBlock(message, completionSuccess: completionSuccess, completionCancel: completionCancel)
     }
     

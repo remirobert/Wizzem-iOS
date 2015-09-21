@@ -18,8 +18,8 @@ class ProfileSettingTableViewController: UITableViewController, UIImagePickerCon
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        var image = info[UIImagePickerControllerOriginalImage] as! UIImage
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         profilePicture.image = image
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -32,7 +32,7 @@ class ProfileSettingTableViewController: UITableViewController, UIImagePickerCon
     }
 
     @IBAction func setModificationProfile(sender: AnyObject) {
-        if let photoData = UIImageJPEGRepresentation(profilePicture.image, 0.1) {
+        if let photoData = UIImageJPEGRepresentation(profilePicture.image!, 0.1) {
             
             let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             hud.labelText = "sauvegarde de vos mofidications"

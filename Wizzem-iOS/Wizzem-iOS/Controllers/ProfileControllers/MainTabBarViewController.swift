@@ -16,7 +16,7 @@ class MainTabBarViewController: UITabBarController, PageController {
     var animator: ZFModalTransitionAnimator!
     
     func displayInvitation(eventId: String) {
-        println("detect invitation link")
+        print("detect invitation link")
         let alertController = UIAlertController(title: "Vous avez reçu une invitation", message: "De l'event : \(eventId)", preferredStyle: UIAlertControllerStyle.Alert)
         
         let cancel = UIAlertAction(title: "Refuser", style: UIAlertActionStyle.Default, handler: nil)
@@ -64,7 +64,7 @@ class MainTabBarViewController: UITabBarController, PageController {
     }
     
     func displayProfileController() {
-        if let controller = self.viewControllers?.last as? UIViewController {
+        if let _ = self.viewControllers?.last {
             self.selectedIndex = 0
             self.buttonProfile.setImage(UIImage(named: "Profile"), forState: UIControlState.Normal)
             self.buttonExplore.setImage(UIImage(named: "ExploreOn"), forState: UIControlState.Normal)
@@ -72,7 +72,7 @@ class MainTabBarViewController: UITabBarController, PageController {
     }
     
     func displayFeedController() {
-        if let controller = self.viewControllers?.first as? UIViewController {
+        if let _ = self.viewControllers?.first {
             self.selectedIndex = 1
             self.buttonProfile.setImage(UIImage(named: "ProfileOn"), forState: UIControlState.Normal)
             self.buttonExplore.setImage(UIImage(named: "Explore"), forState: UIControlState.Normal)
@@ -89,12 +89,12 @@ class MainTabBarViewController: UITabBarController, PageController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "displayProfileController", name: "displayProfileController", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "displayFeedController", name: "displayFeedController", object: nil)
         
-        let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        let button = UIButton(type: UIButtonType.Custom)
         button.frame.origin = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2 - 50, UIScreen.mainScreen().bounds.size.height - 50 - self.tabBar.frame.size.height / 2)
         button.backgroundColor = UIColor.clearColor()
         button.setImage(UIImage(named: "Capture"), forState: UIControlState.Normal)
         //button.tintColor = UIColor(red:0.99, green:0.37, blue:0.4, alpha:1)
-        button.autoresizingMask = UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleTopMargin
+        button.autoresizingMask = [UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleBottomMargin, UIViewAutoresizing.FlexibleTopMargin]
         button.addTarget(self, action: "createWizz", forControlEvents: UIControlEvents.TouchUpInside)
         button.frame.size = CGSizeMake(50, 50)
         button.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
@@ -102,22 +102,22 @@ class MainTabBarViewController: UITabBarController, PageController {
         button.center.x = self.view.center.x
         
         
-        buttonExplore = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        buttonExplore = UIButton(type: UIButtonType.Custom)
         buttonExplore.frame.size = CGSizeMake(UIScreen.mainScreen().bounds.size.width / 2 + 50, 30)
         buttonExplore.frame.origin = CGPointMake(-50, UIScreen.mainScreen().bounds.size.height - 44.5)
         buttonExplore.backgroundColor = UIColor.clearColor()
         buttonExplore.setImage(UIImage(named: "ExploreOn"), forState: UIControlState.Normal)
-        buttonExplore.autoresizingMask = UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleTopMargin
+        buttonExplore.autoresizingMask = [UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleBottomMargin, UIViewAutoresizing.FlexibleTopMargin]
         buttonExplore.tag = 1
         buttonExplore.addTarget(self, action: "clickAction:", forControlEvents: UIControlEvents.TouchUpInside)
         buttonExplore.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         
-        buttonProfile = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        buttonProfile = UIButton(type: UIButtonType.Custom)
         buttonProfile.frame.size = CGSizeMake(UIScreen.mainScreen().bounds.size.width / 2 + 50, 30)
         buttonProfile.frame.origin = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height - 44.5)
         buttonProfile.backgroundColor = UIColor.clearColor()
         buttonProfile.setImage(UIImage(named: "Profile"), forState: UIControlState.Normal)
-        buttonProfile.autoresizingMask = UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleTopMargin
+        buttonProfile.autoresizingMask = [UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleBottomMargin, UIViewAutoresizing.FlexibleTopMargin]
         buttonProfile.tag = 2
         buttonProfile.addTarget(self, action: "clickAction:", forControlEvents: UIControlEvents.TouchUpInside)
         buttonProfile.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
@@ -147,7 +147,7 @@ class MainTabBarViewController: UITabBarController, PageController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "addMediaSegue" {
-            let controller = segue.destinationViewController as! UIViewController
+            let controller = segue.destinationViewController 
             
             self.animator = ZFModalTransitionAnimator(modalViewController: controller)
             self.animator.dragable = true
@@ -176,7 +176,7 @@ extension MainTabBarViewController {
                 newParticipant["status"] = "accepted"
                 newParticipant.saveInBackgroundWithBlock({ (success: Bool, _) -> Void in
                     if success {
-                        println("sucess add")
+                        print("sucess add")
                         
                         if let numberParticipant = currentEvent["nbParticipant"] as? Int {
                             currentEvent["nbParticipant"] = numberParticipant + 1

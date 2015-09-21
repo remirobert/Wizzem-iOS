@@ -27,10 +27,10 @@ class SignupTableViewController: UITableViewController, UITextFieldDelegate {
         String) -> Bool {
             
             switch textField.tag {
-            case 1: completionUpdateFirstName?(content: textField.text)
-            case 2: completionUpdateLastName?(content: textField.text)
-            case 3: completionUpdateEmail?(content: textField.text)
-            case 4: completionUpdatePassword?(content: textField.text)
+            case 1: completionUpdateFirstName?(content: textField.text!)
+            case 2: completionUpdateLastName?(content: textField.text!)
+            case 3: completionUpdateEmail?(content: textField.text!)
+            case 4: completionUpdatePassword?(content: textField.text!)
             default: Void()
             }
             

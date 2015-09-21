@@ -32,10 +32,6 @@ class SignupViewController: UIViewController {
     @IBAction func createAccount(sender: AnyObject) {
         if let firstNameText = firstNameText,
             let lastNameText = lastNameText,
-            let emailText = emailText,
-            let passwordText = passwordText,
-            let date = date,
-            let sex = sex,
             let newUser = newUser {
                 
                 let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
@@ -69,7 +65,7 @@ class SignupViewController: UIViewController {
         self.newUser?.setValue(0, forKey: "nbFollowing")
         self.newUser?.setValue(false, forKey: "public")
 
-        navigationController?.interactivePopGestureRecognizer.delegate = nil
+        navigationController?.interactivePopGestureRecognizer!.delegate = nil
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

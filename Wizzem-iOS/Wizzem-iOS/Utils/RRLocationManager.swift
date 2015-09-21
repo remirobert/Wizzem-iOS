@@ -37,12 +37,12 @@ class RRLocationManager: NSObject, CLLocationManagerDelegate {
     
     //MARK: Core Location delegate
     
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         self.locationManager.stopUpdatingLocation()
         self.blockCompletion(nil, error:error)
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         self.locationManager.stopUpdatingLocation()
         self.blockCompletion(newLocation, error: nil)
     }
@@ -60,24 +60,27 @@ class RRLocationManager: NSObject, CLLocationManagerDelegate {
                 blockCompletion(currentAddress: nil, error: error)
                 return
             }
-            self.sharedInstance.geocoder.reverseGeocodeLocation(currentLocation, completionHandler: { (objects: [AnyObject]!, err: NSError!) -> Void in
+            
+            self.sharedInstance.geocoder.reverseGeocodeLocation(currentLocation!, completionHandler: { (objects: [CLPlacemark]?, err: NSError?) -> Void in
                 if err != nil {
                     blockCompletion(currentAddress: nil, error: err)
                     return
                 }
-                blockCompletion(currentAddress: objects as? [CLPlacemark], error: err)
+                blockCompletion(currentAddress: objects, error: err)
             })
+            
         }
     }
     
     class func reverseGeocodingFromLocation(location: CLLocation!, _ blockCompletion:((address: [CLPlacemark]?, error: NSError?)->())) {
-        if let geoLocation = location {
-            self.sharedInstance.geocoder.reverseGeocodeLocation(location, completionHandler: { (objects: [AnyObject]!, err: NSError!) -> Void in
+        if let _ = location {
+            
+            self.sharedInstance.geocoder.reverseGeocodeLocation(location, completionHandler: { (objects: [CLPlacemark]?, err: NSError?) -> Void in
                 if err != nil {
                     blockCompletion(address: nil, error: err)
                     return
                 }
-                blockCompletion(address: objects as? [CLPlacemark], error: err)
+                blockCompletion(address: objects, error: err)
             })
         }
         else {
@@ -86,19 +89,23 @@ class RRLocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     class func reverseGeocodingFromAddress(address: String, _ blockCompletion:((location: [CLLocation]?, error: NSError?)->())) {
-        self.sharedInstance.geocoder.geocodeAddressString(address, completionHandler: { (objects: [AnyObject]!, err: NSError!) -> Void in
-            if err != nil || objects.count == 0 {
+        
+        
+        self.sharedInstance.geocoder.geocodeAddressString(address) { (objects: [CLPlacemark]?, err: NSError?) -> Void in
+            if err != nil {
                 blockCompletion(location: nil, error: err)
                 return
             }
-            var locations: [CLLocation] = Array()
-            for currentPlaceMark in objects {
-                if let placeMark = currentPlaceMark as? CLPlacemark {
-                    locations.append(placeMark.location)
+            if let objects = objects {
+                var locations: [CLLocation] = Array()
+                for currentPlaceMark in objects {
+                    locations.append(currentPlaceMark.location!)
                 }
+                blockCompletion(location: locations, error: err)
+                return
             }
-            blockCompletion(location: locations, error: err)
-        })
+            blockCompletion(location: nil, error: err)
+        }
     }
     
     class func requestAuthorization() {

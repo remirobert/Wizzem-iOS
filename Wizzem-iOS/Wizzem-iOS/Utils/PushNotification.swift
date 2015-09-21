@@ -13,7 +13,7 @@ class PushNotification: NSObject {
     class func addNotification(group: String) {
         PFPush.subscribeToChannelInBackground(group, block: { (_, err: NSError?) -> Void in
             if err != nil {
-                println("err subscribe channel : \(err)")
+                print("err subscribe channel : \(err)")
             }
         })
     }
@@ -25,7 +25,7 @@ class PushNotification: NSObject {
             
             PFPush.subscribeToChannelInBackground(currentNotif, block: { (_, err: NSError?) -> Void in
                 if err != nil {
-                    println("err subscribe channel : \(err)")
+                    print("err subscribe channel : \(err)")
                 }
             })
         }
@@ -42,7 +42,7 @@ class PushNotification: NSObject {
         push.setData(data as [NSObject : AnyObject])
 
         push.sendPushInBackgroundWithBlock { (_, err: NSError?) -> Void in
-            println("error push notification : \(err)")
+            print("error push notification : \(err)")
         }
     }
     

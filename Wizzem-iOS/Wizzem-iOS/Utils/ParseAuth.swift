@@ -10,7 +10,7 @@ import UIKit
 
 class ParseAuth {
    
-    class func login(#username: String, userPassword password: String, completionBlock block: (result: Result)->()) {
+    class func login(username username: String, userPassword password: String, completionBlock block: (result: Result)->()) {
         PFUser.logInWithUsernameInBackground(username, password:password) {
             (user: PFUser?, error: NSError?) -> Void in
             if user == nil {
@@ -21,11 +21,11 @@ class ParseAuth {
         }
     }
 
-    class func signup(#user: PFUser, completionBlock block: (result: Result)->()) {
+    class func signup(user user: PFUser, completionBlock block: (result: Result)->()) {
         user.signUpInBackgroundWithBlock {
             (succeeded: Bool, error: NSError?) -> Void in
             if let error = error {
-                let errorString = error.userInfo?["error"] as? NSString
+                let errorString = error.userInfo["error"] as? NSString
                 block(result: Result.👎(statusCode: nil, error: error))
             } else {
                 block(result: Result.👍)

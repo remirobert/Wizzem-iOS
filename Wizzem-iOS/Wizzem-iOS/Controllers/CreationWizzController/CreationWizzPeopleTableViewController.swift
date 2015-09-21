@@ -45,7 +45,7 @@ class CreationWizzPeopleTableViewController: UITableViewController {
         hud.color = UIColor(red:0.23, green:0.33, blue:0.33, alpha:1)
         hud.labelText = "Creation de votre moment ..."
         
-        var wizz = PFObject(className: "Event")
+        let wizz = PFObject(className: "Event")
         wizz["title"] = titleWizz!
         if let description = descriptionWizz {
             wizz["description"] = description
@@ -59,7 +59,7 @@ class CreationWizzPeopleTableViewController: UITableViewController {
         wizz["nbParticipant"] = 0
         
         wizz.saveInBackgroundWithBlock { (_, error: NSError?) -> Void in
-            if let error = error {
+            if let _ = error {
                 hud.hide(true)
                 Alert.error("Erreur survenie lors de la création de votre moment. Veuillez vérifier les champs rentrés, et recommencer.")
                 return
@@ -72,14 +72,14 @@ class CreationWizzPeopleTableViewController: UITableViewController {
             params.setValue(true, forKey: "approval")
             params.setValue(false, forKey: "invited")
             
-            println("params  :\(params)")
+            print("params  :\(params)")
             
             PFCloud.callFunctionInBackground("ParticipantAdd", withParameters: params as [NSObject : AnyObject], block: { (result: AnyObject?, error: NSError?) -> Void in
 
                 hud.hide(true)
 
                 if let error = error {
-                    println("error : \(error)")
+                    print("error : \(error)")
                     Alert.error("Erreur survenie lors de la création de votre moment. Veuillez vérifier les champs rentrés, et recommencer.")
                     return
                 }

@@ -37,13 +37,13 @@ class BaseViewController: UIViewController, UIPageViewControllerDataSource {
         return nil
     }
     
-    func swipeControllerCamera() {
-        pageViewController.setViewControllers([controllers[1]], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
-    }
-
-    func swipeControllerFeed() {
-        pageViewController.setViewControllers([controllers[0]], direction: UIPageViewControllerNavigationDirection.Reverse, animated: true, completion: nil)
-    }
+//    func swipeControllerCamera() {
+//        pageViewController.setViewControllers([controllers[1]], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+//    }
+//
+//    func swipeControllerFeed() {
+//        pageViewController.setViewControllers([controllers[0]], direction: UIPageViewControllerNavigationDirection.Reverse, animated: true, completion: nil)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

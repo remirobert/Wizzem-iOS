@@ -20,7 +20,7 @@ class WizzemAPI: NSObject {
                     return
                 }
                 block(result: Result.👍, events: results)
-                print(results)
+                print(results, terminator: "")
             })
         }
         else {

@@ -25,15 +25,15 @@ class DetailProfileViewController: UIViewController, UIImagePickerControllerDele
         }
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         self.dismissViewControllerAnimated(true, completion: nil)
-        let type = (info[UIImagePickerControllerReferenceURL] as! NSURL).absoluteString!.componentsSeparatedByString("=").last
+        let type = (info[UIImagePickerControllerReferenceURL] as! NSURL).absoluteString.componentsSeparatedByString("=").last
         let urlMedia = info[UIImagePickerControllerReferenceURL] as! NSURL
         
         var dataMedia: NSData!
         var mediaType: String!
         
-        println("type : \(type)")
+        print("type : \(type)")
         
         if type == "GIF" {
             let librairi: ALAssetsLibrary = ALAssetsLibrary()
@@ -75,7 +75,7 @@ class DetailProfileViewController: UIViewController, UIImagePickerControllerDele
                     if let dataType = self.user["typePicture"] as? String where dataType == "GIF" {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             let animatedImage = FLAnimatedImage(animatedGIFData: data)
-                            println("aimated image : \(animatedImage)")
+                            print("aimated image : \(animatedImage)")
                             self.profilePicture.animatedImage = animatedImage
                         })
                     }

@@ -12,7 +12,7 @@ class UIViewControllerInvitation: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserverForName("notificationInvitation", object: nil, queue: nil) { (notification: NSNotification!) -> Void in
+        NSNotificationCenter.defaultCenter().addObserverForName("notificationInvitation", object: nil, queue: nil) { (notification: NSNotification) -> Void in
             
             let params: [NSObject : AnyObject] = notification.userInfo!
             let eventId = params["eventId"] as! String

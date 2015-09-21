@@ -15,12 +15,12 @@ class MediaTextView: UITextView, UITextViewDelegate {
     var isEditing = false
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        println("add text {\(text)}")
+        print("add text {\(text)}")
         if text == "\n" {
             self.superview?.endEditing(true)
             return false
         }
-        if count(self.text) + count(text) >= 64 {
+        if self.text.characters.count + text.characters.count >= 64 {
             return false
         }
         return true
